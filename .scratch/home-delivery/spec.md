@@ -21,6 +21,7 @@
 - Proposta de interação: retirar uma camada para uma bandeja lateral/inferior e devolvê-la ao seu encaixe; oferecer também controles por toque e teclado.
 - Proposta de confirmação: “Aplicar alterações” salva a personalização e remonta o produto; “Cancelar” restaura a configuração anterior. Essa política precisa de confirmação.
 - A personalização confirmada deve acompanhar o item no carrinho, incluindo identificação dos ingredientes removidos.
+- Ao aplicar, compactar as camadas presentes e aproximar o pão superior da base. A altura final deve diminuir quando ingredientes forem retirados, preenchendo seus espaços; exibir a animação de fechamento antes de retornar ao hero.
 - Perspectiva limitada confirmada: visão frontal, inclinação e ingredientes separados e arrastáveis, sem rotação livre.
 - Ainda decidir: ingredientes removíveis, efeitos da remoção no preço e comportamento ao trocar de produto.
 
