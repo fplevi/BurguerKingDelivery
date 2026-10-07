@@ -18,6 +18,7 @@
 - “Remover ingredientes” expande o hero para ocupar a área visível inteira e abre um playground do produto selecionado.
 - No playground, o sanduíche abre em camadas identificáveis. O usuário pode remover ingredientes e recolocá-los.
 - O resultado deve simular um ambiente tridimensional, priorizando tecnologia e assets leves.
+- A grade usa fotos estáticas independentes da montagem por ingredientes. Manter camadas e animações apenas no hero e no playground; carregar miniaturas sob demanda com dimensões reservadas.
 - Proposta de interação: retirar uma camada para uma bandeja lateral/inferior e devolvê-la ao seu encaixe; oferecer também controles por toque e teclado.
 - Proposta de confirmação: “Aplicar alterações” salva a personalização e remonta o produto; “Cancelar” restaura a configuração anterior. Essa política precisa de confirmação.
 - A personalização confirmada deve acompanhar o item no carrinho, incluindo identificação dos ingredientes removidos.
