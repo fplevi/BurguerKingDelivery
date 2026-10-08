@@ -22,14 +22,15 @@ Os testes usam o Google Chrome instalado (canal `chrome`), porque o Smart App Co
 | `npm test` | Suíte Playwright contra o servidor de desenvolvimento, em desktop (1280 × 800) e 390 × 844 |
 | `npm run test:build` | Mesma suíte contra o build de produção (`vite build` + `vite preview`) |
 
-Os testes sobem o próprio servidor na porta 4173 (mude com `PW_PORT`). O Chrome headless usa WebGL por hardware (ANGLE) nesta máquina; o teste de fallback desativa o WebGL de propósito. Relatórios e traces de falhas ficam em `test-results/`, fora do Git.
+Os testes sobem o próprio servidor na porta 4173 (mude com `PW_PORT`). O Chrome headless usa WebGL por hardware (ANGLE) nesta máquina; o teste de fallback desativa o WebGL de propósito. Para usar um Chromium já instalado (por exemplo, numa CI ou num container), aponte `PW_EXECUTABLE` para o binário: a configuração libera o WebGL por software (`--enable-unsafe-swiftshader`). Com renderização por software, a suíte leva bem mais tempo (cerca de 6 minutos). Relatórios e traces de falhas ficam em `test-results/`, fora do Git.
 
 ## Estrutura
 
 - `index.html`: marcação da página.
 - `src/main.js`: renderização, eventos, arrasto, abrir/fechar Alterar ingredientes, carrinho. Não conhece Three.js.
 - `src/scene/burger-scene.js`: módulo de cena do hambúrguer (Three.js/WebGL): um contexto por palco, câmera ~15° acima, luz do alto à esquerda, sombras de contato, transições abrir/compactar e a área na tela de cada camada, usada para posicionar os botões invisíveis.
-- `src/scene/layer-models.js`: modelo 3D de cada camada (por enquanto formas coloridas simples).
+- `src/scene/layer-models.js`: modelo 3D de cada camada. Pães e carne são realistas (perfis torneados com ruído, cor por vértice, gergelim); as outras 7 camadas ainda são formas simples.
+- `src/scene/textures.js`: ruído determinístico e texturas geradas por código no carregamento (miolo, carne grelhada, grão da casca, sombra de contato). Nenhuma imagem de ingrediente é baixada.
 - `src/state.js`: reducer (fonte de verdade), preços.
 - `src/ingredients.js`: as 10 camadas do Whopper (receita brasileira), de baixo para cima, e quais formam a Base.
 - `src/art.js`: ilustrações SVG de cada camada, usadas como fallback quando não há WebGL.
@@ -41,7 +42,7 @@ Os testes sobem o próprio servidor na porta 4173 (mude com `PW_PORT`). O Chrome
 
 Pergunta: uma visão frontal em camadas permite abrir o hambúrguer, retirar e restaurar ingredientes e aplicar a personalização de forma compreensível?
 
-Inclui um Whopper desenhado em 3D com Three.js (formas simples por enquanto; ilustrações SVG quando não há WebGL), abertura em tela inteira, retirada por toque, teclado ou arrasto para a bandeja, reposição pelos chips, aplicar/cancelar, combo P/M/G e carrinho em memória. Os outros produtos são placeholders.
+Inclui um Whopper desenhado em 3D com Three.js (pães e carne realistas, demais camadas ainda simples; ilustrações SVG quando não há WebGL), abertura em tela inteira, retirada por toque, teclado ou arrasto para a bandeja, reposição pelos chips, aplicar/cancelar, combo P/M/G e carrinho em memória. Os outros produtos são placeholders.
 
 Hipóteses provisórias: pão e carne fixos; retirada sem desconto; aplicar confirma, cancelar descarta.
 

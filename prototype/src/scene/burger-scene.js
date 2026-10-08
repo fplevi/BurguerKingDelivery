@@ -18,13 +18,17 @@ import {
   Mesh,
   PlaneGeometry,
   ShadowMaterial,
-  Box3,
+  MeshBasicMaterial,
   Vector3,
   PCFShadowMap,
+  PMREMGenerator,
+  NeutralToneMapping,
   MathUtils,
 } from 'three';
+import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 import { ingredients } from '../ingredients.js';
 import { layerModels } from './layer-models.js';
+import { contactShadow } from './textures.js';
 
 const CAMERA_ELEVATION = 15; // degrees above the horizon
 const FOV = 30;
@@ -54,6 +58,28 @@ function layout({ open, removed }) {
   return targets;
 }
 
+/**
+ * Points sampled from a Camada's meshes (object space, flat xyz), projected every frame
+ * to get its area on screen. Tighter than a bounding box: a dome's box corners stick out
+ * above the crown.
+ */
+function outline(object, max = 400) {
+  const points = [];
+  const v = new Vector3();
+  object.updateMatrixWorld(true);
+  const inverse = object.matrixWorld.clone().invert();
+  object.traverse((child) => {
+    if (!child.isMesh || child.isInstancedMesh) return;
+    const position = child.geometry.attributes.position;
+    const step = Math.max(1, Math.floor(position.count / max));
+    for (let i = 0; i < position.count; i += step) {
+      v.fromBufferAttribute(position, i).applyMatrix4(child.matrixWorld).applyMatrix4(inverse);
+      points.push(v.x, v.y, v.z);
+    }
+  });
+  return points;
+}
+
 function createContext(canvas) {
   try {
     return canvas.getContext('webgl2', { alpha: true, antialias: true, premultipliedAlpha: true });
@@ -79,13 +105,24 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
   renderer.setClearColor(0x000000, 0);
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = PCFShadowMap;
+  renderer.toneMapping = NeutralToneMapping;
+  renderer.toneMappingExposure = 1;
   stage.prepend(canvas);
 
   const scene = new Scene();
   const camera = new PerspectiveCamera(FOV, 1, 0.1, 50);
 
-  scene.add(new HemisphereLight('#fff6e8', '#7a4a2a', 1.6));
-  const sun = new DirectionalLight('#fff3df', 2.4);
+  // Soft studio reflections for the glazed crust and the fat on the meat.
+  const pmrem = new PMREMGenerator(renderer);
+  const room = new RoomEnvironment();
+  const environment = pmrem.fromScene(room, 0.04).texture;
+  room.dispose();
+  pmrem.dispose();
+  scene.environment = environment;
+  scene.environmentIntensity = 0.35;
+
+  scene.add(new HemisphereLight('#fff6e8', '#7a4a2a', 1.1));
+  const sun = new DirectionalLight('#fff3df', 2.6);
   sun.position.set(-2.5, 6, 3); // upper left, slightly in front
   sun.castShadow = true;
   sun.shadow.mapSize.set(1024, 1024);
@@ -94,17 +131,27 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
   sun.shadow.bias = -0.0005;
   scene.add(sun);
 
-  const ground = new Mesh(new PlaneGeometry(8, 8), new ShadowMaterial({ opacity: 0.28 }));
+  // Cast shadow on the ground, only while assembled: opened Camadas float, and their
+  // shadows would land far to the side. The soft contact blob stays under the burger.
+  const GROUND_SHADOW = 0.28;
+  const ground = new Mesh(new PlaneGeometry(8, 8), new ShadowMaterial({ opacity: GROUND_SHADOW }));
   ground.rotation.x = -Math.PI / 2;
   ground.position.y = -0.001;
   ground.receiveShadow = true;
   scene.add(ground);
+  const contact = new Mesh(
+    new PlaneGeometry(2.7, 2.7),
+    new MeshBasicMaterial({ color: '#2a1206', alphaMap: contactShadow(), transparent: true, opacity: 0.55, depthWrite: false }),
+  );
+  contact.rotation.x = -Math.PI / 2;
+  contact.position.set(0.08, 0.001, -0.04); // nudged away from the light
+  scene.add(contact);
 
   const layers = {};
   for (const id of ids) {
     const object = layerModels[id].build();
     scene.add(object);
-    layers[id] = { object, y: 0, scale: 1 };
+    layers[id] = { object, y: 0, scale: 1, outline: outline(object) };
   }
 
   // Frame the camera once per stage, for the tallest arrangement it shows.
@@ -134,19 +181,23 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
       object.scale.setScalar(Math.max(scale, 0.0001));
       object.visible = scale > 0.01;
     }
+    // 0 assembled .. 1 opened, read from the top bun's lift above its stacked height.
+    const top = layers[ids.at(-1)];
+    const stackedTop = sum(ids.slice(0, -1).map((id, i) => (layers[id].scale > 0.5 ? heights[i] : 0)));
+    const openness = MathUtils.clamp((top.y - stackedTop) / (OPEN_GAP * (ids.length - 1)), 0, 1);
+    ground.material.opacity = GROUND_SHADOW * (1 - openness);
   }
 
-  const box = new Box3();
   const corner = new Vector3();
   function measure() {
     const rects = [];
     for (const id of ids) {
-      const { object } = layers[id];
+      const { object, outline } = layers[id];
       if (!object.visible) continue;
-      box.setFromObject(object);
+      object.updateMatrixWorld();
       let left = Infinity, top = Infinity, right = -Infinity, bottom = -Infinity;
-      for (let i = 0; i < 8; i++) {
-        corner.set(i & 1 ? box.max.x : box.min.x, i & 2 ? box.max.y : box.min.y, i & 4 ? box.max.z : box.min.z);
+      for (let i = 0; i < outline.length; i += 3) {
+        corner.set(outline[i], outline[i + 1], outline[i + 2]).applyMatrix4(object.matrixWorld);
         corner.project(camera);
         const x = ((corner.x + 1) / 2) * size.width;
         const y = ((1 - corner.y) / 2) * size.height;
