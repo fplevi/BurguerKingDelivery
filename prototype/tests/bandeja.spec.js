@@ -67,8 +67,10 @@ test('Recolocar todos esvazia a bandeja e cancelar descarta o rascunho', async (
   await alterarIngredientes(page).getByRole('button', { name: 'Cancelar', exact: true }).click();
   await openAlterarIngredientes(page);
   await expect(retirados(page).getByRole('button')).toHaveCount(0);
+});
 
-  // An applied Personalização comes back into the bandeja when reopening.
+test('a personalização aplicada volta para a bandeja ao reabrir', async ({ page }) => {
+  await openAlterarIngredientes(page);
   await chip(page, 'Retirar', 'Ketchup').click();
   await alterarIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
   await expect(alterarIngredientes(page)).toBeHidden();
