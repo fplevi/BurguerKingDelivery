@@ -29,7 +29,7 @@ Os testes sobem o próprio servidor na porta 4173 (mude com `PW_PORT`). Relatór
 - `index.html`: marcação da página.
 - `src/main.js`: renderização, eventos, arrasto, abrir/fechar Alterar ingredientes, carrinho.
 - `src/state.js`: reducer (fonte de verdade), preços.
-- `src/ingredients.js`: camadas do Whopper, de baixo para cima, e quais formam a Base.
+- `src/ingredients.js`: as 10 camadas do Whopper (receita brasileira), de baixo para cima, e quais formam a Base.
 - `src/art.js`: ilustrações SVG provisórias de cada camada.
 - `src/styles.css`: estilos.
 - `tests/`: testes Playwright; `tests/support.js` localiza elementos por papéis e rótulos acessíveis.
@@ -43,6 +43,6 @@ Inclui um Whopper ilustrado em SVG, abertura em tela inteira, retirada por toque
 
 Hipóteses provisórias: pão e carne fixos; retirada sem desconto; aplicar confirma, cancelar descarta.
 
-Cobertura automatizada (`tests/`): abrir Alterar ingredientes; retirar por camada, teclado, arrasto até a bandeja e chips; recolocar pelos chips; Recolocar todos; Base não retirável; aplicar atualiza o texto do hero; cancelar (botão, ✕, Esc) preserva a personalização anterior; combo e tamanho; item personalizado no carrinho. Arrasto por toque e desempenho ainda precisam de validação em aparelho físico.
+Cobertura automatizada (`tests/`): abrir Alterar ingredientes; retirar por camada, teclado, arrasto até a bandeja e chips; recolocar pelos chips; Recolocar todos; Base não retirável; ordem das 10 camadas; retirar só o ketchup mantendo a maionese; aplicar atualiza o texto do hero; cancelar (botão, ✕, Esc) preserva a personalização anterior; combo e tamanho; item personalizado no carrinho. Arrasto por toque e desempenho ainda precisam de validação em aparelho físico.
 
 O código é experimental e não deve ser promovido diretamente a produção.
