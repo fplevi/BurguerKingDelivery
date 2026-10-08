@@ -1,8 +1,11 @@
 // Test helpers: locate things the way the customer does (roles and accessible names).
 import { expect } from '@playwright/test';
 
-/** The full-screen "Alterar ingredientes" dialog (its visible title is still "Do seu jeito."). */
-export const alterarIngredientes = (page) => page.getByRole('dialog', { name: 'Do seu jeito.' });
+/** Visible title of the full-screen Alterar ingredientes dialog. */
+export const TITULO = 'O seu hambúrguer do seu jeito';
+
+/** The full-screen "Alterar ingredientes" dialog, named by its title. */
+export const alterarIngredientes = (page) => page.getByRole('dialog', { name: TITULO, exact: true });
 
 /** Bandeja: the aside holding removed ingredients, chips and "Recolocar todos". */
 export const bandeja = (page) => alterarIngredientes(page).getByRole('complementary');

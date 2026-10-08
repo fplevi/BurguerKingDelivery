@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { openAlterarIngredientes, alterarIngredientes, bandeja, camada, chip, heroNote, dragTo } from './support.js';
+import { openAlterarIngredientes, alterarIngredientes, bandeja, camada, chip, heroNote, dragTo, TITULO } from './support.js';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/');
@@ -39,7 +39,7 @@ test('retira um ingrediente arrastando a camada até a bandeja', async ({ page }
 
 test('arrastar e soltar fora da bandeja não retira o ingrediente', async ({ page }) => {
   await openAlterarIngredientes(page);
-  await dragTo(page, camada(page, 'Alface'), page.getByRole('heading', { name: 'Do seu jeito.' }));
+  await dragTo(page, camada(page, 'Alface'), page.getByRole('heading', { name: TITULO }));
   await expect(chip(page, 'Retirar', 'Alface')).toBeVisible();
 });
 
