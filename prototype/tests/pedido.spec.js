@@ -10,7 +10,7 @@ test.beforeEach(async ({ page }) => {
 test('Whopper personalizado chega ao carrinho com os ingredientes retirados', async ({ page }) => {
   await openAlterarIngredientes(page);
   await chip(page, 'Retirar', 'Tomate').click();
-  await chip(page, 'Retirar', 'Molho').click();
+  await chip(page, 'Retirar', 'Ketchup').click();
   await alterarIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
   await expect(alterarIngredientes(page)).toBeHidden();
 
@@ -20,7 +20,7 @@ test('Whopper personalizado chega ao carrinho com os ingredientes retirados', as
 
   await expect(carrinho(page)).toBeVisible();
   await expect(carrinho(page).getByText('Whopper Clássico · R$ 43,90')).toBeVisible();
-  await expect(carrinho(page).getByText('Combo M · Sem tomate, molho')).toBeVisible();
+  await expect(carrinho(page).getByText('Combo M · Sem tomate, ketchup')).toBeVisible();
   await expect(carrinho(page).getByText('Total: R$ 43,90')).toBeVisible();
 });
 

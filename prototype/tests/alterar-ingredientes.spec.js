@@ -57,10 +57,10 @@ test('retira e recoloca pelos chips', async ({ page }) => {
 test('Recolocar todos desfaz as retiradas do rascunho', async ({ page }) => {
   await openAlterarIngredientes(page);
   await chip(page, 'Retirar', 'Picles').click();
-  await chip(page, 'Retirar', 'Molho').click();
+  await chip(page, 'Retirar', 'Maionese').click();
   await bandeja(page).getByRole('button', { name: 'Recolocar todos' }).click();
   await expect(chip(page, 'Retirar', 'Picles')).toBeVisible();
-  await expect(chip(page, 'Retirar', 'Molho')).toBeVisible();
+  await expect(chip(page, 'Retirar', 'Maionese')).toBeVisible();
   await expect(alterarIngredientes(page).getByText('Whopper Clássico · Todos os ingredientes')).toBeVisible();
 });
 
@@ -115,4 +115,22 @@ test('Esc e o botão de fechar também cancelam', async ({ page }) => {
   await chip(page, 'Retirar', 'Alface').click();
   await page.getByRole('button', { name: 'Cancelar e fechar' }).click();
   await expect(heroNote(page)).toHaveText('Preparado com todos os ingredientes');
+});
+
+test('retira só o ketchup e mantém a maionese', async ({ page }) => {
+  await openAlterarIngredientes(page);
+  await camada(page, 'Ketchup').click();
+  await expect(chip(page, 'Recolocar', 'Ketchup')).toBeVisible();
+  await expect(chip(page, 'Retirar', 'Maionese')).toHaveAttribute('aria-pressed', 'true');
+  await expect(camada(page, 'Maionese')).toBeVisible();
+  await expect(alterarIngredientes(page).getByText('Whopper Clássico · Sem ketchup ·')).toBeVisible();
+
+  await alterarIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
+  await expect(heroNote(page)).toHaveText('Sem ketchup');
+
+  await openAlterarIngredientes(page);
+  await chip(page, 'Recolocar', 'Ketchup').click();
+  await chip(page, 'Retirar', 'Maionese').click();
+  await expect(chip(page, 'Retirar', 'Ketchup')).toHaveAttribute('aria-pressed', 'true');
+  await expect(alterarIngredientes(page).getByText('Whopper Clássico · Sem maionese ·')).toBeVisible();
 });
