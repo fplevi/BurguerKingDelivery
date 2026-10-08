@@ -117,6 +117,24 @@ test('Esc e o botão de fechar também cancelam', async ({ page }) => {
   await expect(heroNote(page)).toHaveText('Preparado com todos os ingredientes');
 });
 
+test('as 10 camadas abertas seguem a receita brasileira, de baixo para cima', async ({ page }) => {
+  const receita = ['Pão inferior', 'Carne grelhada', 'Queijo', 'Picles', 'Ketchup', 'Cebola', 'Tomate', 'Alface', 'Maionese', 'Pão superior'];
+  await openAlterarIngredientes(page);
+  // Wait for the opening animation to settle, then read each layer's vertical centre.
+  await expect.poll(async () => {
+    const centres = [];
+    for (const nome of receita) {
+      const box = await camada(page, nome).boundingBox();
+      centres.push(box.y + box.height / 2);
+    }
+    return centres.every((y, i) => i === 0 || y < centres[i - 1]);
+  }).toBe(true);
+
+  const removiveis = receita.filter((n) => !['Pão inferior', 'Carne grelhada', 'Pão superior'].includes(n));
+  await expect(bandeja(page).getByRole('button', { name: /^Retirar / }))
+    .toHaveText(removiveis.map((n) => new RegExp(`${n}$`)));
+});
+
 test('retira só o ketchup e mantém a maionese', async ({ page }) => {
   await openAlterarIngredientes(page);
   await camada(page, 'Ketchup').click();
