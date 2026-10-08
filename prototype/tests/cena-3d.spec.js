@@ -51,3 +51,27 @@ test('aplicar compacta as camadas abertas, com o pão superior descendo até a b
     .toBeLessThan(aberta * 0.4);
   await expect(alterarIngredientes(page)).toBeHidden();
 });
+
+test.describe('com movimento reduzido', () => {
+  test.use({ reducedMotion: 'reduce' });
+
+  const doisQuadros = (page) =>
+    page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
+
+  test('abrir e retirar não animam as camadas; aplicar fecha na hora', async ({ page }) => {
+    await openAlterarIngredientes(page);
+    await doisQuadros(page);
+    const logo = await camada(page, 'Pão superior').boundingBox();
+    await page.waitForTimeout(400);
+    expect(await camada(page, 'Pão superior').boundingBox()).toEqual(logo);
+
+    await chip(page, 'Retirar', 'Queijo').click();
+    await doisQuadros(page);
+    const semQueijo = await alturaAberta(page);
+    await page.waitForTimeout(400);
+    expect(await alturaAberta(page)).toBe(semQueijo);
+
+    await alterarIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
+    await expect(alterarIngredientes(page)).toBeHidden({ timeout: 300 });
+  });
+});
