@@ -31,6 +31,19 @@ test('o hero mostra o hambúrguer montado sem os ingredientes retirados, mais ba
   expect(depois.y).toBeGreaterThan(antes.y + 5);
 });
 
+test('cada ingrediente aberto em 3D tem sua própria área de toque', async ({ page, isMobile }) => {
+  await openAlterarIngredientes(page);
+  await expect(alterarIngredientes(page).locator('canvas')).toBeVisible();
+  const removiveis = ['Queijo', 'Picles', 'Ketchup', 'Cebola', 'Tomate', 'Alface', 'Maionese'];
+  for (const nome of removiveis) {
+    // Playwright only taps if the button itself receives the event at its centre.
+    if (isMobile) await camada(page, nome).tap();
+    else await camada(page, nome).click();
+    await expect(chip(page, 'Recolocar', nome)).toBeVisible();
+  }
+  await expect(alterarIngredientes(page).getByText(`Whopper Clássico · Sem ${removiveis.join(', ').toLowerCase()}`)).toBeVisible();
+});
+
 /** Vertical distance between the centres of Pão inferior and Pão superior in the dialog. */
 async function alturaAberta(page) {
   if (!(await alterarIngredientes(page).isVisible())) return Infinity;
