@@ -134,7 +134,9 @@ const domeY = (f) => {
   return TOP_LIP + (TOP_HEIGHT - TOP_LIP) * Math.sin(Math.acos(cos)) ** (2 / DOME);
 };
 /** Lumps on the dome (vertical, by position) and around the rim (radial, by angle). */
-const domeBump = (x, z) => 0.014 * (fbm(x * 2.2 + 5, z * 2.2, 0, { octaves: 3, seed: 7 }) - 0.5) * 2;
+const domeBump = (x, z) =>
+  0.016 * (fbm(x * 2.2 + 5, z * 2.2, 0, { octaves: 3, seed: 7 }) - 0.5) * 2 +
+  0.005 * (fbm(x * 9, z * 9 + 3, 0, { octaves: 2, seed: 6 }) - 0.5) * 2; // small dimples in the crust
 const rimScale = (x, z) => {
   const a = Math.atan2(z, x);
   return 1 + 0.012 * (fbm(Math.cos(a) * 2 + 3, Math.sin(a) * 2, 0, { octaves: 2, seed: 8 }) - 0.5) * 2;
@@ -159,20 +161,23 @@ function topBun() {
     paint: (x, y, z) => {
       if (y < 0.004) return [214, 166, 104]; // cut face: toasted crumb
       const h = (y - TOP_LIP) / (TOP_HEIGHT - TOP_LIP);
-      const mottle = fbm(x * 3 + 11, z * 3, y * 3, { octaves: 4, seed: 9 });
-      let c = mixColor([226, 160, 82], [196, 106, 38], smoothstep(-0.05, 0.3, h)); // pale band at the cut
-      c = mixColor(c, [158, 72, 24], smoothstep(0.4, 1, h) * 0.85); // toasted crown
-      c = mixColor(c, [128, 58, 20], Math.max(mottle - 0.55, 0) * 1.6);
-      return c.map((v) => v * (0.93 + mottle * 0.14));
+      // Uneven browning: broad patches (the oven is never even) plus fine speckle.
+      const patches = fbm(x * 1.6 + 11, z * 1.6, y * 2, { octaves: 3, seed: 9 });
+      const speckle = fbm(x * 8, z * 8 + 4, y * 8, { octaves: 2, seed: 10 });
+      let c = mixColor([226, 176, 108], [190, 118, 58], smoothstep(-0.05, 0.3, h)); // pale band at the cut
+      c = mixColor(c, [152, 86, 38], smoothstep(0.35, 1, h) * 0.8); // toasted crown
+      c = mixColor(c, [118, 64, 28], smoothstep(0.5, 0.75, patches) * (0.4 + 0.6 * smoothstep(0.1, 0.6, h)));
+      c = mixColor(c, [232, 186, 120], smoothstep(0.55, 0.3, patches) * (1 - smoothstep(0.2, 0.7, h)) * 0.5);
+      return c.map((v) => v * (0.9 + speckle * 0.2));
     },
   });
   const crust = new MeshPhysicalMaterial({
     vertexColors: true,
-    roughness: 0.55,
-    clearcoat: 0.55, // egg-wash glaze
-    clearcoatRoughness: 0.4,
+    roughness: 0.7,
+    clearcoat: 0.3, // thin egg-wash glaze: a soft sheen, not a lacquer
+    clearcoatRoughness: 0.6,
     bumpMap: crustBump(),
-    bumpScale: 0.6,
+    bumpScale: 1.1,
   });
   crust.bumpMap.repeat.set(6, 3);
   const group = new Group();
@@ -231,23 +236,28 @@ function bottomBun() {
   ];
   const crustGeometry = revolve(profile, {
     shape: (x, y, z) => {
-      const s = rimScale(x + 2, z);
+      // Slightly uneven side wall, as the dough rose unevenly.
+      const a = Math.atan2(z, x);
+      const wall = 0.012 * (fbm(Math.cos(a) * 3, Math.sin(a) * 3, y * 6, { octaves: 2, seed: 15 }) - 0.5) * 2;
+      const s = rimScale(x + 2, z) + wall * smoothstep(0.03, 0.12, y);
       return [x * s, y, z * s];
     },
     paint: (x, y, z) => {
-      const mottle = fbm(x * 3, z * 3 + 7, y * 4, { octaves: 4, seed: 13 });
-      let c = mixColor([128, 64, 26], [190, 104, 40], smoothstep(0.02, 0.12, y)); // darker underside
-      c = mixColor(c, [222, 150, 74], smoothstep(H * 0.6, H, y)); // paler towards the cut
-      return c.map((v) => v * (0.92 + mottle * 0.16));
+      const patches = fbm(x * 1.8, z * 1.8 + 7, y * 3, { octaves: 3, seed: 13 });
+      const speckle = fbm(x * 8 + 2, z * 8, y * 10, { octaves: 2, seed: 16 });
+      let c = mixColor([112, 60, 26], [176, 108, 54], smoothstep(0.02, 0.12, y)); // darker underside
+      c = mixColor(c, [216, 162, 96], smoothstep(H * 0.55, H, y)); // paler towards the cut
+      c = mixColor(c, [128, 72, 32], smoothstep(0.52, 0.75, patches) * 0.7);
+      return c.map((v) => v * (0.9 + speckle * 0.2));
     },
   });
   const crust = new MeshPhysicalMaterial({
     vertexColors: true,
-    roughness: 0.62,
-    clearcoat: 0.25,
-    clearcoatRoughness: 0.5,
+    roughness: 0.78,
+    clearcoat: 0.1,
+    clearcoatRoughness: 0.7,
     bumpMap: crustBump(),
-    bumpScale: 0.6,
+    bumpScale: 1.1,
   });
   crust.bumpMap.repeat.set(6, 2);
 
