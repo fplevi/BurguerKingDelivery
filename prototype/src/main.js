@@ -48,7 +48,12 @@ let scenes = null;
 function mountScenes() {
   const hero = createBurgerScene($('hero-stage'), { fit: 'assembled', onAreas: (a) => placeButtons($('hero-burger'), a) });
   if (!hero) return;
-  const editor = createBurgerScene($('pg-stage'), { fit: 'open', onAreas: (a) => placeButtons($('pg-burger'), a) });
+  // Half the tilt in Alterar ingredientes, so the Camadas don't slide away from the cursor.
+  const editor = createBurgerScene($('pg-stage'), {
+    fit: 'open',
+    tiltScale: 0.5,
+    onAreas: (a) => placeButtons($('pg-burger'), a),
+  });
   if (!editor) {
     hero.dispose();
     return;
@@ -359,7 +364,50 @@ function toast(t) {
   timer = setTimeout(() => ($('toast').style.display = 'none'), 2800);
 }
 
-// CSS tilt of the SVG fallback only; the 3D tilt comes with ticket 10.
+// 3D tilt (ticket 10). Desktop: the pointer over the stage. Touch (iOS and Android): dragging
+// on the empty area of the stage, horizontally (vertical swipes keep scrolling). Android also
+// follows the device orientation; iOS only sends it after a permission prompt, which we never show.
+// Dragging a Camada still means removing it. Nothing tilts with reduced motion.
+const motionOk = () => scenes && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+const activeScene = () => (state.editing ? scenes.editor : scenes.hero);
+let touchTilt = null;
+for (const [stageId, scene] of [['hero-stage', () => scenes.hero], ['pg-stage', () => scenes.editor]]) {
+  const stage = $(stageId);
+  stage.addEventListener('pointermove', (e) => {
+    if (!motionOk() || activeDrag) return;
+    if (e.pointerType === 'mouse') {
+      const r = stage.getBoundingClientRect();
+      scene().tilt(((e.clientX - r.left) / r.width - 0.5) * 2, ((e.clientY - r.top) / r.height - 0.5) * 2);
+    } else if (touchTilt?.id === e.pointerId) {
+      scene().tilt((e.clientX - touchTilt.x) / 120, (e.clientY - touchTilt.y) / 120);
+    }
+  });
+  stage.addEventListener('pointerleave', (e) => {
+    if (motionOk() && e.pointerType === 'mouse') scene().tilt(0, 0);
+  });
+  stage.addEventListener('pointerdown', (e) => {
+    if (!motionOk() || e.pointerType === 'mouse' || e.target.closest('.layer')) return;
+    touchTilt = { id: e.pointerId, x: e.clientX, y: e.clientY };
+  });
+  const endTouch = (e) => {
+    if (touchTilt?.id !== e.pointerId) return;
+    touchTilt = null;
+    scene().tilt(0, 0);
+  };
+  stage.addEventListener('pointerup', endTouch);
+  stage.addEventListener('pointercancel', endTouch);
+}
+let neutral = null;
+addEventListener('deviceorientation', (e) => {
+  if (!motionOk() || e.beta == null || e.gamma == null || touchTilt || activeDrag) return;
+  // The way the phone is held right now is "straight"; drift slowly towards new holds.
+  neutral ??= { beta: e.beta, gamma: e.gamma };
+  neutral.beta += (e.beta - neutral.beta) * 0.01;
+  neutral.gamma += (e.gamma - neutral.gamma) * 0.01;
+  activeScene().tilt((e.gamma - neutral.gamma) / 20, (e.beta - neutral.beta) / 20);
+});
+
+// CSS tilt of the SVG fallback only.
 $('hero-stage').onpointermove = (e) => {
   if (scenes || e.pointerType === 'touch' || matchMedia('(prefers-reduced-motion:reduce)').matches) return;
   const r = $('hero-stage').getBoundingClientRect();

@@ -11,10 +11,12 @@
 //   scene.snapshot(id, { width, height })        // PNG data URL of one Camada alone, or null
 //   scene.drag(id, clientX, clientY)             // the Camada follows the pointer, over the page
 //   scene.release()                              // ends the drag; back to its place (or wherever show() says)
+//   scene.tilt(x, y)                             // lean towards x, y in [-1, 1]; (0, 0) recentres
 //   scene.dispose()
 import {
   WebGLRenderer,
   Scene,
+  Group,
   PerspectiveCamera,
   DirectionalLight,
   HemisphereLight,
@@ -48,6 +50,10 @@ const RADIUS = 1.1; // widest Camada (lettuce), used to frame the camera
 // lifted towards the camera.
 const HOLD_TILT = 0.5; // radians
 const HOLD_SCALE = 0.85;
+// Tilt (ticket 10): at most 10°, eased; turning around the vertical axis shows the sides,
+// pitching shows more or less of the top, with a roll so the turn reads on round shapes.
+const TILT = { pitch: 10, yaw: 10, roll: 8 }; // degrees at |x| or |y| = 1
+const TILT_EASE = 0.12; // seconds to cover ~63% of the way to the target
 
 const ids = ingredients.map((i) => i.id);
 const heights = ids.map((id) => layerModels[id].height);
@@ -101,7 +107,7 @@ function createContext(canvas) {
   }
 }
 
-export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {} } = {}) {
+export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}, tiltScale = 1 } = {}) {
   const canvas = document.createElement('canvas');
   canvas.className = 'burger-canvas';
   canvas.setAttribute('aria-hidden', 'true');
@@ -160,15 +166,22 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
   contact.position.set(0.08, 0.001, -0.04); // nudged away from the light
   scene.add(contact);
 
+  // The burger leans around its middle: pivot (rotated) > burger (offset back down) > Camadas.
+  const pivot = new Group();
+  const burger = new Group();
+  pivot.add(burger);
+  scene.add(pivot);
   const layers = {};
   for (const id of ids) {
     const object = layerModels[id].build();
-    scene.add(object);
+    burger.add(object);
     layers[id] = { object, x: 0, y: 0, z: 0, scale: 1, outline: outline(object) };
   }
 
   // Frame the camera once per stage, for the tallest arrangement it shows.
   const framedHeight = fit === 'open' ? OPEN_HEIGHT : ASSEMBLED_HEIGHT;
+  pivot.position.y = framedHeight / 2;
+  burger.position.y = -framedHeight / 2;
   function frame(width, height) {
     camera.aspect = width / height;
     const elevation = MathUtils.degToRad(CAMERA_ELEVATION);
@@ -186,6 +199,9 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
   let overlay = false; // while dragging, the canvas covers the viewport (the Camada can reach the Bandeja)
   let dragging = null; // { id, grab } while a Camada follows the pointer
   let lastView = { open: false, removed: [] };
+  const tiltTarget = { x: 0, y: 0 };
+  const tiltNow = { x: 0, y: 0 };
+  let lastTick = 0;
   let animation = null;
   let frameRequest = 0;
   let currentAreas = {};
@@ -207,13 +223,19 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
     ground.material.opacity = GROUND_SHADOW * (1 - openness);
   }
 
+  function lean() {
+    const k = tiltScale * (Math.PI / 180);
+    pivot.rotation.set(tiltNow.y * TILT.pitch * k, tiltNow.x * TILT.yaw * k, -tiltNow.x * TILT.roll * k);
+  }
+  const tilting = () => Math.abs(tiltTarget.x - tiltNow.x) > 0.001 || Math.abs(tiltTarget.y - tiltNow.y) > 0.001;
+
   const corner = new Vector3();
   function measure() {
+    scene.updateMatrixWorld();
     const rects = [];
     for (const id of ids) {
       const { object, outline } = layers[id];
       if (!object.visible) continue;
-      object.updateMatrixWorld();
       let left = Infinity, top = Infinity, right = -Infinity, bottom = -Infinity;
       for (let i = 0; i < outline.length; i += 3) {
         corner.set(outline[i], outline[i + 1], outline[i + 2]).applyMatrix4(object.matrixWorld);
@@ -251,6 +273,15 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
 
   function tick(now) {
     frameRequest = 0;
+    const dt = Math.min((now - (lastTick || now)) / 1000, 1); // exponential easing is stable at any step
+    lastTick = now;
+    if (tilting()) {
+      const k = 1 - Math.exp(-dt / TILT_EASE);
+      tiltNow.x += (tiltTarget.x - tiltNow.x) * k;
+      tiltNow.y += (tiltTarget.y - tiltNow.y) * k;
+      if (!tilting()) Object.assign(tiltNow, tiltTarget);
+      lean();
+    }
     if (animation) {
       const t = Math.min(Math.max((now - animation.start) / DURATION, 0), 1);
       const k = easeOut(t);
@@ -264,16 +295,18 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
         animation = null;
         if (!dragging) setOverlay(false);
         draw();
+        if (tilting()) requestDraw();
         return;
       }
     }
     draw();
-    if (animation) frameRequest = requestAnimationFrame(tick);
+    if (animation || tilting()) frameRequest = requestAnimationFrame(tick);
+    else lastTick = 0;
   }
 
-  const requestDraw = () => {
+  function requestDraw() {
     if (!frameRequest) frameRequest = requestAnimationFrame(tick);
-  };
+  }
 
   /** Sizes the canvas: the stage, or the whole viewport while dragging (same framing). */
   function resize() {
@@ -366,8 +399,13 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
       if (!size.width || !size.height) return;
       const layer = layers[id];
       if (dragging?.id !== id) {
+        // Straighten up first: a held Camada is placed in the burger's own (untilted) space.
+        Object.assign(tiltTarget, { x: 0, y: 0 });
+        Object.assign(tiltNow, tiltTarget);
+        lean();
+        scene.updateMatrixWorld();
         setOverlay(true);
-        const centre = new Vector3(layer.x, layer.y + layerModels[id].height / 2, layer.z);
+        const centre = burger.localToWorld(new Vector3(layer.x, layer.y + layerModels[id].height / 2, layer.z));
         const at = underPointer(clientX, clientY, centre);
         if (!at) return;
         dragging = { id, grab: centre.clone().sub(at), depth: centre, pose: new Euler() };
@@ -375,7 +413,7 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
       const at = underPointer(clientX, clientY, dragging.depth);
       if (!at) return;
       // Held pose, pivoting on the Camada's centre so the grabbed point stays under the pointer.
-      const target = at.add(dragging.grab).addScaledVector(camera.getWorldDirection(new Vector3()), -0.35);
+      const target = burger.worldToLocal(at.add(dragging.grab).addScaledVector(camera.getWorldDirection(new Vector3()), -0.35));
       dragging.pose.set(HOLD_TILT, 0, MathUtils.clamp(-target.x * 0.06, -0.15, 0.15));
       layer.scale = HOLD_SCALE;
       const offset = new Vector3(0, layerModels[id].height / 2, 0).multiplyScalar(HOLD_SCALE).applyEuler(dragging.pose);
@@ -383,6 +421,16 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
       layer.y = target.y - offset.y;
       layer.z = target.z - offset.z;
       requestDraw();
+    },
+    /**
+     * Leans the burger towards (x, y), each in [-1, 1] (x right, y down on screen), easing
+     * there; (0, 0) recentres. Ignored with reduced motion and while a Camada is dragged.
+     */
+    tilt(x, y) {
+      if (reducedMotion() || dragging) return;
+      tiltTarget.x = MathUtils.clamp(x, -1, 1);
+      tiltTarget.y = MathUtils.clamp(y, -1, 1);
+      if (tilting()) requestDraw();
     },
     /** Ends a drag: the Camada glides back to where the displayed state puts it. */
     release() {
@@ -407,6 +455,8 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
       if (pw < 8 || ph < 8) return null;
 
       place();
+      pivot.rotation.set(0, 0, 0);
+      scene.updateMatrixWorld();
       const { object } = layers[id];
       for (const other of ids) layers[other].object.visible = other === id;
       ground.visible = contact.visible = false;
@@ -441,6 +491,7 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
       renderer.setScissorTest(false);
       renderer.setViewport(0, 0, view.width, view.height);
       ground.visible = contact.visible = true;
+      lean();
       draw();
       return image.toDataURL('image/png');
     },
