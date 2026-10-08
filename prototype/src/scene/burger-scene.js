@@ -9,6 +9,8 @@
 //   await scene.show({ open, removed }, { animate })  // animated unless animate:false or reduced motion
 //   scene.areas()                                // { [id]: { left, top, width, height } } in stage px
 //   scene.snapshot(id, { width, height })        // PNG data URL of one Camada alone, or null
+//   scene.drag(id, clientX, clientY)             // the Camada follows the pointer, over the page
+//   scene.release()                              // ends the drag; back to its place (or wherever show() says)
 //   scene.dispose()
 import {
   WebGLRenderer,
@@ -23,6 +25,9 @@ import {
   Box3,
   Vector2,
   Vector3,
+  Plane,
+  Raycaster,
+  Euler,
   PCFShadowMap,
   PMREMGenerator,
   NeutralToneMapping,
@@ -38,6 +43,11 @@ const FOV = 30;
 const OPEN_GAP = 0.3; // vertical gap between opened Camadas, scene units
 const DURATION = 650; // ms
 const RADIUS = 1.1; // widest Camada (lettuce), used to frame the camera
+// A dragged Camada is held up facing the viewer (a thin disc would otherwise be seen
+// edge-on), leaning a little to the side it is carried, and slightly smaller because it is
+// lifted towards the camera.
+const HOLD_TILT = 0.5; // radians
+const HOLD_SCALE = 0.85;
 
 const ids = ingredients.map((i) => i.id);
 const heights = ids.map((id) => layerModels[id].height);
@@ -55,7 +65,7 @@ function layout({ open, removed }) {
   ids.forEach((id, index) => {
     const present = !removed.includes(id);
     const slot = sum(heights.slice(0, index)) + OPEN_GAP * index;
-    targets[id] = { y: open ? slot : stacked, scale: present ? 1 : 0 };
+    targets[id] = { x: 0, y: open ? slot : stacked, z: 0, scale: present ? 1 : 0 };
     if (present) stacked += heights[index];
   });
   return targets;
@@ -154,7 +164,7 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
   for (const id of ids) {
     const object = layerModels[id].build();
     scene.add(object);
-    layers[id] = { object, y: 0, scale: 1, outline: outline(object) };
+    layers[id] = { object, x: 0, y: 0, z: 0, scale: 1, outline: outline(object) };
   }
 
   // Frame the camera once per stage, for the tallest arrangement it shows.
@@ -171,7 +181,11 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
     camera.updateProjectionMatrix();
   }
 
-  let size = { width: 0, height: 0 };
+  let size = { width: 0, height: 0 }; // stage, CSS px: the camera frames the burger in it
+  let view = { width: 0, height: 0, left: 0, top: 0 }; // canvas, CSS px, relative to the stage
+  let overlay = false; // while dragging, the canvas covers the viewport (the Camada can reach the Bandeja)
+  let dragging = null; // { id, grab } while a Camada follows the pointer
+  let lastView = { open: false, removed: [] };
   let animation = null;
   let frameRequest = 0;
   let currentAreas = {};
@@ -179,10 +193,12 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
 
   function place() {
     for (const id of ids) {
-      const { object, y, scale } = layers[id];
-      object.position.y = y;
+      const { object, x, y, z, scale } = layers[id];
+      object.position.set(x, y, z);
       object.scale.setScalar(Math.max(scale, 0.0001));
       object.visible = scale > 0.01;
+      if (dragging?.id === id) object.rotation.copy(dragging.pose);
+      else object.rotation.set(0, 0, 0);
     }
     // 0 assembled .. 1 opened, read from the top bun's lift above its stacked height.
     const top = layers[ids.at(-1)];
@@ -202,13 +218,16 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
       for (let i = 0; i < outline.length; i += 3) {
         corner.set(outline[i], outline[i + 1], outline[i + 2]).applyMatrix4(object.matrixWorld);
         corner.project(camera);
-        const x = ((corner.x + 1) / 2) * size.width;
-        const y = ((1 - corner.y) / 2) * size.height;
+        const x = ((corner.x + 1) / 2) * view.width + view.left;
+        const y = ((1 - corner.y) / 2) * view.height + view.top;
         left = Math.min(left, x); right = Math.max(right, x);
         top = Math.min(top, y); bottom = Math.max(bottom, y);
       }
       rects.push({ id, left, top, right, bottom, centre: (top + bottom) / 2 });
     }
+    // A dragged Camada keeps its whole area; it no longer sits between its neighbours.
+    const held = rects.findIndex((rect) => rect.id === dragging?.id);
+    const loose = held >= 0 ? rects.splice(held, 1)[0] : null;
     // Neighbouring Camadas overlap on screen; split the overlap halfway between centres
     // so each DOM button gets its own hit area (rects are bottom -> top).
     const areas = {};
@@ -218,6 +237,7 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
       const bottom = below ? Math.min(rect.bottom, (rect.centre + below.centre) / 2) : rect.bottom;
       areas[rect.id] = { left: rect.left, top, width: rect.right - rect.left, height: Math.max(bottom - top, 1) };
     });
+    if (loose) areas[loose.id] = { left: loose.left, top: loose.top, width: loose.right - loose.left, height: loose.bottom - loose.top };
     return areas;
   }
 
@@ -235,14 +255,15 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
       const t = Math.min(Math.max((now - animation.start) / DURATION, 0), 1);
       const k = easeOut(t);
       for (const id of ids) {
+        if (dragging?.id === id) continue; // the pointer owns it
         const from = animation.from[id], to = animation.to[id];
-        layers[id].y = from.y + (to.y - from.y) * k;
-        layers[id].scale = from.scale + (to.scale - from.scale) * k;
+        for (const key of ['x', 'y', 'z', 'scale']) layers[id][key] = from[key] + (to[key] - from[key]) * k;
       }
       if (t === 1) {
-        draw();
         animation.done();
         animation = null;
+        if (!dragging) setOverlay(false);
+        draw();
         return;
       }
     }
@@ -254,37 +275,120 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
     if (!frameRequest) frameRequest = requestAnimationFrame(tick);
   };
 
+  /** Sizes the canvas: the stage, or the whole viewport while dragging (same framing). */
+  function resize() {
+    const { width, height } = size;
+    if (!width || !height) return;
+    frame(width, height);
+    if (overlay) {
+      const rect = stage.getBoundingClientRect();
+      view = { width: innerWidth, height: innerHeight, left: -rect.left, top: -rect.top };
+      Object.assign(canvas.style, { width: view.width + 'px', height: view.height + 'px' });
+      // The stage's frustum, extended to the viewport around it.
+      camera.setViewOffset(width, height, -rect.left, -rect.top, view.width, view.height);
+    } else {
+      view = { width, height, left: 0, top: 0 };
+      Object.assign(canvas.style, { width: '', height: '' });
+      camera.clearViewOffset();
+    }
+    renderer.setSize(view.width, view.height, false);
+  }
+
+  function setOverlay(on) {
+    if (on === overlay) return;
+    overlay = on;
+    canvas.classList.toggle('burger-canvas--overlay', on);
+    resize();
+  }
+
   const observer = new ResizeObserver(() => {
     const width = stage.clientWidth, height = stage.clientHeight;
     if (width === size.width && height === size.height) return;
     size = { width, height };
-    if (!width || !height) return;
-    renderer.setSize(width, height, false);
-    frame(width, height);
+    resize();
     draw();
   });
   observer.observe(stage);
 
+  /** Starts the transition of every Camada to `to`; resolves when drawn. */
+  function animateTo(to) {
+    animation?.done();
+    animation = null;
+    if (reducedMotion()) {
+      for (const id of ids) if (dragging?.id !== id) Object.assign(layers[id], to[id]);
+      if (!dragging) setOverlay(false);
+      draw();
+      return Promise.resolve();
+    }
+    const from = Object.fromEntries(ids.map((id) => [id, (({ x, y, z, scale }) => ({ x, y, z, scale }))(layers[id])]));
+    let done;
+    const finished = new Promise((resolve) => (done = resolve));
+    animation = { start: performance.now(), from, to, finished, done };
+    requestDraw();
+    return finished;
+  }
+
+  const raycaster = new Raycaster();
+  const pointer = new Vector2();
+  const plane = new Plane();
+  const hit = new Vector3();
+  /** Point under the pointer on the plane facing the camera through `through`. */
+  function underPointer(clientX, clientY, through) {
+    const rect = canvas.getBoundingClientRect();
+    pointer.set(((clientX - rect.left) / rect.width) * 2 - 1, -((clientY - rect.top) / rect.height) * 2 + 1);
+    raycaster.setFromCamera(pointer, camera);
+    plane.setFromNormalAndCoplanarPoint(camera.getWorldDirection(new Vector3()).negate(), through);
+    return raycaster.ray.intersectPlane(plane, hit);
+  }
+
   return {
     /** Resolves once the transition has been drawn (or was superseded by another show). */
-    show(view, { animate = true } = {}) {
-      const key = JSON.stringify([view.open, [...view.removed].sort()]);
+    show(displayed, { animate = true } = {}) {
+      const key = JSON.stringify([displayed.open, [...displayed.removed].sort()]);
       if (key === shown) return animation ? animation.finished : Promise.resolve();
       shown = key;
-      animation?.done();
-      animation = null;
-      const to = layout(view);
-      if (!animate || reducedMotion()) {
+      lastView = displayed;
+      const to = layout(displayed);
+      if (!animate) {
+        animation?.done();
+        animation = null;
         for (const id of ids) Object.assign(layers[id], to[id]);
         draw();
         return Promise.resolve();
       }
-      const from = Object.fromEntries(ids.map((id) => [id, { y: layers[id].y, scale: layers[id].scale }]));
-      let done;
-      const finished = new Promise((resolve) => (done = resolve));
-      animation = { start: performance.now(), from, to, finished, done };
+      return animateTo(to);
+    },
+    /**
+     * Moves a Camada with the pointer (client px), lifted towards the camera. The first call
+     * grows the canvas over the viewport so the Camada can be carried over the Bandeja.
+     */
+    drag(id, clientX, clientY) {
+      if (!size.width || !size.height) return;
+      const layer = layers[id];
+      if (dragging?.id !== id) {
+        setOverlay(true);
+        const centre = new Vector3(layer.x, layer.y + layerModels[id].height / 2, layer.z);
+        const at = underPointer(clientX, clientY, centre);
+        if (!at) return;
+        dragging = { id, grab: centre.clone().sub(at), depth: centre, pose: new Euler() };
+      }
+      const at = underPointer(clientX, clientY, dragging.depth);
+      if (!at) return;
+      // Held pose, pivoting on the Camada's centre so the grabbed point stays under the pointer.
+      const target = at.add(dragging.grab).addScaledVector(camera.getWorldDirection(new Vector3()), -0.35);
+      dragging.pose.set(HOLD_TILT, 0, MathUtils.clamp(-target.x * 0.06, -0.15, 0.15));
+      layer.scale = HOLD_SCALE;
+      const offset = new Vector3(0, layerModels[id].height / 2, 0).multiplyScalar(HOLD_SCALE).applyEuler(dragging.pose);
+      layer.x = target.x - offset.x;
+      layer.y = target.y - offset.y;
+      layer.z = target.z - offset.z;
       requestDraw();
-      return finished;
+    },
+    /** Ends a drag: the Camada glides back to where the displayed state puts it. */
+    release() {
+      if (!dragging) return Promise.resolve();
+      dragging = null;
+      return animateTo(layout(lastView));
     },
     areas: () => currentAreas,
     /**
@@ -306,7 +410,8 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
       const { object } = layers[id];
       for (const other of ids) layers[other].object.visible = other === id;
       ground.visible = contact.visible = false;
-      object.position.y = 0;
+      object.position.set(0, 0, 0);
+      object.rotation.set(0, 0, 0);
       object.scale.setScalar(1);
       object.visible = true;
 
@@ -315,6 +420,7 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
       const radius = Math.max(box.max.x, -box.min.x, box.max.z, -box.min.z);
       const centre = (box.min.y + box.max.y) / 2;
       const shot = camera.clone();
+      shot.clearViewOffset();
       shot.aspect = pw / ph;
       const elevation = MathUtils.degToRad(CAMERA_ELEVATION);
       const halfFovX = Math.atan(Math.tan(MathUtils.degToRad(FOV / 2)) * shot.aspect);
@@ -333,7 +439,7 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
       image.getContext('2d').drawImage(canvas, 0, buffer.y - ph, pw, ph, 0, 0, pw, ph);
 
       renderer.setScissorTest(false);
-      renderer.setViewport(0, 0, size.width, size.height);
+      renderer.setViewport(0, 0, view.width, view.height);
       ground.visible = contact.visible = true;
       draw();
       return image.toDataURL('image/png');

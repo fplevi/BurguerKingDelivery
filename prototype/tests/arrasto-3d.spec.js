@@ -1,0 +1,87 @@
+import { test, expect } from '@playwright/test';
+import { openAlterarIngredientes, alterarIngredientes, bandeja, camada, chip, retirado } from './support.js';
+
+// Mouse only: touch drag still needs a physical device (Playwright can't synthesise it faithfully).
+test.beforeEach(async ({ page }) => {
+  await page.goto('/');
+  await openAlterarIngredientes(page);
+  await expect(alterarIngredientes(page).locator('canvas')).toBeVisible();
+});
+
+const centre = (box) => ({ x: box.x + box.width / 2, y: box.y + box.height / 2 });
+
+/** Waits until the opening transition has settled and returns the layer's box. */
+async function settledBox(locator) {
+  let last = null;
+  await expect
+    .poll(async () => {
+      const box = await locator.boundingBox();
+      const same = last && Math.abs(box.y - last.y) < 0.5 && Math.abs(box.x - last.x) < 0.5;
+      last = box;
+      return same;
+    })
+    .toBe(true);
+  return last;
+}
+
+/** Background colour of the bandeja (it lights up while something is dragged over it). */
+const fundoDaBandeja = (page) => bandeja(page).evaluate((el) => getComputedStyle(el).backgroundColor);
+
+test('a camada 3D acompanha o cursor durante o arrasto e a bandeja reage', async ({ page }) => {
+  const inicio = centre(await settledBox(camada(page, 'Tomate')));
+  const fundo = await fundoDaBandeja(page);
+  await page.mouse.move(inicio.x, inicio.y);
+  await page.mouse.down();
+
+  // Halfway: the Camada's hit area (projected from the 3D object) is under the pointer.
+  const alvo = centre(await bandeja(page).boundingBox());
+  const meio = { x: (inicio.x + alvo.x) / 2, y: (inicio.y + alvo.y) / 2 };
+  await page.mouse.move(meio.x, meio.y, { steps: 8 });
+  await expect
+    .poll(async () => {
+      const agora = centre(await camada(page, 'Tomate').boundingBox());
+      return Math.hypot(agora.x - meio.x, agora.y - meio.y);
+    })
+    .toBeLessThan(40);
+  expect(await fundoDaBandeja(page)).toBe(fundo);
+
+  await page.mouse.move(alvo.x, alvo.y, { steps: 8 });
+  await expect.poll(() => fundoDaBandeja(page)).not.toBe(fundo);
+  await page.mouse.up();
+
+  await expect(chip(page, 'Recolocar', 'Tomate')).toBeVisible();
+  await expect(retirado(page, 'Tomate')).toBeVisible();
+  await expect(camada(page, 'Tomate')).toBeHidden();
+  await expect.poll(() => fundoDaBandeja(page)).toBe(fundo);
+});
+
+test('soltar fora da bandeja devolve a camada ao seu lugar', async ({ page }) => {
+  const antes = await settledBox(camada(page, 'Alface'));
+  const inicio = centre(antes);
+  await page.mouse.move(inicio.x, inicio.y);
+  await page.mouse.down();
+  await page.mouse.move(inicio.x - 60, inicio.y + 120, { steps: 10 });
+  await expect.poll(async () => (await camada(page, 'Alface').boundingBox()).y).toBeGreaterThan(antes.y + 60);
+  await page.mouse.up();
+
+  await expect
+    .poll(async () => {
+      const box = await camada(page, 'Alface').boundingBox();
+      return Math.max(Math.abs(box.x - antes.x), Math.abs(box.y - antes.y));
+    })
+    .toBeLessThan(2);
+  await expect(chip(page, 'Retirar', 'Alface')).toBeVisible();
+});
+
+test('a Base não pode ser arrastada', async ({ page }) => {
+  const antes = await settledBox(camada(page, 'Pão superior'));
+  const inicio = centre(antes);
+  const alvo = centre(await bandeja(page).boundingBox());
+  await page.mouse.move(inicio.x, inicio.y);
+  await page.mouse.down();
+  await page.mouse.move(alvo.x, alvo.y, { steps: 10 });
+  await page.waitForTimeout(200);
+  expect(await camada(page, 'Pão superior').boundingBox()).toEqual(antes);
+  await page.mouse.up();
+  await expect(alterarIngredientes(page).getByText('Whopper Clássico · Todos os ingredientes')).toBeVisible();
+});

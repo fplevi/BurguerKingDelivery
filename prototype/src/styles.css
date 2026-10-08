@@ -18,3 +18,5 @@
 .tray-item img{display:block;width:60px;height:36px;object-fit:contain}
 .tray-item svg{display:block;width:60px;height:21px;margin:7px 0 8px}
 @media(hover:hover){.tray-item:hover{border-color:var(--brown)}}
+.burger-canvas--overlay{position:fixed;inset:auto;left:0;top:0;z-index:5}
+.burger-3d .stage{perspective:none}

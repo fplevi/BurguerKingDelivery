@@ -203,7 +203,11 @@ function bindLayer(b) {
     const dx = e.clientX - activeDrag.x,
       dy = e.clientY - activeDrag.y;
     if (Math.hypot(dx, dy) > 8) activeDrag.moved = true;
-    b.style.transform = `translate3d(${dx}px,${dy}px,80px) rotate(${dx / 25}deg)`;
+    // In 3D the Camada itself follows the pointer (only once it is clearly a drag, so a tap
+    // stays a tap); without WebGL the SVG button moves.
+    if (scenes) {
+      if (activeDrag.moved) scenes.editor.drag(b.dataset.id, e.clientX, e.clientY);
+    } else b.style.transform = `translate3d(${dx}px,${dy}px,80px) rotate(${dx / 25}deg)`;
     $('tray').classList.toggle('over', overTray(e));
   });
   b.addEventListener('pointerup', (e) => {
@@ -212,6 +216,8 @@ function bindLayer(b) {
     activeDrag = null;
     b.classList.remove('dragging');
     b.style.transform = '';
+    // Back to its place, unless the drop below removes it (it then shrinks where it was let go).
+    scenes?.editor.release();
     const drop = overTray(e);
     $('tray').classList.remove('over');
     if (drop) dispatch({ type: 'remove', id: b.dataset.id });
@@ -219,6 +225,7 @@ function bindLayer(b) {
   });
   b.addEventListener('pointercancel', () => {
     activeDrag = null;
+    scenes?.editor.release();
     b.classList.remove('dragging');
     b.style.transform = '';
     $('tray').classList.remove('over');
