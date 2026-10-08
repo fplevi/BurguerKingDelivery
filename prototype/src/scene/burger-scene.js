@@ -8,6 +8,7 @@
 //   if (!scene) -> no WebGL: keep the SVG fallback.
 //   await scene.show({ open, removed }, { animate })  // animated unless animate:false or reduced motion
 //   scene.areas()                                // { [id]: { left, top, width, height } } in stage px
+//   scene.snapshot(id, { width, height })        // PNG data URL of one Camada alone, or null
 //   scene.dispose()
 import {
   WebGLRenderer,
@@ -19,6 +20,8 @@ import {
   PlaneGeometry,
   ShadowMaterial,
   MeshBasicMaterial,
+  Box3,
+  Vector2,
   Vector3,
   PCFShadowMap,
   PMREMGenerator,
@@ -284,6 +287,57 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
       return finished;
     },
     areas: () => currentAreas,
+    /**
+     * Image of one Camada on its own (even if removed), same light and camera elevation,
+     * transparent background: for the Bandeja. Rendered into a corner of this stage's canvas
+     * and copied out in the same task, so nothing flickers and no extra WebGL context is used.
+     * Returns null while the stage has no size (e.g. hidden).
+     */
+    snapshot(id, { width = 120, height = 72 } = {}) {
+      if (!size.width || !size.height) return null;
+      const buffer = renderer.getDrawingBufferSize(new Vector2());
+      const ratio = renderer.getPixelRatio();
+      // Image pixels: 2x the CSS size for sharpness, shrunk if the canvas is smaller.
+      const fit = Math.min(1, buffer.x / (width * 2), buffer.y / (height * 2));
+      const pw = Math.floor(width * 2 * fit), ph = Math.floor(height * 2 * fit);
+      if (pw < 8 || ph < 8) return null;
+
+      place();
+      const { object } = layers[id];
+      for (const other of ids) layers[other].object.visible = other === id;
+      ground.visible = contact.visible = false;
+      object.position.y = 0;
+      object.scale.setScalar(1);
+      object.visible = true;
+
+      // Frame the Camada's width (it is much wider than tall), with a small margin.
+      const box = new Box3().setFromObject(object);
+      const radius = Math.max(box.max.x, -box.min.x, box.max.z, -box.min.z);
+      const centre = (box.min.y + box.max.y) / 2;
+      const shot = camera.clone();
+      shot.aspect = pw / ph;
+      const elevation = MathUtils.degToRad(CAMERA_ELEVATION);
+      const halfFovX = Math.atan(Math.tan(MathUtils.degToRad(FOV / 2)) * shot.aspect);
+      const distance = (radius * 1.08) / Math.tan(halfFovX) + radius;
+      shot.position.set(0, centre + distance * Math.sin(elevation), distance * Math.cos(elevation));
+      shot.lookAt(0, centre, 0);
+      shot.updateProjectionMatrix();
+
+      renderer.setViewport(0, 0, pw / ratio, ph / ratio);
+      renderer.setScissor(0, 0, pw / ratio, ph / ratio);
+      renderer.setScissorTest(true);
+      renderer.render(scene, shot);
+      const image = document.createElement('canvas');
+      image.width = pw;
+      image.height = ph;
+      image.getContext('2d').drawImage(canvas, 0, buffer.y - ph, pw, ph, 0, 0, pw, ph);
+
+      renderer.setScissorTest(false);
+      renderer.setViewport(0, 0, size.width, size.height);
+      ground.visible = contact.visible = true;
+      draw();
+      return image.toDataURL('image/png');
+    },
     dispose() {
       cancelAnimationFrame(frameRequest);
       observer.disconnect();

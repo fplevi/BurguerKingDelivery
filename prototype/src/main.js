@@ -118,8 +118,9 @@ function render() {
     b.setAttribute('aria-hidden', String(removed));
     b.setAttribute('aria-label', 'Retirar ' + name(b.dataset.id));
   });
+  renderTray();
   $('tray-message').textContent = state.draft.length
-    ? 'Use + nos chips para devolver os ingredientes.'
+    ? 'Toque em um ingrediente retirado para recolocá-lo.'
     : 'Arraste os ingredientes para cá ou use os chips abaixo.';
   $('controls').innerHTML = ingredients
     .filter((i) => !i.locked)
@@ -152,6 +153,37 @@ function render() {
     .querySelectorAll('button')
     .forEach((b) => (b.onclick = () => dispatch({ type: 'delete', index: Number(b.dataset.delete) })));
   $('cart-total').textContent = 'Total: ' + money(state.cart.reduce((n, i) => n + i.price, 0));
+}
+
+// Bandeja: each removed ingredient as an image of its own Camada (rendered by the scene,
+// cached per id) or, without WebGL, its SVG illustration. Tapping it puts it back.
+const trayImages = {};
+function trayArt(id) {
+  if (!scenes) return art(id);
+  trayImages[id] ??= scenes.editor.snapshot(id);
+  return trayImages[id] ? `<img src="${trayImages[id]}" alt="" width="60" height="36">` : '';
+}
+function renderTray() {
+  const list = $('tray-items');
+  const shown = [...list.querySelectorAll('[data-restore]')].map((b) => b.dataset.restore);
+  if (shown.join() === state.draft.join()) return;
+  list.innerHTML = state.draft
+    .map(
+      (id) =>
+        `<li><button class="tray-item" data-restore="${id}" aria-label="Recolocar ${name(id)}">${trayArt(id)}<span aria-hidden="true">${name(id)}</span></button></li>`,
+    )
+    .join('');
+  list.querySelectorAll('button').forEach(
+    (b) =>
+      (b.onclick = () => {
+        const id = b.dataset.restore;
+        const next = b.parentElement.nextElementSibling ?? b.parentElement.previousElementSibling;
+        dispatch({ type: 'toggle', id });
+        // Stay in the Bandeja if anything is left there; otherwise land on the ingredient's chip.
+        const target = next && $('tray-items').querySelector(`[data-restore="${next.firstChild.dataset.restore}"]`);
+        (target ?? $('controls').querySelector(`[data-toggle="${id}"]`)).focus();
+      }),
+  );
 }
 
 const overTray = (e) => {

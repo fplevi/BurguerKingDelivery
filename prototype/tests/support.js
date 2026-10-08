@@ -12,7 +12,16 @@ export const bandeja = (page) => alterarIngredientes(page).getByRole('complement
 
 /** Chip in the bandeja for an ingredient; its label is "Retirar X" or "Recolocar X". */
 export const chip = (page, action, name) =>
-  bandeja(page).getByRole('button', { name: `${action} ${name}`, exact: true });
+  bandeja(page)
+    .getByRole('group', { name: 'Personalize seu Whopper' })
+    .getByRole('button', { name: `${action} ${name}`, exact: true });
+
+/** List of Ingredientes retirados in the bandeja, each an image button "Recolocar X". */
+export const retirados = (page) => bandeja(page).getByRole('list', { name: 'Ingredientes retirados' });
+
+/** Image of a removed ingredient in the bandeja. */
+export const retirado = (page, name) =>
+  retirados(page).getByRole('button', { name: `Recolocar ${name}`, exact: true });
 
 /**
  * Camada of the opened burger. Layers and chips share the label "Retirar X";
