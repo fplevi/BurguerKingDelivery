@@ -242,16 +242,20 @@ function closeEditor(type) {
   $('playground')
     .querySelectorAll('button')
     .forEach((b) => (b.disabled = true));
-  if (scenes) {
-    scenes.editor.show({ open: false, removed: state.draft });
-  } else {
-    const positions = closedPositions(state.draft),
-      offset = $('pg-stage').clientHeight * 0.65 - 242;
-    document.querySelectorAll('#pg-burger .layer').forEach((b) => {
-      if (positions[b.dataset.id] !== undefined) b.style.top = positions[b.dataset.id] + offset + 'px';
-    });
-  }
   $('state').textContent = 'Fechando seu hambúrguer…';
+  if (scenes) {
+    // Close once the compacted burger has been drawn, after a short pause to see it;
+    // the timeout guards against frames that never come (e.g. a hidden tab).
+    const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    const compacted = scenes.editor.show({ open: false, removed: state.draft }).then(() => wait(150));
+    Promise.race([compacted, wait(1500)]).then(finish);
+    return;
+  }
+  const positions = closedPositions(state.draft),
+    offset = $('pg-stage').clientHeight * 0.65 - 242;
+  document.querySelectorAll('#pg-burger .layer').forEach((b) => {
+    if (positions[b.dataset.id] !== undefined) b.style.top = positions[b.dataset.id] + offset + 'px';
+  });
   setTimeout(finish, 700);
 }
 

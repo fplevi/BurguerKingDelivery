@@ -6,7 +6,7 @@
 //
 //   const scene = createBurgerScene(stageEl, { fit: 'assembled' | 'open', onAreas });
 //   if (!scene) -> no WebGL: keep the SVG fallback.
-//   scene.show({ open, removed }, { animate })  // animated unless animate:false or reduced motion
+//   await scene.show({ open, removed }, { animate })  // animated unless animate:false or reduced motion
 //   scene.areas()                                // { [id]: { left, top, width, height } } in stage px
 //   scene.dispose()
 import {
@@ -20,7 +20,7 @@ import {
   ShadowMaterial,
   Box3,
   Vector3,
-  PCFSoftShadowMap,
+  PCFShadowMap,
   MathUtils,
 } from 'three';
 import { ingredients } from '../ingredients.js';
@@ -29,7 +29,7 @@ import { layerModels } from './layer-models.js';
 const CAMERA_ELEVATION = 15; // degrees above the horizon
 const FOV = 30;
 const OPEN_GAP = 0.3; // vertical gap between opened Camadas, scene units
-const DURATION = 650; // ms, matches the 700 ms the page waits before closing
+const DURATION = 650; // ms
 const RADIUS = 1.1; // widest Camada (lettuce), used to frame the camera
 
 const ids = ingredients.map((i) => i.id);
@@ -78,7 +78,7 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
   renderer.setClearColor(0x000000, 0);
   renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = PCFSoftShadowMap;
+  renderer.shadowMap.type = PCFShadowMap;
   stage.prepend(canvas);
 
   const scene = new Scene();
@@ -185,7 +185,12 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
         layers[id].y = from.y + (to.y - from.y) * k;
         layers[id].scale = from.scale + (to.scale - from.scale) * k;
       }
-      if (t === 1) animation = null;
+      if (t === 1) {
+        draw();
+        animation.done();
+        animation = null;
+        return;
+      }
     }
     draw();
     if (animation) frameRequest = requestAnimationFrame(tick);
@@ -207,20 +212,25 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
   observer.observe(stage);
 
   return {
+    /** Resolves once the transition has been drawn (or was superseded by another show). */
     show(view, { animate = true } = {}) {
       const key = JSON.stringify([view.open, [...view.removed].sort()]);
-      if (key === shown) return;
+      if (key === shown) return animation ? animation.finished : Promise.resolve();
       shown = key;
+      animation?.done();
+      animation = null;
       const to = layout(view);
       if (!animate || reducedMotion()) {
-        animation = null;
         for (const id of ids) Object.assign(layers[id], to[id]);
         draw();
-        return;
+        return Promise.resolve();
       }
       const from = Object.fromEntries(ids.map((id) => [id, { y: layers[id].y, scale: layers[id].scale }]));
-      animation = { start: performance.now(), from, to };
+      let done;
+      const finished = new Promise((resolve) => (done = resolve));
+      animation = { start: performance.now(), from, to, finished, done };
       requestDraw();
+      return finished;
     },
     areas: () => currentAreas,
     dispose() {

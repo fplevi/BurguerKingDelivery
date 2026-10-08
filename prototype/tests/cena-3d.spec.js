@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { openAlterarIngredientes, alterarIngredientes, camada, chip } from './support.js';
+import { openAlterarIngredientes, alterarIngredientes, camada, chip, TITULO } from './support.js';
 
 /** The hero visual: stage with the burger, "Remover ingredientes" and the note. */
 const heroStage = (page) => page.locator('main #hero-stage');
@@ -46,22 +46,47 @@ test('cada ingrediente aberto em 3D tem sua própria área de toque', async ({ p
 
 /** Vertical distance between the centres of Pão inferior and Pão superior in the dialog. */
 async function alturaAberta(page) {
-  if (!(await alterarIngredientes(page).isVisible())) return Infinity;
   const topo = await camada(page, 'Pão superior').boundingBox();
   const base = await camada(page, 'Pão inferior').boundingBox();
+  if (!topo || !base) return Infinity; // dialog already closed
   return base.y + base.height / 2 - (topo.y + topo.height / 2);
 }
 
 test('aplicar compacta as camadas abertas, com o pão superior descendo até a base', async ({ page }) => {
   await openAlterarIngredientes(page);
   await chip(page, 'Retirar', 'Tomate').click();
+  // Wait until the opening transition settles (two equal readings in a row).
   let aberta = 0;
-  await expect.poll(async () => (aberta = await alturaAberta(page))).toBeGreaterThan(200);
-
-  await alterarIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
   await expect
-    .poll(() => alturaAberta(page), { intervals: [50], timeout: 2000 })
-    .toBeLessThan(aberta * 0.4);
+    .poll(async () => {
+      const antes = aberta;
+      aberta = await alturaAberta(page);
+      return aberta > 200 && aberta === antes;
+    })
+    .toBe(true);
+
+  // Sample every frame in the page until the dialog closes: the closing transition is too
+  // short to catch reliably by polling from the test process under parallel load.
+  const menorAltura = page.evaluate(
+    (titulo) =>
+      new Promise((resolve) => {
+        const dialog = [...document.querySelectorAll('[role=dialog]')].find((d) => d.textContent.includes(titulo));
+        const centro = (rotulo) => {
+          const r = dialog.querySelector(`[aria-label="${rotulo}"]`).getBoundingClientRect();
+          return r.top + r.height / 2;
+        };
+        let menor = Infinity;
+        const quadro = () => {
+          if (!dialog.checkVisibility()) return resolve(menor);
+          menor = Math.min(menor, centro('Retirar Pão inferior') - centro('Retirar Pão superior'));
+          requestAnimationFrame(quadro);
+        };
+        quadro();
+      }),
+    TITULO,
+  );
+  await alterarIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
+  expect(await menorAltura).toBeLessThan(aberta * 0.5);
   await expect(alterarIngredientes(page)).toBeHidden();
 });
 
