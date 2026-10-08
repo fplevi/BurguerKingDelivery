@@ -6,6 +6,13 @@ import { defineConfig, devices } from '@playwright/test';
 const requested = process.env.PW_CHANNEL ?? 'chrome';
 const channel = requested === 'chromium' ? undefined : requested;
 
+// PW_EXECUTABLE points at a specific Chromium binary (e.g. a preinstalled one whose revision
+// differs from this Playwright version). Software WebGL (SwiftShader) then needs to be allowed.
+const executable = process.env.PW_EXECUTABLE;
+const browser = executable
+  ? { channel: undefined, launchOptions: { executablePath: executable, args: ['--enable-unsafe-swiftshader'] } }
+  : { channel };
+
 // Own port for tests; never reuse a running server, so a dev server from another
 // checkout can't be tested by mistake. Override with PW_PORT if it is busy.
 const port = Number(process.env.PW_PORT ?? 4173);
@@ -29,13 +36,13 @@ export default defineConfig({
   projects: [
     {
       name: 'desktop',
-      use: { ...devices['Desktop Chrome'], channel, viewport: { width: 1280, height: 800 } },
+      use: { ...devices['Desktop Chrome'], ...browser, viewport: { width: 1280, height: 800 } },
     },
     {
       name: 'mobile-390',
       use: {
         ...devices['Desktop Chrome'],
-        channel,
+        ...browser,
         viewport: { width: 390, height: 844 },
         deviceScaleFactor: 3,
         isMobile: true,
