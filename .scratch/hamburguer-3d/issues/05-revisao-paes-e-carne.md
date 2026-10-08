@@ -4,7 +4,7 @@
 
 **Blocked by:** 04.
 
-**Status:** ready-for-human
+**Status:** resolved
 
 - [x] Revisar no navegador e nas capturas do ticket 04
 - [x] Registrar decisão em `## Comments`: aprovado, ou lista de ajustes
@@ -25,4 +25,8 @@ Ajustes aplicados em `prototype/src/scene/layer-models.js`:
 - Pão inferior: base mais escura, lateral dourada com manchas de tostado e parede levemente irregular; quase sem brilho (`clearcoat` 0,25 → 0,1, rugosidade 0,78).
 - Correção encontrada na revisão: desde o ticket 09, a cena zerava a rotação própria dos modelos, e o queijo tinha deixado de aparecer em losango. Agora cada camada fica dentro de um grupo próprio, e a cena só mexe nesse grupo.
 
-Capturas atualizadas em `.scratch/hamburguer-3d/capturas/04/` (as anteriores ficam no histórico do Git). Aguardando a rodada 2 da revisão.
+Capturas atualizadas em `.scratch/hamburguer-3d/capturas/04/` (as anteriores ficam no histórico do Git).
+
+### Rodada 2 (2026-10-08)
+
+Aprovado pelo responsável pelo produto: pães e carne liberam os tickets 06 e 07. Depois de todas as camadas prontas, haverá uma rodada nova para aumentar o realismo do conjunto (ticket 12).

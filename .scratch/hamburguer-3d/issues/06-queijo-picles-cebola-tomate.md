@@ -4,7 +4,7 @@
 
 **Blocked by:** 05.
 
-**Status:** ready-for-agent
+**Status:** claimed
 
 - [ ] Queijo derretido, acomodado sobre a carne quando montado
 - [ ] Picles, cebola e tomate com várias fatias por camada, distinguíveis entre si
