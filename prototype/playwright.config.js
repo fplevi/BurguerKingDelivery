@@ -25,6 +25,10 @@ const command = againstBuild ? `npx vite build && npx vite preview ${server}` : 
 
 export default defineConfig({
   testDir: './tests',
+  // Software WebGL (PW_EXECUTABLE) draws a frame in a fraction of a second at best, and the
+  // 390 × 844 project renders at 3x: give tests and assertions more time there only.
+  timeout: executable ? 90_000 : 30_000,
+  expect: { timeout: executable ? 15_000 : 5_000 },
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,

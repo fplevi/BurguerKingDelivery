@@ -65,8 +65,9 @@ test('aplicar compacta as camadas abertas, com o pão superior descendo até a b
     })
     .toBe(true);
 
-  // Sample every frame in the page until the dialog closes: the closing transition is too
-  // short to catch reliably by polling from the test process under parallel load.
+  // Read the distance every time the scene repositions the buttons, until the dialog closes:
+  // the closing transition is too short (and frames too slow under software WebGL) to catch
+  // by polling from the test process or once per animation frame.
   const menorAltura = page.evaluate(
     (titulo) =>
       new Promise((resolve) => {
@@ -76,12 +77,16 @@ test('aplicar compacta as camadas abertas, com o pão superior descendo até a b
           return r.top + r.height / 2;
         };
         let menor = Infinity;
-        const quadro = () => {
-          if (!dialog.checkVisibility()) return resolve(menor);
+        const ler = () => {
+          if (!dialog.checkVisibility()) {
+            observer.disconnect();
+            return resolve(menor);
+          }
           menor = Math.min(menor, centro('Retirar Pão inferior') - centro('Retirar Pão superior'));
-          requestAnimationFrame(quadro);
         };
-        quadro();
+        const observer = new MutationObserver(ler);
+        observer.observe(dialog, { attributes: true, subtree: true, attributeFilter: ['style', 'class'] });
+        ler();
       }),
     TITULO,
   );
