@@ -1,0 +1,35 @@
+{
+  "method": "Built-in ImageGen",
+  "assets": [
+    {
+      "file": "batata-classica.png",
+      "prompt": "Photorealistic fast-food commercial product photo of classic thin golden French fries, crispy tips and fine salt, generous realistic portion in a low wide plain red paper boat tray. No writing, no logos. Camera slightly above frontal (~15 degrees), matching Burger King burger catalog photography, warm appetizing soft studio light upper-left, sharp textures, isolated RGBA transparent background. The entire tray and every fry visible, 8 percent transparent margin on all sides. Broad compact mound, landscape subject centered in square canvas. No plate, hands, table, background, flames, other food, typography or UI. Output one complete cutout."
+    },
+    {
+      "file": "cheddar-bacon.png",
+      "prompt": "Photorealistic fast-food commercial product photo of thin golden French fries generously covered with glossy melted orange cheddar sauce and small crisp reddish-brown bacon pieces, realistic portion in a low wide plain red paper boat tray. No writing, no logos. Camera slightly above frontal (~15 degrees), matching Burger King burger catalog photography, warm appetizing soft studio light upper-left, sharp textures, isolated RGBA transparent background. Entire tray and every fry visible, 8 percent transparent margin on all sides. Broad compact mound, landscape subject centered in square canvas. No plate, hands, table, background, flames, other food, typography or UI. Output one complete cutout."
+    },
+    {
+      "file": "batata-furiosa.png",
+      "prompt": "Photorealistic fast-food commercial product photo of spicy thin golden French fries covered with glossy melted orange cheddar sauce, crisp reddish-brown bacon pieces and vivid green sliced jalapeño peppers, light red paprika seasoning, realistic portion in a low wide plain red paper boat tray. No writing, no logos. Camera slightly above frontal (~15 degrees), matching Burger King burger catalog photography, warm appetizing soft studio light upper-left, sharp textures, isolated RGBA transparent background. Entire tray and every fry visible, 8 percent transparent margin on all sides. Broad compact mound, landscape subject centered in square canvas. No plate, hands, table, background, flames, other food, typography or UI. Output one complete cutout."
+    }
+  ],
+  "prices": {
+    "note": "Valores ilustrativos para revisão do layout, não são preços oficiais.",
+    "batataClassica": {
+      "P": 9.9,
+      "M": 14.9,
+      "G": 18.9
+    },
+    "cheddarBacon": {
+      "P": 16.9,
+      "M": 21.9,
+      "G": 26.9
+    },
+    "batataFuriosa": {
+      "P": 18.9,
+      "M": 23.9,
+      "G": 28.9
+    }
+  }
+}

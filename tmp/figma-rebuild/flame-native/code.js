@@ -70,6 +70,9 @@
     }
     changed++;
   }
-  figma.viewport.scrollAndZoomIntoView([await figma.getNodeByIdAsync('3:12')]);
+  figma.viewport.scrollAndZoomIntoView([await figma.getNodeByIdAsync('49:1104')]);
   figma.closePlugin(changed + ' camadas convertidas para texto nativo Flame. Os componentes atualizam suas instâncias; backups vetoriais foram preservados.');
 })().catch(error => figma.closePlugin('Falha ao aplicar fontes: ' + String(error)));
+
+
+

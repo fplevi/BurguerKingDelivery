@@ -1,0 +1,24 @@
+{
+  "method": "Built-in ImageGen",
+  "assets": [
+    {
+      "file": "coca-cola.png",
+      "prompt": "Photorealistic fast-food beverage advertising product shot, one tall clear takeaway PET plastic cup with clear flat lid and a red drinking straw, full cup and full straw visible, camera frontal slightly above (~10 degrees), glossy condensation droplets, crisp studio highlights and soft light upper-left. Isolated on genuinely transparent RGBA background. Centered square canvas, 12 percent transparent margin around complete silhouette. No logos, lettering, hands, tables, backdrop, fire, shadows on floor or UI. Cup filled with dark brown cola soda and realistic irregular ice cubes, tiny fizzy bubbles. Appetizing cold cola beverage."
+    },
+    {
+      "file": "guarana.png",
+      "prompt": "Photorealistic fast-food beverage advertising product shot, one tall clear takeaway PET plastic cup with clear flat lid and a red drinking straw, full cup and full straw visible, camera frontal slightly above (~10 degrees), glossy condensation droplets, crisp studio highlights and soft light upper-left. Isolated on genuinely transparent RGBA background. Centered square canvas, 12 percent transparent margin around complete silhouette. No logos, lettering, hands, tables, backdrop, fire, shadows on floor or UI. Cup filled with golden amber Brazilian guarana soda and realistic irregular ice cubes, tiny fizzy bubbles. Appetizing cold guarana beverage."
+    },
+    {
+      "file": "suco-laranja.png",
+      "prompt": "Photorealistic fast-food beverage advertising product shot, one tall clear takeaway PET plastic cup with clear flat lid and a red drinking straw, full cup and full straw visible, camera frontal slightly above (~10 degrees), glossy condensation droplets, crisp studio highlights and soft light upper-left. Isolated on genuinely transparent RGBA background. Centered square canvas, 12 percent transparent margin around complete silhouette. No logos, lettering, hands, tables, backdrop, fire, shadows on floor or UI. Cup filled with vivid fresh orange juice with slight natural pulp, small ice cubes. Appetizing natural orange juice, warm saturated citrus orange liquid."
+    }
+  ],
+  "prices": {
+    "note": "Valores ilustrativos de layout, não oficiais.",
+    "volumeMl": 500,
+    "cocaCola": 9.9,
+    "guarana": 9.9,
+    "sucoLaranja": 12.9
+  }
+}

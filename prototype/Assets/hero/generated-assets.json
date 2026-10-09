@@ -1,0 +1,11 @@
+{
+  "method": "Built-in ImageGen",
+  "prompts": [
+    "Use the attached web layout ONLY as a photographic art-direction reference, and the isolated burger as identity reference. Generate ONE isolated photorealistic Whopper in an exploded stack on a transparent background, no text/UI/background flames. Golden sesame top bun, white sauce, leafy green lettuce, thick red tomato slices, white onion rings, pickle slices, melted cheddar, one chargrilled beef patty, sauce and bottom bun. Match hero burger on RIGHT of reference: ingredients levitating slightly with modest vertical gaps, spectacular appetizing close-up, same frontal slightly above camera. Keep overall hamburger broad and tall, almost square bounding box, complete unclipped contour. A few tiny lettuce pieces and sesame near edges allowed. Warm orange studio highlights. Transparent RGBA cutout, no backdrop, no shadow plane.",
+    "Create ONLY a background texture for the attached Burger King web hero reference. Wide landscape 16:9, vivid rich orange and red flames swirling like the reference hero, soft photographic flames around bottom and right edges, darker burnt orange lower-right, luminous orange center-right, left half mostly smooth bright burnt orange with very low detail for white/brown text legibility. No hamburger, food, objects, text, logo, UI, panels or borders. Edge-to-edge cinematic flame background."
+  ],
+  "files": [
+    "fire-background.png",
+    "whopper-exploded.png"
+  ]
+}
