@@ -81,7 +81,9 @@ test('a Base não pode ser arrastada', async ({ page }) => {
   await page.mouse.down();
   await page.mouse.move(alvo.x, alvo.y, { steps: 10 });
   await page.waitForTimeout(200);
-  expect(await camada(page, 'Pão superior').boundingBox()).toEqual(antes);
+  // It stays in place; the pointer crossing the stage only tilts the burger (under a pixel).
+  const depois = await camada(page, 'Pão superior').boundingBox();
+  expect(Math.max(Math.abs(depois.x - antes.x), Math.abs(depois.y - antes.y))).toBeLessThan(2);
   await page.mouse.up();
   await expect(alterarIngredientes(page).getByText('Whopper Clássico · Todos os ingredientes')).toBeVisible();
 });

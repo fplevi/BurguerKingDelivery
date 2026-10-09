@@ -38,7 +38,7 @@ import {
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 import { ingredients } from '../ingredients.js';
 import { layerModels } from './layer-models.js';
-import { contactShadow } from './textures.js';
+import { contactShadow, texturesReady } from './textures.js';
 
 const CAMERA_ELEVATION = 15; // degrees above the horizon
 const FOV = 30;
@@ -209,6 +209,7 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
   let frameRequest = 0;
   let currentAreas = {};
   let shown = '';
+  let drawn = false;
 
   function place() {
     for (const id of ids) {
@@ -268,9 +269,14 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
   }
 
   function draw() {
-    if (!size.width || !size.height) return;
+    if (!size.width || !size.height || !compiled) return;
     place();
     renderer.render(scene, camera);
+    if (!drawn) {
+      drawn = true;
+      // Budget (ticket 11): time to the first frame, read by tests/orcamento.spec.js.
+      performance.mark(`burger-scene:first-frame:${fit}`);
+    }
     currentAreas = measure();
     onAreas(currentAreas);
   }
@@ -337,6 +343,22 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
     canvas.classList.toggle('burger-canvas--overlay', on);
     resize();
   }
+
+  // Budget (ticket 11): linking the shaders on first use blocked the page for seconds;
+  // compiled in parallel (KHR_parallel_shader_compile where available), off the main thread,
+  // while the workers paint the textures. The first frame waits for both.
+  let compiled = false;
+  Promise.all([renderer.compileAsync(scene, camera), texturesReady]).then(() => {
+    compiled = true;
+    // A hidden stage (Alterar ingredientes before opening) still draws once, tiny, so the
+    // shadow programs are ready too and the first frame on opening doesn't stall.
+    if (!size.width) {
+      renderer.setSize(1, 1, false);
+      renderer.render(scene, camera);
+    }
+    performance.mark(`burger-scene:ready:${fit}`);
+    draw();
+  });
 
   const observer = new ResizeObserver(() => {
     const width = stage.clientWidth, height = stage.clientHeight;

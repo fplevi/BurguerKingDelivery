@@ -20,11 +20,16 @@ const port = Number(process.env.PW_PORT ?? 4173);
 // `npm test` runs against the Vite dev server; `npm run test:build` builds and runs
 // the same suite against the production bundle served by `vite preview`.
 const server = `--host 127.0.0.1 --port ${port} --strictPort`;
-const againstBuild = process.env.npm_lifecycle_event === 'test:build' || process.env.PW_TARGET === 'build';
+// `npm run test:orcamento` runs only the budget measurements (tests/orcamento.spec.js), one at a
+// time against the build: parallel workers compete for CPU and GPU and spoil the numbers.
+const orcamento = process.env.npm_lifecycle_event === 'test:orcamento';
+const againstBuild = orcamento || process.env.npm_lifecycle_event === 'test:build' || process.env.PW_TARGET === 'build';
 const command = againstBuild ? `npx vite build && npx vite preview ${server}` : `npx vite ${server}`;
 
 export default defineConfig({
   testDir: './tests',
+  testIgnore: orcamento ? [] : ['**/orcamento.spec.js'],
+  ...(orcamento && { testMatch: '**/orcamento.spec.js', workers: 1 }),
   // Software WebGL (PW_EXECUTABLE) draws a frame in a fraction of a second at best, and the
   // 390 × 844 project renders at 3x: give tests and assertions more time there only.
   timeout: executable ? 90_000 : 30_000,

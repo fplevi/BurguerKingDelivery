@@ -46,19 +46,39 @@ function placeButtons(burger, areas) {
 // One scene per stage; null when WebGL is unavailable (SVG fallback).
 let scenes = null;
 function mountScenes() {
-  const hero = createBurgerScene($('hero-stage'), { fit: 'assembled', onAreas: (a) => placeButtons($('hero-burger'), a) });
-  if (!hero) return;
-  // Half the tilt in Alterar ingredientes, so the Camadas don't slide away from the cursor.
-  const editor = createBurgerScene($('pg-stage'), {
-    fit: 'open',
-    tiltScale: 0.5,
-    onAreas: (a) => placeButtons($('pg-burger'), a),
+  let firstFrame = true;
+  const hero = createBurgerScene($('hero-stage'), {
+    fit: 'assembled',
+    onAreas: (a) => {
+      placeButtons($('hero-burger'), a);
+      // Budget (ticket 11): the Alterar ingredientes scene is built only after the hero's
+      // first frame, so it doesn't delay it; opening earlier builds it on the spot.
+      if (firstFrame) (window.requestIdleCallback ?? setTimeout)(() => scenes?.editor);
+      firstFrame = false;
+    },
   });
-  if (!editor) {
-    hero.dispose();
-    return;
-  }
-  scenes = { hero, editor };
+  if (!hero) return;
+  let editor = null;
+  scenes = {
+    hero,
+    get editor() {
+      if (editor) return editor;
+      // Half the tilt in Alterar ingredientes, so the Camadas don't slide away from the cursor.
+      editor = createBurgerScene($('pg-stage'), {
+        fit: 'open',
+        tiltScale: 0.5,
+        onAreas: (a) => placeButtons($('pg-burger'), a),
+      });
+      if (editor) return editor;
+      // No second WebGL context: back to the SVG illustrations on both stages. The caller
+      // gets an inert scene for this one call; the next render() takes the SVG path.
+      hero.dispose();
+      scenes = null;
+      document.body.classList.remove('burger-3d');
+      queueMicrotask(render);
+      return new Proxy({}, { get: (_, key) => (key === 'show' ? () => Promise.resolve() : () => null) });
+    },
+  };
   document.body.classList.add('burger-3d');
 }
 mountScenes();

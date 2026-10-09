@@ -90,6 +90,7 @@ test.describe('com movimento reduzido', () => {
   test('o hambúrguer não inclina', async ({ page, isMobile }) => {
     test.skip(isMobile, 'ponteiro de mouse');
     const topo = heroCamada(page, 'Pão superior');
+    await expect(topo).toBeVisible(); // placed by the scene's first frame
     const antes = await topo.boundingBox();
     const palco = await heroStage(page).boundingBox();
     await page.mouse.move(palco.x + palco.width - 4, palco.y + palco.height - 4, { steps: 4 });
