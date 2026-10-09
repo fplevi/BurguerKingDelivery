@@ -113,3 +113,19 @@ test.describe('com movimento reduzido', () => {
     await expect(alterarIngredientes(page)).toBeHidden({ timeout: 300 });
   });
 });
+
+test('cada ingrediente aberto tem área de toque de pelo menos 24 × 44 px', async ({ page }) => {
+  await openAlterarIngredientes(page);
+  const removiveis = ['Queijo', 'Picles', 'Ketchup', 'Cebola', 'Tomate', 'Alface', 'Maionese'];
+  // WCAG 2.5.8 asks for 24 px; the Camadas are wide, so 44 px across is easy.
+  await expect
+    .poll(async () => {
+      const menores = [];
+      for (const nome of removiveis) {
+        const box = await camada(page, nome).boundingBox();
+        if (box.height < 24 || box.width < 44) menores.push(`${nome} ${Math.round(box.width)}×${Math.round(box.height)}`);
+      }
+      return menores;
+    })
+    .toEqual([]);
+});

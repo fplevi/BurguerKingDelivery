@@ -253,13 +253,14 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
     // A dragged Camada keeps its whole area; it no longer sits between its neighbours.
     const held = rects.findIndex((rect) => rect.id === dragging?.id);
     const loose = held >= 0 ? rects.splice(held, 1)[0] : null;
-    // Neighbouring Camadas overlap on screen; split the overlap halfway between centres
-    // so each DOM button gets its own hit area (rects are bottom -> top).
+    // Each DOM button reaches halfway to its neighbours' centres (rects are bottom -> top):
+    // overlapping Camadas split the overlap, and thin ones (sauces, cheese) also take the
+    // empty space around them, so they stay big enough to tap.
     const areas = {};
     rects.forEach((rect, i) => {
       const below = rects[i - 1], above = rects[i + 1];
-      const top = above ? Math.max(rect.top, (rect.centre + above.centre) / 2) : rect.top;
-      const bottom = below ? Math.min(rect.bottom, (rect.centre + below.centre) / 2) : rect.bottom;
+      const top = above ? (rect.centre + above.centre) / 2 : rect.top;
+      const bottom = below ? (rect.centre + below.centre) / 2 : rect.bottom;
       areas[rect.id] = { left: rect.left, top, width: rect.right - rect.left, height: Math.max(bottom - top, 1) };
     });
     if (loose) areas[loose.id] = { left: loose.left, top: loose.top, width: loose.right - loose.left, height: loose.bottom - loose.top };

@@ -230,3 +230,141 @@ export const contactShadow = () =>
       ctx.fillRect(0, 0, size, size);
     })[0],
   );
+
+/** Ellipse helper for the 2D slice drawings (centre, radii, turn, fill). */
+function blot(ctx, x, y, rx, ry, turn, fill) {
+  ctx.beginPath();
+  ctx.ellipse(x, y, Math.max(rx, 0.1), Math.max(ry, 0.1), turn, 0, Math.PI * 2);
+  ctx.fillStyle = fill;
+  ctx.fill();
+}
+
+/** Multiplies a canvas by fine noise, so flat fills read as organic surfaces. */
+function grain(ctx, size, f, amount, seed) {
+  const image = ctx.getImageData(0, 0, size, size);
+  const data = image.data;
+  for (let y = 0; y < size; y++)
+    for (let x = 0; x < size; x++) {
+      const k = 1 + (f((x / size) * 3, (y / size) * 3) - 0.5) * amount;
+      const i = (y * size + x) * 4;
+      data[i] *= k; data[i + 1] *= k; data[i + 2] *= k;
+    }
+  ctx.putImageData(image, 0, 0);
+}
+
+/**
+ * Tomato slice seen from above (planar UV over the disc): thin skin, red wall, four
+ * locules of glossy gel with seeds, pale core and septa. Colour, bump and roughness.
+ */
+export function tomatoSlice() {
+  const [colour, bump, rough] = canvases('tomato', 3, 512, ([c, b, r], size) => {
+    const mid = size / 2, R = size / 2;
+    const rnd = random(77);
+    const locules = Array.from({ length: 4 }, (_, i) => ({ a: (i / 4) * Math.PI * 2 + (rnd() - 0.5) * 0.3, span: 1.05 + rnd() * 0.25 }));
+    const draw = (ctx, { skin, wall, gel, core, septa, seed }) => {
+      ctx.fillStyle = skin; ctx.fillRect(0, 0, size, size);
+      blot(ctx, mid, mid, R * 0.955, R * 0.955, 0, wall);
+      for (const { a, span } of locules) {
+        ctx.beginPath();
+        ctx.arc(mid, mid, R * 0.74, a - span / 2, a + span / 2);
+        ctx.arc(mid, mid, R * 0.2, a + span / 2 - 0.15, a - span / 2 + 0.15, true);
+        ctx.closePath();
+        ctx.fillStyle = gel(a);
+        ctx.fill();
+      }
+      blot(ctx, mid, mid, R * 0.2, R * 0.2, 0, core);
+      ctx.strokeStyle = septa; ctx.lineWidth = R * 0.03;
+      for (const { a, span } of locules) {
+        ctx.beginPath();
+        ctx.moveTo(mid + Math.cos(a + span / 2 + 0.2) * R * 0.18, mid + Math.sin(a + span / 2 + 0.2) * R * 0.18);
+        ctx.lineTo(mid + Math.cos(a + span / 2 + 0.2) * R * 0.76, mid + Math.sin(a + span / 2 + 0.2) * R * 0.76);
+        ctx.stroke();
+      }
+      const seeds = random(78);
+      for (const { a, span } of locules)
+        for (let i = 0; i < 9; i++) {
+          const t = a + (seeds() - 0.5) * span * 0.8, d = R * (0.3 + seeds() * 0.36);
+          blot(ctx, mid + Math.cos(t) * d, mid + Math.sin(t) * d, R * 0.035, R * 0.022, t + 1.4 + (seeds() - 0.5), seed);
+        }
+    };
+    const glossy = (a) => {
+      const g = c.createRadialGradient(mid, mid, R * 0.2, mid, mid, R * 0.74);
+      g.addColorStop(0, '#f39a55'); g.addColorStop(0.6, '#ee6a36'); g.addColorStop(1, '#e24a28');
+      return g;
+    };
+    draw(c, { skin: '#a8160c', wall: '#d9301b', gel: glossy, core: '#f0866a', septa: '#ec7a5e', seed: '#f2dfa0' });
+    grain(c, size, field(64, 8, 3, 79), 0.25);
+    draw(b, { skin: '#c0c0c0', wall: '#c8c8c8', gel: () => '#6a6a6a', core: '#b0b0b0', septa: '#c8c8c8', seed: '#e0e0e0' });
+    draw(r, { skin: '#808080', wall: '#909090', gel: () => '#202020', core: '#707070', septa: '#808080', seed: '#606060' });
+  });
+  return { map: texture(colour, { color: true }), bumpMap: texture(bump), roughnessMap: texture(rough) };
+}
+
+/**
+ * Crinkle-cut pickle slice from above: dark green skin, translucent yellow-green flesh,
+ * a ring of pale seeds and a lighter core. Colour and bump (the crinkle ridges).
+ */
+export function pickleSlice() {
+  const [colour, bump] = canvases('pickle', 2, 256, ([c, b], size) => {
+    const mid = size / 2, R = size / 2;
+    const rnd = random(91);
+    const skin = c.createRadialGradient(mid, mid, R * 0.82, mid, mid, R);
+    skin.addColorStop(0, '#5f7a1e'); skin.addColorStop(1, '#2f4710');
+    c.fillStyle = skin; c.fillRect(0, 0, size, size);
+    const flesh = c.createRadialGradient(mid, mid, 0, mid, mid, R * 0.86);
+    flesh.addColorStop(0, '#d2d47e'); flesh.addColorStop(0.55, '#b4b955'); flesh.addColorStop(1, '#8c9a33');
+    blot(c, mid, mid, R * 0.86, R * 0.86, 0, flesh);
+    for (let i = 0; i < 11; i++) {
+      const a = (i / 11) * Math.PI * 2 + (rnd() - 0.5) * 0.3, d = R * (0.36 + rnd() * 0.12);
+      blot(c, mid + Math.cos(a) * d, mid + Math.sin(a) * d, R * 0.09, R * 0.045, a, 'rgba(236,232,170,0.85)');
+    }
+    grain(c, size, field(64, 8, 3, 92), 0.3);
+    // Bump: parallel crinkle ridges, faded at the skin.
+    const image = b.createImageData(size, size);
+    for (let y = 0; y < size; y++)
+      for (let x = 0; x < size; x++) {
+        const g = 128 + Math.sin((x / size) * Math.PI * 2 * 9) * 90;
+        const i = (y * size + x) * 4;
+        image.data[i] = image.data[i + 1] = image.data[i + 2] = g;
+        image.data[i + 3] = 255;
+      }
+    b.putImageData(image, 0, 0);
+  });
+  return { map: texture(colour, { color: true }), bumpMap: texture(bump) };
+}
+
+/**
+ * Lettuce leaf from above (planar UV): pale ribs running out from the centre and branching,
+ * deeper green towards the frilly edge, mottled. Colour and bump (raised veins).
+ */
+export function lettuceLeaf() {
+  const [colour, bump] = canvases('lettuce', 2, 512, ([c, b], size) => {
+    const mid = size / 2, R = size / 2;
+    const base = c.createRadialGradient(mid, mid, 0, mid, mid, R);
+    base.addColorStop(0, '#c9df7e'); base.addColorStop(0.45, '#8cc246'); base.addColorStop(1, '#3f8a22');
+    c.fillStyle = base; c.fillRect(0, 0, size, size);
+    b.fillStyle = '#808080'; b.fillRect(0, 0, size, size);
+    // Same seed for both maps, so the raised veins sit under the pale ones.
+    const vein = (ctx, rnd, x, y, a, length, width, colour, depth) => {
+      ctx.strokeStyle = colour; ctx.lineCap = 'round';
+      let px = x, py = y;
+      for (let s = 0; s < 12; s++) {
+        a += (rnd() - 0.5) * 0.18;
+        const nx = px + (Math.cos(a) * length) / 12, ny = py + (Math.sin(a) * length) / 12;
+        ctx.lineWidth = width * (1 - s / 14);
+        ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(nx, ny); ctx.stroke();
+        if (depth < 2 && s % 3 === 2) vein(ctx, rnd, nx, ny, a + (rnd() < 0.5 ? -0.8 : 0.8), length * 0.35, width * 0.45, colour, depth + 1);
+        px = nx; py = ny;
+      }
+    };
+    for (const [ctx, col] of [[c, 'rgba(222,236,168,0.4)'], [b, 'rgba(225,225,225,0.8)']]) {
+      const rnd = random(61);
+      for (let i = 0; i < 9; i++) {
+        const a = (i / 9) * Math.PI * 2 + (rnd() - 0.5) * 0.4;
+        vein(ctx, rnd, mid + Math.cos(a) * R * 0.06, mid + Math.sin(a) * R * 0.06, a, R * 0.92, R * 0.035, col, 0);
+      }
+    }
+    grain(c, size, field(64, 6, 4, 62), 0.35);
+  });
+  return { map: texture(colour, { color: true }), bumpMap: texture(bump) };
+}

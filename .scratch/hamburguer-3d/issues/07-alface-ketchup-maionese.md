@@ -4,7 +4,7 @@
 
 **Blocked by:** 05.
 
-**Status:** ready-for-agent
+**Status:** claimed
 
 - [ ] Alface ondulada, com nervuras e bordas irregulares
 - [ ] Ketchup e maionese com brilho de molho e cores distintas, reconhecíveis com o hambúrguer aberto
