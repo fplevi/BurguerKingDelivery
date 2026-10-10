@@ -224,7 +224,8 @@ function render() {
           $('controls').querySelector(`[data-toggle="${id}"]`).focus();
         }),
     );
-  $('state').textContent = `${product.name} · ${without(state.draft, product)} · Remover ingredientes mantém o preço neste protótipo.`;
+  // The price note is hidden on phones, so the footer stays one line over the chips.
+  $('state').innerHTML = `${product.name} · ${without(state.draft, product)}<span class="state-note"> · Remover ingredientes mantém o preço neste protótipo.</span>`;
   $('cart-count').textContent = state.cart.length;
   $('cart-items').innerHTML = state.cart.length
     ? state.cart
