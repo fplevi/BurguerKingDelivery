@@ -126,7 +126,7 @@ test('Cheddar Duplo personalizado chega ao carrinho, com combo e bebida', async 
   await expect(verIngredientes(page)).toBeHidden();
 
   await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
-  await expect(page.getByRole('status')).toHaveText('Cheddar Duplo adicionado ao carrinho');
+  await expect(page.getByRole('status')).toHaveText('Adicionado ao carrinho: Cheddar Duplo');
   await page.getByRole('button', { name: 'Carrinho · 1' }).click();
   await expect(carrinho(page).getByText('Cheddar Duplo × 1')).toBeVisible();
   await expect(carrinho(page).getByText('Combo · Fanta Laranja')).toBeVisible();

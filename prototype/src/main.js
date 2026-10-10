@@ -451,7 +451,7 @@ $('add').onclick = () => {
   dispatch({ type: 'add' });
   // The combo's drink error belongs to the burger card only.
   if (!pick(state) && state.drinkError) return $('drink').focus();
-  toast(`${added} adicionado ao carrinho`);
+  toast(`Adicionado ao carrinho: ${added}`);
 };
 $('cart-open').onclick = () => {
   restoreFocus = document.activeElement;

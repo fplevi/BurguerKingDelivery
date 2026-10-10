@@ -25,7 +25,7 @@ test('Whopper personalizado chega ao carrinho com combo, bebida, quantidade e in
   await quantidade(page).getByRole('button', { name: 'Aumentar quantidade' }).click();
 
   await adicionar(page).click();
-  await expect(page.getByRole('status')).toHaveText('Whopper adicionado ao carrinho');
+  await expect(page.getByRole('status')).toHaveText('Adicionado ao carrinho: Whopper');
   await page.getByRole('button', { name: 'Carrinho · 2' }).click();
 
   await expect(carrinho(page)).toBeVisible();

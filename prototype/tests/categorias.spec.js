@@ -102,7 +102,7 @@ test('acompanhamento, bebida e sobremesa chegam ao carrinho com nome × quantida
   await escolher(page, 'Onion Rings');
   await aumentar(page).click();
   await adicionar.click();
-  await expect(page.getByRole('status')).toHaveText('Onion Rings adicionado ao carrinho');
+  await expect(page.getByRole('status')).toHaveText('Adicionado ao carrinho: Onion Rings');
   // Back to Quantidade 1, the same product still selected.
   await expect(card(page, 'Onion Rings')).toHaveAttribute('aria-pressed', 'true');
   await expect(page.getByRole('group', { name: 'Quantidade' })).toHaveText(/^\D*1\D*$/);
@@ -134,7 +134,7 @@ test('o erro do combo sem bebida no hambúrguer não impede adicionar uma bebida
   await expect(page.getByText('Escolha a bebida do combo')).toBeVisible();
   await categorias(page).getByRole('link', { name: 'Bebidas' }).click();
   await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
-  await expect(page.getByRole('status')).toContainText('Coca-Cola');
+  await expect(page.getByRole('status')).toHaveText('Adicionado ao carrinho: Coca-Cola');
   await expect(page.getByRole('button', { name: 'Adicionar ao carrinho' })).toBeFocused();
   await expect(page.getByRole('button', { name: 'Carrinho · 1' })).toBeVisible();
 });
