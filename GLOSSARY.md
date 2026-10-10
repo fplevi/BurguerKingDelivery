@@ -8,8 +8,12 @@ Site de delivery focado em hambúrgueres, em que o cliente escolhe um produto e 
 Um ingrediente do hambúrguer tratado como peça separável, com aparência própria, tanto montado quanto isolado.
 _Avoid_: Layer, fatia, peça
 
+**Receita**:
+A lista ordenada, de baixo para cima, das Camadas de um produto; define quais formam a Base. Cada produto tem a sua.
+_Avoid_: Composição, lista de ingredientes
+
 **Base**:
-As camadas que não podem ser retiradas: pão inferior, carne e pão superior.
+As camadas que não podem ser retiradas: pães e carnes (o Whopper tem uma carne; o Cheddar Duplo, duas).
 _Avoid_: Camadas travadas, fixas
 
 **Ingrediente retirado**:
