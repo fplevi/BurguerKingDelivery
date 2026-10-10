@@ -230,19 +230,19 @@ function render() {
     );
   // Read by screen readers only (aria-live); the dialog shows no status line.
   $('state').textContent = `${product.name} · ${without(state.draft, product)} · Retirar ingredientes mantém o preço neste protótipo.`;
-  $('cart-count').textContent = state.cart.length;
+  $('cart-count').textContent = state.cart.reduce((n, i) => n + i.qty, 0);
   $('cart-items').innerHTML = state.cart.length
     ? state.cart
         .map(
           (item, i) =>
-            `<div class="cart-row"><b>${recipes[item.product].name} · ${money(item.price)}</b><small>${item.combo ? 'Combo' : 'Só sanduíche'} · ${without(item.removed, recipes[item.product])}</small><button data-delete="${i}">Remover item</button></div>`,
+            `<div class="cart-row"><b>${recipes[item.product].name} × ${item.qty}</b>${item.combo ? `<small>Combo · ${item.drink}</small>` : ''}${item.removed.length ? `<small>Sem: ${item.removed.map((id) => name(id, recipes[item.product])).join(', ').toLowerCase()}</small>` : ''}<span>${money(item.price * item.qty)}</span><button data-delete="${i}">Remover item</button></div>`,
         )
         .join('')
     : 'Seu carrinho está vazio.';
   $('cart-items')
     .querySelectorAll('button')
     .forEach((b) => (b.onclick = () => dispatch({ type: 'delete', index: Number(b.dataset.delete) })));
-  $('cart-total').textContent = 'Total: ' + money(state.cart.reduce((n, i) => n + i.price, 0));
+  $('cart-total').textContent = 'Total: ' + money(state.cart.reduce((n, i) => n + i.price * i.qty, 0));
 }
 
 // Bandeja: each removed ingredient as an image of its own Camada (rendered by the scene,

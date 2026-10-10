@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { openVerIngredientes, verIngredientes, chip } from './support.js';
+import { openVerIngredientes, verIngredientes, chip, card, escolher } from './support.js';
 
 const carrinho = (page) => page.getByRole('dialog', { name: 'Seu carrinho' });
 
@@ -7,25 +7,80 @@ test.beforeEach(async ({ page }) => {
   await page.goto('/');
 });
 
-test('Whopper personalizado chega ao carrinho com os ingredientes retirados', async ({ page }) => {
+const total = (page) => page.getByText('Total do item').locator('strong');
+const combo = (page) => page.getByRole('checkbox', { name: 'Transformar em combo' });
+const bebida = (page) => page.getByRole('combobox', { name: 'Bebida do combo' });
+const bebidas = ['Coca-Cola', 'Coca-Cola Zero', 'Sprite', 'Fanta Laranja', 'Natural One Laranja', 'Natural One Uva', 'Água de Copo'];
+const quantidade = (page) => page.getByRole('group', { name: 'Quantidade' });
+const adicionar = (page) => page.getByRole('button', { name: 'Adicionar ao carrinho' });
+
+test('Whopper personalizado chega ao carrinho com combo, bebida, quantidade e ingredientes retirados', async ({ page }) => {
   await openVerIngredientes(page);
   await chip(page, 'Retirar', 'Tomate').click();
   await chip(page, 'Retirar', 'Ketchup').click();
   await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
   await expect(verIngredientes(page)).toBeHidden();
+  await combo(page).check();
+  await bebida(page).selectOption('Coca-Cola');
+  await quantidade(page).getByRole('button', { name: 'Aumentar quantidade' }).click();
 
-  await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
+  await adicionar(page).click();
   await expect(page.getByRole('status')).toHaveText('Whopper adicionado ao carrinho');
-  await page.getByRole('button', { name: 'Carrinho · 1' }).click();
+  await page.getByRole('button', { name: 'Carrinho · 2' }).click();
 
   await expect(carrinho(page)).toBeVisible();
-  await expect(carrinho(page).getByText('Whopper Clássico · R$ 43,90')).toBeVisible();
-  await expect(carrinho(page).getByText('Combo M · Sem tomate, ketchup')).toBeVisible();
-  await expect(carrinho(page).getByText('Total: R$ 43,90')).toBeVisible();
+  await expect(carrinho(page).getByText('Whopper Clássico × 2')).toBeVisible();
+  await expect(carrinho(page).getByText('Combo · Coca-Cola')).toBeVisible();
+  await expect(carrinho(page).getByText('Sem: tomate, ketchup')).toBeVisible();
+  await expect(carrinho(page).getByText('R$ 87,80', { exact: true })).toBeVisible();
+  await expect(carrinho(page).getByText('Total: R$ 87,80')).toBeVisible();
 });
 
-const total = (page) => page.getByText('Total do item').locator('strong');
-const combo = (page) => page.getByRole('checkbox', { name: 'Transformar em combo' });
+test('depois de adicionar, o card e o hambúrguer voltam ao padrão com o mesmo hambúrguer selecionado', async ({ page }) => {
+  await escolher(page, 'Cheddar Duplo');
+  await openVerIngredientes(page);
+  await chip(page, 'Retirar', 'Cebola crispy').click();
+  await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
+  await expect(verIngredientes(page)).toBeHidden();
+  await combo(page).check();
+  await bebida(page).selectOption('Sprite');
+  await quantidade(page).getByRole('button', { name: 'Aumentar quantidade' }).click();
+  await adicionar(page).click();
+
+  await expect(page.getByRole('heading', { level: 1 })).toHaveAccessibleName('Cheddar Duplo');
+  await expect(card(page, 'Cheddar Duplo')).toHaveAttribute('aria-pressed', 'true');
+  await expect(combo(page)).not.toBeChecked();
+  await expect(bebida(page)).toBeDisabled();
+  await expect(bebida(page).locator('option:checked')).toHaveText('Selecione uma bebida');
+  await expect(quantidade(page)).toHaveText(/^\D*1\D*$/);
+  await expect(total(page)).toHaveText('R$ 34,90');
+  await openVerIngredientes(page);
+  await expect(chip(page, 'Retirar', 'Cebola crispy')).toBeVisible();
+});
+
+test('Item idêntico soma na quantidade do que já está no carrinho', async ({ page }) => {
+  await adicionar(page).click();
+  await adicionar(page).click();
+  await combo(page).check();
+  await bebida(page).selectOption('Sprite');
+  await adicionar(page).click();
+  await page.getByRole('button', { name: 'Carrinho · 3' }).click();
+  await expect(carrinho(page).getByText('Whopper Clássico × 2')).toBeVisible();
+  await expect(carrinho(page).getByText('Whopper Clássico × 1')).toBeVisible();
+  await expect(carrinho(page).getByText('Combo · Sprite')).toBeVisible();
+  await expect(carrinho(page).getByText('Total: R$ 107,70')).toBeVisible();
+});
+
+test('trocar de hambúrguer volta o card ao padrão', async ({ page }) => {
+  await combo(page).check();
+  await bebida(page).selectOption('Sprite');
+  await quantidade(page).getByRole('button', { name: 'Aumentar quantidade' }).click();
+  await escolher(page, 'Cheddar Duplo');
+  await expect(combo(page)).not.toBeChecked();
+  await expect(bebida(page).locator('option:checked')).toHaveText('Selecione uma bebida');
+  await expect(quantidade(page)).toHaveText(/^\D*1\D*$/);
+  await expect(total(page)).toHaveText('R$ 34,90');
+});
 
 test('o Combo começa desmarcado e soma R$ 12,00, sem tamanhos', async ({ page }) => {
   await expect(combo(page)).not.toBeChecked();
@@ -36,9 +91,6 @@ test('o Combo começa desmarcado e soma R$ 12,00, sem tamanhos', async ({ page }
   await combo(page).uncheck();
   await expect(total(page)).toHaveText('R$ 31,90');
 });
-
-const bebida = (page) => page.getByRole('combobox', { name: 'Bebida do combo' });
-const bebidas = ['Coca-Cola', 'Coca-Cola Zero', 'Sprite', 'Fanta Laranja', 'Natural One Laranja', 'Natural One Uva', 'Água de Copo'];
 
 test('a Bebida do combo só se escolhe com o Combo marcado e nunca vem preenchida', async ({ page }) => {
   await expect(bebida(page)).toBeDisabled();
@@ -70,8 +122,6 @@ test('adicionar um combo sem bebida pede a Bebida do combo e não adiciona', asy
   await expect(bebida(page)).not.toHaveAttribute('aria-invalid', 'true');
 });
 
-const quantidade = (page) => page.getByRole('group', { name: 'Quantidade' });
-
 test('a Quantidade começa em 1 e multiplica o Total do item', async ({ page }) => {
   const menos = quantidade(page).getByRole('button', { name: 'Diminuir quantidade' });
   const mais = quantidade(page).getByRole('button', { name: 'Aumentar quantidade' });
@@ -90,7 +140,7 @@ test('a Quantidade começa em 1 e multiplica o Total do item', async ({ page }) 
 test('item pode ser removido do carrinho', async ({ page }) => {
   await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
   await page.getByRole('button', { name: 'Carrinho · 1' }).click();
-  await expect(carrinho(page).getByText('Combo M · Todos os ingredientes')).toBeVisible();
+  await expect(carrinho(page).getByText('Whopper Clássico × 1')).toBeVisible();
   await carrinho(page).getByRole('button', { name: 'Remover item' }).click();
   await expect(carrinho(page).getByText('Seu carrinho está vazio.')).toBeVisible();
   await carrinho(page).getByRole('button', { name: 'Fechar' }).click();
