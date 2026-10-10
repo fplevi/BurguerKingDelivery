@@ -22,6 +22,8 @@
 .burger-3d .stage{perspective:none}
 .burger-3d .stage{touch-action:pan-y}
 .card[aria-pressed=false] .badge{display:none}
+/* Bandeja: the chips' heading and Recolocar todos. */
+#controls-title{margin-top:24px;font-size:14px}#reset{padding:8px 14px;font-size:12px}
 /* Phone: the footer is an opaque bar (the tray scrolls under it, never shows through) and the tray is tighter, so the chips
    fit above the footer. The stage keeps its 450px: shorter, the 10 opened Whopper Camadas get tap areas under 24px. */
-@media(max-width:600px){.tray{padding:14px 16px}.tray p{margin:6px 0}#controls-title{margin-top:14px!important}.ingredient-list{margin-top:10px}.ingredient-chip{padding:7px 12px}.tray h3{margin-bottom:4px}.pg-footer{background:#fff0df;box-shadow:0 -6px 18px #6b2a0026;gap:8px;padding:10px 20px calc(10px + env(safe-area-inset-bottom))}.state{line-height:1.4}.pg-footer .primary,.pg-footer .secondary{padding:11px 12px;font-size:15px;white-space:nowrap}}
+@media(max-width:600px){.tray{padding:14px 16px}.tray p{margin:6px 0}#controls-title{margin-top:14px}.ingredient-list{margin-top:10px}.ingredient-chip{padding:7px 12px}.tray h3{margin-bottom:4px}.pg-footer{background:#fff0df;box-shadow:0 -6px 18px #6b2a0026;gap:8px;padding:10px 20px calc(10px + env(safe-area-inset-bottom))}.state{line-height:1.4}.pg-footer .primary,.pg-footer .secondary{padding:11px 12px;font-size:15px;white-space:nowrap}}
