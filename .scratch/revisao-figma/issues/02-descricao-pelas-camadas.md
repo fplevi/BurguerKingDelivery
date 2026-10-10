@@ -4,9 +4,13 @@
 
 **Blocked by:** 01.
 
-**Status:** ready-for-agent
+**Status:** resolved
 
-- [ ] Trecho por Camada na Receita; nada fora dela cita produto
-- [ ] Descrição do hero reflete a Personalização aplicada (não o rascunho)
-- [ ] Regra dos dois cheddars; caso com tudo retirado
-- [ ] Testes Playwright
+- [x] Trecho por Camada na Receita; nada fora dela cita produto
+- [x] Descrição do hero reflete a Personalização aplicada (não o rascunho)
+- [x] Regra dos dois cheddars; caso com tudo retirado
+- [x] Testes Playwright
+
+## Answer
+
+Cada Camada da Receita (`prototype/src/ingredients.js`) ganhou `text`, o seu trecho na descrição; a Receita perdeu o `description` fixo. `description(recipe, removed)` junta, de baixo para cima, os trechos das Camadas presentes com `Intl.ListFormat` e um ponto final; um trecho repetido sai uma vez só, então "cheddar cremoso" (os dois cheddars) só some com os dois retirados, e "duas carnes grelhadas" fica só na primeira carne. O hero (`src/main.js`) mostra a descrição da Personalização aplicada (`state.removed`), não do rascunho. A linha "Preparado com todos os ingredientes / Sem X" (`#custom-note`) saiu de `index.html` e do render; a regra `.custom-note` em `styles.css` ficou para o ticket 03, que reescreve o CSS. Testes: helper `descricao` em `tests/support.js` no lugar de `heroNote`; novos casos em `tests/ver-ingredientes.spec.js` (Whopper completo, aplicar, tudo retirado: "Pão com gergelim e carne grelhada.") e `tests/cheddar-duplo.spec.js` (regra dos dois cheddars); os demais que citavam "Sem …"/"Preparado com…" no hero passaram a conferir a descrição.
