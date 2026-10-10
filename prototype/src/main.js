@@ -124,15 +124,17 @@ $('grid')
     (b) =>
       (b.onclick = () => {
         if (!b.dataset.product) {
-          toast(`Por enquanto, escolha o ${available()}. Os demais vêm depois.`);
+          toast(`Por enquanto, escolha ${available('disjunction')}. Os demais vêm depois.`);
           return;
         }
         selectProduct(b.dataset.product);
         $('edit').focus();
       }),
   );
-const available = () => catalog.filter((p) => p.recipe).map((p) => recipes[p.recipe].shortName).join(' ou o ');
-$('available-note').textContent = `Apenas o ${available().replace(' ou o ', ' e o ')} estão disponíveis nesta validação.`;
+/** The products that can be chosen, "o Whopper ou o Cheddar Duplo" (type 'disjunction') or "... e ..." ('conjunction'). */
+const available = (type) =>
+  new Intl.ListFormat('pt-BR', { type }).format(catalog.filter((p) => p.recipe).map((p) => `o ${recipes[p.recipe].shortName}`));
+$('available-note').textContent = `Apenas ${available('conjunction')} estão disponíveis nesta validação.`;
 
 /**
  * Shows another product: its Camadas as layer buttons and, in 3D, a new scene per stage

@@ -183,6 +183,7 @@ test('os cards "Em breve" não trocam o hero', async ({ page }) => {
   }
   await card(page, 'Big King').click();
   await expect(page.getByRole('status')).toHaveText('Por enquanto, escolha o Whopper ou o Cheddar Duplo. Os demais vêm depois.');
+  await expect(page.getByText('Apenas o Whopper e o Cheddar Duplo estão disponíveis nesta validação.')).toBeVisible();
   await expect(card(page, 'Big King')).toHaveAttribute('aria-pressed', 'false');
   await expect(card(page, 'Whopper Clássico')).toHaveAttribute('aria-pressed', 'true');
   await expect(heroTitle(page)).toHaveAccessibleName('Whopper Clássico');
