@@ -230,7 +230,9 @@ function render() {
     );
   // Read by screen readers only (aria-live); the dialog shows no status line.
   $('state').textContent = `${product.name} · ${without(state.draft, product)} · Retirar ingredientes mantém o preço neste protótipo.`;
-  $('cart-count').textContent = state.cart.reduce((n, i) => n + i.qty, 0);
+  const units = state.cart.reduce((n, i) => n + i.qty, 0);
+  $('cart-count').textContent = units;
+  $('cart-open').setAttribute('aria-label', `Carrinho · ${units}`);
   $('cart-items').innerHTML = state.cart.length
     ? state.cart
         .map(
