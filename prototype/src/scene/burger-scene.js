@@ -174,11 +174,11 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
   pivot.add(burger);
   scene.add(pivot);
   const layers = {};
-  for (const id of ids) {
+  for (const [index, id] of ids.entries()) {
     // The scene moves, scales and turns a holder; the model keeps its own transforms
-    // (e.g. the cheese slice is turned 45°).
+    // (e.g. the cheese slice is turned 45°). A model may vary by Camada (two cheddars).
     const object = new Group();
-    object.add(models[id].build());
+    object.add(models[id].build(recipe.layers[index]));
     burger.add(object);
     layers[id] = { object, x: 0, y: 0, z: 0, scale: 1, outline: outline(object) };
   }

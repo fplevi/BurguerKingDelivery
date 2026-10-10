@@ -178,6 +178,45 @@ export const recipes = {
     },
   },
 
+  /**
+   * Fried onion bits from above (planar UV over the disc), for the cebola crispy: a light,
+   * near-neutral crumbly ground (the model's vertex colours give the golden-brown tone)
+   * covered in short curled strands, bright where crisp, dark in the gaps between them.
+   * Colour and bump share the strands.
+   */
+  'fried-onion': {
+    count: 2,
+    size: 256,
+    draw([c, b], size) {
+      const coarse = field(64, 8, 3, 111);
+      const fine = field(64, 24, 2, 112);
+      paintAll([c, b], size, (u, v, out) => {
+        const g = coarse(u, v), f = fine(u, v);
+        const shade = 0.72 + g * 0.3 + (f - 0.5) * 0.25;
+        out[0] = 236 * shade; out[1] = 206 * shade; out[2] = 166 * shade;
+        out[3] = out[4] = out[5] = 70 + g * 60 + (f - 0.5) * 80;
+      });
+      const rnd = random(113);
+      for (let i = 0; i < 520; i++) {
+        const x = rnd() * size, y = rnd() * size;
+        const radius = (3 + rnd() * 7) * (size / 256), a0 = rnd() * Math.PI * 2, span = 0.8 + rnd() * 2.2;
+        const width = (1.2 + rnd() * 1.8) * (size / 256);
+        const tone = rnd();
+        for (const [ctx, stroke, extra] of [
+          [c, `rgba(${tone < 0.3 ? '96,58,28' : tone < 0.75 ? '250,226,186' : '255,240,210'},0.85)`, 0],
+          [b, tone < 0.3 ? 'rgba(40,40,40,0.8)' : 'rgba(235,235,235,0.9)', 0.6],
+        ]) {
+          ctx.beginPath();
+          ctx.arc(x, y, radius, a0, a0 + span);
+          ctx.strokeStyle = stroke;
+          ctx.lineWidth = width + extra;
+          ctx.lineCap = 'round';
+          ctx.stroke();
+        }
+      }
+    },
+  },
+
   /** Soft round contact shadow, used as an alphaMap (white = opaque). */
   'contact-shadow': {
     count: 1,

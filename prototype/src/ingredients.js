@@ -42,9 +42,9 @@ export const recipes = {
     layers: [
       { id: 'bottom', name: 'Pão inferior', y: 242, thickness: 0, locked: true },
       { id: 'meat', name: 'Carne grelhada', y: 205, thickness: 36, locked: true },
-      { id: 'cheddar1', name: 'Cheddar inferior', model: 'cheese', y: 179, thickness: 9 },
+      { id: 'cheddar1', name: 'Cheddar inferior', model: 'cheddar', y: 179, thickness: 9 },
       { id: 'meat2', name: 'Carne grelhada', model: 'meat', y: 145, thickness: 36, locked: true },
-      { id: 'cheddar2', name: 'Cheddar superior', model: 'cheese', y: 119, thickness: 9 },
+      { id: 'cheddar2', name: 'Cheddar superior', model: 'cheddar', y: 119, thickness: 9 },
       { id: 'crispyOnion', name: 'Cebola crispy', y: 92, thickness: 12 },
       { id: 'top', name: 'Pão superior', y: 21, thickness: 62, locked: true },
     ],

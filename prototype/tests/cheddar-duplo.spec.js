@@ -205,3 +205,37 @@ test.describe('sem WebGL', () => {
     await expect(heroCamada(page, 'Queijo').locator('svg')).toBeVisible();
   });
 });
+
+test('cada camada aberta do Cheddar Duplo tem sua própria área de toque', async ({ page, isMobile }) => {
+  await escolher(page, 'Cheddar Duplo');
+  await openAlterarIngredientes(page);
+  await expect(alterarIngredientes(page).locator('canvas')).toBeVisible();
+  // Bottom to top: the thin cheddars sit between the meats, with drips over their edges.
+  for (const nome of removiveis) {
+    // Playwright only taps if the button itself receives the event at its centre.
+    if (isMobile) await camada(page, nome).tap();
+    else await camada(page, nome).click();
+    await expect(chip(page, 'Recolocar', nome)).toBeVisible();
+  }
+  await expect(alterarIngredientes(page).getByText('Cheddar Duplo · Sem cheddar inferior, cheddar superior, cebola crispy')).toBeVisible();
+});
+
+test('as áreas de toque das camadas abertas do Cheddar Duplo não se sobrepõem e têm pelo menos 24 × 44 px', async ({ page }) => {
+  await escolher(page, 'Cheddar Duplo');
+  await openAlterarIngredientes(page);
+  await expect(alterarIngredientes(page).locator('canvas')).toBeVisible();
+  await expect
+    .poll(async () => {
+      const problemas = [];
+      let abaixo = null; // the buttons come bottom to top
+      for (let i = 0; i < receita.length; i++) {
+        const box = await camadas(page).nth(i).boundingBox();
+        if (!box) return [`${receita[i]} sem área`];
+        if (box.height < 24 || box.width < 44) problemas.push(`${receita[i]} ${Math.round(box.width)}×${Math.round(box.height)}`);
+        if (abaixo && box.y + box.height > abaixo.y + 0.5) problemas.push(`${receita[i]} invade ${receita[i - 1]}`);
+        abaixo = box;
+      }
+      return problemas;
+    })
+    .toEqual([]);
+});

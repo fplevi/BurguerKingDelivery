@@ -4,8 +4,9 @@
 // Contract for every entry:
 //   height: thickness of the Camada in scene units (burger radius ≈ 1, i.e. ~6 cm),
 //           used to stack the layers when assembled;
-//   build(): returns a new Object3D whose bottom sits at y = 0 and top at y = height,
-//            centred on the y axis. Meshes should cast and receive shadows.
+//   build(camada): returns a new Object3D whose bottom sits at y = 0 and top at y = height,
+//            centred on the y axis. Meshes should cast and receive shadows. `camada` is the
+//            Receita's Camada, for a model that varies by Camada (the two cheddars).
 //
 // Every Camada is modelled procedurally: lathed profiles and polar sheets roughened with
 // noise, vertex colours, and textures drawn by code (./textures.js). The Base (tickets
@@ -17,6 +18,7 @@ import {
   MeshStandardMaterial,
   MeshPhysicalMaterial,
   SphereGeometry,
+  IcosahedronGeometry,
   TorusGeometry,
   LatheGeometry,
   BufferAttribute,
@@ -26,11 +28,12 @@ import {
   Vector3,
   Quaternion,
   Matrix4,
+  Euler,
   Color,
   SRGBColorSpace,
 } from 'three';
 import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
-import { fbm, random, crustBump, crumb, grilledMeat, tomatoSlice, pickleSlice, lettuceLeaf } from './textures.js';
+import { fbm, random, crustBump, crumb, grilledMeat, tomatoSlice, pickleSlice, lettuceLeaf, friedOnion } from './textures.js';
 
 function mesh(geometry, mat, y = 0) {
   const m = new Mesh(geometry, mat);
@@ -465,32 +468,157 @@ function onion() {
   return single(group);
 }
 
-// Cebola crispy (Cheddar Duplo): for now a simple low mound of small golden crumbs, merged
-// into one mesh; ticket 03 gives it its crunchy, irregular look.
-const CRISPY_ONION_HEIGHT = 0.07;
-function crispyOnion() {
-  const group = new Group();
-  const mat = new MeshStandardMaterial({ vertexColors: true, roughness: 0.7 });
-  const rnd = random(77);
+// Cheddar (Cheddar Duplo): creamy melted cheddar sauce, more orange and more liquid than the
+// Whopper's slice. A glossy sheet over the patty that rolls over its edge and runs down the
+// side in long rounded drips. One grid around the burger: rings over the top, then a curtain
+// hanging from the rim, whose length by angle is the drips' outline. Each Camada (cheddar1,
+// cheddar2) gets its own drips, from a seed fixed by its id.
+const CHEDDAR_HEIGHT = 0.035;
+const CHEDDAR_ROLL = 0.05; // drop over which the sauce rolls out over the patty's rounded edge
+function cheddar(camada = {}) {
+  const seed = [...(camada.id ?? 'cheddar')].reduce((h, c) => (h * 31 + c.charCodeAt(0)) % 9973, 7);
+  const rnd = random(seed);
+  const count = 8;
+  const drips = Array.from({ length: count }, (_, k) => ({
+    a: ((k + 0.15 + rnd() * 0.7) / count) * Math.PI * 2,
+    width: 0.07 + rnd() * 0.08, // half-width, radians (~1-2 cm at the patty's edge)
+    length: 0.06 + rnd() ** 1.3 * 0.12,
+  }));
+  /** Hang below the rim and outward bulge (the drip's bead) at angle a. */
+  const run = (a) => {
+    let hang = 0.022, bead = 0;
+    for (const d of drips) {
+      const t = Math.atan2(Math.sin(a - d.a), Math.cos(a - d.a)) / d.width;
+      if (Math.abs(t) >= 1) continue;
+      const k = 1 - t * t;
+      hang = Math.max(hang, 0.022 + d.length * Math.sqrt(k)); // rounded tip
+      bead = Math.max(bead, 0.016 * k);
+    }
+    return { hang, bead };
+  };
+  const rim = (a) => 1 + 0.035 * (fbm(Math.cos(a) * 2 + seed, Math.sin(a) * 2, 0, { octaves: 2, seed: 72 }) - 0.5) * 2;
+
+  const segments = 192, top = 16, curtain = 18;
+  const positions = [], colours = [], indices = [];
   const colour = new Color();
-  const shades = ['#c98a2e', '#dca146', '#a8651c', '#e8b860'];
-  for (let k = 0; k < 140; k++) {
-    // Denser and higher towards the middle, within the patty's radius.
-    const r = 0.85 * Math.sqrt(rnd()),
-      a = rnd() * Math.PI * 2;
-    const size = 0.035 + rnd() * 0.035;
-    const geometry = new SphereGeometry(size, 6, 4);
-    geometry.scale(1 + rnd() * 0.8, 0.55, 1 + rnd() * 0.5);
-    colour.set(shades[Math.floor(rnd() * shades.length)]);
+  for (let i = 0; i <= top + curtain; i++)
+    for (let j = 0; j <= segments; j++) {
+      const a = (j / segments) * Math.PI * 2;
+      const c = Math.cos(a), s = Math.sin(a);
+      const edge = rim(a);
+      let r, y, drop = 0;
+      if (i <= top) {
+        // The sheet: nearly flat, pooled ripples, sloping just before the rim.
+        const f = i / top;
+        r = edge * f;
+        const ripple = 0.007 * (fbm(c * r * 4 + seed, s * r * 4, 0, { octaves: 2, seed: 73 }) - 0.5) * 2;
+        y = CHEDDAR_HEIGHT + ripple * (1 - f) - 0.012 * smoothstep(0.75, 1, f);
+      } else {
+        // The curtain: rolls outward over the edge, then hangs straight.
+        const { hang, bead } = run(a);
+        drop = ((i - top) / curtain) * hang;
+        const out = (0.075 + bead) * Math.sin(Math.min(drop / CHEDDAR_ROLL, 1) * (Math.PI / 2));
+        // Thinning to a rounded bead at the tip.
+        r = edge + out + bead * 0.6 * smoothstep(hang * 0.6, hang, drop);
+        y = CHEDDAR_HEIGHT - 0.012 - drop;
+      }
+      positions.push(c * r, y, s * r);
+      // Deeper orange where it runs thick, slightly yellower thin over the top; mottled.
+      const mottle = fbm(c * r * 6 + seed, s * r * 6, y * 6, { octaves: 2, seed: 74 });
+      const thick = smoothstep(0, 0.1, drop);
+      colour.setRGB(
+        (250 - thick * 20) / 255,
+        (172 - thick * 62 + (mottle - 0.5) * 22) / 255,
+        0,
+        SRGBColorSpace,
+      );
+      colours.push(colour.r, colour.g, colour.b);
+    }
+  const row = segments + 1;
+  for (let i = 0; i < top + curtain; i++)
+    for (let j = 0; j < segments; j++) {
+      const a = i * row + j, b = a + row;
+      indices.push(a, b, a + 1, a + 1, b, b + 1);
+    }
+  const geometry = new BufferGeometry();
+  geometry.setAttribute('position', new BufferAttribute(new Float32Array(positions), 3));
+  geometry.setAttribute('color', new BufferAttribute(new Float32Array(colours), 3));
+  geometry.setIndex(indices);
+  geometry.computeVertexNormals();
+  // A faint orange glow stands in for the light the sauce scatters inside (it would read
+  // pale and flat otherwise against the orange page).
+  const mat = new MeshStandardMaterial({ vertexColors: true, roughness: 0.55, envMapIntensity: 0.35, emissive: '#3a1600', side: DoubleSide });
+  return mesh(geometry, mat);
+}
+
+// Cebola crispy (Cheddar Duplo): a heap of fried onion bits under the top bun: a low,
+// crumbly mound (textured) covered in curled strands and broken flakes, golden to dark
+// brown. Everything shares one material (texture x vertex colour) and is baked into one mesh.
+const CRISPY_ONION_HEIGHT = 0.12;
+function crispyOnion() {
+  const { map, bumpMap } = friedOnion();
+  const mat = new MeshStandardMaterial({ map, bumpMap, bumpScale: 2.5, vertexColors: true, roughness: 0.6 });
+  const rnd = random(77);
+  const edge = (a) => 1.0 * (0.92 + 0.1 * fbm(Math.cos(a) * 3 + 1, Math.sin(a) * 3, 0, { octaves: 3, seed: 101 }));
+  const lump = (x, z) => fbm(x * 5 + 3, z * 5, 0, { octaves: 2, seed: 102 }) - 0.5 + 0.6 * (fbm(x * 16, z * 16 + 5, 0, { octaves: 2, seed: 103 }) - 0.5);
+  const mound = (r, a) => {
+    const f = Math.min(r / edge(a), 1);
+    // Heaped in the middle, still thick at the rim, where it falls off steeply.
+    const heap = (0.045 + 0.035 * (1 - f * f)) * smoothstep(1, 0.86, f);
+    return Math.max(heap + 0.022 * lump(Math.cos(a) * r, Math.sin(a) * r) * (1 - f ** 4), 0.004);
+  };
+  const shades = ['#c07a2c', '#d8973e', '#9a5a1e', '#e6b060', '#b06a26', '#cc8a34'].map((h) => new Color(h));
+  const pieces = [];
+  /** Planar UVs (same as the bed's) and one flat colour per piece. */
+  const finish = (geometry, colour) => {
     const position = geometry.attributes.position;
-    geometry.setAttribute('color', new BufferAttribute(new Float32Array(position.count * 3).map((_, i) => [colour.r, colour.g, colour.b][i % 3]), 3));
-    const crumb = mesh(geometry, mat);
-    const rise = (CRISPY_ONION_HEIGHT - size) * (1 - (r / 0.85) ** 2) * rnd();
-    crumb.position.set(Math.cos(a) * r, size * 0.55 + rise, Math.sin(a) * r);
-    crumb.rotation.set((rnd() - 0.5) * 0.6, rnd() * Math.PI, (rnd() - 0.5) * 0.6);
-    group.add(crumb);
+    const uv = new Float32Array(position.count * 2), colours = new Float32Array(position.count * 3);
+    for (let i = 0; i < position.count; i++) {
+      uv[i * 2] = position.getX(i) / 2 + 0.5;
+      uv[i * 2 + 1] = position.getZ(i) / 2 + 0.5;
+      colours.set([colour.r, colour.g, colour.b], i * 3);
+    }
+    geometry.setAttribute('uv', new BufferAttribute(uv, 2));
+    geometry.setAttribute('color', new BufferAttribute(colours, 3));
+    pieces.push(geometry);
+  };
+
+  // polarSheet winds its faces downwards (lettuce and sauces are double-sided); the bed is
+  // seen from above only, so flip it.
+  const sheet = polarSheet({ rings: 18, segments: 120, uvRadius: 1, edge, lift: (r, a) => mound(r, a) });
+  const index = sheet.index.array;
+  for (let i = 0; i < index.length; i += 3) [index[i + 1], index[i + 2]] = [index[i + 2], index[i + 1]];
+  sheet.computeVertexNormals();
+  const bed = sheet.toNonIndexed();
+  finish(bed, new Color('#8c5222'));
+
+  const matrix = new Matrix4(), q = new Quaternion(), turn = new Euler(), at = new Vector3(), scale = new Vector3();
+  const colour = new Color();
+  for (let k = 0; k < 900; k++) {
+    // Spread over the mound, a little denser in the middle; some hang over the rim.
+    const a = rnd() * Math.PI * 2;
+    // A third of them pile up at the rim, building its crumbly wall.
+    const r = edge(a) * (k % 3 === 0 ? 0.86 + rnd() * 0.16 : 0.05 + 0.95 * Math.sqrt(rnd()));
+    const strand = rnd() < 0.25;
+    const geometry = strand
+      ? new TorusGeometry(0.018 + rnd() * 0.024, 0.006 + rnd() * 0.005, 3, 5, 0.8 + rnd() * 1.2) // curled string
+      : new IcosahedronGeometry(0.012 + rnd() * 0.017, 0); // broken flake
+    if (!strand) {
+      // Jagged: every corner pushed in or out.
+      const p = geometry.attributes.position;
+      for (let i = 0; i < p.count; i++) p.setXYZ(i, p.getX(i) * (0.7 + rnd() * 0.6), p.getY(i) * (0.4 + rnd() * 0.3), p.getZ(i) * (0.7 + rnd() * 0.6));
+      geometry.computeVertexNormals();
+    }
+    turn.set(Math.PI / 2 + (rnd() - 0.5) * 1.2, (rnd() - 0.5) * 0.8, rnd() * Math.PI * 2);
+    const x = Math.cos(a) * r, z = Math.sin(a) * r;
+    const ground = k % 3 === 0 ? rnd() * 0.07 : mound(Math.min(r, edge(a)), a);
+    at.set(x, Math.min(ground + 0.006 + rnd() * 0.01, CRISPY_ONION_HEIGHT - 0.012), z);
+    matrix.compose(at, q.setFromEuler(turn), scale.set(1, 1, 1));
+    const piece = (strand ? geometry.toNonIndexed() : geometry).applyMatrix4(matrix);
+    colour.copy(shades[Math.floor(rnd() * shades.length)]).multiplyScalar(0.85 + rnd() * 0.3);
+    finish(piece, colour);
   }
-  return single(group);
+  return mesh(mergeGeometries(pieces), mat);
 }
 
 // Tomate: three slices with skin, red wall, gel-filled locules with seeds; wet and glossy.
@@ -580,6 +708,7 @@ export const layerModels = {
     build: patty,
   },
   cheese: { height: CHEESE_HEIGHT, build: cheese },
+  cheddar: { height: CHEDDAR_HEIGHT, build: cheddar },
   pickles: { height: PICKLE_HEIGHT, build: pickles },
   ketchup: {
     height: SAUCE_HEIGHT,
