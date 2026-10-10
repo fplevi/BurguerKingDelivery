@@ -468,32 +468,36 @@ function onion() {
   return single(group);
 }
 
-// Cheddar (Cheddar Duplo): creamy melted cheddar sauce, more orange and more liquid than the
-// Whopper's slice. A glossy sheet over the patty that rolls over its edge and runs down the
-// side in long rounded drips. One grid around the burger: rings over the top, then a curtain
-// hanging from the rim, whose length by angle is the drips' outline. The outline is lumpy,
-// not round, and overhangs the patty more in some places than others. Each Camada (cheddar1,
-// cheddar2) gets its own outline and drips, from a seed fixed by its id.
-const CHEDDAR_HEIGHT = 0.035;
-const CHEDDAR_ROLL = 0.05; // drop over which the sauce rolls out over the patty's rounded edge
+// Cheddar (Cheddar Duplo): a thick slab of soft melted cheddar, more orange and more liquid
+// than the Whopper's slice. A glossy body over the patty whose edge is a fat rounded lip that
+// rolls over the patty's edge and runs down the side in thick rounded drips. One grid around
+// the burger: rings over the top, then a curtain from the rim (the lip, then the drips), whose
+// length by angle is the drips' outline; the curtain curls back in at its tip, so the edge
+// reads as a body, not a sheet. The outline is lumpy, not round, and overhangs the patty more
+// in some places than others. Each Camada (cheddar1, cheddar2) gets its own outline and
+// drips, from a seed fixed by its id.
+const CHEDDAR_HEIGHT = 0.07;
+const CHEDDAR_ROLL = 0.06; // drop over which the sauce rolls out over the patty's rounded edge
+const CHEDDAR_LIP = 0.032; // radius of the rounded lip at the slab's edge
 function cheddar(camada = {}) {
   const seed = [...(camada.id ?? 'cheddar')].reduce((h, c) => (h * 31 + c.charCodeAt(0)) % 9973, 7);
   const rnd = random(seed);
   const count = 8;
   const drips = Array.from({ length: count }, (_, k) => ({
     a: ((k + 0.15 + rnd() * 0.7) / count) * Math.PI * 2,
-    width: 0.07 + rnd() * 0.08, // half-width, radians (~1-2 cm at the patty's edge)
-    length: 0.06 + rnd() ** 1.3 * 0.12,
+    width: 0.08 + rnd() * 0.09, // half-width, radians (~1-2 cm at the patty's edge)
+    length: 0.07 + rnd() ** 1.3 * 0.14,
   }));
+  const base = 2 * CHEDDAR_LIP + 0.012; // the lip's own drop, where there is no drip
   /** Hang below the rim and outward bulge (the drip's bead) at angle a. */
   const run = (a) => {
-    let hang = 0.022, bead = 0;
+    let hang = base, bead = 0;
     for (const d of drips) {
       const t = Math.atan2(Math.sin(a - d.a), Math.cos(a - d.a)) / d.width;
       if (Math.abs(t) >= 1) continue;
       const k = 1 - t * t;
-      hang = Math.max(hang, 0.022 + d.length * Math.sqrt(k)); // rounded tip
-      bead = Math.max(bead, 0.016 * k);
+      hang = Math.max(hang, base + d.length * k ** 0.35); // blunt, rounded tip
+      bead = Math.max(bead, 0.03 * k);
     }
     return { hang, bead };
   };
@@ -503,7 +507,9 @@ function cheddar(camada = {}) {
   const rim = (a) => 1 + 0.09 * wave(a, 1.3, 3, 0) + 0.05 * wave(a, 2.7, 2, 7) + 0.03 * wave(a, 5, 2, 3);
   const spread = (a) => smoothstep(-0.45, 0.45, wave(a, 1.8, 2, 5));
 
-  const segments = 192, top = 16, curtain = 18;
+  // Curtain rows: `lipRows` over the lip, `tipRows` over the curled tip, the rest between.
+  const segments = 192, top = 16, lipRows = 6, tipRows = 6, curtain = lipRows + 8 + tipRows;
+  const shoulder = 0.008;
   const positions = [], colours = [], indices = [];
   const colour = new Color();
   for (let i = 0; i <= top + curtain; i++)
@@ -513,19 +519,28 @@ function cheddar(camada = {}) {
       const edge = rim(a);
       let r, y, drop = 0;
       if (i <= top) {
-        // The sheet: nearly flat, pooled ripples, sloping just before the rim.
+        // The top: nearly flat, pooled ripples, a soft shoulder just before the rim.
         const f = i / top;
         r = edge * f;
-        const ripple = 0.007 * (fbm(c * r * 4 + seed, s * r * 4, 0, { octaves: 2, seed: 73 }) - 0.5) * 2;
-        y = CHEDDAR_HEIGHT + ripple * (1 - f) - 0.012 * smoothstep(0.75, 1, f);
+        const ripple = 0.009 * (fbm(c * r * 4 + seed, s * r * 4, 0, { octaves: 2, seed: 73 }) - 0.5) * 2;
+        y = CHEDDAR_HEIGHT + ripple * (1 - f) - shoulder * smoothstep(0.8, 1, f);
       } else {
-        // The curtain: rolls outward over the edge, then hangs straight.
+        // The curtain: a fat rounded lip that rolls outward over the edge, hangs down in the
+        // drips, swells into a bead and curls back in under itself at the tip.
         const { hang, bead } = run(a);
-        drop = ((i - top) / curtain) * hang;
+        const tip = Math.min(CHEDDAR_LIP * 1.3, hang * 0.45);
+        const k = i - top;
+        drop = k <= lipRows
+          ? (k / lipRows) * CHEDDAR_LIP
+          : k >= curtain - tipRows
+            ? hang - tip + ((k - (curtain - tipRows)) / tipRows) * tip
+            : CHEDDAR_LIP + ((k - lipRows) / (curtain - tipRows - lipRows)) * (hang - tip - CHEDDAR_LIP);
+        const lip = CHEDDAR_LIP * Math.sin(Math.min(drop / CHEDDAR_LIP, 1) * (Math.PI / 2));
         const out = (0.015 + 0.13 * spread(a) + bead) * Math.sin(Math.min(drop / CHEDDAR_ROLL, 1) * (Math.PI / 2));
-        // Thinning to a rounded bead at the tip.
-        r = edge + out + bead * 0.6 * smoothstep(hang * 0.6, hang, drop);
-        y = CHEDDAR_HEIGHT - 0.012 - drop;
+        const swell = bead * 0.7 * smoothstep(hang * 0.5, hang - tip * 0.5, drop);
+        const curl = Math.cos(smoothstep(hang - tip, hang, drop) * (Math.PI / 2));
+        r = edge + (lip + out + swell) * curl;
+        y = CHEDDAR_HEIGHT - shoulder - drop;
       }
       positions.push(c * r, y, s * r);
       // Deeper orange where it runs thick, slightly yellower thin over the top; mottled.
@@ -558,10 +573,9 @@ function cheddar(camada = {}) {
 
 // Cebola crispy (Cheddar Duplo): a loose heap of fried onion crumbs and short curled
 // strands under the top bun, golden to dark brown. No continuous body: the heap is only
-// pieces, stacked in a few loose tiers, so the silhouette is ragged, light shows through
-// the gaps and some bits spill over the rim onto the cheddar. A small dark disc well
-// inside the rim stands in for the shadow at the bottom of the heap (and keeps the Camada
-// solid to the eye from above). Pieces are indexed low-poly solids drawn flat-shaded,
+// pieces, gathered in clumps with bare patches between them where the cheddar below shows
+// through (not an even carpet), stacked in loose tiers, so the silhouette is ragged and
+// some bits spill over the rim onto the cheddar. Pieces are indexed low-poly solids drawn flat-shaded,
 // sharing one material (texture x vertex colour), baked into one mesh.
 const CRISPY_ONION_HEIGHT = 0.12;
 function crispyOnion() {
@@ -572,6 +586,8 @@ function crispyOnion() {
   // Top of the heap at a radius fraction: domed, lumpy, thinning out towards the rim.
   const lump = (x, z) => fbm(x * 4 + 3, z * 4, 0, { octaves: 2, seed: 102 });
   const top = (x, z, f) => (0.05 + 0.04 * (1 - f * f) + 0.03 * (lump(x, z) - 0.5)) * smoothstep(1.08, 0.7, f);
+  // Where the pieces gather (1) and where the cheddar below shows through (0).
+  const clump = (x, z) => smoothstep(0.3, 0.46, fbm(x * 2.6 + 7, z * 2.6, 0, { octaves: 3, seed: 103 }));
 
   // Index-only templates (shared corners): a crumb is a jagged icosahedron, a strand a thin
   // curled tube; both are re-shaped per piece.
@@ -603,31 +619,28 @@ function crispyOnion() {
     pieces.push(geometry);
   };
 
-  // Shadow at the bottom of the heap, hidden under the pieces.
-  const floor = polarSheet({ rings: 4, segments: 40, uvRadius: 1, edge: (a) => edge(a) * 0.8, lift: () => 0.012 }).deleteAttribute('normal');
-  const index = floor.index.array;
-  for (let i = 0; i < index.length; i += 3) [index[i + 1], index[i + 2]] = [index[i + 2], index[i + 1]];
-  floor.setAttribute('color', new BufferAttribute(new Float32Array(floor.attributes.position.count * 3).map((_, i) => [0.09, 0.04, 0.015][i % 3]), 3));
-  pieces.push(floor);
-
-  for (let k = 0; k < 3800; k++) {
+  for (let placed = 0; placed < 1700; ) {
     const a = rnd() * Math.PI * 2;
     const rim = edge(a);
     // Uniform over the disc; one in eight lands past the rim and slumps down onto the cheddar.
     const spill = rnd() < 0.12;
     const f = spill ? 0.93 + rnd() * 0.12 : Math.sqrt(rnd()) * 0.97;
     const x = Math.cos(a) * rim * f, z = Math.sin(a) * rim * f;
-    const height = Math.max(top(x, z, f), 0.012);
+    // Clumps and bare patches: where the mask is low, few or no pieces land.
+    const m = clump(x, z);
+    if (rnd() > m) continue;
+    placed++;
+    const height = Math.max(top(x, z, f) * (0.35 + 0.65 * m), 0.012);
     // Anywhere from the bottom of the heap to its top (more of them near the top).
     const t = spill ? rnd() * 0.4 : Math.sqrt(rnd());
     const y = 0.008 + (height - 0.008) * t;
     const strand = rnd() < 0.4;
     turn.set((rnd() - 0.5) * (strand ? 1.6 : Math.PI), rnd() * Math.PI * 2, (rnd() - 0.5) * (strand ? 1.6 : Math.PI));
     if (strand) {
-      const radius = 0.02 + rnd() * 0.028;
+      const radius = 0.022 + rnd() * 0.03;
       size.set(radius, radius * (0.45 + rnd() * 0.3), radius);
     } else {
-      const s = 0.013 + rnd() ** 2 * 0.024;
+      const s = 0.015 + rnd() ** 2 * 0.026;
       size.set(s * (0.8 + rnd() * 0.6), s * (0.35 + rnd() * 0.3), s * (0.8 + rnd() * 0.6));
     }
     place(strand ? strandBase : crumbBase, Math.min(y, CRISPY_ONION_HEIGHT - 0.015), x, z, 1 - t, !strand);
