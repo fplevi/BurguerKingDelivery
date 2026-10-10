@@ -32,15 +32,16 @@ const command = againstBuild ? `npx vite build && npx vite preview ${server}` : 
 export default defineConfig({
   testDir: './tests',
   testIgnore: orcamento ? [] : ['**/orcamento.spec.js'],
-  ...(orcamento && { testMatch: '**/orcamento.spec.js', workers: 1 }),
+  ...(orcamento && { testMatch: '**/orcamento.spec.js' }),
   // Software WebGL (PW_EXECUTABLE or PW_CHANNEL=chromium) draws a frame in a fraction of a second at best, and the
   // 390 × 844 project renders at 3x: give tests and assertions more time there only.
   timeout: softwareGl ? 90_000 : 30_000,
   expect: { timeout: softwareGl ? 15_000 : 5_000 },
   fullyParallel: true,
   // The suite fails at random (5-7 tests per run) with the default one-worker-per-core: 3D scenes
-  // compete for CPU and GPU. Two workers passes whole (ticket 11).
-  workers: 2,
+  // compete for CPU and GPU. Two workers passes whole (ticket 11). The budget measurements run
+  // one at a time (it was overridden by this line until ticket 05 of the Cheddar Duplo).
+  workers: orcamento ? 1 : 2,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
   reporter: 'list',

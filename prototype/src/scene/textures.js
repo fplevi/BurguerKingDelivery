@@ -44,7 +44,7 @@ export const texturesReady = new Promise((resolve) => {
   // Two workers, about the same work each (the 512 px, multi-map recipes are the heavy ones).
   const shares = [
     ['meat', 'lettuce', 'pickle', 'contact-shadow'],
-    ['crumb', 'tomato', 'crust-bump'],
+    ['crumb', 'tomato', 'crust-bump', 'fried-onion'],
   ];
   try {
     if (typeof OffscreenCanvas === 'undefined') throw new Error('no OffscreenCanvas');
@@ -114,5 +114,11 @@ export function pickleSlice() {
 /** Lettuce leaf from above: colour and bump. */
 export function lettuceLeaf() {
   const [colour, bump] = canvases.lettuce;
+  return { map: texture(colour, { color: true }), bumpMap: texture(bump) };
+}
+
+/** Fried onion bits from above (cebola crispy): colour and bump. */
+export function friedOnion() {
+  const [colour, bump] = canvases['fried-onion'];
   return { map: texture(colour, { color: true }), bumpMap: texture(bump) };
 }
