@@ -224,8 +224,8 @@ function render() {
           $('controls').querySelector(`[data-toggle="${id}"]`).focus();
         }),
     );
-  // The price note is hidden on phones, so the footer stays one line over the chips.
-  $('state').innerHTML = `${product.name} · ${without(state.draft, product)}<span class="state-note"> · Remover ingredientes mantém o preço neste protótipo.</span>`;
+  // Read by screen readers only (aria-live); the dialog shows no status line.
+  $('state').textContent = `${product.name} · ${without(state.draft, product)} · Remover ingredientes mantém o preço neste protótipo.`;
   $('cart-count').textContent = state.cart.length;
   $('cart-items').innerHTML = state.cart.length
     ? state.cart
