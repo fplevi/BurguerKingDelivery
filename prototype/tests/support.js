@@ -44,8 +44,8 @@ export async function dragTo(page, source, target) {
   await page.mouse.up();
 }
 
-/** Text under the hero burger describing the applied Personalização. */
-export const heroNote = (page) => page.locator('main').getByText(/^(Sem |Preparado com todos)/);
+/** Hero description: the Camadas of the applied Personalização, "Pão com gergelim, …". */
+export const descricao = (page) => page.locator('main').getByText(/^Pão com /);
 
 /** Card of the product grid, by the product's name (cards also hold a badge or a note). */
 export const card = (page, nome) =>

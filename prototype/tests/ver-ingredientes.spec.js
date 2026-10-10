@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { openVerIngredientes, verIngredientes, bandeja, camada, chip, heroNote, dragTo, TITULO } from './support.js';
+import { openVerIngredientes, verIngredientes, bandeja, camada, chip, descricao, dragTo, TITULO } from './support.js';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/');
@@ -74,22 +74,36 @@ test('a Base (pães e carne) não pode ser retirada', async ({ page }) => {
   await expect(verIngredientes(page).getByText('Whopper Clássico · Todos os ingredientes')).toBeVisible();
 });
 
-test('aplicar fecha Ver ingredientes e atualiza o texto do hero', async ({ page }) => {
-  await expect(heroNote(page)).toHaveText('Preparado com todos os ingredientes');
+const WHOPPER = 'Pão com gergelim, carne grelhada, queijo derretido, picles, ketchup, cebola, tomate fresco, alface crocante e maionese.';
+
+test('a descrição do Whopper lista as camadas, sem linha de personalização', async ({ page }) => {
+  await expect(descricao(page)).toHaveText(WHOPPER);
+  await expect(page.getByText(/Preparado com todos|Seu favorito/)).toHaveCount(0);
+});
+
+test('aplicar fecha Ver ingredientes e tira da descrição o que foi retirado', async ({ page }) => {
+  await expect(descricao(page)).toHaveText(WHOPPER);
   await openVerIngredientes(page);
   await chip(page, 'Retirar', 'Queijo').click();
   await chip(page, 'Retirar', 'Cebola').click();
   await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
   await expect(verIngredientes(page)).toBeHidden();
-  await expect(heroNote(page)).toHaveText('Sem queijo, cebola');
+  await expect(descricao(page)).toHaveText('Pão com gergelim, carne grelhada, picles, ketchup, tomate fresco, alface crocante e maionese.');
   await expect(page.getByRole('button', { name: /Ver ingredientes/ })).toBeFocused();
+});
+
+test('com tudo retirado, a descrição fica só com a Base', async ({ page }) => {
+  await openVerIngredientes(page);
+  for (const nome of ['Queijo', 'Picles', 'Ketchup', 'Cebola', 'Tomate', 'Alface', 'Maionese']) await chip(page, 'Retirar', nome).click();
+  await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
+  await expect(descricao(page)).toHaveText('Pão com gergelim e carne grelhada.');
 });
 
 test('cancelar preserva a personalização anterior', async ({ page }) => {
   await openVerIngredientes(page);
   await chip(page, 'Retirar', 'Queijo').click();
   await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
-  await expect(heroNote(page)).toHaveText('Sem queijo');
+  await expect(descricao(page)).toHaveText('Pão com gergelim, carne grelhada, picles, ketchup, cebola, tomate fresco, alface crocante e maionese.');
 
   await openVerIngredientes(page);
   await expect(chip(page, 'Recolocar', 'Queijo')).toBeVisible();
@@ -97,7 +111,7 @@ test('cancelar preserva a personalização anterior', async ({ page }) => {
   await chip(page, 'Retirar', 'Picles').click();
   await verIngredientes(page).getByRole('button', { name: 'Cancelar', exact: true }).click();
   await expect(verIngredientes(page)).toBeHidden();
-  await expect(heroNote(page)).toHaveText('Sem queijo');
+  await expect(descricao(page)).toHaveText('Pão com gergelim, carne grelhada, picles, ketchup, cebola, tomate fresco, alface crocante e maionese.');
 
   await openVerIngredientes(page);
   await expect(chip(page, 'Recolocar', 'Queijo')).toBeVisible();
@@ -109,12 +123,12 @@ test('Esc e o botão de fechar também cancelam', async ({ page }) => {
   await chip(page, 'Retirar', 'Alface').click();
   await page.keyboard.press('Escape');
   await expect(verIngredientes(page)).toBeHidden();
-  await expect(heroNote(page)).toHaveText('Preparado com todos os ingredientes');
+  await expect(descricao(page)).toHaveText(WHOPPER);
 
   await openVerIngredientes(page);
   await chip(page, 'Retirar', 'Alface').click();
   await page.getByRole('button', { name: 'Cancelar e fechar' }).click();
-  await expect(heroNote(page)).toHaveText('Preparado com todos os ingredientes');
+  await expect(descricao(page)).toHaveText(WHOPPER);
 });
 
 test('as 10 camadas abertas seguem a receita brasileira, de baixo para cima', async ({ page }) => {
@@ -144,7 +158,7 @@ test('retira só o ketchup e mantém a maionese', async ({ page }) => {
   await expect(verIngredientes(page).getByText('Whopper Clássico · Sem ketchup ·')).toBeVisible();
 
   await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
-  await expect(heroNote(page)).toHaveText('Sem ketchup');
+  await expect(descricao(page)).toHaveText('Pão com gergelim, carne grelhada, queijo derretido, picles, cebola, tomate fresco, alface crocante e maionese.');
 
   await openVerIngredientes(page);
   await chip(page, 'Recolocar', 'Ketchup').click();

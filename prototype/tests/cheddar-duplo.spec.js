@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { openVerIngredientes, verIngredientes, bandeja, camada, chip, heroNote, retirado, dragTo, card, escolher } from './support.js';
+import { openVerIngredientes, verIngredientes, bandeja, camada, chip, descricao, retirado, dragTo, card, escolher } from './support.js';
 
 const heroTitle = (page) => page.getByRole('heading', { level: 1 });
 /** Camada of the assembled hero burger (a disabled button labelled "Retirar X"). */
@@ -14,7 +14,7 @@ test('escolher o Cheddar Duplo na grade troca nome, preço e descrição do hero
   await escolher(page, 'Cheddar Duplo');
   await expect(heroTitle(page)).toHaveAccessibleName('Cheddar Duplo');
   await expect(page.locator('main').getByText('R$ 34,90', { exact: true }).first()).toBeVisible();
-  await expect(page.getByText('Pão com gergelim, duas carnes grelhadas, cheddar cremoso e cebola crispy.')).toBeVisible();
+  await expect(descricao(page)).toHaveText('Pão com gergelim, duas carnes grelhadas, cheddar cremoso e cebola crispy.');
   await expect(card(page, 'Whopper Clássico')).toHaveAttribute('aria-pressed', 'false');
   await expect(page.getByText('Total do item').locator('strong')).toHaveText('R$ 34,90');
 });
@@ -91,12 +91,26 @@ test('Recolocar todos, aplicar e cancelar funcionam no Cheddar Duplo', async ({ 
   await chip(page, 'Retirar', 'Cebola crispy').click();
   await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
   await expect(verIngredientes(page)).toBeHidden();
-  await expect(heroNote(page)).toHaveText('Sem cebola crispy');
+  await expect(descricao(page)).toHaveText('Pão com gergelim, duas carnes grelhadas e cheddar cremoso.');
 
   await openVerIngredientes(page);
   await chip(page, 'Retirar', 'Cheddar inferior').click();
   await verIngredientes(page).getByRole('button', { name: 'Cancelar', exact: true }).click();
-  await expect(heroNote(page)).toHaveText('Sem cebola crispy');
+  await expect(descricao(page)).toHaveText('Pão com gergelim, duas carnes grelhadas e cheddar cremoso.');
+});
+
+test('cheddar cremoso só sai da descrição com os dois cheddars retirados', async ({ page }) => {
+  await escolher(page, 'Cheddar Duplo');
+  await openVerIngredientes(page);
+  await chip(page, 'Retirar', 'Cheddar inferior').click();
+  await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
+  await expect(descricao(page)).toHaveText('Pão com gergelim, duas carnes grelhadas, cheddar cremoso e cebola crispy.');
+
+  await openVerIngredientes(page);
+  await chip(page, 'Retirar', 'Cheddar superior').click();
+  await chip(page, 'Retirar', 'Cebola crispy').click();
+  await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
+  await expect(descricao(page)).toHaveText('Pão com gergelim e duas carnes grelhadas.');
 });
 
 const carrinho = (page) => page.getByRole('dialog', { name: 'Seu carrinho' });
@@ -136,13 +150,13 @@ test('voltar ao Whopper mostra as 10 camadas dele, sem resto do Cheddar Duplo, e
   await openVerIngredientes(page);
   await chip(page, 'Retirar', 'Cebola crispy').click();
   await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
-  await expect(heroNote(page)).toHaveText('Sem cebola crispy');
+  await expect(descricao(page)).toHaveText('Pão com gergelim, duas carnes grelhadas e cheddar cremoso.');
   await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
 
   await escolher(page, 'Whopper Clássico');
   await expect(heroTitle(page)).toHaveAccessibleName('Whopper Clássico');
   await expect(page.locator('main').getByText('R$ 31,90', { exact: true }).first()).toBeVisible();
-  await expect(heroNote(page)).toHaveText('Preparado com todos os ingredientes');
+  await expect(descricao(page)).toHaveText(/^Pão com gergelim, carne grelhada, queijo derretido, /);
   await expect(page.locator('main #hero-stage canvas')).toHaveCount(1);
   await expect(page.getByRole('button', { name: 'Carrinho · 1' })).toBeVisible();
 
@@ -215,10 +229,10 @@ test.describe('sem WebGL', () => {
     await expect(retirado(page, 'Cebola crispy').locator('svg')).toBeVisible();
     await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
     await expect(verIngredientes(page)).toBeHidden();
-    await expect(heroNote(page)).toHaveText('Sem cheddar superior, cebola crispy');
+    await expect(descricao(page)).toHaveText('Pão com gergelim, duas carnes grelhadas e cheddar cremoso.');
 
     await escolher(page, 'Whopper Clássico');
-    await expect(heroNote(page)).toHaveText('Preparado com todos os ingredientes');
+    await expect(descricao(page)).toHaveText(/^Pão com gergelim, carne grelhada, queijo derretido, /);
     await expect(heroCamada(page, 'Queijo').locator('svg')).toBeVisible();
   });
 });
