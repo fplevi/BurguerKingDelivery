@@ -14,8 +14,7 @@ const recipe = ({ layers, ...product }) => ({
 export const recipes = {
   whopper: recipe({
     id: 'whopper',
-    name: 'Whopper Clássico',
-    shortName: 'Whopper',
+    name: 'Whopper®',
     price: 3190,
     // Brazilian recipe.
     layers: [
@@ -34,7 +33,6 @@ export const recipes = {
   cheddarDuplo: recipe({
     id: 'cheddarDuplo',
     name: 'Cheddar Duplo',
-    shortName: 'Cheddar Duplo',
     // Provisional texts and price (spec): the official menu description was not found.
     price: 3490,
     // As seen in the official photo; Base: buns and both meats.

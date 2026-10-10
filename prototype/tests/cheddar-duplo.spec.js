@@ -10,12 +10,12 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('escolher o Cheddar Duplo na grade troca nome, preço e descrição do hero', async ({ page }) => {
-  await expect(heroTitle(page)).toHaveAccessibleName('Whopper Clássico');
+  await expect(heroTitle(page)).toHaveAccessibleName('Whopper®');
   await escolher(page, 'Cheddar Duplo');
   await expect(heroTitle(page)).toHaveAccessibleName('Cheddar Duplo');
   await expect(page.locator('main').getByText('R$ 34,90', { exact: true }).first()).toBeVisible();
   await expect(descricao(page)).toHaveText('Pão com gergelim, duas carnes grelhadas, cheddar cremoso e cebola crispy.');
-  await expect(card(page, 'Whopper Clássico')).toHaveAttribute('aria-pressed', 'false');
+  await expect(card(page, 'Whopper®')).toHaveAttribute('aria-pressed', 'false');
   await expect(page.getByText('Total do item').locator('strong')).toHaveText('R$ 34,90');
 });
 
@@ -153,8 +153,8 @@ test('voltar ao Whopper mostra as 10 camadas dele, sem resto do Cheddar Duplo, e
   await expect(descricao(page)).toHaveText('Pão com gergelim, duas carnes grelhadas e cheddar cremoso.');
   await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
 
-  await escolher(page, 'Whopper Clássico');
-  await expect(heroTitle(page)).toHaveAccessibleName('Whopper Clássico');
+  await escolher(page, 'Whopper®');
+  await expect(heroTitle(page)).toHaveAccessibleName('Whopper®');
   await expect(page.locator('main').getByText('R$ 31,90', { exact: true }).first()).toBeVisible();
   await expect(descricao(page)).toHaveText(/^Pão com gergelim, carne grelhada, queijo derretido, /);
   await expect(page.locator('main #hero-stage canvas')).toHaveCount(1);
@@ -164,7 +164,7 @@ test('voltar ao Whopper mostra as 10 camadas dele, sem resto do Cheddar Duplo, e
   await expect(camadas(page)).toHaveCount(10);
   await expect(verIngredientes(page).locator('canvas')).toHaveCount(1);
   await expect(verIngredientes(page).getByText(/Cheddar|crispy/)).toHaveCount(0);
-  await expect(verIngredientes(page).getByText('Whopper Clássico · Todos os ingredientes')).toBeVisible();
+  await expect(verIngredientes(page).getByText('Whopper® · Todos os ingredientes')).toBeVisible();
   await camada(page, 'Queijo').click();
   await expect(retirado(page, 'Queijo')).toBeVisible();
 });
@@ -177,7 +177,7 @@ test('trocar de produto e voltar não gera de novo o modelo de nenhuma camada', 
     page.waitForFunction((n) => ['assembled', 'open'].every((fit) => performance.getEntriesByName(`burger-scene:ready:${fit}`).length >= n), n);
   await prontas(1);
   let cenas = 1;
-  for (const nome of ['Cheddar Duplo', 'Whopper Clássico', 'Cheddar Duplo', 'Whopper Clássico']) {
+  for (const nome of ['Cheddar Duplo', 'Whopper®', 'Cheddar Duplo', 'Whopper®']) {
     await escolher(page, nome);
     await prontas(++cenas);
   }
@@ -214,7 +214,7 @@ test.describe('sem WebGL', () => {
     await expect(verIngredientes(page)).toBeHidden();
     await expect(descricao(page)).toHaveText('Pão com gergelim, duas carnes grelhadas e cheddar cremoso.');
 
-    await escolher(page, 'Whopper Clássico');
+    await escolher(page, 'Whopper®');
     await expect(descricao(page)).toHaveText(/^Pão com gergelim, carne grelhada, queijo derretido, /);
     await expect(heroCamada(page, 'Queijo').locator('svg')).toBeVisible();
   });

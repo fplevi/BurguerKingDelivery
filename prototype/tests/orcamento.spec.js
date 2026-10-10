@@ -129,7 +129,7 @@ test('o primeiro quadro do Cheddar Duplo, ao escolhê-lo na grade, não passa do
   const cheddar = [], whopper = [];
   for (let i = 0; i < 8; i++) {
     const ida = await trocarPara(page, 'Cheddar Duplo');
-    const volta = await trocarPara(page, 'Whopper Clássico');
+    const volta = await trocarPara(page, 'Whopper®');
     if (i) cheddar.push(ida), whopper.push(volta);
   }
   const mediana = (m) => [...m].sort((a, b) => a - b)[3];
@@ -151,7 +151,7 @@ test('primeiro quadro com 4G lento (informativo, sem limite)', async ({ browser 
 // Ticket 05 of the Cheddar Duplo: the same three measurements with each 3D burger in the hero.
 // The Cheddar Duplo is chosen in the grid, as the customer does; its scenes are then built anew.
 const produtos = [
-  { nome: 'Whopper Clássico', arrastar: 'Tomate', cenas: 1 },
+  { nome: 'Whopper®', arrastar: 'Tomate', cenas: 1 },
   { nome: 'Cheddar Duplo', arrastar: 'Cebola crispy', cenas: 2 },
 ];
 
@@ -161,7 +161,7 @@ for (const produto of produtos) {
 
     const limite = (info) => (info.project.name === 'desktop' ? LIMITE.fpsDesktop : LIMITE.fpsCelular);
     const meta = (info) => (info.project.name === 'desktop' ? META.fpsDesktop : META.fpsCelular);
-    const chave = produto.nome === 'Whopper Clássico' ? 'whopper' : 'cheddar';
+    const chave = produto.nome === 'Whopper®' ? 'whopper' : 'cheddar';
 
     test.beforeEach(async ({ page }, info) => {
       await page.goto('/');

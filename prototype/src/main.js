@@ -137,7 +137,7 @@ function buildGrid() {
     : burgers
         .map(
           (p) =>
-            `<button class="card" aria-pressed="false" ${p.recipe ? `data-product="${p.recipe}"` : ''}>${badge}<img class="catalog-photo" src="${p.photo}" width="400" height="400" alt="" loading="lazy" decoding="async"><span class="card-name">${p.recipe ? recipes[p.recipe].name : p.name}</span></button>`,
+            `<button class="card" aria-pressed="false" ${p.recipe ? `data-product="${p.recipe}"` : ''}>${badge}<img class="catalog-photo" src="${p.photo}" width="400" height="400" alt="" loading="lazy" decoding="async"><span class="card-name"><span>${marks(p.recipe ? recipes[p.recipe].name : p.name)}</span></span></button>`,
         )
         .join('');
   $('grid')
@@ -188,10 +188,10 @@ function closedPositions(removed) {
   return positions;
 }
 
-/** Hero title in two lines: at the title's "\n", otherwise after the first word. */
+/** Hero title in two lines: at the title's "\n", otherwise after the first word; one word stays on one line. */
 function heroTitle(title) {
   const [first, ...rest] = title.includes('\n') ? title.split('\n') : title.split(' ');
-  $('product-title').innerHTML = `<span>${marks(first)}</span><br>${marks(rest.join(' '))}`;
+  $('product-title').innerHTML = `<span>${marks(first)}</span>${rest.length ? '<br>' + marks(rest.join(' ')) : ''}`;
   fitTitle();
 }
 /** The title's lines don't wrap: a line wider than the column shrinks the title to fit it. */
@@ -221,7 +221,7 @@ function render() {
     heroTitle(product.name);
     $('product-description').textContent = description(product, state.removed);
   }
-  $('controls-title').textContent = `Personalize seu ${product.shortName}`;
+  $('controls-title').innerHTML = `Personalize seu ${marks(product.name)}`;
   document.querySelectorAll('#grid .card').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.product === (pick(state)?.product ?? state.product))));
   if (scenes) {
     scenes.hero.show({ open: false, removed: state.removed }, { animate: false });
@@ -447,7 +447,7 @@ $('qty-minus').onclick = () => dispatch({ type: 'qty', value: qty() - 1 });
 $('qty-plus').onclick = () => dispatch({ type: 'qty', value: qty() + 1 });
 $('drink').onchange = (e) => dispatch({ type: 'drink', value: e.target.value });
 $('add').onclick = () => {
-  const added = pick(state) ? products[pick(state).product].name : recipe().shortName;
+  const added = pick(state) ? products[pick(state).product].name : recipe().name;
   dispatch({ type: 'add' });
   // The combo's drink error belongs to the burger card only.
   if (!pick(state) && state.drinkError) return $('drink').focus();

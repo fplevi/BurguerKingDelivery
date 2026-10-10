@@ -41,7 +41,7 @@ test('cada ingrediente aberto em 3D tem sua própria área de toque', async ({ p
     else await camada(page, nome).click();
     await expect(chip(page, 'Recolocar', nome)).toBeVisible();
   }
-  await expect(verIngredientes(page).getByText(`Whopper Clássico · Sem ${removiveis.join(', ').toLowerCase()}`)).toBeVisible();
+  await expect(verIngredientes(page).getByText(`Whopper® · Sem ${removiveis.join(', ').toLowerCase()}`)).toBeVisible();
 });
 
 /** Vertical distance between the centres of Pão inferior and Pão superior in the dialog. */

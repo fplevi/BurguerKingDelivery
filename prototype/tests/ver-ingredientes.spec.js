@@ -16,7 +16,7 @@ test('retira um ingrediente tocando na camada', async ({ page }) => {
   await openVerIngredientes(page);
   await camada(page, 'Queijo').click();
   await expect(chip(page, 'Recolocar', 'Queijo')).toBeVisible();
-  await expect(verIngredientes(page).getByText('Whopper Clássico · Sem queijo')).toBeVisible();
+  await expect(verIngredientes(page).getByText('Whopper® · Sem queijo')).toBeVisible();
 });
 
 test('retira um ingrediente pelo teclado com Enter e Espaço', async ({ page }) => {
@@ -28,7 +28,7 @@ test('retira um ingrediente pelo teclado com Enter e Espaço', async ({ page }) 
   await camada(page, 'Cebola').focus();
   await page.keyboard.press(' ');
   await expect(chip(page, 'Recolocar', 'Cebola')).toBeVisible();
-  await expect(verIngredientes(page).getByText('Whopper Clássico · Sem tomate, cebola')).toBeVisible();
+  await expect(verIngredientes(page).getByText('Whopper® · Sem tomate, cebola')).toBeVisible();
 });
 
 test('retira um ingrediente arrastando a camada até a bandeja', async ({ page }) => {
@@ -61,7 +61,7 @@ test('Recolocar todos desfaz as retiradas do rascunho', async ({ page }) => {
   await bandeja(page).getByRole('button', { name: 'Recolocar todos' }).click();
   await expect(chip(page, 'Retirar', 'Picles')).toBeVisible();
   await expect(chip(page, 'Retirar', 'Maionese')).toBeVisible();
-  await expect(verIngredientes(page).getByText('Whopper Clássico · Todos os ingredientes')).toBeVisible();
+  await expect(verIngredientes(page).getByText('Whopper® · Todos os ingredientes')).toBeVisible();
 });
 
 test('a Base (pães e carne) não pode ser retirada', async ({ page }) => {
@@ -71,7 +71,7 @@ test('a Base (pães e carne) não pode ser retirada', async ({ page }) => {
     await expect(bandeja(page).getByRole('button', { name: new RegExp(base) })).toHaveCount(0);
   }
   await camada(page, 'Carne grelhada').click({ force: true });
-  await expect(verIngredientes(page).getByText('Whopper Clássico · Todos os ingredientes')).toBeVisible();
+  await expect(verIngredientes(page).getByText('Whopper® · Todos os ingredientes')).toBeVisible();
 });
 
 const WHOPPER = 'Pão com gergelim, carne grelhada, queijo derretido, picles, ketchup, cebola, tomate fresco, alface crocante e maionese.';
@@ -155,7 +155,7 @@ test('retira só o ketchup e mantém a maionese', async ({ page }) => {
   await expect(chip(page, 'Recolocar', 'Ketchup')).toBeVisible();
   await expect(chip(page, 'Retirar', 'Maionese')).toHaveAttribute('aria-pressed', 'true');
   await expect(camada(page, 'Maionese')).toBeVisible();
-  await expect(verIngredientes(page).getByText('Whopper Clássico · Sem ketchup ·')).toBeVisible();
+  await expect(verIngredientes(page).getByText('Whopper® · Sem ketchup ·')).toBeVisible();
 
   await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
   await expect(descricao(page)).toHaveText('Pão com gergelim, carne grelhada, queijo derretido, picles, cebola, tomate fresco, alface crocante e maionese.');
@@ -164,5 +164,5 @@ test('retira só o ketchup e mantém a maionese', async ({ page }) => {
   await chip(page, 'Recolocar', 'Ketchup').click();
   await chip(page, 'Retirar', 'Maionese').click();
   await expect(chip(page, 'Retirar', 'Ketchup')).toHaveAttribute('aria-pressed', 'true');
-  await expect(verIngredientes(page).getByText('Whopper Clássico · Sem maionese ·')).toBeVisible();
+  await expect(verIngredientes(page).getByText('Whopper® · Sem maionese ·')).toBeVisible();
 });

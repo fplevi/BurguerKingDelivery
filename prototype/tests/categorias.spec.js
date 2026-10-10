@@ -78,7 +78,7 @@ test('o endereço com #acompanhamentos abre a categoria, e voltar no navegador r
   await page.goBack();
   await expect(titulo(page)).toHaveAccessibleName('Batata Frita');
   await page.goto('/#qualquer-coisa');
-  await expect(titulo(page)).toHaveAccessibleName('Whopper Clássico');
+  await expect(titulo(page)).toHaveAccessibleName('Whopper®');
   await expect(categorias(page).getByRole('link', { name: 'Hambúrgueres' })).toHaveAttribute('aria-current', 'page');
 });
 

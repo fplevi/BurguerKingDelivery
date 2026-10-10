@@ -25,11 +25,11 @@ test('Whopper personalizado chega ao carrinho com combo, bebida, quantidade e in
   await quantidade(page).getByRole('button', { name: 'Aumentar quantidade' }).click();
 
   await adicionar(page).click();
-  await expect(aviso(page)).toHaveText('Adicionado ao carrinho: Whopper');
+  await expect(aviso(page)).toHaveText('Adicionado ao carrinho: Whopper®');
   await page.getByRole('button', { name: 'Carrinho · 2' }).click();
 
   await expect(carrinho(page)).toBeVisible();
-  await expect(carrinho(page).getByText('Whopper Clássico × 2')).toBeVisible();
+  await expect(carrinho(page).getByText('Whopper® × 2')).toBeVisible();
   await expect(carrinho(page).getByText('Combo · Coca-Cola')).toBeVisible();
   await expect(carrinho(page).getByText('Sem: tomate, ketchup')).toBeVisible();
   await expect(carrinho(page).getByText('R$ 87,80', { exact: true })).toBeVisible();
@@ -65,8 +65,8 @@ test('Item idêntico soma na quantidade do que já está no carrinho', async ({ 
   await bebida(page).selectOption('Sprite');
   await adicionar(page).click();
   await page.getByRole('button', { name: 'Carrinho · 3' }).click();
-  await expect(carrinho(page).getByText('Whopper Clássico × 2')).toBeVisible();
-  await expect(carrinho(page).getByText('Whopper Clássico × 1')).toBeVisible();
+  await expect(carrinho(page).getByText('Whopper® × 2')).toBeVisible();
+  await expect(carrinho(page).getByText('Whopper® × 1')).toBeVisible();
   await expect(carrinho(page).getByText('Combo · Sprite')).toBeVisible();
   await expect(carrinho(page).getByText('Total: R$ 107,70')).toBeVisible();
 });
@@ -140,7 +140,7 @@ test('a Quantidade começa em 1 e multiplica o Total do item', async ({ page }) 
 test('item pode ser removido do carrinho', async ({ page }) => {
   await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
   await page.getByRole('button', { name: 'Carrinho · 1' }).click();
-  await expect(carrinho(page).getByText('Whopper Clássico × 1')).toBeVisible();
+  await expect(carrinho(page).getByText('Whopper® × 1')).toBeVisible();
   await carrinho(page).getByRole('button', { name: 'Remover item' }).click();
   await expect(carrinho(page).getByText('Seu carrinho está vazio.')).toBeVisible();
   await carrinho(page).getByRole('button', { name: 'Fechar' }).click();
@@ -151,8 +151,8 @@ test('grade de produtos mostra os oito hambúrgueres oficiais com o Whopper sele
   await expect(page.getByRole('heading', { name: 'Escolha seu hambúrguer' })).toBeVisible();
   const cards = page.locator('#catalog').getByRole('button');
   await expect(cards).toHaveCount(8);
-  await expect(cards.filter({ hasText: 'Whopper Clássico' })).toHaveAttribute('aria-pressed', 'true');
-  await expect(cards.filter({ hasText: 'Whopper Clássico' })).toContainText('Selecionado');
+  await expect(cards.filter({ hasText: 'Whopper®' })).toHaveAttribute('aria-pressed', 'true');
+  await expect(cards.filter({ hasText: 'Whopper®' })).toContainText('Selecionado');
   await expect(cards.filter({ hasText: 'Cheddar Duplo' })).toHaveAttribute('aria-pressed', 'false');
   for (let i = 0; i < 8; i++) {
     // The official product photo (decorative, alt="") must actually load.
