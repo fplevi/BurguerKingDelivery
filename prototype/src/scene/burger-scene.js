@@ -102,7 +102,8 @@ function createContext(canvas) {
   }
 }
 
-export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = () => {}, tiltScale = 1 }) {
+export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = () => {}, tiltScale = 1 } = {}) {
+  if (!recipe?.layers) throw new TypeError('createBurgerScene: options.recipe (a Receita, with its layers) is required');
   // Camadas by id; a repeated ingredient (two meats) has two ids sharing one model.
   const ids = recipe.layers.map((l) => l.id);
   const models = Object.fromEntries(recipe.layers.map((l) => [l.id, layerModels[l.model]]));
