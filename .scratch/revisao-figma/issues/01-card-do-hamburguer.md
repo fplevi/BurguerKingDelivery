@@ -4,13 +4,17 @@
 
 **Blocked by:** nenhum.
 
-**Status:** ready-for-agent
+**Status:** resolved
 
-- [ ] P/M/G removidos; Combo + R$ 12,00 (Whopper 31,90 / 43,90)
-- [ ] Bebida do combo: 7 opções, desabilitada sem Combo, vazia por padrão
-- [ ] Erro "Escolha a bebida do combo" com foco ao adicionar combo sem bebida
-- [ ] Quantidade multiplica o total; todas as unidades com a mesma Personalização
-- [ ] Volta ao padrão depois de adicionar, mantendo o hambúrguer selecionado
-- [ ] Item idêntico soma quantidade no carrinho
-- [ ] "Ver ingredientes" em botão, tela e testes
-- [ ] Testes Playwright; `npm test` e `npm run test:build` verdes
+- [x] P/M/G removidos; Combo + R$ 12,00 (Whopper 31,90 / 43,90)
+- [x] Bebida do combo: 7 opções, desabilitada sem Combo, vazia por padrão
+- [x] Erro "Escolha a bebida do combo" com foco ao adicionar combo sem bebida
+- [x] Quantidade multiplica o total; todas as unidades com a mesma Personalização
+- [x] Volta ao padrão depois de adicionar, mantendo o hambúrguer selecionado
+- [x] Item idêntico soma quantidade no carrinho
+- [x] "Ver ingredientes" em botão, tela e testes
+- [x] Testes Playwright; `npm test` e `npm run test:build` verdes
+
+## Answer
+
+Card do hambúrguer refeito (`prototype/index.html`, `src/state.js`, `src/main.js`, `src/styles.css`). P/M/G saíram; o Combo começa desmarcado e soma R$ 12,00 (`comboFee`). Bebida do combo é um `<select>` com placeholder "Selecione uma bebida" e as 7 bebidas, desabilitado e esvaziado sem Combo. Combo sem bebida: o reducer recusa o `add` (`drinkError`), o seletor fica com borda vermelha, `aria-invalid` e a descrição "Escolha a bebida do combo", e recebe o foco; o erro some ao escolher a bebida ou desmarcar o Combo. Quantidade (− 1 +, de 1 a 99) multiplica o Total do item. Adicionar ou trocar de hambúrguer volta ao padrão (`fresh` no reducer), mantendo o hambúrguer selecionado; Item idêntico (produto, Personalização, Combo, bebida) soma na quantidade. O contador do carrinho conta unidades; cada linha mostra nome × quantidade, "Combo · <bebida>", "Sem: …" e o total do Item. "Ver ingredientes" substitui "Remover/Alterar ingredientes" no botão, no título do diálogo, nos testes (`tests/ver-ingredientes.spec.js`, helpers `verIngredientes`/`openVerIngredientes`) e no README. Testes novos em `tests/pedido.spec.js`. Os cards "Em breve" ficaram para o ticket 03.
