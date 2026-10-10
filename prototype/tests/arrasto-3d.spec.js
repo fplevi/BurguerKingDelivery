@@ -55,6 +55,30 @@ test('a camada 3D acompanha o cursor durante o arrasto e a bandeja reage', async
   await expect.poll(() => fundoDaBandeja(page)).toBe(fundo);
 });
 
+test('depois de soltar na bandeja, o hambúrguer volta para o palco com o cursor parado sobre a bandeja', async ({ page }) => {
+  // Bug (ticket 04 review): the canvas, grown over the viewport during the drag, kept the
+  // viewport's size after the drop while nothing redrew the stage (pointer resting on the
+  // Bandeja), so the burger was drawn huge over the Bandeja and under the footer.
+  const palco = alterarIngredientes(page).locator('.stage');
+  const canvas = alterarIngredientes(page).locator('canvas');
+  const inicio = centre(await settledBox(camada(page, 'Tomate')));
+  await page.mouse.move(inicio.x, inicio.y);
+  await page.mouse.down();
+  const alvo = centre(await bandeja(page).boundingBox());
+  await page.mouse.move(alvo.x, alvo.y, { steps: 12 });
+  await page.mouse.up();
+  await expect(retirado(page, 'Tomate')).toBeVisible();
+
+  await settledBox(camada(page, 'Alface'));
+  const esperado = await palco.boundingBox();
+  await expect
+    .poll(async () => {
+      const box = await canvas.boundingBox();
+      return Math.max(...['x', 'y', 'width', 'height'].map((k) => Math.abs(box[k] - esperado[k])));
+    })
+    .toBeLessThan(1);
+});
+
 test('soltar fora da bandeja devolve a camada ao seu lugar', async ({ page }) => {
   const antes = await settledBox(camada(page, 'Alface'));
   const inicio = centre(antes);
