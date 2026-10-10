@@ -34,8 +34,8 @@ Os testes sobem o próprio servidor na porta 4173 (mude com `PW_PORT`). O Chrome
 - `src/scene/noise.js`: ruído determinístico (semente fixa), usado pelos modelos e pelas texturas.
 - `src/scene/texture-recipes.js`: receitas das texturas geradas por código (miolo, carne grelhada, grão da casca, tomate, picles, alface, sombra de contato), sem Three.js nem DOM. Nenhuma imagem de ingrediente é baixada.
 - `src/scene/texture-worker.js` e `src/scene/textures.js`: as receitas são pintadas em dois Web Workers enquanto a página monta a geometria e compila os shaders; `textures.js` entrega as texturas e avisa quando estão prontas (sem workers, pinta na própria página).
-- `src/state.js`: reducer (fonte de verdade), preços.
-- `src/ingredients.js`: as 10 camadas do Whopper (receita brasileira), de baixo para cima, e quais formam a Base.
+- `src/state.js`: reducer (fonte de verdade, inclusive o produto selecionado), preços.
+- `src/ingredients.js`: a Receita de cada produto (por ora só o Whopper, com as 10 camadas da receita brasileira): camadas de baixo para cima, quais formam a Base, modelo de cada camada (duas camadas podem compartilhar um), nome, descrição e preço. Nada fora dela cita um produto.
 - `src/art.js`: ilustrações SVG de cada camada, usadas como fallback quando não há WebGL.
 - `src/styles.css`: estilos.
 - `tests/`: testes Playwright; `tests/support.js` localiza elementos por papéis e rótulos acessíveis.

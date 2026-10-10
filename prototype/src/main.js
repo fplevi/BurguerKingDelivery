@@ -1,4 +1,4 @@
-import { ingredients, name } from './ingredients.js';
+import { recipes, layer } from './ingredients.js';
 import { art } from './art.js';
 import { initial, reducer, fees, money, price } from './state.js';
 import { createBurgerScene } from './scene/burger-scene.js';
@@ -10,6 +10,10 @@ import cheeseburgerPhoto from '../Assets/catalog/cheeseburger.png';
 
 let state = initial;
 const $ = (id) => document.getElementById(id);
+/** Receita of the selected product, and the name of one of its Camadas. */
+const recipe = () => recipes[state.product];
+const name = (id, r = recipe()) => layer(r, id).name;
+const without = (removed, r) => (removed.length ? 'Sem ' + removed.map((id) => name(id, r)).join(', ').toLowerCase() : 'Todos os ingredientes');
 function dispatch(action) {
   state = reducer(state, action);
   render();
@@ -18,10 +22,11 @@ function dispatch(action) {
 // Layer buttons: in 3D they are invisible hit areas placed over the scene; without WebGL
 // they carry the SVG illustrations (fallback). Either way they hold labels, focus and gestures.
 function buildBurger(el, interactive = false) {
-  el.innerHTML = ingredients
+  const { layers } = recipe();
+  el.innerHTML = layers
     .map(
       (i, index) =>
-        `<button class="layer" data-id="${i.id}" style="--y:${interactive ? 78 - index * (70 / (ingredients.length - 1)) + '%' : i.y + 'px'};--z:${i.z}" ${interactive && !i.locked ? '' : 'disabled'} aria-label="Retirar ${i.name}">${art(i.id)}</button>`,
+        `<button class="layer" data-id="${i.id}" style="--y:${interactive ? 78 - index * (70 / (layers.length - 1)) + '%' : i.y + 'px'};--z:${i.z}" ${interactive && !i.locked ? '' : 'disabled'} aria-label="Retirar ${i.name}">${art(i.model)}</button>`,
     )
     .join('');
   if (interactive) el.querySelectorAll('.layer:not(:disabled)').forEach(bindLayer);
@@ -48,6 +53,7 @@ let scenes = null;
 function mountScenes() {
   let firstFrame = true;
   const hero = createBurgerScene($('hero-stage'), {
+    recipe: recipe(),
     fit: 'assembled',
     onAreas: (a) => {
       placeButtons($('hero-burger'), a);
@@ -65,6 +71,7 @@ function mountScenes() {
       if (editor) return editor;
       // Half the tilt in Alterar ingredientes, so the Camadas don't slide away from the cursor.
       editor = createBurgerScene($('pg-stage'), {
+        recipe: recipe(),
         fit: 'open',
         tiltScale: 0.5,
         onAreas: (a) => placeButtons($('pg-burger'), a),
@@ -96,23 +103,29 @@ $('grid')
   .forEach(
     (b) =>
       (b.onclick = () =>
-        b.dataset.product === '0' ? $('edit').focus() : toast('Vamos validar o Whopper primeiro. Os demais vêm depois.')),
+        b.dataset.product === '0' ? $('edit').focus() : toast(`Vamos validar o ${recipe().shortName} primeiro. Os demais vêm depois.`)),
   );
 
 /** SVG fallback: top of each layer in the assembled hero burger (px). */
 function closedPositions(removed) {
-  let y = 242;
-  const thickness = { meat: 36, cheese: 9, pickles: 8, onion: 8, tomato: 12, ketchup: 4, lettuce: 15, mayo: 4, top: 62 };
-  const positions = { bottom: y };
-  for (const ingredient of ingredients.slice(1)) {
+  const [bottom, ...rest] = recipe().layers;
+  let y = bottom.y;
+  const positions = { [bottom.id]: y };
+  for (const ingredient of rest) {
     if (removed.includes(ingredient.id)) continue;
-    y -= thickness[ingredient.id];
+    y -= ingredient.thickness;
     positions[ingredient.id] = y;
   }
   return positions;
 }
 
 function render() {
+  const product = recipe();
+  const [first, ...rest] = product.name.split(' ');
+  $('product-title').innerHTML = `<span>${first}</span><br>${rest.join(' ')}`;
+  $('product-price').textContent = money(product.price);
+  $('product-description').textContent = product.description;
+  $('controls-title').textContent = `Personalize seu ${product.shortName}`;
   if (scenes) {
     scenes.hero.show({ open: false, removed: state.removed }, { animate: false });
     if (state.editing && !closing) scenes.editor.show({ open: true, removed: state.draft });
@@ -132,9 +145,7 @@ function render() {
   });
   $('fee').innerHTML = state.combo ? `Combo ${state.size}:<br>+ ${money(fees[state.size])}` : 'Só o sanduíche';
   $('total').textContent = money(price(state));
-  $('custom-note').textContent = state.removed.length
-    ? 'Sem ' + state.removed.map(name).join(', ').toLowerCase()
-    : 'Preparado com todos os ingredientes';
+  $('custom-note').textContent = state.removed.length ? without(state.removed, product) : 'Preparado com todos os ingredientes';
   $('playground').classList.toggle('open', state.editing);
   document.querySelectorAll('#pg-burger .layer').forEach((b) => {
     const removed = state.draft.includes(b.dataset.id);
@@ -147,7 +158,7 @@ function render() {
   $('tray-message').textContent = state.draft.length
     ? 'Toque em um ingrediente retirado para recolocá-lo.'
     : 'Arraste os ingredientes para cá ou use os chips abaixo.';
-  $('controls').innerHTML = ingredients
+  $('controls').innerHTML = product.layers
     .filter((i) => !i.locked)
     .map((i) => {
       const removed = state.draft.includes(i.id);
@@ -164,13 +175,13 @@ function render() {
           $('controls').querySelector(`[data-toggle="${id}"]`).focus();
         }),
     );
-  $('state').textContent = `Whopper Clássico · ${state.draft.length ? 'Sem ' + state.draft.map(name).join(', ').toLowerCase() : 'Todos os ingredientes'} · Remover ingredientes mantém o preço neste protótipo.`;
+  $('state').textContent = `${product.name} · ${without(state.draft, product)} · Remover ingredientes mantém o preço neste protótipo.`;
   $('cart-count').textContent = state.cart.length;
   $('cart-items').innerHTML = state.cart.length
     ? state.cart
         .map(
           (item, i) =>
-            `<div class="cart-row"><b>Whopper Clássico · ${money(item.price)}</b><small>${item.combo ? 'Combo ' + item.size : 'Só sanduíche'} · ${item.removed.length ? 'Sem ' + item.removed.map(name).join(', ').toLowerCase() : 'Todos os ingredientes'}</small><button data-delete="${i}">Remover item</button></div>`,
+            `<div class="cart-row"><b>${recipes[item.product].name} · ${money(item.price)}</b><small>${item.combo ? 'Combo ' + item.size : 'Só sanduíche'} · ${without(item.removed, recipes[item.product])}</small><button data-delete="${i}">Remover item</button></div>`,
         )
         .join('')
     : 'Seu carrinho está vazio.';
@@ -184,7 +195,7 @@ function render() {
 // cached per id) or, without WebGL, its SVG illustration. Tapping it puts it back.
 const trayImages = {};
 function trayArt(id) {
-  if (!scenes) return art(id);
+  if (!scenes) return art(layer(recipe(), id).model);
   trayImages[id] ??= scenes.editor.snapshot(id);
   return trayImages[id] ? `<img src="${trayImages[id]}" alt="" width="60" height="36">` : '';
 }
@@ -270,7 +281,7 @@ function openEditor() {
     dispatch({ type: 'open' });
   } else {
     dispatch({ type: 'open' });
-    document.querySelectorAll('#pg-burger .layer').forEach((b, i) => (b.style.top = ingredients[i].y + 'px'));
+    document.querySelectorAll('#pg-burger .layer').forEach((b, i) => (b.style.top = recipe().layers[i].y + 'px'));
     requestAnimationFrame(() =>
       requestAnimationFrame(() => document.querySelectorAll('#pg-burger .layer').forEach((b) => (b.style.top = ''))),
     );
@@ -289,7 +300,7 @@ function closeEditor(type) {
     $('playground')
       .querySelectorAll('button')
       .forEach((b) => {
-        b.disabled = Boolean(b.classList.contains('layer') && ingredients.find((i) => i.id === b.dataset.id)?.locked);
+        b.disabled = Boolean(b.classList.contains('layer') && layer(recipe(), b.dataset.id)?.locked);
       });
     document.body.style.overflow = '';
     document.querySelector('header').inert = false;
@@ -331,7 +342,7 @@ $('combo').onchange = (e) => dispatch({ type: 'combo', value: e.target.checked }
 document.querySelectorAll('.size').forEach((b) => (b.onclick = () => dispatch({ type: 'size', value: b.dataset.size })));
 $('add').onclick = () => {
   dispatch({ type: 'add' });
-  toast('Whopper adicionado ao carrinho');
+  toast(`${recipe().shortName} adicionado ao carrinho`);
 };
 $('cart-open').onclick = () => {
   restoreFocus = document.activeElement;

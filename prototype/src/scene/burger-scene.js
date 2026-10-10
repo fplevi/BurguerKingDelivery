@@ -4,7 +4,7 @@
 // same soft light from the upper left, transparent background, contact shadows in the scene.
 // The page reads layer areas to position its invisible DOM buttons; the scene only draws.
 //
-//   const scene = createBurgerScene(stageEl, { fit: 'assembled' | 'open', onAreas });
+//   const scene = createBurgerScene(stageEl, { recipe, fit: 'assembled' | 'open', onAreas });  // recipe: a Receita
 //   if (!scene) -> no WebGL: keep the SVG fallback.
 //   await scene.show({ open, removed }, { animate })  // animated unless animate:false or reduced motion
 //   scene.areas()                                // { [id]: { left, top, width, height } } in stage px
@@ -36,7 +36,6 @@ import {
   MathUtils,
 } from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
-import { ingredients } from '../ingredients.js';
 import { layerModels } from './layer-models.js';
 import { contactShadow, texturesReady } from './textures.js';
 
@@ -55,17 +54,13 @@ const HOLD_SCALE = 0.85;
 const TILT = { pitch: 10, yaw: 10, roll: 8 }; // degrees at |x| or |y| = 1
 const TILT_EASE = 0.12; // seconds to cover ~63% of the way to the target
 
-const ids = ingredients.map((i) => i.id);
-const heights = ids.map((id) => layerModels[id].height);
 const sum = (list) => list.reduce((a, b) => a + b, 0);
-const ASSEMBLED_HEIGHT = sum(heights);
-const OPEN_HEIGHT = ASSEMBLED_HEIGHT + OPEN_GAP * (ids.length - 1);
 
 const reducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 const easeOut = (t) => 1 - (1 - t) ** 3;
 
-/** Resting y of each Camada and whether it is shown, for a displayed state. */
-function layout({ open, removed }) {
+/** Resting y of each Camada (ids, bottom to top, with their heights) and whether it is shown, for a displayed state. */
+function layout(ids, heights, { open, removed }) {
   const targets = {};
   let stacked = 0;
   ids.forEach((id, index) => {
@@ -107,7 +102,14 @@ function createContext(canvas) {
   }
 }
 
-export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}, tiltScale = 1 } = {}) {
+export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = () => {}, tiltScale = 1 }) {
+  // Camadas by id; a repeated ingredient (two meats) has two ids sharing one model.
+  const ids = recipe.layers.map((l) => l.id);
+  const models = Object.fromEntries(recipe.layers.map((l) => [l.id, layerModels[l.model]]));
+  const heights = ids.map((id) => models[id].height);
+  const ASSEMBLED_HEIGHT = sum(heights);
+  const OPEN_HEIGHT = ASSEMBLED_HEIGHT + OPEN_GAP * (ids.length - 1);
+
   const canvas = document.createElement('canvas');
   canvas.className = 'burger-canvas';
   canvas.setAttribute('aria-hidden', 'true');
@@ -176,7 +178,7 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
     // The scene moves, scales and turns a holder; the model keeps its own transforms
     // (e.g. the cheese slice is turned 45°).
     const object = new Group();
-    object.add(layerModels[id].build());
+    object.add(models[id].build());
     burger.add(object);
     layers[id] = { object, x: 0, y: 0, z: 0, scale: 1, outline: outline(object) };
   }
@@ -407,7 +409,7 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
       if (key === shown) return animation ? animation.finished : Promise.resolve();
       shown = key;
       lastView = displayed;
-      const to = layout(displayed);
+      const to = layout(ids, heights, displayed);
       if (!animate) {
         animation?.done();
         animation = null;
@@ -431,7 +433,7 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
         lean();
         scene.updateMatrixWorld();
         setOverlay(true);
-        const centre = burger.localToWorld(new Vector3(layer.x, layer.y + layerModels[id].height / 2, layer.z));
+        const centre = burger.localToWorld(new Vector3(layer.x, layer.y + models[id].height / 2, layer.z));
         const at = underPointer(clientX, clientY, centre);
         if (!at) return;
         dragging = { id, grab: centre.clone().sub(at), depth: centre, pose: new Euler() };
@@ -442,7 +444,7 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
       const target = burger.worldToLocal(at.add(dragging.grab).addScaledVector(camera.getWorldDirection(new Vector3()), -0.35));
       dragging.pose.set(HOLD_TILT, 0, MathUtils.clamp(-target.x * 0.06, -0.15, 0.15));
       layer.scale = HOLD_SCALE;
-      const offset = new Vector3(0, layerModels[id].height / 2, 0).multiplyScalar(HOLD_SCALE).applyEuler(dragging.pose);
+      const offset = new Vector3(0, models[id].height / 2, 0).multiplyScalar(HOLD_SCALE).applyEuler(dragging.pose);
       layer.x = target.x - offset.x;
       layer.y = target.y - offset.y;
       layer.z = target.z - offset.z;
@@ -462,7 +464,7 @@ export function createBurgerScene(stage, { fit = 'assembled', onAreas = () => {}
     release() {
       if (!dragging) return Promise.resolve();
       dragging = null;
-      return animateTo(layout(lastView));
+      return animateTo(layout(ids, heights, lastView));
     },
     areas: () => currentAreas,
     /**

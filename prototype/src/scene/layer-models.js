@@ -1,4 +1,5 @@
-// Procedural 3D model of each Camada, keyed by ingredient id (see ../ingredients.js).
+// Procedural 3D model of each Camada, keyed by model name (each Receita in ../ingredients.js
+// names the model of its Camadas; two Camadas may share one).
 //
 // Contract for every entry:
 //   height: thickness of the Camada in scene units (burger radius ≈ 1, i.e. ~6 cm),
