@@ -746,7 +746,11 @@ function crispyOnion() {
       pieces.push(geometry);
     };
 
-    for (let placed = 0; placed < 1700; ) {
+    // Rejection sampling: 1700 pieces take ~2300 draws with this seed and mask. The cap only
+    // guards against a mask that rejects nearly everything (the loop would never end); it is
+    // well above what the approved look needs, so the pieces stay the same.
+    const PIECES = 1700, DRAWS = 6000;
+    for (let placed = 0, draws = 0; placed < PIECES && draws < DRAWS; draws++) {
       const a = rnd() * Math.PI * 2;
       const rim = edge(a);
       // Uniform over the disc; one in eight lands past the rim and slumps down onto the cheddar.
