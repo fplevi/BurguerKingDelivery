@@ -13,4 +13,4 @@ CDN: `https://d3sn2rlrwxy0ce.cloudfront.net/`.
 - `site_molhao_cebola_crispy.png`: Cebola Crispy.
 - `site_molhao_citrico.png`: Molhão Maionese Cítrica.
 
-Os arquivos originais são preservados. No Figma, as margens transparentes são recortadas na apresentação. O cardápio público consultado não informa preços; as novas telas usam “Consultar preço”.
+Os arquivos originais são preservados. No Figma, as margens transparentes são recortadas na apresentação. O cardápio público consultado não informa preços; o protótipo usa preços ilustrativos (`src/products.js`).
