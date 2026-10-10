@@ -324,7 +324,7 @@ function itemCard(item, i) {
   const combo = burger
     ? `<label class="check cart-combo"><input type="checkbox" data-key="${i}:combo"${item.combo ? ' checked' : ''}> Transformar em combo</label>${drinkPicker(item, i)}`
     : '';
-  return `<li class="cart-item${burger ? ' cart-burger' : ''}">${itemPhoto(item)}<div class="cart-head"><h2>${marks(itemName(item))}</h2><button class="secondary cart-remove">Remover</button></div>${ingredientsOf(item)}<div class="cart-controls">${combo}${qtyAndTotal(item, i)}</div></li>`;
+  return `<li class="cart-item${burger ? ' cart-burger' : ''}">${itemPhoto(item)}<div class="cart-head"><h2>${marks(itemName(item))}</h2><button class="secondary cart-remove" data-key="${i}:remove">Remover</button></div>${ingredientsOf(item)}<div class="cart-controls">${combo}${qtyAndTotal(item, i)}</div></li>`;
 }
 /** Opens the drink list of Item `i` with `active` highlighted (the chosen drink, or the first), or closes it (null). */
 function showDrinks(i, active) {
@@ -337,19 +337,24 @@ function chooseDrink(i, k) {
   dispatch({ type: 'itemDrink', index: i, value: drinks[k] });
   $('cart-content').querySelector(`[data-key="${i}:drink"]`)?.focus();
 }
+/** Aviso of the Item just removed, with Desfazer (Figma 06); gone at the next change in the cart or on leaving the Carrinho. */
+function removedNotice() {
+  const last = state.lastRemoved;
+  return last ? `<div class="cart-notice" role="status"><p>${marks(itemName(last.item))} removido do carrinho.</p><button class="secondary" data-key="undo">Desfazer</button></div>` : '';
+}
 function renderCart() {
   const units = state.cart.reduce((n, i) => n + i.qty, 0);
   const count = state.cart.length;
   $('cart-subtitle').hidden = !count;
   if (!count) {
     $('cart-content').innerHTML =
-      '<div class="cart-empty"><h2>Seu carrinho está vazio</h2><p>Escolha seus favoritos para começar.</p><button class="primary" data-back>Explorar cardápio</button></div>';
+      removedNotice() + '<div class="cart-empty"><h2>Seu carrinho está vazio</h2><p>Escolha seus favoritos para começar.</p><button class="primary" data-back>Explorar cardápio</button></div>';
     return;
   }
   $('cart-subtitle').textContent = units === count ? `${itemsText(count)} no carrinho` : `${units} unidades em ${itemsText(count)}`;
   // Rebuilt on every change: the control that had the focus gets it back (or, now disabled, its neighbour in the group).
   const focused = $('cart-content').contains(document.activeElement) ? document.activeElement.dataset.key : null;
-  $('cart-content').innerHTML = `<ul class="cart-items" aria-label="Itens">${state.cart.map(itemCard).join('')}</ul><aside class="cart-summary" aria-labelledby="summary-title"><h2 id="summary-title">Resumo do carrinho</h2><p class="summary-total">Total dos itens<strong>${money(
+  $('cart-content').innerHTML = `${removedNotice()}<ul class="cart-items" aria-label="Itens">${state.cart.map(itemCard).join('')}</ul><aside class="cart-summary" aria-labelledby="summary-title"><h2 id="summary-title">Resumo do carrinho</h2><p class="summary-total">Total dos itens<strong>${money(
     state.cart.reduce((n, i) => n + i.price * i.qty, 0),
   )}</strong></p><p class="summary-note">Entrega calculada na próxima etapa.</p><button class="primary" id="cart-continue">Continuar</button><button class="secondary" data-back>Adicionar mais itens</button></aside>`;
   const again = focused && $('cart-content').querySelector(`[data-key="${focused}"]`);
@@ -532,6 +537,16 @@ $('cart-page').addEventListener('click', (e) => {
   if (control === 'minus' || control === 'plus') dispatch({ type: 'itemQty', index: i, value: item.qty + (control === 'plus' ? 1 : -1) });
   if (control === 'drink') showDrinks(openDrink?.index === i ? null : i);
   if (control === 'option') chooseDrink(i, Number(key.split(':')[2]));
+  if (control === 'remove') {
+    openDrink = null;
+    dispatch({ type: 'itemRemove', index: i });
+    $('cart-content').querySelector('[data-key="undo"]').focus();
+  }
+  if (key === 'undo') {
+    const back = state.lastRemoved.index;
+    dispatch({ type: 'itemUndo' });
+    $('cart-content').querySelector(`[data-key="${back}:remove"]`).focus();
+  }
 });
 $('cart-page').addEventListener('change', (e) => {
   const [index, control] = e.target.dataset.key?.split(':') ?? [];
