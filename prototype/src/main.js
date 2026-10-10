@@ -356,9 +356,9 @@ function renderCart() {
   $('cart-subtitle').textContent = units === count ? `${itemsText(count)} no carrinho` : `${units} unidades em ${itemsText(count)}`;
   // Rebuilt on every change: the control that had the focus gets it back (or, now disabled, its neighbour in the group).
   const focused = $('cart-content').contains(document.activeElement) ? document.activeElement.dataset.key : null;
-  $('cart-content').innerHTML = `${removedNotice()}<ul class="cart-items" aria-label="Itens">${state.cart.map(itemCard).join('')}</ul><aside class="cart-summary" aria-labelledby="summary-title"><h2 id="summary-title">Resumo do carrinho</h2><p class="summary-total">Total dos itens<strong>${money(
-    state.cart.reduce((n, i) => n + i.price * i.qty, 0),
-  )}</strong></p><p class="summary-note">Entrega calculada na próxima etapa.</p><button class="primary" id="cart-continue">Continuar</button><button class="secondary" data-back>Adicionar mais itens</button></aside>`;
+  const total = money(state.cart.reduce((n, i) => n + i.price * i.qty, 0));
+  // Phones (< 1024px): a bar fixed at the bottom repeats Total dos itens and Continuar; hidden on desktop.
+  $('cart-content').innerHTML = `${removedNotice()}<ul class="cart-items" aria-label="Itens">${state.cart.map(itemCard).join('')}</ul><aside class="cart-summary" aria-labelledby="summary-title"><h2 id="summary-title">Resumo do carrinho</h2><p class="summary-total">Total dos itens<strong>${total}</strong></p><p class="summary-note">Entrega calculada na próxima etapa.</p><button class="primary" data-continue>Continuar</button><button class="secondary" data-back>Adicionar mais itens</button></aside><div class="cart-bar" role="region" aria-label="Total dos itens e Continuar"><p><span class="sr-only">Total dos itens</span><strong>${total}</strong></p><button class="primary" data-continue>Continuar</button></div>`;
   const again = focused && $('cart-content').querySelector(`[data-key="${focused}"]`);
   if (again) (again.disabled ? again.parentElement.querySelector('[data-key]:not(:disabled)') : again)?.focus();
 }
@@ -589,7 +589,7 @@ document.addEventListener('pointerdown', (e) => {
 });
 // Continuar: the first combo without a drink is scrolled to and its Bebida do combo focused; none, the toast.
 $('cart-page').addEventListener('click', (e) => {
-  if (e.target.id !== 'cart-continue') return;
+  if (!e.target.closest('[data-continue]')) return;
   dispatch({ type: 'continue' });
   const i = state.cart.findIndex((c) => c.drinkError);
   if (i < 0) return toast('Tudo certo! O pagamento não faz parte deste protótipo.');

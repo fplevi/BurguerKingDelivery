@@ -4,7 +4,8 @@ import { carrinho, itens, escolher, aviso } from './support.js';
 
 const adicionar = (page) => page.getByRole('button', { name: 'Adicionar ao carrinho' });
 const abrirCarrinho = (page) => page.getByRole('button', { name: /^Carrinho · / }).click();
-const continuar = (page) => carrinho(page).getByRole('button', { name: 'Continuar' });
+// The one in the Resumo do carrinho; on phones the fixed bar repeats it (tests/layout-carrinho.spec.js).
+const continuar = (page) => carrinho(page).getByRole('complementary', { name: 'Resumo do carrinho' }).getByRole('button', { name: 'Continuar' });
 const bebida = (item) => item.getByRole('combobox', { name: 'Bebida do combo' });
 const combo = (item) => item.getByRole('checkbox', { name: 'Transformar em combo' });
 const ERRO = 'Escolha a bebida do combo';
