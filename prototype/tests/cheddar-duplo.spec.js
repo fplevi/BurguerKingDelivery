@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { openVerIngredientes, verIngredientes, bandeja, camada, chip, descricao, retirado, dragTo, card, escolher } from './support.js';
+import { openVerIngredientes, verIngredientes, bandeja, camada, chip, descricao, retirado, dragTo, card, escolher, aviso } from './support.js';
 
 const heroTitle = (page) => page.getByRole('heading', { level: 1 });
 /** Camada of the assembled hero burger (a disabled button labelled "Retirar X"). */
@@ -126,7 +126,7 @@ test('Cheddar Duplo personalizado chega ao carrinho, com combo e bebida', async 
   await expect(verIngredientes(page)).toBeHidden();
 
   await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
-  await expect(page.getByRole('status')).toHaveText('Adicionado ao carrinho: Cheddar Duplo');
+  await expect(aviso(page)).toHaveText('Adicionado ao carrinho: Cheddar Duplo');
   await page.getByRole('button', { name: 'Carrinho · 1' }).click();
   await expect(carrinho(page).getByText('Cheddar Duplo × 1')).toBeVisible();
   await expect(carrinho(page).getByText('Combo · Fanta Laranja')).toBeVisible();

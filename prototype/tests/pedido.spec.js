@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { openVerIngredientes, verIngredientes, chip, card, escolher } from './support.js';
+import { openVerIngredientes, verIngredientes, chip, card, escolher, aviso } from './support.js';
 
 const carrinho = (page) => page.getByRole('dialog', { name: 'Seu carrinho' });
 
@@ -25,7 +25,7 @@ test('Whopper personalizado chega ao carrinho com combo, bebida, quantidade e in
   await quantidade(page).getByRole('button', { name: 'Aumentar quantidade' }).click();
 
   await adicionar(page).click();
-  await expect(page.getByRole('status')).toHaveText('Adicionado ao carrinho: Whopper');
+  await expect(aviso(page)).toHaveText('Adicionado ao carrinho: Whopper');
   await page.getByRole('button', { name: 'Carrinho · 2' }).click();
 
   await expect(carrinho(page)).toBeVisible();

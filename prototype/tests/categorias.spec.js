@@ -1,6 +1,6 @@
 // Acompanhamentos, Bebidas and Sobremesas (ticket 04 of revisao-figma): photo-only pages, same hero and grid.
 import { test, expect } from '@playwright/test';
-import { card, escolher, openVerIngredientes, verIngredientes, chip, descricao } from './support.js';
+import { card, escolher, openVerIngredientes, verIngredientes, chip, descricao, aviso } from './support.js';
 
 const categorias = (page) => page.getByRole('banner').getByRole('navigation', { name: 'Categorias' });
 const titulo = (page) => page.getByRole('heading', { level: 1 });
@@ -102,7 +102,7 @@ test('acompanhamento, bebida e sobremesa chegam ao carrinho com nome × quantida
   await escolher(page, 'Onion Rings');
   await aumentar(page).click();
   await adicionar.click();
-  await expect(page.getByRole('status')).toHaveText('Adicionado ao carrinho: Onion Rings');
+  await expect(aviso(page)).toHaveText('Adicionado ao carrinho: Onion Rings');
   // Back to Quantidade 1, the same product still selected.
   await expect(card(page, 'Onion Rings')).toHaveAttribute('aria-pressed', 'true');
   await expect(page.getByRole('group', { name: 'Quantidade' })).toHaveText(/^\D*1\D*$/);
@@ -134,7 +134,7 @@ test('o erro do combo sem bebida no hambúrguer não impede adicionar uma bebida
   await expect(page.getByText('Escolha a bebida do combo')).toBeVisible();
   await categorias(page).getByRole('link', { name: 'Bebidas' }).click();
   await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
-  await expect(page.getByRole('status')).toHaveText('Adicionado ao carrinho: Coca-Cola');
+  await expect(aviso(page)).toHaveText('Adicionado ao carrinho: Coca-Cola');
   await expect(page.getByRole('button', { name: 'Adicionar ao carrinho' })).toBeFocused();
   await expect(page.getByRole('button', { name: 'Carrinho · 1' })).toBeVisible();
 });

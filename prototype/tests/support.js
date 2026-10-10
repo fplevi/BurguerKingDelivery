@@ -56,3 +56,7 @@ export async function escolher(page, nome) {
   await card(page, nome).click();
   await expect(card(page, nome)).toHaveAttribute('aria-pressed', 'true');
 }
+
+// The toast (role="status") hides itself after 2.8 s; with software WebGL (CI) the page can be busy
+// redrawing the 3D for longer than that, so the check reads its last message, shown or not yet hidden.
+export const aviso = (page) => page.locator('#toast');
