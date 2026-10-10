@@ -4,7 +4,7 @@
 
 **Blocked by:** 03.
 
-**Status:** ready-for-agent
+**Status:** claimed
 
 - [ ] Modelo de página por foto, nos três layouts
 - [ ] Navegação por hash e memória da seleção por categoria
