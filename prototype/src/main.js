@@ -114,7 +114,7 @@ const burgers = [
   { name: 'Rodeio', photo: rodeioPhoto },
 ];
 /** Product names with ® raised, as in the Figma. */
-const marks = (text) => text.replace(/®/g, '<sup>®</sup>');
+const marks = (text) => text.replace(/®/g, '<span class="mark">®</span>');
 /** Draws only the photo's box (the file's transparent margins are cut off, as in the Figma). */
 const crop = ([x0, y0, x1, y1]) => `object-view-box:inset(${y0}px ${800 - x1}px ${800 - y1}px ${x0}px)`;
 const badge =
@@ -131,7 +131,7 @@ function buildGrid() {
     ? category.products
         .map(
           (p) =>
-            `<button class="card" aria-pressed="false" data-product="${p.id}">${badge}<img class="catalog-photo" src="${p.photo}" style="${crop(p.box)}" alt="" loading="lazy" decoding="async"><span class="card-name">${marks(p.name)}</span></button>`,
+            `<button class="card" aria-pressed="false" data-product="${p.id}">${badge}<img class="catalog-photo" src="${p.photo}" style="${crop(p.box)}" alt="" loading="lazy" decoding="async"><span class="card-name"><span>${marks(p.name)}</span></span></button>`,
         )
         .join('')
     : burgers

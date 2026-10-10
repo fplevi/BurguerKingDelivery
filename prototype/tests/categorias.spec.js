@@ -81,3 +81,57 @@ test('o endereço com #acompanhamentos abre a categoria, e voltar no navegador r
   await expect(titulo(page)).toHaveAccessibleName('Whopper Clássico');
   await expect(categorias(page).getByRole('link', { name: 'Hambúrgueres' })).toHaveAttribute('aria-current', 'page');
 });
+
+test('acompanhamento, bebida e sobremesa chegam ao carrinho com nome × quantidade e total; Item idêntico soma', async ({ page }) => {
+  const adicionar = page.getByRole('button', { name: 'Adicionar ao carrinho' });
+  await categorias(page).getByRole('link', { name: 'Acompanhamentos' }).click();
+  await escolher(page, 'Onion Rings');
+  await aumentar(page).click();
+  await adicionar.click();
+  await expect(page.getByRole('status')).toHaveText('Onion Rings adicionado ao carrinho');
+  // Back to Quantidade 1, the same product still selected.
+  await expect(card(page, 'Onion Rings')).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.getByRole('group', { name: 'Quantidade' })).toHaveText(/^\D*1\D*$/);
+  await adicionar.click();
+
+  await categorias(page).getByRole('link', { name: 'Bebidas' }).click();
+  await adicionar.click();
+  await categorias(page).getByRole('link', { name: 'Sobremesas' }).click();
+  await escolher(page, 'BK® Mix Crocante');
+  await adicionar.click();
+
+  await page.getByRole('button', { name: 'Carrinho · 5' }).click();
+  const carrinho = page.getByRole('dialog', { name: 'Seu carrinho' });
+  await expect(carrinho.locator('.cart-row')).toHaveCount(3);
+  await expect(carrinho.getByText('Onion Rings × 3')).toBeVisible();
+  await expect(carrinho.getByText('R$ 47,70', { exact: true })).toBeVisible();
+  await expect(carrinho.getByText('Coca-Cola × 1')).toBeVisible();
+  await expect(carrinho.getByText('R$ 9,90', { exact: true })).toBeVisible();
+  await expect(carrinho.getByText('BK® Mix Crocante × 1')).toBeVisible();
+  await expect(carrinho.getByText('R$ 23,90', { exact: true })).toBeVisible();
+  await expect(carrinho.getByText('Combo')).toHaveCount(0);
+  await expect(carrinho.getByText(/^Sem:/)).toHaveCount(0);
+  await expect(carrinho.getByText('Total: R$ 81,50')).toBeVisible();
+});
+
+test('todos os produtos das três categorias têm foto, nome, descrição e preço', async ({ page }) => {
+  const todas = {
+    Acompanhamentos: ['Esferas do Dragão de Pepperoni', 'Batata Frita', 'Balde de Batata', 'Onion Rings', 'BK Chicken', 'Molhão Baconese', 'Cebola Crispy', 'Molhão Maionese Cítrica'],
+    Bebidas: ['Coca-Cola', 'Coca-Cola Zero', 'Natural One Laranja', 'Natural One Uva', 'Sprite', 'Fanta Laranja', 'Água de Copo'],
+    Sobremesas: ['BK® Mix Nutella® com Brownie', 'BK® Mix Leite em Pó com Nutella®', 'BK® Mix Cookies com Nutella®', 'BK® Mix Biscoff®', 'BK® Mix de Brownie', 'BK® Mix Crocante', 'Sundae de Chocolate', 'Sundae de Doce de Leite'],
+  };
+  for (const [categoria, lista] of Object.entries(todas)) {
+    await categorias(page).getByRole('link', { name: categoria }).click();
+    await expect(grade(page)).toHaveText(nomes(lista));
+    for (const nome of lista) {
+      await escolher(page, nome);
+      for (const img of [page.locator('#product-photo'), card(page, nome).locator('img')]) {
+        await expect(img).toBeVisible();
+        await expect.poll(() => img.evaluate((i) => i.complete && i.naturalWidth > 0)).toBe(true);
+      }
+      await expect(page.locator('#product-description')).toHaveText(/\S.+\.$/);
+      await expect(total(page)).toHaveText(/^R\$\s\d+,\d\d$/);
+    }
+  }
+  await expect(page.getByText(/Consultar preço/)).toHaveCount(0);
+});
