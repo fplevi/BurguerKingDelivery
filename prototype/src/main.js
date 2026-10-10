@@ -192,7 +192,15 @@ function closedPositions(removed) {
 function heroTitle(title) {
   const [first, ...rest] = title.includes('\n') ? title.split('\n') : title.split(' ');
   $('product-title').innerHTML = `<span>${marks(first)}</span><br>${marks(rest.join(' '))}`;
+  fitTitle();
 }
+/** The title's lines don't wrap: a line wider than the column shrinks the title to fit it. */
+function fitTitle() {
+  const h1 = $('product-title');
+  h1.style.fontSize = '';
+  if (h1.scrollWidth > h1.clientWidth) h1.style.fontSize = (parseFloat(getComputedStyle(h1).fontSize) * h1.clientWidth) / h1.scrollWidth + 'px';
+}
+addEventListener('resize', fitTitle);
 
 function render() {
   buildGrid();
@@ -460,7 +468,11 @@ $('cart').onclick = (e) => {
   if (e.target === $('cart')) closeCart();
 };
 // Categories: the hash picks the page content (#acompanhamentos, #bebidas, #sobremesas; anything else, Hambúrgueres).
-const fromHash = () => dispatch({ type: 'category', category: location.hash.slice(1) });
+const fromHash = () => {
+  dispatch({ type: 'category', category: location.hash.slice(1) });
+  // Phones: the tabs scroll sideways; keep the active one in view.
+  document.querySelector('nav a[aria-current]').scrollIntoView({ block: 'nearest', inline: 'nearest' });
+};
 addEventListener('hashchange', fromHash);
 
 document.addEventListener('keydown', (e) => {

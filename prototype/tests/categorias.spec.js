@@ -135,3 +135,85 @@ test('todos os produtos das três categorias têm foto, nome, descrição e pre�
   }
   await expect(page.getByText(/Consultar preço/)).toHaveCount(0);
 });
+
+// The three layouts of ticket 03, with the photo in place of the 3D.
+const caixa = async (locator) => {
+  await expect(locator).toBeVisible();
+  return locator.boundingBox();
+};
+const hero = (page, heading) => ({
+  titulo: titulo(page),
+  foto: page.getByRole('main').getByRole('img', { name: /./ }).first(),
+  descricao: page.locator('#product-description'),
+  quantidade: page.getByRole('group', { name: 'Quantidade' }),
+  adicionar: page.getByRole('button', { name: 'Adicionar ao carrinho' }),
+  grade: page.getByRole('heading', { name: heading }),
+});
+const semRolagemHorizontal = async (page) =>
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(0);
+
+test.describe('celular e tablet (< 1024px)', () => {
+  test.skip(({ isMobile }) => !isMobile, 'only in the 390 × 844 project');
+
+  test('390: Sobremesas em uma coluna (título, foto, descrição, card, grade em 2 colunas) e a aba ativa à vista', async ({ page }) => {
+    await page.goto('/#sobremesas');
+    const h = hero(page, 'Escolha sua sobremesa');
+    let anterior = null;
+    for (const item of [h.titulo, h.foto, h.descricao, h.quantidade, h.adicionar, h.grade]) {
+      const box = await caixa(item);
+      if (anterior) expect(box.y).toBeGreaterThanOrEqual(anterior.y + anterior.height - 1);
+      anterior = box;
+    }
+    const [a, b, c] = await Promise.all([0, 1, 2].map((i) => caixa(grade(page).nth(i))));
+    expect(b.y).toBe(a.y);
+    expect(c.x).toBe(a.x);
+    await expect(categorias(page).getByRole('link', { name: 'Sobremesas' })).toBeInViewport({ ratio: 0.95 });
+    expect((await caixa(h.titulo)).width).toBeLessThanOrEqual(390);
+    await semRolagemHorizontal(page);
+  });
+});
+
+test.describe('desktop', () => {
+  test.skip(({ isMobile }) => isMobile, 'only in the desktop project');
+
+  test('1280: Acompanhamentos com título e card à esquerda, foto à direita com a descrição abaixo, grade em 4 colunas', async ({ page }) => {
+    await page.goto('/#acompanhamentos');
+    const h = hero(page, 'Escolha seu acompanhamento');
+    const [tit, adicionar, foto, desc, grd] = await Promise.all([h.titulo, h.adicionar, h.foto, h.descricao, h.grade].map(caixa));
+    expect(adicionar.y).toBeGreaterThan(tit.y + tit.height);
+    expect(foto.x).toBeGreaterThanOrEqual(adicionar.x + adicionar.width);
+    expect(foto.y).toBeLessThan(adicionar.y);
+    expect(desc.y).toBeGreaterThanOrEqual(foto.y + foto.height);
+    expect(grd.y).toBeGreaterThan(Math.max(adicionar.y + adicionar.height, desc.y + desc.height));
+    const linha = await Promise.all([0, 1, 2, 3, 4].map((i) => caixa(grade(page).nth(i))));
+    for (const c of linha.slice(1, 4)) expect(c.y).toBe(linha[0].y);
+    expect(linha[4].x).toBe(linha[0].x);
+    await semRolagemHorizontal(page);
+  });
+
+  test.describe('≥ 1920px', () => {
+    test.use({ viewport: { width: 1920, height: 1080 } });
+
+    test('1920: Bebidas sem rolagem da página, coluna lateral "Escolha sua bebida" em 2 colunas com rolagem própria', async ({ page }) => {
+      await page.goto('/#bebidas');
+      const h = hero(page, 'Escolha sua bebida');
+      expect(await page.evaluate(() => document.documentElement.scrollHeight)).toBeLessThanOrEqual(1080);
+      const [foto, adicionar, grd] = await Promise.all([h.foto, h.adicionar, h.grade].map(caixa));
+      expect(grd.x).toBeGreaterThan(foto.x + foto.width);
+      expect(adicionar.x + adicionar.width).toBeLessThanOrEqual(foto.x);
+      const [a, b, c] = await Promise.all([0, 1, 2].map((i) => caixa(grade(page).nth(i))));
+      expect(b.y).toBe(a.y);
+      expect(c.x).toBe(a.x);
+      const coluna = page.locator('#catalog');
+      expect(await coluna.evaluate((el) => el.scrollHeight > el.clientHeight)).toBe(true);
+      await page.mouse.move(grd.x + 100, grd.y + 300);
+      await page.mouse.wheel(0, 600);
+      await expect.poll(() => coluna.evaluate((el) => el.scrollTop)).toBeGreaterThan(0);
+      expect(await page.evaluate(() => scrollY)).toBe(0);
+      // Another category starts its column at the top.
+      await categorias(page).getByRole('link', { name: 'Sobremesas' }).click();
+      await expect(page.getByRole('heading', { name: 'Escolha sua sobremesa' })).toBeInViewport();
+      expect(await coluna.evaluate((el) => el.scrollTop)).toBe(0);
+    });
+  });
+});
