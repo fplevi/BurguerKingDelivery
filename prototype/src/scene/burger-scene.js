@@ -333,10 +333,6 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
       camera.setViewOffset(width, height, -rect.left, -rect.top, view.width, view.height);
     } else {
       view = { width, height, left: 0, top: 0 };
-      // The stage's size in px, not back to the stylesheet's 100%: coming back from the fixed
-      // overlay, Chrome kept the viewport-sized box (burger drawn huge over the Bandeja) until
-      // something else relaid the stage out, which never happens with the pointer on the Bandeja.
-      Object.assign(canvas.style, { width: width + 'px', height: height + 'px' });
       camera.clearViewOffset();
     }
     renderer.setSize(view.width, view.height, false);
@@ -346,6 +342,15 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
     if (on === overlay) return;
     overlay = on;
     canvas.classList.toggle('burger-canvas--overlay', on);
+    if (!on) {
+      // Back to the stylesheet's size (the stage). Layout must run before resize() shrinks the
+      // drawing buffer: when the canvas's own size (width/height attributes) and its CSS box
+      // (fixed, viewport px -> absolute, 100%) change in the same layout pass, Chrome keeps the
+      // old viewport-sized box until something relays the stage out (the burger was drawn
+      // huge over the Bandeja after a drop there, ticket 04 review).
+      Object.assign(canvas.style, { width: '', height: '' });
+      void canvas.offsetWidth;
+    }
     resize();
   }
 
