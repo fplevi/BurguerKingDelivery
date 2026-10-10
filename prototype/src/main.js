@@ -316,7 +316,9 @@ function drinkPicker(item, i) {
         `<li role="option" id="item-${i}-drink-${k}" data-key="${i}:option:${k}" aria-selected="${d === item.drink}"${open && openDrink.active === k ? ' class="active"' : ''}>${d}</li>`,
     )
     .join('');
-  return `<div class="cart-drink"><span class="item-label" id="item-${i}-drink">Bebida do combo</span><div class="picker"><button class="field picker-button" role="combobox" data-key="${i}:drink" aria-labelledby="item-${i}-drink" aria-haspopup="listbox" aria-controls="item-${i}-drinks" aria-expanded="${open}"${open ? ` aria-activedescendant="item-${i}-drink-${openDrink.active}"` : ''}${item.combo ? '' : ' disabled'}>${item.drink || 'Selecione uma bebida'}</button><ul class="picker-list" role="listbox" id="item-${i}-drinks" aria-labelledby="item-${i}-drink"${open ? '' : ' hidden'}>${options}</ul></div></div>`;
+  // Continuar with the combo but no drink: red border and "Escolha a bebida do combo", as on the burger card.
+  const error = item.drinkError ? ` aria-invalid="true" aria-describedby="item-${i}-drink-error"` : '';
+  return `<div class="cart-drink"><span class="item-label" id="item-${i}-drink">Bebida do combo</span><div class="picker"><button class="field picker-button" role="combobox" data-key="${i}:drink" aria-labelledby="item-${i}-drink" aria-haspopup="listbox" aria-controls="item-${i}-drinks" aria-expanded="${open}"${open ? ` aria-activedescendant="item-${i}-drink-${openDrink.active}"` : ''}${error}${item.combo ? '' : ' disabled'}>${item.drink || 'Selecione uma bebida'}</button><ul class="picker-list" role="listbox" id="item-${i}-drinks" aria-labelledby="item-${i}-drink"${open ? '' : ' hidden'}>${options}</ul></div>${item.drinkError ? `<p class="field-error" id="item-${i}-drink-error">Escolha a bebida do combo</p>` : ''}</div>`;
 }
 /** Card of Item `i`: photo, name and Remover; a burger also has Ingredientes, combo and Bebida do combo; then Quantidade and Total do item. */
 function itemCard(item, i) {
@@ -569,6 +571,16 @@ $('cart-page').addEventListener('mousedown', (e) => {
 });
 document.addEventListener('pointerdown', (e) => {
   if (openDrink && !e.target.closest('.picker')) showDrinks(null);
+});
+// Continuar: the first combo without a drink is scrolled to and its Bebida do combo focused; none, the toast.
+$('cart-page').addEventListener('click', (e) => {
+  if (e.target.id !== 'cart-continue') return;
+  dispatch({ type: 'continue' });
+  const i = state.cart.findIndex((c) => c.drinkError);
+  if (i < 0) return toast('Tudo certo! O pagamento não faz parte deste protótipo.');
+  const picker = $('cart-content').querySelector(`[data-key="${i}:drink"]`);
+  picker.closest('.cart-item').scrollIntoView({ block: 'center' });
+  picker.focus({ preventScroll: true });
 });
 $('cart-page').addEventListener('click', (e) => {
   if (!e.target.closest('[data-back]')) return;
