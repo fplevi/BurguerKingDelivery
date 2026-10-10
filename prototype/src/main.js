@@ -1,6 +1,6 @@
 import { recipes, layer } from './ingredients.js';
 import { art } from './art.js';
-import { initial, reducer, money, price } from './state.js';
+import { initial, reducer, money, price, drinks } from './state.js';
 import { createBurgerScene } from './scene/burger-scene.js';
 import whopperPhoto from '../Assets/burgers/official/site_Whopper.png';
 import cheddarDuploPhoto from '../Assets/burgers/official/site_Cheddar_Duplo.png';
@@ -190,6 +190,8 @@ function render() {
     .querySelectorAll('#hero-burger .layer')
     .forEach((b) => b.classList.toggle('removed', state.removed.includes(b.dataset.id)));
   $('combo').checked = state.combo;
+  $('drink').disabled = !state.combo;
+  $('drink').value = state.drink;
   $('total').textContent = money(price(state));
   $('custom-note').textContent = state.removed.length ? without(state.removed, product) : 'Preparado com todos os ingredientes';
   $('playground').classList.toggle('open', state.editing);
@@ -386,6 +388,8 @@ $('close').onclick = $('cancel').onclick = () => closeEditor('cancel');
 $('apply').onclick = () => closeEditor('apply');
 $('reset').onclick = () => dispatch({ type: 'reset' });
 $('combo').onchange = (e) => dispatch({ type: 'combo', value: e.target.checked });
+$('drink').insertAdjacentHTML('beforeend', drinks.map((d) => `<option>${d}</option>`).join(''));
+$('drink').onchange = (e) => dispatch({ type: 'drink', value: e.target.value });
 $('add').onclick = () => {
   dispatch({ type: 'add' });
   toast(`${recipe().shortName} adicionado ao carrinho`);

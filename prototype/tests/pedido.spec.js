@@ -37,6 +37,23 @@ test('o Combo começa desmarcado e soma R$ 12,00, sem tamanhos', async ({ page }
   await expect(total(page)).toHaveText('R$ 31,90');
 });
 
+const bebida = (page) => page.getByRole('combobox', { name: 'Bebida do combo' });
+const bebidas = ['Coca-Cola', 'Coca-Cola Zero', 'Sprite', 'Fanta Laranja', 'Natural One Laranja', 'Natural One Uva', 'Água de Copo'];
+
+test('a Bebida do combo só se escolhe com o Combo marcado e nunca vem preenchida', async ({ page }) => {
+  await expect(bebida(page)).toBeDisabled();
+  await expect(bebida(page).locator('option:checked')).toHaveText('Selecione uma bebida');
+  await combo(page).check();
+  await expect(bebida(page)).toBeEnabled();
+  await expect(bebida(page).locator('option:checked')).toHaveText('Selecione uma bebida');
+  await expect(bebida(page).locator('option:not([disabled])')).toHaveText(bebidas);
+  await bebida(page).selectOption('Sprite');
+  await expect(total(page)).toHaveText('R$ 43,90');
+  await combo(page).uncheck();
+  await expect(bebida(page)).toBeDisabled();
+  await expect(bebida(page).locator('option:checked')).toHaveText('Selecione uma bebida');
+});
+
 test('item pode ser removido do carrinho', async ({ page }) => {
   await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
   await page.getByRole('button', { name: 'Carrinho · 1' }).click();
