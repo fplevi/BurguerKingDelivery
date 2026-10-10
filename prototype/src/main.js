@@ -1,4 +1,4 @@
-import { recipes, layer, description } from './ingredients.js';
+import { recipes, layer, description, removedLine } from './ingredients.js';
 import { art } from './art.js';
 import { initial, reducer, money, drinks, pick, itemTotal, itemName } from './state.js';
 import { categories, products } from './products.js';
@@ -288,12 +288,54 @@ function render() {
   else $('cart-content').replaceChildren();
 }
 
-/** Carrinho screen: the Itens (photo, name, Total do item) and the Resumo do carrinho, or the empty state. */
+/** Carrinho screen: the Itens (each one editable, see itemCard) and the Resumo do carrinho, or the empty state. */
 const itemsText = (n) => (n === 1 ? '1 item' : `${n} itens`);
 function itemPhoto(item) {
   const photo = products[item.product];
   if (photo) return `<span class="cart-photo photo-crop" style="${crop(photo.box)}"><img src="${photo.photo}" alt=""></span>`;
   return `<img class="cart-photo" src="${burgers.find((b) => b.recipe === item.product).photo}" width="400" height="400" alt="">`;
+}
+/** Burger Item: "Ingredientes:" with the hero's description, and the removed line (red) or "Todos os ingredientes". */
+function ingredientsOf(item) {
+  const r = recipes[item.product];
+  if (!r) return '';
+  return `<div class="cart-ingredients"><p>Ingredientes:</p><p>${description(r, item.removed)}</p><p${item.removed.length ? ' class="cart-without"' : ''}>${removedLine(r, item.removed)}</p></div>`;
+}
+/** Quantidade (1-99; "−" disabled at 1) and Total do item of Item `i`. */
+function qtyAndTotal(item, i) {
+  return `<div class="cart-qty"><span class="item-label" id="item-${i}-qty">Quantidade</span><div class="qty" role="group" aria-labelledby="item-${i}-qty"><button data-key="${i}:minus" aria-label="Diminuir quantidade" ${item.qty <= 1 ? 'disabled' : ''}>−</button><span aria-live="polite">${item.qty}</span><button data-key="${i}:plus" aria-label="Aumentar quantidade" ${item.qty >= 99 ? 'disabled' : ''}>+</button></div></div><div class="total">Total do item<strong>${money(item.price * item.qty)}</strong></div>`;
+}
+// Bebida do combo of the Carrinho: a select-only combobox (ARIA listbox pattern) whose list opens over
+// the page. Which list is open, and its active option, is view state only: { index, active } or null.
+let openDrink = null;
+function drinkPicker(item, i) {
+  const open = openDrink?.index === i;
+  const options = drinks
+    .map(
+      (d, k) =>
+        `<li role="option" id="item-${i}-drink-${k}" data-key="${i}:option:${k}" aria-selected="${d === item.drink}"${open && openDrink.active === k ? ' class="active"' : ''}>${d}</li>`,
+    )
+    .join('');
+  return `<div class="cart-drink"><span class="item-label" id="item-${i}-drink">Bebida do combo</span><div class="picker"><button class="field picker-button" role="combobox" data-key="${i}:drink" aria-labelledby="item-${i}-drink" aria-haspopup="listbox" aria-controls="item-${i}-drinks" aria-expanded="${open}"${open ? ` aria-activedescendant="item-${i}-drink-${openDrink.active}"` : ''}${item.combo ? '' : ' disabled'}>${item.drink || 'Selecione uma bebida'}</button><ul class="picker-list" role="listbox" id="item-${i}-drinks" aria-labelledby="item-${i}-drink"${open ? '' : ' hidden'}>${options}</ul></div></div>`;
+}
+/** Card of Item `i`: photo, name and Remover; a burger also has Ingredientes, combo and Bebida do combo; then Quantidade and Total do item. */
+function itemCard(item, i) {
+  const burger = recipes[item.product];
+  const combo = burger
+    ? `<label class="check cart-combo"><input type="checkbox" data-key="${i}:combo"${item.combo ? ' checked' : ''}> Transformar em combo</label>${drinkPicker(item, i)}`
+    : '';
+  return `<li class="cart-item${burger ? ' cart-burger' : ''}">${itemPhoto(item)}<div class="cart-head"><h2>${marks(itemName(item))}</h2><button class="secondary cart-remove">Remover</button></div>${ingredientsOf(item)}<div class="cart-controls">${combo}${qtyAndTotal(item, i)}</div></li>`;
+}
+/** Opens the drink list of Item `i` with `active` highlighted (the chosen drink, or the first), or closes it (null). */
+function showDrinks(i, active) {
+  openDrink = i === null ? null : { index: i, active: active ?? Math.max(0, drinks.indexOf(state.cart[i].drink)) };
+  render();
+  if (openDrink) $(`item-${i}-drink-${openDrink.active}`)?.scrollIntoView({ block: 'nearest' });
+}
+function chooseDrink(i, k) {
+  openDrink = null;
+  dispatch({ type: 'itemDrink', index: i, value: drinks[k] });
+  $('cart-content').querySelector(`[data-key="${i}:drink"]`)?.focus();
 }
 function renderCart() {
   const units = state.cart.reduce((n, i) => n + i.qty, 0);
@@ -305,14 +347,13 @@ function renderCart() {
     return;
   }
   $('cart-subtitle').textContent = units === count ? `${itemsText(count)} no carrinho` : `${units} unidades em ${itemsText(count)}`;
-  $('cart-content').innerHTML = `<ul class="cart-items" aria-label="Itens">${state.cart
-    .map(
-      (item) =>
-        `<li class="cart-item">${itemPhoto(item)}<h2>${marks(itemName(item))}</h2><div class="total">Total do item<strong>${money(item.price * item.qty)}</strong></div></li>`,
-    )
-    .join('')}</ul><aside class="cart-summary" aria-labelledby="summary-title"><h2 id="summary-title">Resumo do carrinho</h2><p class="summary-total">Total dos itens<strong>${money(
+  // Rebuilt on every change: the control that had the focus gets it back (or, now disabled, its neighbour in the group).
+  const focused = $('cart-content').contains(document.activeElement) ? document.activeElement.dataset.key : null;
+  $('cart-content').innerHTML = `<ul class="cart-items" aria-label="Itens">${state.cart.map(itemCard).join('')}</ul><aside class="cart-summary" aria-labelledby="summary-title"><h2 id="summary-title">Resumo do carrinho</h2><p class="summary-total">Total dos itens<strong>${money(
     state.cart.reduce((n, i) => n + i.price * i.qty, 0),
   )}</strong></p><p class="summary-note">Entrega calculada na próxima etapa.</p><button class="primary" id="cart-continue">Continuar</button><button class="secondary" data-back>Adicionar mais itens</button></aside>`;
+  const again = focused && $('cart-content').querySelector(`[data-key="${focused}"]`);
+  if (again) (again.disabled ? again.parentElement.querySelector('[data-key]:not(:disabled)') : again)?.focus();
 }
 
 // Bandeja: each removed ingredient as an image of its own Camada (rendered by the scene,
@@ -481,6 +522,54 @@ $('cart-open').onclick = () => (location.hash = 'carrinho');
 // opened by the address, there is none and the category's hash is pushed instead.
 let fromMenu = false,
   started = false;
+// Controls of each Item (data-key "index:control"): Quantidade, combo and the Bebida do combo.
+$('cart-page').addEventListener('click', (e) => {
+  const key = e.target.closest('[data-key]')?.dataset.key;
+  if (!key) return;
+  const [index, control] = key.split(':'),
+    i = Number(index),
+    item = state.cart[i];
+  if (control === 'minus' || control === 'plus') dispatch({ type: 'itemQty', index: i, value: item.qty + (control === 'plus' ? 1 : -1) });
+  if (control === 'drink') showDrinks(openDrink?.index === i ? null : i);
+  if (control === 'option') chooseDrink(i, Number(key.split(':')[2]));
+});
+$('cart-page').addEventListener('change', (e) => {
+  const [index, control] = e.target.dataset.key?.split(':') ?? [];
+  if (control !== 'combo') return;
+  if (openDrink?.index === Number(index)) openDrink = null;
+  dispatch({ type: 'itemCombo', index: Number(index), value: e.target.checked });
+});
+// Keyboard of the Bebida do combo (select-only combobox): closed, ↓ ↑ Enter Space open it; open, ↓ ↑ Home End move the
+// active option, Enter or Space choose it, Esc closes without changing and Tab closes and moves on.
+$('cart-page').addEventListener('keydown', (e) => {
+  const [index, control] = e.target.dataset.key?.split(':') ?? [];
+  if (control !== 'drink') return;
+  const i = Number(index),
+    last = drinks.length - 1;
+  if (openDrink?.index !== i) {
+    if (!['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key)) return;
+    e.preventDefault();
+    return showDrinks(i);
+  }
+  const moves = { ArrowDown: Math.min(last, openDrink.active + 1), ArrowUp: Math.max(0, openDrink.active - 1), Home: 0, End: last };
+  if (e.key in moves) showDrinks(i, moves[e.key]);
+  else if (e.key === 'Enter' || e.key === ' ') chooseDrink(i, openDrink.active);
+  else if (e.key === 'Escape') showDrinks(null);
+  else if (e.key === 'Tab') return showDrinks(null);
+  else return;
+  e.preventDefault();
+});
+// Space activates a button on keyup: the keydown above already handled it.
+$('cart-page').addEventListener('keyup', (e) => {
+  if (e.key === ' ' && e.target.dataset.key?.endsWith(':drink')) e.preventDefault();
+});
+// Choosing an option with the mouse keeps the focus on the combobox; pressing anywhere else closes the list.
+$('cart-page').addEventListener('mousedown', (e) => {
+  if (e.target.closest('[role=listbox]')) e.preventDefault();
+});
+document.addEventListener('pointerdown', (e) => {
+  if (openDrink && !e.target.closest('.picker')) showDrinks(null);
+});
 $('cart-page').addEventListener('click', (e) => {
   if (!e.target.closest('[data-back]')) return;
   if (fromMenu) history.back();
