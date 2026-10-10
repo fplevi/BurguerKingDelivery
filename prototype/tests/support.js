@@ -57,6 +57,16 @@ export async function escolher(page, nome) {
   await expect(card(page, nome)).toHaveAttribute('aria-pressed', 'true');
 }
 
+/** The Carrinho screen (#carrinho), a region named by its title. */
+export const carrinho = (page) => page.getByRole('region', { name: 'Seu carrinho' });
+/** The Itens of the Carrinho, in order. */
+export const itens = (page) => carrinho(page).getByRole('list', { name: 'Itens' }).getByRole('listitem');
+/** Total do item of one Item of the Carrinho. */
+export const totalDoItem = (item) => item.getByText('Total do item').locator('strong');
+/** Total dos itens in the Resumo do carrinho. */
+export const totalDosItens = (page) =>
+  carrinho(page).getByRole('complementary', { name: 'Resumo do carrinho' }).getByText('Total dos itens').locator('strong');
+
 // The toast (role="status") hides itself after 2.8 s; with software WebGL (CI) the page can be busy
 // redrawing the 3D for longer than that, so the check reads its last message, shown or not yet hidden.
 export const aviso = (page) => page.locator('#toast');

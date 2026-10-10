@@ -1,7 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { openVerIngredientes, verIngredientes, chip, card, escolher, aviso } from './support.js';
-
-const carrinho = (page) => page.getByRole('dialog', { name: 'Seu carrinho' });
+import { openVerIngredientes, verIngredientes, chip, card, escolher, aviso, carrinho, itens, totalDoItem, totalDosItens } from './support.js';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/');
@@ -29,11 +27,12 @@ test('Whopper personalizado chega ao carrinho com combo, bebida, quantidade e in
   await page.getByRole('button', { name: 'Carrinho · 2' }).click();
 
   await expect(carrinho(page)).toBeVisible();
-  await expect(carrinho(page).getByText('Whopper® × 2')).toBeVisible();
-  await expect(carrinho(page).getByText('Combo · Coca-Cola')).toBeVisible();
-  await expect(carrinho(page).getByText('Sem: tomate, ketchup')).toBeVisible();
-  await expect(carrinho(page).getByText('R$ 87,80', { exact: true })).toBeVisible();
-  await expect(carrinho(page).getByText('Total: R$ 87,80')).toBeVisible();
+  await expect(carrinho(page).getByText('2 unidades em 1 item', { exact: true })).toBeVisible();
+  await expect(itens(page)).toHaveCount(1);
+  await expect(itens(page).getByRole('heading')).toHaveText('Whopper®');
+  // Combo, drink and Personalização show on the Item from carrinho 03; the combo is already in the Total do item.
+  await expect(totalDoItem(itens(page))).toHaveText('R$ 87,80');
+  await expect(totalDosItens(page)).toHaveText('R$ 87,80');
 });
 
 test('depois de adicionar, o card e o hambúrguer voltam ao padrão com o mesmo hambúrguer selecionado', async ({ page }) => {
@@ -65,10 +64,11 @@ test('Item idêntico soma na quantidade do que já está no carrinho', async ({ 
   await bebida(page).selectOption('Sprite');
   await adicionar(page).click();
   await page.getByRole('button', { name: 'Carrinho · 3' }).click();
-  await expect(carrinho(page).getByText('Whopper® × 2')).toBeVisible();
-  await expect(carrinho(page).getByText('Whopper® × 1')).toBeVisible();
-  await expect(carrinho(page).getByText('Combo · Sprite')).toBeVisible();
-  await expect(carrinho(page).getByText('Total: R$ 107,70')).toBeVisible();
+  await expect(carrinho(page).getByText('3 unidades em 2 itens', { exact: true })).toBeVisible();
+  await expect(itens(page)).toHaveCount(2);
+  await expect(totalDoItem(itens(page).nth(0))).toHaveText('R$ 63,80');
+  await expect(totalDoItem(itens(page).nth(1))).toHaveText('R$ 43,90');
+  await expect(totalDosItens(page)).toHaveText('R$ 107,70');
 });
 
 test('trocar de hambúrguer volta o card ao padrão', async ({ page }) => {
@@ -135,16 +135,6 @@ test('a Quantidade começa em 1 e multiplica o Total do item', async ({ page }) 
   await expect(total(page)).toHaveText('R$ 131,70');
   await menos.click();
   await expect(total(page)).toHaveText('R$ 87,80');
-});
-
-test('item pode ser removido do carrinho', async ({ page }) => {
-  await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
-  await page.getByRole('button', { name: 'Carrinho · 1' }).click();
-  await expect(carrinho(page).getByText('Whopper® × 1')).toBeVisible();
-  await carrinho(page).getByRole('button', { name: 'Remover item' }).click();
-  await expect(carrinho(page).getByText('Seu carrinho está vazio.')).toBeVisible();
-  await carrinho(page).getByRole('button', { name: 'Fechar' }).click();
-  await expect(page.getByRole('button', { name: 'Carrinho · 0' })).toBeVisible();
 });
 
 test('grade de produtos mostra os oito hambúrgueres oficiais com o Whopper selecionado', async ({ page }) => {

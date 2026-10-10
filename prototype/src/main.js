@@ -204,9 +204,13 @@ addEventListener('resize', fitTitle);
 
 function render() {
   buildGrid();
+  const inCart = state.screen === 'carrinho';
   document
     .querySelectorAll('nav a')
-    .forEach((a) => (a.hash === '#' + state.category ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current')));
+    .forEach((a) => (!inCart && a.hash === '#' + state.category ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current')));
+  document.querySelector('main').dataset.screen = state.screen;
+  for (const el of document.querySelectorAll('main > .hero, main > .catalog')) el.hidden = inCart;
+  $('cart-page').hidden = !inCart;
   const photo = pick(state) && products[pick(state).product];
   for (const id of ['hero-stage', 'edit', 'combo-options']) $(id).hidden = !!photo;
   $('product-frame').hidden = !photo;
@@ -279,18 +283,36 @@ function render() {
   const units = state.cart.reduce((n, i) => n + i.qty, 0);
   $('cart-count').textContent = units;
   $('cart-open').setAttribute('aria-label', `Carrinho · ${units}`);
-  $('cart-items').innerHTML = state.cart.length
-    ? state.cart
-        .map(
-          (item, i) =>
-            `<div class="cart-row"><b>${itemName(item)} × ${item.qty}</b>${item.combo ? `<small>Combo · ${item.drink}</small>` : ''}${item.removed.length ? `<small>Sem: ${item.removed.map((id) => name(id, recipes[item.product])).join(', ').toLowerCase()}</small>` : ''}<span>${money(item.price * item.qty)}</span><button data-delete="${i}">Remover item</button></div>`,
-        )
-        .join('')
-    : 'Seu carrinho está vazio.';
-  $('cart-items')
-    .querySelectorAll('button')
-    .forEach((b) => (b.onclick = () => dispatch({ type: 'delete', index: Number(b.dataset.delete) })));
-  $('cart-total').textContent = 'Total: ' + money(state.cart.reduce((n, i) => n + i.price * i.qty, 0));
+  // Built only while shown, so the menu never holds a hidden copy of the Itens.
+  if (inCart) renderCart();
+  else $('cart-content').replaceChildren();
+}
+
+/** Carrinho screen: the Itens (photo, name, Total do item) and the Resumo do carrinho, or the empty state. */
+const itemsText = (n) => (n === 1 ? '1 item' : `${n} itens`);
+function itemPhoto(item) {
+  const photo = products[item.product];
+  if (photo) return `<span class="cart-photo photo-crop" style="${crop(photo.box)}"><img src="${photo.photo}" alt=""></span>`;
+  return `<img class="cart-photo" src="${burgers.find((b) => b.recipe === item.product).photo}" width="400" height="400" alt="">`;
+}
+function renderCart() {
+  const units = state.cart.reduce((n, i) => n + i.qty, 0);
+  const count = state.cart.length;
+  $('cart-subtitle').hidden = !count;
+  if (!count) {
+    $('cart-content').innerHTML =
+      '<div class="cart-empty"><h2>Seu carrinho está vazio</h2><p>Escolha seus favoritos para começar.</p><button class="primary" data-back>Explorar cardápio</button></div>';
+    return;
+  }
+  $('cart-subtitle').textContent = units === count ? `${itemsText(count)} no carrinho` : `${units} unidades em ${itemsText(count)}`;
+  $('cart-content').innerHTML = `<ul class="cart-items" aria-label="Itens">${state.cart
+    .map(
+      (item) =>
+        `<li class="cart-item">${itemPhoto(item)}<h2>${marks(itemName(item))}</h2><div class="total">Total do item<strong>${money(item.price * item.qty)}</strong></div></li>`,
+    )
+    .join('')}</ul><aside class="cart-summary" aria-labelledby="summary-title"><h2 id="summary-title">Resumo do carrinho</h2><p class="summary-total">Total dos itens<strong>${money(
+    state.cart.reduce((n, i) => n + i.price * i.qty, 0),
+  )}</strong></p><p class="summary-note">Entrega calculada na próxima etapa.</p><button class="primary" id="cart-continue">Continuar</button><button class="secondary" data-back>Adicionar mais itens</button></aside>`;
 }
 
 // Bandeja: each removed ingredient as an image of its own Camada (rendered by the scene,
@@ -453,35 +475,34 @@ $('add').onclick = () => {
   if (!pick(state) && state.drinkError) return $('drink').focus();
   toast(`Adicionado ao carrinho: ${added}`);
 };
-$('cart-open').onclick = () => {
-  restoreFocus = document.activeElement;
-  $('cart').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  $('cart-close').focus();
-};
-function closeCart() {
-  $('cart').classList.remove('open');
-  document.body.style.overflow = '';
-  restoreFocus?.focus();
-}
-$('cart-close').onclick = closeCart;
-$('cart').onclick = (e) => {
-  if (e.target === $('cart')) closeCart();
-};
+$('cart-open').onclick = () => (location.hash = 'carrinho');
+// Voltar ao cardápio, Adicionar mais itens and Explorar cardápio: back to the last category seen, as it was.
+// Opened from the menu, that is the previous history entry (so Back doesn't return to the Carrinho);
+// opened by the address, there is none and the category's hash is pushed instead.
+let fromMenu = false,
+  started = false;
+$('cart-page').addEventListener('click', (e) => {
+  if (!e.target.closest('[data-back]')) return;
+  if (fromMenu) history.back();
+  else location.hash = state.category;
+});
 // Categories: the hash picks the page content (#acompanhamentos, #bebidas, #sobremesas; anything else, Hambúrgueres).
+// #carrinho shows the Carrinho instead, keeping the last category seen as it was.
 const fromHash = () => {
   // Back/Forward with Ver ingredientes open: cancel it first, as Esc does.
   if (state.editing) closeEditor('cancel');
+  const wasMenu = state.screen === 'cardapio';
   dispatch({ type: 'category', category: location.hash.slice(1) });
+  if (state.screen === 'carrinho') fromMenu = wasMenu && started;
   // Phones: the tabs scroll sideways; keep the active one in view.
-  document.querySelector('nav a[aria-current]').scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  document.querySelector('nav a[aria-current]')?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
 };
 addEventListener('hashchange', fromHash);
 
 document.addEventListener('keydown', (e) => {
-  const dialog = state.editing ? $('playground') : $('cart').classList.contains('open') ? $('cart') : null;
-  if (!dialog) return;
-  if (e.key === 'Escape') state.editing ? closeEditor('cancel') : closeCart();
+  if (!state.editing) return;
+  const dialog = $('playground');
+  if (e.key === 'Escape') closeEditor('cancel');
   if (e.key === 'Tab') {
     const focusable = [...dialog.querySelectorAll('button:not(:disabled),input')].filter(
       (b) => !b.classList.contains('removed'),
@@ -558,3 +579,4 @@ $('hero-stage').onpointermove = (e) => {
 $('hero-stage').onpointerleave = () => $('hero-burger').style.setProperty('--tilt', '0deg');
 mountProduct();
 fromHash();
+started = true;

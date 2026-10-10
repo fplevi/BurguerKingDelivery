@@ -1,6 +1,6 @@
 // Acompanhamentos, Bebidas and Sobremesas (ticket 04 of revisao-figma): photo-only pages, same hero and grid.
 import { test, expect } from '@playwright/test';
-import { card, escolher, openVerIngredientes, verIngredientes, chip, descricao, aviso } from './support.js';
+import { card, escolher, openVerIngredientes, verIngredientes, chip, descricao, aviso, carrinho, itens, totalDoItem, totalDosItens } from './support.js';
 
 const categorias = (page) => page.getByRole('banner').getByRole('navigation', { name: 'Categorias' });
 const titulo = (page) => page.getByRole('heading', { level: 1 });
@@ -96,7 +96,7 @@ test('voltar no navegador com Ver ingredientes aberto cancela e fecha antes de t
   await expect(chip(page, 'Retirar', 'Cebola')).toBeVisible();
 });
 
-test('acompanhamento, bebida e sobremesa chegam ao carrinho com nome × quantidade e total; Item idêntico soma', async ({ page }) => {
+test('acompanhamento, bebida e sobremesa chegam ao carrinho com nome e Total do item; Item idêntico soma', async ({ page }) => {
   const adicionar = page.getByRole('button', { name: 'Adicionar ao carrinho' });
   await categorias(page).getByRole('link', { name: 'Acompanhamentos' }).click();
   await escolher(page, 'Onion Rings');
@@ -115,17 +115,13 @@ test('acompanhamento, bebida e sobremesa chegam ao carrinho com nome × quantida
   await adicionar.click();
 
   await page.getByRole('button', { name: 'Carrinho · 5' }).click();
-  const carrinho = page.getByRole('dialog', { name: 'Seu carrinho' });
-  await expect(carrinho.locator('.cart-row')).toHaveCount(3);
-  await expect(carrinho.getByText('Onion Rings × 3')).toBeVisible();
-  await expect(carrinho.getByText('R$ 47,70', { exact: true })).toBeVisible();
-  await expect(carrinho.getByText('Coca-Cola × 1')).toBeVisible();
-  await expect(carrinho.getByText('R$ 9,90', { exact: true })).toBeVisible();
-  await expect(carrinho.getByText('BK® Mix Crocante × 1')).toBeVisible();
-  await expect(carrinho.getByText('R$ 23,90', { exact: true })).toBeVisible();
-  await expect(carrinho.getByText('Combo')).toHaveCount(0);
-  await expect(carrinho.getByText(/^Sem:/)).toHaveCount(0);
-  await expect(carrinho.getByText('Total: R$ 81,50')).toBeVisible();
+  await expect(carrinho(page).getByText('5 unidades em 3 itens', { exact: true })).toBeVisible();
+  await expect(itens(page).getByRole('heading')).toHaveText(['Onion Rings', 'Coca-Cola', 'BK® Mix Crocante']);
+  // Onion Rings × 3, Coca-Cola × 1, BK® Mix Crocante × 1.
+  await expect(totalDoItem(itens(page).nth(0))).toHaveText('R$ 47,70');
+  await expect(totalDoItem(itens(page).nth(1))).toHaveText('R$ 9,90');
+  await expect(totalDoItem(itens(page).nth(2))).toHaveText('R$ 23,90');
+  await expect(totalDosItens(page)).toHaveText('R$ 81,50');
 });
 
 test('o erro do combo sem bebida no hambúrguer não impede adicionar uma bebida', async ({ page }) => {

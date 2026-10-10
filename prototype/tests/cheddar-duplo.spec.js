@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { openVerIngredientes, verIngredientes, bandeja, camada, chip, descricao, retirado, dragTo, card, escolher, aviso } from './support.js';
+import { openVerIngredientes, verIngredientes, bandeja, camada, chip, descricao, retirado, dragTo, card, escolher, aviso, carrinho, itens, totalDoItem, totalDosItens } from './support.js';
 
 const heroTitle = (page) => page.getByRole('heading', { level: 1 });
 /** Camada of the assembled hero burger (a disabled button labelled "Retirar X"). */
@@ -113,8 +113,6 @@ test('cheddar cremoso só sai da descrição com os dois cheddars retirados', as
   await expect(descricao(page)).toHaveText('Pão com gergelim e duas carnes grelhadas.');
 });
 
-const carrinho = (page) => page.getByRole('dialog', { name: 'Seu carrinho' });
-
 test('Cheddar Duplo personalizado chega ao carrinho, com combo e bebida', async ({ page }) => {
   await escolher(page, 'Cheddar Duplo');
   await page.getByRole('checkbox', { name: 'Transformar em combo' }).check();
@@ -128,10 +126,12 @@ test('Cheddar Duplo personalizado chega ao carrinho, com combo e bebida', async 
   await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
   await expect(aviso(page)).toHaveText('Adicionado ao carrinho: Cheddar Duplo');
   await page.getByRole('button', { name: 'Carrinho · 1' }).click();
-  await expect(carrinho(page).getByText('Cheddar Duplo × 1')).toBeVisible();
-  await expect(carrinho(page).getByText('Combo · Fanta Laranja')).toBeVisible();
-  await expect(carrinho(page).getByText('Sem: cheddar inferior')).toBeVisible();
-  await expect(carrinho(page).getByText('Total: R$ 46,90')).toBeVisible();
+  await expect(carrinho(page).getByText('1 item no carrinho', { exact: true })).toBeVisible();
+  await expect(itens(page)).toHaveCount(1);
+  await expect(itens(page).getByRole('heading')).toHaveText('Cheddar Duplo');
+  // Combo and Personalização show on the Item from carrinho 03; the combo is already in the Total do item.
+  await expect(totalDoItem(itens(page))).toHaveText('R$ 46,90');
+  await expect(totalDosItens(page)).toHaveText('R$ 46,90');
 });
 
 test('a bandeja mostra a imagem da camada do Cheddar Duplo retirada', async ({ page }) => {
