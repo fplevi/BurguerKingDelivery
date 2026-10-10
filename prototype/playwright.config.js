@@ -11,7 +11,10 @@ const channel = requested === 'chromium' ? undefined : requested;
 const executable = process.env.PW_EXECUTABLE;
 const browser = executable
   ? { channel: undefined, launchOptions: { executablePath: executable, args: ['--enable-unsafe-swiftshader'] } }
-  : { channel };
+  : requested === 'chromium'
+    ? { channel, launchOptions: { args: ['--enable-unsafe-swiftshader'] } } // CI: no GPU, software WebGL
+    : { channel };
+const softwareGl = !!executable || requested === 'chromium';
 
 // Own port for tests; never reuse a running server, so a dev server from another
 // checkout can't be tested by mistake. Override with PW_PORT if it is busy.
@@ -30,11 +33,14 @@ export default defineConfig({
   testDir: './tests',
   testIgnore: orcamento ? [] : ['**/orcamento.spec.js'],
   ...(orcamento && { testMatch: '**/orcamento.spec.js', workers: 1 }),
-  // Software WebGL (PW_EXECUTABLE) draws a frame in a fraction of a second at best, and the
+  // Software WebGL (PW_EXECUTABLE or PW_CHANNEL=chromium) draws a frame in a fraction of a second at best, and the
   // 390 × 844 project renders at 3x: give tests and assertions more time there only.
-  timeout: executable ? 90_000 : 30_000,
-  expect: { timeout: executable ? 15_000 : 5_000 },
+  timeout: softwareGl ? 90_000 : 30_000,
+  expect: { timeout: softwareGl ? 15_000 : 5_000 },
   fullyParallel: true,
+  // The suite fails at random (5-7 tests per run) with the default one-worker-per-core: 3D scenes
+  // compete for CPU and GPU. Two workers passes whole (ticket 11).
+  workers: 2,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
   reporter: 'list',

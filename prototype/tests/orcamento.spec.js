@@ -11,7 +11,12 @@ import { openAlterarIngredientes, alterarIngredientes, camada, bandeja } from '.
 
 const softwareGl = !!process.env.PW_EXECUTABLE;
 
-const LIMITE = { kbGzip: 250, primeiroQuadroMs: 1500, fpsDesktop: 55, fpsCelular: 30 };
+// META is the target of ticket 11. LIMITE is what these tests enforce: the exceptions the product
+// owner accepted on 2026-10-09 (first frame 2.2-2.5 s, fps varying 38-60 desktop and 28-57 on the
+// 4x CPU), with a margin for this machine's noise. Red means a regression, not the known gap.
+// Tighten LIMITE towards META once measured on a physical phone.
+const META = { primeiroQuadroMs: 1500, fpsDesktop: 55, fpsCelular: 30 };
+const LIMITE = { kbGzip: 250, primeiroQuadroMs: 3000, fpsDesktop: 35, fpsCelular: 25 };
 
 /** Throttles the page like a mid-range phone; `network: false` keeps only the CPU slowdown. */
 async function celularIntermediario(page, { network = true } = {}) {
@@ -77,7 +82,7 @@ async function primeiroQuadro(page) {
 
 // Decision on ticket 11: the 1.5 s limit is checked on the phone's CPU (4x) with the code
 // already downloaded; the slow 4G download alone takes over 1 s, so it is only reported.
-test('o primeiro quadro do hambúrguer aparece em até 1,5 s na CPU de um celular intermediário', async ({ page }, info) => {
+test('o primeiro quadro do hambúrguer não passa do limite aceito na CPU de um celular intermediário', async ({ page }, info) => {
   test.skip(softwareGl, 'WebGL por software não representa um celular');
   test.skip(info.project.name !== 'mobile-390', 'perfil de celular');
   test.setTimeout(180_000);
@@ -88,7 +93,7 @@ test('o primeiro quadro do hambúrguer aparece em até 1,5 s na CPU de um celula
   for (let i = 0; i < 7; i++) medidas.push(await primeiroQuadro(page));
   const mediana = [...medidas].sort((a, b) => a - b)[3];
   registrar('primeiro-quadro-ms', { mediana, medidas });
-  expect(mediana).toBeLessThanOrEqual(LIMITE.primeiroQuadroMs);
+  expect(mediana, `meta ${META.primeiroQuadroMs} ms (exceção aceita)`).toBeLessThanOrEqual(LIMITE.primeiroQuadroMs);
 });
 
 test('primeiro quadro com 4G lento (informativo, sem limite)', async ({ browser }, info) => {
@@ -106,6 +111,7 @@ test.describe('quadros por segundo', () => {
   test.skip(softwareGl, 'WebGL por software não representa o aparelho');
 
   const limite = (info) => (info.project.name === 'desktop' ? LIMITE.fpsDesktop : LIMITE.fpsCelular);
+  const meta = (info) => (info.project.name === 'desktop' ? META.fpsDesktop : META.fpsCelular);
 
   test.beforeEach(async ({ page }, info) => {
     await page.goto('/');
@@ -122,7 +128,7 @@ test.describe('quadros por segundo', () => {
       await page.waitForTimeout(900); // the opening transition lasts 650 ms
     });
     registrar('fps-abrir', medida);
-    expect(medida.fps).toBeGreaterThanOrEqual(limite(info));
+    expect(medida.fps, `meta ${meta(info)} fps (exceção aceita)`).toBeGreaterThanOrEqual(limite(info));
   });
 
   test('ao arrastar um ingrediente até a bandeja', async ({ page }, info) => {
@@ -137,7 +143,7 @@ test.describe('quadros por segundo', () => {
     });
     registrar('fps-arrastar', medida);
     await expect(alterarIngredientes(page)).toBeVisible();
-    expect(medida.fps).toBeGreaterThanOrEqual(limite(info));
+    expect(medida.fps, `meta ${meta(info)} fps (exceção aceita)`).toBeGreaterThanOrEqual(limite(info));
   });
 
   test('ao inclinar o hambúrguer', async ({ page }, info) => {
@@ -148,6 +154,6 @@ test.describe('quadros por segundo', () => {
       await page.waitForTimeout(400); // the tilt eases in
     });
     registrar('fps-inclinar', medida);
-    expect(medida.fps).toBeGreaterThanOrEqual(limite(info));
+    expect(medida.fps, `meta ${meta(info)} fps (exceção aceita)`).toBeGreaterThanOrEqual(limite(info));
   });
 });
