@@ -1,6 +1,6 @@
 # Carrinho em tela própria pelas telas do Figma
 
-Status: ready-for-agent
+Status: resolved
 
 Contexto: `GLOSSARY.md` (Carrinho, Resumo do carrinho, Item, Total do item, Total dos itens, Combo, Bebida do combo, Personalização), `docs/adr/0001-visuais-gerados-por-codigo.md`, spec `.scratch/revisao-figma/spec.md` (card do hambúrguer, categorias por foto). Decisões tiradas da sessão de grilling de 2026-10-10.
 
