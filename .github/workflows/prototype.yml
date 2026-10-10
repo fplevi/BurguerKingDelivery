@@ -7,9 +7,20 @@ on:
     branches: [main]
     paths: ['prototype/**', '.github/workflows/prototype.yml']
 
+# A newer push to the same PR makes the running suite obsolete.
+concurrency:
+  group: prototype-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   test:
     runs-on: ubuntu-latest
+    # Software WebGL slows down as one runner draws scene after scene (a 3D test that passes in
+    # 20s starts timing out at 90s after ~10 min), so the suite is split over 3 fresh runners.
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3]
     timeout-minutes: 30
     defaults:
       run:
@@ -27,9 +38,9 @@ jobs:
       - run: npx playwright install --with-deps chromium
       # Same suite as `npm test`, against the production bundle. Budget measurements
       # (`npm run test:orcamento`) need real hardware and stay out of CI.
-      - run: npm run test:build
+      - run: npm run test:build -- --shard=${{ matrix.shard }}/3
       - uses: actions/upload-artifact@v4
-        if: failure()
+        if: failure() || cancelled()
         with:
-          name: test-results
+          name: test-results-${{ matrix.shard }}
           path: prototype/test-results/
