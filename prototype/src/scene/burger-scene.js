@@ -531,6 +531,8 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
         object.material?.dispose();
       });
       renderer.dispose();
+      // Free the context now (switching products builds new scenes; browsers cap live contexts).
+      context.getExtension('WEBGL_lose_context')?.loseContext();
       canvas.remove();
     },
   };

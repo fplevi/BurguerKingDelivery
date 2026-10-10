@@ -465,6 +465,34 @@ function onion() {
   return single(group);
 }
 
+// Cebola crispy (Cheddar Duplo): for now a simple low mound of small golden crumbs, merged
+// into one mesh; ticket 03 gives it its crunchy, irregular look.
+const CRISPY_ONION_HEIGHT = 0.07;
+function crispyOnion() {
+  const group = new Group();
+  const mat = new MeshStandardMaterial({ vertexColors: true, roughness: 0.7 });
+  const rnd = random(77);
+  const colour = new Color();
+  const shades = ['#c98a2e', '#dca146', '#a8651c', '#e8b860'];
+  for (let k = 0; k < 140; k++) {
+    // Denser and higher towards the middle, within the patty's radius.
+    const r = 0.85 * Math.sqrt(rnd()),
+      a = rnd() * Math.PI * 2;
+    const size = 0.035 + rnd() * 0.035;
+    const geometry = new SphereGeometry(size, 6, 4);
+    geometry.scale(1 + rnd() * 0.8, 0.55, 1 + rnd() * 0.5);
+    colour.set(shades[Math.floor(rnd() * shades.length)]);
+    const position = geometry.attributes.position;
+    geometry.setAttribute('color', new BufferAttribute(new Float32Array(position.count * 3).map((_, i) => [colour.r, colour.g, colour.b][i % 3]), 3));
+    const crumb = mesh(geometry, mat);
+    const rise = (CRISPY_ONION_HEIGHT - size) * (1 - (r / 0.85) ** 2) * rnd();
+    crumb.position.set(Math.cos(a) * r, size * 0.55 + rise, Math.sin(a) * r);
+    crumb.rotation.set((rnd() - 0.5) * 0.6, rnd() * Math.PI, (rnd() - 0.5) * 0.6);
+    group.add(crumb);
+  }
+  return single(group);
+}
+
 // Tomate: three slices with skin, red wall, gel-filled locules with seeds; wet and glossy.
 const TOMATO_HEIGHT = 0.08;
 function tomato() {
@@ -567,6 +595,7 @@ export const layerModels = {
       }),
   },
   onion: { height: ONION_HEIGHT, build: onion },
+  crispyOnion: { height: CRISPY_ONION_HEIGHT, build: crispyOnion },
   tomato: { height: TOMATO_HEIGHT, build: tomato },
   lettuce: { height: LETTUCE_HEIGHT, build: lettuce },
   mayo: {

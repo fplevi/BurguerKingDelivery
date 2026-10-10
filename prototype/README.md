@@ -28,27 +28,27 @@ Os testes sobem o próprio servidor na porta 4173 (mude com `PW_PORT`). O Chrome
 ## Estrutura
 
 - `index.html`: marcação da página.
-- `src/main.js`: renderização, eventos, arrasto, abrir/fechar Alterar ingredientes, carrinho. Não conhece Three.js.
+- `src/main.js`: renderização, grade de produtos, eventos, arrasto, abrir/fechar Alterar ingredientes, carrinho. Escolher outro produto descarta as cenas e os botões das camadas e os recria a partir da Receita dele (uma cena por palco). Não conhece Three.js.
 - `src/scene/burger-scene.js`: módulo de cena do hambúrguer (Three.js/WebGL): um contexto por palco, câmera ~15° acima, luz do alto à esquerda, sombras de contato, transições abrir/compactar e a área na tela de cada camada, usada para posicionar os botões invisíveis.
 - `src/scene/layer-models.js`: modelo 3D de cada camada: perfis torneados e folhas polares com ruído, cor por vértice, gergelim, fatias e anéis unidos numa malha por camada.
 - `src/scene/noise.js`: ruído determinístico (semente fixa), usado pelos modelos e pelas texturas.
 - `src/scene/texture-recipes.js`: receitas das texturas geradas por código (miolo, carne grelhada, grão da casca, tomate, picles, alface, sombra de contato), sem Three.js nem DOM. Nenhuma imagem de ingrediente é baixada.
 - `src/scene/texture-worker.js` e `src/scene/textures.js`: as receitas são pintadas em dois Web Workers enquanto a página monta a geometria e compila os shaders; `textures.js` entrega as texturas e avisa quando estão prontas (sem workers, pinta na própria página).
 - `src/state.js`: reducer (fonte de verdade, inclusive o produto selecionado), preços.
-- `src/ingredients.js`: a Receita de cada produto (por ora só o Whopper, com as 10 camadas da receita brasileira): camadas de baixo para cima, quais formam a Base, modelo de cada camada (duas camadas podem compartilhar um), nome, descrição e preço. Nada fora dela cita um produto.
+- `src/ingredients.js`: a Receita de cada produto (Whopper, com as 10 camadas da receita brasileira, e Cheddar Duplo, com 7: duas carnes, dois cheddars e cebola crispy): camadas de baixo para cima, quais formam a Base, modelo de cada camada (duas camadas podem compartilhar um), nome, descrição e preço. Nada fora dela cita um produto.
 - `src/art.js`: ilustrações SVG de cada camada, usadas como fallback quando não há WebGL.
 - `src/styles.css`: estilos.
 - `tests/`: testes Playwright; `tests/support.js` localiza elementos por papéis e rótulos acessíveis.
-- `Assets/catalog/`: quatro fotos estáticas da grade, importadas pelo Vite. Fontes em `Assets/catalog/SOURCES.md`.
+- `Assets/burgers/official/`: as oito fotos oficiais da grade, importadas pelo Vite. Fontes em `Assets/burgers/official/SOURCES.md`. `Assets/catalog/` (fotos antigas) fica no repositório, fora da grade.
 
 ## Sobre o protótipo
 
 Pergunta: uma visão frontal em camadas permite abrir o hambúrguer, retirar e restaurar ingredientes e aplicar a personalização de forma compreensível?
 
-Inclui um Whopper desenhado em 3D com Three.js, com as 10 camadas modeladas por código (ilustrações SVG quando não há WebGL), abertura em tela inteira, retirada por toque, teclado ou arrasto para a bandeja, reposição pela imagem do ingrediente na bandeja ou pelos chips, aplicar/cancelar, combo P/M/G e carrinho em memória. Os outros produtos são placeholders.
+Inclui o Whopper e o Cheddar Duplo desenhados em 3D com Three.js, com as camadas modeladas por código (ilustrações SVG quando não há WebGL), escolhidos na grade de fotos oficiais (trocar de produto reinicia a personalização; o carrinho continua), abertura em tela inteira, retirada por toque, teclado ou arrasto para a bandeja, reposição pela imagem do ingrediente na bandeja ou pelos chips, aplicar/cancelar, combo P/M/G e carrinho em memória. Os outros 6 produtos da grade são placeholders ("Em breve neste protótipo").
 
 Hipóteses provisórias: pão e carne fixos; retirada sem desconto; aplicar confirma, cancelar descarta.
 
-Cobertura automatizada (`tests/`): abrir Alterar ingredientes; retirar por camada, teclado, arrasto até a bandeja e chips; arrasto 3D (a camada acompanha o cursor, a bandeja reage, soltar fora devolve, a Base não arrasta); recolocar pelos chips; imagem do ingrediente retirado na bandeja, recolocar por ela (toque e teclado) e sincronia com os chips; Recolocar todos; Base não retirável; ordem das 10 camadas; retirar só o ketchup mantendo a maionese; aplicar atualiza o texto do hero; cancelar (botão, ✕, Esc) preserva a personalização anterior; combo e tamanho; item personalizado no carrinho; cena 3D no hero e em Alterar ingredientes, hero sem os ingredientes retirados e mais baixo, compactação ao aplicar, área de toque própria para cada camada aberta, movimento reduzido sem animações nem inclinação, inclinação 3D pelo ponteiro (desktop) e pelo arrasto na área vazia (toque, sem pedido de permissão), fallback SVG com WebGL desativado. Arrasto por toque, inclinação pela orientação do aparelho (Android) e desempenho ainda precisam de validação em aparelho físico.
+Cobertura automatizada (`tests/`): abrir Alterar ingredientes; retirar por camada, teclado, arrasto até a bandeja e chips; arrasto 3D (a camada acompanha o cursor, a bandeja reage, soltar fora devolve, a Base não arrasta); recolocar pelos chips; imagem do ingrediente retirado na bandeja, recolocar por ela (toque e teclado) e sincronia com os chips; Recolocar todos; Base não retirável; ordem das 10 camadas; retirar só o ketchup mantendo a maionese; aplicar atualiza o texto do hero; cancelar (botão, ✕, Esc) preserva a personalização anterior; combo e tamanho; item personalizado no carrinho; cena 3D no hero e em Alterar ingredientes, hero sem os ingredientes retirados e mais baixo, compactação ao aplicar, área de toque própria para cada camada aberta, movimento reduzido sem animações nem inclinação, inclinação 3D pelo ponteiro (desktop) e pelo arrasto na área vazia (toque, sem pedido de permissão), fallback SVG com WebGL desativado; grade com as 8 fotos oficiais; Cheddar Duplo (`tests/cheddar-duplo.spec.js`): troca do hero, 7 camadas na ordem, retirar cada cheddar e a cebola crispy, Base com as duas carnes, aplicar/cancelar, bandeja, carrinho, volta ao Whopper sem resto do outro produto, cards "Em breve" e fallback SVG. Arrasto por toque, inclinação pela orientação do aparelho (Android) e desempenho ainda precisam de validação em aparelho físico.
 
 O código é experimental e não deve ser promovido diretamente a produção.

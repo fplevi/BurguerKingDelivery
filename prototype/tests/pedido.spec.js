@@ -47,17 +47,19 @@ test('item pode ser removido do carrinho', async ({ page }) => {
   await expect(page.getByRole('button', { name: 'Carrinho · 0' })).toBeVisible();
 });
 
-test('grade de produtos mostra os quatro hambúrgueres com o Whopper selecionado', async ({ page }) => {
+test('grade de produtos mostra os oito hambúrgueres oficiais com o Whopper selecionado', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Escolha seu hambúrguer' })).toBeVisible();
-  await expect(page.getByRole('button', { name: /Whopper Clássico/ })).toHaveAttribute('aria-pressed', 'true');
-  for (const produto of ['Whopper Duplo', 'Bacon Supreme', 'Cheese Burger']) {
-    const card = page.getByRole('button', { name: new RegExp(produto) });
-    await expect(card).toHaveAttribute('aria-pressed', 'false');
-    // The static product photo (decorative, alt="") must actually load.
-    const photo = card.locator('img');
+  const cards = page.locator('#catalog').getByRole('button');
+  await expect(cards).toHaveCount(8);
+  await expect(cards.filter({ hasText: 'Whopper Clássico' })).toHaveAttribute('aria-pressed', 'true');
+  await expect(cards.filter({ hasText: 'Whopper Clássico' })).toContainText('★ Selecionado');
+  await expect(cards.filter({ hasText: 'Cheddar Duplo' })).toHaveAttribute('aria-pressed', 'false');
+  await expect(cards.filter({ hasText: 'Em breve neste protótipo' })).toHaveCount(6);
+  for (let i = 0; i < 8; i++) {
+    // The official product photo (decorative, alt="") must actually load.
+    const photo = cards.nth(i).locator('img');
     await photo.scrollIntoViewIfNeeded();
     await expect.poll(() => photo.evaluate((img) => img.complete && img.naturalWidth)).toBeGreaterThan(0);
   }
-  await page.getByRole('button', { name: /Whopper Duplo/ }).click();
-  await expect(page.getByRole('status')).toHaveText('Vamos validar o Whopper primeiro. Os demais vêm depois.');
+  for (const antigo of ['Whopper Duplo', 'Bacon Supreme', 'Cheese Burger']) await expect(cards.filter({ hasText: antigo })).toHaveCount(0);
 });

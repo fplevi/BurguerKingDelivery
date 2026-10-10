@@ -21,3 +21,4 @@
 .burger-canvas--overlay{position:fixed;inset:auto;left:0;top:0;z-index:5}
 .burger-3d .stage{perspective:none}
 .burger-3d .stage{touch-action:pan-y}
+.card[aria-pressed=false] .badge{display:none}

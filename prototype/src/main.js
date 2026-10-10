@@ -2,10 +2,14 @@ import { recipes, layer } from './ingredients.js';
 import { art } from './art.js';
 import { initial, reducer, fees, money, price } from './state.js';
 import { createBurgerScene } from './scene/burger-scene.js';
-import whopperPhoto from '../Assets/catalog/whopper.png';
-import whopperDuploPhoto from '../Assets/catalog/whopper-duplo.png';
-import baconPhoto from '../Assets/catalog/bacon.png';
-import cheeseburgerPhoto from '../Assets/catalog/cheeseburger.png';
+import whopperPhoto from '../Assets/burgers/official/site_Whopper.png';
+import cheddarDuploPhoto from '../Assets/burgers/official/site_Cheddar_Duplo.png';
+import stackerDuploPhoto from '../Assets/burgers/official/site_Stacker_Duplo.png';
+import rodeioDuploPhoto from '../Assets/burgers/official/site_Rodeio_Duplo.png';
+import bigKingPhoto from '../Assets/burgers/official/site_Big_King.png';
+import cheeseburgerDuploPhoto from '../Assets/burgers/official/site_Cheeseburger_Duplo.png';
+import cheeseburgerPhoto from '../Assets/burgers/official/site_Cheeseburger.png';
+import rodeioPhoto from '../Assets/burgers/official/site_Rodeio.png';
 // Prototype question: can layered ingredients support opening, removal, restoration and order customization?
 
 let state = initial;
@@ -31,8 +35,6 @@ function buildBurger(el, interactive = false) {
     .join('');
   if (interactive) el.querySelectorAll('.layer:not(:disabled)').forEach(bindLayer);
 }
-buildBurger($('hero-burger'));
-buildBurger($('pg-burger'), true);
 
 /** Moves each layer button over the area the scene reports for its Camada. */
 function placeButtons(burger, areas) {
@@ -50,6 +52,8 @@ function placeButtons(burger, areas) {
 
 // One scene per stage; null when WebGL is unavailable (SVG fallback).
 let scenes = null;
+// False once a stage could not get a WebGL context: from then on, SVG only.
+let webgl = true;
 function mountScenes() {
   let firstFrame = true;
   const hero = createBurgerScene($('hero-stage'), {
@@ -63,10 +67,17 @@ function mountScenes() {
       firstFrame = false;
     },
   });
-  if (!hero) return;
+  if (!hero) {
+    webgl = false;
+    return;
+  }
   let editor = null;
   scenes = {
     hero,
+    dispose() {
+      hero.dispose();
+      editor?.dispose();
+    },
     get editor() {
       if (editor) return editor;
       // Half the tilt in Alterar ingredientes, so the Camadas don't slide away from the cursor.
@@ -81,6 +92,7 @@ function mountScenes() {
       // gets an inert scene for this one call; the next render() takes the SVG path.
       hero.dispose();
       scenes = null;
+      webgl = false;
       document.body.classList.remove('burger-3d');
       queueMicrotask(render);
       return new Proxy({}, { get: (_, key) => (key === 'show' ? () => Promise.resolve() : () => null) });
@@ -88,23 +100,59 @@ function mountScenes() {
   };
   document.body.classList.add('burger-3d');
 }
-mountScenes();
-
-const products = ['Whopper Clássico', 'Whopper Duplo', 'Bacon Supreme', 'Cheese Burger'];
-const catalogPhotos = [whopperPhoto, whopperDuploPhoto, baconPhoto, cheeseburgerPhoto];
-$('grid').innerHTML = products
+// Product grid, with the official photos. Only products with a Receita can be chosen;
+// the others are placeholders for now.
+const catalog = [
+  { recipe: 'whopper', photo: whopperPhoto },
+  { recipe: 'cheddarDuplo', photo: cheddarDuploPhoto },
+  { name: 'Stacker Duplo Bacon', photo: stackerDuploPhoto },
+  { name: 'Rodeio Duplo', photo: rodeioDuploPhoto },
+  { name: 'Big King', photo: bigKingPhoto },
+  { name: 'Cheeseburger Duplo', photo: cheeseburgerDuploPhoto },
+  { name: 'Cheeseburger', photo: cheeseburgerPhoto },
+  { name: 'Rodeio', photo: rodeioPhoto },
+];
+$('grid').innerHTML = catalog
   .map(
-    (p, i) =>
-      `<button class="card" aria-pressed="${i === 0}" data-product="${i}">${i === 0 ? '<span class="badge">★ Selecionado</span>' : ''}<img class="catalog-photo" src="${catalogPhotos[i]}" width="400" height="300" alt="" loading="lazy" decoding="async">${p}${i ? '<small>Em breve neste protótipo</small>' : ''}</button>`,
+    (p) =>
+      `<button class="card" aria-pressed="false" ${p.recipe ? `data-product="${p.recipe}"` : 'data-soon'}><span class="badge">★ Selecionado</span><img class="catalog-photo" src="${p.photo}" width="400" height="400" alt="" loading="lazy" decoding="async">${p.recipe ? recipes[p.recipe].name : p.name}${p.recipe ? '' : '<small>Em breve neste protótipo</small>'}</button>`,
   )
   .join('');
 $('grid')
   .querySelectorAll('button.card')
   .forEach(
     (b) =>
-      (b.onclick = () =>
-        b.dataset.product === '0' ? $('edit').focus() : toast(`Vamos validar o ${recipe().shortName} primeiro. Os demais vêm depois.`)),
+      (b.onclick = () => {
+        if (!b.dataset.product) {
+          toast(`Por enquanto, escolha o ${available()}. Os demais vêm depois.`);
+          return;
+        }
+        selectProduct(b.dataset.product);
+        $('edit').focus();
+      }),
   );
+const available = () => catalog.filter((p) => p.recipe).map((p) => recipes[p.recipe].shortName).join(' ou o ');
+$('available-note').textContent = `Apenas o ${available().replace(' ou o ', ' e o ')} estão disponíveis nesta validação.`;
+
+/**
+ * Shows another product: its Camadas as layer buttons and, in 3D, a new scene per stage
+ * built from its Receita (the old ones are disposed). Its Personalização starts over.
+ */
+function selectProduct(product) {
+  if (product === state.product) return;
+  scenes?.dispose();
+  scenes = null;
+  for (const id of Object.keys(trayImages)) delete trayImages[id];
+  state = reducer(state, { type: 'select', product });
+  mountProduct();
+  render();
+}
+function mountProduct() {
+  buildBurger($('hero-burger'));
+  buildBurger($('pg-burger'), true);
+  if (webgl) mountScenes();
+  else document.body.classList.remove('burger-3d');
+}
 
 /** SVG fallback: top of each layer in the assembled hero burger (px). */
 function closedPositions(removed) {
@@ -126,6 +174,7 @@ function render() {
   $('product-price').textContent = money(product.price);
   $('product-description').textContent = product.description;
   $('controls-title').textContent = `Personalize seu ${product.shortName}`;
+  document.querySelectorAll('#grid .card').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.product === state.product)));
   if (scenes) {
     scenes.hero.show({ open: false, removed: state.removed }, { animate: false });
     if (state.editing && !closing) scenes.editor.show({ open: true, removed: state.draft });
@@ -445,4 +494,5 @@ $('hero-stage').onpointermove = (e) => {
   $('hero-burger').style.setProperty('--tilt', ((e.clientX - r.left) / r.width - 0.5) * 12 + 'deg');
 };
 $('hero-stage').onpointerleave = () => $('hero-burger').style.setProperty('--tilt', '0deg');
+mountProduct();
 render();

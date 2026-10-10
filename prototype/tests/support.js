@@ -13,7 +13,7 @@ export const bandeja = (page) => alterarIngredientes(page).getByRole('complement
 /** Chip in the bandeja for an ingredient; its label is "Retirar X" or "Recolocar X". */
 export const chip = (page, action, name) =>
   bandeja(page)
-    .getByRole('group', { name: 'Personalize seu Whopper' })
+    .getByRole('group', { name: /^Personalize seu / })
     .getByRole('button', { name: `${action} ${name}`, exact: true });
 
 /** List of Ingredientes retirados in the bandeja, each an image button "Recolocar X". */
