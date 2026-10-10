@@ -1,6 +1,6 @@
 import { recipes, layer } from './ingredients.js';
 import { art } from './art.js';
-import { initial, reducer, fees, money, price } from './state.js';
+import { initial, reducer, money, price } from './state.js';
 import { createBurgerScene } from './scene/burger-scene.js';
 import whopperPhoto from '../Assets/burgers/official/site_Whopper.png';
 import cheddarDuploPhoto from '../Assets/burgers/official/site_Cheddar_Duplo.png';
@@ -190,11 +190,6 @@ function render() {
     .querySelectorAll('#hero-burger .layer')
     .forEach((b) => b.classList.toggle('removed', state.removed.includes(b.dataset.id)));
   $('combo').checked = state.combo;
-  document.querySelectorAll('.size').forEach((b) => {
-    b.disabled = !state.combo;
-    b.setAttribute('aria-pressed', String(b.dataset.size === state.size));
-  });
-  $('fee').innerHTML = state.combo ? `Combo ${state.size}:<br>+ ${money(fees[state.size])}` : 'Só o sanduíche';
   $('total').textContent = money(price(state));
   $('custom-note').textContent = state.removed.length ? without(state.removed, product) : 'Preparado com todos os ingredientes';
   $('playground').classList.toggle('open', state.editing);
@@ -233,7 +228,7 @@ function render() {
     ? state.cart
         .map(
           (item, i) =>
-            `<div class="cart-row"><b>${recipes[item.product].name} · ${money(item.price)}</b><small>${item.combo ? 'Combo ' + item.size : 'Só sanduíche'} · ${without(item.removed, recipes[item.product])}</small><button data-delete="${i}">Remover item</button></div>`,
+            `<div class="cart-row"><b>${recipes[item.product].name} · ${money(item.price)}</b><small>${item.combo ? 'Combo' : 'Só sanduíche'} · ${without(item.removed, recipes[item.product])}</small><button data-delete="${i}">Remover item</button></div>`,
         )
         .join('')
     : 'Seu carrinho está vazio.';
@@ -391,7 +386,6 @@ $('close').onclick = $('cancel').onclick = () => closeEditor('cancel');
 $('apply').onclick = () => closeEditor('apply');
 $('reset').onclick = () => dispatch({ type: 'reset' });
 $('combo').onchange = (e) => dispatch({ type: 'combo', value: e.target.checked });
-document.querySelectorAll('.size').forEach((b) => (b.onclick = () => dispatch({ type: 'size', value: b.dataset.size })));
 $('add').onclick = () => {
   dispatch({ type: 'add' });
   toast(`${recipe().shortName} adicionado ao carrinho`);

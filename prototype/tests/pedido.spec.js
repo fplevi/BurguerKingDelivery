@@ -24,17 +24,17 @@ test('Whopper personalizado chega ao carrinho com os ingredientes retirados', as
   await expect(carrinho(page).getByText('Total: R$ 43,90')).toBeVisible();
 });
 
-test('combo e tamanho alteram o total do item', async ({ page }) => {
-  const total = page.getByText('Total do item').locator('strong');
-  await expect(total).toHaveText('R$ 43,90');
-  await page.getByRole('button', { name: 'G', exact: true }).click();
-  await expect(page.getByRole('button', { name: 'G', exact: true })).toHaveAttribute('aria-pressed', 'true');
-  await expect(total).toHaveText('R$ 46,90');
+const total = (page) => page.getByText('Total do item').locator('strong');
+const combo = (page) => page.getByRole('checkbox', { name: 'Transformar em combo' });
 
-  await page.getByRole('checkbox', { name: 'Transformar em combo' }).uncheck();
-  await expect(total).toHaveText('R$ 31,90');
-  await expect(page.getByText('Só o sanduíche')).toBeVisible();
-  await expect(page.getByRole('button', { name: 'P', exact: true })).toBeDisabled();
+test('o Combo começa desmarcado e soma R$ 12,00, sem tamanhos', async ({ page }) => {
+  await expect(combo(page)).not.toBeChecked();
+  await expect(total(page)).toHaveText('R$ 31,90');
+  await combo(page).check();
+  await expect(total(page)).toHaveText('R$ 43,90');
+  for (const tamanho of ['P', 'M', 'G']) await expect(page.getByRole('button', { name: tamanho, exact: true })).toHaveCount(0);
+  await combo(page).uncheck();
+  await expect(total(page)).toHaveText('R$ 31,90');
 });
 
 test('item pode ser removido do carrinho', async ({ page }) => {
