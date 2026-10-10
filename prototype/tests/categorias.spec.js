@@ -161,6 +161,20 @@ test('todos os produtos das três categorias têm foto, nome, descrição e pre�
   await expect(page.getByText(/Consultar preço/)).toHaveCount(0);
 });
 
+test('a foto mostra só a área desenhada também sem object-view-box (fora do Chrome)', async ({ page }) => {
+  await page.goto('/#bebidas');
+  const foto = page.getByRole('main').getByRole('img', { name: 'Coca-Cola Original' });
+  const cartao = card(page, 'Coca-Cola');
+  await expect.poll(() => page.evaluate(() => [...document.images].every((i) => i.complete))).toBe(true);
+  const antes = await cartao.screenshot({ animations: 'disabled' });
+  // A browser without object-view-box (Firefox, Safari).
+  await page.addStyleTag({ content: '*{object-view-box:none!important}' });
+  // Coca-Cola: drawn area 188 × 357 of the 800 × 800 file.
+  const { width, height } = await foto.boundingBox();
+  expect(Math.abs(width / height - 188 / 357)).toBeLessThan(0.02);
+  expect(await cartao.screenshot({ animations: 'disabled' })).toEqual(antes);
+});
+
 // The three layouts of ticket 03, with the photo in place of the 3D.
 const caixa = async (locator) => {
   await expect(locator).toBeVisible();

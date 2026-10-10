@@ -165,7 +165,7 @@ test.describe('desktop', () => {
         for (const hash of ['#hamburgueres', '#bebidas']) {
           await page.goto('/' + hash);
           expect(await page.evaluate(() => document.documentElement.scrollHeight)).toBeLessThanOrEqual(altura);
-          const visiveis = hash === '#bebidas' ? [h.titulo, h.adicionar, page.locator('#product-photo'), page.locator('#product-description')] : [h.titulo, h.adicionar, h.palco, h.ver, h.descricao];
+          const visiveis = hash === '#bebidas' ? [h.titulo, h.adicionar, page.getByRole('main').getByRole('img', { name: 'Coca-Cola Original' }), page.locator('#product-description')] : [h.titulo, h.adicionar, h.palco, h.ver, h.descricao];
           for (const item of visiveis) await expect(item).toBeInViewport({ ratio: 1 });
           if (hash === '#hamburgueres') await canvasNoPalco(h.palco);
         }

@@ -115,8 +115,8 @@ const burgers = [
 ];
 /** Product names with ® raised, as in the Figma. */
 const marks = (text) => text.replace(/®/g, '<span class="mark">®</span>');
-/** Draws only the photo's box (the file's transparent margins are cut off, as in the Figma). */
-const crop = ([x0, y0, x1, y1]) => `object-view-box:inset(${y0}px ${800 - x1}px ${800 - y1}px ${x0}px)`;
+/** The photo's box in the 800 × 800 file, for .photo-crop: only it is drawn (the transparent margins are cut off, as in the Figma). */
+const crop = ([x0, y0, x1, y1]) => `--x:${x0};--y:${y0};--w:${x1 - x0};--h:${y1 - y0}`;
 const badge =
   '<span class="badge"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5z" fill="currentColor"/></svg>Selecionado</span>';
 let gridCategory = null;
@@ -131,7 +131,7 @@ function buildGrid() {
     ? category.products
         .map(
           (p) =>
-            `<button class="card" aria-pressed="false" data-product="${p.id}">${badge}<img class="catalog-photo" src="${p.photo}" style="${crop(p.box)}" alt="" loading="lazy" decoding="async"><span class="card-name"><span>${marks(p.name)}</span></span></button>`,
+            `<button class="card" aria-pressed="false" data-product="${p.id}">${badge}<span class="catalog-photo photo-crop" style="${crop(p.box)}"><img src="${p.photo}" alt="" loading="lazy" decoding="async"></span><span class="card-name"><span>${marks(p.name)}</span></span></button>`,
         )
         .join('')
     : burgers
@@ -209,13 +209,13 @@ function render() {
     .forEach((a) => (a.hash === '#' + state.category ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current')));
   const photo = pick(state) && products[pick(state).product];
   for (const id of ['hero-stage', 'edit', 'combo-options']) $(id).hidden = !!photo;
-  $('product-photo').hidden = !photo;
+  $('product-frame').hidden = !photo;
   const product = recipe();
   if (photo) {
     heroTitle(photo.title);
     $('product-photo').src = photo.photo;
-    $('product-photo').style.cssText = crop(photo.box);
-    $('product-photo').alt = photo.title.replace('\n', ' ');
+    $('product-frame').style.cssText = crop(photo.box);
+    $('product-frame').setAttribute('aria-label', photo.title.replace('\n', ' '));
     $('product-description').textContent = photo.text;
   } else {
     heroTitle(product.name);
