@@ -1,6 +1,6 @@
 // The three layouts of the Figma (ticket 03 of revisao-figma): header, hero, grid.
 import { test, expect } from '@playwright/test';
-import { card } from './support.js';
+import { card, descricao } from './support.js';
 
 const cabecalho = (page) => page.getByRole('banner');
 const categorias = (page) => cabecalho(page).getByRole('navigation', { name: 'Categorias' });
@@ -39,4 +39,67 @@ test('os 6 hambúrgueres sem Receita parecem iguais aos outros, sem "Em breve", 
 test('o preço do hambúrguer aparece só no Total do item, como no Figma', async ({ page }) => {
   await expect(page.getByRole('main').getByText('R$ 31,90', { exact: true })).toHaveCount(1);
   await expect(page.getByText('Total do item').locator('strong')).toHaveText('R$ 31,90');
+});
+
+/** Bounding box of a locator, in page px. */
+const caixa = async (locator) => {
+  await expect(locator).toBeVisible();
+  return locator.boundingBox();
+};
+const hero = (page) => ({
+  titulo: page.getByRole('heading', { level: 1 }),
+  palco: page.locator('#hero-stage'),
+  ver: page.getByRole('button', { name: /Ver ingredientes/ }),
+  descricao: descricao(page),
+  combo: page.getByRole('checkbox', { name: 'Transformar em combo' }),
+  adicionar: page.getByRole('button', { name: 'Adicionar ao carrinho' }),
+  grade: page.getByRole('heading', { name: 'Escolha seu hambúrguer' }),
+});
+const cards = (page) => page.locator('#catalog').getByRole('button');
+const semRolagemHorizontal = async (page) =>
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(0);
+
+/** The 3D canvas keeps the size the stylesheet gives its stage. */
+async function canvasNoPalco(palco) {
+  const [a, b] = [await caixa(palco), await caixa(palco.locator('canvas'))];
+  for (const k of ['x', 'y', 'width', 'height']) expect(Math.abs(a[k] - b[k])).toBeLessThanOrEqual(1);
+}
+
+/** Ver ingredientes opens over the page, its 3D fills its stage, and closes. */
+async function verIngredientesFunciona(page) {
+  await hero(page).ver.click();
+  const dialogo = page.getByRole('dialog', { name: 'Ver ingredientes', exact: true });
+  await expect(dialogo).toBeVisible();
+  await expect(dialogo.getByRole('button', { name: 'Retirar Tomate', exact: true }).first()).toBeVisible();
+  await canvasNoPalco(dialogo.locator('#pg-stage'));
+  await dialogo.getByRole('button', { name: 'Cancelar', exact: true }).click();
+  await expect(dialogo).toBeHidden();
+}
+
+test.describe('celular e tablet (< 1024px)', () => {
+  test.skip(({ isMobile }) => !isMobile, 'only in the 390 × 844 project');
+
+  test('390: uma coluna na ordem do Figma, grade em 2 colunas e categorias em abas roláveis', async ({ page }) => {
+    const h = hero(page);
+    let anterior = null;
+    for (const item of [h.titulo, h.palco, h.ver, h.descricao, h.combo, h.adicionar, h.grade]) {
+      const box = await caixa(item);
+      if (anterior) expect(box.y).toBeGreaterThanOrEqual(anterior.y + anterior.height - 1);
+      anterior = box;
+    }
+    const [a, b, c] = [await caixa(cards(page).nth(0)), await caixa(cards(page).nth(1)), await caixa(cards(page).nth(2))];
+    expect(b.y).toBe(a.y);
+    expect(b.x).toBeGreaterThan(a.x + a.width - 1);
+    expect(c.x).toBe(a.x);
+    expect(c.y).toBeGreaterThan(a.y + a.height - 1);
+
+    const nav = categorias(page);
+    const logo = await caixa(cabecalho(page).getByRole('link', { name: 'Burger King' }));
+    expect((await caixa(nav)).y).toBeGreaterThanOrEqual(logo.y + logo.height);
+    expect(await nav.evaluate((n) => n.scrollWidth > n.clientWidth && getComputedStyle(n).overflowX)).toBe('auto');
+    await expect(cabecalho(page).getByText('Carrinho', { exact: true })).toBeHidden();
+    await semRolagemHorizontal(page);
+    await canvasNoPalco(h.palco);
+    await verIngredientesFunciona(page);
+  });
 });
