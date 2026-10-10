@@ -155,4 +155,21 @@ test.describe('desktop', () => {
       await verIngredientesFunciona(page);
     });
   });
+
+  for (const altura of [800, 720]) {
+    test.describe(`≥ 1920px e janela de ${altura}px de altura`, () => {
+      test.use({ viewport: { width: 1920, height: altura } });
+
+      test(`1920 × ${altura}: a página não rola e o hero cabe na tela, no hambúrguer e numa categoria de foto`, async ({ page }) => {
+        const h = hero(page);
+        for (const hash of ['#hamburgueres', '#bebidas']) {
+          await page.goto('/' + hash);
+          expect(await page.evaluate(() => document.documentElement.scrollHeight)).toBeLessThanOrEqual(altura);
+          const visiveis = hash === '#bebidas' ? [h.titulo, h.adicionar, page.locator('#product-photo'), page.locator('#product-description')] : [h.titulo, h.adicionar, h.palco, h.ver, h.descricao];
+          for (const item of visiveis) await expect(item).toBeInViewport({ ratio: 1 });
+          if (hash === '#hamburgueres') await canvasNoPalco(h.palco);
+        }
+      });
+    });
+  }
 });
