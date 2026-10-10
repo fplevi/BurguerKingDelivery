@@ -32,7 +32,7 @@ import {
   Color,
   SRGBColorSpace,
 } from 'three';
-import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
+import { mergeGeometries, mergeVertices } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import { fbm, random, crustBump, crumb, grilledMeat, tomatoSlice, pickleSlice, lettuceLeaf, friedOnion } from './textures.js';
 
 function mesh(geometry, mat, y = 0) {
@@ -471,8 +471,9 @@ function onion() {
 // Cheddar (Cheddar Duplo): creamy melted cheddar sauce, more orange and more liquid than the
 // Whopper's slice. A glossy sheet over the patty that rolls over its edge and runs down the
 // side in long rounded drips. One grid around the burger: rings over the top, then a curtain
-// hanging from the rim, whose length by angle is the drips' outline. Each Camada (cheddar1,
-// cheddar2) gets its own drips, from a seed fixed by its id.
+// hanging from the rim, whose length by angle is the drips' outline. The outline is lumpy,
+// not round, and overhangs the patty more in some places than others. Each Camada (cheddar1,
+// cheddar2) gets its own outline and drips, from a seed fixed by its id.
 const CHEDDAR_HEIGHT = 0.035;
 const CHEDDAR_ROLL = 0.05; // drop over which the sauce rolls out over the patty's rounded edge
 function cheddar(camada = {}) {
@@ -496,7 +497,11 @@ function cheddar(camada = {}) {
     }
     return { hang, bead };
   };
-  const rim = (a) => 1 + 0.035 * (fbm(Math.cos(a) * 2 + seed, Math.sin(a) * 2, 0, { octaves: 2, seed: 72 }) - 0.5) * 2;
+  // Uneven outline: broad bulges and recesses (where the sauce spread further or less),
+  // with smaller wobbles on top; how far it rolls out over the patty also varies by angle.
+  const wave = (a, k, octaves, s) => (fbm(Math.cos(a) * k + seed, Math.sin(a) * k, s, { octaves, seed: 72 + s }) - 0.5) * 2;
+  const rim = (a) => 1 + 0.09 * wave(a, 1.3, 3, 0) + 0.05 * wave(a, 2.7, 2, 7) + 0.03 * wave(a, 5, 2, 3);
+  const spread = (a) => smoothstep(-0.45, 0.45, wave(a, 1.8, 2, 5));
 
   const segments = 192, top = 16, curtain = 18;
   const positions = [], colours = [], indices = [];
@@ -517,7 +522,7 @@ function cheddar(camada = {}) {
         // The curtain: rolls outward over the edge, then hangs straight.
         const { hang, bead } = run(a);
         drop = ((i - top) / curtain) * hang;
-        const out = (0.075 + bead) * Math.sin(Math.min(drop / CHEDDAR_ROLL, 1) * (Math.PI / 2));
+        const out = (0.015 + 0.13 * spread(a) + bead) * Math.sin(Math.min(drop / CHEDDAR_ROLL, 1) * (Math.PI / 2));
         // Thinning to a rounded bead at the tip.
         r = edge + out + bead * 0.6 * smoothstep(hang * 0.6, hang, drop);
         y = CHEDDAR_HEIGHT - 0.012 - drop;
@@ -551,31 +556,46 @@ function cheddar(camada = {}) {
   return mesh(geometry, mat);
 }
 
-// Cebola crispy (Cheddar Duplo): a heap of fried onion bits under the top bun: a low,
-// crumbly mound (textured) covered in curled strands and broken flakes, golden to dark
-// brown. Everything shares one material (texture x vertex colour) and is baked into one mesh.
+// Cebola crispy (Cheddar Duplo): a loose heap of fried onion crumbs and short curled
+// strands under the top bun, golden to dark brown. No continuous body: the heap is only
+// pieces, stacked in a few loose tiers, so the silhouette is ragged, light shows through
+// the gaps and some bits spill over the rim onto the cheddar. A small dark disc well
+// inside the rim stands in for the shadow at the bottom of the heap (and keeps the Camada
+// solid to the eye from above). Pieces are indexed low-poly solids drawn flat-shaded,
+// sharing one material (texture x vertex colour), baked into one mesh.
 const CRISPY_ONION_HEIGHT = 0.12;
 function crispyOnion() {
   const { map, bumpMap } = friedOnion();
-  const mat = new MeshStandardMaterial({ map, bumpMap, bumpScale: 2.5, vertexColors: true, roughness: 0.6 });
+  const mat = new MeshStandardMaterial({ map, bumpMap, bumpScale: 2, vertexColors: true, roughness: 0.62, flatShading: true });
   const rnd = random(77);
-  const edge = (a) => 1.0 * (0.92 + 0.1 * fbm(Math.cos(a) * 3 + 1, Math.sin(a) * 3, 0, { octaves: 3, seed: 101 }));
-  const lump = (x, z) => fbm(x * 5 + 3, z * 5, 0, { octaves: 2, seed: 102 }) - 0.5 + 0.6 * (fbm(x * 16, z * 16 + 5, 0, { octaves: 2, seed: 103 }) - 0.5);
-  const mound = (r, a) => {
-    const f = Math.min(r / edge(a), 1);
-    // Heaped in the middle, still thick at the rim, where it falls off steeply.
-    const heap = (0.045 + 0.035 * (1 - f * f)) * smoothstep(1, 0.86, f);
-    return Math.max(heap + 0.022 * lump(Math.cos(a) * r, Math.sin(a) * r) * (1 - f ** 4), 0.004);
-  };
-  const shades = ['#c07a2c', '#d8973e', '#9a5a1e', '#e6b060', '#b06a26', '#cc8a34'].map((h) => new Color(h));
+  const edge = (a) => 0.98 + 0.07 * (fbm(Math.cos(a) * 3 + 1, Math.sin(a) * 3, 0, { octaves: 3, seed: 101 }) - 0.5) * 2;
+  // Top of the heap at a radius fraction: domed, lumpy, thinning out towards the rim.
+  const lump = (x, z) => fbm(x * 4 + 3, z * 4, 0, { octaves: 2, seed: 102 });
+  const top = (x, z, f) => (0.05 + 0.04 * (1 - f * f) + 0.03 * (lump(x, z) - 0.5)) * smoothstep(1.08, 0.7, f);
+
+  // Index-only templates (shared corners): a crumb is a jagged icosahedron, a strand a thin
+  // curled tube; both are re-shaped per piece.
+  const crumbBase = mergeVertices(new IcosahedronGeometry(1, 0).deleteAttribute('normal').deleteAttribute('uv'));
+  const strandBase = new TorusGeometry(1, 0.22, 3, 4, 1).deleteAttribute('normal').deleteAttribute('uv');
+  const shades = ['#c98a3a', '#dca04a', '#a8642a', '#eab866', '#b87430', '#8a4c1c', '#d49444', '#9a5622'].map((h) => new Color(h));
   const pieces = [];
-  /** Planar UVs (same as the bed's) and one flat colour per piece. */
-  const finish = (geometry, colour) => {
-    const position = geometry.attributes.position;
-    const uv = new Float32Array(position.count * 2), colours = new Float32Array(position.count * 3);
-    for (let i = 0; i < position.count; i++) {
-      uv[i * 2] = position.getX(i) / 2 + 0.5;
-      uv[i * 2 + 1] = position.getZ(i) / 2 + 0.5;
+  const matrix = new Matrix4(), q = new Quaternion(), turn = new Euler(), at = new Vector3(), size = new Vector3();
+  const colour = new Color();
+  /** Places one piece, with planar UVs and one colour, darker the deeper it sits. */
+  const place = (base, y, x, z, depth, jag) => {
+    const geometry = base.clone();
+    const p = geometry.attributes.position;
+    if (jag) for (let i = 0; i < p.count; i++) {
+      const s = 0.6 + rnd() * 0.75; // every corner pushed in or out: a broken, crumbly bit
+      p.setXYZ(i, p.getX(i) * s, p.getY(i) * s, p.getZ(i) * s);
+    }
+    matrix.compose(at.set(x, y, z), q.setFromEuler(turn), size);
+    geometry.applyMatrix4(matrix);
+    colour.copy(shades[Math.floor(rnd() * shades.length)]).multiplyScalar((0.82 + rnd() * 0.32) * (1 - 0.45 * depth));
+    const uv = new Float32Array(p.count * 2), colours = new Float32Array(p.count * 3);
+    for (let i = 0; i < p.count; i++) {
+      uv[i * 2] = p.getX(i) / 2 + 0.5;
+      uv[i * 2 + 1] = p.getZ(i) / 2 + 0.5;
       colours.set([colour.r, colour.g, colour.b], i * 3);
     }
     geometry.setAttribute('uv', new BufferAttribute(uv, 2));
@@ -583,42 +603,38 @@ function crispyOnion() {
     pieces.push(geometry);
   };
 
-  // polarSheet winds its faces downwards (lettuce and sauces are double-sided); the bed is
-  // seen from above only, so flip it.
-  const sheet = polarSheet({ rings: 18, segments: 120, uvRadius: 1, edge, lift: (r, a) => mound(r, a) });
-  const index = sheet.index.array;
+  // Shadow at the bottom of the heap, hidden under the pieces.
+  const floor = polarSheet({ rings: 4, segments: 40, uvRadius: 1, edge: (a) => edge(a) * 0.8, lift: () => 0.012 }).deleteAttribute('normal');
+  const index = floor.index.array;
   for (let i = 0; i < index.length; i += 3) [index[i + 1], index[i + 2]] = [index[i + 2], index[i + 1]];
-  sheet.computeVertexNormals();
-  const bed = sheet.toNonIndexed();
-  finish(bed, new Color('#8c5222'));
+  floor.setAttribute('color', new BufferAttribute(new Float32Array(floor.attributes.position.count * 3).map((_, i) => [0.09, 0.04, 0.015][i % 3]), 3));
+  pieces.push(floor);
 
-  const matrix = new Matrix4(), q = new Quaternion(), turn = new Euler(), at = new Vector3(), scale = new Vector3();
-  const colour = new Color();
-  for (let k = 0; k < 900; k++) {
-    // Spread over the mound, a little denser in the middle; some hang over the rim.
+  for (let k = 0; k < 3800; k++) {
     const a = rnd() * Math.PI * 2;
-    // A third of them pile up at the rim, building its crumbly wall.
-    const r = edge(a) * (k % 3 === 0 ? 0.86 + rnd() * 0.16 : 0.05 + 0.95 * Math.sqrt(rnd()));
-    const strand = rnd() < 0.25;
-    const geometry = strand
-      ? new TorusGeometry(0.018 + rnd() * 0.024, 0.006 + rnd() * 0.005, 3, 5, 0.8 + rnd() * 1.2) // curled string
-      : new IcosahedronGeometry(0.012 + rnd() * 0.017, 0); // broken flake
-    if (!strand) {
-      // Jagged: every corner pushed in or out.
-      const p = geometry.attributes.position;
-      for (let i = 0; i < p.count; i++) p.setXYZ(i, p.getX(i) * (0.7 + rnd() * 0.6), p.getY(i) * (0.4 + rnd() * 0.3), p.getZ(i) * (0.7 + rnd() * 0.6));
-      geometry.computeVertexNormals();
+    const rim = edge(a);
+    // Uniform over the disc; one in eight lands past the rim and slumps down onto the cheddar.
+    const spill = rnd() < 0.12;
+    const f = spill ? 0.93 + rnd() * 0.12 : Math.sqrt(rnd()) * 0.97;
+    const x = Math.cos(a) * rim * f, z = Math.sin(a) * rim * f;
+    const height = Math.max(top(x, z, f), 0.012);
+    // Anywhere from the bottom of the heap to its top (more of them near the top).
+    const t = spill ? rnd() * 0.4 : Math.sqrt(rnd());
+    const y = 0.008 + (height - 0.008) * t;
+    const strand = rnd() < 0.4;
+    turn.set((rnd() - 0.5) * (strand ? 1.6 : Math.PI), rnd() * Math.PI * 2, (rnd() - 0.5) * (strand ? 1.6 : Math.PI));
+    if (strand) {
+      const radius = 0.02 + rnd() * 0.028;
+      size.set(radius, radius * (0.45 + rnd() * 0.3), radius);
+    } else {
+      const s = 0.013 + rnd() ** 2 * 0.024;
+      size.set(s * (0.8 + rnd() * 0.6), s * (0.35 + rnd() * 0.3), s * (0.8 + rnd() * 0.6));
     }
-    turn.set(Math.PI / 2 + (rnd() - 0.5) * 1.2, (rnd() - 0.5) * 0.8, rnd() * Math.PI * 2);
-    const x = Math.cos(a) * r, z = Math.sin(a) * r;
-    const ground = k % 3 === 0 ? rnd() * 0.07 : mound(Math.min(r, edge(a)), a);
-    at.set(x, Math.min(ground + 0.006 + rnd() * 0.01, CRISPY_ONION_HEIGHT - 0.012), z);
-    matrix.compose(at, q.setFromEuler(turn), scale.set(1, 1, 1));
-    const piece = (strand ? geometry.toNonIndexed() : geometry).applyMatrix4(matrix);
-    colour.copy(shades[Math.floor(rnd() * shades.length)]).multiplyScalar(0.85 + rnd() * 0.3);
-    finish(piece, colour);
+    place(strand ? strandBase : crumbBase, Math.min(y, CRISPY_ONION_HEIGHT - 0.015), x, z, 1 - t, !strand);
   }
-  return mesh(mergeGeometries(pieces), mat);
+  const geometry = mergeGeometries(pieces);
+  geometry.computeVertexNormals();
+  return mesh(geometry, mat);
 }
 
 // Tomate: three slices with skin, red wall, gel-filled locules with seeds; wet and glossy.
