@@ -82,6 +82,20 @@ test('o endereço com #acompanhamentos abre a categoria, e voltar no navegador r
   await expect(categorias(page).getByRole('link', { name: 'Hambúrgueres' })).toHaveAttribute('aria-current', 'page');
 });
 
+test('voltar no navegador com Ver ingredientes aberto cancela e fecha antes de trocar de categoria', async ({ page }) => {
+  await page.goto('/#bebidas');
+  await categorias(page).getByRole('link', { name: 'Hambúrgueres' }).click();
+  await openVerIngredientes(page);
+  await chip(page, 'Retirar', 'Cebola').click();
+  await page.goBack();
+  await expect(verIngredientes(page)).toBeHidden();
+  await expect(titulo(page)).toHaveAccessibleName('Coca-Cola Original');
+  await categorias(page).getByRole('link', { name: 'Hambúrgueres' }).click();
+  await expect(descricao(page)).toContainText('cebola');
+  await openVerIngredientes(page);
+  await expect(chip(page, 'Retirar', 'Cebola')).toBeVisible();
+});
+
 test('acompanhamento, bebida e sobremesa chegam ao carrinho com nome × quantidade e total; Item idêntico soma', async ({ page }) => {
   const adicionar = page.getByRole('button', { name: 'Adicionar ao carrinho' });
   await categorias(page).getByRole('link', { name: 'Acompanhamentos' }).click();

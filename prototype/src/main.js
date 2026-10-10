@@ -470,6 +470,8 @@ $('cart').onclick = (e) => {
 };
 // Categories: the hash picks the page content (#acompanhamentos, #bebidas, #sobremesas; anything else, Hambúrgueres).
 const fromHash = () => {
+  // Back/Forward with Ver ingredientes open: cancel it first, as Esc does.
+  if (state.editing) closeEditor('cancel');
   dispatch({ type: 'category', category: location.hash.slice(1) });
   // Phones: the tabs scroll sideways; keep the active one in view.
   document.querySelector('nav a[aria-current]').scrollIntoView({ block: 'nearest', inline: 'nearest' });
