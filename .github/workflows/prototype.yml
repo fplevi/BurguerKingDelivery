@@ -1,0 +1,35 @@
+name: prototype
+
+on:
+  pull_request:
+    paths: ['prototype/**', '.github/workflows/prototype.yml']
+  push:
+    branches: [main]
+    paths: ['prototype/**', '.github/workflows/prototype.yml']
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: prototype
+    env:
+      PW_CHANNEL: chromium # bundled Chromium with software WebGL; see playwright.config.js
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: prototype/package-lock.json
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      # Same suite as `npm test`, against the production bundle. Budget measurements
+      # (`npm run test:orcamento`) need real hardware and stay out of CI.
+      - run: npm run test:build
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test-results
+          path: prototype/test-results/
