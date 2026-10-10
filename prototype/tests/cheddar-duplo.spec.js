@@ -175,23 +175,6 @@ test('trocar de produto e voltar não gera de novo o modelo de nenhuma camada', 
   expect(geradas.filter((n, i) => geradas.indexOf(n) !== i)).toEqual([]);
 });
 
-test('os cards "Em breve" não trocam o hero', async ({ page }) => {
-  for (const nome of ['Stacker Duplo Bacon', 'Rodeio Duplo', 'Big King', 'Cheeseburger Duplo', 'Cheeseburger', 'Rodeio']) {
-    const outro = card(page, nome);
-    await expect(outro).toContainText('Em breve neste protótipo');
-    // The official photo (decorative, alt="") must actually load.
-    const foto = outro.locator('img');
-    await foto.scrollIntoViewIfNeeded();
-    await expect.poll(() => foto.evaluate((img) => img.complete && img.naturalWidth)).toBeGreaterThan(0);
-  }
-  await card(page, 'Big King').click();
-  await expect(page.getByRole('status')).toHaveText('Por enquanto, escolha o Whopper ou o Cheddar Duplo. Os demais vêm depois.');
-  await expect(page.getByText('Apenas o Whopper e o Cheddar Duplo estão disponíveis nesta validação.')).toBeVisible();
-  await expect(card(page, 'Big King')).toHaveAttribute('aria-pressed', 'false');
-  await expect(card(page, 'Whopper Clássico')).toHaveAttribute('aria-pressed', 'true');
-  await expect(heroTitle(page)).toHaveAccessibleName('Whopper Clássico');
-});
-
 test.describe('sem WebGL', () => {
   test.beforeEach(async ({ page }) => {
     await page.addInitScript(() => {

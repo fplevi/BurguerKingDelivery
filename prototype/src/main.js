@@ -100,8 +100,8 @@ function mountScenes() {
   };
   document.body.classList.add('burger-3d');
 }
-// Product grid, with the official photos. Only products with a Receita can be chosen;
-// the others are placeholders for now.
+// Product grid, with the official photos. Only products with a Receita can be chosen; the
+// others look the same, but clicking them does nothing.
 const catalog = [
   { recipe: 'whopper', photo: whopperPhoto },
   { recipe: 'cheddarDuplo', photo: cheddarDuploPhoto },
@@ -115,26 +115,18 @@ const catalog = [
 $('grid').innerHTML = catalog
   .map(
     (p) =>
-      `<button class="card" aria-pressed="false" ${p.recipe ? `data-product="${p.recipe}"` : 'data-soon'}><span class="badge">★ Selecionado</span><img class="catalog-photo" src="${p.photo}" width="400" height="400" alt="" loading="lazy" decoding="async">${p.recipe ? recipes[p.recipe].name : p.name}${p.recipe ? '' : '<small>Em breve neste protótipo</small>'}</button>`,
+      `<button class="card" aria-pressed="false" ${p.recipe ? `data-product="${p.recipe}"` : ''}><span class="badge"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5z" fill="currentColor"/></svg>Selecionado</span><img class="catalog-photo" src="${p.photo}" width="400" height="400" alt="" loading="lazy" decoding="async"><span class="card-name">${p.recipe ? recipes[p.recipe].name : p.name}</span></button>`,
   )
   .join('');
 $('grid')
-  .querySelectorAll('button.card')
+  .querySelectorAll('button.card[data-product]')
   .forEach(
     (b) =>
       (b.onclick = () => {
-        if (!b.dataset.product) {
-          toast(`Por enquanto, escolha ${available('disjunction')}. Os demais vêm depois.`);
-          return;
-        }
         selectProduct(b.dataset.product);
         $('edit').focus();
       }),
   );
-/** The products that can be chosen, "o Whopper ou o Cheddar Duplo" (type 'disjunction') or "... e ..." ('conjunction'). */
-const available = (type) =>
-  new Intl.ListFormat('pt-BR', { type }).format(catalog.filter((p) => p.recipe).map((p) => `o ${recipes[p.recipe].shortName}`));
-$('available-note').textContent = `Apenas ${available('conjunction')} estão disponíveis nesta validação.`;
 
 /**
  * Shows another product: its Camadas as layer buttons and, in 3D, a new scene per stage
@@ -173,7 +165,6 @@ function render() {
   const product = recipe();
   const [first, ...rest] = product.name.split(' ');
   $('product-title').innerHTML = `<span>${first}</span><br>${rest.join(' ')}`;
-  $('product-price').textContent = money(product.price);
   $('product-description').textContent = product.description;
   $('controls-title').textContent = `Personalize seu ${product.shortName}`;
   document.querySelectorAll('#grid .card').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.product === state.product)));

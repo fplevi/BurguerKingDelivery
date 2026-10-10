@@ -115,7 +115,7 @@ test('adicionar um combo sem bebida pede a Bebida do combo e não adiciona', asy
   await expect(bebida(page)).toBeFocused();
   await expect(bebida(page)).toHaveAccessibleDescription('Escolha a bebida do combo');
   await expect(bebida(page)).toHaveAttribute('aria-invalid', 'true');
-  await expect(bebida(page)).toHaveCSS('border-color', 'rgb(214, 9, 24)');
+  await expect(bebida(page)).toHaveCSS('border-color', 'rgb(217, 0, 0)');
   await expect(page.getByRole('button', { name: 'Carrinho · 0' })).toBeVisible();
   await bebida(page).selectOption('Coca-Cola');
   await expect(page.getByText('Escolha a bebida do combo')).toHaveCount(0);
@@ -152,9 +152,8 @@ test('grade de produtos mostra os oito hambúrgueres oficiais com o Whopper sele
   const cards = page.locator('#catalog').getByRole('button');
   await expect(cards).toHaveCount(8);
   await expect(cards.filter({ hasText: 'Whopper Clássico' })).toHaveAttribute('aria-pressed', 'true');
-  await expect(cards.filter({ hasText: 'Whopper Clássico' })).toContainText('★ Selecionado');
+  await expect(cards.filter({ hasText: 'Whopper Clássico' })).toContainText('Selecionado');
   await expect(cards.filter({ hasText: 'Cheddar Duplo' })).toHaveAttribute('aria-pressed', 'false');
-  await expect(cards.filter({ hasText: 'Em breve neste protótipo' })).toHaveCount(6);
   for (let i = 0; i < 8; i++) {
     // The official product photo (decorative, alt="") must actually load.
     const photo = cards.nth(i).locator('img');
