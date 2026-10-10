@@ -194,7 +194,10 @@ function render() {
   $('drink').value = state.drink;
   $('drink').setAttribute('aria-invalid', String(!!state.drinkError));
   $('drink-error').textContent = state.drinkError ? 'Escolha a bebida do combo' : '';
-  $('total').textContent = money(price(state));
+  $('qty').textContent = state.qty;
+  $('qty-minus').disabled = state.qty <= 1;
+  $('qty-plus').disabled = state.qty >= 99;
+  $('total').textContent = money(price(state) * state.qty);
   $('custom-note').textContent = state.removed.length ? without(state.removed, product) : 'Preparado com todos os ingredientes';
   $('playground').classList.toggle('open', state.editing);
   document.querySelectorAll('#pg-burger .layer').forEach((b) => {
@@ -391,6 +394,8 @@ $('apply').onclick = () => closeEditor('apply');
 $('reset').onclick = () => dispatch({ type: 'reset' });
 $('combo').onchange = (e) => dispatch({ type: 'combo', value: e.target.checked });
 $('drink').insertAdjacentHTML('beforeend', drinks.map((d) => `<option>${d}</option>`).join(''));
+$('qty-minus').onclick = () => dispatch({ type: 'qty', value: state.qty - 1 });
+$('qty-plus').onclick = () => dispatch({ type: 'qty', value: state.qty + 1 });
 $('drink').onchange = (e) => dispatch({ type: 'drink', value: e.target.value });
 $('add').onclick = () => {
   dispatch({ type: 'add' });

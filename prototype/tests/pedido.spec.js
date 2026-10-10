@@ -70,6 +70,23 @@ test('adicionar um combo sem bebida pede a Bebida do combo e não adiciona', asy
   await expect(bebida(page)).not.toHaveAttribute('aria-invalid', 'true');
 });
 
+const quantidade = (page) => page.getByRole('group', { name: 'Quantidade' });
+
+test('a Quantidade começa em 1 e multiplica o Total do item', async ({ page }) => {
+  const menos = quantidade(page).getByRole('button', { name: 'Diminuir quantidade' });
+  const mais = quantidade(page).getByRole('button', { name: 'Aumentar quantidade' });
+  await expect(quantidade(page)).toHaveText(/^\D*1\D*$/);
+  await expect(menos).toBeDisabled();
+  await mais.click();
+  await mais.click();
+  await expect(quantidade(page)).toHaveText(/^\D*3\D*$/);
+  await expect(total(page)).toHaveText('R$ 95,70');
+  await combo(page).check();
+  await expect(total(page)).toHaveText('R$ 131,70');
+  await menos.click();
+  await expect(total(page)).toHaveText('R$ 87,80');
+});
+
 test('item pode ser removido do carrinho', async ({ page }) => {
   await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
   await page.getByRole('button', { name: 'Carrinho · 1' }).click();
