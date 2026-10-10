@@ -103,3 +103,56 @@ test.describe('celular e tablet (< 1024px)', () => {
     await verIngredientesFunciona(page);
   });
 });
+
+test.describe('desktop', () => {
+  test.skip(({ isMobile }) => isMobile, 'only in the desktop project');
+
+  test('1280: título e card à esquerda, 3D à direita com Ver ingredientes e descrição abaixo, grade em 4 colunas', async ({ page }) => {
+    const h = hero(page);
+    const [titulo, adicionar, palco, ver, desc] = await Promise.all([h.titulo, h.adicionar, h.palco, h.ver, h.descricao].map(caixa));
+    expect(adicionar.y).toBeGreaterThan(titulo.y + titulo.height);
+    expect(palco.x).toBeGreaterThanOrEqual(adicionar.x + adicionar.width);
+    expect(palco.y).toBeLessThan(adicionar.y);
+    expect(ver.y).toBeGreaterThanOrEqual(palco.y + palco.height);
+    expect(desc.y).toBeGreaterThanOrEqual(ver.y + ver.height);
+    for (const caixaAbaixo of [ver, desc]) expect(caixaAbaixo.x).toBeGreaterThan(adicionar.x + adicionar.width);
+
+    const grade = await caixa(h.grade);
+    expect(grade.y).toBeGreaterThan(Math.max(adicionar.y + adicionar.height, desc.y + desc.height));
+    const linha = await Promise.all([0, 1, 2, 3, 4].map((i) => caixa(cards(page).nth(i))));
+    for (const c of linha.slice(1, 4)) expect(c.y).toBe(linha[0].y);
+    expect(linha[4].x).toBe(linha[0].x);
+    expect(linha[4].y).toBeGreaterThan(linha[0].y + linha[0].height - 1);
+    await expect(cabecalho(page).getByText('Carrinho', { exact: true })).toBeVisible();
+    await semRolagemHorizontal(page);
+    await canvasNoPalco(h.palco);
+    await verIngredientesFunciona(page);
+  });
+
+  test.describe('≥ 1920px', () => {
+    test.use({ viewport: { width: 1920, height: 1080 } });
+
+    test('1920: hero na altura da tela, página sem rolagem e coluna lateral em 2 colunas com rolagem própria', async ({ page }) => {
+      const h = hero(page);
+      expect(await page.evaluate(() => document.documentElement.scrollHeight)).toBeLessThanOrEqual(1080);
+      const [palco, adicionar, grade] = await Promise.all([h.palco, h.adicionar, h.grade].map(caixa));
+      expect(grade.x).toBeGreaterThan(palco.x + palco.width);
+      expect(grade.y).toBeLessThan(palco.y);
+      expect(adicionar.x + adicionar.width).toBeLessThanOrEqual(palco.x);
+
+      const coluna = page.locator('#catalog');
+      const [a, b, c] = await Promise.all([0, 1, 2].map((i) => caixa(cards(page).nth(i))));
+      expect(b.y).toBe(a.y);
+      expect(c.x).toBe(a.x);
+      expect(await coluna.evaluate((el) => el.scrollHeight > el.clientHeight)).toBe(true);
+      await page.mouse.move(grade.x + 100, grade.y + 300);
+      await page.mouse.wheel(0, 600);
+      await expect.poll(() => coluna.evaluate((el) => el.scrollTop)).toBeGreaterThan(0);
+      expect(await page.evaluate(() => scrollY)).toBe(0);
+      await expect(card(page, 'Rodeio')).toBeInViewport();
+
+      await canvasNoPalco(h.palco);
+      await verIngredientesFunciona(page);
+    });
+  });
+});
