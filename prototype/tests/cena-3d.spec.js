@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { openAlterarIngredientes, alterarIngredientes, camada, chip, TITULO } from './support.js';
+import { openVerIngredientes, verIngredientes, camada, chip, TITULO } from './support.js';
 
-/** The hero visual: stage with the burger, "Remover ingredientes" and the note. */
+/** The hero visual: stage with the burger, "Ver ingredientes" and the note. */
 const heroStage = (page) => page.locator('main #hero-stage');
 
 test.beforeEach(async ({ page }) => {
@@ -20,10 +20,10 @@ test('o hero mostra o hambúrguer montado sem os ingredientes retirados, mais ba
   await expect(heroCamada(page, 'Queijo')).toBeVisible();
   const antes = await heroCamada(page, 'Pão superior').boundingBox();
 
-  await openAlterarIngredientes(page);
+  await openVerIngredientes(page);
   for (const nome of ['Queijo', 'Tomate', 'Alface']) await camada(page, nome).click();
-  await alterarIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
-  await expect(alterarIngredientes(page)).toBeHidden();
+  await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
+  await expect(verIngredientes(page)).toBeHidden();
 
   for (const nome of ['Queijo', 'Tomate', 'Alface']) await expect(heroCamada(page, nome)).toBeHidden();
   await expect(heroCamada(page, 'Picles')).toBeVisible();
@@ -32,8 +32,8 @@ test('o hero mostra o hambúrguer montado sem os ingredientes retirados, mais ba
 });
 
 test('cada ingrediente aberto em 3D tem sua própria área de toque', async ({ page, isMobile }) => {
-  await openAlterarIngredientes(page);
-  await expect(alterarIngredientes(page).locator('canvas')).toBeVisible();
+  await openVerIngredientes(page);
+  await expect(verIngredientes(page).locator('canvas')).toBeVisible();
   const removiveis = ['Queijo', 'Picles', 'Ketchup', 'Cebola', 'Tomate', 'Alface', 'Maionese'];
   for (const nome of removiveis) {
     // Playwright only taps if the button itself receives the event at its centre.
@@ -41,7 +41,7 @@ test('cada ingrediente aberto em 3D tem sua própria área de toque', async ({ p
     else await camada(page, nome).click();
     await expect(chip(page, 'Recolocar', nome)).toBeVisible();
   }
-  await expect(alterarIngredientes(page).getByText(`Whopper Clássico · Sem ${removiveis.join(', ').toLowerCase()}`)).toBeVisible();
+  await expect(verIngredientes(page).getByText(`Whopper Clássico · Sem ${removiveis.join(', ').toLowerCase()}`)).toBeVisible();
 });
 
 /** Vertical distance between the centres of Pão inferior and Pão superior in the dialog. */
@@ -53,7 +53,7 @@ async function alturaAberta(page) {
 }
 
 test('aplicar compacta as camadas abertas, com o pão superior descendo até a base', async ({ page }) => {
-  await openAlterarIngredientes(page);
+  await openVerIngredientes(page);
   await chip(page, 'Retirar', 'Tomate').click();
   // Wait until the opening transition settles (two equal readings in a row).
   let aberta = 0;
@@ -90,9 +90,9 @@ test('aplicar compacta as camadas abertas, com o pão superior descendo até a b
       }),
     TITULO,
   );
-  await alterarIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
+  await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
   expect(await menorAltura).toBeLessThan(aberta * 0.5);
-  await expect(alterarIngredientes(page)).toBeHidden();
+  await expect(verIngredientes(page)).toBeHidden();
 });
 
 test.describe('com movimento reduzido', () => {
@@ -102,7 +102,7 @@ test.describe('com movimento reduzido', () => {
     page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
 
   test('abrir e retirar não animam as camadas; aplicar fecha na hora', async ({ page }) => {
-    await openAlterarIngredientes(page);
+    await openVerIngredientes(page);
     await doisQuadros(page);
     const logo = await camada(page, 'Pão superior').boundingBox();
     await page.waitForTimeout(400);
@@ -114,13 +114,13 @@ test.describe('com movimento reduzido', () => {
     await page.waitForTimeout(400);
     expect(await alturaAberta(page)).toBe(semQueijo);
 
-    await alterarIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
-    await expect(alterarIngredientes(page)).toBeHidden({ timeout: 300 });
+    await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
+    await expect(verIngredientes(page)).toBeHidden({ timeout: 300 });
   });
 });
 
 test('cada ingrediente aberto tem área de toque de pelo menos 24 × 44 px', async ({ page }) => {
-  await openAlterarIngredientes(page);
+  await openVerIngredientes(page);
   const removiveis = ['Queijo', 'Picles', 'Ketchup', 'Cebola', 'Tomate', 'Alface', 'Maionese'];
   // WCAG 2.5.8 asks for 24 px; the Camadas are wide, so 44 px across is easy.
   await expect

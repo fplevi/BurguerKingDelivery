@@ -61,7 +61,7 @@ function mountScenes() {
     fit: 'assembled',
     onAreas: (a) => {
       placeButtons($('hero-burger'), a);
-      // Budget (ticket 11): the Alterar ingredientes scene is built only after the hero's
+      // Budget (ticket 11): the Ver ingredientes scene is built only after the hero's
       // first frame, so it doesn't delay it; opening earlier builds it on the spot.
       if (firstFrame) (window.requestIdleCallback ?? setTimeout)(() => scenes?.editor);
       firstFrame = false;
@@ -80,7 +80,7 @@ function mountScenes() {
     },
     get editor() {
       if (editor) return editor;
-      // Half the tilt in Alterar ingredientes, so the Camadas don't slide away from the cursor.
+      // Half the tilt in Ver ingredientes, so the Camadas don't slide away from the cursor.
       editor = createBurgerScene($('pg-stage'), {
         recipe: recipe(),
         fit: 'open',
@@ -227,7 +227,7 @@ function render() {
         }),
     );
   // Read by screen readers only (aria-live); the dialog shows no status line.
-  $('state').textContent = `${product.name} · ${without(state.draft, product)} · Remover ingredientes mantém o preço neste protótipo.`;
+  $('state').textContent = `${product.name} · ${without(state.draft, product)} · Retirar ingredientes mantém o preço neste protótipo.`;
   $('cart-count').textContent = state.cart.length;
   $('cart-items').innerHTML = state.cart.length
     ? state.cart

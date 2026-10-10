@@ -7,7 +7,7 @@
 import { test, expect } from '@playwright/test';
 import { readdirSync, readFileSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
-import { openAlterarIngredientes, alterarIngredientes, camada, bandeja, escolher } from './support.js';
+import { openVerIngredientes, verIngredientes, camada, bandeja, escolher } from './support.js';
 
 const softwareGl = !!process.env.PW_EXECUTABLE;
 
@@ -178,9 +178,9 @@ for (const produto of produtos) {
       if (info.project.name === 'mobile-390') await celularIntermediario(page, { network: false });
     });
 
-    test('ao abrir Alterar ingredientes', async ({ page }, info) => {
+    test('ao abrir Ver ingredientes', async ({ page }, info) => {
       const medida = await fpsDurante(page, async () => {
-        await openAlterarIngredientes(page);
+        await openVerIngredientes(page);
         await page.waitForTimeout(900); // the opening transition lasts 650 ms
       });
       registrar(`fps-abrir-${chave}`, medida);
@@ -188,7 +188,7 @@ for (const produto of produtos) {
     });
 
     test('ao arrastar um ingrediente até a bandeja', async ({ page }, info) => {
-      await openAlterarIngredientes(page);
+      await openVerIngredientes(page);
       await page.waitForTimeout(900);
       const medida = await fpsDurante(page, async () => {
         await camada(page, produto.arrastar).hover();
@@ -198,7 +198,7 @@ for (const produto of produtos) {
         await page.mouse.up();
       });
       registrar(`fps-arrastar-${chave}`, medida);
-      await expect(alterarIngredientes(page)).toBeVisible();
+      await expect(verIngredientes(page)).toBeVisible();
       expect(medida.fps, `meta ${meta(info)} fps (exceção aceita)`).toBeGreaterThanOrEqual(limite(info));
     });
 

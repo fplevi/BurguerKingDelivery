@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { openAlterarIngredientes, alterarIngredientes, bandeja, camada, chip, heroNote, retirado, dragTo, card, escolher } from './support.js';
+import { openVerIngredientes, verIngredientes, bandeja, camada, chip, heroNote, retirado, dragTo, card, escolher } from './support.js';
 
 const heroTitle = (page) => page.getByRole('heading', { level: 1 });
 /** Camada of the assembled hero burger (a disabled button labelled "Retirar X"). */
@@ -33,11 +33,11 @@ test('o hero desenha o Cheddar Duplo em 3D, numa cena só', async ({ page }) => 
 const receita = ['Pão inferior', 'Carne grelhada', 'Cheddar inferior', 'Carne grelhada', 'Cheddar superior', 'Cebola crispy', 'Pão superior'];
 const removiveis = ['Cheddar inferior', 'Cheddar superior', 'Cebola crispy'];
 /** Every Camada of the opened burger, bottom to top in the Receita (the two meats share a name). */
-const camadas = (page) => alterarIngredientes(page).locator('.stage').getByRole('button', { name: /^Retirar / });
+const camadas = (page) => verIngredientes(page).locator('.stage').getByRole('button', { name: /^Retirar / });
 
-test('Alterar ingredientes abre as 7 camadas do Cheddar Duplo, de baixo para cima', async ({ page }) => {
+test('Ver ingredientes abre as 7 camadas do Cheddar Duplo, de baixo para cima', async ({ page }) => {
   await escolher(page, 'Cheddar Duplo');
-  await openAlterarIngredientes(page);
+  await openVerIngredientes(page);
   await expect(camadas(page)).toHaveCount(7);
   await expect
     .poll(async () => {
@@ -57,45 +57,45 @@ test('Alterar ingredientes abre as 7 camadas do Cheddar Duplo, de baixo para cim
 for (const nome of removiveis) {
   test(`retira só ${nome.toLowerCase()} do Cheddar Duplo`, async ({ page }) => {
     await escolher(page, 'Cheddar Duplo');
-    await openAlterarIngredientes(page);
+    await openVerIngredientes(page);
     await camada(page, nome).click();
     await expect(chip(page, 'Recolocar', nome)).toBeVisible();
     for (const outro of removiveis.filter((n) => n !== nome)) {
       await expect(chip(page, 'Retirar', outro)).toHaveAttribute('aria-pressed', 'true');
       await expect(camada(page, outro)).toBeVisible();
     }
-    await expect(alterarIngredientes(page).getByText(`Cheddar Duplo · Sem ${nome.toLowerCase()} ·`)).toBeVisible();
+    await expect(verIngredientes(page).getByText(`Cheddar Duplo · Sem ${nome.toLowerCase()} ·`)).toBeVisible();
   });
 }
 
 test('as duas carnes e os pães do Cheddar Duplo não podem ser retirados', async ({ page }) => {
   await escolher(page, 'Cheddar Duplo');
-  await openAlterarIngredientes(page);
-  const carnes = alterarIngredientes(page).getByRole('button', { name: 'Retirar Carne grelhada', exact: true });
+  await openVerIngredientes(page);
+  const carnes = verIngredientes(page).getByRole('button', { name: 'Retirar Carne grelhada', exact: true });
   await expect(carnes).toHaveCount(2);
   for (let i = 0; i < 2; i++) await expect(carnes.nth(i)).toBeDisabled();
   for (const base of ['Pão inferior', 'Pão superior']) await expect(camada(page, base)).toBeDisabled();
   await expect(bandeja(page).getByRole('button', { name: /Carne|Pão/ })).toHaveCount(0);
   await carnes.nth(1).click({ force: true });
-  await expect(alterarIngredientes(page).getByText('Cheddar Duplo · Todos os ingredientes')).toBeVisible();
+  await expect(verIngredientes(page).getByText('Cheddar Duplo · Todos os ingredientes')).toBeVisible();
 });
 
 test('Recolocar todos, aplicar e cancelar funcionam no Cheddar Duplo', async ({ page }) => {
   await escolher(page, 'Cheddar Duplo');
-  await openAlterarIngredientes(page);
+  await openVerIngredientes(page);
   await chip(page, 'Retirar', 'Cheddar superior').click();
   await chip(page, 'Retirar', 'Cebola crispy').click();
   await bandeja(page).getByRole('button', { name: 'Recolocar todos' }).click();
-  await expect(alterarIngredientes(page).getByText('Cheddar Duplo · Todos os ingredientes')).toBeVisible();
+  await expect(verIngredientes(page).getByText('Cheddar Duplo · Todos os ingredientes')).toBeVisible();
 
   await chip(page, 'Retirar', 'Cebola crispy').click();
-  await alterarIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
-  await expect(alterarIngredientes(page)).toBeHidden();
+  await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
+  await expect(verIngredientes(page)).toBeHidden();
   await expect(heroNote(page)).toHaveText('Sem cebola crispy');
 
-  await openAlterarIngredientes(page);
+  await openVerIngredientes(page);
   await chip(page, 'Retirar', 'Cheddar inferior').click();
-  await alterarIngredientes(page).getByRole('button', { name: 'Cancelar', exact: true }).click();
+  await verIngredientes(page).getByRole('button', { name: 'Cancelar', exact: true }).click();
   await expect(heroNote(page)).toHaveText('Sem cebola crispy');
 });
 
@@ -105,10 +105,10 @@ test('Cheddar Duplo personalizado chega ao carrinho, com combo e tamanho', async
   await escolher(page, 'Cheddar Duplo');
   await page.getByRole('button', { name: 'G', exact: true }).click();
   await expect(page.getByText('Total do item').locator('strong')).toHaveText('R$ 49,90');
-  await openAlterarIngredientes(page);
+  await openVerIngredientes(page);
   await chip(page, 'Retirar', 'Cheddar inferior').click();
-  await alterarIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
-  await expect(alterarIngredientes(page)).toBeHidden();
+  await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
+  await expect(verIngredientes(page)).toBeHidden();
 
   await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
   await expect(page.getByRole('status')).toHaveText('Cheddar Duplo adicionado ao carrinho');
@@ -119,7 +119,7 @@ test('Cheddar Duplo personalizado chega ao carrinho, com combo e tamanho', async
 
 test('a bandeja mostra a imagem da camada do Cheddar Duplo retirada', async ({ page }) => {
   await escolher(page, 'Cheddar Duplo');
-  await openAlterarIngredientes(page);
+  await openVerIngredientes(page);
   await camada(page, 'Cebola crispy').click();
   const imagem = retirado(page, 'Cebola crispy').locator('img');
   await expect(imagem).toHaveCount(1);
@@ -130,9 +130,9 @@ test('a bandeja mostra a imagem da camada do Cheddar Duplo retirada', async ({ p
 
 test('voltar ao Whopper mostra as 10 camadas dele, sem resto do Cheddar Duplo, e mantém o carrinho', async ({ page }) => {
   await escolher(page, 'Cheddar Duplo');
-  await openAlterarIngredientes(page);
+  await openVerIngredientes(page);
   await chip(page, 'Retirar', 'Cebola crispy').click();
-  await alterarIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
+  await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
   await expect(heroNote(page)).toHaveText('Sem cebola crispy');
   await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
 
@@ -143,11 +143,11 @@ test('voltar ao Whopper mostra as 10 camadas dele, sem resto do Cheddar Duplo, e
   await expect(page.locator('main #hero-stage canvas')).toHaveCount(1);
   await expect(page.getByRole('button', { name: 'Carrinho · 1' })).toBeVisible();
 
-  await openAlterarIngredientes(page);
+  await openVerIngredientes(page);
   await expect(camadas(page)).toHaveCount(10);
-  await expect(alterarIngredientes(page).locator('canvas')).toHaveCount(1);
-  await expect(alterarIngredientes(page).getByText(/Cheddar|crispy/)).toHaveCount(0);
-  await expect(alterarIngredientes(page).getByText('Whopper Clássico · Todos os ingredientes')).toBeVisible();
+  await expect(verIngredientes(page).locator('canvas')).toHaveCount(1);
+  await expect(verIngredientes(page).getByText(/Cheddar|crispy/)).toHaveCount(0);
+  await expect(verIngredientes(page).getByText('Whopper Clássico · Todos os ingredientes')).toBeVisible();
   await camada(page, 'Queijo').click();
   await expect(retirado(page, 'Queijo')).toBeVisible();
 });
@@ -205,13 +205,13 @@ test.describe('sem WebGL', () => {
     await expect(page.locator('main #hero-stage canvas')).toHaveCount(0);
     await expect(heroCamada(page, 'Cebola crispy').locator('svg')).toBeVisible();
 
-    await openAlterarIngredientes(page);
+    await openVerIngredientes(page);
     await expect(camada(page, 'Cebola crispy').locator('svg')).toBeVisible();
     await camada(page, 'Cheddar superior').click();
     await dragTo(page, camada(page, 'Cebola crispy'), bandeja(page));
     await expect(retirado(page, 'Cebola crispy').locator('svg')).toBeVisible();
-    await alterarIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
-    await expect(alterarIngredientes(page)).toBeHidden();
+    await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
+    await expect(verIngredientes(page)).toBeHidden();
     await expect(heroNote(page)).toHaveText('Sem cheddar superior, cebola crispy');
 
     await escolher(page, 'Whopper Clássico');
@@ -222,8 +222,8 @@ test.describe('sem WebGL', () => {
 
 test('cada camada aberta do Cheddar Duplo tem sua própria área de toque', async ({ page, isMobile }) => {
   await escolher(page, 'Cheddar Duplo');
-  await openAlterarIngredientes(page);
-  await expect(alterarIngredientes(page).locator('canvas')).toBeVisible();
+  await openVerIngredientes(page);
+  await expect(verIngredientes(page).locator('canvas')).toBeVisible();
   // Bottom to top: the thin cheddars sit between the meats, with drips over their edges.
   for (const nome of removiveis) {
     // Playwright only taps if the button itself receives the event at its centre.
@@ -231,13 +231,13 @@ test('cada camada aberta do Cheddar Duplo tem sua própria área de toque', asyn
     else await camada(page, nome).click();
     await expect(chip(page, 'Recolocar', nome)).toBeVisible();
   }
-  await expect(alterarIngredientes(page).getByText('Cheddar Duplo · Sem cheddar inferior, cheddar superior, cebola crispy')).toBeVisible();
+  await expect(verIngredientes(page).getByText('Cheddar Duplo · Sem cheddar inferior, cheddar superior, cebola crispy')).toBeVisible();
 });
 
 test('as áreas de toque das camadas abertas do Cheddar Duplo não se sobrepõem e têm pelo menos 24 × 44 px', async ({ page }) => {
   await escolher(page, 'Cheddar Duplo');
-  await openAlterarIngredientes(page);
-  await expect(alterarIngredientes(page).locator('canvas')).toBeVisible();
+  await openVerIngredientes(page);
+  await expect(verIngredientes(page).locator('canvas')).toBeVisible();
   await expect
     .poll(async () => {
       const problemas = [];

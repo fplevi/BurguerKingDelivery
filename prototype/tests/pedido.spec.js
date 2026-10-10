@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { openAlterarIngredientes, alterarIngredientes, chip } from './support.js';
+import { openVerIngredientes, verIngredientes, chip } from './support.js';
 
 const carrinho = (page) => page.getByRole('dialog', { name: 'Seu carrinho' });
 
@@ -8,11 +8,11 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('Whopper personalizado chega ao carrinho com os ingredientes retirados', async ({ page }) => {
-  await openAlterarIngredientes(page);
+  await openVerIngredientes(page);
   await chip(page, 'Retirar', 'Tomate').click();
   await chip(page, 'Retirar', 'Ketchup').click();
-  await alterarIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
-  await expect(alterarIngredientes(page)).toBeHidden();
+  await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
+  await expect(verIngredientes(page)).toBeHidden();
 
   await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
   await expect(page.getByRole('status')).toHaveText('Whopper adicionado ao carrinho');

@@ -1,14 +1,14 @@
 // Test helpers: locate things the way the customer does (roles and accessible names).
 import { expect } from '@playwright/test';
 
-/** Visible title of the full-screen Alterar ingredientes dialog. */
-export const TITULO = 'O seu hambúrguer do seu jeito';
+/** Visible title of the full-screen Ver ingredientes dialog. */
+export const TITULO = 'Ver ingredientes';
 
-/** The full-screen "Alterar ingredientes" dialog, named by its title. */
-export const alterarIngredientes = (page) => page.getByRole('dialog', { name: TITULO, exact: true });
+/** The full-screen "Ver ingredientes" dialog, named by its title. */
+export const verIngredientes = (page) => page.getByRole('dialog', { name: TITULO, exact: true });
 
 /** Bandeja: the aside holding removed ingredients, chips and "Recolocar todos". */
-export const bandeja = (page) => alterarIngredientes(page).getByRole('complementary');
+export const bandeja = (page) => verIngredientes(page).getByRole('complementary');
 
 /** Chip in the bandeja for an ingredient; its label is "Retirar X" or "Recolocar X". */
 export const chip = (page, action, name) =>
@@ -28,11 +28,11 @@ export const retirado = (page, name) =>
  * the layer comes first in the dialog (stage before bandeja).
  */
 export const camada = (page, name) =>
-  alterarIngredientes(page).getByRole('button', { name: `Retirar ${name}`, exact: true }).first();
+  verIngredientes(page).getByRole('button', { name: `Retirar ${name}`, exact: true }).first();
 
-export async function openAlterarIngredientes(page) {
-  await page.getByRole('button', { name: /Remover ingredientes/ }).click();
-  await expect(alterarIngredientes(page)).toBeVisible();
+export async function openVerIngredientes(page) {
+  await page.getByRole('button', { name: /Ver ingredientes/ }).click();
+  await expect(verIngredientes(page)).toBeVisible();
 }
 
 /** Press on `source`, move the pointer in steps and release over the centre of `target`. */
