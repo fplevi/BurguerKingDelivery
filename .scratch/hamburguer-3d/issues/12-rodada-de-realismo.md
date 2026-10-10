@@ -4,8 +4,12 @@
 
 **Blocked by:** 11.
 
-**Status:** needs-triage
+**Status:** wontfix
 
 - [ ] Revisão comparando capturas do hambúrguer montado e aberto com a foto de referência, listando o que mais denuncia "3D"
 - [ ] Ajustes priorizados pelo ganho visual, dentro do orçamento medido no ticket 11
 - [ ] Capturas desktop e 390 × 844 antes e depois; suíte Playwright verde
+
+## Comments
+
+2026-10-09 (responsável pelo produto): rodada excluída para o Whopper e para o próximo hambúrguer. A qualidade atual é suficiente para a proposta do projeto.
