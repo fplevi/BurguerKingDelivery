@@ -4,11 +4,11 @@
 
 **Blocked by:** 03.
 
-**Status:** ready-for-agent
+**Status:** resolved
 
-- [ ] Capturas das quatro vistas (desktop e 390 × 844, montado e aberto) ao lado da foto oficial
-- [ ] Decisão registrada em `## Comments`: aprovado, ou lista de ajustes
-- [ ] Se houver ajustes, aplicados aqui; suíte verde
+- [x] Capturas das quatro vistas (desktop e 390 × 844, montado e aberto) ao lado da foto oficial
+- [x] Decisão registrada em `## Comments`: aprovado, ou lista de ajustes
+- [x] Se houver ajustes, aplicados aqui; suíte verde
 
 ## Comments
 
@@ -24,3 +24,9 @@
 - 2026-10-10 (agente): ajuste aplicado, aguarda aprovação. Borda e escorridos viraram uma superfície só e lisa: cada escorrido sai da borda por curvas côncavas largas (sem vinco), afina num pescoço e termina numa gota redonda, um pouco mais gorda, redonda também de lado (encosta na carne ao cair). A borda enrola por baixo em quarto de elipse e fica um pouco mais funda onde avança mais, sem a quina de antes; costura da malha com normais suavizadas. Mantidos: espessura, contorno irregular, avanço sobre a carne, formato por Camada e altura 0,07; escorridos ~20% mais longos para caber o pescoço. Malha com colunas mais densas sob os escorridos: 18,7 mil triângulos por cheddar (antes 13,8 mil). Fallback SVG: escorridos com curvas saindo da placa, pescoço e gota com brilho, na cor da placa. Whopper idêntico (16 capturas, diferença 0). Capturas, folha lado a lado e close de um escorrido (`cheddar-escorrido-close.png`) em `capturas/04/`.
 - 2026-10-10 (responsável pelo produto): o cheddar está sobrando demais; formato só um pouco maior que o diâmetro da carne, gotas respeitando esses níveis e mais arredondadas, forma ainda muito rígida.
 - 2026-10-10 (agente): ajuste aplicado, aguarda aprovação. Contorno: agora acompanha os bojos largos da própria carne, com ondulações leves próprias; a borda externa fica ~1,5 a 6,5% além da lateral da carne (média ~3,4%, raio médio 1,10 contra 1,06 da carne; antes chegava a 1,20, +13%, e em alguns pontos ficava para dentro da carne). Escorridos: saem da borda menor, mais curtos (comprimento abaixo da borda 0,065–0,13, antes 0,08–0,25) e terminam a no máximo ~70% da lateral da carne (ponta mais baixa em y −0,145; a base da carne fica em −0,21; antes passavam dela, até −0,29). Formas mais redondas: gota maior em relação ao fio (esfera cheia, seção redonda de meio círculo), pescoço com afinamento suave e união mais larga com a gota, e a borda agora é um quarto de círculo de verdade (sai nivelada com o topo, sem a quina de ~30° que existia na passagem topo/borda). Mantidos: espessura, altura 0,07, formato por Camada, superfície contínua. Triângulos iguais: 18,7 mil por cheddar. Fallback SVG: placa de pontas arredondadas, gotas mais curtas e redondas, sem trechos retos. Whopper idêntico (16 capturas, diferença 0). Capturas, folha lado a lado e close (`cheddar-escorrido-close.png`) refeitos em `capturas/04/`.
+- 2026-10-10 (responsável pelo produto): aprovado na rodada de `c426877`.
+
+## Answer
+
+Aprovado pelo responsável pelo produto em 2026-10-10, depois dos ajustes desta rodada única de revisão:
+cebola crispy esfarelada e com falhas (`595df59`, `cf169bf`); cheddar disforme, mais grosso, com escorridos de gosma arredondados e só um pouco maior que a carne (`595df59`, `cf169bf`, `fc50b95`, `c426877`); rodapé do celular sem cobrir os chips (`2404e93`); textos de instrução, status e Base retirados de Alterar ingredientes (`4fe2a05`, status mantido só para leitores de tela); hambúrguer ampliado sobre a bandeja depois de soltar um arrasto corrigido (`4b03f88`, com teste de regressão). Capturas finais e folha lado a lado em `.scratch/cheddar-duplo/capturas/04/`. `npm test` e `npm run test:build`: 106 passaram, 4 ignorados.
