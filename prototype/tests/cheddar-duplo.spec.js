@@ -13,10 +13,10 @@ test('escolher o Cheddar Duplo na grade troca nome, preço e descrição do hero
   await expect(heroTitle(page)).toHaveAccessibleName('Whopper Clássico');
   await escolher(page, 'Cheddar Duplo');
   await expect(heroTitle(page)).toHaveAccessibleName('Cheddar Duplo');
-  await expect(page.locator('main').getByText('R$ 34,90', { exact: true })).toBeVisible();
+  await expect(page.locator('main').getByText('R$ 34,90', { exact: true }).first()).toBeVisible();
   await expect(page.getByText('Pão com gergelim, duas carnes grelhadas, cheddar cremoso e cebola crispy.')).toBeVisible();
   await expect(card(page, 'Whopper Clássico')).toHaveAttribute('aria-pressed', 'false');
-  await expect(page.getByText('Total do item').locator('strong')).toHaveText('R$ 46,90');
+  await expect(page.getByText('Total do item').locator('strong')).toHaveText('R$ 34,90');
 });
 
 test('o hero desenha o Cheddar Duplo em 3D, numa cena só', async ({ page }) => {
@@ -101,10 +101,11 @@ test('Recolocar todos, aplicar e cancelar funcionam no Cheddar Duplo', async ({ 
 
 const carrinho = (page) => page.getByRole('dialog', { name: 'Seu carrinho' });
 
-test('Cheddar Duplo personalizado chega ao carrinho, com combo e tamanho', async ({ page }) => {
+test('Cheddar Duplo personalizado chega ao carrinho, com combo e bebida', async ({ page }) => {
   await escolher(page, 'Cheddar Duplo');
-  await page.getByRole('button', { name: 'G', exact: true }).click();
-  await expect(page.getByText('Total do item').locator('strong')).toHaveText('R$ 49,90');
+  await page.getByRole('checkbox', { name: 'Transformar em combo' }).check();
+  await page.getByRole('combobox', { name: 'Bebida do combo' }).selectOption('Fanta Laranja');
+  await expect(page.getByText('Total do item').locator('strong')).toHaveText('R$ 46,90');
   await openVerIngredientes(page);
   await chip(page, 'Retirar', 'Cheddar inferior').click();
   await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
@@ -113,8 +114,10 @@ test('Cheddar Duplo personalizado chega ao carrinho, com combo e tamanho', async
   await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
   await expect(page.getByRole('status')).toHaveText('Cheddar Duplo adicionado ao carrinho');
   await page.getByRole('button', { name: 'Carrinho · 1' }).click();
-  await expect(carrinho(page).getByText('Cheddar Duplo · R$ 49,90')).toBeVisible();
-  await expect(carrinho(page).getByText('Combo G · Sem cheddar inferior')).toBeVisible();
+  await expect(carrinho(page).getByText('Cheddar Duplo × 1')).toBeVisible();
+  await expect(carrinho(page).getByText('Combo · Fanta Laranja')).toBeVisible();
+  await expect(carrinho(page).getByText('Sem: cheddar inferior')).toBeVisible();
+  await expect(carrinho(page).getByText('Total: R$ 46,90')).toBeVisible();
 });
 
 test('a bandeja mostra a imagem da camada do Cheddar Duplo retirada', async ({ page }) => {
@@ -138,7 +141,7 @@ test('voltar ao Whopper mostra as 10 camadas dele, sem resto do Cheddar Duplo, e
 
   await escolher(page, 'Whopper Clássico');
   await expect(heroTitle(page)).toHaveAccessibleName('Whopper Clássico');
-  await expect(page.locator('main').getByText('R$ 31,90', { exact: true })).toBeVisible();
+  await expect(page.locator('main').getByText('R$ 31,90', { exact: true }).first()).toBeVisible();
   await expect(heroNote(page)).toHaveText('Preparado com todos os ingredientes');
   await expect(page.locator('main #hero-stage canvas')).toHaveCount(1);
   await expect(page.getByRole('button', { name: 'Carrinho · 1' })).toBeVisible();
