@@ -57,7 +57,10 @@ export const description = (recipe, removed = []) =>
     new Set(recipe.layers.filter((l) => l.text && !removed.includes(l.id)).map((l) => l.text)),
   ) + '.';
 
-/** The Ingredientes retirados, bottom to top, in lower case: "Sem picles e cebola"; none, "Todos os ingredientes". */
+/**
+ * The Ingredientes retirados, bottom to top, in lower case: "Sem picles e cebola"; none, "Todos os ingredientes".
+ * The one wording for both the Carrinho's Item and the Ver ingredientes status line.
+ */
 export const removedLine = (recipe, removed = []) => {
   const names = recipe.layers.filter((l) => removed.includes(l.id)).map((l) => l.name.toLowerCase());
   return names.length ? 'Sem ' + new Intl.ListFormat('pt-BR').format(names) : 'Todos os ingredientes';

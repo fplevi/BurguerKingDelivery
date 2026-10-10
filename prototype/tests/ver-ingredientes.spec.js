@@ -28,7 +28,7 @@ test('retira um ingrediente pelo teclado com Enter e Espaço', async ({ page }) 
   await camada(page, 'Cebola').focus();
   await page.keyboard.press(' ');
   await expect(chip(page, 'Recolocar', 'Cebola')).toBeVisible();
-  await expect(verIngredientes(page).getByText('Whopper® · Sem tomate, cebola')).toBeVisible();
+  await expect(verIngredientes(page).getByText('Whopper® · Sem cebola e tomate')).toBeVisible();
 });
 
 test('retira um ingrediente arrastando a camada até a bandeja', async ({ page }) => {

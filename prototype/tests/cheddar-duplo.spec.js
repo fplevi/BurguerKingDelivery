@@ -231,7 +231,7 @@ test('cada camada aberta do Cheddar Duplo tem sua própria área de toque', asyn
     else await camada(page, nome).click();
     await expect(chip(page, 'Recolocar', nome)).toBeVisible();
   }
-  await expect(verIngredientes(page).getByText('Cheddar Duplo · Sem cheddar inferior, cheddar superior, cebola crispy')).toBeVisible();
+  await expect(verIngredientes(page).getByText('Cheddar Duplo · Sem cheddar inferior, cheddar superior e cebola crispy')).toBeVisible();
 });
 
 test('as áreas de toque das camadas abertas do Cheddar Duplo não se sobrepõem e têm pelo menos 24 × 44 px', async ({ page }) => {

@@ -22,3 +22,7 @@ export const comboFee=1200,drinks=['Coca-Cola','Coca-Cola Zero','Sprite','Fanta 
 export const itemTotal=s=>{const p=pick(s);return p?products[p.product].price*p.qty:price(s)*s.qty};
 /** Name of the product an Item holds, burger or photo-only. */
 export const itemName=item=>(recipes[item.product]??products[item.product]).name;
+/** Units in the cart: the sum of every Item's Quantidade (header counter and the Carrinho's subtitle). */
+export const cartUnits=cart=>cart.reduce((n,i)=>n+i.qty,0);
+/** Total dos itens: the sum of every Item's Total do item (unit price × Quantidade). */
+export const cartTotal=cart=>cart.reduce((n,i)=>n+i.price*i.qty,0);

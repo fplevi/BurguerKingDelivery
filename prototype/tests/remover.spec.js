@@ -4,7 +4,7 @@ import { carrinho, itens, totalDoItem, totalDosItens, escolher } from './support
 
 const adicionar = (page) => page.getByRole('button', { name: 'Adicionar ao carrinho' });
 const categoria = (page, nome) => page.getByRole('banner').getByRole('link', { name: nome }).click();
-const removido = (page) => carrinho(page).getByRole('status');
+const removido = (page) => carrinho(page).getByRole('group', { name: 'Item removido' });
 const desfazer = (page) => carrinho(page).getByRole('button', { name: 'Desfazer' });
 
 /** Whopper® (Quantidade 2), Cheddar Duplo em combo com Sprite e Batata Frita, e abre o Carrinho. */
