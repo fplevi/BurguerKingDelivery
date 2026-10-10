@@ -54,6 +54,22 @@ test('a Bebida do combo só se escolhe com o Combo marcado e nunca vem preenchid
   await expect(bebida(page).locator('option:checked')).toHaveText('Selecione uma bebida');
 });
 
+test('adicionar um combo sem bebida pede a Bebida do combo e não adiciona', async ({ page }) => {
+  await combo(page).check();
+  const adicionar = page.getByRole('button', { name: 'Adicionar ao carrinho' });
+  await expect(adicionar).toBeEnabled();
+  await expect(page.getByText('Escolha a bebida do combo')).toHaveCount(0);
+  await adicionar.click();
+  await expect(bebida(page)).toBeFocused();
+  await expect(bebida(page)).toHaveAccessibleDescription('Escolha a bebida do combo');
+  await expect(bebida(page)).toHaveAttribute('aria-invalid', 'true');
+  await expect(bebida(page)).toHaveCSS('border-color', 'rgb(214, 9, 24)');
+  await expect(page.getByRole('button', { name: 'Carrinho · 0' })).toBeVisible();
+  await bebida(page).selectOption('Coca-Cola');
+  await expect(page.getByText('Escolha a bebida do combo')).toHaveCount(0);
+  await expect(bebida(page)).not.toHaveAttribute('aria-invalid', 'true');
+});
+
 test('item pode ser removido do carrinho', async ({ page }) => {
   await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
   await page.getByRole('button', { name: 'Carrinho · 1' }).click();

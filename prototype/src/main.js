@@ -192,6 +192,8 @@ function render() {
   $('combo').checked = state.combo;
   $('drink').disabled = !state.combo;
   $('drink').value = state.drink;
+  $('drink').setAttribute('aria-invalid', String(!!state.drinkError));
+  $('drink-error').textContent = state.drinkError ? 'Escolha a bebida do combo' : '';
   $('total').textContent = money(price(state));
   $('custom-note').textContent = state.removed.length ? without(state.removed, product) : 'Preparado com todos os ingredientes';
   $('playground').classList.toggle('open', state.editing);
@@ -392,6 +394,7 @@ $('drink').insertAdjacentHTML('beforeend', drinks.map((d) => `<option>${d}</opti
 $('drink').onchange = (e) => dispatch({ type: 'drink', value: e.target.value });
 $('add').onclick = () => {
   dispatch({ type: 'add' });
+  if (state.drinkError) return $('drink').focus();
   toast(`${recipe().shortName} adicionado ao carrinho`);
 };
 $('cart-open').onclick = () => {
