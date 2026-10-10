@@ -46,3 +46,13 @@ export async function dragTo(page, source, target) {
 
 /** Text under the hero burger describing the applied Personalização. */
 export const heroNote = (page) => page.locator('main').getByText(/^(Sem |Preparado com todos)/);
+
+/** Card of the product grid, by the product's name (cards also hold a badge or a note). */
+export const card = (page, nome) =>
+  page.locator('#catalog').getByRole('button', { name: new RegExp(`^(★ Selecionado\\s*)?${nome}\\s*(Em breve neste protótipo)?$`) });
+
+/** Chooses a product in the grid, as the customer does. */
+export async function escolher(page, nome) {
+  await card(page, nome).click();
+  await expect(card(page, nome)).toHaveAttribute('aria-pressed', 'true');
+}

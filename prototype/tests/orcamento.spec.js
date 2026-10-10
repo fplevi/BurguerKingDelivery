@@ -7,7 +7,7 @@
 import { test, expect } from '@playwright/test';
 import { readdirSync, readFileSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
-import { openAlterarIngredientes, alterarIngredientes, camada, bandeja } from './support.js';
+import { openAlterarIngredientes, alterarIngredientes, camada, bandeja, escolher } from './support.js';
 
 const softwareGl = !!process.env.PW_EXECUTABLE;
 
@@ -54,7 +54,7 @@ async function fpsDurante(page, action) {
   const intervalos = quadros.slice(1).map((t, i) => t - quadros[i]).sort((a, b) => a - b);
   const fps = ((quadros.length - 1) / (quadros.at(-1) - quadros[0])) * 1000;
   const p95 = intervalos[Math.floor(intervalos.length * 0.95)];
-  return { fps: Math.round(fps), p95: Math.round(p95), quadros: quadros.length };
+  return { fps: Math.round(fps), p95: Math.round(p95), max: Math.round(intervalos.at(-1)), quadros: quadros.length };
 }
 
 const registrar = (nome, valor) => {
@@ -96,6 +96,47 @@ test('o primeiro quadro do hambúrguer não passa do limite aceito na CPU de um 
   expect(mediana, `meta ${META.primeiroQuadroMs} ms (exceção aceita)`).toBeLessThanOrEqual(LIMITE.primeiroQuadroMs);
 });
 
+/** Waits for the hero's `n`-th first frame (one per scene built) and returns its time. */
+async function enesimoPrimeiroQuadro(page, n) {
+  await page.waitForFunction((n) => performance.getEntriesByName('burger-scene:first-frame:assembled').length >= n, n);
+  return page.evaluate((n) => performance.getEntriesByName('burger-scene:first-frame:assembled')[n - 1].startTime, n);
+}
+
+/**
+ * Milliseconds from choosing `nome` in the grid to the hero's first 3D frame of it: choosing a
+ * product disposes both scenes and builds them again from its Receita (ticket 02 of the Cheddar Duplo).
+ */
+async function trocarPara(page, nome) {
+  const cenas = await page.evaluate(() => performance.getEntriesByName('burger-scene:first-frame:assembled').length);
+  await page.evaluate(() => {
+    document.addEventListener('click', () => (window.__clique = performance.now()), { capture: true, once: true });
+  });
+  await escolher(page, nome);
+  const quadro = await enesimoPrimeiroQuadro(page, cenas + 1);
+  return Math.round(quadro - (await page.evaluate(() => window.__clique)));
+}
+
+// Cheddar Duplo (ticket 05): the page opens on the Whopper, so the Cheddar Duplo's first frame is
+// the one after choosing it in the grid. Same limit as the Whopper's first frame.
+test('o primeiro quadro do Cheddar Duplo, ao escolhê-lo na grade, não passa do limite aceito na CPU de um celular intermediário', async ({ page }, info) => {
+  test.skip(softwareGl, 'WebGL por software não representa um celular');
+  test.skip(info.project.name !== 'mobile-390', 'perfil de celular');
+  test.setTimeout(180_000);
+  await page.goto('/');
+  await enesimoPrimeiroQuadro(page, 1);
+  await celularIntermediario(page, { network: false });
+  // Median of 7 switches after a warm-up one, back to the Whopper in between (also measured).
+  const cheddar = [], whopper = [];
+  for (let i = 0; i < 8; i++) {
+    const ida = await trocarPara(page, 'Cheddar Duplo');
+    const volta = await trocarPara(page, 'Whopper Clássico');
+    if (i) cheddar.push(ida), whopper.push(volta);
+  }
+  const mediana = (m) => [...m].sort((a, b) => a - b)[3];
+  registrar('troca-primeiro-quadro-ms', { cheddar: { mediana: mediana(cheddar), medidas: cheddar }, whopper: { mediana: mediana(whopper), medidas: whopper } });
+  expect(mediana(cheddar), `meta ${META.primeiroQuadroMs} ms (exceção aceita)`).toBeLessThanOrEqual(LIMITE.primeiroQuadroMs);
+});
+
 test('primeiro quadro com 4G lento (informativo, sem limite)', async ({ browser }, info) => {
   test.skip(softwareGl, 'WebGL por software não representa um celular');
   test.skip(info.project.name !== 'mobile-390', 'perfil de celular');
@@ -107,53 +148,83 @@ test('primeiro quadro com 4G lento (informativo, sem limite)', async ({ browser 
   await context.close();
 });
 
-test.describe('quadros por segundo', () => {
-  test.skip(softwareGl, 'WebGL por software não representa o aparelho');
+// Ticket 05 of the Cheddar Duplo: the same three measurements with each 3D burger in the hero.
+// The Cheddar Duplo is chosen in the grid, as the customer does; its scenes are then built anew.
+const produtos = [
+  { nome: 'Whopper Clássico', arrastar: 'Tomate', cenas: 1 },
+  { nome: 'Cheddar Duplo', arrastar: 'Cebola crispy', cenas: 2 },
+];
 
-  const limite = (info) => (info.project.name === 'desktop' ? LIMITE.fpsDesktop : LIMITE.fpsCelular);
-  const meta = (info) => (info.project.name === 'desktop' ? META.fpsDesktop : META.fpsCelular);
+for (const produto of produtos) {
+  test.describe(`quadros por segundo, ${produto.nome}`, () => {
+    test.skip(softwareGl, 'WebGL por software não representa o aparelho');
 
-  test.beforeEach(async ({ page }, info) => {
-    await page.goto('/');
-    // Both scenes built and their shaders compiled, as when the customer starts interacting.
-    await page.waitForFunction(() =>
-      ['assembled', 'open'].every((fit) => performance.getEntriesByName(`burger-scene:ready:${fit}`).length),
-    );
-    if (info.project.name === 'mobile-390') await celularIntermediario(page, { network: false });
-  });
+    const limite = (info) => (info.project.name === 'desktop' ? LIMITE.fpsDesktop : LIMITE.fpsCelular);
+    const meta = (info) => (info.project.name === 'desktop' ? META.fpsDesktop : META.fpsCelular);
+    const chave = produto.nome === 'Whopper Clássico' ? 'whopper' : 'cheddar';
 
-  test('ao abrir Alterar ingredientes', async ({ page }, info) => {
-    const medida = await fpsDurante(page, async () => {
+    test.beforeEach(async ({ page }, info) => {
+      await page.goto('/');
+      if (produto.cenas > 1) {
+        await enesimoPrimeiroQuadro(page, 1);
+        await escolher(page, produto.nome);
+        await page.evaluate(() => scrollTo(0, 0));
+      }
+      // Both scenes built and their shaders compiled, as when the customer starts interacting.
+      await page.waitForFunction(
+        (n) => ['assembled', 'open'].every((fit) => performance.getEntriesByName(`burger-scene:ready:${fit}`).length >= n),
+        produto.cenas,
+      );
+      if (info.project.name === 'mobile-390') await celularIntermediario(page, { network: false });
+    });
+
+    test('ao abrir Alterar ingredientes', async ({ page }, info) => {
+      const medida = await fpsDurante(page, async () => {
+        await openAlterarIngredientes(page);
+        await page.waitForTimeout(900); // the opening transition lasts 650 ms
+      });
+      registrar(`fps-abrir-${chave}`, medida);
+      expect(medida.fps, `meta ${meta(info)} fps (exceção aceita)`).toBeGreaterThanOrEqual(limite(info));
+    });
+
+    test('ao arrastar um ingrediente até a bandeja', async ({ page }, info) => {
       await openAlterarIngredientes(page);
-      await page.waitForTimeout(900); // the opening transition lasts 650 ms
+      await page.waitForTimeout(900);
+      const medida = await fpsDurante(page, async () => {
+        await camada(page, produto.arrastar).hover();
+        await page.mouse.down();
+        const alvo = await bandeja(page).boundingBox();
+        await page.mouse.move(alvo.x + alvo.width / 2, alvo.y + alvo.height / 2, { steps: 40 });
+        await page.mouse.up();
+      });
+      registrar(`fps-arrastar-${chave}`, medida);
+      await expect(alterarIngredientes(page)).toBeVisible();
+      expect(medida.fps, `meta ${meta(info)} fps (exceção aceita)`).toBeGreaterThanOrEqual(limite(info));
     });
-    registrar('fps-abrir', medida);
-    expect(medida.fps, `meta ${meta(info)} fps (exceção aceita)`).toBeGreaterThanOrEqual(limite(info));
-  });
 
-  test('ao arrastar um ingrediente até a bandeja', async ({ page }, info) => {
-    await openAlterarIngredientes(page);
-    await page.waitForTimeout(900);
-    const medida = await fpsDurante(page, async () => {
-      await camada(page, 'Tomate').hover();
-      await page.mouse.down();
-      const alvo = await bandeja(page).boundingBox();
-      await page.mouse.move(alvo.x + alvo.width / 2, alvo.y + alvo.height / 2, { steps: 40 });
-      await page.mouse.up();
+    test('ao inclinar o hambúrguer', async ({ page }, info) => {
+      const palco = await page.locator('#hero-stage').boundingBox();
+      const medida = await fpsDurante(page, async () => {
+        await page.mouse.move(palco.x + 5, palco.y + 5);
+        await page.mouse.move(palco.x + palco.width - 5, palco.y + palco.height - 5, { steps: 40 });
+        await page.waitForTimeout(400); // the tilt eases in
+      });
+      registrar(`fps-inclinar-${chave}`, medida);
+      expect(medida.fps, `meta ${meta(info)} fps (exceção aceita)`).toBeGreaterThanOrEqual(limite(info));
     });
-    registrar('fps-arrastar', medida);
-    await expect(alterarIngredientes(page)).toBeVisible();
-    expect(medida.fps, `meta ${meta(info)} fps (exceção aceita)`).toBeGreaterThanOrEqual(limite(info));
   });
+}
 
-  test('ao inclinar o hambúrguer', async ({ page }, info) => {
-    const palco = await page.locator('#hero-stage').boundingBox();
-    const medida = await fpsDurante(page, async () => {
-      await page.mouse.move(palco.x + 5, palco.y + 5);
-      await page.mouse.move(palco.x + palco.width - 5, palco.y + palco.height - 5, { steps: 40 });
-      await page.waitForTimeout(400); // the tilt eases in
-    });
-    registrar('fps-inclinar', medida);
-    expect(medida.fps, `meta ${meta(info)} fps (exceção aceita)`).toBeGreaterThanOrEqual(limite(info));
+// Choosing a product rebuilds both scenes on the main thread: the page stalls meanwhile. No
+// limit was set for it; reported so a physical device can be compared.
+test('quadros ao trocar para o Cheddar Duplo (informativo, sem limite)', async ({ page }, info) => {
+  test.skip(softwareGl, 'WebGL por software não representa o aparelho');
+  await page.goto('/');
+  await page.waitForFunction(() => ['assembled', 'open'].every((fit) => performance.getEntriesByName(`burger-scene:ready:${fit}`).length));
+  if (info.project.name === 'mobile-390') await celularIntermediario(page, { network: false });
+  const medida = await fpsDurante(page, async () => {
+    await escolher(page, 'Cheddar Duplo');
+    await enesimoPrimeiroQuadro(page, 2);
   });
+  registrar('fps-trocar-cheddar', medida);
 });

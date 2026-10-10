@@ -1,16 +1,9 @@
 import { test, expect } from '@playwright/test';
-import { openAlterarIngredientes, alterarIngredientes, bandeja, camada, chip, heroNote, retirado, dragTo } from './support.js';
+import { openAlterarIngredientes, alterarIngredientes, bandeja, camada, chip, heroNote, retirado, dragTo, card, escolher } from './support.js';
 
-/** Card of the product grid, by the product's name (cards also hold a badge or a note). */
-const card = (page, nome) => page.locator('#catalog').getByRole('button', { name: new RegExp(`^(★ Selecionado\\s*)?${nome}\\s*(Em breve neste protótipo)?$`) });
 const heroTitle = (page) => page.getByRole('heading', { level: 1 });
 /** Camada of the assembled hero burger (a disabled button labelled "Retirar X"). */
 const heroCamada = (page, name) => page.getByRole('main').getByRole('button', { name: `Retirar ${name}`, exact: true });
-
-async function escolher(page, nome) {
-  await card(page, nome).click();
-  await expect(card(page, nome)).toHaveAttribute('aria-pressed', 'true');
-}
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/');
