@@ -1,4 +1,4 @@
-import { recipes, layer } from './ingredients.js';
+import { recipes, layer, description } from './ingredients.js';
 import { art } from './art.js';
 import { initial, reducer, money, price, drinks } from './state.js';
 import { createBurgerScene } from './scene/burger-scene.js';
@@ -165,7 +165,7 @@ function render() {
   const product = recipe();
   const [first, ...rest] = product.name.split(' ');
   $('product-title').innerHTML = `<span>${first}</span><br>${rest.join(' ')}`;
-  $('product-description').textContent = product.description;
+  $('product-description').textContent = description(product, state.removed);
   $('controls-title').textContent = `Personalize seu ${product.shortName}`;
   document.querySelectorAll('#grid .card').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.product === state.product)));
   if (scenes) {
@@ -189,7 +189,6 @@ function render() {
   $('qty-minus').disabled = state.qty <= 1;
   $('qty-plus').disabled = state.qty >= 99;
   $('total').textContent = money(price(state) * state.qty);
-  $('custom-note').textContent = state.removed.length ? without(state.removed, product) : 'Preparado com todos os ingredientes';
   $('playground').classList.toggle('open', state.editing);
   document.querySelectorAll('#pg-burger .layer').forEach((b) => {
     const removed = state.draft.includes(b.dataset.id);

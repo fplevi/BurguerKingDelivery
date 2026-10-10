@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { openVerIngredientes, verIngredientes, bandeja, camada, chip, heroNote, dragTo } from './support.js';
+import { openVerIngredientes, verIngredientes, bandeja, camada, chip, descricao, dragTo } from './support.js';
 
 // A device without WebGL: every webgl/webgl2 context request fails.
 test.beforeEach(async ({ page }) => {
@@ -30,5 +30,5 @@ test('sem WebGL, o fluxo de retirada continua funcionando', async ({ page }) => 
 
   await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
   await expect(verIngredientes(page)).toBeHidden();
-  await expect(heroNote(page)).toHaveText('Sem queijo, alface');
+  await expect(descricao(page)).toHaveText('Pão com gergelim, carne grelhada, picles, ketchup, cebola, tomate fresco e maionese.');
 });
