@@ -152,6 +152,26 @@ test('voltar ao Whopper mostra as 10 camadas dele, sem resto do Cheddar Duplo, e
   await expect(retirado(page, 'Queijo')).toBeVisible();
 });
 
+// Code review of the Cheddar Duplo: every scene used to model each Camada again, on the main
+// thread (the page stalled ~1 s on a phone's CPU when switching). Each model is now generated
+// once per page; the scene marks each generation (`layer-models:built:<key>`).
+test('trocar de produto e voltar não gera de novo o modelo de nenhuma camada', async ({ page }) => {
+  const prontas = (n) =>
+    page.waitForFunction((n) => ['assembled', 'open'].every((fit) => performance.getEntriesByName(`burger-scene:ready:${fit}`).length >= n), n);
+  await prontas(1);
+  let cenas = 1;
+  for (const nome of ['Cheddar Duplo', 'Whopper Clássico', 'Cheddar Duplo', 'Whopper Clássico']) {
+    await escolher(page, nome);
+    await prontas(++cenas);
+  }
+  const geradas = await page.evaluate(() =>
+    performance.getEntriesByType('mark').map((m) => m.name).filter((n) => n.startsWith('layer-models:built:')),
+  );
+  // Whopper: 9 models (two sauces, two buns...); Cheddar Duplo adds its two cheddars and the crispy onion.
+  expect(geradas.length).toBeGreaterThanOrEqual(12);
+  expect(geradas.filter((n, i) => geradas.indexOf(n) !== i)).toEqual([]);
+});
+
 test('os cards "Em breve" não trocam o hero', async ({ page }) => {
   for (const nome of ['Stacker Duplo Bacon', 'Rodeio Duplo', 'Big King', 'Cheeseburger Duplo', 'Cheeseburger', 'Rodeio']) {
     const outro = card(page, nome);
