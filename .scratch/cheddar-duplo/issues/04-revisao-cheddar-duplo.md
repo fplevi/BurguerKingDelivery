@@ -13,3 +13,4 @@
 ## Comments
 
 - 2026-10-10 (agente): capturas do ticket 03 lado a lado com `site_Cheddar_Duplo.png` em `.scratch/cheddar-duplo/capturas/04/revisao-lado-a-lado.png` (originais em `capturas/03/`). Aguardando a decisão do responsável pelo produto. Pontos que o agente do ticket 03 apontou: escorridos do cheddar lisos (na foto, mais irregulares e brilhantes); borda do cheddar um pouco além da carne; pão inferior e lateral das carnes iguais aos do Whopper, um pouco pálidos de perto; o texto "Pão e carne formam a base" da bandeja é o mesmo nos dois produtos; em 390 × 844 aberto o rodapé cobre os chips da bandeja (já acontecia no Whopper).
+- 2026-10-10 (responsável pelo produto): a cebola crispy parece um queijo empanado; deixar mais "esfarelada". Ajuste aplicado neste ticket.
