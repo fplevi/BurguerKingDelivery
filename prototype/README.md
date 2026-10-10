@@ -23,7 +23,7 @@ Os testes usam o Google Chrome instalado (canal `chrome`), porque o Smart App Co
 | `npm run test:build` | Mesma suíte contra o build de produção (`vite build` + `vite preview`) |
 | `npm run test:orcamento` | Só as medições de orçamento (`tests/orcamento.spec.js`), uma por vez, contra o build: peso gzip da parte 3D, primeiro quadro e quadros por segundo |
 
-Os testes sobem o próprio servidor na porta 4173 (mude com `PW_PORT`). O Chrome headless usa WebGL por hardware (ANGLE) nesta máquina; o teste de fallback desativa o WebGL de propósito. Para usar um Chromium já instalado (por exemplo, numa CI ou num container), aponte `PW_EXECUTABLE` para o binário: a configuração libera o WebGL por software (`--enable-unsafe-swiftshader`). Com renderização por software, a suíte leva bem mais tempo (cerca de 14 minutos), e os limites de tempo dos testes ficam maiores só nesse caso. Relatórios e traces de falhas ficam em `test-results/`, fora do Git.
+Os testes sobem o próprio servidor na porta 4173 (mude com `PW_PORT`). O Chrome headless usa WebGL por hardware (ANGLE) nesta máquina; o teste de fallback desativa o WebGL de propósito. Para usar um Chromium já instalado (por exemplo, numa CI ou num container), aponte `PW_EXECUTABLE` para o binário: a configuração libera o WebGL por software (`--enable-unsafe-swiftshader`). Com renderização por software, a suíte leva bem mais tempo e os limites de tempo dos testes ficam maiores só nesse caso; na CI (`CI` definida) roda um teste por vez, e o workflow divide a suíte em 6 runners. Relatórios e traces de falhas ficam em `test-results/`, fora do Git.
 
 ## Estrutura
 
