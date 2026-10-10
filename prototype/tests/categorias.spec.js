@@ -114,6 +114,17 @@ test('acompanhamento, bebida e sobremesa chegam ao carrinho com nome × quantida
   await expect(carrinho.getByText('Total: R$ 81,50')).toBeVisible();
 });
 
+test('o erro do combo sem bebida no hambúrguer não impede adicionar uma bebida', async ({ page }) => {
+  await page.getByRole('checkbox', { name: 'Transformar em combo' }).check();
+  await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
+  await expect(page.getByText('Escolha a bebida do combo')).toBeVisible();
+  await categorias(page).getByRole('link', { name: 'Bebidas' }).click();
+  await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
+  await expect(page.getByRole('status')).toContainText('Coca-Cola');
+  await expect(page.getByRole('button', { name: 'Adicionar ao carrinho' })).toBeFocused();
+  await expect(page.getByRole('button', { name: 'Carrinho · 1' })).toBeVisible();
+});
+
 test('todos os produtos das três categorias têm foto, nome, descrição e preço', async ({ page }) => {
   const todas = {
     Acompanhamentos: ['Esferas do Dragão de Pepperoni', 'Batata Frita', 'Balde de Batata', 'Onion Rings', 'BK Chicken', 'Molhão Baconese', 'Cebola Crispy', 'Molhão Maionese Cítrica'],

@@ -449,7 +449,8 @@ $('drink').onchange = (e) => dispatch({ type: 'drink', value: e.target.value });
 $('add').onclick = () => {
   const added = pick(state) ? products[pick(state).product].name : recipe().shortName;
   dispatch({ type: 'add' });
-  if (state.drinkError) return $('drink').focus();
+  // The combo's drink error belongs to the burger card only.
+  if (!pick(state) && state.drinkError) return $('drink').focus();
   toast(`${added} adicionado ao carrinho`);
 };
 $('cart-open').onclick = () => {
