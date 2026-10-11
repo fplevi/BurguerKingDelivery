@@ -157,3 +157,8 @@ export const pixExpirado = (page) => checkout(page).getByRole('region', { name: 
 // Carrinho travado enquanto o Pix está pendente (ticket 08 of checkout).
 /** The Carrinho's notice of the Pix pendente ("Há um Pix aguardando pagamento.", "Voltar ao pagamento"). */
 export const avisoDoPix = (page) => carrinho(page).getByRole('group', { name: 'Pix aguardando pagamento' });
+// Gerenciar endereços (ticket 05 of checkout).
+/** The radios of Seus endereços (the Endereços salvos and a chosen Endereço de pedido anterior). */
+export const enderecosSalvos = (page) => paginaDeEndereco(page).getByRole('radiogroup', { name: 'Endereços salvos' });
+/** The menu ⋮ of the Endereço salvo `rotulo` (Casa, Trabalho…): opens the dialog with Editar and Remover. */
+export const menuDoEndereco = (page, rotulo) => paginaDeEndereco(page).getByRole('button', { name: `Opções do endereço ${rotulo}` });

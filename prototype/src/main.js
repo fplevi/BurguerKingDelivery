@@ -326,11 +326,12 @@ function renderAddress() {
   $('address-step-back').hidden = state.addressPage === 'lista' && !state.locateError;
   root.innerHTML = progress(1) + addressFlow(state);
   const again = active?.id && $(active.id);
-  if (!again) return;
-  again.focus({ preventScroll: true });
+  if (again) again.focus({ preventScroll: true });
   try {
-    if (caret) again.setSelectionRange(...caret);
+    if (again && caret) again.setSelectionRange(...caret);
   } catch {}
+  // The menu ⋮ open: a modal dialog, its first option focused.
+  $('address-menu')?.showModal();
 }
 /** The address chosen with "Entregar neste endereço", while it is still an Endereço salvo; null otherwise. */
 const delivery = () => savedAddress(state, state.delivery);
@@ -784,7 +785,11 @@ const fromHash = () => {
   else if (hash === 'checkout' && state.customer && !delivery()) go('endereco');
   else if (inFlow && !state.customer) go('checkout');
   // The pages of a new address: Confirmar localização needs a place; the Dados de entrega, a served one.
-  else if (inFlow && !['endereco', 'endereco/buscar', 'endereco/confirmar', 'endereco/dados'].includes(hash)) go('endereco');
+  else if (inFlow && !['endereco', 'endereco/buscar', 'endereco/confirmar', 'endereco/dados', 'endereco/anteriores', 'endereco/editar', 'endereco/remover'].includes(hash)) go('endereco');
+  // Endereços de pedidos anteriores: only a Cliente cadastrado has them.
+  else if (hash === 'endereco/anteriores' && !state.customer.registered) go('endereco');
+  // Editar and Remover need the Endereço salvo chosen in its menu ⋮ (none after saving or removing it).
+  else if (['endereco/editar', 'endereco/remover'].includes(hash) && !state.customer.addresses.some((a) => a.id === state.addressTarget)) go('endereco');
   else if ((hash === 'endereco/confirmar' && !state.addressPlace) || (hash === 'endereco/dados' && !state.addressPlace?.served)) go('endereco/buscar');
   const before = state.screen,
     beforePage = state.addressPage,
@@ -841,7 +846,9 @@ $('address-page').addEventListener('click', (e) => {
 });
 // Novo endereço. "Voltar" (also "Ajustar localização no mapa" and "Escolher outro endereço"): the previous address
 // page, the previous history entry when it is one. On Localização indisponível, back to Seus endereços.
-const parentPage = { buscar: 'endereco', confirmar: 'endereco/buscar', dados: 'endereco/confirmar' };
+const parentPage = { buscar: 'endereco', confirmar: 'endereco/buscar', dados: 'endereco/confirmar', anteriores: 'endereco', editar: 'endereco', remover: 'endereco' };
+/** Back to Seus endereços over the address pages (the history entries before), after choosing or saving. */
+const toList = () => (depth() ? history.go(-depth()) : (location.hash = 'endereco'));
 function stepBack() {
   if (state.addressPage === 'lista') return dispatch({ type: 'addressLocateReset' });
   depth() ? history.back() : (location.hash = parentPage[state.addressPage]);
@@ -862,6 +869,21 @@ function locate() {
   );
 }
 $('address-step-back').addEventListener('click', stepBack);
+/** Closes the menu ⋮ (Esc, or a click outside its options), the focus back on its button. */
+function closeMenu() {
+  const id = state.addressMenu;
+  dispatch({ type: 'addressMenu', id: null });
+  $('address-more-' + id)?.focus();
+}
+$('address-page').addEventListener(
+  'cancel',
+  (e) => {
+    if (e.target.id !== 'address-menu') return;
+    e.preventDefault();
+    closeMenu();
+  },
+  true,
+);
 $('address-page').addEventListener('click', (e) => {
   const t = e.target;
   if (t.closest('[data-address-search]')) location.hash = 'endereco/buscar';
@@ -877,12 +899,34 @@ $('address-page').addEventListener('click', (e) => {
   else if (t.closest('[data-to-menu]')) location.hash = state.category;
   else if (t.closest('[data-address-confirm]')) location.hash = 'endereco/dados';
   else if (t.closest('[data-map-center]')) dispatch({ type: 'addressPan', x: 0, y: 0 });
+  // The menu ⋮: Editar endereço and Remover endereço open their page for that Endereço salvo; a click outside closes it.
+  else if (t.closest('[data-address-more]')) dispatch({ type: 'addressMenu', id: t.closest('[data-address-more]').dataset.addressMore });
+  else if (t.closest('[data-address-edit]')) {
+    dispatch({ type: 'addressManage', id: t.closest('[data-address-edit]').dataset.addressEdit });
+    location.hash = 'endereco/editar';
+  } else if (t.closest('[data-address-remove]')) {
+    dispatch({ type: 'addressManage', id: t.closest('[data-address-remove]').dataset.addressRemove });
+    location.hash = 'endereco/remover';
+  } else if (t.id === 'address-menu') closeMenu();
+  // Remover endereço: confirmed, back to Seus endereços with the toast (Figma Endereço 09); Cancelar, back as it was.
+  else if (t.closest('[data-address-removed]')) {
+    dispatch({ type: 'addressRemove' });
+    toList();
+    toast('Endereço removido.');
+  } else if (t.closest('[data-address-cancel]')) stepBack();
+  // Endereços de pedidos anteriores: choosing one lists it first in Seus endereços, marked (Figma Endereço 17).
+  else if (t.closest('[data-address-previous]')) location.hash = 'endereco/anteriores';
+  else if (t.closest('[data-previous]')) {
+    dispatch({ type: 'addressPrevious', id: t.closest('[data-previous]').dataset.previous });
+    toList();
+  }
 });
 $('address-page').addEventListener('input', (e) => {
   if (e.target.id === 'address-query') dispatch({ type: 'addressQuery', value: e.target.value });
 });
 // Dados de entrega: "Endereço sem número" and "Endereço sem complemento" empty and turn off their field; "Salvar
-// endereço" saves the Endereço salvo and goes back to Seus endereços (over the address pages), where it is marked.
+// endereço" saves the Endereço salvo and goes back to Seus endereços (over the address pages), where it is marked;
+// "Salvar alterações" (Editar endereço) updates the Endereço salvo in place and goes back the same way.
 $('address-page').addEventListener('change', (e) => {
   const off = { noNumber: 'delivery-number', noComplement: 'delivery-complement' }[e.target.name];
   if (!off) return;
@@ -898,12 +942,14 @@ $('address-page').addEventListener('submit', (e) => {
   if (!e.target.matches('[data-address-form]')) return;
   const f = new FormData(e.target),
     text = (k) => String(f.get(k) ?? '');
+  const edit = state.addressPage === 'editar';
   dispatch({
-    type: 'addressSave',
+    type: edit ? 'addressUpdate' : 'addressSave',
     draft: { street: text('street'), district: text('district'), number: text('number'), noNumber: f.has('noNumber'), complement: text('complement'), noComplement: f.has('noComplement'), reference: text('reference'), label: text('label') },
   });
+  if (edit) return state.addressTarget ? $('address-content').querySelector('[aria-invalid=true]')?.focus() : toList();
   if (state.addressPlace) return $('address-content').querySelector('[aria-invalid=true]')?.focus();
-  depth() ? history.go(-depth()) : (location.hash = 'endereco');
+  toList();
   toast('Endereço salvo e selecionado.');
 });
 // The map of Confirmar localização: dragged (pointer) or moved with the arrow keys under the fixed marker, never past

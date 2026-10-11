@@ -14,6 +14,16 @@ export const savedAddresses = [
   { id: 'trabalho', label: 'Trabalho', street: 'Rua Augusta, 1508', district: 'Consolação', city: 'São Paulo — SP', complement: '8º andar', reference: 'Recepção' },
 ];
 
+/**
+ * Endereços de pedidos anteriores of the Clientes cadastrados (Figma Endereço 05), most recent first: the fields of an
+ * Endereço salvo but `label`, and `lastOrder`, the day of the last Pedido there. All served.
+ */
+export const previousAddresses = [
+  { id: 'anterior-pinheiros', street: 'Rua dos Pinheiros, 870', district: 'Pinheiros', city: 'São Paulo — SP', complement: 'Casa', reference: 'Portão verde', lastOrder: '5 de outubro' },
+  { id: 'anterior-santos', street: 'Alameda Santos, 960', district: 'Jardim Paulista', city: 'São Paulo — SP', complement: 'Bloco B', reference: 'Apto. 42', lastOrder: '28 de setembro' },
+  { id: 'anterior-oscar-freire', street: 'Rua Oscar Freire, 1200', district: 'Jardim Paulista', city: 'São Paulo — SP', complement: '', reference: 'Recepção do edifício', lastOrder: '12 de setembro' },
+];
+
 /** Any served address: Taxa de entrega (in centavos) and Entrega estimada. */
 export const deliveryFee = 890;
 export const deliveryTime = '30–45 min';
@@ -63,8 +73,8 @@ export const processingTime = 1500;
 /** Identifier of the first Pedido confirmado of the session; the next ones follow in sequence. */
 export const firstOrder = 1024;
 
-/** Same profile for both celulares: Mariana Silva, with Casa and Trabalho and the Visa •••• 4242. */
-const mariana = { name: 'Mariana Silva', addresses: savedAddresses, cards: savedCards };
+/** Same profile for both celulares: Mariana Silva, with Casa and Trabalho, the Endereços de pedidos anteriores and the Visa •••• 4242. */
+const mariana = { name: 'Mariana Silva', addresses: savedAddresses, previous: previousAddresses, cards: savedCards };
 
 /**
  * Clientes cadastrados by celular (11 digits): (61) 99999-1234 has the Pix approved 10 s after it is generated;
