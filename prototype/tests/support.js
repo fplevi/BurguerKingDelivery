@@ -77,3 +77,36 @@ export const checkout = (page) => page.getByRole('region', { name: 'Finalizar pe
 export const resumoDoPedido = (page) => checkout(page).getByRole('complementary', { name: 'Resumo do pedido' });
 /** Indicador de etapas of the Checkout, its steps in order. */
 export const etapas = (page) => checkout(page).getByRole('list', { name: 'Etapas do pedido' }).getByRole('listitem');
+
+// Pagamento and the Pedido confirmado (ticket 06 of checkout).
+/**
+ * A Whopper® in the cart, Carrinho → Continuar, the celular `numero` of a Cliente cadastrado confirmed and Casa chosen
+ * with "Entregar neste endereço": the Checkout's Pagamento (Total do pedido R$ 40,80). `antes(page)` runs on the menu
+ * before the Whopper® is added (a Personalização, say).
+ */
+export async function irAoPagamento(page, numero = '61999991234', antes = async () => {}) {
+  await page.goto('/');
+  await antes(page);
+  await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
+  await continuarDoCarrinho(page);
+  await checkout(page).getByRole('textbox', { name: 'Celular com DDD' }).fill(numero);
+  await checkout(page).getByRole('button', { name: 'Receber código pelo WhatsApp' }).click();
+  await checkout(page).getByRole('textbox', { name: 'Código de 6 dígitos' }).fill('123456');
+  await checkout(page).getByRole('button', { name: 'Confirmar e continuar' }).click();
+  await page.getByRole('button', { name: 'Entregar neste endereço' }).click();
+  await expect(formaDePagamento(page)).toBeVisible();
+}
+/** Header Carrinho → Continuar (no combo pending): the Checkout. */
+export async function continuarDoCarrinho(page) {
+  await page.getByRole('button', { name: /^Carrinho · / }).click();
+  await carrinho(page).getByRole('complementary', { name: 'Resumo do carrinho' }).getByRole('button', { name: 'Continuar' }).click();
+  await expect(checkout(page)).toBeVisible();
+}
+/** The Forma de pagamento radios (Pix, Cartão de crédito). */
+export const formaDePagamento = (page) => checkout(page).getByRole('radiogroup', { name: 'Forma de pagamento' });
+/** Seus cartões: a radio per saved card, named "Visa •••• 4242". */
+export const seusCartoes = (page) => checkout(page).getByRole('radiogroup', { name: 'Seus cartões' });
+/** The card payment action of the Resumo do pedido, "Confirmar e pagar R$ X". */
+export const confirmarEPagar = (page) => resumoDoPedido(page).getByRole('button', { name: /^Confirmar e pagar / });
+/** The Pedido confirmado screen (#pedido/<id>), a region named by its title. */
+export const pedidoConfirmado = (page) => page.getByRole('region', { name: 'Pedido confirmado!' });
