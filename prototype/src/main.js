@@ -1,7 +1,7 @@
 import { recipes, layer, description, removedLine } from './ingredients.js';
 import { art } from './art.js';
 import { initial, reducer, money, marks, drinks, pick, itemTotal, itemName, cartUnits, cartTotal } from './state.js';
-import { progress, orderSummary } from './checkout.js';
+import { progress, orderSummary, identificationStep, sentTo } from './checkout.js';
 import { categories, products } from './products.js';
 import { createBurgerScene } from './scene/burger-scene.js';
 import whopperPhoto from '../Assets/burgers/official/site_Whopper.png';
@@ -204,6 +204,7 @@ function render() {
   buildGrid();
   const inCart = state.screen === 'carrinho',
     inCheckout = state.screen === 'checkout',
+    inAddress = state.screen === 'endereco',
     inMenu = state.screen === 'cardapio';
   document
     .querySelectorAll('nav a')
@@ -212,8 +213,9 @@ function render() {
   for (const el of document.querySelectorAll('main > .hero, main > .catalog')) el.hidden = !inMenu;
   $('cart-page').hidden = !inCart;
   $('checkout-page').hidden = !inCheckout;
-  // "Entregar em" leaves the header in the Checkout.
-  document.querySelector('header .location').hidden = inCheckout;
+  $('address-page').hidden = !inAddress;
+  // "Entregar em" leaves the header in the Checkout and the address pages.
+  document.querySelector('header .location').hidden = inCheckout || inAddress;
   const photo = pick(state) && products[pick(state).product];
   for (const id of ['hero-stage', 'edit', 'combo-options']) $(id).hidden = !!photo;
   $('product-frame').hidden = !photo;
@@ -294,12 +296,75 @@ function render() {
   }
   if (inCheckout) renderCheckout();
   else $('checkout-content').replaceChildren();
+  $('address-content').innerHTML = inAddress ? progress(1) : '';
 }
 
-/** Checkout: the indicador de etapas, the current step and the Resumo do pedido. */
+/**
+ * Checkout: the indicador de etapas, the current step (Identificação) and the Resumo do pedido. Rebuilt on every
+ * change, so the focused field keeps its focus and caret, and the Novo cliente's name and e-mail their text.
+ */
 function renderCheckout() {
-  $('checkout-content').innerHTML = `${progress(0)}<div class="checkout-body"><section class="checkout-step" aria-label="Identificação"></section>${orderSummary(state.cart)}</div>`;
+  const root = $('checkout-content'),
+    active = root.contains(document.activeElement) ? document.activeElement : null,
+    kept = [...root.querySelectorAll('#id-name, #id-email')].map((i) => [i.id, i.value]);
+  let caret = null;
+  try {
+    caret = active && active.selectionStart != null ? [active.selectionStart, active.selectionEnd] : null;
+  } catch {}
+  root.innerHTML = `${progress(0)}<div class="checkout-body"><section class="checkout-step" aria-label="Identificação">${identificationStep(state.identification)}</section>${orderSummary(state.cart)}</div>`;
+  for (const [id, value] of kept) if ($(id)) $(id).value = value;
+  const again = active?.id && $(active.id);
+  if (!again) return;
+  again.focus({ preventScroll: true });
+  try {
+    if (caret) again.setSelectionRange(...caret);
+  } catch {}
 }
+// Identificação: the celular is masked as it is typed, the caret staying after the same digit; the code keeps digits only.
+$('checkout-content').addEventListener('input', (e) => {
+  const t = e.target;
+  if (t.id === 'id-phone') {
+    const before = t.value.slice(0, t.selectionStart).replace(/\D/g, '').length;
+    dispatch({ type: 'idPhone', value: t.value });
+    const field = $('id-phone'),
+      masked = field.value;
+    let at = 0;
+    for (let n = 0; at < masked.length && n < before; at++) if (/\d/.test(masked[at])) n++;
+    field.setSelectionRange(at, at);
+  } else if (t.id === 'id-code') dispatch({ type: 'idCode', value: t.value });
+});
+// Identified (Cliente cadastrado, or Novo cliente after the form): the Checkout's place in history becomes #endereco.
+const identified = () => state.customer && location.replace('#endereco');
+$('checkout-content').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const form = e.target.dataset.idForm;
+  if (form === 'phone') {
+    dispatch({ type: 'idSend', channel: e.submitter?.dataset.idSend ?? 'whatsapp' });
+    $('id-code')?.focus();
+  } else if (form === 'code') {
+    dispatch({ type: 'idConfirm' });
+    // Código incorreto: back to the code, whose button is now disabled.
+    if (state.identification.codeError) $('id-code').focus();
+    identified();
+  } else if (form === 'register') {
+    dispatch({ type: 'idRegister', name: $('id-name').value, email: $('id-email').value });
+    $('checkout-content').querySelector('[aria-invalid=true]')?.focus();
+    identified();
+  }
+});
+// Reenviar código and switching the channel only tell where the code went (toast); Alterar celular goes back to the celular, filled.
+$('checkout-content').addEventListener('click', (e) => {
+  const id = () => state.identification;
+  if (e.target.closest('[data-id-resend]')) toast(sentTo(id().channel, id().phone));
+  else if (e.target.closest('[data-id-channel]')) {
+    dispatch({ type: 'idChannel' });
+    $('checkout-content').querySelector('[data-id-channel]').focus();
+    toast(sentTo(id().channel, id().phone));
+  } else if (e.target.closest('[data-id-change]')) {
+    dispatch({ type: 'idChange' });
+    $('id-phone').focus();
+  }
+});
 
 /** Carrinho screen: the Itens (each one editable, see itemCard) and the Resumo do carrinho, or the empty state. */
 const itemsText = (n) => (n === 1 ? '1 item' : `${n} itens`);
@@ -635,10 +700,14 @@ const fromHash = () => {
   // Back/Forward with Ver ingredientes open: cancel it first, as Esc does.
   if (state.editing) closeEditor('cancel');
   let hash = location.hash.slice(1);
-  if (hash === 'checkout' && (!state.cart.length || state.cart.some((c) => c.combo && !c.drink))) {
-    hash = 'carrinho';
-    history.replaceState(null, '', '#carrinho');
-  }
+  const go = (to) => {
+    hash = to;
+    history.replaceState(null, '', '#' + to);
+  };
+  if ((hash === 'checkout' || hash === 'endereco') && (!state.cart.length || state.cart.some((c) => c.combo && !c.drink))) go('carrinho');
+  // Within the session, a confirmed celular skips the Identificação; the address pages need it.
+  else if (hash === 'checkout' && state.customer) go('endereco');
+  else if (hash === 'endereco' && !state.customer) go('checkout');
   const before = state.screen;
   if (before === 'cardapio') [menuScroll, menuFocus] = [scrollY, document.activeElement];
   else openDrink = null;
@@ -652,7 +721,7 @@ const fromHash = () => {
   scrollTo(0, now === 'cardapio' ? menuScroll : 0);
   if (!started) return;
   const back = menuFocus?.isConnected && menuFocus.checkVisibility?.() && menuFocus !== document.body ? menuFocus : $('cart-open');
-  (({ carrinho: $('cart-title'), checkout: $('checkout-title') })[now] ?? back).focus({ preventScroll: true });
+  (({ carrinho: $('cart-title'), checkout: $('checkout-title'), endereco: $('address-title') })[now] ?? back).focus({ preventScroll: true });
 };
 // Voltar ao carrinho and Editar carrinho: back to the Carrinho (the previous history entry when the Checkout came from it).
 $('checkout-page').addEventListener('click', (e) => {
