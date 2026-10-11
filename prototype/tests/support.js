@@ -153,3 +153,7 @@ export async function gerarPix(page) {
 export const pixPendente = (page) => checkout(page).getByRole('region', { name: 'Só falta pagar o Pix' });
 /** "Seu Pix expirou" (Figma pixExpired), a region named by its title. */
 export const pixExpirado = (page) => checkout(page).getByRole('region', { name: 'Seu Pix expirou' });
+
+// Carrinho travado enquanto o Pix está pendente (ticket 08 of checkout).
+/** The Carrinho's notice of the Pix pendente ("Há um Pix aguardando pagamento.", "Voltar ao pagamento"). */
+export const avisoDoPix = (page) => carrinho(page).getByRole('group', { name: 'Pix aguardando pagamento' });

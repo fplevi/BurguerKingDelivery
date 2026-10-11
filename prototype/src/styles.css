@@ -254,3 +254,7 @@ main[data-screen=pedido]{display:block;height:auto;min-height:0}
 .pix-step .pix-waiting{margin:28px 0 20px;font-size:16px}.pix-step .pix-text{margin-bottom:24px;font-size:13px}.pix-step .pix-note{margin-top:24px;font-size:11px}
 .pix-actions{display:grid;gap:20px}
 @media(max-width:1023px){.pix-qr{width:160px;height:160px}.pix-step .primary,.pix-step .secondary{height:48px}}
+.toast-link{color:white;font-weight:bold;text-decoration:underline;margin-left:6px}
+.cart-pix{justify-content:space-between}
+.cart-pix .primary{padding:10px 20px}
+.cart-locked-detail p{margin:0 0 6px}

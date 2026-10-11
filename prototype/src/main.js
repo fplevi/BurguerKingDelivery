@@ -3,7 +3,7 @@ import { art } from './art.js';
 import { initial, reducer, money, marks, drinks, pick, itemTotal, itemName, cartUnits, cartTotal, savedAddress } from './state.js';
 import { progress, orderSummary, identificationStep, sentTo, addressFlow, deliveryCard, paymentStep, paymentAction, processingStep, orderPage, mapSize, mapCenter } from './checkout.js';
 import { processingTime } from './checkout-fixtures.js';
-import { pixPending } from './state.js';
+import { pixPending, cartLocked } from './state.js';
 import { pixStep, pixApprovedStep, pixClock } from './checkout.js';
 import { pixApproval, pixApprovedTime, pixCode } from './checkout-fixtures.js';
 import { categories, products } from './products.js';
@@ -226,6 +226,8 @@ function render() {
   const processing = inCheckout && (state.order?.status === 'processing' || state.order?.pix === 'approved');
   document.querySelector('header').inert = processing;
   $('checkout-back').disabled = processing;
+  // Pix pendente: the cart is locked, so the Checkout has no way back to edit it (Voltar ao carrinho, Editar carrinho).
+  $('checkout-back').hidden = inCheckout && cartLocked(state);
   const photo = pick(state) && products[pick(state).product];
   for (const id of ['hero-stage', 'edit', 'combo-options']) $(id).hidden = !!photo;
   $('product-frame').hidden = !photo;
@@ -356,7 +358,7 @@ function renderCheckout() {
   // the card; or the Pix pendente; or Pagamento aprovado, every step done); otherwise the Identificação.
   const main = !address ? '' : processing ? (approved ? pixApprovedStep(order) : processingStep(order)) : pix ? pixStep(order, Date.now()) : deliveryCard(address) + paymentStep(state);
   root.innerHTML = address
-    ? `${progress(approved ? 3 : 2)}<div class="checkout-body"><div class="checkout-main">${main}</div>${orderSummary(state.cart, true, processing ? { edit: 'disabled' } : pix ? {} : { action: paymentAction(state) })}</div>`
+    ? `${progress(approved ? 3 : 2)}<div class="checkout-body"><div class="checkout-main">${main}</div>${orderSummary(state.cart, true, processing ? { edit: 'disabled' } : pix ? { edit: false } : { action: paymentAction(state) })}</div>`
     : `${progress(0)}<div class="checkout-body"><section class="checkout-step" aria-label="Identificação">${identificationStep(state.identification)}</section>${orderSummary(state.cart)}</div>`;
   for (const [id, value] of kept) if ($(id)) $(id).value = value;
   const again = active?.id && $(active.id);
@@ -473,9 +475,21 @@ function removedNotice() {
   const last = state.lastRemoved;
   return last ? `<div class="cart-notice" role="group" aria-label="Item removido"><p>${marks(itemName(last.item))} removido do carrinho.</p><button class="secondary" data-key="undo">Desfazer</button></div>` : '';
 }
+/** Item `i` of the Carrinho travado: as itemCard, read-only (Combo · Bebida and "Quantidade: N" as text, no Remover). */
+function lockedCard(item) {
+  const combo = recipes[item.product] && item.combo ? `<p class="cart-locked-detail">Combo · ${item.drink}</p>` : '';
+  return `<li class="cart-item cart-locked${recipes[item.product] ? ' cart-burger' : ''}">${itemPhoto(item)}<div class="cart-head"><h2>${marks(itemName(item))}</h2></div>${ingredientsOf(item)}<div class="cart-controls"><div class="cart-locked-detail">${combo}<p>Quantidade: ${item.qty}</p></div><div class="total">Total do item<strong>${money(item.price * item.qty)}</strong></div></div></li>`;
+}
 function renderCart() {
   const units = cartUnits(state.cart);
   const count = state.cart.length;
+  // Pix pendente: the Itens read-only, the notice with "Voltar ao pagamento" and the Resumo do carrinho without Continuar.
+  if (count && cartLocked(state)) {
+    $('cart-subtitle').hidden = false;
+    $('cart-subtitle').textContent = units === count ? `${itemsText(count)} no carrinho` : `${units} unidades em ${itemsText(count)}`;
+    $('cart-content').innerHTML = `<div class="cart-notice cart-pix" role="group" aria-label="Pix aguardando pagamento"><p>Há um Pix aguardando pagamento.</p><button class="primary" data-to-payment>Voltar ao pagamento</button></div><ul class="cart-items" aria-label="Itens">${state.cart.map(lockedCard).join('')}</ul><aside class="cart-summary" aria-labelledby="summary-title"><h2 id="summary-title">Resumo do carrinho</h2><p class="summary-total">Total dos itens<strong>${money(cartTotal(state.cart))}</strong></p><p class="summary-note">Entrega calculada na próxima etapa.</p></aside>`;
+    return;
+  }
   $('cart-subtitle').hidden = !count;
   if (!count) {
     $('cart-content').innerHTML =
@@ -646,6 +660,8 @@ $('qty-minus').onclick = () => dispatch({ type: 'qty', value: qty() - 1 });
 $('qty-plus').onclick = () => dispatch({ type: 'qty', value: qty() + 1 });
 $('drink').onchange = (e) => dispatch({ type: 'drink', value: e.target.value });
 $('add').onclick = () => {
+  // Carrinho travado (Pix pendente): nothing is added.
+  if (cartLocked(state)) return toast('Conclua o pagamento ou escolha outra forma de pagamento para alterar o carrinho.');
   const added = pick(state) ? products[pick(state).product].name : recipe().name;
   dispatch({ type: 'add' });
   // The combo's drink error belongs to the burger card only.
@@ -668,6 +684,7 @@ let fromMenu = false,
 // Adicionar mais itens, Explorar cardápio) and the controls of each Item (data-key "index:control").
 $('cart-page').addEventListener('click', (e) => {
   if (e.target.closest('[data-continue]')) return continueOrder();
+  if (e.target.closest('[data-to-payment]')) return (location.hash = 'checkout');
   if (e.target.closest('[data-back]')) return fromMenu ? history.back() : (location.hash = state.category);
   const key = e.target.closest('[data-key]')?.dataset.key;
   if (!key) return;
@@ -1015,7 +1032,11 @@ function approvePix() {
     setTimeout(() => {
       const orders = state.orders.length;
       dispatch({ type: 'pixConfirm' });
-      if (state.orders.length > orders && state.screen === 'checkout') location.hash = `pedido/${state.orders.at(-1).id}`;
+      if (state.orders.length === orders) return;
+      const id = state.orders.at(-1).id;
+      // Away from the Checkout (Carrinho, cardápio…): the customer stays where they are; the toast links to the Pedido confirmado.
+      if (state.screen === 'checkout') location.hash = `pedido/${id}`;
+      else toast(`Pagamento aprovado! Pedido #${id} confirmado.`, { text: 'Ver pedido', href: `#pedido/${id}` });
     }, pixApprovedTime),
   );
 }
@@ -1075,11 +1096,13 @@ document.addEventListener('keydown', (e) => {
 });
 
 let timer;
-function toast(t) {
+/** Shows `t` for 2.8 s; with a `link` ({text, href}) after it, for 8 s, so there is time to reach it. */
+function toast(t, link = null) {
   $('toast').textContent = t;
+  if (link) $('toast').append(' ', Object.assign(document.createElement('a'), { className: 'toast-link', textContent: link.text, href: link.href }));
   $('toast').style.display = 'block';
   clearTimeout(timer);
-  timer = setTimeout(() => ($('toast').style.display = 'none'), 2800);
+  timer = setTimeout(() => ($('toast').style.display = 'none'), link ? 8000 : 2800);
 }
 
 // 3D tilt (ticket 10). Desktop: the pointer over the stage. Touch (iOS and Android): dragging
