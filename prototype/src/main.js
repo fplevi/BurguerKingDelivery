@@ -1,7 +1,7 @@
 import { recipes, layer, description, removedLine } from './ingredients.js';
 import { art } from './art.js';
 import { initial, reducer, money, marks, drinks, pick, itemTotal, itemName, cartUnits, cartTotal, savedAddress } from './state.js';
-import { progress, orderSummary, identificationStep, sentTo, addressFlow, deliveryCard, paymentStep, paymentAction, paymentBar, processingStep, orderPage, mapSize, mapCenter } from './checkout.js';
+import { progress, orderSummary, identificationStep, sentTo, addressFlow, lockNotice, deliveryCard, paymentStep, paymentAction, paymentBar, processingStep, orderPage, mapSize, mapCenter } from './checkout.js';
 import { processingTime } from './checkout-fixtures.js';
 import { pixPending, cartLocked } from './state.js';
 import { pixStep, pixApprovedStep, pixClock } from './checkout.js';
@@ -227,7 +227,9 @@ function render() {
   document.querySelector('header').inert = processing;
   $('checkout-back').disabled = processing;
   // Pix pendente: the cart is locked, so the Checkout has no way back to edit it (Voltar ao carrinho, Editar carrinho).
-  $('checkout-back').hidden = inCheckout && cartLocked(state);
+  // Carrinho travado (Pix or card), Seus endereços has only its notice, with its own way back to the payment.
+  $('checkout-back').hidden = inCheckout && cartLocked(state) && state.order.status !== 'processing';
+  $('address-back').hidden = inAddress && cartLocked(state);
   const photo = pick(state) && products[pick(state).product];
   for (const id of ['hero-stage', 'edit', 'combo-options']) $(id).hidden = !!photo;
   $('product-frame').hidden = !photo;
@@ -313,23 +315,32 @@ function render() {
   else $('address-content').replaceChildren();
 }
 /**
- * The address pages: Seus endereços, or the Busca, Confirmar localização and Dados de entrega (with "Voltar" above).
- * Rebuilt on every change, so the focused control (the Busca's field, the map) keeps its focus and caret.
+ * Replaces the content of `root` with `html`: the control that had the focus there (found again by its id) keeps it,
+ * with its caret, and the fields matching the selector `keep` keep the text typed in them.
  */
-function renderAddress() {
-  const root = $('address-content'),
-    active = root.contains(document.activeElement) ? document.activeElement : null;
+function rebuild(root, html, keep = '') {
+  const active = root.contains(document.activeElement) ? document.activeElement : null,
+    kept = keep ? [...root.querySelectorAll(keep)].map((i) => [i.id, i.value]) : [];
   let caret = null;
   try {
     caret = active && active.selectionStart != null ? [active.selectionStart, active.selectionEnd] : null;
   } catch {}
-  $('address-step-back').hidden = state.addressPage === 'lista' && !state.locateError;
-  root.innerHTML = progress(1) + addressFlow(state);
+  root.innerHTML = html;
+  for (const [id, value] of kept) if ($(id)) $(id).value = value;
   const again = active?.id && $(active.id);
-  if (again) again.focus({ preventScroll: true });
+  if (!again) return;
+  again.focus({ preventScroll: true });
   try {
-    if (again && caret) again.setSelectionRange(...caret);
+    if (caret) again.setSelectionRange(...caret);
   } catch {}
+}
+/**
+ * The address pages: Seus endereços, or the Busca, Confirmar localização and Dados de entrega (with "Voltar" above).
+ * Rebuilt on every change, so the focused control (the Busca's field, the map) keeps its focus and caret.
+ */
+function renderAddress() {
+  $('address-step-back').hidden = cartLocked(state) || (state.addressPage === 'lista' && !state.locateError);
+  rebuild($('address-content'), progress(1) + addressFlow(state));
   // The menu ⋮ open: a modal dialog, its first option focused.
   $('address-menu')?.showModal();
 }
@@ -343,13 +354,6 @@ const shownOrder = (id = state.shownOrder) => state.orders.find((o) => o.id === 
  * change, so the focused field keeps its focus and caret, and the Novo cliente's name and e-mail their text.
  */
 function renderCheckout() {
-  const root = $('checkout-content'),
-    active = root.contains(document.activeElement) ? document.activeElement : null,
-    kept = [...root.querySelectorAll('#id-name, #id-email')].map((i) => [i.id, i.value]);
-  let caret = null;
-  try {
-    caret = active && active.selectionStart != null ? [active.selectionStart, active.selectionEnd] : null;
-  } catch {}
   const address = state.customer && delivery();
   const order = state.order,
     approved = order?.pix === 'approved',
@@ -358,16 +362,10 @@ function renderCheckout() {
   // Identified with an address: the Pagamento (the delivery card, then the Forma de pagamento; or the processing of
   // the card; or the Pix pendente; or Pagamento aprovado, every step done); otherwise the Identificação.
   const main = !address ? '' : processing ? (approved ? pixApprovedStep(order) : processingStep(order)) : pix ? pixStep(order, Date.now()) : deliveryCard(address) + paymentStep(state);
-  root.innerHTML = address
+  const html = address
     ? `${progress(approved ? 3 : 2)}<div class="checkout-body"><div class="checkout-main">${main}</div>${orderSummary(state.cart, true, processing ? { edit: 'disabled' } : pix ? { edit: false } : { action: paymentAction(state) })}</div>${processing || pix ? '' : paymentBar(state)}`
     : `${progress(0)}<div class="checkout-body"><section class="checkout-step" aria-label="Identificação">${identificationStep(state.identification)}</section>${orderSummary(state.cart)}</div>`;
-  for (const [id, value] of kept) if ($(id)) $(id).value = value;
-  const again = active?.id && $(active.id);
-  if (!again) return;
-  again.focus({ preventScroll: true });
-  try {
-    if (caret) again.setSelectionRange(...caret);
-  } catch {}
+  rebuild($('checkout-content'), html, '#id-name, #id-email');
 }
 // Identificação: the celular is masked as it is typed, the caret staying after the same digit; the code keeps digits only.
 $('checkout-content').addEventListener('input', (e) => {
@@ -484,11 +482,11 @@ function lockedCard(item) {
 function renderCart() {
   const units = cartUnits(state.cart);
   const count = state.cart.length;
-  // Pix pendente: the Itens read-only, the notice with "Voltar ao pagamento" and the Resumo do carrinho without Continuar.
+  // Carrinho travado (Pix pendente, card processing): the Itens read-only, the notice with "Voltar ao pagamento" and the Resumo do carrinho without Continuar.
   if (count && cartLocked(state)) {
     $('cart-subtitle').hidden = false;
     $('cart-subtitle').textContent = units === count ? `${itemsText(count)} no carrinho` : `${units} unidades em ${itemsText(count)}`;
-    $('cart-content').innerHTML = `<div class="cart-notice cart-pix" role="group" aria-label="Pix aguardando pagamento"><p>Há um Pix aguardando pagamento.</p><button class="primary" data-to-payment>Voltar ao pagamento</button></div><ul class="cart-items" aria-label="Itens">${state.cart.map(lockedCard).join('')}</ul><aside class="cart-summary" aria-labelledby="summary-title"><h2 id="summary-title">Resumo do carrinho</h2><p class="summary-total">Total dos itens<strong>${money(cartTotal(state.cart))}</strong></p><p class="summary-note">Entrega calculada na próxima etapa.</p></aside>`;
+    $('cart-content').innerHTML = `${lockNotice(state.order)}<ul class="cart-items" aria-label="Itens">${state.cart.map(lockedCard).join('')}</ul><aside class="cart-summary" aria-labelledby="summary-title"><h2 id="summary-title">Resumo do carrinho</h2><p class="summary-total">Total dos itens<strong>${money(cartTotal(state.cart))}</strong></p><p class="summary-note">Entrega calculada na próxima etapa.</p></aside>`;
     return;
   }
   $('cart-subtitle').hidden = !count;
@@ -661,8 +659,9 @@ $('qty-minus').onclick = () => dispatch({ type: 'qty', value: qty() - 1 });
 $('qty-plus').onclick = () => dispatch({ type: 'qty', value: qty() + 1 });
 $('drink').onchange = (e) => dispatch({ type: 'drink', value: e.target.value });
 $('add').onclick = () => {
-  // Carrinho travado (Pix pendente): nothing is added.
-  if (cartLocked(state)) return toast('Conclua o pagamento ou escolha outra forma de pagamento para alterar o carrinho.');
+  // Carrinho travado (Pix pendente, card processing): nothing is added.
+  if (cartLocked(state))
+    return toast(state.order.status === 'processing' ? 'Aguarde o processamento do pagamento para alterar o carrinho.' : 'Conclua o pagamento ou escolha outra forma de pagamento para alterar o carrinho.');
   const added = pick(state) ? products[pick(state).product].name : recipe().name;
   dispatch({ type: 'add' });
   // The combo's drink error belongs to the burger card only.
@@ -784,6 +783,8 @@ const fromHash = () => {
   // Within the session, a confirmed celular skips the Identificação; the address pages need it.
   else if (hash === 'checkout' && state.customer && !delivery()) go('endereco');
   else if (inFlow && !state.customer) go('checkout');
+  // Carrinho travado: Seus endereços shows only its notice; the other address pages lead there.
+  else if (inFlow && hash !== 'endereco' && cartLocked(state)) go('endereco');
   // The pages of a new address: Confirmar localização needs a place; the Dados de entrega, a served one.
   else if (inFlow && !['endereco', 'endereco/buscar', 'endereco/confirmar', 'endereco/dados', 'endereco/anteriores', 'endereco/editar', 'endereco/remover'].includes(hash)) go('endereco');
   // Endereços de pedidos anteriores: only a Cliente cadastrado has them.
@@ -843,6 +844,8 @@ $('address-page').addEventListener('click', (e) => {
     return toPayment();
   }
   if (e.target.closest('[data-address-back]')) delivery() ? toPayment() : addressBack() === 'cart' ? history.go(-1 - depth()) : (location.hash = 'carrinho');
+  // The notice of the Carrinho travado.
+  if (e.target.closest('[data-to-payment]')) toPayment();
 });
 // Novo endereço. "Voltar" (also "Ajustar localização no mapa" and "Escolher outro endereço"): the previous address
 // page, the previous history entry when it is one. On Localização indisponível, back to Seus endereços.
@@ -1030,7 +1033,8 @@ $('checkout-content').addEventListener('click', (e) => {
 });
 /**
  * "Confirmar e pagar": an invalid field takes the focus (no processing); otherwise the Pedido is created and processed
- * for processingTime. Approved: #pedido/<id>. Recusado: back to the Pagamento with the failure, the focus on the action.
+ * for processingTime (the Carrinho travado meanwhile). Approved: the Pedido confirmado (see confirmed). Recusado: back to
+ * the Pagamento with the failure, the focus on the action; away from the Checkout (left with Back), a toast linking to it.
  */
 function confirmPayment() {
   dispatch({ type: 'payConfirm', today: new Date() });
@@ -1039,10 +1043,16 @@ function confirmPayment() {
   setTimeout(() => {
     const orders = state.orders.length;
     dispatch({ type: 'payResult' });
-    if (state.orders.length > orders) location.hash = `pedido/${state.orders.at(-1).id}`;
+    if (state.orders.length > orders) confirmed(state.orders.at(-1).id);
+    else if (state.screen !== 'checkout') toast('Não conseguimos aprovar o pagamento.', { text: 'Voltar ao pagamento', href: '#checkout' });
     // The action on screen: the Resumo do pedido's, or the fixed footer's below 1024px.
     else [...$('checkout-content').querySelectorAll('[data-pay-confirm]')].find((b) => b.checkVisibility())?.focus();
   }, processingTime);
+}
+/** The Pedido confirmado `id` (card or Pix): #pedido/<id> from the Checkout; elsewhere (Carrinho, cardápio…) the customer stays where they are and the toast links to it. */
+function confirmed(id) {
+  if (state.screen === 'checkout') location.hash = `pedido/${id}`;
+  else toast(`Pagamento aprovado! Pedido #${id} confirmado.`, { text: 'Ver pedido', href: `#pedido/${id}` });
 }
 // Pix. "Gerar Pix" creates the Pedido and opens the Pix pendente (focus on its title); the countdown ticks every
 // second, the expiry comes at 10:00 and, for a celular whose Pix gets approved, the approval pixApproval after it was
@@ -1079,11 +1089,7 @@ function approvePix() {
     setTimeout(() => {
       const orders = state.orders.length;
       dispatch({ type: 'pixConfirm' });
-      if (state.orders.length === orders) return;
-      const id = state.orders.at(-1).id;
-      // Away from the Checkout (Carrinho, cardápio…): the customer stays where they are; the toast links to the Pedido confirmado.
-      if (state.screen === 'checkout') location.hash = `pedido/${id}`;
-      else toast(`Pagamento aprovado! Pedido #${id} confirmado.`, { text: 'Ver pedido', href: `#pedido/${id}` });
+      if (state.orders.length > orders) confirmed(state.orders.at(-1).id);
     }, pixApprovedTime),
   );
 }

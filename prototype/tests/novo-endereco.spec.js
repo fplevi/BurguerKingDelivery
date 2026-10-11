@@ -128,6 +128,38 @@ test('Salvar endereço "sem número" e "sem complemento" como Trabalho volta à 
   await expect(cartao).toContainText('Em frente ao MASP');
 });
 
+test('O que o cliente digita no endereço aparece como texto, na lista, em Remover endereço, no Checkout e no Pedido confirmado', async ({ page }) => {
+  const rua = 'Rua <b>Nova</b> & Cia',
+    complemento = '<i>Apto</i> 5',
+    referencia = '<img src=x alt="Portão">';
+  await irAosDados(page);
+  await campo(page, 'Rua').fill(rua);
+  await campo(page, 'Complemento').fill(complemento);
+  await campo(page, 'Ponto de referência').fill(referencia);
+  await paginaDeEndereco(page).getByRole('radio', { name: 'Favoritos' }).check();
+  await salvar(page).click();
+  const novo = paginaDeEndereco(page).getByRole('radiogroup', { name: 'Endereços salvos' }).getByRole('radio').nth(2);
+  await expect(novo).toHaveAccessibleName(`Favoritos ${rua}, 1578 Bela Vista, São Paulo — SP ${complemento} · ${referencia}`);
+  await expect(paginaDeEndereco(page).locator('img[src=x]')).toHaveCount(0);
+  // Remover endereço names it; Cancelar keeps it.
+  await paginaDeEndereco(page).getByRole('button', { name: 'Opções do endereço Favoritos' }).click();
+  await page.getByRole('dialog').getByRole('button', { name: 'Remover endereço' }).click();
+  await expect(paginaDeEndereco(page).getByText(`${rua}, 1578`, { exact: true })).toBeVisible();
+  await paginaDeEndereco(page).getByRole('button', { name: 'Cancelar' }).click();
+  await expect(novo).toBeChecked();
+
+  await paginaDeEndereco(page).getByRole('button', { name: 'Entregar neste endereço' }).click();
+  const cartao = page.getByRole('region', { name: 'Finalizar pedido' }).getByRole('region', { name: 'Endereço de entrega' });
+  for (const texto of [`${rua}, 1578`, complemento, referencia]) await expect(cartao.getByText(texto, { exact: true })).toBeVisible();
+  const finalizar = page.getByRole('region', { name: 'Finalizar pedido' });
+  await finalizar.getByRole('radiogroup', { name: 'Forma de pagamento' }).getByRole('radio', { name: 'Cartão de crédito' }).check();
+  await finalizar.getByRole('textbox', { name: 'Código de segurança', exact: true }).fill('123');
+  await finalizar.getByRole('button', { name: /^Confirmar e pagar / }).click();
+  const pedido = page.getByRole('region', { name: 'Pedido confirmado!' });
+  for (const texto of [`${rua}, 1578`, complemento, referencia]) await expect(pedido.getByText(texto, { exact: true })).toBeVisible();
+  await expect(page.locator('img[src=x]')).toHaveCount(0);
+});
+
 test('Novo cliente salva o primeiro endereço: aparece marcado, com Entregar neste endereço', async ({ page }) => {
   await irAosDados(page, '11987654321');
   await campo(page, 'Número').fill('1000');

@@ -222,6 +222,20 @@ test('Mastercard salvo entra em Seus cartões; o próximo checkout da sessão re
   await expect(pedidoConfirmado(page).getByText('Pago com cartão Mastercard •••• 4444 · R$ 40,80', { exact: true })).toBeVisible();
 });
 
+test('O nome impresso de um cartão salvo aparece como texto em Seus cartões', async ({ page }) => {
+  const nome = '<b>Ana</b> & "Cia"';
+  await irAoPagamento(page);
+  await novoCartao(page, '5555555555554444', { nome, validade: '1230' });
+  await expect(campo(page, 'Nome impresso no cartão')).toHaveValue(nome);
+  await checkout(page).getByRole('checkbox', { name: 'Salvar cartão para os próximos pedidos' }).check();
+  await confirmarEPagar(page).click();
+  await pedidoConfirmado(page).getByRole('button', { name: 'Voltar ao cardápio' }).click();
+  await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
+  await continuarDoCarrinho(page);
+  await cartaoDeCredito(page).check();
+  await expect(seusCartoes(page).getByRole('radio', { name: 'Mastercard •••• 4444' })).toHaveAccessibleDescription(`${nome} · validade 12/30`);
+});
+
 test('Pedido confirmado: Acompanhar pedido avisa, Voltar ao cardápio leva à última categoria e o Voltar do navegador ao cardápio', async ({ page }) => {
   await irAoPagamento(page);
   await cartaoDeCredito(page).check();

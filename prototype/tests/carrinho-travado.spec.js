@@ -1,6 +1,6 @@
 // Carrinho travado enquanto o Pix está pendente (ticket 08 of checkout).
 import { test, expect } from '@playwright/test';
-import { checkout, resumoDoPedido, irAoPagamento, gerarPix, pixPendente, carrinho, itens, totalDoItem, totalDosItens, avisoDoPix, aviso, pedidoConfirmado, formaDePagamento, confirmarEPagar } from './support.js';
+import { checkout, resumoDoPedido, irAoPagamento, gerarPix, pixPendente, carrinho, itens, totalDoItem, totalDosItens, avisoDoPix, aviso, pedidoConfirmado, formaDePagamento, confirmarEPagar, paginaDeEndereco, enderecosSalvos } from './support.js';
 
 test('Com o Pix pendente, o Checkout não tem "Voltar ao carrinho" nem "Editar carrinho"', async ({ page }) => {
   await page.clock.install();
@@ -125,4 +125,88 @@ test('Pix aprovado com o cliente no cardápio: o toast com "Ver pedido" e o card
   await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
   await expect(aviso(page)).toHaveText(/^Adicionado ao carrinho: /);
   await expect(page.getByRole('button', { name: 'Carrinho · 1' })).toBeVisible();
+});
+
+// Nothing that changes the Pedido changes while it is being paid (card processing, Pix pendente).
+/** Cartão de crédito with the saved Visa and its código de segurança `cvv`, the clock paused, and "Confirmar e pagar": the processing. */
+async function processarCartao(page, cvv) {
+  await formaDePagamento(page).getByRole('radio', { name: 'Cartão de crédito' }).check();
+  await checkout(page).getByRole('textbox', { name: 'Código de segurança', exact: true }).fill(cvv);
+  await page.clock.pauseAt((await page.evaluate(() => Date.now())) + 1000);
+  await confirmarEPagar(page).click();
+  await expect(checkout(page).getByRole('heading', { name: 'Processando pagamento' })).toBeVisible();
+}
+
+test('Processando o cartão, o Voltar do navegador leva a Seus endereços e ao Carrinho travados; aprovado, o cliente fica onde está, com "Ver pedido"', async ({ page }) => {
+  await page.clock.install();
+  await irAoPagamento(page);
+  await processarCartao(page, '123');
+  await page.goBack();
+  await expect(page).toHaveURL(/#endereco$/);
+  const noEndereco = paginaDeEndereco(page).getByRole('group', { name: 'Pagamento em processamento' });
+  await expect(noEndereco.getByText('Seu pagamento está sendo processado.', { exact: true })).toBeVisible();
+  await expect(paginaDeEndereco(page).getByRole('button', { name: 'Entregar neste endereço' })).toHaveCount(0);
+  await page.getByRole('button', { name: 'Carrinho · 1' }).click();
+  const noCarrinho = carrinho(page).getByRole('group', { name: 'Pagamento em processamento' });
+  await expect(noCarrinho.getByText('Seu pagamento está sendo processado.', { exact: true })).toBeVisible();
+  await expect(itens(page).first().getByRole('button')).toHaveCount(0);
+  await expect(carrinho(page).getByRole('button', { name: 'Continuar' })).toHaveCount(0);
+  await page.getByRole('navigation', { name: 'Categorias' }).getByRole('link', { name: 'Bebidas' }).click();
+  await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
+  await expect(aviso(page)).toHaveText('Aguarde o processamento do pagamento para alterar o carrinho.');
+  await expect(page.getByRole('button', { name: 'Carrinho · 1' })).toBeVisible();
+
+  await page.clock.runFor(1600);
+  await expect(page).toHaveURL(/#bebidas$/);
+  await expect(aviso(page)).toContainText('Pagamento aprovado! Pedido #BK1024 confirmado.');
+  await expect(page.getByRole('button', { name: 'Carrinho · 0' })).toBeVisible();
+  await aviso(page).getByRole('link', { name: 'Ver pedido' }).click();
+  await expect(page).toHaveURL(/#pedido\/BK1024$/);
+  await expect(pedidoConfirmado(page).getByText('Pago com cartão Visa •••• 4242 · R$ 40,80', { exact: true })).toBeVisible();
+});
+
+test('Cartão recusado com o cliente fora do Checkout: o toast com "Voltar ao pagamento" e o carrinho destravado', async ({ page }) => {
+  await page.clock.install();
+  await irAoPagamento(page);
+  await processarCartao(page, '000');
+  await page.goBack();
+  await page.getByRole('button', { name: 'Carrinho · 1' }).click();
+  await page.clock.runFor(1600);
+  await expect(page).toHaveURL(/#carrinho$/);
+  await expect(aviso(page)).toContainText('Não conseguimos aprovar o pagamento.');
+  await expect(itens(page).first().getByRole('button', { name: 'Remover' })).toBeVisible();
+  await aviso(page).getByRole('link', { name: 'Voltar ao pagamento' }).click();
+  await expect(page).toHaveURL(/#checkout$/);
+  await expect(checkout(page).getByRole('alert').filter({ hasText: 'Não conseguimos aprovar o pagamento.' })).toBeVisible();
+});
+
+test('Com o Pix pendente, Seus endereços não muda o endereço do Pedido: o aviso com "Voltar ao pagamento", até "Escolher outra forma de pagamento"', async ({ page }) => {
+  await page.clock.install();
+  await irAoPagamento(page, '61900000000');
+  await gerarPix(page);
+  await page.goBack();
+  await expect(page).toHaveURL(/#endereco$/);
+  const endereco = paginaDeEndereco(page),
+    avisoDoEndereco = endereco.getByRole('group', { name: 'Pix aguardando pagamento' });
+  await expect(avisoDoEndereco.getByText('Há um Pix aguardando pagamento.', { exact: true })).toBeVisible();
+  await expect(avisoDoEndereco.getByText('Para alterar o endereço, escolha outra forma de pagamento.', { exact: true })).toBeVisible();
+  await expect(enderecosSalvos(page)).toHaveCount(0);
+  await expect(endereco.getByRole('button', { name: 'Entregar neste endereço' })).toHaveCount(0);
+  await expect(endereco.getByRole('button', { name: /^Buscar endereço/ })).toHaveCount(0);
+  await expect(endereco.getByRole('button', { name: 'Voltar ao checkout' })).toBeHidden();
+  // The other address pages lead to it too (Editar or Remover the address in use, say).
+  for (const pagina of ['endereco/editar', 'endereco/remover', 'endereco/buscar']) {
+    await page.evaluate((h) => (location.hash = h), pagina);
+    await expect(page).toHaveURL(/#endereco$/);
+    await expect(avisoDoEndereco).toBeVisible();
+  }
+  await avisoDoEndereco.getByRole('button', { name: 'Voltar ao pagamento' }).click();
+  await expect(page).toHaveURL(/#checkout$/);
+  await expect(pixPendente(page)).toBeVisible();
+
+  // "Escolher outra forma de pagamento": Alterar opens Seus endereços as usual.
+  await pixPendente(page).getByRole('button', { name: 'Escolher outra forma de pagamento' }).click();
+  await checkout(page).getByRole('region', { name: 'Endereço de entrega' }).getByRole('button', { name: 'Alterar' }).click();
+  await expect(enderecosSalvos(page)).toBeVisible();
+  await expect(avisoDoEndereco).toHaveCount(0);
 });

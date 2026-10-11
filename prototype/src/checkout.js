@@ -2,7 +2,7 @@
 // the Identificação, the address list, the pages of a new address (#endereco/buscar, /confirmar, /dados) and the
 // Pagamento, as HTML.
 import { recipes, removedLine } from './ingredients.js';
-import { money, marks, itemName, cartTotal, chosenCard, orderTotal } from './state.js';
+import { money, marks, itemName, cartTotal, chosenCard, orderTotal, cartLocked } from './state.js';
 import { deliveryFee, deliveryTime, cardBrand, searchPlaces, pixValidity } from './checkout-fixtures.js';
 import tile0 from '../Assets/maps/paulista-0.png';
 import tile1 from '../Assets/maps/paulista-1.png';
@@ -93,15 +93,18 @@ const searchIcon = icon(`<circle cx="10.5" cy="10.5" r="6" ${stroke} stroke-widt
 const locateIcon = icon(`<circle cx="12" cy="12" r="7" ${stroke}/><circle cx="12" cy="12" r="2.6" fill="currentColor"/>`, 20);
 const clockIcon = icon(`<circle cx="12" cy="12" r="8.5" ${stroke} stroke-dasharray="3 2"/><path d="M12 7.5V12l3 2" ${stroke}/>`, 20);
 
-/** The lines of an address after its street: "Bairro, Cidade" and "Complemento · Referência" (the empty ones left out). */
-const addressLines = (a) => [[a.district, a.city].filter(Boolean).join(', '), [a.complement, a.reference].filter(Boolean).join(' · ')].filter(Boolean);
+/** What the customer typed (the fields of an address, the name on a card, the Busca) as HTML text or a "…" attribute value. */
+const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+
+/** The lines of an address after its street: "Bairro, Cidade" and "Complemento · Referência" (the empty ones left out), escaped. */
+const addressLines = (a) => [[a.district, a.city].filter(Boolean).join(', '), [a.complement, a.reference].filter(Boolean).join(' · ')].filter(Boolean).map(esc);
 
 /** One Endereço salvo of the list: a radio named by its whole text, marked with ✓ and a red border (Figma Endereço 01/16). */
 const moreIcon = icon('<circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="19" cy="12" r="1.6" fill="currentColor"/>', 20);
 /** The menu ⋮ of an Endereço salvo (data-address-more, Figma Endereço 06): a button opening the dialog of its options. */
 const moreButton = (a) => `<button class="saved-more" type="button" id="address-more-${a.id}" data-address-more="${a.id}" aria-haspopup="dialog" aria-label="Opções do endereço ${a.label}">${moreIcon}</button>`;
 function savedAddressCard(a, picked) {
-  return `<div class="saved-address" data-address="${a.id}"><label><input class="saved-radio" type="radio" name="saved-address" value="${a.id}"${picked ? ' checked' : ''}>${a.lastOrder ? clockIcon : (labelIcons[a.label] ?? labelIcons.Favoritos)}<span class="saved-text"><b class="saved-label">${a.label}</b> <span class="saved-street">${a.street}</span> ${addressLines(a)
+  return `<div class="saved-address" data-address="${a.id}"><label><input class="saved-radio" type="radio" name="saved-address" value="${a.id}"${picked ? ' checked' : ''}>${a.lastOrder ? clockIcon : (labelIcons[a.label] ?? labelIcons.Favoritos)}<span class="saved-text"><b class="saved-label">${a.label}</b> <span class="saved-street">${esc(a.street)}</span> ${addressLines(a)
     .map((l) => `<span class="saved-line">${l}</span>`)
     .join(' ')}</span><span class="saved-check" aria-hidden="true">${icon('<path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>', 20)}</span></label>${a.lastOrder ? '' : moreButton(a)}</div>`;
 }
@@ -135,8 +138,12 @@ export function addressList({ customer, addressPick, addressPrevious, addressMen
  * reference, a divider and the Entrega estimada, with Alterar (data-change-address, to #endereco).
  */
 export function deliveryCard(a) {
+  return `<section class="checkout-step delivery-card" aria-labelledby="delivery-title"><div class="delivery-head"><h2 id="delivery-title">Endereço de entrega</h2><button class="secondary" type="button" data-change-address>Alterar</button></div><p class="delivery-label">${a.label}</p>${deliveryLines(a)}<p class="delivery-time">Entrega estimada: ${deliveryTime}</p></section>`;
+}
+/** The address of a delivery (the Checkout's card, the Pedido confirmado): street and number, city, and complement and reference, escaped. */
+function deliveryLines(a) {
   const extra = [a.complement, a.reference].filter(Boolean);
-  return `<section class="checkout-step delivery-card" aria-labelledby="delivery-title"><div class="delivery-head"><h2 id="delivery-title">Endereço de entrega</h2><button class="secondary" type="button" data-change-address>Alterar</button></div><p class="delivery-label">${a.label}</p><p class="delivery-street">${a.street}</p><p class="delivery-city">${a.city}</p>${extra.length ? `<p class="delivery-extra">${extra.map((t) => `<span>${t}</span>`).join('')}</p>` : ''}<p class="delivery-time">Entrega estimada: ${deliveryTime}</p></section>`;
+  return `<p class="delivery-street">${esc(a.street)}</p><p class="delivery-city">${esc(a.city)}</p>${extra.length ? `<p class="delivery-extra">${extra.map((t) => `<span>${esc(t)}</span>`).join('')}</p>` : ''}`;
 }
 
 // Novo endereço (#endereco/buscar, #endereco/confirmar, #endereco/dados; Figma Endereço 02-04 and 10-15).
@@ -169,11 +176,10 @@ function staticMap(pan, adjust) {
 
 /** "Av. Paulista, 1578": Rua and Número of a place. */
 const streetLine = (p) => `${p.street}, ${p.number}`;
-const quote = (t) => String(t).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
 /** The Busca's field (Figma Endereço 13): a search box named "Buscar endereço e número". */
 const searchField = (query) =>
-  `<form class="address-query" role="search" data-address-query>${searchIcon}<input class="address-input" id="address-query" type="search" autocomplete="off" aria-label="Buscar endereço e número" placeholder="Buscar endereço e número" value="${quote(query)}"></form>`;
+  `<form class="address-query" role="search" data-address-query>${searchIcon}<input class="address-input" id="address-query" type="search" autocomplete="off" aria-label="Buscar endereço e número" placeholder="Buscar endereço e número" value="${esc(query)}"></form>`;
 const mapSearch = (label) => `<p class="address-note">Não achou seu endereço?</p><button class="secondary address-wide" type="button" data-map-search>${label}</button>`;
 
 /** One result of the Busca: its name, then the street (a named place only), the district and the city. */
@@ -204,7 +210,7 @@ function addressConfirm({ addressPlace: p }) {
 /** A field of the Dados de entrega (a required one shows * outside its name), with its error line. */
 function deliveryField(name, label, value, { required = false, disabled = false, error = '' } = {}) {
   const id = `delivery-${name}`;
-  return `<div class="delivery-field delivery-${name}"><label class="field-label" for="${id}">${label}${required ? '<span aria-hidden="true"> *</span>' : ''}</label><input class="field" id="${id}" name="${name}" value="${quote(value)}"${required && !disabled ? ' required' : ''}${disabled ? ' disabled' : ''} aria-invalid="${!!error}" aria-describedby="${id}-error"><p class="field-error" id="${id}-error"${error ? ' role="alert"' : ''}>${error ?? ''}</p></div>`;
+  return `<div class="delivery-field delivery-${name}"><label class="field-label" for="${id}">${label}${required ? '<span aria-hidden="true"> *</span>' : ''}</label><input class="field" id="${id}" name="${name}" value="${esc(value)}"${required && !disabled ? ' required' : ''}${disabled ? ' disabled' : ''} aria-invalid="${!!error}" aria-describedby="${id}-error"><p class="field-error" id="${id}-error"${error ? ' role="alert"' : ''}>${error ?? ''}</p></div>`;
 }
 const box = (name, label, checked) => `<label class="check delivery-check"><input type="checkbox" name="${name}"${checked ? ' checked' : ''}> ${label}</label>`;
 
@@ -235,7 +241,7 @@ function addressEdit(state, a) {
 
 /** Remover endereço (#endereco/remover, Figma Endereço 08): the confirmation (data-address-removed) or Cancelar (data-address-cancel). */
 const addressRemove = (a) =>
-  `<div class="address-flow"><h2 class="address-title">Remover endereço?</h2><p class="address-note">${a.street}</p><p class="address-text">Você poderá cadastrar esse endereço novamente.</p><div class="address-buttons"><button class="primary" type="button" data-address-removed>Remover endereço</button></div><button class="link address-cancel" type="button" data-address-cancel>Cancelar</button></div>`;
+  `<div class="address-flow"><h2 class="address-title">Remover endereço?</h2><p class="address-note">${esc(a.street)}</p><p class="address-text">Você poderá cadastrar esse endereço novamente.</p><div class="address-buttons"><button class="primary" type="button" data-address-removed>Remover endereço</button></div><button class="link address-cancel" type="button" data-address-cancel>Cancelar</button></div>`;
 
 /** Localização indisponível (Figma Endereço 11): Seus endereços after "Usar localização atual" failed. */
 function locateFailed({ customer }) {
@@ -249,8 +255,18 @@ function previousList({ customer }) {
   return `<div class="address-flow"><h2 class="address-title">Pedidos anteriores</h2><p class="address-text">Escolha um endereço que você já usou.</p><ul class="previous-addresses" aria-label="Endereços de pedidos anteriores">${customer.previous.map(card).join('')}</ul></div>`;
 }
 
-/** The content of the address page for `addressPage` (see state.js). */
+/**
+ * Notice of the Carrinho travado (the Carrinho and Seus endereços), with "Voltar ao pagamento" (data-to-payment): the card
+ * being processed, or the Pix pendente; `hint`, a line below its text.
+ */
+export function lockNotice(order, hint = '') {
+  const [name, text] = order.status === 'processing' ? ['Pagamento em processamento', 'Seu pagamento está sendo processado.'] : ['Pix aguardando pagamento', 'Há um Pix aguardando pagamento.'];
+  return `<div class="cart-notice cart-pix" role="group" aria-label="${name}"><div><p>${text}</p>${hint ? `<p>${hint}</p>` : ''}</div><button class="primary" type="button" data-to-payment>Voltar ao pagamento</button></div>`;
+}
+
+/** The content of the address page for `addressPage` (see state.js). With the Carrinho travado, only its notice. */
 export function addressFlow(state) {
+  if (cartLocked(state)) return `<div class="address-flow">${lockNotice(state.order, state.order.status === 'pix' ? 'Para alterar o endereço, escolha outra forma de pagamento.' : '')}</div>`;
   if (state.addressPage === 'buscar') return addressSearch(state);
   if (state.addressPage === 'anteriores') return previousList(state);
   const target = state.customer.addresses.find((a) => a.id === state.addressTarget);
@@ -289,14 +305,13 @@ function cardFields(state) {
     digits = 'inputmode="numeric" autocomplete="off"';
   const list = cards.length
     ? `<h3 class="pay-cards-title" id="pay-cards-title">Seus cartões</h3><div class="pay-cards" role="radiogroup" aria-labelledby="pay-cards-title">${cards
-        .map((c) => payOption('pay-card', c.id, `${c.brand} •••• ${c.last4}`, `${c.holder} · validade ${c.expiry}`, c === card, 'card'))
+        .map((c) => payOption('pay-card', c.id, `${c.brand} •••• ${c.last4}`, `${esc(c.holder)} · validade ${c.expiry}`, c === card, 'card'))
         .join('')}</div>`
     : '';
   if (card)
     return `${list}${payField('pay-cvv', 'Código de segurança', `${digits} value="${p.cvv}"`, e.cvv, 'Confirme o código de segurança do cartão.')}<button class="secondary pay-new" type="button" data-pay-new>Adicionar novo cartão</button>`;
-  const brand = cardBrand(p.number),
-    name = p.name.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
-  return `${list}<div class="pay-new-card">${payField('pay-number', 'Número do cartão', `${digits} autocomplete="cc-number" value="${maskCard(p.number)}"`, e.number, brand && `Bandeira: ${brand}`)}${payField('pay-name', 'Nome impresso no cartão', `autocomplete="cc-name" value="${name}"`, e.name)}<div class="pay-pair">${payField('pay-expiry', 'Validade', `${digits} autocomplete="cc-exp" placeholder="MM/AA" value="${maskExpiry(p.expiry)}"`, e.expiry)}${payField('pay-new-cvv', 'Código de segurança', `${digits} value="${p.newCvv}"`, e.newCvv)}</div><label class="check pay-save"><input type="checkbox" id="pay-save"${p.save ? ' checked' : ''}> Salvar cartão para os próximos pedidos</label></div>`;
+  const brand = cardBrand(p.number);
+  return `${list}<div class="pay-new-card">${payField('pay-number', 'Número do cartão', `${digits} autocomplete="cc-number" value="${maskCard(p.number)}"`, e.number, brand && `Bandeira: ${brand}`)}${payField('pay-name', 'Nome impresso no cartão', `autocomplete="cc-name" value="${esc(p.name)}"`, e.name)}<div class="pay-pair">${payField('pay-expiry', 'Validade', `${digits} autocomplete="cc-exp" placeholder="MM/AA" value="${maskExpiry(p.expiry)}"`, e.expiry)}${payField('pay-new-cvv', 'Código de segurança', `${digits} value="${p.newCvv}"`, e.newCvv)}</div><label class="check pay-save"><input type="checkbox" id="pay-save"${p.save ? ' checked' : ''}> Salvar cartão para os próximos pedidos</label></div>`;
 }
 
 /**
@@ -382,7 +397,5 @@ export const pixApprovedStep = (order) =>
  * "Voltar ao cardápio" (data-order-menu).
  */
 export function orderPage(order) {
-  const a = order.address,
-    extra = [a.complement, a.reference].filter(Boolean);
-  return `${progress(steps.length)}<div class="checkout-body"><div class="checkout-step order-confirmed"><h1 id="order-title" tabindex="-1">Pedido confirmado!</h1><p class="order-lead">Seu pedido já está com a gente.</p><p class="order-id">Pedido #${order.id}</p><p class="order-eta">Previsão de entrega: ${deliveryTime}</p><p class="delivery-street">${a.street}</p><p class="delivery-city">${a.city}</p>${extra.length ? `<p class="delivery-extra">${extra.map((t) => `<span>${t}</span>`).join('')}</p>` : ''}<p class="order-paid">Pago com ${order.paidWith} · ${money(order.total)}</p><div class="order-actions"><button class="primary" type="button" data-order-track>Acompanhar pedido</button><button class="secondary" type="button" data-order-menu>Voltar ao cardápio</button></div></div>${orderSummary(order.items, true, { edit: false })}</div>`;
+  return `${progress(steps.length)}<div class="checkout-body"><div class="checkout-step order-confirmed"><h1 id="order-title" tabindex="-1">Pedido confirmado!</h1><p class="order-lead">Seu pedido já está com a gente.</p><p class="order-id">Pedido #${order.id}</p><p class="order-eta">Previsão de entrega: ${deliveryTime}</p>${deliveryLines(order.address)}<p class="order-paid">Pago com ${order.paidWith} · ${money(order.total)}</p><div class="order-actions"><button class="primary" type="button" data-order-track>Acompanhar pedido</button><button class="secondary" type="button" data-order-menu>Voltar ao cardápio</button></div></div>${orderSummary(order.items, true, { edit: false })}</div>`;
 }
