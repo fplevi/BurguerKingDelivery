@@ -1,6 +1,7 @@
-import { recipes, layer } from './ingredients.js';
+import { recipes, layer, description } from './ingredients.js';
 import { art } from './art.js';
-import { initial, reducer, fees, money, price } from './state.js';
+import { initial, reducer, money, drinks, pick, itemTotal, itemName } from './state.js';
+import { categories, products } from './products.js';
 import { createBurgerScene } from './scene/burger-scene.js';
 import whopperPhoto from '../Assets/burgers/official/site_Whopper.png';
 import cheddarDuploPhoto from '../Assets/burgers/official/site_Cheddar_Duplo.png';
@@ -61,7 +62,7 @@ function mountScenes() {
     fit: 'assembled',
     onAreas: (a) => {
       placeButtons($('hero-burger'), a);
-      // Budget (ticket 11): the Alterar ingredientes scene is built only after the hero's
+      // Budget (ticket 11): the Ver ingredientes scene is built only after the hero's
       // first frame, so it doesn't delay it; opening earlier builds it on the spot.
       if (firstFrame) (window.requestIdleCallback ?? setTimeout)(() => scenes?.editor);
       firstFrame = false;
@@ -80,7 +81,7 @@ function mountScenes() {
     },
     get editor() {
       if (editor) return editor;
-      // Half the tilt in Alterar ingredientes, so the Camadas don't slide away from the cursor.
+      // Half the tilt in Ver ingredientes, so the Camadas don't slide away from the cursor.
       editor = createBurgerScene($('pg-stage'), {
         recipe: recipe(),
         fit: 'open',
@@ -100,9 +101,9 @@ function mountScenes() {
   };
   document.body.classList.add('burger-3d');
 }
-// Product grid, with the official photos. Only products with a Receita can be chosen;
-// the others are placeholders for now.
-const catalog = [
+// Product grid, with the official photos. Hambúrgueres: only products with a Receita can be
+// chosen; the others look the same, but clicking them does nothing. Photo categories: all can.
+const burgers = [
   { recipe: 'whopper', photo: whopperPhoto },
   { recipe: 'cheddarDuplo', photo: cheddarDuploPhoto },
   { name: 'Stacker Duplo Bacon', photo: stackerDuploPhoto },
@@ -112,29 +113,47 @@ const catalog = [
   { name: 'Cheeseburger', photo: cheeseburgerPhoto },
   { name: 'Rodeio', photo: rodeioPhoto },
 ];
-$('grid').innerHTML = catalog
-  .map(
-    (p) =>
-      `<button class="card" aria-pressed="false" ${p.recipe ? `data-product="${p.recipe}"` : 'data-soon'}><span class="badge">★ Selecionado</span><img class="catalog-photo" src="${p.photo}" width="400" height="400" alt="" loading="lazy" decoding="async">${p.recipe ? recipes[p.recipe].name : p.name}${p.recipe ? '' : '<small>Em breve neste protótipo</small>'}</button>`,
-  )
-  .join('');
-$('grid')
-  .querySelectorAll('button.card')
-  .forEach(
-    (b) =>
-      (b.onclick = () => {
-        if (!b.dataset.product) {
-          toast(`Por enquanto, escolha ${available('disjunction')}. Os demais vêm depois.`);
-          return;
-        }
-        selectProduct(b.dataset.product);
-        $('edit').focus();
-      }),
-  );
-/** The products that can be chosen, "o Whopper ou o Cheddar Duplo" (type 'disjunction') or "... e ..." ('conjunction'). */
-const available = (type) =>
-  new Intl.ListFormat('pt-BR', { type }).format(catalog.filter((p) => p.recipe).map((p) => `o ${recipes[p.recipe].shortName}`));
-$('available-note').textContent = `Apenas ${available('conjunction')} estão disponíveis nesta validação.`;
+/** Product names with ® raised, as in the Figma. */
+const marks = (text) => text.replace(/®/g, '<span class="mark">®</span>');
+/** The photo's box in the 800 × 800 file, for .photo-crop: only it is drawn (the transparent margins are cut off, as in the Figma). */
+const crop = ([x0, y0, x1, y1]) => `--x:${x0};--y:${y0};--w:${x1 - x0};--h:${y1 - y0}`;
+const badge =
+  '<span class="badge"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5z" fill="currentColor"/></svg>Selecionado</span>';
+let gridCategory = null;
+function buildGrid() {
+  if (gridCategory === state.category) return;
+  gridCategory = state.category;
+  const category = categories[state.category];
+  $('catalog-title').textContent = category?.heading ?? 'Escolha seu hambúrguer';
+  $('catalog').scrollTop = 0;
+  $('grid').dataset.category = state.category;
+  $('grid').innerHTML = category
+    ? category.products
+        .map(
+          (p) =>
+            `<button class="card" aria-pressed="false" data-product="${p.id}">${badge}<span class="catalog-photo photo-crop" style="${crop(p.box)}"><img src="${p.photo}" alt="" loading="lazy" decoding="async"></span><span class="card-name"><span>${marks(p.name)}</span></span></button>`,
+        )
+        .join('')
+    : burgers
+        .map(
+          (p) =>
+            `<button class="card" aria-pressed="false" ${p.recipe ? `data-product="${p.recipe}"` : ''}>${badge}<img class="catalog-photo" src="${p.photo}" width="400" height="400" alt="" loading="lazy" decoding="async"><span class="card-name">${p.recipe ? recipes[p.recipe].name : p.name}</span></button>`,
+        )
+        .join('');
+  $('grid')
+    .querySelectorAll('button.card[data-product]')
+    .forEach(
+      (b) =>
+        (b.onclick = () => {
+          if (category) {
+            dispatch({ type: 'select', product: b.dataset.product });
+            return $('add').focus();
+          }
+          selectProduct(b.dataset.product);
+          $('edit').focus();
+        }),
+    );
+}
 
 /**
  * Shows another product: its Camadas as layer buttons and, in 3D, a new scene per stage
@@ -169,14 +188,41 @@ function closedPositions(removed) {
   return positions;
 }
 
+/** Hero title in two lines: at the title's "\n", otherwise after the first word. */
+function heroTitle(title) {
+  const [first, ...rest] = title.includes('\n') ? title.split('\n') : title.split(' ');
+  $('product-title').innerHTML = `<span>${marks(first)}</span><br>${marks(rest.join(' '))}`;
+  fitTitle();
+}
+/** The title's lines don't wrap: a line wider than the column shrinks the title to fit it. */
+function fitTitle() {
+  const h1 = $('product-title');
+  h1.style.fontSize = '';
+  if (h1.scrollWidth > h1.clientWidth) h1.style.fontSize = (parseFloat(getComputedStyle(h1).fontSize) * h1.clientWidth) / h1.scrollWidth + 'px';
+}
+addEventListener('resize', fitTitle);
+
 function render() {
+  buildGrid();
+  document
+    .querySelectorAll('nav a')
+    .forEach((a) => (a.hash === '#' + state.category ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current')));
+  const photo = pick(state) && products[pick(state).product];
+  for (const id of ['hero-stage', 'edit', 'combo-options']) $(id).hidden = !!photo;
+  $('product-frame').hidden = !photo;
   const product = recipe();
-  const [first, ...rest] = product.name.split(' ');
-  $('product-title').innerHTML = `<span>${first}</span><br>${rest.join(' ')}`;
-  $('product-price').textContent = money(product.price);
-  $('product-description').textContent = product.description;
+  if (photo) {
+    heroTitle(photo.title);
+    $('product-photo').src = photo.photo;
+    $('product-frame').style.cssText = crop(photo.box);
+    $('product-frame').setAttribute('aria-label', photo.title.replace('\n', ' '));
+    $('product-description').textContent = photo.text;
+  } else {
+    heroTitle(product.name);
+    $('product-description').textContent = description(product, state.removed);
+  }
   $('controls-title').textContent = `Personalize seu ${product.shortName}`;
-  document.querySelectorAll('#grid .card').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.product === state.product)));
+  document.querySelectorAll('#grid .card').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.product === (pick(state)?.product ?? state.product))));
   if (scenes) {
     scenes.hero.show({ open: false, removed: state.removed }, { animate: false });
     if (state.editing && !closing) scenes.editor.show({ open: true, removed: state.draft });
@@ -190,13 +236,15 @@ function render() {
     .querySelectorAll('#hero-burger .layer')
     .forEach((b) => b.classList.toggle('removed', state.removed.includes(b.dataset.id)));
   $('combo').checked = state.combo;
-  document.querySelectorAll('.size').forEach((b) => {
-    b.disabled = !state.combo;
-    b.setAttribute('aria-pressed', String(b.dataset.size === state.size));
-  });
-  $('fee').innerHTML = state.combo ? `Combo ${state.size}:<br>+ ${money(fees[state.size])}` : 'Só o sanduíche';
-  $('total').textContent = money(price(state));
-  $('custom-note').textContent = state.removed.length ? without(state.removed, product) : 'Preparado com todos os ingredientes';
+  $('drink').disabled = !state.combo;
+  $('drink').value = state.drink;
+  $('drink').setAttribute('aria-invalid', String(!!state.drinkError));
+  $('drink-error').textContent = state.drinkError ? 'Escolha a bebida do combo' : '';
+  const qty = pick(state)?.qty ?? state.qty;
+  $('qty').textContent = qty;
+  $('qty-minus').disabled = qty <= 1;
+  $('qty-plus').disabled = qty >= 99;
+  $('total').textContent = money(itemTotal(state));
   $('playground').classList.toggle('open', state.editing);
   document.querySelectorAll('#pg-burger .layer').forEach((b) => {
     const removed = state.draft.includes(b.dataset.id);
@@ -227,20 +275,22 @@ function render() {
         }),
     );
   // Read by screen readers only (aria-live); the dialog shows no status line.
-  $('state').textContent = `${product.name} · ${without(state.draft, product)} · Remover ingredientes mantém o preço neste protótipo.`;
-  $('cart-count').textContent = state.cart.length;
+  $('state').textContent = `${product.name} · ${without(state.draft, product)} · Retirar ingredientes mantém o preço neste protótipo.`;
+  const units = state.cart.reduce((n, i) => n + i.qty, 0);
+  $('cart-count').textContent = units;
+  $('cart-open').setAttribute('aria-label', `Carrinho · ${units}`);
   $('cart-items').innerHTML = state.cart.length
     ? state.cart
         .map(
           (item, i) =>
-            `<div class="cart-row"><b>${recipes[item.product].name} · ${money(item.price)}</b><small>${item.combo ? 'Combo ' + item.size : 'Só sanduíche'} · ${without(item.removed, recipes[item.product])}</small><button data-delete="${i}">Remover item</button></div>`,
+            `<div class="cart-row"><b>${itemName(item)} × ${item.qty}</b>${item.combo ? `<small>Combo · ${item.drink}</small>` : ''}${item.removed.length ? `<small>Sem: ${item.removed.map((id) => name(id, recipes[item.product])).join(', ').toLowerCase()}</small>` : ''}<span>${money(item.price * item.qty)}</span><button data-delete="${i}">Remover item</button></div>`,
         )
         .join('')
     : 'Seu carrinho está vazio.';
   $('cart-items')
     .querySelectorAll('button')
     .forEach((b) => (b.onclick = () => dispatch({ type: 'delete', index: Number(b.dataset.delete) })));
-  $('cart-total').textContent = 'Total: ' + money(state.cart.reduce((n, i) => n + i.price, 0));
+  $('cart-total').textContent = 'Total: ' + money(state.cart.reduce((n, i) => n + i.price * i.qty, 0));
 }
 
 // Bandeja: each removed ingredient as an image of its own Camada (rendered by the scene,
@@ -391,10 +441,17 @@ $('close').onclick = $('cancel').onclick = () => closeEditor('cancel');
 $('apply').onclick = () => closeEditor('apply');
 $('reset').onclick = () => dispatch({ type: 'reset' });
 $('combo').onchange = (e) => dispatch({ type: 'combo', value: e.target.checked });
-document.querySelectorAll('.size').forEach((b) => (b.onclick = () => dispatch({ type: 'size', value: b.dataset.size })));
+$('drink').insertAdjacentHTML('beforeend', drinks.map((d) => `<option>${d}</option>`).join(''));
+const qty = () => pick(state)?.qty ?? state.qty;
+$('qty-minus').onclick = () => dispatch({ type: 'qty', value: qty() - 1 });
+$('qty-plus').onclick = () => dispatch({ type: 'qty', value: qty() + 1 });
+$('drink').onchange = (e) => dispatch({ type: 'drink', value: e.target.value });
 $('add').onclick = () => {
+  const added = pick(state) ? products[pick(state).product].name : recipe().shortName;
   dispatch({ type: 'add' });
-  toast(`${recipe().shortName} adicionado ao carrinho`);
+  // The combo's drink error belongs to the burger card only.
+  if (!pick(state) && state.drinkError) return $('drink').focus();
+  toast(`Adicionado ao carrinho: ${added}`);
 };
 $('cart-open').onclick = () => {
   restoreFocus = document.activeElement;
@@ -411,13 +468,15 @@ $('cart-close').onclick = closeCart;
 $('cart').onclick = (e) => {
   if (e.target === $('cart')) closeCart();
 };
-document.querySelectorAll('[data-accessory]').forEach(
-  (a) =>
-    (a.onclick = (e) => {
-      e.preventDefault();
-      toast('Categoria prevista para uma próxima etapa');
-    }),
-);
+// Categories: the hash picks the page content (#acompanhamentos, #bebidas, #sobremesas; anything else, Hambúrgueres).
+const fromHash = () => {
+  // Back/Forward with Ver ingredientes open: cancel it first, as Esc does.
+  if (state.editing) closeEditor('cancel');
+  dispatch({ type: 'category', category: location.hash.slice(1) });
+  // Phones: the tabs scroll sideways; keep the active one in view.
+  document.querySelector('nav a[aria-current]').scrollIntoView({ block: 'nearest', inline: 'nearest' });
+};
+addEventListener('hashchange', fromHash);
 
 document.addEventListener('keydown', (e) => {
   const dialog = state.editing ? $('playground') : $('cart').classList.contains('open') ? $('cart') : null;
@@ -498,4 +557,4 @@ $('hero-stage').onpointermove = (e) => {
 };
 $('hero-stage').onpointerleave = () => $('hero-burger').style.setProperty('--tilt', '0deg');
 mountProduct();
-render();
+fromHash();

@@ -1,11 +1,11 @@
 import { test, expect } from '@playwright/test';
-import { openAlterarIngredientes, alterarIngredientes, bandeja, camada, chip, retirado } from './support.js';
+import { openVerIngredientes, verIngredientes, bandeja, camada, chip, retirado } from './support.js';
 
 // Mouse only: touch drag still needs a physical device (Playwright can't synthesise it faithfully).
 test.beforeEach(async ({ page }) => {
   await page.goto('/');
-  await openAlterarIngredientes(page);
-  await expect(alterarIngredientes(page).locator('canvas')).toBeVisible();
+  await openVerIngredientes(page);
+  await expect(verIngredientes(page).locator('canvas')).toBeVisible();
 });
 
 const centre = (box) => ({ x: box.x + box.width / 2, y: box.y + box.height / 2 });
@@ -59,8 +59,8 @@ test('depois de soltar na bandeja, o hambúrguer volta para o palco com o cursor
   // Bug (ticket 04 review): the canvas, grown over the viewport during the drag, kept the
   // viewport's size after the drop while nothing redrew the stage (pointer resting on the
   // Bandeja), so the burger was drawn huge over the Bandeja and under the footer.
-  const palco = alterarIngredientes(page).locator('.stage');
-  const canvas = alterarIngredientes(page).locator('canvas');
+  const palco = verIngredientes(page).locator('.stage');
+  const canvas = verIngredientes(page).locator('canvas');
   const inicio = centre(await settledBox(camada(page, 'Tomate')));
   await page.mouse.move(inicio.x, inicio.y);
   await page.mouse.down();
@@ -109,5 +109,5 @@ test('a Base não pode ser arrastada', async ({ page }) => {
   const depois = await camada(page, 'Pão superior').boundingBox();
   expect(Math.max(Math.abs(depois.x - antes.x), Math.abs(depois.y - antes.y))).toBeLessThan(2);
   await page.mouse.up();
-  await expect(alterarIngredientes(page).getByText('Whopper Clássico · Todos os ingredientes')).toBeVisible();
+  await expect(verIngredientes(page).getByText('Whopper Clássico · Todos os ingredientes')).toBeVisible();
 });

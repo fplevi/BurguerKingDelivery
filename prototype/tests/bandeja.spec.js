@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { openAlterarIngredientes, alterarIngredientes, bandeja, camada, chip, retirado, retirados } from './support.js';
+import { openVerIngredientes, verIngredientes, bandeja, camada, chip, retirado, retirados } from './support.js';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/');
@@ -16,7 +16,7 @@ async function expectPicture(button) {
 }
 
 test('o ingrediente retirado aparece na bandeja como imagem da própria camada', async ({ page }) => {
-  await openAlterarIngredientes(page);
+  await openVerIngredientes(page);
   await expect(retirados(page).getByRole('button')).toHaveCount(0);
   await camada(page, 'Queijo').click();
   await expect(retirado(page, 'Queijo')).toBeVisible();
@@ -25,7 +25,7 @@ test('o ingrediente retirado aparece na bandeja como imagem da própria camada',
 });
 
 test('tocar na imagem da bandeja recoloca o ingrediente e atualiza o chip', async ({ page }) => {
-  await openAlterarIngredientes(page);
+  await openVerIngredientes(page);
   await camada(page, 'Tomate').click();
   await chip(page, 'Retirar', 'Alface').click();
   await expect(retirados(page).getByRole('button')).toHaveCount(2);
@@ -36,11 +36,11 @@ test('tocar na imagem da bandeja recoloca o ingrediente e atualiza o chip', asyn
   await expect(camada(page, 'Tomate')).toBeVisible();
   // Focus stays in the bandeja while something is left there.
   await expect(retirado(page, 'Alface')).toBeFocused();
-  await expect(alterarIngredientes(page).getByText('Whopper Clássico · Sem alface ·')).toBeVisible();
+  await expect(verIngredientes(page).getByText('Whopper Clássico · Sem alface ·')).toBeVisible();
 });
 
 test('a imagem da bandeja recoloca pelo teclado', async ({ page }) => {
-  await openAlterarIngredientes(page);
+  await openVerIngredientes(page);
   await chip(page, 'Retirar', 'Cebola').click();
   await retirado(page, 'Cebola').focus();
   await page.keyboard.press('Enter');
@@ -49,7 +49,7 @@ test('a imagem da bandeja recoloca pelo teclado', async ({ page }) => {
 });
 
 test('recolocar pelo chip tira a imagem da bandeja', async ({ page }) => {
-  await openAlterarIngredientes(page);
+  await openVerIngredientes(page);
   await chip(page, 'Retirar', 'Picles').click();
   await expect(retirado(page, 'Picles')).toBeVisible();
   await chip(page, 'Recolocar', 'Picles').click();
@@ -57,24 +57,24 @@ test('recolocar pelo chip tira a imagem da bandeja', async ({ page }) => {
 });
 
 test('Recolocar todos esvazia a bandeja e cancelar descarta o rascunho', async ({ page }) => {
-  await openAlterarIngredientes(page);
+  await openVerIngredientes(page);
   for (const nome of ['Queijo', 'Ketchup', 'Maionese']) await chip(page, 'Retirar', nome).click();
   await expect(retirados(page).getByRole('button')).toHaveCount(3);
   await bandeja(page).getByRole('button', { name: 'Recolocar todos' }).click();
   await expect(retirados(page).getByRole('button')).toHaveCount(0);
 
   await chip(page, 'Retirar', 'Ketchup').click();
-  await alterarIngredientes(page).getByRole('button', { name: 'Cancelar', exact: true }).click();
-  await openAlterarIngredientes(page);
+  await verIngredientes(page).getByRole('button', { name: 'Cancelar', exact: true }).click();
+  await openVerIngredientes(page);
   await expect(retirados(page).getByRole('button')).toHaveCount(0);
 });
 
 test('a personalização aplicada volta para a bandeja ao reabrir', async ({ page }) => {
-  await openAlterarIngredientes(page);
+  await openVerIngredientes(page);
   await chip(page, 'Retirar', 'Ketchup').click();
-  await alterarIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
-  await expect(alterarIngredientes(page)).toBeHidden();
-  await openAlterarIngredientes(page);
+  await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
+  await expect(verIngredientes(page)).toBeHidden();
+  await openVerIngredientes(page);
   await expect(retirado(page, 'Ketchup')).toBeVisible();
   await expectPicture(retirado(page, 'Ketchup'));
 });
@@ -91,7 +91,7 @@ test.describe('sem WebGL', () => {
   });
 
   test('a bandeja mostra a ilustração SVG do ingrediente e recoloca ao tocar', async ({ page }) => {
-    await openAlterarIngredientes(page);
+    await openVerIngredientes(page);
     await camada(page, 'Queijo').click();
     await expect(retirado(page, 'Queijo').locator('svg')).toBeVisible();
     await retirado(page, 'Queijo').click();

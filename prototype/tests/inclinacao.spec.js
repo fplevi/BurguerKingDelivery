@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { openAlterarIngredientes, camada, chip } from './support.js';
+import { openVerIngredientes, camada, chip } from './support.js';
 
 const heroStage = (page) => page.locator('main #hero-stage');
 /** Camada of the assembled hero burger (a disabled button labelled "Retirar X"). */
@@ -72,9 +72,9 @@ test('no toque, arrastar na área vazia do palco inclina, sem pedir permissão d
   expect(pedidos).toBeUndefined();
 });
 
-test('em Alterar ingredientes os botões seguem as camadas inclinadas e o toque continua retirando', async ({ page, isMobile }) => {
+test('em Ver ingredientes os botões seguem as camadas inclinadas e o toque continua retirando', async ({ page, isMobile }) => {
   test.skip(isMobile, 'ponteiro de mouse');
-  await openAlterarIngredientes(page);
+  await openVerIngredientes(page);
   const palco = await page.locator('#pg-stage').boundingBox();
   await page.mouse.move(palco.x + palco.width - 4, palco.y + 4, { steps: 4 });
   await settled(camada(page, 'Pão superior'));

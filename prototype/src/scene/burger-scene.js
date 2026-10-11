@@ -1,6 +1,6 @@
 // Burger scene: the only module that knows Three.js.
 //
-// One WebGL context per stage (hero, Alterar ingredientes). Same camera (~15° above),
+// One WebGL context per stage (hero, Ver ingredientes). Same camera (~15° above),
 // same soft light from the upper left, transparent background, contact shadows in the scene.
 // The page reads layer areas to position its invisible DOM buttons; the scene only draws.
 //
@@ -361,7 +361,7 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
   let compiled = false;
   Promise.all([renderer.compileAsync(scene, camera), texturesReady]).then(() => {
     compiled = true;
-    // A hidden stage (Alterar ingredientes before opening) still draws once, tiny, so the
+    // A hidden stage (Ver ingredientes before opening) still draws once, tiny, so the
     // shadow programs are ready too and the first frame on opening doesn't stall.
     if (!size.width) {
       renderer.setSize(1, 1, false);

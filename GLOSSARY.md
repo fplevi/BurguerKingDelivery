@@ -25,11 +25,25 @@ _Avoid_: Ingrediente removido, excluído
 _Avoid_: Lixeira, área de descarte
 
 **Personalização**:
-O conjunto de ingredientes retirados que o cliente confirmou ao aplicar; acompanha o item no carrinho.
+O conjunto de ingredientes retirados que o cliente confirmou ao aplicar; acompanha o Item e vale para todas as unidades dele.
 _Avoid_: Customização, configuração
+
+## Pedido
+
+**Item**:
+Um produto adicionado ao carrinho com sua quantidade e, no caso do hambúrguer, sua Personalização e seu Combo; todas as unidades do Item são iguais.
+_Avoid_: Linha, produto do carrinho
+
+**Combo**:
+Opção do hambúrguer que acrescenta uma Bebida do combo por um valor fixo; não tem tamanhos.
+_Avoid_: Combo P/M/G, refeição
+
+**Bebida do combo**:
+A bebida que o cliente escolhe para o Combo, entre as bebidas do cardápio; só existe com o Combo marcado.
+_Avoid_: Refrigerante do combo
 
 ## Telas
 
-**Alterar ingredientes**:
+**Ver ingredientes**:
 A tela em tela cheia em que o cliente abre o hambúrguer em camadas, retira e recoloca ingredientes e aplica ou cancela a personalização.
-_Avoid_: Playground, editor, menu de ingredientes, Do seu jeito
+_Avoid_: Alterar ingredientes, Remover ingredientes, Playground, editor, menu de ingredientes, Do seu jeito
