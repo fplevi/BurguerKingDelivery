@@ -49,3 +49,13 @@ export const customers = {
   '61999991234': { ...mariana, pixApproved: true },
   '61900000000': { ...mariana, pixApproved: false },
 };
+
+/**
+ * Pix: approved `pixApproval` ms after it is generated (unless the celular's `pixApproved` is false; a Novo cliente's
+ * always is), valid for `pixValidity` ms (the countdown from 10:00), and "Pagamento aprovado" shown for
+ * `pixApprovedTime` ms before the Pedido confirmado. The "copia e cola" is a fixed text, as is its QR Code (checkout.js).
+ */
+export const pixApproval = 10_000;
+export const pixValidity = 600_000;
+export const pixApprovedTime = 1500;
+export const pixCode = '00020126360014br.gov.bcb.pix0114+55619999912345204000053039865802BR5911BURGER KING6009SAO PAULO62070503***6304BK24';

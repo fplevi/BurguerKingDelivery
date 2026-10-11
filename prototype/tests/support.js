@@ -110,3 +110,15 @@ export const seusCartoes = (page) => checkout(page).getByRole('radiogroup', { na
 export const confirmarEPagar = (page) => resumoDoPedido(page).getByRole('button', { name: /^Confirmar e pagar / });
 /** The Pedido confirmado screen (#pedido/<id>), a region named by its title. */
 export const pedidoConfirmado = (page) => page.getByRole('region', { name: 'Pedido confirmado!' });
+
+// Pagamento com Pix (ticket 07 of checkout).
+/** The Pix Forma de pagamento chosen and "Gerar Pix" in the Resumo do pedido: the Pix pendente. */
+export async function gerarPix(page) {
+  await formaDePagamento(page).getByRole('radio', { name: 'Pix' }).check();
+  await resumoDoPedido(page).getByRole('button', { name: 'Gerar Pix' }).click();
+  await expect(pixPendente(page)).toBeVisible();
+}
+/** "Só falta pagar o Pix" (Figma pixWaiting), a region named by its title. */
+export const pixPendente = (page) => checkout(page).getByRole('region', { name: 'Só falta pagar o Pix' });
+/** "Seu Pix expirou" (Figma pixExpired), a region named by its title. */
+export const pixExpirado = (page) => checkout(page).getByRole('region', { name: 'Seu Pix expirou' });

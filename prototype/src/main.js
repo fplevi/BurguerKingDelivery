@@ -3,6 +3,9 @@ import { art } from './art.js';
 import { initial, reducer, money, marks, drinks, pick, itemTotal, itemName, cartUnits, cartTotal, savedAddress } from './state.js';
 import { progress, orderSummary, identificationStep, sentTo, addressList, deliveryCard, paymentStep, paymentAction, processingStep, orderPage } from './checkout.js';
 import { processingTime } from './checkout-fixtures.js';
+import { pixPending } from './state.js';
+import { pixStep, pixApprovedStep, pixClock } from './checkout.js';
+import { pixApproval, pixApprovedTime, pixCode } from './checkout-fixtures.js';
 import { categories, products } from './products.js';
 import { createBurgerScene } from './scene/burger-scene.js';
 import whopperPhoto from '../Assets/burgers/official/site_Whopper.png';
@@ -220,7 +223,7 @@ function render() {
   // "Entregar em" leaves the header in the Checkout and the address pages.
   document.querySelector('header .location').hidden = inCheckout || inAddress || inOrder;
   // Processing the card: the whole screen is disabled (header, Voltar ao carrinho, Editar carrinho) until the result.
-  const processing = inCheckout && state.order?.status === 'processing';
+  const processing = inCheckout && (state.order?.status === 'processing' || state.order?.pix === 'approved');
   document.querySelector('header').inert = processing;
   $('checkout-back').disabled = processing;
   const photo = pick(state) && products[pick(state).product];
@@ -325,11 +328,14 @@ function renderCheckout() {
   } catch {}
   const address = state.customer && delivery();
   const order = state.order,
-    processing = order?.status === 'processing';
-  // Identified with an address: the Pagamento (the delivery card, then the Forma de pagamento, or the processing of
-  // the card); otherwise the Identificação.
+    approved = order?.pix === 'approved',
+    processing = order?.status === 'processing' || approved,
+    pix = pixPending(state);
+  // Identified with an address: the Pagamento (the delivery card, then the Forma de pagamento; or the processing of
+  // the card; or the Pix pendente; or Pagamento aprovado, every step done); otherwise the Identificação.
+  const main = !address ? '' : processing ? (approved ? pixApprovedStep(order) : processingStep(order)) : pix ? pixStep(order, Date.now()) : deliveryCard(address) + paymentStep(state);
   root.innerHTML = address
-    ? `${progress(2)}<div class="checkout-body"><div class="checkout-main">${processing ? processingStep(order) : deliveryCard(address) + paymentStep(state)}</div>${orderSummary(state.cart, true, processing ? { edit: 'disabled' } : { action: paymentAction(state) })}</div>`
+    ? `${progress(approved ? 3 : 2)}<div class="checkout-body"><div class="checkout-main">${main}</div>${orderSummary(state.cart, true, processing ? { edit: 'disabled' } : pix ? {} : { action: paymentAction(state) })}</div>`
     : `${progress(0)}<div class="checkout-body"><section class="checkout-step" aria-label="Identificação">${identificationStep(state.identification)}</section>${orderSummary(state.cart)}</div>`;
   for (const [id, value] of kept) if ($(id)) $(id).value = value;
   const again = active?.id && $(active.id);
@@ -830,6 +836,74 @@ function confirmPayment() {
     else $('checkout-content').querySelector('[data-pay-confirm]')?.focus();
   }, processingTime);
 }
+// Pix. "Gerar Pix" creates the Pedido and opens the Pix pendente (focus on its title); the countdown ticks every
+// second, the expiry comes at 10:00 and, for a celular whose Pix gets approved, the approval pixApproval after it was
+// generated: Pagamento aprovado for pixApprovedTime, then the Pedido confirmado (#pedido/<id> when still in the Checkout).
+// "Gerar novo Pix" starts the validity over; "Escolher outra forma de pagamento" cancels the Pix and its approval.
+let pixTimers = [];
+const stopPix = () => (pixTimers.forEach((t) => (clearTimeout(t), clearInterval(t))), (pixTimers = []));
+/** Focus on `id` when the Checkout is on screen and the focus was in its content (now rebuilt) or nowhere. */
+const pixFocus = (had, id) => state.screen === 'checkout' && (had || document.activeElement === document.body) && $(id)?.focus();
+const inPix = () => $('checkout-content').contains(document.activeElement);
+function startPix() {
+  stopPix();
+  const order = state.order;
+  pixTimers.push(
+    setInterval(() => {
+      const clock = $('checkout-content').querySelector('[data-pix-clock]');
+      if (clock) clock.textContent = pixClock(order.expiresAt, Date.now());
+    }, 1000),
+    setTimeout(() => {
+      const had = inPix();
+      stopPix();
+      dispatch({ type: 'pixExpire' });
+      pixFocus(had, 'pix-title');
+    }, order.expiresAt - Date.now()),
+  );
+  if (order.approves) pixTimers.push(setTimeout(approvePix, pixApproval));
+}
+function approvePix() {
+  const had = inPix();
+  stopPix();
+  dispatch({ type: 'pixApprove' });
+  pixFocus(had, 'pix-approved');
+  pixTimers.push(
+    setTimeout(() => {
+      const orders = state.orders.length;
+      dispatch({ type: 'pixConfirm' });
+      if (state.orders.length > orders && state.screen === 'checkout') location.hash = `pedido/${state.orders.at(-1).id}`;
+    }, pixApprovedTime),
+  );
+}
+/** "Copiar código Pix": the fixed code to the clipboard (a hidden field when the Clipboard API is refused), and the toast. */
+async function copyPix() {
+  try {
+    await navigator.clipboard.writeText(pixCode);
+  } catch {
+    const t = Object.assign(document.createElement('textarea'), { value: pixCode });
+    document.body.append(t);
+    t.select();
+    document.execCommand('copy');
+    t.remove();
+    $('checkout-content').querySelector('[data-pix-copy]')?.focus();
+  }
+  toast('Código Pix copiado');
+}
+$('checkout-content').addEventListener('click', (e) => {
+  if (e.target.closest('[data-pix-generate]') || e.target.closest('[data-pix-renew]')) {
+    dispatch({ type: e.target.closest('[data-pix-renew]') ? 'pixRenew' : 'pixGenerate', now: Date.now() });
+    if (state.order?.pix !== 'waiting') return;
+    startPix();
+    $('pix-title').focus();
+  } else if (e.target.closest('[data-pix-copy]')) copyPix();
+  else if (e.target.closest('[data-pix-cancel]')) {
+    stopPix();
+    dispatch({ type: 'pixCancel' });
+    formaFocus();
+  }
+});
+/** Back to the Forma de pagamento, none chosen: the focus on its first option. */
+const formaFocus = () => $('checkout-content').querySelector('input[name="pay-method"]')?.focus();
 // Pedido confirmado: Acompanhar pedido is not part of the prototype yet; Voltar ao cardápio opens the last category seen.
 $('order-page').addEventListener('click', (e) => {
   if (e.target.closest('[data-order-track]')) toast('O acompanhamento do pedido ainda não faz parte do protótipo.');
