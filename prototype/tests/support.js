@@ -142,6 +142,18 @@ export async function buscarEndereco(page, texto) {
 /** Results of the Busca, each a button named by its place. */
 export const resultadosDaBusca = (page) => paginaDeEndereco(page).getByRole('list', { name: 'Resultados da busca' }).getByRole('button');
 
+// Pagamento com Pix (ticket 07 of checkout).
+/** The Pix Forma de pagamento chosen and "Gerar Pix" in the Resumo do pedido: the Pix pendente. */
+export async function gerarPix(page) {
+  await formaDePagamento(page).getByRole('radio', { name: 'Pix' }).check();
+  await resumoDoPedido(page).getByRole('button', { name: 'Gerar Pix' }).click();
+  await expect(pixPendente(page)).toBeVisible();
+}
+/** "Só falta pagar o Pix" (Figma pixWaiting), a region named by its title. */
+export const pixPendente = (page) => checkout(page).getByRole('region', { name: 'Só falta pagar o Pix' });
+/** "Seu Pix expirou" (Figma pixExpired), a region named by its title. */
+export const pixExpirado = (page) => checkout(page).getByRole('region', { name: 'Seu Pix expirou' });
+
 // Gerenciar endereços (ticket 05 of checkout).
 /** The radios of Seus endereços (the Endereços salvos and a chosen Endereço de pedido anterior). */
 export const enderecosSalvos = (page) => paginaDeEndereco(page).getByRole('radiogroup', { name: 'Endereços salvos' });

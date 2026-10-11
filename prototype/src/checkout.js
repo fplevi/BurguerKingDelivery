@@ -3,7 +3,7 @@
 // Pagamento, as HTML.
 import { recipes, removedLine } from './ingredients.js';
 import { money, marks, itemName, cartTotal, chosenCard, orderTotal } from './state.js';
-import { deliveryFee, deliveryTime, cardBrand, searchPlaces } from './checkout-fixtures.js';
+import { deliveryFee, deliveryTime, cardBrand, searchPlaces, pixValidity } from './checkout-fixtures.js';
 import tile0 from '../Assets/maps/paulista-0.png';
 import tile1 from '../Assets/maps/paulista-1.png';
 import tile2 from '../Assets/maps/paulista-2.png';
@@ -314,12 +314,12 @@ export function paymentStep(state) {
 
 /**
  * The Pagamento's action in the Resumo do pedido, with its note: "Confirmar e pagar R$ X" (card; disabled while no
- * Forma de pagamento is chosen) or "Gerar Pix" (disabled until the Pix ticket).
+ * Forma de pagamento is chosen) or "Gerar Pix".
  */
 export function paymentAction(state) {
   const button =
     state.payment.method === 'pix'
-      ? '<button class="primary pay-action" type="button" data-pix-generate disabled>Gerar Pix</button>'
+      ? '<button class="primary pay-action" type="button" data-pix-generate>Gerar Pix</button>'
       : `<button class="primary pay-action" type="button" data-pay-confirm${state.payment.method ? '' : ' disabled'}>Confirmar e pagar ${money(orderTotal(state.cart))}</button>`;
   return `${button}<p class="pay-note">Confira o endereço antes de confirmar.</p>`;
 }
@@ -327,6 +327,50 @@ export function paymentAction(state) {
 /** Processing of the card (Figma cardProcessing), in place of the address and the Forma de pagamento. */
 export const processingStep = (order) =>
   `<section class="checkout-step processing-step" aria-labelledby="processing-title" role="status" tabindex="-1"><h2 id="processing-title">Processando pagamento</h2><p>Aguarde a confirmação do seu cartão.</p><p class="processing-total">${money(order.total)}</p></section>`;
+
+// Pix (Figma pixWaiting, pixExpired and pixApproved).
+
+/**
+ * The QR Code of the Pix: fixed, drawn by code (a demonstration, not a readable code). 25 × 25 modules: the three
+ * finder squares and the rest from a fixed pseudo-random sequence, as one path.
+ */
+const qrPath = (() => {
+  const n = 25,
+    finder = (x, y) => [[0, 18], [18, 0], [0, 0]].some(([fx, fy]) => x >= fx - 1 && x <= fx + 7 && y >= fy - 1 && y <= fy + 7),
+    on = [];
+  let seed = 1024;
+  for (let y = 0; y < n; y++)
+    for (let x = 0; x < n; x++) {
+      seed = (seed * 1103515245 + 12345) % 2147483648;
+      if (!finder(x, y) && seed / 2147483648 < 0.5) on.push(`M${x} ${y}h1v1h-1z`);
+    }
+  for (const [fx, fy] of [[0, 0], [18, 0], [0, 18]]) on.push(`M${fx} ${fy}h7v7h-7zM${fx + 1} ${fy + 1}v5h5v-5zM${fx + 2} ${fy + 2}h3v3h-3z`);
+  return on.join('');
+})();
+const qrCode = `<svg class="pix-qr" viewBox="-2 -2 29 29" role="img" aria-label="QR Code do Pix" shape-rendering="crispEdges"><path d="${qrPath}" fill="#000" fill-rule="evenodd"/></svg>`;
+
+/** What is left of the Pix's validity, as mm:ss (10:00 at most, 00:00 when expired). */
+export const pixClock = (expiresAt, now) => {
+  const s = Math.max(0, Math.min(pixValidity, Math.ceil((expiresAt - now) / 1000) * 1000)) / 1000;
+  return `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
+};
+
+/**
+ * The Pix pendente in place of the address and the Forma de pagamento: "Só falta pagar o Pix" (Aguardando pagamento,
+ * the QR Code, the live countdown in [data-pix-clock], data-pix-copy, data-pix-cancel) or "Seu Pix expirou"
+ * (data-pix-renew, data-pix-cancel). `now`: the clock's ms.
+ */
+export function pixStep(order, now) {
+  const cancel = '<button class="secondary" type="button" data-pix-cancel>Escolher outra forma de pagamento</button>',
+    value = `<p class="pix-value">Valor a pagar: ${money(order.total)}</p>`;
+  if (order.pix === 'expired')
+    return `<section class="checkout-step pix-step" aria-labelledby="pix-title"><h2 id="pix-title" tabindex="-1">Seu Pix expirou</h2><p>Gere um novo código para concluir o pagamento.</p>${value}<div class="pix-actions"><button class="primary" type="button" data-pix-renew>Gerar novo Pix</button>${cancel}</div></section>`;
+  return `<section class="checkout-step pix-step" aria-labelledby="pix-title"><h2 id="pix-title" tabindex="-1">Só falta pagar o Pix</h2><p>Escaneie o QR Code com o app do seu banco.</p>${value}<div class="pix-qr-box">${qrCode}</div><p class="pix-expiry">Este código expira em <span data-pix-clock>${pixClock(order.expiresAt, now)}</span></p><button class="primary" type="button" data-pix-copy>Copiar código Pix</button><p class="pix-waiting">Aguardando pagamento</p><p class="pix-text">Assim que o pagamento for aprovado, confirmamos seu pedido.</p>${cancel}<p class="pix-note">QR e valores demonstrativos para este protótipo.</p></section>`;
+}
+
+/** Pagamento aprovado (Figma pixApproved), on its way to the Pedido confirmado. */
+export const pixApprovedStep = (order) =>
+  `<section class="checkout-step processing-step" id="pix-approved" aria-labelledby="approved-title" role="status" tabindex="-1"><h2 id="approved-title">Pagamento aprovado!</h2><p>Estamos confirmando seu pedido.</p><p class="processing-total">${money(order.total)}</p></section>`;
 
 /**
  * Pedido confirmado (#pedido/<id>, Figma successCard): every step done, the id, the estimate, the address, how it was
