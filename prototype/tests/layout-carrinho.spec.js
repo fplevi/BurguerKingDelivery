@@ -1,6 +1,6 @@
 // Layouts do Carrinho no desktop e no mobile (ticket 06 of carrinho; Figma 189-16293 and 187-8185).
 import { test, expect } from '@playwright/test';
-import { carrinho, itens, totalDoItem, aviso, escolher } from './support.js';
+import { carrinho, itens, totalDoItem, escolher, checkout } from './support.js';
 
 const adicionar = (page) => page.getByRole('button', { name: 'Adicionar ao carrinho' });
 const categoria = (page, nome) => page.getByRole('banner').getByRole('link', { name: nome }).click();
@@ -54,7 +54,7 @@ test.describe('celular (< 1024px)', () => {
     await embaixo();
   });
 
-  test('390: o Continuar da barra valida como o do Resumo, e o combo sem bebida fica acima da barra', async ({ page }) => {
+  test('390: o Continuar da barra valida como o do Resumo, e o combo sem bebida fica acima da barra; sem pendências, abre o Checkout', async ({ page }) => {
     await carrinhoDoFigma(page);
     const cheddar = itens(page).nth(1);
     await cheddar.getByRole('checkbox', { name: 'Transformar em combo' }).check();
@@ -68,7 +68,7 @@ test.describe('celular (< 1024px)', () => {
 
     await cheddar.getByRole('checkbox', { name: 'Transformar em combo' }).uncheck();
     await barra(page).getByRole('button', { name: 'Continuar' }).click();
-    await expect(aviso(page)).toHaveText('Tudo certo! O pagamento não faz parte deste protótipo.');
+    await expect(checkout(page)).toBeVisible();
   });
 
   test('390: no fim da página, o Resumo do carrinho termina acima da barra', async ({ page }) => {

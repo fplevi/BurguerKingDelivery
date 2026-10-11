@@ -1,6 +1,6 @@
 // Validação do "Continuar" no Resumo do carrinho (ticket 05 of carrinho).
 import { test, expect } from '@playwright/test';
-import { carrinho, itens, escolher, aviso } from './support.js';
+import { carrinho, itens, escolher, checkout } from './support.js';
 
 const adicionar = (page) => page.getByRole('button', { name: 'Adicionar ao carrinho' });
 const abrirCarrinho = (page) => page.getByRole('button', { name: /^Carrinho · / }).click();
@@ -82,7 +82,7 @@ test('o erro some ao escolher a bebida ou ao desmarcar o combo', async ({ page }
   await expect(bebida(item)).not.toHaveAttribute('aria-invalid', 'true');
 });
 
-test('Continuar sem pendências avisa que o pagamento não faz parte do protótipo', async ({ page }) => {
+test('Continuar sem pendências abre o Checkout', async ({ page }) => {
   await page.getByRole('checkbox', { name: 'Transformar em combo' }).check();
   await page.getByRole('combobox', { name: 'Bebida do combo' }).selectOption('Sprite');
   await adicionar(page).click();
@@ -90,6 +90,7 @@ test('Continuar sem pendências avisa que o pagamento não faz parte do protóti
   await adicionar(page).click();
   await abrirCarrinho(page);
   await continuar(page).click();
-  await expect(aviso(page)).toHaveText('Tudo certo! O pagamento não faz parte deste protótipo.');
-  await expect(carrinho(page).getByText(ERRO)).toHaveCount(0);
+  await expect(checkout(page)).toBeVisible();
+  await expect(page).toHaveURL(/#checkout$/);
+  await expect(carrinho(page)).toBeHidden();
 });

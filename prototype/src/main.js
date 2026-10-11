@@ -1,6 +1,7 @@
 import { recipes, layer, description, removedLine } from './ingredients.js';
 import { art } from './art.js';
-import { initial, reducer, money, drinks, pick, itemTotal, itemName, cartUnits, cartTotal } from './state.js';
+import { initial, reducer, money, marks, drinks, pick, itemTotal, itemName, cartUnits, cartTotal } from './state.js';
+import { progress, orderSummary } from './checkout.js';
 import { categories, products } from './products.js';
 import { createBurgerScene } from './scene/burger-scene.js';
 import whopperPhoto from '../Assets/burgers/official/site_Whopper.png';
@@ -112,8 +113,6 @@ const burgers = [
   { name: 'Cheeseburger', photo: cheeseburgerPhoto },
   { name: 'Rodeio', photo: rodeioPhoto },
 ];
-/** Product names with ® raised, as in the Figma. */
-const marks = (text) => text.replace(/®/g, '<span class="mark">®</span>');
 /** The photo's box in the 800 × 800 file, for .photo-crop: only it is drawn (the transparent margins are cut off, as in the Figma). */
 const crop = ([x0, y0, x1, y1]) => `--x:${x0};--y:${y0};--w:${x1 - x0};--h:${y1 - y0}`;
 const badge =
@@ -203,13 +202,18 @@ addEventListener('resize', fitTitle);
 
 function render() {
   buildGrid();
-  const inCart = state.screen === 'carrinho';
+  const inCart = state.screen === 'carrinho',
+    inCheckout = state.screen === 'checkout',
+    inMenu = state.screen === 'cardapio';
   document
     .querySelectorAll('nav a')
-    .forEach((a) => (!inCart && a.hash === '#' + state.category ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current')));
+    .forEach((a) => (inMenu && a.hash === '#' + state.category ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current')));
   document.querySelector('main').dataset.screen = state.screen;
-  for (const el of document.querySelectorAll('main > .hero, main > .catalog')) el.hidden = inCart;
+  for (const el of document.querySelectorAll('main > .hero, main > .catalog')) el.hidden = !inMenu;
   $('cart-page').hidden = !inCart;
+  $('checkout-page').hidden = !inCheckout;
+  // "Entregar em" leaves the header in the Checkout.
+  document.querySelector('header .location').hidden = inCheckout;
   const photo = pick(state) && products[pick(state).product];
   for (const id of ['hero-stage', 'edit', 'combo-options']) $(id).hidden = !!photo;
   $('product-frame').hidden = !photo;
@@ -288,6 +292,13 @@ function render() {
     $('cart-content').replaceChildren();
     $('cart-status').textContent = '';
   }
+  if (inCheckout) renderCheckout();
+  else $('checkout-content').replaceChildren();
+}
+
+/** Checkout: the indicador de etapas, the current step and the Resumo do pedido. */
+function renderCheckout() {
+  $('checkout-content').innerHTML = `${progress(0)}<div class="checkout-body"><section class="checkout-step" aria-label="Identificação"></section>${orderSummary(state.cart)}</div>`;
 }
 
 /** Carrinho screen: the Itens (each one editable, see itemCard) and the Resumo do carrinho, or the empty state. */
@@ -535,6 +546,7 @@ $('cart-open').onclick = () => (location.hash = 'carrinho');
 // Opened from the menu, that is the previous history entry (so Back doesn't return to the Carrinho);
 // opened by the address, there is none and the category's hash is pushed instead.
 let fromMenu = false,
+  fromCart = false,
   started = false;
 // One click handler for the whole screen: Continuar, the ways back to the menu (Voltar ao cardápio,
 // Adicionar mais itens, Explorar cardápio) and the controls of each Item (data-key "index:control").
@@ -602,11 +614,11 @@ $('cart-page').addEventListener('mousedown', (e) => {
 document.addEventListener('pointerdown', (e) => {
   if (openDrink && !e.target.closest('.picker')) showDrinks(null);
 });
-// Continuar: the first combo without a drink is scrolled to and its Bebida do combo focused; none, the toast.
+// Continuar: the first combo without a drink is scrolled to and its Bebida do combo focused; none, the Checkout.
 function continueOrder() {
   dispatch({ type: 'continue' });
   const i = state.cart.findIndex((c) => c.drinkError);
-  if (i < 0) return toast('Tudo certo! O pagamento não faz parte deste protótipo.');
+  if (i < 0) return (location.hash = 'checkout');
   const picker = $('cart-content').querySelector(`[data-key="${i}:drink"]`);
   picker.closest('.cart-item').scrollIntoView({ block: 'center' });
   picker.focus({ preventScroll: true });
@@ -617,23 +629,35 @@ function continueOrder() {
 // control the customer left from come back (that control gone or hidden, the header's Carrinho button).
 let menuScroll = 0,
   menuFocus = null;
+// #checkout with an empty cart, or with a combo still without a drink (typed or reloaded: the cart lives in memory), shows the Carrinho.
+// Entering the Checkout: top of the page, focus on its title. From the Checkout back to the Carrinho, the Carrinho's way back to the menu stays as it was.
 const fromHash = () => {
   // Back/Forward with Ver ingredientes open: cancel it first, as Esc does.
   if (state.editing) closeEditor('cancel');
-  const wasMenu = state.screen === 'cardapio';
-  if (wasMenu) [menuScroll, menuFocus] = [scrollY, document.activeElement];
-  if (!wasMenu) openDrink = null;
-  dispatch({ type: 'category', category: location.hash.slice(1) });
+  let hash = location.hash.slice(1);
+  if (hash === 'checkout' && (!state.cart.length || state.cart.some((c) => c.combo && !c.drink))) {
+    hash = 'carrinho';
+    history.replaceState(null, '', '#carrinho');
+  }
+  const before = state.screen;
+  if (before === 'cardapio') [menuScroll, menuFocus] = [scrollY, document.activeElement];
+  else openDrink = null;
+  dispatch({ type: 'category', category: hash });
   // Phones: the tabs scroll sideways; keep the active one in view.
   document.querySelector('nav a[aria-current]')?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
-  const inCart = state.screen === 'carrinho';
-  if (inCart) fromMenu = wasMenu && started;
-  if (inCart === !wasMenu) return;
-  scrollTo(0, inCart ? 0 : menuScroll);
+  const now = state.screen;
+  if (now === 'carrinho' && before !== 'checkout') fromMenu = before === 'cardapio' && started;
+  if (now === 'checkout') fromCart = before === 'carrinho' && started;
+  if (now === before) return;
+  scrollTo(0, now === 'cardapio' ? menuScroll : 0);
   if (!started) return;
   const back = menuFocus?.isConnected && menuFocus.checkVisibility?.() && menuFocus !== document.body ? menuFocus : $('cart-open');
-  (inCart ? $('cart-title') : back).focus({ preventScroll: true });
+  (({ carrinho: $('cart-title'), checkout: $('checkout-title') })[now] ?? back).focus({ preventScroll: true });
 };
+// Voltar ao carrinho and Editar carrinho: back to the Carrinho (the previous history entry when the Checkout came from it).
+$('checkout-page').addEventListener('click', (e) => {
+  if (e.target.closest('[data-to-cart]')) fromCart ? history.back() : (location.hash = 'carrinho');
+});
 addEventListener('hashchange', fromHash);
 
 document.addEventListener('keydown', (e) => {

@@ -70,3 +70,10 @@ export const totalDosItens = (page) =>
 // The toast (role="status") hides itself after 2.8 s; with software WebGL (CI) the page can be busy
 // redrawing the 3D for longer than that, so the check reads its last message, shown or not yet hidden.
 export const aviso = (page) => page.locator('#toast');
+
+/** The Checkout screen (#checkout), a region named by its title "Finalizar pedido". */
+export const checkout = (page) => page.getByRole('region', { name: 'Finalizar pedido' });
+/** Resumo do pedido of the Checkout. */
+export const resumoDoPedido = (page) => checkout(page).getByRole('complementary', { name: 'Resumo do pedido' });
+/** Indicador de etapas of the Checkout, its steps in order. */
+export const etapas = (page) => checkout(page).getByRole('list', { name: 'Etapas do pedido' }).getByRole('listitem');
