@@ -23,7 +23,7 @@ test('Gerar Pix abre "Só falta pagar o Pix" com QR Code, valor, contagem ao viv
   // The address and the Forma de pagamento give way to the Pix; still the Pagamento step.
   await expect(formaDePagamento(page)).toHaveCount(0);
   await expect(etapas(page).nth(2)).toHaveAttribute('aria-current', 'step');
-  await expect(resumoDoPedido(page).getByRole('button', { name: 'Gerar Pix' })).toHaveCount(0);
+  await expect(checkout(page).getByRole('button', { name: 'Gerar Pix' })).toHaveCount(0);
   await expect(resumoDoPedido(page).getByText('Total do pedido').locator('..')).toContainText('R$ 40,80');
 
   // The countdown goes on live.

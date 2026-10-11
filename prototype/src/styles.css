@@ -261,3 +261,8 @@ main[data-screen=pedido]{display:block;height:auto;min-height:0}
 .cart-pix{justify-content:space-between}
 .cart-pix .primary{padding:10px 20px}
 .cart-locked-detail p{margin:0 0 6px}
+/* Celular (ticket 09 of checkout): the Pagamento's Total do pedido and action fixed at the bottom (Figma "Checkout / ação fixa"). */
+.pay-bar{display:none}
+@media(max-width:1023px){.checkout-page:has(.pay-bar){padding-bottom:168px}.order-summary .pay-action{display:none}.order-summary .pay-note{margin-top:20px}.pay-bar{display:flex;flex-direction:column;gap:16px;position:fixed;z-index:20;left:0;right:0;bottom:0;background:var(--cream);border-top:1px solid var(--border);box-shadow:0 -6px 18px #6b2a0014;padding:20px 16px calc(16px + env(safe-area-inset-bottom))}.pay-bar p{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:0;font-size:13px}.pay-bar strong{font-family:'Flame',Georgia,serif;font-size:24px;white-space:nowrap}.pay-bar .primary{width:100%;height:52px;font-size:16px}}
+/* … and the main action of the address flow (Figma "Entrega / ação fixa"). */
+@media(max-width:1023px){.checkout-page:has(.address-action){padding-bottom:116px}.address-action{position:fixed;z-index:20;left:0;right:0;bottom:0;margin:0;background:var(--cream);border-top:1px solid var(--border);box-shadow:0 -6px 18px #6b2a0014;padding:16px 16px calc(16px + env(safe-area-inset-bottom))}main:has(.address-action)~.toast{bottom:104px}main:has(.pay-bar)~.toast{bottom:172px}}

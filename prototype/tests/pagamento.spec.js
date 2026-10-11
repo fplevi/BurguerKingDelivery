@@ -57,7 +57,7 @@ test('Forma de pagamento: Pix ou Cartão de crédito, uma só, e a ação do Res
   await expect(cartao).not.toBeChecked();
   await expect(seusCartoes(page)).toHaveCount(0);
   await expect(confirmarEPagar(page)).toHaveCount(0);
-  await expect(resumoDoPedido(page).getByRole('button', { name: 'Gerar Pix' })).toBeVisible();
+  await expect(checkout(page).getByRole('button', { name: 'Gerar Pix' })).toBeVisible();
   await expect(etapas(page).nth(2)).toHaveAttribute('aria-current', 'step');
 });
 

@@ -1,7 +1,7 @@
 import { recipes, layer, description, removedLine } from './ingredients.js';
 import { art } from './art.js';
 import { initial, reducer, money, marks, drinks, pick, itemTotal, itemName, cartUnits, cartTotal, savedAddress } from './state.js';
-import { progress, orderSummary, identificationStep, sentTo, addressFlow, deliveryCard, paymentStep, paymentAction, processingStep, orderPage, mapSize, mapCenter } from './checkout.js';
+import { progress, orderSummary, identificationStep, sentTo, addressFlow, deliveryCard, paymentStep, paymentAction, paymentBar, processingStep, orderPage, mapSize, mapCenter } from './checkout.js';
 import { processingTime } from './checkout-fixtures.js';
 import { pixPending, cartLocked } from './state.js';
 import { pixStep, pixApprovedStep, pixClock } from './checkout.js';
@@ -359,7 +359,7 @@ function renderCheckout() {
   // the card; or the Pix pendente; or Pagamento aprovado, every step done); otherwise the Identificação.
   const main = !address ? '' : processing ? (approved ? pixApprovedStep(order) : processingStep(order)) : pix ? pixStep(order, Date.now()) : deliveryCard(address) + paymentStep(state);
   root.innerHTML = address
-    ? `${progress(approved ? 3 : 2)}<div class="checkout-body"><div class="checkout-main">${main}</div>${orderSummary(state.cart, true, processing ? { edit: 'disabled' } : pix ? { edit: false } : { action: paymentAction(state) })}</div>`
+    ? `${progress(approved ? 3 : 2)}<div class="checkout-body"><div class="checkout-main">${main}</div>${orderSummary(state.cart, true, processing ? { edit: 'disabled' } : pix ? { edit: false } : { action: paymentAction(state) })}</div>${processing || pix ? '' : paymentBar(state)}`
     : `${progress(0)}<div class="checkout-body"><section class="checkout-step" aria-label="Identificação">${identificationStep(state.identification)}</section>${orderSummary(state.cart)}</div>`;
   for (const [id, value] of kept) if ($(id)) $(id).value = value;
   const again = active?.id && $(active.id);
@@ -1040,7 +1040,8 @@ function confirmPayment() {
     const orders = state.orders.length;
     dispatch({ type: 'payResult' });
     if (state.orders.length > orders) location.hash = `pedido/${state.orders.at(-1).id}`;
-    else $('checkout-content').querySelector('[data-pay-confirm]')?.focus();
+    // The action on screen: the Resumo do pedido's, or the fixed footer's below 1024px.
+    else [...$('checkout-content').querySelectorAll('[data-pay-confirm]')].find((b) => b.checkVisibility())?.focus();
   }, processingTime);
 }
 // Pix. "Gerar Pix" creates the Pedido and opens the Pix pendente (focus on its title); the countdown ticks every

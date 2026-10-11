@@ -312,17 +312,21 @@ export function paymentStep(state) {
   return `<section class="checkout-step payment-step" aria-labelledby="payment-title"><h2 id="payment-title">Forma de pagamento</h2><div class="pay-methods" role="radiogroup" aria-labelledby="payment-title">${payOption('pay-method', 'pix', 'Pix', 'Pague com QR Code ou código Pix.', method === 'pix', 'method')}${payOption('pay-method', 'card', 'Cartão de crédito', 'Pagamento à vista. Use um cartão salvo ou adicione outro.', method === 'card', 'method')}</div>${method === 'card' ? cardFields(state) : ''}${failure}</section>`;
 }
 
+/** The Pagamento's action: "Confirmar e pagar R$ X" (card; disabled while no Forma de pagamento is chosen) or "Gerar Pix". */
+const payButton = (state) =>
+  state.payment.method === 'pix'
+    ? '<button class="primary pay-action" type="button" data-pix-generate>Gerar Pix</button>'
+    : `<button class="primary pay-action" type="button" data-pay-confirm${state.payment.method ? '' : ' disabled'}>Confirmar e pagar ${money(orderTotal(state.cart))}</button>`;
+
+/** The Pagamento's action in the Resumo do pedido, with its note (the action is hidden below 1024px, see paymentBar). */
+export const paymentAction = (state) => `${payButton(state)}<p class="pay-note">Confira o endereço antes de confirmar.</p>`;
+
 /**
- * The Pagamento's action in the Resumo do pedido, with its note: "Confirmar e pagar R$ X" (card; disabled while no
- * Forma de pagamento is chosen) or "Gerar Pix".
+ * Below 1024px (Figma "Checkout / ação fixa"): Total do pedido and the Pagamento's action, fixed at the bottom of the
+ * screen in place of the Resumo do pedido's action. Not shown from 1024px.
  */
-export function paymentAction(state) {
-  const button =
-    state.payment.method === 'pix'
-      ? '<button class="primary pay-action" type="button" data-pix-generate>Gerar Pix</button>'
-      : `<button class="primary pay-action" type="button" data-pay-confirm${state.payment.method ? '' : ' disabled'}>Confirmar e pagar ${money(orderTotal(state.cart))}</button>`;
-  return `${button}<p class="pay-note">Confira o endereço antes de confirmar.</p>`;
-}
+export const paymentBar = (state) =>
+  `<div class="pay-bar" role="region" aria-label="Total do pedido e pagamento"><p><span>Total do pedido</span> <strong>${money(orderTotal(state.cart))}</strong></p>${payButton(state)}</div>`;
 
 /** Processing of the card (Figma cardProcessing), in place of the address and the Forma de pagamento. */
 export const processingStep = (order) =>
