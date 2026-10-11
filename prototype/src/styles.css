@@ -134,4 +134,3 @@ img.cart-photo{object-fit:cover;object-position:50% 56%;transform:scale(1.6)}
 .cart-subtitle[hidden]+#cart-content>.cart-notice{margin-top:28px}
 .cart-bar{display:none}@media(max-width:1023px){.cart-page{padding-bottom:132px}.cart-bar{display:flex;position:fixed;z-index:20;left:0;right:0;bottom:0;align-items:center;justify-content:space-between;gap:16px;background:var(--cream);border-top:1px solid var(--border);box-shadow:0 -6px 18px #6b2a0014;padding:25px 19px calc(26px + env(safe-area-inset-bottom)) 21px}.cart-bar p{margin:0;min-width:0}.cart-bar strong{font-family:'Flame',Georgia,serif;font-size:36px;line-height:1;white-space:nowrap}.cart-bar .primary{flex:0 0 164px;height:48px;padding:0 16px;font-weight:normal}}
 .cart-page .primary,.cart-page .secondary{font-family:'Flame Sans',Arial,sans-serif;font-weight:normal}
-
