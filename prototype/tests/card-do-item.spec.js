@@ -200,6 +200,7 @@ test('todo Item tem "Remover": na linha do nome a partir de 1024px, abaixo dele 
 
 test('produto só foto: foto, nome e Total do item, sem Ingredientes, Combo nem Bebida', async ({ page }) => {
   await page.getByRole('banner').getByRole('link', { name: 'Acompanhamentos' }).click();
+  await escolher(page, 'Batata Frita');
   await adicionar(page).click();
   await abrirCarrinho(page);
   const item = itens(page).first();

@@ -16,6 +16,7 @@ async function tresItens(page) {
   await page.getByRole('combobox', { name: 'Bebida do combo' }).selectOption('Sprite');
   await adicionar(page).click();
   await categoria(page, 'Acompanhamentos');
+  await escolher(page, 'Batata Frita');
   await adicionar(page).click();
   await page.getByRole('button', { name: 'Carrinho · 4' }).click();
   await expect(itens(page)).toHaveCount(3);
@@ -76,6 +77,7 @@ test('o aviso some na próxima mudança do carrinho, e Desfazer some com ele', a
 
 test('remover o último Item mostra o estado vazio com o aviso; Desfazer traz o Item de volta', async ({ page }) => {
   await categoria(page, 'Sobremesas');
+  await escolher(page, 'BK® Mix de Brownie');
   await adicionar(page).click();
   await page.getByRole('button', { name: 'Carrinho · 1' }).click();
   await itens(page).first().getByRole('button', { name: 'Remover' }).click();

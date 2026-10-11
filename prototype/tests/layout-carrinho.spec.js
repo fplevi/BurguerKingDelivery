@@ -1,6 +1,6 @@
 // Layouts do Carrinho no desktop e no mobile (ticket 06 of carrinho; Figma 189-16293 and 187-8185).
 import { test, expect } from '@playwright/test';
-import { carrinho, itens, totalDoItem, aviso } from './support.js';
+import { carrinho, itens, totalDoItem, aviso, escolher } from './support.js';
 
 const adicionar = (page) => page.getByRole('button', { name: 'Adicionar ao carrinho' });
 const categoria = (page, nome) => page.getByRole('banner').getByRole('link', { name: nome }).click();
@@ -24,8 +24,10 @@ async function carrinhoDoFigma(page) {
   await page.locator('#catalog').getByRole('button', { name: 'Cheddar Duplo' }).click();
   await adicionar(page).click();
   await categoria(page, 'Acompanhamentos');
+  await escolher(page, 'Batata Frita');
   await adicionar(page).click();
   await categoria(page, 'Sobremesas');
+  await escolher(page, 'BK® Mix de Brownie');
   await adicionar(page).click();
   await page.getByRole('button', { name: /^Carrinho · / }).click();
   await expect(itens(page)).toHaveCount(4);
