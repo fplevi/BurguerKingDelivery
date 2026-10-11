@@ -36,7 +36,7 @@ test('tocar na imagem da bandeja recoloca o ingrediente e atualiza o chip', asyn
   await expect(camada(page, 'Tomate')).toBeVisible();
   // Focus stays in the bandeja while something is left there.
   await expect(retirado(page, 'Alface')).toBeFocused();
-  await expect(verIngredientes(page).getByText('Whopper Clássico · Sem alface ·')).toBeVisible();
+  await expect(verIngredientes(page).getByText('Whopper® · Sem alface ·')).toBeVisible();
 });
 
 test('a imagem da bandeja recoloca pelo teclado', async ({ page }) => {

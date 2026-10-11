@@ -109,5 +109,5 @@ test('a Base não pode ser arrastada', async ({ page }) => {
   const depois = await camada(page, 'Pão superior').boundingBox();
   expect(Math.max(Math.abs(depois.x - antes.x), Math.abs(depois.y - antes.y))).toBeLessThan(2);
   await page.mouse.up();
-  await expect(verIngredientes(page).getByText('Whopper Clássico · Todos os ingredientes')).toBeVisible();
+  await expect(verIngredientes(page).getByText('Whopper® · Todos os ingredientes')).toBeVisible();
 });

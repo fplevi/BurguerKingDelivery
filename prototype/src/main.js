@@ -1,6 +1,6 @@
-import { recipes, layer, description } from './ingredients.js';
+import { recipes, layer, description, removedLine } from './ingredients.js';
 import { art } from './art.js';
-import { initial, reducer, money, drinks, pick, itemTotal, itemName } from './state.js';
+import { initial, reducer, money, drinks, pick, itemTotal, itemName, cartUnits, cartTotal } from './state.js';
 import { categories, products } from './products.js';
 import { createBurgerScene } from './scene/burger-scene.js';
 import whopperPhoto from '../Assets/burgers/official/site_Whopper.png';
@@ -18,7 +18,6 @@ const $ = (id) => document.getElementById(id);
 /** Receita of the selected product, and the name of one of its Camadas. */
 const recipe = () => recipes[state.product];
 const name = (id, r = recipe()) => layer(r, id).name;
-const without = (removed, r) => (removed.length ? 'Sem ' + removed.map((id) => name(id, r)).join(', ').toLowerCase() : 'Todos os ingredientes');
 function dispatch(action) {
   state = reducer(state, action);
   render();
@@ -137,7 +136,7 @@ function buildGrid() {
     : burgers
         .map(
           (p) =>
-            `<button class="card" aria-pressed="false" ${p.recipe ? `data-product="${p.recipe}"` : ''}>${badge}<img class="catalog-photo" src="${p.photo}" width="400" height="400" alt="" loading="lazy" decoding="async"><span class="card-name">${p.recipe ? recipes[p.recipe].name : p.name}</span></button>`,
+            `<button class="card" aria-pressed="false" ${p.recipe ? `data-product="${p.recipe}"` : ''}>${badge}<img class="catalog-photo" src="${p.photo}" width="400" height="400" alt="" loading="lazy" decoding="async"><span class="card-name"><span>${marks(p.recipe ? recipes[p.recipe].name : p.name)}</span></span></button>`,
         )
         .join('');
   $('grid')
@@ -188,10 +187,10 @@ function closedPositions(removed) {
   return positions;
 }
 
-/** Hero title in two lines: at the title's "\n", otherwise after the first word. */
+/** Hero title in two lines: at the title's "\n", otherwise after the first word; one word stays on one line. */
 function heroTitle(title) {
   const [first, ...rest] = title.includes('\n') ? title.split('\n') : title.split(' ');
-  $('product-title').innerHTML = `<span>${marks(first)}</span><br>${marks(rest.join(' '))}`;
+  $('product-title').innerHTML = `<span>${marks(first)}</span>${rest.length ? '<br>' + marks(rest.join(' ')) : ''}`;
   fitTitle();
 }
 /** The title's lines don't wrap: a line wider than the column shrinks the title to fit it. */
@@ -204,9 +203,13 @@ addEventListener('resize', fitTitle);
 
 function render() {
   buildGrid();
+  const inCart = state.screen === 'carrinho';
   document
     .querySelectorAll('nav a')
-    .forEach((a) => (a.hash === '#' + state.category ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current')));
+    .forEach((a) => (!inCart && a.hash === '#' + state.category ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current')));
+  document.querySelector('main').dataset.screen = state.screen;
+  for (const el of document.querySelectorAll('main > .hero, main > .catalog')) el.hidden = inCart;
+  $('cart-page').hidden = !inCart;
   const photo = pick(state) && products[pick(state).product];
   for (const id of ['hero-stage', 'edit', 'combo-options']) $(id).hidden = !!photo;
   $('product-frame').hidden = !photo;
@@ -221,7 +224,7 @@ function render() {
     heroTitle(product.name);
     $('product-description').textContent = description(product, state.removed);
   }
-  $('controls-title').textContent = `Personalize seu ${product.shortName}`;
+  $('controls-title').innerHTML = `Personalize seu ${marks(product.name)}`;
   document.querySelectorAll('#grid .card').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.product === (pick(state)?.product ?? state.product))));
   if (scenes) {
     scenes.hero.show({ open: false, removed: state.removed }, { animate: false });
@@ -275,22 +278,96 @@ function render() {
         }),
     );
   // Read by screen readers only (aria-live); the dialog shows no status line.
-  $('state').textContent = `${product.name} · ${without(state.draft, product)} · Retirar ingredientes mantém o preço neste protótipo.`;
-  const units = state.cart.reduce((n, i) => n + i.qty, 0);
+  $('state').textContent = `${product.name} · ${removedLine(product, state.draft)} · Retirar ingredientes mantém o preço neste protótipo.`;
+  const units = cartUnits(state.cart);
   $('cart-count').textContent = units;
   $('cart-open').setAttribute('aria-label', `Carrinho · ${units}`);
-  $('cart-items').innerHTML = state.cart.length
-    ? state.cart
-        .map(
-          (item, i) =>
-            `<div class="cart-row"><b>${itemName(item)} × ${item.qty}</b>${item.combo ? `<small>Combo · ${item.drink}</small>` : ''}${item.removed.length ? `<small>Sem: ${item.removed.map((id) => name(id, recipes[item.product])).join(', ').toLowerCase()}</small>` : ''}<span>${money(item.price * item.qty)}</span><button data-delete="${i}">Remover item</button></div>`,
-        )
-        .join('')
-    : 'Seu carrinho está vazio.';
-  $('cart-items')
-    .querySelectorAll('button')
-    .forEach((b) => (b.onclick = () => dispatch({ type: 'delete', index: Number(b.dataset.delete) })));
-  $('cart-total').textContent = 'Total: ' + money(state.cart.reduce((n, i) => n + i.price * i.qty, 0));
+  // Built only while shown, so the menu never holds a hidden copy of the Itens.
+  if (inCart) renderCart();
+  else {
+    $('cart-content').replaceChildren();
+    $('cart-status').textContent = '';
+  }
+}
+
+/** Carrinho screen: the Itens (each one editable, see itemCard) and the Resumo do carrinho, or the empty state. */
+const itemsText = (n) => (n === 1 ? '1 item' : `${n} itens`);
+function itemPhoto(item) {
+  const photo = products[item.product];
+  if (photo) return `<span class="cart-photo photo-crop" style="${crop(photo.box)}"><img src="${photo.photo}" alt=""></span>`;
+  return `<img class="cart-photo" src="${burgers.find((b) => b.recipe === item.product).photo}" width="400" height="400" alt="">`;
+}
+/** Burger Item: "Ingredientes:" with the hero's description, and the removed line (red) or "Todos os ingredientes". */
+function ingredientsOf(item) {
+  const r = recipes[item.product];
+  if (!r) return '';
+  return `<div class="cart-ingredients"><p>Ingredientes:</p><p>${description(r, item.removed)}</p><p${item.removed.length ? ' class="cart-without"' : ''}>${removedLine(r, item.removed)}</p></div>`;
+}
+/** Quantidade (1-99; "−" disabled at 1) and Total do item of Item `i`. */
+function qtyAndTotal(item, i) {
+  return `<div class="cart-qty"><span class="item-label" id="item-${i}-qty">Quantidade</span><div class="qty" role="group" aria-labelledby="item-${i}-qty"><button data-key="${i}:minus" aria-label="Diminuir quantidade" ${item.qty <= 1 ? 'disabled' : ''}>−</button><span>${item.qty}</span><button data-key="${i}:plus" aria-label="Aumentar quantidade" ${item.qty >= 99 ? 'disabled' : ''}>+</button></div></div><div class="total">Total do item<strong>${money(item.price * item.qty)}</strong></div>`;
+}
+// Bebida do combo of the Carrinho: a select-only combobox (ARIA listbox pattern) whose list opens over
+// the page. Which list is open, and its active option, is view state only: { index, active } or null.
+let openDrink = null;
+function drinkPicker(item, i) {
+  const open = openDrink?.index === i;
+  const options = drinks
+    .map(
+      (d, k) =>
+        `<li role="option" id="item-${i}-drink-${k}" data-key="${i}:option:${k}" aria-selected="${d === item.drink}"${open && openDrink.active === k ? ' class="active"' : ''}>${d}</li>`,
+    )
+    .join('');
+  // Continuar with the combo but no drink: red border and "Escolha a bebida do combo", as on the burger card.
+  const error = item.drinkError ? ` aria-invalid="true" aria-describedby="item-${i}-drink-error"` : '';
+  return `<div class="cart-drink"><span class="item-label" id="item-${i}-drink">Bebida do combo</span><div class="picker"><button class="field picker-button" role="combobox" data-key="${i}:drink" aria-labelledby="item-${i}-drink" aria-haspopup="listbox" aria-controls="item-${i}-drinks" aria-expanded="${open}"${open ? ` aria-activedescendant="item-${i}-drink-${openDrink.active}"` : ''}${error}${item.combo ? '' : ' disabled'}>${item.drink || 'Selecione uma bebida'}</button><ul class="picker-list" role="listbox" id="item-${i}-drinks" aria-labelledby="item-${i}-drink"${open ? '' : ' hidden'}>${options}</ul></div>${item.drinkError ? `<p class="field-error" id="item-${i}-drink-error">Escolha a bebida do combo</p>` : ''}</div>`;
+}
+/** Card of Item `i`: photo, name and Remover; a burger also has Ingredientes, combo and Bebida do combo; then Quantidade and Total do item. */
+function itemCard(item, i) {
+  const burger = recipes[item.product];
+  const combo = burger
+    ? `<label class="check cart-combo"><input type="checkbox" data-key="${i}:combo"${item.combo ? ' checked' : ''}> Transformar em combo</label>${drinkPicker(item, i)}`
+    : '';
+  return `<li class="cart-item${burger ? ' cart-burger' : ''}">${itemPhoto(item)}<div class="cart-head"><h2>${marks(itemName(item))}</h2><button class="secondary cart-remove" data-key="${i}:remove">Remover</button></div>${ingredientsOf(item)}<div class="cart-controls">${combo}${qtyAndTotal(item, i)}</div></li>`;
+}
+/** Opens the drink list of Item `i` with `active` highlighted (the chosen drink, or the first), or closes it (null). */
+function showDrinks(i, active) {
+  openDrink = i === null ? null : { index: i, active: active ?? Math.max(0, drinks.indexOf(state.cart[i].drink)) };
+  render();
+  if (openDrink) $(`item-${i}-drink-${openDrink.active}`)?.scrollIntoView({ block: 'nearest' });
+}
+function chooseDrink(i, k) {
+  openDrink = null;
+  dispatch({ type: 'itemDrink', index: i, value: drinks[k] });
+  $('cart-content').querySelector(`[data-key="${i}:drink"]`)?.focus();
+}
+/** Says `text` in the Carrinho's live region (#cart-status, never rebuilt); the same text again is still announced. */
+function announce(text) {
+  const el = $('cart-status');
+  el.textContent = el.textContent === text ? text + ' ' : text;
+}
+/** Aviso of the Item just removed, with Desfazer (Figma 06); gone at the next change in the cart or on leaving the Carrinho. */
+function removedNotice() {
+  const last = state.lastRemoved;
+  return last ? `<div class="cart-notice" role="group" aria-label="Item removido"><p>${marks(itemName(last.item))} removido do carrinho.</p><button class="secondary" data-key="undo">Desfazer</button></div>` : '';
+}
+function renderCart() {
+  const units = cartUnits(state.cart);
+  const count = state.cart.length;
+  $('cart-subtitle').hidden = !count;
+  if (!count) {
+    $('cart-content').innerHTML =
+      removedNotice() + '<div class="cart-empty"><h2>Seu carrinho está vazio</h2><p>Escolha seus favoritos para começar.</p><button class="primary" data-back>Explorar cardápio</button></div>';
+    return;
+  }
+  $('cart-subtitle').textContent = units === count ? `${itemsText(count)} no carrinho` : `${units} unidades em ${itemsText(count)}`;
+  // Rebuilt on every change: the control that had the focus gets it back (or, now disabled, its neighbour in the group).
+  const focused = $('cart-content').contains(document.activeElement) ? document.activeElement.dataset.key : null;
+  const total = money(cartTotal(state.cart));
+  // Phones (< 1024px): a bar fixed at the bottom repeats Total dos itens and Continuar; hidden on desktop.
+  $('cart-content').innerHTML = `${removedNotice()}<ul class="cart-items" aria-label="Itens">${state.cart.map(itemCard).join('')}</ul><aside class="cart-summary" aria-labelledby="summary-title"><h2 id="summary-title">Resumo do carrinho</h2><p class="summary-total">Total dos itens<strong>${total}</strong></p><p class="summary-note">Entrega calculada na próxima etapa.</p><button class="primary" data-continue>Continuar</button><button class="secondary" data-back>Adicionar mais itens</button></aside><div class="cart-bar" role="region" aria-label="Total dos itens e Continuar"><p><span class="sr-only">Total dos itens</span><strong>${total}</strong></p><button class="primary" data-continue>Continuar</button></div>`;
+  const again = focused && $('cart-content').querySelector(`[data-key="${focused}"]`);
+  if (again) (again.disabled ? again.parentElement.querySelector('[data-key]:not(:disabled)') : again)?.focus();
 }
 
 // Bandeja: each removed ingredient as an image of its own Camada (rendered by the scene,
@@ -447,41 +524,122 @@ $('qty-minus').onclick = () => dispatch({ type: 'qty', value: qty() - 1 });
 $('qty-plus').onclick = () => dispatch({ type: 'qty', value: qty() + 1 });
 $('drink').onchange = (e) => dispatch({ type: 'drink', value: e.target.value });
 $('add').onclick = () => {
-  const added = pick(state) ? products[pick(state).product].name : recipe().shortName;
+  const added = pick(state) ? products[pick(state).product].name : recipe().name;
   dispatch({ type: 'add' });
   // The combo's drink error belongs to the burger card only.
   if (!pick(state) && state.drinkError) return $('drink').focus();
   toast(`Adicionado ao carrinho: ${added}`);
 };
-$('cart-open').onclick = () => {
-  restoreFocus = document.activeElement;
-  $('cart').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  $('cart-close').focus();
-};
-function closeCart() {
-  $('cart').classList.remove('open');
-  document.body.style.overflow = '';
-  restoreFocus?.focus();
+$('cart-open').onclick = () => (location.hash = 'carrinho');
+// Voltar ao cardápio, Adicionar mais itens and Explorar cardápio: back to the last category seen, as it was.
+// Opened from the menu, that is the previous history entry (so Back doesn't return to the Carrinho);
+// opened by the address, there is none and the category's hash is pushed instead.
+let fromMenu = false,
+  started = false;
+// One click handler for the whole screen: Continuar, the ways back to the menu (Voltar ao cardápio,
+// Adicionar mais itens, Explorar cardápio) and the controls of each Item (data-key "index:control").
+$('cart-page').addEventListener('click', (e) => {
+  if (e.target.closest('[data-continue]')) return continueOrder();
+  if (e.target.closest('[data-back]')) return fromMenu ? history.back() : (location.hash = state.category);
+  const key = e.target.closest('[data-key]')?.dataset.key;
+  if (!key) return;
+  const [index, control] = key.split(':'),
+    i = Number(index),
+    item = state.cart[i];
+  if (control === 'minus' || control === 'plus') {
+    dispatch({ type: 'itemQty', index: i, value: item.qty + (control === 'plus' ? 1 : -1) });
+    announce(`${itemName(item)}: quantidade ${state.cart[i].qty}`);
+  }
+  if (control === 'drink') showDrinks(openDrink?.index === i ? null : i);
+  if (control === 'option') chooseDrink(i, Number(key.split(':')[2]));
+  if (control === 'remove') {
+    openDrink = null;
+    dispatch({ type: 'itemRemove', index: i });
+    announce(`${itemName(item)} removido do carrinho.`);
+    $('cart-content').querySelector('[data-key="undo"]').focus();
+  }
+  if (key === 'undo') {
+    const { index: back, item: restored } = state.lastRemoved;
+    dispatch({ type: 'itemUndo' });
+    announce(`${itemName(restored)} devolvido ao carrinho.`);
+    $('cart-content').querySelector(`[data-key="${back}:remove"]`).focus();
+  }
+});
+$('cart-page').addEventListener('change', (e) => {
+  const [index, control] = e.target.dataset.key?.split(':') ?? [];
+  if (control !== 'combo') return;
+  if (openDrink?.index === Number(index)) openDrink = null;
+  dispatch({ type: 'itemCombo', index: Number(index), value: e.target.checked });
+});
+// Keyboard of the Bebida do combo (select-only combobox): closed, ↓ ↑ Enter Space open it; open, ↓ ↑ Home End move the
+// active option, Enter or Space choose it, Esc closes without changing and Tab closes and moves on.
+$('cart-page').addEventListener('keydown', (e) => {
+  const [index, control] = e.target.dataset.key?.split(':') ?? [];
+  if (control !== 'drink') return;
+  const i = Number(index),
+    last = drinks.length - 1;
+  if (openDrink?.index !== i) {
+    if (!['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key)) return;
+    e.preventDefault();
+    return showDrinks(i);
+  }
+  const moves = { ArrowDown: Math.min(last, openDrink.active + 1), ArrowUp: Math.max(0, openDrink.active - 1), Home: 0, End: last };
+  if (e.key in moves) showDrinks(i, moves[e.key]);
+  else if (e.key === 'Enter' || e.key === ' ') chooseDrink(i, openDrink.active);
+  else if (e.key === 'Escape') showDrinks(null);
+  else if (e.key === 'Tab') return showDrinks(null);
+  else return;
+  e.preventDefault();
+});
+// Space activates a button on keyup: the keydown above already handled it.
+$('cart-page').addEventListener('keyup', (e) => {
+  if (e.key === ' ' && e.target.dataset.key?.endsWith(':drink')) e.preventDefault();
+});
+// Choosing an option with the mouse keeps the focus on the combobox; pressing anywhere else closes the list.
+$('cart-page').addEventListener('mousedown', (e) => {
+  if (e.target.closest('[role=listbox]')) e.preventDefault();
+});
+document.addEventListener('pointerdown', (e) => {
+  if (openDrink && !e.target.closest('.picker')) showDrinks(null);
+});
+// Continuar: the first combo without a drink is scrolled to and its Bebida do combo focused; none, the toast.
+function continueOrder() {
+  dispatch({ type: 'continue' });
+  const i = state.cart.findIndex((c) => c.drinkError);
+  if (i < 0) return toast('Tudo certo! O pagamento não faz parte deste protótipo.');
+  const picker = $('cart-content').querySelector(`[data-key="${i}:drink"]`);
+  picker.closest('.cart-item').scrollIntoView({ block: 'center' });
+  picker.focus({ preventScroll: true });
 }
-$('cart-close').onclick = closeCart;
-$('cart').onclick = (e) => {
-  if (e.target === $('cart')) closeCart();
-};
 // Categories: the hash picks the page content (#acompanhamentos, #bebidas, #sobremesas; anything else, Hambúrgueres).
+// #carrinho shows the Carrinho instead, keeping the last category seen as it was.
+// Entering the Carrinho: the page goes to the top and the focus to its title. Back to the menu: its scroll and the
+// control the customer left from come back (that control gone or hidden, the header's Carrinho button).
+let menuScroll = 0,
+  menuFocus = null;
 const fromHash = () => {
   // Back/Forward with Ver ingredientes open: cancel it first, as Esc does.
   if (state.editing) closeEditor('cancel');
+  const wasMenu = state.screen === 'cardapio';
+  if (wasMenu) [menuScroll, menuFocus] = [scrollY, document.activeElement];
+  if (!wasMenu) openDrink = null;
   dispatch({ type: 'category', category: location.hash.slice(1) });
   // Phones: the tabs scroll sideways; keep the active one in view.
-  document.querySelector('nav a[aria-current]').scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  document.querySelector('nav a[aria-current]')?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  const inCart = state.screen === 'carrinho';
+  if (inCart) fromMenu = wasMenu && started;
+  if (inCart === !wasMenu) return;
+  scrollTo(0, inCart ? 0 : menuScroll);
+  if (!started) return;
+  const back = menuFocus?.isConnected && menuFocus.checkVisibility?.() && menuFocus !== document.body ? menuFocus : $('cart-open');
+  (inCart ? $('cart-title') : back).focus({ preventScroll: true });
 };
 addEventListener('hashchange', fromHash);
 
 document.addEventListener('keydown', (e) => {
-  const dialog = state.editing ? $('playground') : $('cart').classList.contains('open') ? $('cart') : null;
-  if (!dialog) return;
-  if (e.key === 'Escape') state.editing ? closeEditor('cancel') : closeCart();
+  if (!state.editing) return;
+  const dialog = $('playground');
+  if (e.key === 'Escape') closeEditor('cancel');
   if (e.key === 'Tab') {
     const focusable = [...dialog.querySelectorAll('button:not(:disabled),input')].filter(
       (b) => !b.classList.contains('removed'),
@@ -558,3 +716,4 @@ $('hero-stage').onpointermove = (e) => {
 $('hero-stage').onpointerleave = () => $('hero-burger').style.setProperty('--tilt', '0deg');
 mountProduct();
 fromHash();
+started = true;

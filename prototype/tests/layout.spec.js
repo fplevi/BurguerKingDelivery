@@ -25,14 +25,14 @@ test('cabeçalho do Figma: logo, Entregar em, as quatro categorias com Hambúrgu
 test('os 6 hambúrgueres sem Receita parecem iguais aos outros, sem "Em breve", e clicar neles não faz nada', async ({ page }) => {
   await expect(page.getByText(/Em breve/)).toHaveCount(0);
   await expect(page.getByText(/estão disponíveis nesta validação/)).toHaveCount(0);
-  await expect(card(page, 'Whopper Clássico')).toContainText('Selecionado');
+  await expect(card(page, 'Whopper®')).toContainText('Selecionado');
   for (const nome of ['Stacker Duplo Bacon', 'Rodeio Duplo', 'Big King', 'Cheeseburger Duplo', 'Cheeseburger', 'Rodeio']) {
     await card(page, nome).click();
     await expect(card(page, nome)).toHaveAttribute('aria-pressed', 'false');
     await expect(card(page, nome).getByText('Selecionado')).toBeHidden();
   }
-  await expect(card(page, 'Whopper Clássico')).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.getByRole('heading', { level: 1 })).toHaveAccessibleName('Whopper Clássico');
+  await expect(card(page, 'Whopper®')).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveAccessibleName('Whopper®');
   await expect(page.getByRole('status')).toBeHidden();
 });
 
