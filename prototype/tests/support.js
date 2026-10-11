@@ -141,3 +141,9 @@ export async function buscarEndereco(page, texto) {
 
 /** Results of the Busca, each a button named by its place. */
 export const resultadosDaBusca = (page) => paginaDeEndereco(page).getByRole('list', { name: 'Resultados da busca' }).getByRole('button');
+
+// Gerenciar endereços (ticket 05 of checkout).
+/** The radios of Seus endereços (the Endereços salvos and a chosen Endereço de pedido anterior). */
+export const enderecosSalvos = (page) => paginaDeEndereco(page).getByRole('radiogroup', { name: 'Endereços salvos' });
+/** The menu ⋮ of the Endereço salvo `rotulo` (Casa, Trabalho…): opens the dialog with Editar and Remover. */
+export const menuDoEndereco = (page, rotulo) => paginaDeEndereco(page).getByRole('button', { name: `Opções do endereço ${rotulo}` });

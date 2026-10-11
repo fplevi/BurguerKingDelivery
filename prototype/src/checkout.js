@@ -97,26 +97,37 @@ const clockIcon = icon(`<circle cx="12" cy="12" r="8.5" ${stroke} stroke-dasharr
 const addressLines = (a) => [[a.district, a.city].filter(Boolean).join(', '), [a.complement, a.reference].filter(Boolean).join(' · ')].filter(Boolean);
 
 /** One Endereço salvo of the list: a radio named by its whole text, marked with ✓ and a red border (Figma Endereço 01/16). */
+const moreIcon = icon('<circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="19" cy="12" r="1.6" fill="currentColor"/>', 20);
+/** The menu ⋮ of an Endereço salvo (data-address-more, Figma Endereço 06): a button opening the dialog of its options. */
+const moreButton = (a) => `<button class="saved-more" type="button" id="address-more-${a.id}" data-address-more="${a.id}" aria-haspopup="dialog" aria-label="Opções do endereço ${a.label}">${moreIcon}</button>`;
 function savedAddressCard(a, picked) {
-  return `<div class="saved-address" data-address="${a.id}"><label><input class="saved-radio" type="radio" name="saved-address" value="${a.id}"${picked ? ' checked' : ''}>${labelIcons[a.label] ?? labelIcons.Favoritos}<span class="saved-text"><b class="saved-label">${a.label}</b> <span class="saved-street">${a.street}</span> ${addressLines(a)
+  return `<div class="saved-address" data-address="${a.id}"><label><input class="saved-radio" type="radio" name="saved-address" value="${a.id}"${picked ? ' checked' : ''}>${a.lastOrder ? clockIcon : (labelIcons[a.label] ?? labelIcons.Favoritos)}<span class="saved-text"><b class="saved-label">${a.label}</b> <span class="saved-street">${a.street}</span> ${addressLines(a)
     .map((l) => `<span class="saved-line">${l}</span>`)
-    .join(' ')}</span><span class="saved-check" aria-hidden="true">${icon('<path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>', 20)}</span></label></div>`;
+    .join(' ')}</span><span class="saved-check" aria-hidden="true">${icon('<path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>', 20)}</span></label>${a.lastOrder ? '' : moreButton(a)}</div>`;
 }
 
 /**
  * Seus endereços (#endereco, Figma Endereço 01 and 16): the search and "Usar localização atual" (wired in the address
  * search ticket: data-address-search, data-address-locate); for a client with addresses, the Endereços salvos (one
  * marked, `addressPick`) and "Entregar neste endereço" (data-address-deliver); for a Cliente cadastrado, "Endereços de
- * pedidos anteriores" (data-address-previous). A Novo cliente without addresses sees no empty sections.
+ * pedidos anteriores" (data-address-previous; the one chosen there is listed first, Figma Endereço 17). A Novo cliente
+ * without addresses sees no empty sections.
  */
-export function addressList({ customer, addressPick }) {
-  const saved = customer.addresses;
+/**
+ * Opções do endereço (Figma Endereço 06): a modal dialog (main.js shows it) with "Editar endereço" (data-address-edit)
+ * and "Remover endereço" (data-address-remove) for the Endereço salvo `a`.
+ */
+const addressMenu = (a) =>
+  `<dialog class="address-menu" id="address-menu" aria-label="Opções do endereço ${a.label}" data-for="${a.id}"><button type="button" data-address-edit="${a.id}">Editar endereço</button><button type="button" class="address-menu-remove" data-address-remove="${a.id}">Remover endereço</button></dialog>`;
+
+export function addressList({ customer, addressPick, addressPrevious, addressMenu: open }) {
+  const saved = [addressPrevious, ...customer.addresses].filter(Boolean);
   const list = saved.length
     ? `<h2 class="address-section" id="saved-title">Endereços salvos</h2><div class="saved-addresses" role="radiogroup" aria-labelledby="saved-title">${saved.map((a) => savedAddressCard(a, a.id === addressPick)).join('')}</div>`
     : '';
   const previous = customer.registered ? `<button class="link address-previous" type="button" data-address-previous>${clockIcon}Endereços de pedidos anteriores</button>` : '';
   const deliver = saved.length ? `<div class="address-action"><button class="primary" type="button" data-address-deliver${saved.some((a) => a.id === addressPick) ? '' : ' disabled'}>Entregar neste endereço</button></div>` : '';
-  return `<div class="address-flow"><button class="address-search" type="button" data-address-search>${searchIcon}<span>Buscar endereço e número</span></button><button class="address-locate" type="button" data-address-locate>${locateIcon}<span><span class="locate-title">Usar localização atual</span> <small>Permita o acesso à sua localização.</small></span></button>${list}${previous}${deliver}</div>`;
+  return `<div class="address-flow"><button class="address-search" type="button" data-address-search>${searchIcon}<span>Buscar endereço e número</span></button><button class="address-locate" type="button" data-address-locate>${locateIcon}<span><span class="locate-title">Usar localização atual</span> <small>Permita o acesso à sua localização.</small></span></button>${list}${previous}${deliver}</div>${open ? addressMenu(customer.addresses.find((a) => a.id === open)) : ''}`;
 }
 
 /**
@@ -202,22 +213,49 @@ const box = (name, label, checked) => `<label class="check delivery-check"><inpu
  * Bairro*, Número* (or "Endereço sem número"), Complemento (or "Endereço sem complemento"), Ponto de referência,
  * "Como você quer salvar?" and "Salvar endereço". It starts from the place; after errors, from what was sent.
  */
-function addressDetails({ addressPlace: p, addressDraft, addressErrors: e }) {
-  const d = addressDraft ?? { street: p.street, district: p.district, number: p.number, noNumber: false, complement: '', noComplement: false, reference: '', label: 'Casa' };
+function addressDetails({ addressPlace: p, addressDraft, addressErrors: e }, edit = null) {
+  const d = addressDraft ?? edit?.draft ?? { street: p.street, district: p.district, number: p.number, noNumber: false, complement: '', noComplement: false, reference: '', label: 'Casa' };
   const labels = ['Casa', 'Trabalho', 'Favoritos']
     .map((l) => `<label class="save-as"><input type="radio" name="label" value="${l}"${d.label === l ? ' checked' : ''}>${saveIcons[l]}<span>${l}</span></label>`)
     .join('');
-  return `<div class="address-flow"><h2 class="address-title">Complete o endereço</h2>${staticMap(p.pan, false)}<button class="link address-adjust" type="button" data-address-adjust>${pinIcon}Ajustar localização no mapa</button><form class="delivery-form" data-address-form novalidate><div class="delivery-pair">${deliveryField('street', 'Rua', d.street, { required: true, error: e.street })}${deliveryField('district', 'Bairro', d.district, { required: true, error: e.district })}</div>${deliveryField('number', 'Número', d.noNumber ? '' : d.number, { required: true, disabled: d.noNumber, error: e.number })}${box('noNumber', 'Endereço sem número', d.noNumber)}${deliveryField('complement', 'Complemento', d.noComplement ? '' : d.complement, { disabled: d.noComplement })}${box('noComplement', 'Endereço sem complemento', d.noComplement)}${deliveryField('reference', 'Ponto de referência', d.reference)}<fieldset class="save-options"><legend>Como você quer salvar?</legend><div class="save-row">${labels}</div></fieldset><p class="address-note">* Campos obrigatórios. O complemento e a referência ajudam o entregador a encontrar você.</p><div class="address-action"><button class="primary" type="submit">Salvar endereço</button></div></form></div>`;
+  const adjust = edit ? '' : `<button class="link address-adjust" type="button" data-address-adjust>${pinIcon}Ajustar localização no mapa</button>`;
+  return `<div class="address-flow"><h2 class="address-title">${edit ? 'Editar endereço' : 'Complete o endereço'}</h2>${staticMap(edit ? { x: 0, y: 0 } : p.pan, false)}${adjust}<form class="delivery-form" data-address-form novalidate><div class="delivery-pair">${deliveryField('street', 'Rua', d.street, { required: true, error: e.street })}${deliveryField('district', 'Bairro', d.district, { required: true, error: e.district })}</div>${deliveryField('number', 'Número', d.noNumber ? '' : d.number, { required: true, disabled: d.noNumber, error: e.number })}${box('noNumber', 'Endereço sem número', d.noNumber)}${deliveryField('complement', 'Complemento', d.noComplement ? '' : d.complement, { disabled: d.noComplement })}${box('noComplement', 'Endereço sem complemento', d.noComplement)}${deliveryField('reference', 'Ponto de referência', d.reference)}<fieldset class="save-options"><legend>Como você quer salvar?</legend><div class="save-row">${labels}</div></fieldset><p class="address-note">* Campos obrigatórios. O complemento e a referência ajudam o entregador a encontrar você.</p><div class="address-action"><button class="primary" type="submit">${edit ? 'Salvar alterações' : 'Salvar endereço'}</button></div></form></div>`;
 }
+
+/**
+ * Editar endereço (#endereco/editar, Figma Endereço 07): the Dados de entrega of the Endereço salvo `a` (its street
+ * split back into Rua and Número, "s/n" being Endereço sem número), with "Salvar alterações". The map is a still preview
+ * of the tiles, without "Ajustar localização no mapa" (the place of a saved address isn't kept).
+ */
+function addressEdit(state, a) {
+  const [, street = a.street, number = ''] = /^(.*), ([^,]*)$/.exec(a.street) ?? [];
+  const draft = { street, district: a.district, number: number === 's/n' ? '' : number, noNumber: number === 's/n', complement: a.complement, noComplement: false, reference: a.reference, label: a.label };
+  return addressDetails(state, { draft });
+}
+
+/** Remover endereço (#endereco/remover, Figma Endereço 08): the confirmation (data-address-removed) or Cancelar (data-address-cancel). */
+const addressRemove = (a) =>
+  `<div class="address-flow"><h2 class="address-title">Remover endereço?</h2><p class="address-note">${a.street}</p><p class="address-text">Você poderá cadastrar esse endereço novamente.</p><div class="address-buttons"><button class="primary" type="button" data-address-removed>Remover endereço</button></div><button class="link address-cancel" type="button" data-address-cancel>Cancelar</button></div>`;
 
 /** Localização indisponível (Figma Endereço 11): Seus endereços after "Usar localização atual" failed. */
 function locateFailed({ customer }) {
   return `<div class="address-flow"><h2 class="address-title">Não conseguimos acessar sua localização</h2><p class="address-text">Permita o acesso à localização no navegador ou busque o endereço pelo nome da rua.</p><button class="address-search" type="button" data-address-search>${searchIcon}<span>Buscar endereço e número</span></button><button class="secondary address-wide" type="button" data-map-search>Escolher no mapa</button><button class="link address-retry" type="button" data-address-locate>${locateIcon}Tentar localização novamente</button>${customer.addresses.length ? '<div class="address-action"><button class="primary" type="button" data-locate-reset>Usar endereço salvo</button></div>' : ''}</div>`;
 }
 
+/** Endereços de pedidos anteriores (#endereco/anteriores, Figma Endereço 05): one button per address (data-previous). */
+function previousList({ customer }) {
+  const card = (a) =>
+    `<li><button type="button" data-previous="${a.id}">${clockIcon}<span class="saved-text"><b class="saved-label">${a.street}</b> <span class="saved-street">${[a.district, a.city].join(', ')}</span> <span class="saved-line">Último pedido em ${a.lastOrder}</span> <span class="saved-line">${[a.complement, a.reference].filter(Boolean).join(' · ')}</span></span></button></li>`;
+  return `<div class="address-flow"><h2 class="address-title">Pedidos anteriores</h2><p class="address-text">Escolha um endereço que você já usou.</p><ul class="previous-addresses" aria-label="Endereços de pedidos anteriores">${customer.previous.map(card).join('')}</ul></div>`;
+}
+
 /** The content of the address page for `addressPage` (see state.js). */
 export function addressFlow(state) {
   if (state.addressPage === 'buscar') return addressSearch(state);
+  if (state.addressPage === 'anteriores') return previousList(state);
+  const target = state.customer.addresses.find((a) => a.id === state.addressTarget);
+  if (state.addressPage === 'editar' && target) return addressEdit(state, target);
+  if (state.addressPage === 'remover' && target) return addressRemove(target);
   // Right after "Salvar endereço" (no place any more), the list, while history goes back to it.
   if (state.addressPage === 'confirmar' && state.addressPlace) return addressConfirm(state);
   if (state.addressPage === 'dados' && state.addressPlace) return addressDetails(state);
