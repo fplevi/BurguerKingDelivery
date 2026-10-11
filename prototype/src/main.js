@@ -1,7 +1,7 @@
 import { recipes, layer, description, removedLine } from './ingredients.js';
 import { art } from './art.js';
-import { initial, reducer, money, marks, drinks, pick, itemTotal, itemName, cartUnits, cartTotal } from './state.js';
-import { progress, orderSummary, identificationStep, sentTo } from './checkout.js';
+import { initial, reducer, money, marks, drinks, pick, itemTotal, itemName, cartUnits, cartTotal, savedAddress } from './state.js';
+import { progress, orderSummary, identificationStep, sentTo, addressList, deliveryCard, paymentStep } from './checkout.js';
 import { categories, products } from './products.js';
 import { createBurgerScene } from './scene/burger-scene.js';
 import whopperPhoto from '../Assets/burgers/official/site_Whopper.png';
@@ -296,8 +296,10 @@ function render() {
   }
   if (inCheckout) renderCheckout();
   else $('checkout-content').replaceChildren();
-  $('address-content').innerHTML = inAddress ? progress(1) : '';
+  $('address-content').innerHTML = inAddress ? progress(1) + addressList(state) : '';
 }
+/** The address chosen with "Entregar neste endereço", while it is still an Endereço salvo; null otherwise. */
+const delivery = () => savedAddress(state, state.delivery);
 
 /**
  * Checkout: the indicador de etapas, the current step (Identificação) and the Resumo do pedido. Rebuilt on every
@@ -311,7 +313,11 @@ function renderCheckout() {
   try {
     caret = active && active.selectionStart != null ? [active.selectionStart, active.selectionEnd] : null;
   } catch {}
-  root.innerHTML = `${progress(0)}<div class="checkout-body"><section class="checkout-step" aria-label="Identificação">${identificationStep(state.identification)}</section>${orderSummary(state.cart)}</div>`;
+  const address = state.customer && delivery();
+  // Identified with an address: the Pagamento (the delivery card, then the Forma de pagamento); otherwise the Identificação.
+  root.innerHTML = address
+    ? `${progress(2)}<div class="checkout-body"><div class="checkout-main">${deliveryCard(address)}${paymentStep(state)}</div>${orderSummary(state.cart, true)}</div>`
+    : `${progress(0)}<div class="checkout-body"><section class="checkout-step" aria-label="Identificação">${identificationStep(state.identification)}</section>${orderSummary(state.cart)}</div>`;
   for (const [id, value] of kept) if ($(id)) $(id).value = value;
   const again = active?.id && $(active.id);
   if (!again) return;
@@ -706,7 +712,7 @@ const fromHash = () => {
   };
   if ((hash === 'checkout' || hash === 'endereco') && (!state.cart.length || state.cart.some((c) => c.combo && !c.drink))) go('carrinho');
   // Within the session, a confirmed celular skips the Identificação; the address pages need it.
-  else if (hash === 'checkout' && state.customer) go('endereco');
+  else if (hash === 'checkout' && state.customer && !delivery()) go('endereco');
   else if (hash === 'endereco' && !state.customer) go('checkout');
   const before = state.screen;
   if (before === 'cardapio') [menuScroll, menuFocus] = [scrollY, document.activeElement];
@@ -715,6 +721,11 @@ const fromHash = () => {
   // Phones: the tabs scroll sideways; keep the active one in view.
   document.querySelector('nav a[aria-current]')?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   const now = state.screen;
+  // First arrival on Seus endereços (always forward, so the history entry has no state yet): note what the previous
+  // entry is, kept in the entry for Back/Forward. 'checkout': the Pagamento (Alterar); 'cart': the Carrinho (the
+  // Checkout's entry became #endereco, or was skipped); null: anything else.
+  if (now === 'endereco' && !history.state?.addressBack && started)
+    history.replaceState({ addressBack: before === 'checkout' && delivery() ? 'checkout' : before === 'carrinho' || (before === 'checkout' && fromCart) ? 'cart' : 'none' }, '');
   if (now === 'carrinho' && before !== 'checkout') fromMenu = before === 'cardapio' && started;
   if (now === 'checkout') fromCart = before === 'carrinho' && started;
   if (now === before) return;
@@ -726,6 +737,24 @@ const fromHash = () => {
 // Voltar ao carrinho and Editar carrinho: back to the Carrinho (the previous history entry when the Checkout came from it).
 $('checkout-page').addEventListener('click', (e) => {
   if (e.target.closest('[data-to-cart]')) fromCart ? history.back() : (location.hash = 'carrinho');
+  if (e.target.closest('[data-change-address]')) location.hash = 'endereco';
+});
+// Seus endereços. Marking an Endereço salvo keeps the focus on it. "Entregar neste endereço" and "Voltar ao checkout"
+// return to the Pagamento (the previous history entry when Seus endereços came from it, else a new one); without an
+// address chosen yet the Checkout has nothing past the Identificação, so "Voltar ao checkout" returns to the Carrinho.
+const addressBack = () => history.state?.addressBack;
+const toPayment = () => (addressBack() === 'checkout' ? history.back() : (location.hash = 'checkout'));
+$('address-page').addEventListener('change', (e) => {
+  if (e.target.name !== 'saved-address') return;
+  dispatch({ type: 'addressPick', id: e.target.value });
+  $('address-content').querySelector('input:checked').focus();
+});
+$('address-page').addEventListener('click', (e) => {
+  if (e.target.closest('[data-address-deliver]')) {
+    dispatch({ type: 'addressDeliver' });
+    return toPayment();
+  }
+  if (e.target.closest('[data-address-back]')) delivery() ? toPayment() : addressBack() === 'cart' ? history.back() : (location.hash = 'carrinho');
 });
 addEventListener('hashchange', fromHash);
 

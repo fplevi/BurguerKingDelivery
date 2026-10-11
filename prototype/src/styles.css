@@ -166,3 +166,26 @@ main[data-screen=checkout],main[data-screen=endereco]{display:block;height:auto;
 .link{border:0;background:none;color:var(--title);padding:12px;font-size:13px}.link:disabled{color:#b3a898;cursor:default}.id-form .link{margin-top:8px;font-size:14px}
 .id-links{display:grid;grid-template-columns:repeat(3,auto);justify-content:space-around;gap:8px;margin-top:12px}
 @media(max-width:1023px){.checkout-step{padding:24px}.checkout-step h2{font-size:28px}#id-phone{max-width:none}.id-form .primary{height:48px;font-size:16px}.id-links{grid-template-columns:minmax(0,1fr);justify-content:stretch;gap:0}.id-links .link{padding:14px;font-size:15px}}
+/* Seus endereços (Figma Endereço 01/16): the search, Usar localização atual, the Endereços salvos (radio cards, the marked one with ✓ and a red border) and Entregar neste endereço. */
+.address-flow{display:flex;flex-direction:column;align-items:stretch;max-width:580px}
+.address-search{display:flex;align-items:center;gap:12px;height:50px;padding:0 16px;border:1px solid var(--border);border-radius:8px;background:var(--neutral);color:#80614c;font-size:15px;text-align:left}.address-search .icon{color:var(--red);flex-shrink:0}
+.address-locate{display:flex;align-items:center;gap:16px;margin-top:12px;padding:12px 4px;border:0;background:none;color:var(--title);text-align:left}.address-locate .icon{flex-shrink:0}.locate-title{display:block;font-size:13px;margin-bottom:6px}.address-locate small{display:block;font-size:11px}
+.address-section{font-size:16px;margin:24px 0 12px}
+.saved-addresses{display:grid;gap:14px}
+.saved-address{position:relative;border:1px solid var(--border);border-radius:6px;background:#fff}.saved-address:has(:checked){border-color:var(--red);box-shadow:0 0 0 1px var(--red)}.saved-address:has(:focus-visible){outline:3px solid #174b99;outline-offset:3px}
+.saved-address label{display:grid;grid-template-columns:24px minmax(0,1fr) 24px;align-items:center;gap:16px;padding:18px 20px 18px 14px;cursor:pointer}
+.saved-radio{position:absolute;inset:0;z-index:1;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.saved-text{display:flex;flex-direction:column;gap:6px;font-size:11px}.saved-label{font-family:'Flame',Georgia,serif;font-size:15px}.saved-street{font-size:14px}
+.saved-check{align-self:start;color:var(--red);visibility:hidden}.saved-address:has(:checked) .saved-check{visibility:visible}
+.address-previous{display:flex;align-items:center;gap:10px;align-self:start;margin-top:16px;padding:12px 0;color:var(--red);font-size:12px}
+.address-action{margin-top:24px}.address-action .primary{min-width:264px;height:46px;font-size:14px}
+@media(max-width:1023px){.address-flow{max-width:none}.address-action .primary{width:100%;height:52px;font-size:16px}}
+/* Pagamento: the Endereço de entrega card (Figma pix/savedCard) and the Total do pedido of the Resumo do pedido. */
+.checkout-main{display:grid;gap:24px;min-width:0}
+.delivery-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px}.checkout-step.delivery-card h2{font-size:22px;margin:0}.delivery-head .secondary{border-color:var(--border);padding:12px 22px;font-size:13px}
+.delivery-card p{margin:0}.delivery-card .delivery-label{font-family:'Flame',Georgia,serif;font-size:16px;margin-bottom:16px}.delivery-card .delivery-street{font-size:15px;margin-bottom:14px}.delivery-card .delivery-city{font-size:12px;margin-bottom:14px}
+.delivery-extra{display:flex;flex-wrap:wrap;gap:6px 68px;font-size:12px}
+.delivery-card .delivery-time{border-top:1px solid var(--border);margin-top:14px;padding-top:14px;font-size:15px}
+.order-fee{margin-top:16px;font-size:12px}.order-fee .order-price{font-size:15px}
+.order-grand{display:flex;flex-direction:column;gap:12px;margin:16px 0 0;padding-top:20px;border-top:1px solid var(--border);font-size:12px}.order-grand strong{font-family:'Flame',Georgia,serif;font-size:30px}
+@media(max-width:1023px){.delivery-extra{flex-direction:column;gap:12px}}
