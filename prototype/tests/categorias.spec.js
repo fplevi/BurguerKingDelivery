@@ -42,17 +42,17 @@ test('ir e voltar entre as categorias mantém a seleção de cada uma e o hambú
   await aumentar(page).click();
 
   await categorias(page).getByRole('link', { name: 'Sobremesas' }).click();
-  await expect(titulo(page)).toHaveAccessibleName('BK® Mix de Brownie');
-  await expect(total(page)).toHaveText('R$ 23,90');
+  await expect(titulo(page)).toHaveAccessibleName('BK® Mix Nutella® com Brownie');
+  await expect(total(page)).toHaveText('R$ 27,90');
   await escolher(page, 'Sundae de Chocolate');
   await expect(titulo(page)).toHaveAccessibleName('Sundae de Chocolate');
   await aumentar(page).click();
   await expect(total(page)).toHaveText('R$ 25,80');
 
   await categorias(page).getByRole('link', { name: 'Acompanhamentos' }).click();
-  await expect(titulo(page)).toHaveAccessibleName('Batata Frita');
+  await expect(titulo(page)).toHaveAccessibleName('Esferas do Dragão de Pepperoni');
   await expect(page.getByRole('heading', { name: 'Escolha seu acompanhamento' })).toBeVisible();
-  await expect(total(page)).toHaveText('R$ 9,90');
+  await expect(total(page)).toHaveText('R$ 19,90');
   await categorias(page).getByRole('link', { name: 'Sobremesas' }).click();
   await expect(card(page, 'Sundae de Chocolate')).toHaveAttribute('aria-pressed', 'true');
   await expect(total(page)).toHaveText('R$ 25,80');
@@ -71,12 +71,12 @@ test('ir e voltar entre as categorias mantém a seleção de cada uma e o hambú
 
 test('o endereço com #acompanhamentos abre a categoria, e voltar no navegador retorna à anterior', async ({ page }) => {
   await page.goto('/#acompanhamentos');
-  await expect(titulo(page)).toHaveAccessibleName('Batata Frita');
+  await expect(titulo(page)).toHaveAccessibleName('Esferas do Dragão de Pepperoni');
   await expect(categorias(page).getByRole('link', { name: 'Acompanhamentos' })).toHaveAttribute('aria-current', 'page');
   await categorias(page).getByRole('link', { name: 'Bebidas' }).click();
   await expect(titulo(page)).toHaveAccessibleName('Coca-Cola Original');
   await page.goBack();
-  await expect(titulo(page)).toHaveAccessibleName('Batata Frita');
+  await expect(titulo(page)).toHaveAccessibleName('Esferas do Dragão de Pepperoni');
   await page.goto('/#qualquer-coisa');
   await expect(titulo(page)).toHaveAccessibleName('Whopper®');
   await expect(categorias(page).getByRole('link', { name: 'Hambúrgueres' })).toHaveAttribute('aria-current', 'page');
@@ -133,6 +133,15 @@ test('o erro do combo sem bebida no hambúrguer não impede adicionar uma bebida
   await expect(aviso(page)).toHaveText('Adicionado ao carrinho: Coca-Cola');
   await expect(page.getByRole('button', { name: 'Adicionar ao carrinho' })).toBeFocused();
   await expect(page.getByRole('button', { name: 'Carrinho · 1' })).toBeVisible();
+});
+
+test('cada página abre com o primeiro produto da grade selecionado', async ({ page }) => {
+  await page.goto('/');
+  for (const categoria of ['Hambúrgueres', 'Acompanhamentos', 'Bebidas', 'Sobremesas']) {
+    await categorias(page).getByRole('link', { name: categoria }).click();
+    await expect(grade(page).first()).toHaveAttribute('aria-pressed', 'true');
+    await expect(grade(page).and(page.locator('[aria-pressed=true]'))).toHaveCount(1);
+  }
 });
 
 test('todos os produtos das três categorias têm foto, nome, descrição e preço', async ({ page }) => {

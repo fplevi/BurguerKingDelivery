@@ -38,6 +38,7 @@ test('cada Item mostra foto, nome e Total do item; o subtítulo conta itens ou u
   await page.getByRole('group', { name: 'Quantidade' }).getByRole('button', { name: 'Aumentar quantidade' }).click();
   await adicionar(page).click();
   await categorias(page).getByRole('link', { name: 'Acompanhamentos' }).click();
+  await escolher(page, 'Batata Frita');
   await adicionar(page).click();
 
   await page.getByRole('button', { name: 'Carrinho · 3' }).click();

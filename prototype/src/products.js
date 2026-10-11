@@ -32,11 +32,10 @@ import sundaeDoceLeite from '../Assets/desserts/official/site_Sundae_DocedeLeite
 
 const p = (id, name, price, photo, box, text, title = name) => ({ id, name, title, text, price, photo, box });
 
-/** Each category: the grid heading, the product chosen on load and its products in the Figma's order. */
+/** Each category: the grid heading and its products in the Figma's order (the first one is selected on load). */
 export const categories = {
   acompanhamentos: {
     heading: 'Escolha seu acompanhamento',
-    initial: 'batataFrita',
     products: [
       p('esferasPepperoni', 'Esferas do Dragão de Pepperoni', 1990, pepperoni, [98, 236, 692, 622], 'Bolinhas crocantes recheadas com queijo e pepperoni.'),
       p('batataFrita', 'Batata Frita', 990, batata, [269, 222, 520, 614], 'Batatas douradas e crocantes para acompanhar.'),
@@ -50,7 +49,6 @@ export const categories = {
   },
   bebidas: {
     heading: 'Escolha sua bebida',
-    initial: 'cocaCola',
     products: [
       p('cocaCola', 'Coca-Cola', 990, coca, [306, 255, 494, 612], 'O sabor clássico, gelado e na lata. Perfeito para acompanhar seu pedido.', 'Coca-Cola Original'),
       p('cocaColaZero', 'Coca-Cola Zero', 990, cocaZero, [307, 256, 493, 612], 'O sabor da Coca-Cola sem açúcar, gelado e na lata.'),
@@ -63,7 +61,6 @@ export const categories = {
   },
   sobremesas: {
     heading: 'Escolha sua sobremesa',
-    initial: 'bkMixBrownie',
     products: [
       p('bkMixNutellaBrownie', 'BK® Mix Nutella® com Brownie', 2790, nutellaBrownie, [224, 179, 733, 615], 'Sorvete de baunilha com Nutella® e pedaços de brownie.', 'BK® Mix Nutella®\ncom Brownie'),
       p('bkMixLeitePoNutella', 'BK® Mix Leite em Pó com Nutella®', 2790, leitePo, [230, 193, 568, 624], 'Sorvete de baunilha com leite em pó e Nutella®.', 'BK® Mix Leite em Pó\ncom Nutella®'),
