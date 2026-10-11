@@ -2,8 +2,8 @@
 // the Identificação, the address list, the pages of a new address (#endereco/buscar, /confirmar, /dados) and the
 // Pagamento, as HTML.
 import { recipes, removedLine } from './ingredients.js';
-import { money, marks, itemName, cartTotal } from './state.js';
-import { deliveryFee, deliveryTime, searchPlaces } from './checkout-fixtures.js';
+import { money, marks, itemName, cartTotal, chosenCard, orderTotal } from './state.js';
+import { deliveryFee, deliveryTime, cardBrand, searchPlaces } from './checkout-fixtures.js';
 import tile0 from '../Assets/maps/paulista-0.png';
 import tile1 from '../Assets/maps/paulista-1.png';
 import tile2 from '../Assets/maps/paulista-2.png';
@@ -39,14 +39,16 @@ function summaryItem(item) {
 
 /**
  * Resumo do pedido: the Itens, Total dos itens and Editar carrinho. With a served address (`delivered`), also the
- * Taxa de entrega and the Total do pedido (Total dos itens + Taxa de entrega).
+ * Taxa de entrega and the Total do pedido (Total dos itens + Taxa de entrega). `action`: the payment action and its note,
+ * above Editar carrinho; `edit`: false leaves Editar carrinho out (Pedido confirmado), 'disabled' disables it (processing).
  */
-export function orderSummary(cart, delivered = false) {
+export function orderSummary(cart, delivered = false, { action = '', edit = true } = {}) {
   const items = cartTotal(cart),
     fee = delivered
       ? `<p class="order-line order-fee"><span>Taxa de entrega</span><span class="order-price">${money(deliveryFee)}</span></p><p class="order-grand"><span>Total do pedido</span><strong class="order-price">${money(items + deliveryFee)}</strong></p>`
       : '';
-  return `<aside class="order-summary" aria-labelledby="order-summary-title"><h2 id="order-summary-title">Resumo do pedido</h2><ul class="order-items" aria-label="Itens do pedido">${cart.map(summaryItem).join('')}</ul><p class="order-line order-total"><span>Total dos itens</span><span class="order-price">${money(items)}</span></p>${fee}<button class="secondary" data-to-cart>Editar carrinho</button></aside>`;
+  const editCart = edit ? `<button class="secondary" data-to-cart${edit === 'disabled' ? ' disabled' : ''}>Editar carrinho</button>` : '';
+  return `<aside class="order-summary" aria-labelledby="order-summary-title"><h2 id="order-summary-title">Resumo do pedido</h2><ul class="order-items" aria-label="Itens do pedido">${cart.map(summaryItem).join('')}</ul><p class="order-line order-total"><span>Total dos itens</span><span class="order-price">${money(items)}</span></p>${fee}${action}${editCart}</aside>`;
 }
 
 /** Celular as it is typed: digits only, masked (DD) 9XXXX-XXXX as far as they go. */
@@ -125,9 +127,6 @@ export function deliveryCard(a) {
   const extra = [a.complement, a.reference].filter(Boolean);
   return `<section class="checkout-step delivery-card" aria-labelledby="delivery-title"><div class="delivery-head"><h2 id="delivery-title">Endereço de entrega</h2><button class="secondary" type="button" data-change-address>Alterar</button></div><p class="delivery-label">${a.label}</p><p class="delivery-street">${a.street}</p><p class="delivery-city">${a.city}</p>${extra.length ? `<p class="delivery-extra">${extra.map((t) => `<span>${t}</span>`).join('')}</p>` : ''}<p class="delivery-time">Entrega estimada: ${deliveryTime}</p></section>`;
 }
-
-/** Forma de pagamento of the Pagamento: none yet (Pix and card come with the payment tickets, below the delivery card). */
-export const paymentStep = () => '';
 
 // Novo endereço (#endereco/buscar, #endereco/confirmar, #endereco/dados; Figma Endereço 02-04 and 10-15).
 const pinIcon = icon(`<path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z" ${stroke}/><circle cx="12" cy="10" r="2.3" ${stroke}/>`);
@@ -223,4 +222,81 @@ export function addressFlow(state) {
   if (state.addressPage === 'confirmar' && state.addressPlace) return addressConfirm(state);
   if (state.addressPage === 'dados' && state.addressPlace) return addressDetails(state);
   return state.locateError ? locateFailed(state) : addressList(state);
+}
+
+// Pagamento (Figma savedCard, newCard, cardProcessing and cardError) and the Pedido confirmado (Figma successCard).
+
+/** Novo cartão number in groups of 4, and Validade MM/AA, as far as the digits go. */
+export const maskCard = (d) => d.replace(/(\d{4})(?=\d)/g, '$1 ');
+export const maskExpiry = (d) => (d.length > 2 ? `${d.slice(0, 2)}/${d.slice(2)}` : d);
+
+/** A field of the card: label, input (described by its hint and its error), hint and error line. */
+function payField(id, label, attrs, error = '', hint = '') {
+  const described = [hint && `${id}-hint`, `${id}-error`].filter(Boolean).join(' ');
+  return `<div class="pay-field"><label class="field-label" for="${id}">${label}</label><input class="field" id="${id}" ${attrs} aria-invalid="${!!error}" aria-describedby="${described}">${hint ? `<p class="pay-hint" id="${id}-hint">${hint}</p>` : ''}<p class="field-error" id="${id}-error"${error ? ' role="alert"' : ''}>${error}</p></div>`;
+}
+
+/** One option of a radio group, named by its title only and described by its text (Forma de pagamento, Seus cartões). */
+function payOption(name, value, title, text, checked, kind) {
+  const id = `${name}-${value}`;
+  return `<label class="pay-option pay-${kind}"><input type="radio" name="${name}" value="${value}" aria-labelledby="${id}-title" aria-describedby="${id}-text"${checked ? ' checked' : ''}><span class="pay-option-text"><b id="${id}-title">${title}</b><span id="${id}-text">${text}</span></span></label>`;
+}
+
+/** The card part of the Pagamento: Seus cartões with the código de segurança and "Adicionar novo cartão", or the Novo cartão. */
+function cardFields(state) {
+  const p = state.payment,
+    cards = state.customer.cards,
+    card = chosenCard(state),
+    e = p.errors,
+    digits = 'inputmode="numeric" autocomplete="off"';
+  const list = cards.length
+    ? `<h3 class="pay-cards-title" id="pay-cards-title">Seus cartões</h3><div class="pay-cards" role="radiogroup" aria-labelledby="pay-cards-title">${cards
+        .map((c) => payOption('pay-card', c.id, `${c.brand} •••• ${c.last4}`, `${c.holder} · validade ${c.expiry}`, c === card, 'card'))
+        .join('')}</div>`
+    : '';
+  if (card)
+    return `${list}${payField('pay-cvv', 'Código de segurança', `${digits} value="${p.cvv}"`, e.cvv, 'Confirme o código de segurança do cartão.')}<button class="secondary pay-new" type="button" data-pay-new>Adicionar novo cartão</button>`;
+  const brand = cardBrand(p.number),
+    name = p.name.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+  return `${list}<div class="pay-new-card">${payField('pay-number', 'Número do cartão', `${digits} autocomplete="cc-number" value="${maskCard(p.number)}"`, e.number, brand && `Bandeira: ${brand}`)}${payField('pay-name', 'Nome impresso no cartão', `autocomplete="cc-name" value="${name}"`, e.name)}<div class="pay-pair">${payField('pay-expiry', 'Validade', `${digits} autocomplete="cc-exp" placeholder="MM/AA" value="${maskExpiry(p.expiry)}"`, e.expiry)}${payField('pay-new-cvv', 'Código de segurança', `${digits} value="${p.newCvv}"`, e.newCvv)}</div><label class="check pay-save"><input type="checkbox" id="pay-save"${p.save ? ' checked' : ''}> Salvar cartão para os próximos pedidos</label></div>`;
+}
+
+/**
+ * Forma de pagamento of the Pagamento (below the delivery card): Pix or Cartão de crédito (radios; main.js reads
+ * their names and the data-pay-* buttons), the card's fields and, after a recusa, the failure (Figma cardError).
+ * Pix only selects for now.
+ */
+export function paymentStep(state) {
+  const { method, failed } = state.payment;
+  const failure = failed
+    ? '<div class="pay-failure" role="alert"><p class="pay-failure-title">Não conseguimos aprovar o pagamento.</p><p>Confira os dados ou escolha outra forma de pagamento.</p></div>'
+    : '';
+  return `<section class="checkout-step payment-step" aria-labelledby="payment-title"><h2 id="payment-title">Forma de pagamento</h2><div class="pay-methods" role="radiogroup" aria-labelledby="payment-title">${payOption('pay-method', 'pix', 'Pix', 'Pague com QR Code ou código Pix.', method === 'pix', 'method')}${payOption('pay-method', 'card', 'Cartão de crédito', 'Pagamento à vista. Use um cartão salvo ou adicione outro.', method === 'card', 'method')}</div>${method === 'card' ? cardFields(state) : ''}${failure}</section>`;
+}
+
+/**
+ * The Pagamento's action in the Resumo do pedido, with its note: "Confirmar e pagar R$ X" (card; disabled while no
+ * Forma de pagamento is chosen) or "Gerar Pix" (disabled until the Pix ticket).
+ */
+export function paymentAction(state) {
+  const button =
+    state.payment.method === 'pix'
+      ? '<button class="primary pay-action" type="button" data-pix-generate disabled>Gerar Pix</button>'
+      : `<button class="primary pay-action" type="button" data-pay-confirm${state.payment.method ? '' : ' disabled'}>Confirmar e pagar ${money(orderTotal(state.cart))}</button>`;
+  return `${button}<p class="pay-note">Confira o endereço antes de confirmar.</p>`;
+}
+
+/** Processing of the card (Figma cardProcessing), in place of the address and the Forma de pagamento. */
+export const processingStep = (order) =>
+  `<section class="checkout-step processing-step" aria-labelledby="processing-title" role="status" tabindex="-1"><h2 id="processing-title">Processando pagamento</h2><p>Aguarde a confirmação do seu cartão.</p><p class="processing-total">${money(order.total)}</p></section>`;
+
+/**
+ * Pedido confirmado (#pedido/<id>, Figma successCard): every step done, the id, the estimate, the address, how it was
+ * paid (always masked) and the Resumo do pedido without Editar carrinho; "Acompanhar pedido" (data-order-track) and
+ * "Voltar ao cardápio" (data-order-menu).
+ */
+export function orderPage(order) {
+  const a = order.address,
+    extra = [a.complement, a.reference].filter(Boolean);
+  return `${progress(steps.length)}<div class="checkout-body"><div class="checkout-step order-confirmed"><h1 id="order-title" tabindex="-1">Pedido confirmado!</h1><p class="order-lead">Seu pedido já está com a gente.</p><p class="order-id">Pedido #${order.id}</p><p class="order-eta">Previsão de entrega: ${deliveryTime}</p><p class="delivery-street">${a.street}</p><p class="delivery-city">${a.city}</p>${extra.length ? `<p class="delivery-extra">${extra.map((t) => `<span>${t}</span>`).join('')}</p>` : ''}<p class="order-paid">Pago com ${order.paidWith} · ${money(order.total)}</p><div class="order-actions"><button class="primary" type="button" data-order-track>Acompanhar pedido</button><button class="secondary" type="button" data-order-menu>Voltar ao cardápio</button></div></div>${orderSummary(order.items, true, { edit: false })}</div>`;
 }

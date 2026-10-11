@@ -38,13 +38,33 @@ const searches = [
   ['augusta', ['augusta-1508']],
   ['estrada do campo', ['campo-120']],
 ];
-const plain = (t) => t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const plain = (t) => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 export const searchPlaces = (query) => searches.filter(([k]) => plain(query).includes(k)).flatMap(([, ids]) => ids.map((id) => places.find((p) => p.id === id)));
 /** "Usar localização atual" with the permission granted (whatever the coordinates), and "Buscar pelo mapa": the map's centre. */
 export const locatedPlace = paulista;
 
-/** Same profile for both celulares: Mariana Silva, with Casa and Trabalho. */
-const mariana = { name: 'Mariana Silva', addresses: savedAddresses };
+/**
+ * Cartões salvos of the Clientes cadastrados: `id`, `brand`, `last4`, `holder` and `expiry` (MM/AA). Paying with one
+ * asks for its código de segurança: `declinedCvv` is recusado, any other 3 digits aprovado.
+ */
+export const savedCards = [{ id: 'visa-4242', brand: 'Visa', last4: '4242', holder: 'Mariana Silva', expiry: '08/29' }];
+export const declinedCvv = '000';
+
+/**
+ * Novo cartão by number (16 digits): aprovado or recusado. Any other number is "Número de cartão inválido", without
+ * reaching the processing. The brand comes from the first digit (`cardBrand`).
+ */
+export const cardNumbers = { '4242424242424242': true, '5555555555554444': true, '4000000000000002': false };
+export const cardBrand = (number) => ({ 4: 'Visa', 5: 'Mastercard' })[String(number)[0]] ?? '';
+
+/** The card payment's processing (Figma cardProcessing), in ms. */
+export const processingTime = 1500;
+
+/** Identifier of the first Pedido confirmado of the session; the next ones follow in sequence. */
+export const firstOrder = 1024;
+
+/** Same profile for both celulares: Mariana Silva, with Casa and Trabalho and the Visa •••• 4242. */
+const mariana = { name: 'Mariana Silva', addresses: savedAddresses, cards: savedCards };
 
 /**
  * Clientes cadastrados by celular (11 digits): (61) 99999-1234 has the Pix approved 10 s after it is generated;

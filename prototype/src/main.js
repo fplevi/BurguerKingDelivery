@@ -1,7 +1,8 @@
 import { recipes, layer, description, removedLine } from './ingredients.js';
 import { art } from './art.js';
 import { initial, reducer, money, marks, drinks, pick, itemTotal, itemName, cartUnits, cartTotal, savedAddress } from './state.js';
-import { progress, orderSummary, identificationStep, sentTo, addressFlow, deliveryCard, paymentStep, mapSize, mapCenter } from './checkout.js';
+import { progress, orderSummary, identificationStep, sentTo, addressFlow, deliveryCard, paymentStep, paymentAction, processingStep, orderPage, mapSize, mapCenter } from './checkout.js';
+import { processingTime } from './checkout-fixtures.js';
 import { categories, products } from './products.js';
 import { createBurgerScene } from './scene/burger-scene.js';
 import whopperPhoto from '../Assets/burgers/official/site_Whopper.png';
@@ -205,6 +206,7 @@ function render() {
   const inCart = state.screen === 'carrinho',
     inCheckout = state.screen === 'checkout',
     inAddress = state.screen === 'endereco',
+    inOrder = state.screen === 'pedido',
     inMenu = state.screen === 'cardapio';
   document
     .querySelectorAll('nav a')
@@ -214,8 +216,13 @@ function render() {
   $('cart-page').hidden = !inCart;
   $('checkout-page').hidden = !inCheckout;
   $('address-page').hidden = !inAddress;
+  $('order-page').hidden = !inOrder;
   // "Entregar em" leaves the header in the Checkout and the address pages.
-  document.querySelector('header .location').hidden = inCheckout || inAddress;
+  document.querySelector('header .location').hidden = inCheckout || inAddress || inOrder;
+  // Processing the card: the whole screen is disabled (header, Voltar ao carrinho, Editar carrinho) until the result.
+  const processing = inCheckout && state.order?.status === 'processing';
+  document.querySelector('header').inert = processing;
+  $('checkout-back').disabled = processing;
   const photo = pick(state) && products[pick(state).product];
   for (const id of ['hero-stage', 'edit', 'combo-options']) $(id).hidden = !!photo;
   $('product-frame').hidden = !photo;
@@ -296,6 +303,7 @@ function render() {
   }
   if (inCheckout) renderCheckout();
   else $('checkout-content').replaceChildren();
+  $('order-content').innerHTML = inOrder ? orderPage(shownOrder()) : '';
   if (inAddress) renderAddress();
   else $('address-content').replaceChildren();
 }
@@ -321,6 +329,8 @@ function renderAddress() {
 }
 /** The address chosen with "Entregar neste endereço", while it is still an Endereço salvo; null otherwise. */
 const delivery = () => savedAddress(state, state.delivery);
+/** The Pedido confirmado of #pedido/<id>, or undefined. */
+const shownOrder = (id = state.shownOrder) => state.orders.find((o) => o.id === id);
 
 /**
  * Checkout: the indicador de etapas, the current step (Identificação) and the Resumo do pedido. Rebuilt on every
@@ -335,9 +345,12 @@ function renderCheckout() {
     caret = active && active.selectionStart != null ? [active.selectionStart, active.selectionEnd] : null;
   } catch {}
   const address = state.customer && delivery();
-  // Identified with an address: the Pagamento (the delivery card, then the Forma de pagamento); otherwise the Identificação.
+  const order = state.order,
+    processing = order?.status === 'processing';
+  // Identified with an address: the Pagamento (the delivery card, then the Forma de pagamento, or the processing of
+  // the card); otherwise the Identificação.
   root.innerHTML = address
-    ? `${progress(2)}<div class="checkout-body"><div class="checkout-main">${deliveryCard(address)}${paymentStep(state)}</div>${orderSummary(state.cart, true)}</div>`
+    ? `${progress(2)}<div class="checkout-body"><div class="checkout-main">${processing ? processingStep(order) : deliveryCard(address) + paymentStep(state)}</div>${orderSummary(state.cart, true, processing ? { edit: 'disabled' } : { action: paymentAction(state) })}</div>`
     : `${progress(0)}<div class="checkout-body"><section class="checkout-step" aria-label="Identificação">${identificationStep(state.identification)}</section>${orderSummary(state.cart)}</div>`;
   for (const [id, value] of kept) if ($(id)) $(id).value = value;
   const again = active?.id && $(active.id);
@@ -633,7 +646,12 @@ $('add').onclick = () => {
   if (!pick(state) && state.drinkError) return $('drink').focus();
   toast(`Adicionado ao carrinho: ${added}`);
 };
-$('cart-open').onclick = () => (location.hash = 'carrinho');
+// From the Pedido confirmado, the header's Carrinho opens the (empty) Carrinho; Back from there goes to the menu (fromHash).
+let cartClick = false;
+$('cart-open').onclick = () => {
+  cartClick = location.hash !== '#carrinho';
+  location.hash = 'carrinho';
+};
 // Voltar ao cardápio, Adicionar mais itens and Explorar cardápio: back to the last category seen, as it was.
 // Opened from the menu, that is the previous history entry (so Back doesn't return to the Carrinho);
 // opened by the address, there is none and the category's hash is pushed instead.
@@ -732,6 +750,11 @@ const fromHash = () => {
     hash = to;
     history.replaceState(null, '', '#' + to);
   };
+  // #pedido/<id> without that Pedido confirmado: the menu. Back from the Pedido confirmado into the Carrinho, the
+  // Checkout or an address page: the menu too (the cart was closed), without opening the Checkout.
+  if (hash.startsWith('pedido/') && !shownOrder(hash.slice(7))) go(state.category);
+  else if (state.screen === 'pedido' && !cartClick && /^(carrinho|checkout|endereco)/.test(hash)) go(state.category);
+  cartClick = false;
   const inFlow = hash === 'endereco' || hash.startsWith('endereco/');
   if ((hash === 'checkout' || inFlow) && (!state.cart.length || state.cart.some((c) => c.combo && !c.drink))) go('carrinho');
   // Within the session, a confirmed celular skips the Identificação; the address pages need it.
@@ -768,7 +791,7 @@ const fromHash = () => {
   scrollTo(0, now === 'cardapio' ? menuScroll : 0);
   if (!started) return;
   const back = menuFocus?.isConnected && menuFocus.checkVisibility?.() && menuFocus !== document.body ? menuFocus : $('cart-open');
-  (({ carrinho: $('cart-title'), checkout: $('checkout-title'), endereco: $(state.addressPage === 'buscar' ? 'address-query' : 'address-title') })[now] ?? back).focus({ preventScroll: true });
+  (({ carrinho: $('cart-title'), checkout: $('checkout-title'), endereco: $(state.addressPage === 'buscar' ? 'address-query' : 'address-title'), pedido: $('order-title') })[now] ?? back).focus({ preventScroll: true });
 };
 // Voltar ao carrinho and Editar carrinho: back to the Carrinho (the previous history entry when the Checkout came from it).
 $('checkout-page').addEventListener('click', (e) => {
@@ -901,6 +924,61 @@ $('address-page').addEventListener('keydown', (e) => {
 });
 
 addEventListener('hashchange', fromHash);
+
+// Pagamento. Choosing the Forma de pagamento or a card keeps the focus on its radio; the card's fields keep digits
+// only (number and Validade masked as they are typed, the caret after the same digit).
+const payFields = { 'pay-cvv': 'cvv', 'pay-number': 'number', 'pay-name': 'name', 'pay-expiry': 'expiry', 'pay-new-cvv': 'newCvv' };
+$('checkout-content').addEventListener('change', (e) => {
+  const t = e.target;
+  if (t.name === 'pay-method') dispatch({ type: 'payMethod', method: t.value });
+  else if (t.name === 'pay-card') dispatch({ type: 'payCard', id: t.value });
+  else if (t.id === 'pay-save') return dispatch({ type: 'payInput', field: 'save', value: t.checked }), $('pay-save').focus();
+  else return;
+  $('checkout-content').querySelector(`input[name="${t.name}"]:checked`)?.focus();
+});
+$('checkout-content').addEventListener('input', (e) => {
+  const t = e.target,
+    field = payFields[t.id];
+  if (!field) return;
+  const before = t.value.slice(0, t.selectionStart).replace(/\D/g, '').length;
+  dispatch({ type: 'payInput', field, value: t.value });
+  if (t.id !== 'pay-number' && t.id !== 'pay-expiry') return;
+  const input = $(t.id),
+    masked = input.value;
+  let at = 0;
+  for (let n = 0; at < masked.length && n < before; at++) if (/\d/.test(masked[at])) n++;
+  input.setSelectionRange(at, at);
+});
+// Enter in a card field confirms, as the button does.
+$('checkout-content').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && payFields[e.target.id]) confirmPayment();
+});
+$('checkout-content').addEventListener('click', (e) => {
+  if (e.target.closest('[data-pay-new]')) {
+    dispatch({ type: 'payCard', id: 'new' });
+    $('pay-number').focus();
+  } else if (e.target.closest('[data-pay-confirm]')) confirmPayment();
+});
+/**
+ * "Confirmar e pagar": an invalid field takes the focus (no processing); otherwise the Pedido is created and processed
+ * for processingTime. Approved: #pedido/<id>. Recusado: back to the Pagamento with the failure, the focus on the action.
+ */
+function confirmPayment() {
+  dispatch({ type: 'payConfirm', today: new Date() });
+  if (state.order?.status !== 'processing') return $('checkout-content').querySelector('[aria-invalid=true]')?.focus();
+  $('checkout-content').querySelector('.processing-step').focus();
+  setTimeout(() => {
+    const orders = state.orders.length;
+    dispatch({ type: 'payResult' });
+    if (state.orders.length > orders) location.hash = `pedido/${state.orders.at(-1).id}`;
+    else $('checkout-content').querySelector('[data-pay-confirm]')?.focus();
+  }, processingTime);
+}
+// Pedido confirmado: Acompanhar pedido is not part of the prototype yet; Voltar ao cardápio opens the last category seen.
+$('order-page').addEventListener('click', (e) => {
+  if (e.target.closest('[data-order-track]')) toast('O acompanhamento do pedido ainda não faz parte do protótipo.');
+  if (e.target.closest('[data-order-menu]')) location.hash = state.category;
+});
 
 document.addEventListener('keydown', (e) => {
   if (!state.editing) return;
