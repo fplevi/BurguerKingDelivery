@@ -111,6 +111,37 @@ export const confirmarEPagar = (page) => resumoDoPedido(page).getByRole('button'
 /** The Pedido confirmado screen (#pedido/<id>), a region named by its title. */
 export const pedidoConfirmado = (page) => page.getByRole('region', { name: 'Pedido confirmado!' });
 
+// Fluxo de endereço (#endereco and #endereco/*, tickets 03-05 of checkout).
+/** The address pages: the region titled "Endereço de entrega" (an h1; the Checkout's card has the same name, as an h2). */
+export const paginaDeEndereco = (page) =>
+  page.getByRole('region', { name: 'Endereço de entrega' }).filter({ has: page.getByRole('heading', { level: 1, name: 'Endereço de entrega' }) });
+
+/** A Whopper® in the cart, Carrinho → Continuar, celular `numero` confirmed (a Novo cliente also registers): Seus endereços. */
+export async function irAosEnderecos(page, numero = '61999991234') {
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
+  await continuarDoCarrinho(page);
+  await checkout(page).getByRole('textbox', { name: 'Celular com DDD' }).fill(numero);
+  await checkout(page).getByRole('button', { name: 'Receber código pelo WhatsApp' }).click();
+  await checkout(page).getByRole('textbox', { name: 'Código de 6 dígitos' }).fill('123456');
+  await checkout(page).getByRole('button', { name: 'Confirmar e continuar' }).click();
+  if (numero !== '61999991234' && numero !== '61900000000') {
+    await checkout(page).getByRole('textbox', { name: 'Nome completo' }).fill('Ana Souza');
+    await checkout(page).getByRole('button', { name: 'Continuar' }).click();
+  }
+  await expect(paginaDeEndereco(page)).toBeVisible();
+}
+
+/** From Seus endereços: opens the Busca (#endereco/buscar) and types `texto` in "Buscar endereço e número". */
+export async function buscarEndereco(page, texto) {
+  await paginaDeEndereco(page).getByRole('button', { name: /^Buscar endereço e número/ }).click();
+  await expect(page).toHaveURL(/#endereco\/buscar$/);
+  await paginaDeEndereco(page).getByRole('searchbox', { name: 'Buscar endereço e número' }).fill(texto);
+}
+
+/** Results of the Busca, each a button named by its place. */
+export const resultadosDaBusca = (page) => paginaDeEndereco(page).getByRole('list', { name: 'Resultados da busca' }).getByRole('button');
+
 // Pagamento com Pix (ticket 07 of checkout).
 /** The Pix Forma de pagamento chosen and "Gerar Pix" in the Resumo do pedido: the Pix pendente. */
 export async function gerarPix(page) {

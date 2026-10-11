@@ -1,7 +1,7 @@
 import { recipes, layer, description, removedLine } from './ingredients.js';
 import { art } from './art.js';
 import { initial, reducer, money, marks, drinks, pick, itemTotal, itemName, cartUnits, cartTotal, savedAddress } from './state.js';
-import { progress, orderSummary, identificationStep, sentTo, addressList, deliveryCard, paymentStep, paymentAction, processingStep, orderPage } from './checkout.js';
+import { progress, orderSummary, identificationStep, sentTo, addressFlow, deliveryCard, paymentStep, paymentAction, processingStep, orderPage, mapSize, mapCenter } from './checkout.js';
 import { processingTime } from './checkout-fixtures.js';
 import { pixPending } from './state.js';
 import { pixStep, pixApprovedStep, pixClock } from './checkout.js';
@@ -306,8 +306,29 @@ function render() {
   }
   if (inCheckout) renderCheckout();
   else $('checkout-content').replaceChildren();
-  $('address-content').innerHTML = inAddress ? progress(1) + addressList(state) : '';
   $('order-content').innerHTML = inOrder ? orderPage(shownOrder()) : '';
+  if (inAddress) renderAddress();
+  else $('address-content').replaceChildren();
+}
+/**
+ * The address pages: Seus endereços, or the Busca, Confirmar localização and Dados de entrega (with "Voltar" above).
+ * Rebuilt on every change, so the focused control (the Busca's field, the map) keeps its focus and caret.
+ */
+function renderAddress() {
+  const root = $('address-content'),
+    active = root.contains(document.activeElement) ? document.activeElement : null;
+  let caret = null;
+  try {
+    caret = active && active.selectionStart != null ? [active.selectionStart, active.selectionEnd] : null;
+  } catch {}
+  $('address-step-back').hidden = state.addressPage === 'lista' && !state.locateError;
+  root.innerHTML = progress(1) + addressFlow(state);
+  const again = active?.id && $(active.id);
+  if (!again) return;
+  again.focus({ preventScroll: true });
+  try {
+    if (caret) again.setSelectionRange(...caret);
+  } catch {}
 }
 /** The address chosen with "Entregar neste endereço", while it is still an Endereço salvo; null otherwise. */
 const delivery = () => savedAddress(state, state.delivery);
@@ -726,6 +747,7 @@ let menuScroll = 0,
   menuFocus = null;
 // #checkout with an empty cart, or with a combo still without a drink (typed or reloaded: the cart lives in memory), shows the Carrinho.
 // Entering the Checkout: top of the page, focus on its title. From the Checkout back to the Carrinho, the Carrinho's way back to the menu stays as it was.
+let flowEntry = null; // the history entry of the address page shown, read on the next one
 const fromHash = () => {
   // Back/Forward with Ver ingredientes open: cancel it first, as Esc does.
   if (state.editing) closeEditor('cancel');
@@ -739,11 +761,17 @@ const fromHash = () => {
   if (hash.startsWith('pedido/') && !shownOrder(hash.slice(7))) go(state.category);
   else if (state.screen === 'pedido' && !cartClick && /^(carrinho|checkout|endereco)/.test(hash)) go(state.category);
   cartClick = false;
-  if ((hash === 'checkout' || hash === 'endereco') && (!state.cart.length || state.cart.some((c) => c.combo && !c.drink))) go('carrinho');
+  const inFlow = hash === 'endereco' || hash.startsWith('endereco/');
+  if ((hash === 'checkout' || inFlow) && (!state.cart.length || state.cart.some((c) => c.combo && !c.drink))) go('carrinho');
   // Within the session, a confirmed celular skips the Identificação; the address pages need it.
   else if (hash === 'checkout' && state.customer && !delivery()) go('endereco');
-  else if (hash === 'endereco' && !state.customer) go('checkout');
-  const before = state.screen;
+  else if (inFlow && !state.customer) go('checkout');
+  // The pages of a new address: Confirmar localização needs a place; the Dados de entrega, a served one.
+  else if (inFlow && !['endereco', 'endereco/buscar', 'endereco/confirmar', 'endereco/dados'].includes(hash)) go('endereco');
+  else if ((hash === 'endereco/confirmar' && !state.addressPlace) || (hash === 'endereco/dados' && !state.addressPlace?.served)) go('endereco/buscar');
+  const before = state.screen,
+    beforePage = state.addressPage,
+    beforeFlow = before === 'endereco' ? flowEntry : null;
   if (before === 'cardapio') [menuScroll, menuFocus] = [scrollY, document.activeElement];
   else openDrink = null;
   dispatch({ type: 'category', category: hash });
@@ -753,15 +781,23 @@ const fromHash = () => {
   // First arrival on Seus endereços (always forward, so the history entry has no state yet): note what the previous
   // entry is, kept in the entry for Back/Forward. 'checkout': the Pagamento (Alterar); 'cart': the Carrinho (the
   // Checkout's entry became #endereco, or was skipped); null: anything else.
-  if (now === 'endereco' && !history.state?.addressBack && started)
-    history.replaceState({ addressBack: before === 'checkout' && delivery() ? 'checkout' : before === 'carrinho' || (before === 'checkout' && fromCart) ? 'cart' : 'none' }, '');
+  // The pages of a new address keep it too, with `depth`: how many address pages come before them in history (0 on
+  // the first one), so "Voltar", "Voltar ao checkout" and "Salvar endereço" go back over them.
+  if (now === 'endereco' && history.state?.depth == null && started)
+    history.replaceState(
+      beforeFlow?.depth != null
+        ? { addressBack: beforeFlow.addressBack, depth: beforeFlow.depth + 1 }
+        : { addressBack: before === 'checkout' && delivery() ? 'checkout' : before === 'carrinho' || (before === 'checkout' && fromCart) ? 'cart' : 'none', depth: 0 },
+      '',
+    );
+  flowEntry = now === 'endereco' ? history.state : null;
   if (now === 'carrinho' && before !== 'checkout') fromMenu = before === 'cardapio' && started;
   if (now === 'checkout') fromCart = before === 'carrinho' && started;
-  if (now === before) return;
+  if (now === before && (now !== 'endereco' || state.addressPage === beforePage)) return;
   scrollTo(0, now === 'cardapio' ? menuScroll : 0);
   if (!started) return;
   const back = menuFocus?.isConnected && menuFocus.checkVisibility?.() && menuFocus !== document.body ? menuFocus : $('cart-open');
-  (({ carrinho: $('cart-title'), checkout: $('checkout-title'), endereco: $('address-title'), pedido: $('order-title') })[now] ?? back).focus({ preventScroll: true });
+  (({ carrinho: $('cart-title'), checkout: $('checkout-title'), endereco: $(state.addressPage === 'buscar' ? 'address-query' : 'address-title'), pedido: $('order-title') })[now] ?? back).focus({ preventScroll: true });
 };
 // Voltar ao carrinho and Editar carrinho: back to the Carrinho (the previous history entry when the Checkout came from it).
 $('checkout-page').addEventListener('click', (e) => {
@@ -771,8 +807,9 @@ $('checkout-page').addEventListener('click', (e) => {
 // Seus endereços. Marking an Endereço salvo keeps the focus on it. "Entregar neste endereço" and "Voltar ao checkout"
 // return to the Pagamento (the previous history entry when Seus endereços came from it, else a new one); without an
 // address chosen yet the Checkout has nothing past the Identificação, so "Voltar ao checkout" returns to the Carrinho.
-const addressBack = () => history.state?.addressBack;
-const toPayment = () => (addressBack() === 'checkout' ? history.back() : (location.hash = 'checkout'));
+const addressBack = () => history.state?.addressBack,
+  depth = () => history.state?.depth ?? 0;
+const toPayment = () => (addressBack() === 'checkout' ? history.go(-1 - depth()) : (location.hash = 'checkout'));
 $('address-page').addEventListener('change', (e) => {
   if (e.target.name !== 'saved-address') return;
   dispatch({ type: 'addressPick', id: e.target.value });
@@ -783,8 +820,115 @@ $('address-page').addEventListener('click', (e) => {
     dispatch({ type: 'addressDeliver' });
     return toPayment();
   }
-  if (e.target.closest('[data-address-back]')) delivery() ? toPayment() : addressBack() === 'cart' ? history.back() : (location.hash = 'carrinho');
+  if (e.target.closest('[data-address-back]')) delivery() ? toPayment() : addressBack() === 'cart' ? history.go(-1 - depth()) : (location.hash = 'carrinho');
 });
+// Novo endereço. "Voltar" (also "Ajustar localização no mapa" and "Escolher outro endereço"): the previous address
+// page, the previous history entry when it is one. On Localização indisponível, back to Seus endereços.
+const parentPage = { buscar: 'endereco', confirmar: 'endereco/buscar', dados: 'endereco/confirmar' };
+function stepBack() {
+  if (state.addressPage === 'lista') return dispatch({ type: 'addressLocateReset' });
+  depth() ? history.back() : (location.hash = parentPage[state.addressPage]);
+}
+// "Usar localização atual" asks the browser: granted, Av. Paulista, 1578 (whatever the coordinates); denied or
+// unavailable, Localização indisponível.
+function locate() {
+  const failed = () => state.screen === 'endereco' && dispatch({ type: 'addressLocateFailed' });
+  if (!navigator.geolocation) return failed();
+  navigator.geolocation.getCurrentPosition(
+    () => {
+      if (state.screen !== 'endereco') return;
+      dispatch({ type: 'addressLocated' });
+      location.hash = 'endereco/confirmar';
+    },
+    failed,
+    { timeout: 10000 },
+  );
+}
+$('address-step-back').addEventListener('click', stepBack);
+$('address-page').addEventListener('click', (e) => {
+  const t = e.target;
+  if (t.closest('[data-address-search]')) location.hash = 'endereco/buscar';
+  else if (t.closest('[data-address-locate]')) locate();
+  else if (t.closest('[data-locate-reset]')) dispatch({ type: 'addressLocateReset' });
+  else if (t.closest('[data-place]')) {
+    dispatch({ type: 'addressChoose', id: t.closest('[data-place]').dataset.place });
+    location.hash = 'endereco/confirmar';
+  } else if (t.closest('[data-map-search]')) {
+    dispatch({ type: 'addressLocated' });
+    location.hash = 'endereco/confirmar';
+  } else if (t.closest('[data-address-other], [data-address-adjust]')) stepBack();
+  else if (t.closest('[data-to-menu]')) location.hash = state.category;
+  else if (t.closest('[data-address-confirm]')) location.hash = 'endereco/dados';
+  else if (t.closest('[data-map-center]')) dispatch({ type: 'addressPan', x: 0, y: 0 });
+});
+$('address-page').addEventListener('input', (e) => {
+  if (e.target.id === 'address-query') dispatch({ type: 'addressQuery', value: e.target.value });
+});
+// Dados de entrega: "Endereço sem número" and "Endereço sem complemento" empty and turn off their field; "Salvar
+// endereço" saves the Endereço salvo and goes back to Seus endereços (over the address pages), where it is marked.
+$('address-page').addEventListener('change', (e) => {
+  const off = { noNumber: 'delivery-number', noComplement: 'delivery-complement' }[e.target.name];
+  if (!off) return;
+  const input = $(off);
+  input.disabled = e.target.checked;
+  if (!e.target.checked) return input.focus();
+  input.value = '';
+  input.setAttribute('aria-invalid', 'false');
+  $(off + '-error').textContent = '';
+});
+$('address-page').addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (!e.target.matches('[data-address-form]')) return;
+  const f = new FormData(e.target),
+    text = (k) => String(f.get(k) ?? '');
+  dispatch({
+    type: 'addressSave',
+    draft: { street: text('street'), district: text('district'), number: text('number'), noNumber: f.has('noNumber'), complement: text('complement'), noComplement: f.has('noComplement'), reference: text('reference'), label: text('label') },
+  });
+  if (state.addressPlace) return $('address-content').querySelector('[aria-invalid=true]')?.focus();
+  depth() ? history.go(-depth()) : (location.hash = 'endereco');
+  toast('Endereço salvo e selecionado.');
+});
+// The map of Confirmar localização: dragged (pointer) or moved with the arrow keys under the fixed marker, never past
+// the tiles' edges (the marker stays 64 px inside them). The address stays as it was.
+function clampPan(x, y) {
+  const fit = (v, c) => Math.round(Math.max(c + 64 - mapSize, Math.min(c - 64, v)));
+  return { x: fit(x, mapCenter.x), y: fit(y, mapCenter.y) };
+}
+let mapDrag = null;
+$('address-page').addEventListener('pointerdown', (e) => {
+  const view = e.target.closest('[data-map]');
+  if (!view) return;
+  e.preventDefault();
+  view.focus({ preventScroll: true });
+  view.setPointerCapture(e.pointerId);
+  const { pan } = state.addressPlace;
+  mapDrag = { view, x: e.clientX - pan.x, y: e.clientY - pan.y, pan };
+});
+$('address-page').addEventListener('pointermove', (e) => {
+  if (!mapDrag) return;
+  mapDrag.pan = clampPan(e.clientX - mapDrag.x, e.clientY - mapDrag.y);
+  const tilesEl = mapDrag.view.querySelector('.map-tiles');
+  tilesEl.style.setProperty('--pan-x', mapDrag.pan.x + 'px');
+  tilesEl.style.setProperty('--pan-y', mapDrag.pan.y + 'px');
+});
+const endDrag = () => {
+  if (!mapDrag) return;
+  const { pan } = mapDrag;
+  mapDrag = null;
+  dispatch({ type: 'addressPan', ...pan });
+};
+$('address-page').addEventListener('pointerup', endDrag);
+$('address-page').addEventListener('pointercancel', endDrag);
+$('address-page').addEventListener('keydown', (e) => {
+  const view = e.target.closest?.('[data-map]'),
+    step = { ArrowLeft: [24, 0], ArrowRight: [-24, 0], ArrowUp: [0, 24], ArrowDown: [0, -24] }[e.key];
+  if (!view || !step) return;
+  e.preventDefault();
+  const { pan } = state.addressPlace;
+  dispatch({ type: 'addressPan', ...clampPan(pan.x + step[0], pan.y + step[1]) });
+});
+
 addEventListener('hashchange', fromHash);
 
 // Pagamento. Choosing the Forma de pagamento or a card keeps the focus on its radio; the card's fields keep digits

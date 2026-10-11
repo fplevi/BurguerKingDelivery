@@ -1,6 +1,6 @@
 // Pagamento com Pix: Pix pendente, copiar, aprovação em 10 s, expiração em 10:00 e outra forma de pagamento (ticket 07 of checkout).
 import { test, expect } from '@playwright/test';
-import { checkout, etapas, resumoDoPedido, irAoPagamento, formaDePagamento, pedidoConfirmado, aviso, gerarPix, pixPendente, pixExpirado } from './support.js';
+import { checkout, etapas, resumoDoPedido, irAoPagamento, formaDePagamento, pedidoConfirmado, aviso, gerarPix, pixPendente, pixExpirado, irAosEnderecos, buscarEndereco, resultadosDaBusca, paginaDeEndereco } from './support.js';
 
 test('Gerar Pix abre "Só falta pagar o Pix" com QR Code, valor, contagem ao vivo e Aguardando pagamento', async ({ page }) => {
   await page.clock.install();
@@ -70,6 +70,20 @@ test('(61) 99999-1234: o Pix é aprovado 10 s depois de gerado, passa por Pagame
   await expect(pedido.getByText('Pedido #BK1024', { exact: true })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Carrinho · 0' })).toBeVisible();
   await expect(page.locator('header')).toHaveJSProperty('inert', false);
+});
+
+test('Novo cliente: o Pix também é aprovado 10 s depois de gerado', async ({ page }) => {
+  await page.clock.install();
+  await irAosEnderecos(page, '11987654321');
+  await buscarEndereco(page, 'augusta');
+  await resultadosDaBusca(page).first().click();
+  await paginaDeEndereco(page).getByRole('button', { name: 'Confirmar localização' }).click();
+  await paginaDeEndereco(page).getByRole('button', { name: 'Salvar endereço' }).click();
+  await paginaDeEndereco(page).getByRole('button', { name: 'Entregar neste endereço' }).click();
+  await gerarPix(page);
+  await page.clock.runFor(11_500);
+  await expect(page).toHaveURL(/#pedido\/BK1024$/);
+  await expect(pedidoConfirmado(page).getByText('Pago com Pix · R$ 40,80', { exact: true })).toBeVisible();
 });
 
 test('(61) 90000-0000: o Pix expira em 10:00; Gerar novo Pix volta a Aguardando pagamento com o mesmo Pedido', async ({ page }) => {
