@@ -180,6 +180,34 @@ main[data-screen=checkout],main[data-screen=endereco]{display:block;height:auto;
 .address-previous{display:flex;align-items:center;gap:10px;align-self:start;margin-top:16px;padding:12px 0;color:var(--red);font-size:12px}
 .address-action{margin-top:24px}.address-action .primary{min-width:264px;height:46px;font-size:14px}
 @media(max-width:1023px){.address-flow{max-width:none}.address-action .primary{width:100%;height:52px;font-size:16px}}
+/* Novo endereço (Figma Endereço 02-04, 11, 12, 15): "Voltar", the Busca and its results, the static map with the marker fixed in the centre, Fora da região, Localização indisponível and the Dados de entrega. */
+.checkout-page>.address-step-back{display:flex;align-items:center;gap:10px;padding:12px 22px 12px 18px;margin-bottom:24px}.checkout-page>.address-step-back[hidden]{display:none}
+.address-title{font-size:20px;line-height:1.2;margin:0 0 10px}.address-text{margin:0;font-size:14px;line-height:1.5}
+.address-query{display:flex;align-items:center;gap:12px;height:52px;padding:0 16px;border:1px solid var(--red);border-radius:8px;background:#fff}.address-query .icon{color:var(--red);flex-shrink:0}.address-query:has(:focus-visible){outline:3px solid #174b99;outline-offset:3px}
+.address-input{flex:1;min-width:0;border:0;background:none;color:var(--brown);font-size:15px;padding:12px 0}.address-input:focus-visible{outline:0}.address-input::placeholder{color:#80614c}
+.address-found{margin-top:24px}
+.address-results{list-style:none;margin:0;padding:0;display:grid;gap:16px}.address-results button{display:flex;align-items:center;gap:16px;width:100%;padding:18px 16px;border:0;border-bottom:1px solid var(--border);border-radius:4px;background:#fff;color:var(--title);text-align:left}.address-results button:hover{background:var(--card)}
+.place-text{display:flex;flex-direction:column;gap:4px;font-size:12px}.place-text b{font-family:'Flame',Georgia,serif;font-size:17px;margin-bottom:4px}
+.address-note{margin:20px 0 14px;font-size:13px}.address-wide{width:100%;height:48px;border-color:var(--border)}
+.address-flow:has(.map){max-width:512px}.map{position:relative;max-width:512px;margin-top:14px;background:#fff;border-radius:8px;overflow:hidden}
+.map-view{position:relative;height:250px;overflow:hidden;background:#f2efe9;touch-action:none;user-select:none}.map-adjust .map-view{cursor:grab}.map-adjust .map-view:active{cursor:grabbing}.map-view:focus-visible{outline:3px solid #174b99;outline-offset:-3px}
+.map-tiles{position:absolute;width:512px;height:512px;left:calc(50% - 256px + var(--pan-x));top:calc(50% - 225px + var(--pan-y));display:grid;grid-template-columns:256px 256px}.map-tiles img{display:block;width:256px;height:256px;pointer-events:none}
+.map-pin{position:absolute;left:50%;top:50%;transform:translate(-50%,-100%);pointer-events:none;filter:drop-shadow(0 3px 3px #3f120833)}.map-pin svg{display:block}
+.map-hint{position:absolute;left:50%;top:calc(50% + 16px);transform:translateX(-50%);width:min(240px,80%);margin:0;padding:10px 12px;border-radius:10px;background:#fff;box-shadow:0 4px 14px #3f120822;font-size:10px;pointer-events:none}.map-hint b{display:block;font-family:'Flame',Georgia,serif;font-size:14px;margin-bottom:4px}
+.map-center{position:absolute;top:12px;right:12px;display:grid;place-items:center;width:40px;height:40px;border:0;border-radius:50%;background:#fff;color:var(--brown);box-shadow:0 2px 8px #3f120822}
+.map-credit{margin:0;padding:4px 6px;font-size:10px}.map-credit a{color:var(--brown)}
+.map:not(.map-adjust) .map-view{height:116px}
+.address-chosen{display:flex;flex-direction:column;gap:12px;margin:20px 0 0;font-size:12px}.address-chosen b{font-family:'Flame',Georgia,serif;font-size:17px}
+.address-place{display:flex;align-items:center;gap:14px;margin-top:20px;padding:18px 16px;border:1px solid var(--border);border-radius:8px;background:#fff}.address-place p{display:flex;flex-direction:column;gap:6px;margin:0;font-size:11px}.address-place b{font-family:'Flame',Georgia,serif;font-size:15px}.address-place .place-street{font-size:14px}
+.address-buttons{display:flex;flex-direction:column;align-items:flex-start;gap:16px;margin-top:16px}.address-buttons>*{min-width:264px;height:46px;font-size:14px}.address-buttons .secondary{border-color:var(--border)}
+.address-retry,.address-adjust{display:flex;align-items:center;gap:10px;align-self:start;margin-top:16px;padding:12px 0;color:var(--red);font-size:12px}.address-flow>.address-wide{margin-top:12px}
+.delivery-form{display:flex;flex-direction:column;max-width:512px}.delivery-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.delivery-form .field-label{margin:14px 0 8px;font-size:12px}.delivery-form .field{padding:11px 12px;font-size:13px}.delivery-form .field-error{font-weight:normal}
+.delivery-check{margin-top:14px;font-size:11px}.delivery-check input{width:16px;height:16px}
+.save-options{border:0;margin:24px 0 0;padding:0}.save-options legend{padding:0;margin-bottom:12px;font-family:'Flame',Georgia,serif;font-size:15px}
+.save-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.save-as{position:relative;display:flex;align-items:center;justify-content:center;gap:6px;height:42px;border:1px solid transparent;border-radius:20px;background:var(--neutral);font-size:12px;cursor:pointer}.save-as:has(:checked){border-color:var(--red);background:var(--selection)}.save-as:has(:focus-visible){outline:3px solid #174b99;outline-offset:3px}.save-as input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.delivery-form .address-note{margin:16px 0 0;font-size:11px}
+@media(max-width:1023px){.address-buttons>*{width:100%;min-width:0}.address-flow:has(.map){max-width:none}.delivery-form{max-width:none}}
 /* Pagamento: the Endereço de entrega card (Figma pix/savedCard) and the Total do pedido of the Resumo do pedido. */
 .checkout-main{display:grid;gap:24px;min-width:0}
 .delivery-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px}.checkout-step.delivery-card h2{font-size:22px;margin:0}.delivery-head .secondary{border-color:var(--border);padding:12px 22px;font-size:13px}

@@ -1,8 +1,13 @@
 // Checkout ("Finalizar pedido", #checkout) and Seus endereços (#endereco): the indicador de etapas, the Resumo do pedido,
-// the Identificação, the address list and the Pagamento, as HTML.
+// the Identificação, the address list, the pages of a new address (#endereco/buscar, /confirmar, /dados) and the
+// Pagamento, as HTML.
 import { recipes, removedLine } from './ingredients.js';
 import { money, marks, itemName, cartTotal } from './state.js';
-import { deliveryFee, deliveryTime } from './checkout-fixtures.js';
+import { deliveryFee, deliveryTime, searchPlaces } from './checkout-fixtures.js';
+import tile0 from '../Assets/maps/paulista-0.png';
+import tile1 from '../Assets/maps/paulista-1.png';
+import tile2 from '../Assets/maps/paulista-2.png';
+import tile3 from '../Assets/maps/paulista-3.png';
 
 /** The steps, in order; 'concluido' (all done) comes only after the payment is approved. */
 export const steps = ['Identificação', 'Endereço', 'Pagamento'];
@@ -123,3 +128,99 @@ export function deliveryCard(a) {
 
 /** Forma de pagamento of the Pagamento: none yet (Pix and card come with the payment tickets, below the delivery card). */
 export const paymentStep = () => '';
+
+// Novo endereço (#endereco/buscar, #endereco/confirmar, #endereco/dados; Figma Endereço 02-04 and 10-15).
+const pinIcon = icon(`<path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z" ${stroke}/><circle cx="12" cy="10" r="2.3" ${stroke}/>`);
+const saveIcons = {
+  Casa: icon(`<path d="M3.5 11 12 4l8.5 7M6 9.5V20h12V9.5" ${stroke}/>`, 18),
+  Trabalho: icon(`<rect x="3.5" y="7.5" width="17" height="12" rx="1.5" ${stroke}/><path d="M9 7.5V5.5h6v2M3.5 12.5h17" ${stroke}/>`, 18),
+  Favoritos: icon(`<path d="m12 4 2.4 5 5.4.6-4 3.7 1.1 5.3L12 16l-4.9 2.6 1.1-5.3-4-3.7 5.4-.6z" ${stroke}/>`, 18),
+};
+
+/** The map's tiles (Assets/maps, OpenStreetMap, 2 × 2 of 256 px) and the point of the Av. Paulista, 1578 in them. */
+const tiles = [tile0, tile1, tile2, tile3];
+export const mapSize = 512,
+  mapCenter = { x: 256, y: 225 };
+/**
+ * The static map: the tiles moved by `pan` under the marker fixed in the centre, and the OpenStreetMap attribution.
+ * `adjust`: the map of Confirmar localização, dragged (or moved with the arrow keys) to adjust the place, with its hint
+ * and "Centralizar no endereço"; otherwise a still preview.
+ */
+function staticMap(pan, adjust) {
+  const img = tiles.map((src) => `<img src="${src}" alt="" width="256" height="256" draggable="false">`).join('');
+  const attrs = adjust
+    ? ' id="address-map" role="application" tabindex="0" aria-label="Mapa: arraste para ajustar o local da entrega" aria-describedby="map-hint" data-map'
+    : ' aria-hidden="true"';
+  const hint = adjust
+    ? `<p class="map-hint" id="map-hint"><b>A entrega será aqui?</b> <span>Arraste o mapa para ajustar o local.</span></p><button class="map-center" type="button" data-map-center aria-label="Centralizar no endereço">${locateIcon}</button>`
+    : '';
+  return `<div class="map${adjust ? ' map-adjust' : ''}"><div class="map-view"${attrs}><div class="map-tiles" style="--pan-x:${pan.x}px;--pan-y:${pan.y}px">${img}</div><span class="map-pin" aria-hidden="true"><svg viewBox="0 0 32 40" width="32" height="40"><path d="M16 39s13-13.3 13-23A13 13 0 0 0 3 16c0 9.7 13 23 13 23z" fill="#d90000"/><circle cx="16" cy="16" r="5" fill="#fff"/></svg></span></div>${hint}<p class="map-credit"><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors</a></p></div>`;
+}
+
+/** "Av. Paulista, 1578": Rua and Número of a place. */
+const streetLine = (p) => `${p.street}, ${p.number}`;
+const quote = (t) => String(t).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+
+/** The Busca's field (Figma Endereço 13): a search box named "Buscar endereço e número". */
+const searchField = (query) =>
+  `<form class="address-query" role="search" data-address-query>${searchIcon}<input class="address-input" id="address-query" type="search" autocomplete="off" aria-label="Buscar endereço e número" placeholder="Buscar endereço e número" value="${quote(query)}"></form>`;
+const mapSearch = (label) => `<p class="address-note">Não achou seu endereço?</p><button class="secondary address-wide" type="button" data-map-search>${label}</button>`;
+
+/** One result of the Busca: its name, then the street (a named place only), the district and the city. */
+const placeResult = (p) =>
+  `<li><button type="button" data-place="${p.id}">${pinIcon}<span class="place-text"><b>${p.name}</b> <span>${p.poi ? `${streetLine(p)} · ${p.district}` : `${p.district} · ${p.city}`}</span>${p.poi ? ` <span>${p.city}</span>` : ''}</span></button></li>`;
+
+/** Busca (#endereco/buscar, Figma Endereço 02/13/14): the results of the situações fixas, or the empty and no-result texts. */
+function addressSearch({ addressQuery }) {
+  const found = searchPlaces(addressQuery);
+  const body = !addressQuery.trim()
+    ? '<h2 class="address-title">Digite uma rua, número ou lugar</h2><p class="address-text">Busque pelo endereço completo para encontrar o local da entrega.</p>'
+    : found.length
+      ? `<ul class="address-results" aria-label="Resultados da busca">${found.map(placeResult).join('')}</ul>`
+      : '<h2 class="address-title">Não encontramos esse endereço</h2><p class="address-text">Confira o nome da rua ou encontre o ponto diretamente no mapa.</p>';
+  return `<div class="address-flow">${searchField(addressQuery)}<div class="address-found">${body}</div>${mapSearch('Buscar pelo mapa')}</div>`;
+}
+
+/**
+ * Confirmar localização (#endereco/confirmar, Figma Endereço 03/15): the place, the map to adjust it and "Confirmar
+ * localização". A place outside the region (Figma Endereço 12) shows "Ainda não entregamos nessa região" instead.
+ */
+function addressConfirm({ addressPlace: p }) {
+  if (!p.served)
+    return `<div class="address-flow"><h2 class="address-title">Ainda não entregamos nessa região</h2><p class="address-text">Tente outro endereço para continuar seu pedido.</p><div class="address-place">${pinIcon}<p><b>Local selecionado</b> <span class="place-street">${streetLine(p)}</span> <span>${p.city}</span> <span>Fora da área de entrega</span></p></div><div class="address-buttons"><button class="primary" type="button" data-address-other>Escolher outro endereço</button><button class="secondary" type="button" data-to-menu>Voltar ao cardápio</button></div></div>`;
+  return `<div class="address-flow"><h2 class="address-title">Confirme o local da entrega</h2><button class="address-search" type="button" data-address-search>${searchIcon}<span>${streetLine(p)}</span></button>${staticMap(p.pan, true)}<p class="address-chosen"><b>${streetLine(p)}</b> <span>${p.district}, ${p.city}</span></p><div class="address-action"><button class="primary" type="button" data-address-confirm>Confirmar localização</button></div></div>`;
+}
+
+/** A field of the Dados de entrega (a required one shows * outside its name), with its error line. */
+function deliveryField(name, label, value, { required = false, disabled = false, error = '' } = {}) {
+  const id = `delivery-${name}`;
+  return `<div class="delivery-field delivery-${name}"><label class="field-label" for="${id}">${label}${required ? '<span aria-hidden="true"> *</span>' : ''}</label><input class="field" id="${id}" name="${name}" value="${quote(value)}"${required && !disabled ? ' required' : ''}${disabled ? ' disabled' : ''} aria-invalid="${!!error}" aria-describedby="${id}-error"><p class="field-error" id="${id}-error"${error ? ' role="alert"' : ''}>${error ?? ''}</p></div>`;
+}
+const box = (name, label, checked) => `<label class="check delivery-check"><input type="checkbox" name="${name}"${checked ? ' checked' : ''}> ${label}</label>`;
+
+/**
+ * Dados de entrega (#endereco/dados, Figma Endereço 04): the map preview with "Ajustar localização no mapa", Rua*,
+ * Bairro*, Número* (or "Endereço sem número"), Complemento (or "Endereço sem complemento"), Ponto de referência,
+ * "Como você quer salvar?" and "Salvar endereço". It starts from the place; after errors, from what was sent.
+ */
+function addressDetails({ addressPlace: p, addressDraft, addressErrors: e }) {
+  const d = addressDraft ?? { street: p.street, district: p.district, number: p.number, noNumber: false, complement: '', noComplement: false, reference: '', label: 'Casa' };
+  const labels = ['Casa', 'Trabalho', 'Favoritos']
+    .map((l) => `<label class="save-as"><input type="radio" name="label" value="${l}"${d.label === l ? ' checked' : ''}>${saveIcons[l]}<span>${l}</span></label>`)
+    .join('');
+  return `<div class="address-flow"><h2 class="address-title">Complete o endereço</h2>${staticMap(p.pan, false)}<button class="link address-adjust" type="button" data-address-adjust>${pinIcon}Ajustar localização no mapa</button><form class="delivery-form" data-address-form novalidate><div class="delivery-pair">${deliveryField('street', 'Rua', d.street, { required: true, error: e.street })}${deliveryField('district', 'Bairro', d.district, { required: true, error: e.district })}</div>${deliveryField('number', 'Número', d.noNumber ? '' : d.number, { required: true, disabled: d.noNumber, error: e.number })}${box('noNumber', 'Endereço sem número', d.noNumber)}${deliveryField('complement', 'Complemento', d.noComplement ? '' : d.complement, { disabled: d.noComplement })}${box('noComplement', 'Endereço sem complemento', d.noComplement)}${deliveryField('reference', 'Ponto de referência', d.reference)}<fieldset class="save-options"><legend>Como você quer salvar?</legend><div class="save-row">${labels}</div></fieldset><p class="address-note">* Campos obrigatórios. O complemento e a referência ajudam o entregador a encontrar você.</p><div class="address-action"><button class="primary" type="submit">Salvar endereço</button></div></form></div>`;
+}
+
+/** Localização indisponível (Figma Endereço 11): Seus endereços after "Usar localização atual" failed. */
+function locateFailed({ customer }) {
+  return `<div class="address-flow"><h2 class="address-title">Não conseguimos acessar sua localização</h2><p class="address-text">Permita o acesso à localização no navegador ou busque o endereço pelo nome da rua.</p><button class="address-search" type="button" data-address-search>${searchIcon}<span>Buscar endereço e número</span></button><button class="secondary address-wide" type="button" data-map-search>Escolher no mapa</button><button class="link address-retry" type="button" data-address-locate>${locateIcon}Tentar localização novamente</button>${customer.addresses.length ? '<div class="address-action"><button class="primary" type="button" data-locate-reset>Usar endereço salvo</button></div>' : ''}</div>`;
+}
+
+/** The content of the address page for `addressPage` (see state.js). */
+export function addressFlow(state) {
+  if (state.addressPage === 'buscar') return addressSearch(state);
+  // Right after "Salvar endereço" (no place any more), the list, while history goes back to it.
+  if (state.addressPage === 'confirmar' && state.addressPlace) return addressConfirm(state);
+  if (state.addressPage === 'dados' && state.addressPlace) return addressDetails(state);
+  return state.locateError ? locateFailed(state) : addressList(state);
+}
