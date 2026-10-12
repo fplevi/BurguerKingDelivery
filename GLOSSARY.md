@@ -22,7 +22,7 @@ _Avoid_: Ingrediente removido, excluído
 
 **Bandeja**:
 Área ao lado do hambúrguer aberto onde ficam os ingredientes retirados.
-_Avoid_: Lixeira, área de descarte
+_Avoid_: Lixeira, área de descarte, dragzone
 
 **Personalização**:
 O conjunto de ingredientes retirados que o cliente confirmou ao aplicar; acompanha o Item e vale para todas as unidades dele.
