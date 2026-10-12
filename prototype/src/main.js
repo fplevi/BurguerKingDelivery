@@ -481,9 +481,13 @@ const leaveSignin = (identified) => {
 };
 bindIdentification($('signin-content'), () => leaveSignin(true));
 // Minha conta, Meus pedidos and the acompanhamento follow the Pedidos in progress: redrawn every second while one is.
+// Once more on the tick a Pedido ends, so it shows as entregue.
+let liveOrders = false;
 setInterval(() => {
-  if (state.screen !== 'conta' || !['inicio', 'pedidos', 'pedido'].includes(state.accountPage)) return;
-  if (ordersOf(state, Date.now()).some((o) => !o.fixed && !situation(o, Date.now()).done)) render();
+  if (state.screen !== 'conta' || !['inicio', 'pedidos', 'pedido'].includes(state.accountPage)) return (liveOrders = false);
+  const live = ordersOf(state, Date.now()).some((o) => !o.fixed && !situation(o, Date.now()).done);
+  if (live || liveOrders) render();
+  liveOrders = live;
 }, 1000);
 // Minha conta. Below 1024px the navigation is a list opened by its button (closed again on choosing a section).
 let accountHtml = '';

@@ -82,14 +82,26 @@ const waLink = (label, kind) => `<a class="${kind} account-action track-whatsapp
 /** The loja: always, with its WhatsApp. */
 const storeCard = () => `<div class="track-store"><p class="track-store-name">${store.name}</p><p class="account-meta">Loja responsável pelo seu pedido</p>${waLink('WhatsApp da loja', 'secondary')}</div>`;
 
+/** "hoje, às 13h02", "ontem, às 13h02" or "em 8 de outubro, às 13h02". */
+const when = (ms, now) => {
+  const d = day(ms, now);
+  return `${d === 'Hoje' || d === 'Ontem' ? d.toLowerCase() : `em ${d}`}, às ${hour(ms)}`;
+};
 /** "Av. Paulista, 1578 · Apto. 21". */
 const where = (a) => [a.street, a.complement].filter(Boolean).map(esc).join(' · ');
 
-/** The whole acompanhamento of `order` at `now`; a Pedido entregue or cancelado shows only its summary (ticket 10). */
+/**
+ * The whole acompanhamento of `order` at `now`. A Pedido entregue or cancelado (Figma 20, without the map nor the
+ * entregador) keeps only when it ended, the loja with its WhatsApp, the linha do tempo of what happened and the Items.
+ */
 export function trackingView(order, now) {
   const s = situation(order, now),
     [from, to] = forecast(order);
-  const head = `<section class="account-card track-head" aria-labelledby="track-title"><h2 id="track-title">${situationName(order, now)}</h2>${s.done ? '' : `<p class="track-eta">Chega entre ${hour(from)} e ${hour(to)}</p>`}<p class="account-meta">Pedido #${order.id} · ${day(order.confirmedAt, now)}, ${hour(order.confirmedAt)}</p></section>`;
+  // Entregue or cancelado: when it ended (and, cancelado, the payment's fate, without a deadline nobody gave).
+  const end = s.cancelled ? order.cancelledAt : s.times[delivered];
+  const head = s.done
+    ? `<section class="account-card track-head" aria-labelledby="track-title"><h2 id="track-title">${s.cancelled ? 'Pedido cancelado' : 'Pedido entregue'}</h2><p>${s.cancelled ? 'Cancelado' : 'Entregue'} ${when(end, now)}</p>${s.cancelled ? '<p>O valor será devolvido na mesma forma de pagamento.</p>' : ''}<p class="account-meta">Pedido #${order.id} · ${day(order.confirmedAt, now)}, ${hour(order.confirmedAt)}</p></section>`
+    : `<section class="account-card track-head" aria-labelledby="track-title"><h2 id="track-title">${situationName(order, now)}</h2><p class="track-eta">Chega entre ${hour(from)} e ${hour(to)}</p><p class="account-meta">Pedido #${order.id} · ${day(order.confirmedAt, now)}, ${hour(order.confirmedAt)}</p></section>`;
   const items = `<div class="track-items">${orderSummary(order.items, true, { edit: false })}<p class="account-meta">Pago com ${esc(order.paidWith)}</p></div>`;
   if (s.done) return `<div class="track">${head}<div class="track-main"><section class="account-card" aria-label="Loja">${storeCard()}</section></div>${timeline(order, now)}${items}</div>`;
   const at = riderAt(order, now);
