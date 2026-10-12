@@ -230,6 +230,7 @@ function render() {
     inAddress = state.screen === 'endereco',
     inOrder = state.screen === 'pedido',
     inAccount = state.screen === 'conta',
+    inSignin = state.screen === 'identificar',
     inMenu = state.screen === 'cardapio';
   document
     .querySelectorAll('nav a')
@@ -241,6 +242,7 @@ function render() {
   $('address-page').hidden = !inAddress;
   $('order-page').hidden = !inOrder;
   $('account-page').hidden = !inAccount;
+  $('signin-page').hidden = !inSignin;
   // Endereço de entrega at the top of the menu (Figma 24-183): the street and the district, or "Onde vamos entregar?".
   const where = delivery();
   const bold = document.createElement('b');
@@ -344,6 +346,9 @@ function render() {
   $('order-content').innerHTML = inOrder ? orderPage(shownOrder()) : '';
   if (inAddress) renderAddress();
   else $('address-content').replaceChildren();
+  // Identifique-se (Figma Conta 01-06): the Identificação's forms in a card; Fechar above.
+  if (inSignin) rebuild($('signin-content'), identificationStep(state.identification), '#id-name, #id-email');
+  else $('signin-content').replaceChildren();
 }
 /**
  * Replaces the content of `root` with `html`: the control that had the focus there (found again by its id) keeps it,
@@ -401,53 +406,66 @@ function renderCheckout() {
     : `${progress(0)}<div class="checkout-body"><section class="checkout-step" aria-label="Identificação">${identificationStep(state.identification)}</section>${orderSummary(state.cart)}</div>`;
   rebuild($('checkout-content'), html, '#id-name, #id-email');
 }
-// Identificação: the celular is masked as it is typed, the caret staying after the same digit; the code keeps digits only.
-$('checkout-content').addEventListener('input', (e) => {
-  const t = e.target;
-  if (t.id === 'id-phone') {
-    const before = t.value.slice(0, t.selectionStart).replace(/\D/g, '').length;
-    dispatch({ type: 'idPhone', value: t.value });
-    const field = $('id-phone'),
-      masked = field.value;
-    let at = 0;
-    for (let n = 0; at < masked.length && n < before; at++) if (/\d/.test(masked[at])) n++;
-    field.setSelectionRange(at, at);
-  } else if (t.id === 'id-code') dispatch({ type: 'idCode', value: t.value });
-});
-// Identified (Cliente cadastrado, or Novo cliente after the form): the Checkout's place in history becomes #endereco.
+// Identificação, in the Checkout and in Identifique-se (#identificar): the same forms, bound to each page's content;
+// `done` runs after the code and the Novo cliente's form, and leaves the page once the client is identified.
+function bindIdentification(root, done) {
+  // The celular is masked as it is typed, the caret staying after the same digit; the code keeps digits only.
+  root.addEventListener('input', (e) => {
+    const t = e.target;
+    if (t.id === 'id-phone') {
+      const before = t.value.slice(0, t.selectionStart).replace(/\D/g, '').length;
+      dispatch({ type: 'idPhone', value: t.value });
+      const field = $('id-phone'),
+        masked = field.value;
+      let at = 0;
+      for (let n = 0; at < masked.length && n < before; at++) if (/\d/.test(masked[at])) n++;
+      field.setSelectionRange(at, at);
+    } else if (t.id === 'id-code') dispatch({ type: 'idCode', value: t.value });
+  });
+  root.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const form = e.target.dataset.idForm;
+    if (form === 'phone') {
+      dispatch({ type: 'idSend', channel: e.submitter?.dataset.idSend ?? 'whatsapp' });
+      $('id-code')?.focus();
+    } else if (form === 'code') {
+      dispatch({ type: 'idConfirm' });
+      // Código incorreto: back to the code, whose button is now disabled.
+      if (state.identification.codeError) $('id-code').focus();
+      if (state.customer) done();
+    } else if (form === 'register') {
+      dispatch({ type: 'idRegister', name: $('id-name').value, email: $('id-email').value });
+      root.querySelector('[aria-invalid=true]')?.focus();
+      if (state.customer) done();
+    }
+  });
+  // Reenviar código and switching the channel only tell where the code went (toast); Alterar celular goes back to the celular, filled.
+  root.addEventListener('click', (e) => {
+    const id = () => state.identification;
+    if (e.target.closest('[data-id-resend]')) toast(sentTo(id().channel, id().phone));
+    else if (e.target.closest('[data-id-channel]')) {
+      dispatch({ type: 'idChannel' });
+      root.querySelector('[data-id-channel]').focus();
+      toast(sentTo(id().channel, id().phone));
+    } else if (e.target.closest('[data-id-change]')) {
+      dispatch({ type: 'idChange' });
+      $('id-phone').focus();
+    }
+  });
+}
+// Identified in the Checkout (Cliente cadastrado, or Novo cliente after the form): its place in history becomes #endereco.
 // Coming from the Identificação, Seus endereços is the next step, not an Alterar from the Pagamento.
 let identifiedJump = false;
-const identified = () => state.customer && ((identifiedJump = true), location.replace('#endereco'));
-$('checkout-content').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const form = e.target.dataset.idForm;
-  if (form === 'phone') {
-    dispatch({ type: 'idSend', channel: e.submitter?.dataset.idSend ?? 'whatsapp' });
-    $('id-code')?.focus();
-  } else if (form === 'code') {
-    dispatch({ type: 'idConfirm' });
-    // Código incorreto: back to the code, whose button is now disabled.
-    if (state.identification.codeError) $('id-code').focus();
-    identified();
-  } else if (form === 'register') {
-    dispatch({ type: 'idRegister', name: $('id-name').value, email: $('id-email').value });
-    $('checkout-content').querySelector('[aria-invalid=true]')?.focus();
-    identified();
-  }
-});
-// Reenviar código and switching the channel only tell where the code went (toast); Alterar celular goes back to the celular, filled.
-$('checkout-content').addEventListener('click', (e) => {
-  const id = () => state.identification;
-  if (e.target.closest('[data-id-resend]')) toast(sentTo(id().channel, id().phone));
-  else if (e.target.closest('[data-id-channel]')) {
-    dispatch({ type: 'idChannel' });
-    $('checkout-content').querySelector('[data-id-channel]').focus();
-    toast(sentTo(id().channel, id().phone));
-  } else if (e.target.closest('[data-id-change]')) {
-    dispatch({ type: 'idChange' });
-    $('id-phone').focus();
-  }
-});
+bindIdentification($('checkout-content'), () => ((identifiedJump = true), location.replace('#endereco')));
+// Identifique-se: identified (or Fechar), back where it was opened from: the previous entry when the header opened it,
+// else the page asked for (a private one, #conta…) or, closing it, the menu.
+const leaveSignin = (identified) => {
+  const from = history.state?.signin;
+  if (from === 'back') return history.back();
+  location.replace('#' + (identified && from ? from : state.category));
+};
+bindIdentification($('signin-content'), () => leaveSignin(true));
+$('signin-close').onclick = () => leaveSignin(false);
 
 /** Carrinho screen: the Itens (each one editable, see itemCard) and the Resumo do carrinho, or the empty state. */
 const itemsText = (n) => (n === 1 ? '1 item' : `${n} itens`);
@@ -712,8 +730,8 @@ $('add').onclick = () => {
 let cartClick = false;
 // "Entregar em": Seus endereços (a visitor: the search and the location, ADR 0002).
 $('deliver-change').onclick = () => (location.hash = 'endereco');
-// Header / conta: Minha conta (the Identificação comes first for a visitor, ticket 03).
-$('account-open').onclick = () => (location.hash = 'conta');
+// Header / conta: Minha conta, or Identifique-se for a visitor (back where it was, once identified).
+$('account-open').onclick = () => (location.hash = state.customer ? 'conta' : 'identificar');
 $('cart-open').onclick = () => {
   cartClick = location.hash !== '#carrinho';
   location.hash = 'carrinho';
@@ -823,6 +841,16 @@ const fromHash = () => {
   else if (state.screen === 'pedido' && !cartClick && /^(carrinho|checkout|endereco)/.test(hash)) go(state.category);
   cartClick = false;
   const inFlow = hash === 'endereco' || hash.startsWith('endereco/');
+  // Private pages (Minha conta and everything in it) need the Identificação first, then open; an identified client
+  // asking for Identifique-se gets Minha conta. The entry of Identifique-se notes where to go once identified:
+  // 'back' (opened by the header: the previous entry) or the private page asked for.
+  const privatePage = hash === 'conta' || hash.startsWith('conta/');
+  if (privatePage && !state.customer) {
+    const asked = hash;
+    go('identificar');
+    history.replaceState({ signin: asked }, '', '#identificar');
+  } else if (hash === 'identificar' && state.customer) go('conta');
+  else if (hash === 'identificar' && history.state?.signin === undefined) history.replaceState({ signin: started && state.screen !== 'identificar' ? 'back' : null }, '', '#identificar');
   if (hash === 'checkout' && (!state.cart.length || state.cart.some((c) => c.combo && !c.drink))) go('carrinho');
   // Within the session, a confirmed celular skips the Identificação. The address pages need neither the celular nor
   // the cart (ADR 0002): a visitor chooses the Endereço de entrega from the menu.
@@ -867,7 +895,7 @@ const fromHash = () => {
   scrollTo(0, now === 'cardapio' ? menuScroll : 0);
   if (!started) return;
   const back = menuFocus?.isConnected && menuFocus.checkVisibility?.() && menuFocus !== document.body ? menuFocus : $('cart-open');
-  (({ carrinho: $('cart-title'), checkout: $('checkout-title'), endereco: $(state.addressPage === 'buscar' ? 'address-query' : 'address-title'), pedido: $('order-title'), conta: $('account-title') })[now] ?? back).focus({ preventScroll: true });
+  (({ carrinho: $('cart-title'), checkout: $('checkout-title'), endereco: $(state.addressPage === 'buscar' ? 'address-query' : 'address-title'), pedido: $('order-title'), conta: $('account-title'), identificar: $('signin-title') })[now] ?? back).focus({ preventScroll: true });
 };
 // Voltar ao carrinho and Editar carrinho: back to the Carrinho (the previous history entry when the Checkout came from it).
 $('checkout-page').addEventListener('click', (e) => {

@@ -6,11 +6,21 @@ Spec: `.scratch/minha-conta-pedidos/spec.md`.
 
 **Blocked by:** 01
 
-**Status:** ready-for-agent
+**Status:** resolved
 
-- [ ] Telas 01–06 pelo header
-- [ ] Volta à origem ao fechar e ao confirmar
-- [ ] Novo cliente informa nome e e-mail
-- [ ] Páginas privadas protegidas
-- [ ] Identificação compartilhada com o Checkout nos dois sentidos
-- [ ] Testes Playwright
+- [x] Telas 01–06 pelo header
+- [x] Volta à origem ao fechar e ao confirmar
+- [x] Novo cliente informa nome e e-mail
+- [x] Páginas privadas protegidas
+- [x] Identificação compartilhada com o Checkout nos dois sentidos
+- [x] Testes Playwright
+
+## Answer
+
+**Página** `#identificar` (`#signin-page` em `prototype/index.html`): "Identifique-se" com "Fechar", o texto do Figma e a Identificação num card (`identificationStep`, a mesma do Checkout). Os handlers de celular, código, reenvio, canal, Alterar celular e cadastro saíram do Checkout para `bindIdentification(root, done)` em `main.js`, ligado ao Checkout (`done`: `#endereco`) e a Identifique-se (`done`: voltar).
+
+**Voltar:** a entrada de `#identificar` guarda `history.state.signin`: `'back'` quando aberta pelo header (identificado ou Fechar, `history.back()` à página de origem), a página privada pedida (identificado, abre ela; Fechar, a categoria) ou `null` (URL digitada: a categoria). O botão do header leva o visitante a `#identificar` e o identificado a `#conta`.
+
+**Páginas privadas:** `#conta` e `#conta/*` sem cliente vão a `#identificar` e, confirmado o celular, abrem. Identificado, `#identificar` leva a `#conta`.
+
+**Testes:** `tests/identifique-se.spec.js` (6 cenários × 2 projetos). Captura em `capturas/03-identifique-se-*.png`. Suíte completa: 427 passando e 1 falha de foco em `pedido.spec.js`, que passou ao rodar sozinho.

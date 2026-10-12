@@ -302,3 +302,7 @@ main[data-screen=pedido]{display:block;height:auto;min-height:0}
 /* Minha conta (ticket 04 builds its content). */
 .account-page{padding:36px max(40px,calc((100% - 1280px) / 2)) 48px;color:var(--title)}.account-page h1{margin:0;font-family:'Flame',Georgia,serif;font-size:40px;line-height:1.1}
 @media(max-width:1023px){.account-page{padding:24px 16px 32px}.account-page h1{font-size:28px}}
+/* Identifique-se (Figma Conta 01-06): the title with Fechar, the lead and the Identificação's card, 680px centred. */
+.signin-page{max-width:calc(680px + 32px);margin:0 auto;padding:48px 16px 64px;color:var(--title)}.signin-head{display:flex;align-items:center;justify-content:space-between;gap:16px}.signin-head h1{margin:0;font-family:'Flame',Georgia,serif;font-size:32px;line-height:1.1}
+.signin-head .secondary{height:48px;padding:0 22px;border-color:var(--border);background:var(--card);font-weight:normal;font-size:14px}.signin-lead{margin:20px 0 24px;font-size:15px}
+@media(max-width:1023px){.signin-page{padding:24px 16px 40px}.signin-head h1{font-size:28px}}
