@@ -105,7 +105,7 @@ Não há tela para "Pedido a caminho": segue a de "Pedido retirado", com a moto 
 | Situação | Resultado |
 | --- | --- |
 | Cliente cadastrado Mariana Silva ((61) 99999-1234) | Os dados de hoje em `checkout-fixtures.js`, mais o histórico abaixo |
-| #BK-10482 | Em andamento ("Pedido retirado"), Whopper + acompanhamento, R$ 78,80; aparece só quando não há Pedido da sessão em andamento |
+| #BK-10482 | Em andamento ("Pedido retirado", confirmado 21 min antes de a página carregar), Whopper em combo + Balde de Batata, R$ 77,70; aparece só quando não há Pedido da sessão em andamento |
 | #BK-10397 | Entregue em 8 de outubro, 12h24 → 13h02, R$ 121,50 |
 | #BK-10276 | Confirmado em 3 de outubro, 20h06, e cancelado pela loja em "Pedido em preparação" |
 | Novo cliente | Sem Pedidos; sem Endereços salvos; sem Cartões salvos |

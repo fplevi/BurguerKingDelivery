@@ -94,7 +94,7 @@ const locateIcon = icon(`<circle cx="12" cy="12" r="7" ${stroke}/><circle cx="12
 const clockIcon = icon(`<circle cx="12" cy="12" r="8.5" ${stroke} stroke-dasharray="3 2"/><path d="M12 7.5V12l3 2" ${stroke}/>`, 20);
 
 /** What the customer typed (the fields of an address, the name on a card, the Busca) as HTML text or a "…" attribute value. */
-const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+export const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
 /** The lines of an address after its street: "Bairro, Cidade" and "Complemento · Referência" (the empty ones left out), escaped. */
 const addressLines = (a) => [[a.district, a.city].filter(Boolean).join(', '), [a.complement, a.reference].filter(Boolean).join(' · ')].filter(Boolean).map(esc);

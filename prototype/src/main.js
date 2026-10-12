@@ -7,6 +7,8 @@ import { pixPending, cartLocked } from './state.js';
 import { pixStep, pixApprovedStep, pixClock } from './checkout.js';
 import { pixApproval, pixApprovedTime, pixCode } from './checkout-fixtures.js';
 import { categories, products } from './products.js';
+import { accountView, accountPages } from './account.js';
+import { ordersOf } from './orders.js';
 import { createBurgerScene } from './scene/burger-scene.js';
 import whopperPhoto from '../Assets/burgers/official/site_Whopper.png';
 import cheddarDuploPhoto from '../Assets/burgers/official/site_Cheddar_Duplo.png';
@@ -346,6 +348,12 @@ function render() {
   $('order-content').innerHTML = inOrder ? orderPage(shownOrder()) : '';
   if (inAddress) renderAddress();
   else $('address-content').replaceChildren();
+  // Minha conta: the title of the section and the navigation with its content.
+  if (inAccount && state.customer) {
+    const view = accountView(state, Date.now(), accountMenu);
+    $('account-title').textContent = view.title;
+    $('account-content').innerHTML = view.html;
+  } else $('account-content').replaceChildren();
   // Identifique-se (Figma Conta 01-06): the Identificação's forms in a card; Fechar above.
   if (inSignin) rebuild($('signin-content'), identificationStep(state.identification), '#id-name, #id-email');
   else $('signin-content').replaceChildren();
@@ -465,6 +473,20 @@ const leaveSignin = (identified) => {
   location.replace('#' + (identified && from ? from : state.category));
 };
 bindIdentification($('signin-content'), () => leaveSignin(true));
+// Minha conta. Below 1024px the navigation is a list opened by its button (closed again on choosing a section).
+let accountMenu = false;
+$('account-page').addEventListener('click', (e) => {
+  if (e.target.closest('[data-account-menu]')) {
+    accountMenu = !accountMenu;
+    render();
+    $('account-content').querySelector('[data-account-menu]').focus();
+  } else if (e.target.closest('[data-signout]')) {
+    // Sair: the menu, without the client; Back finds only the Identificação in front of Minha conta.
+    dispatch({ type: 'signOut' });
+    location.replace('#' + state.category);
+    toast('Você saiu da sua conta.');
+  } else if (e.target.closest('[data-stay]')) location.hash = 'conta';
+});
 $('signin-close').onclick = () => leaveSignin(false);
 
 /** Carrinho screen: the Itens (each one editable, see itemCard) and the Resumo do carrinho, or the empty state. */
@@ -827,6 +849,13 @@ let menuScroll = 0,
 // #checkout with an empty cart, or with a combo still without a drink (typed or reloaded: the cart lives in memory), shows the Carrinho.
 // Entering the Checkout: top of the page, focus on its title. From the Checkout back to the Carrinho, the Carrinho's way back to the menu stays as it was.
 let flowEntry = null; // the history entry of the address page shown, read on the next one
+/** A page of Minha conta: a section, or the acompanhamento of one of the client's Pedidos (#conta/pedidos/<id>). */
+const validAccount = (hash) => {
+  const [, page, id, more] = hash.split('/');
+  if (!page) return true;
+  if (page === 'pedidos' && id) return !more && ordersOf(state, Date.now()).some((o) => o.id === id);
+  return !id && page in accountPages && page !== 'inicio';
+};
 const fromHash = () => {
   // Back/Forward with Ver ingredientes open: cancel it first, as Esc does.
   if (state.editing) closeEditor('cancel');
@@ -849,7 +878,8 @@ const fromHash = () => {
     const asked = hash;
     go('identificar');
     history.replaceState({ signin: asked }, '', '#identificar');
-  } else if (hash === 'identificar' && state.customer) go('conta');
+  } else if (privatePage && !validAccount(hash)) go('conta');
+  else if (hash === 'identificar' && state.customer) go('conta');
   else if (hash === 'identificar' && history.state?.signin === undefined) history.replaceState({ signin: started && state.screen !== 'identificar' ? 'back' : null }, '', '#identificar');
   if (hash === 'checkout' && (!state.cart.length || state.cart.some((c) => c.combo && !c.drink))) go('carrinho');
   // Within the session, a confirmed celular skips the Identificação. The address pages need neither the celular nor
@@ -866,6 +896,7 @@ const fromHash = () => {
   else if ((hash === 'endereco/confirmar' && !state.addressPlace) || (hash === 'endereco/dados' && !state.addressPlace?.served)) go('endereco/buscar');
   const before = state.screen,
     beforePage = state.addressPage,
+    accountBefore = state.accountPage + state.accountOrder,
     beforeFlow = before === 'endereco' ? flowEntry : null;
   if (before === 'cardapio') [menuScroll, menuFocus] = [scrollY, document.activeElement];
   else openDrink = null;
@@ -891,7 +922,11 @@ const fromHash = () => {
   flowEntry = now === 'endereco' ? history.state : null;
   if (now === 'carrinho' && before !== 'checkout') fromMenu = before === 'cardapio' && started;
   if (now === 'checkout') fromCart = before === 'carrinho' && started;
-  if (now === before && (now !== 'endereco' || state.addressPage === beforePage)) return;
+  if (now === before && (now !== 'endereco' || state.addressPage === beforePage) && (now !== 'conta' || accountBefore === state.accountPage + state.accountOrder)) return;
+  if (now === 'conta') {
+    accountMenu = false;
+    render();
+  }
   scrollTo(0, now === 'cardapio' ? menuScroll : 0);
   if (!started) return;
   const back = menuFocus?.isConnected && menuFocus.checkVisibility?.() && menuFocus !== document.body ? menuFocus : $('cart-open');
@@ -1128,7 +1163,7 @@ function confirmPayment() {
   $('checkout-content').querySelector('.processing-step').focus();
   setTimeout(() => {
     const orders = state.orders.length;
-    dispatch({ type: 'payResult' });
+    dispatch({ type: 'payResult', now: Date.now() });
     if (state.orders.length > orders) confirmed(state.orders.at(-1).id);
     else if (state.screen !== 'checkout') toast('Não conseguimos aprovar o pagamento.', { text: 'Voltar ao pagamento', href: '#checkout' });
     // The action on screen: the Resumo do pedido's, or the fixed footer's below 1024px.
@@ -1174,7 +1209,7 @@ function approvePix() {
   pixTimers.push(
     setTimeout(() => {
       const orders = state.orders.length;
-      dispatch({ type: 'pixConfirm' });
+      dispatch({ type: 'pixConfirm', now: Date.now() });
       if (state.orders.length > orders) confirmed(state.orders.at(-1).id);
     }, pixApprovedTime),
   );
