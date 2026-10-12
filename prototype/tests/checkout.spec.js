@@ -81,13 +81,11 @@ test('Voltar ao carrinho, Editar carrinho e o Voltar do navegador levam ao Carri
   await expect(page.getByRole('heading', { name: 'Escolha seu acompanhamento' })).toBeVisible();
 });
 
-test('o cabeçalho perde o "Entregar em" só no Checkout, sem categoria ativa', async ({ page }) => {
-  await expect(page.getByRole('banner').getByText('Entregar em')).toBeVisible();
+test('o Checkout não tem categoria ativa no cabeçalho', async ({ page }) => {
   await irAoCheckout(page);
-  await expect(page.getByRole('banner').getByText('Entregar em')).toBeHidden();
   await expect(categorias(page).locator('[aria-current]')).toHaveCount(0);
   await checkout(page).getByRole('button', { name: 'Voltar ao carrinho' }).click();
-  await expect(page.getByRole('banner').getByText('Entregar em')).toBeVisible();
+  await expect(carrinho(page)).toBeVisible();
 });
 
 test('#checkout pelo endereço, ou com o carrinho vazio, mostra o Carrinho', async ({ page }) => {

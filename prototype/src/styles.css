@@ -56,10 +56,15 @@ header{height:90px;display:flex;align-items:center;gap:24px;padding:0 max(40px,c
 .location{display:flex;align-items:center;gap:10px;height:48px;padding:0 12px 0 14px;border-radius:8px;background:var(--neutral);color:var(--brown);font-size:15.8px;white-space:nowrap}
 .location small{display:block;font-size:12px;margin-bottom:3px}.location b{display:block;font-weight:400}.location .icon{flex-shrink:0}
 nav{display:flex;gap:36px;margin:0 auto;font-size:15.6px}nav a{padding:6px 0;border-bottom:2px solid transparent;white-space:nowrap}nav a[aria-current=page]{border-color:var(--red)}
-.cart-button{display:flex;align-items:center;gap:24px;border:0;background:none;color:var(--brown);font-size:15.6px;padding:6px}
+/* Header / conta (Figma 318-11114, 318-11541): the Carrinho, icon only, then Identifique-se (outlined pill, 34px) or the first name (48px). */
+.cart-button{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border:0;background:none;color:var(--brown);padding:0}
 .cart-icon{position:relative;display:block;height:32px}.cart-icon svg{display:block}
+.account-button{display:flex;align-items:center;gap:8px;height:34px;max-width:180px;padding:0 13px;border:1px solid var(--brown);border-radius:17px;background:none;color:var(--brown);font-size:14px;white-space:nowrap}.account-button .icon{flex-shrink:0}
+.account-button.identified{height:48px;padding:0 24px;border-color:var(--border);border-radius:24px;background:var(--card)}
+.account-name{overflow:hidden;text-overflow:ellipsis}
+header .cart-button+.account-button{margin-left:-8px}
 .cart-count{position:absolute;right:-8px;top:-6px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:var(--red);color:var(--cream);font-size:11px;line-height:20px;text-align:center}
-@media(max-width:1023px){header{height:auto;flex-wrap:wrap;gap:12px;padding:21px 16px 0}.logo img{width:42px;height:46px}.location{flex:1;min-width:0;font-size:13px}.location span{min-width:0}.location b{overflow:hidden;text-overflow:ellipsis}.cart-button{margin-left:auto;width:44px;height:44px;justify-content:center;padding:0}.cart-label{display:none}nav{order:3;flex:0 0 calc(100% + 32px);margin:9px -16px 0;padding:0 20px;gap:36px;overflow-x:auto;scrollbar-width:none;height:48px;align-items:center}}
+@media(max-width:1023px){header{height:auto;flex-wrap:wrap;gap:12px;padding:21px 16px 0}.logo img{width:42px;height:46px}.location{flex:1;min-width:0;font-size:13px}.location span{min-width:0}.location b{overflow:hidden;text-overflow:ellipsis}.cart-button{margin-left:auto}.account-button{max-width:150px}nav{order:3;flex:0 0 calc(100% + 32px);margin:9px -16px 0;padding:0 20px;gap:36px;overflow-x:auto;scrollbar-width:none;height:48px;align-items:center}}
 /* Hero: title and purchase card on the left, the 3D burger with Ver ingredientes and the description on the right. */
 .stage{position:relative;perspective:1000px}
 .hero{display:grid;grid-template-columns:424px minmax(0,1fr);gap:32px;padding:58px 40px 30px;background:var(--hero);color:var(--title)}
@@ -289,3 +294,6 @@ main[data-screen=pedido]{display:block;height:auto;min-height:0}
 @media(max-width:1023px){.checkout-page:has(.pay-bar){padding-bottom:168px}.order-summary .pay-action{display:none}.order-summary .pay-note{margin-top:20px}.pay-bar{display:flex;flex-direction:column;gap:16px;position:fixed;z-index:20;left:0;right:0;bottom:0;background:var(--cream);border-top:1px solid var(--border);box-shadow:0 -6px 18px #6b2a0014;padding:20px 16px calc(16px + env(safe-area-inset-bottom))}.pay-bar p{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:0;font-size:13px}.pay-bar strong{font-family:'Flame',Georgia,serif;font-size:24px;white-space:nowrap}.pay-bar .primary{width:100%;height:52px;font-size:16px}}
 /* … and the main action of the address flow (Figma "Entrega / ação fixa"). */
 @media(max-width:1023px){.checkout-page:has(.address-action){padding-bottom:116px}.address-action{position:fixed;z-index:20;left:0;right:0;bottom:0;margin:0;background:var(--cream);border-top:1px solid var(--border);box-shadow:0 -6px 18px #6b2a0014;padding:16px 16px calc(16px + env(safe-area-inset-bottom))}main:has(.address-action)~.toast{bottom:104px}main:has(.pay-bar)~.toast{bottom:172px}}
+/* Minha conta (ticket 04 builds its content). */
+.account-page{padding:36px max(40px,calc((100% - 1280px) / 2)) 48px;color:var(--title)}.account-page h1{margin:0;font-family:'Flame',Georgia,serif;font-size:40px;line-height:1.1}
+@media(max-width:1023px){.account-page{padding:24px 16px 32px}.account-page h1{font-size:28px}}

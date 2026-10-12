@@ -1,6 +1,6 @@
 import { recipes, layer, description, removedLine } from './ingredients.js';
 import { art } from './art.js';
-import { initial, reducer, money, marks, drinks, pick, itemTotal, itemName, cartUnits, cartTotal, savedAddress } from './state.js';
+import { restore, sessionData, reducer, money, marks, drinks, pick, itemTotal, itemName, cartUnits, cartTotal, savedAddress } from './state.js';
 import { progress, orderSummary, identificationStep, sentTo, addressFlow, lockNotice, deliveryCard, paymentStep, paymentAction, paymentBar, processingStep, orderPage, mapSize, mapCenter } from './checkout.js';
 import { processingTime } from './checkout-fixtures.js';
 import { pixPending, cartLocked } from './state.js';
@@ -18,13 +18,32 @@ import cheeseburgerPhoto from '../Assets/burgers/official/site_Cheeseburger.png'
 import rodeioPhoto from '../Assets/burgers/official/site_Rodeio.png';
 // Prototype question: can layered ingredients support opening, removal, restoration and order customization?
 
-let state = initial;
+// Sessão: restored from sessionStorage (the tab's), and saved after every change; storage refused (private mode), memory only.
+const sessionKey = 'bk-sessao';
+const readSession = () => {
+  try {
+    return JSON.parse(sessionStorage.getItem(sessionKey));
+  } catch {
+    return null;
+  }
+};
+let state = restore(readSession());
+let savedSession = '';
+function saveSession() {
+  const data = JSON.stringify(sessionData(state));
+  if (data === savedSession) return;
+  savedSession = data;
+  try {
+    sessionStorage.setItem(sessionKey, data);
+  } catch {}
+}
 const $ = (id) => document.getElementById(id);
 /** Receita of the selected product, and the name of one of its Camadas. */
 const recipe = () => recipes[state.product];
 const name = (id, r = recipe()) => layer(r, id).name;
 function dispatch(action) {
   state = reducer(state, action);
+  saveSession();
   render();
 }
 
@@ -210,6 +229,7 @@ function render() {
     inCheckout = state.screen === 'checkout',
     inAddress = state.screen === 'endereco',
     inOrder = state.screen === 'pedido',
+    inAccount = state.screen === 'conta',
     inMenu = state.screen === 'cardapio';
   document
     .querySelectorAll('nav a')
@@ -220,8 +240,13 @@ function render() {
   $('checkout-page').hidden = !inCheckout;
   $('address-page').hidden = !inAddress;
   $('order-page').hidden = !inOrder;
-  // "Entregar em" leaves the header in the Checkout and the address pages.
-  document.querySelector('header .location').hidden = inCheckout || inAddress || inOrder;
+  $('account-page').hidden = !inAccount;
+  // Header / conta: Identifique-se, or the identified client's first name (ellipsis when long).
+  const firstName = state.customer?.name.split(/\s+/)[0] ?? '';
+  $('account-name').textContent = firstName || 'Identifique-se';
+  $('account-open').classList.toggle('identified', !!firstName);
+  if (firstName) $('account-open').setAttribute('aria-label', `Minha conta · ${firstName}`);
+  else $('account-open').removeAttribute('aria-label');
   // Processing the card: the whole screen is disabled (header, Voltar ao carrinho, Editar carrinho) until the result.
   const processing = inCheckout && (state.order?.status === 'processing' || state.order?.pix === 'approved');
   document.querySelector('header').inert = processing;
@@ -673,6 +698,8 @@ $('add').onclick = () => {
 };
 // From the Pedido confirmado, the header's Carrinho opens the (empty) Carrinho; Back from there goes to the menu (fromHash).
 let cartClick = false;
+// Header / conta: Minha conta (the Identificação comes first for a visitor, ticket 03).
+$('account-open').onclick = () => (location.hash = 'conta');
 $('cart-open').onclick = () => {
   cartClick = location.hash !== '#carrinho';
   location.hash = 'carrinho';
@@ -823,7 +850,7 @@ const fromHash = () => {
   scrollTo(0, now === 'cardapio' ? menuScroll : 0);
   if (!started) return;
   const back = menuFocus?.isConnected && menuFocus.checkVisibility?.() && menuFocus !== document.body ? menuFocus : $('cart-open');
-  (({ carrinho: $('cart-title'), checkout: $('checkout-title'), endereco: $(state.addressPage === 'buscar' ? 'address-query' : 'address-title'), pedido: $('order-title') })[now] ?? back).focus({ preventScroll: true });
+  (({ carrinho: $('cart-title'), checkout: $('checkout-title'), endereco: $(state.addressPage === 'buscar' ? 'address-query' : 'address-title'), pedido: $('order-title'), conta: $('account-title') })[now] ?? back).focus({ preventScroll: true });
 };
 // Voltar ao carrinho and Editar carrinho: back to the Carrinho (the previous history entry when the Checkout came from it).
 $('checkout-page').addEventListener('click', (e) => {
