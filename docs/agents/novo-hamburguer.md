@@ -15,6 +15,7 @@ Referência para renderizar um hambúrguer além do Whopper (tickets em `.scratc
 - Tom: pão dourado-marrom com tostado irregular e brilho fosco (`clearcoat` baixo); carne com marcas de chapa discretas. Mapeamento de tons **Neutral** (o ACES desbotava os pães).
 - Cada camada fica dentro de um grupo próprio, e a cena só mexe nesse grupo. Zerar a rotação do modelo fez o queijo perder o losango (regressão do ticket 09, achada só na revisão do 05).
 - A rodada extra de realismo (ticket 12) foi excluída: a qualidade atual basta para a proposta.
+- Camada repetida (duas carnes, dois cheddars) gira o modelo com `turn` na receita, para não ficar idêntica; o que acompanha o contorno da carne (o cheddar de cima) gira junto (ticket 14).
 
 ## Desempenho (já medido no Whopper)
 

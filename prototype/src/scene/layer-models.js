@@ -36,6 +36,7 @@ import {
   SRGBColorSpace,
 } from 'three';
 import { mergeGeometries, mergeVertices } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
+import { MEAT_FACE_UV } from './texture-recipes.js';
 import { fbm, random, crustBump, crumb, grilledMeat, tomatoSlice, pickleSlice, lettuceLeaf, friedOnion } from './textures.js';
 
 const generated = new Map(); // key -> the first geometry generated for it
@@ -91,7 +92,7 @@ const arc = (cx, cy, radius, a0, a1, count) =>
 /**
  * Revolves a profile ([r, y] pairs, bottom centre -> top centre) into a mesh geometry.
  * `shape(x, y, z, j)` returns the displaced vertex (j = profile index); `paint(x, y, z, j)`
- * returns an sRGB colour [0..255] for vertex colours; `uv(x, y, z)` overrides the UVs.
+ * returns an sRGB colour [0..255] for vertex colours; `uv(x, y, z, j)` overrides the UVs.
  * Normals are recomputed after displacement and welded across the seam.
  */
 function revolve(profile, { segments = 96, shape, paint, uv } = {}) {
@@ -107,7 +108,7 @@ function revolve(profile, { segments = 96, shape, paint, uv } = {}) {
     let x = position.getX(i), y = position.getY(i), z = position.getZ(i);
     if (shape) [x, y, z] = shape(x, y, z, j);
     position.setXYZ(i, x, y, z);
-    if (uv) uvs.setXY(i, ...uv(x, y, z));
+    if (uv) uvs.setXY(i, ...uv(x, y, z, j));
     if (colors) {
       const [r, g, b] = paint(x, y, z, j);
       color.setRGB(r / 255, g / 255, b / 255, SRGBColorSpace);
@@ -298,21 +299,35 @@ function bottomBun() {
   return group;
 }
 
-// Carne: flame-grilled patty, irregular edge, seared rim, char marks on top and bottom.
-const MEAT_HEIGHT = 0.19;
+// Carne: flame-grilled patty with flat faces (only lumps on them), a near-vertical crusty side
+// and a crisp edge (ticket 14); irregular outline; char marks on top and bottom that turn over
+// the edges. The texture is an atlas (texture-recipes.js): both faces map to its middle disc,
+// the side, from the top edge to the bottom edge, to the ring around it.
+const MEAT_HEIGHT = 0.16;
 const MEAT_RADIUS = 1.05;
 
 function patty() {
   const R = MEAT_RADIUS;
   const H = MEAT_HEIGHT;
-  const edge = 0.07;
-  const rings = [0, 0.15, 0.3, 0.45, 0.6, 0.72, 0.82, 0.88];
-  const profile = [
-    ...rings.map((f) => [f * (R - edge), 0]),
-    ...arc(R - edge, edge, edge, -Math.PI / 2, 0, 6),
-    [R * 1.01, H * 0.5],
-    ...arc(R - edge, H - edge, edge, 0, Math.PI / 2, 6),
-    ...[...rings].reverse().map((f) => [f * (R - edge), H]),
+  const edge = 0.02;
+  const rings = [0, 0.15, 0.3, 0.45, 0.6, 0.72, 0.82, 0.9, 0.96];
+  const sideRows = 8;
+  const bottomFace = rings.map((f) => [f * (R - edge), 0]);
+  const side = [
+    ...arc(R - edge, edge, edge, -Math.PI / 2, 0, 4),
+    ...Array.from({ length: sideRows - 1 }, (_, k) => [R, edge + ((k + 1) / sideRows) * (H - 2 * edge)]),
+    ...arc(R - edge, H - edge, edge, 0, Math.PI / 2, 4),
+  ];
+  const topFace = [...rings].reverse().map((f) => [f * (R - edge), H]);
+  const profile = [...bottomFace, ...side, ...topFace];
+  // Texture radius of each profile point: the faces by their radius over the middle disc, the
+  // side by its length from the top edge over the ring around it.
+  const along = [0];
+  for (let k = side.length - 1; k > 0; k--) along.unshift(along[0] + Math.hypot(side[k][0] - side[k - 1][0], side[k][1] - side[k - 1][1]));
+  const uvRadius = [
+    ...rings.map((f) => f * MEAT_FACE_UV),
+    ...along.map((l) => MEAT_FACE_UV + (0.5 - MEAT_FACE_UV) * (l / along[0])),
+    ...[...rings].reverse().map((f) => f * MEAT_FACE_UV),
   ];
   const geometry = shared('meat', () => revolve(profile, {
     segments: 128,
@@ -322,18 +337,23 @@ function patty() {
       // Ragged, crumbly edge: coarse wobble plus fine bites, stronger at mid-height.
       const coarse = fbm(Math.cos(a) * 2.5 + 1, Math.sin(a) * 2.5, y * 3, { octaves: 3, seed: 51 }) - 0.5;
       const fine = fbm(Math.cos(a) * 14, Math.sin(a) * 14, y * 18, { octaves: 2, seed: 52 }) - 0.5;
-      const s = 1 + smoothstep(0.55, 0.95, r) * (coarse * 0.09 + fine * 0.05);
-      // Lumpy faces, slightly domed (the patty shrinks at the edge while grilling).
+      // The side: barely bulging, rough with small crust lumps.
+      const wall = smoothstep(0.97, 0.995, r);
+      const bulge = 0.008 * Math.sin(Math.PI * Math.min(Math.max(y / H, 0), 1));
+      const crust = 0.012 * (fbm(Math.cos(a) * 20, Math.sin(a) * 20, y * 30, { octaves: 2, seed: 54 }) - 0.5) * 2;
+      const s = 1 + smoothstep(0.55, 0.95, r) * (coarse * 0.09 + fine * 0.05) + wall * (bulge + crust) / R;
+      // Flat, lumpy faces.
       const lumps = (fbm(x * 5, z * 5, 0, { octaves: 3, seed: 53 }) - 0.5) * 0.03;
-      const dome = 0.012 * (1 - r * r);
-      const top = y > H / 2;
-      const dy = top ? lumps + dome : -lumps * 0.5 - dome * 0.3;
-      return [x * s, y + dy * (r < 0.98 ? 1 : 0.3), z * s];
+      const dy = y > H / 2 ? lumps : -lumps * 0.5;
+      return [x * s, y + dy * (r < 0.97 ? 1 : 0.3), z * s];
     },
-    uv: (x, y, z) => [x / (2.3 * R) + 0.5, z / (2.3 * R) + 0.5],
+    uv: (x, y, z, j) => {
+      const a = Math.atan2(z, x);
+      return [0.5 + Math.cos(a) * uvRadius[j], 0.5 + Math.sin(a) * uvRadius[j]];
+    },
   }));
   const { map, roughnessMap, bumpMap } = grilledMeat();
-  const meat = new MeshStandardMaterial({ map, roughnessMap, bumpMap, bumpScale: 3, roughness: 1 });
+  const meat = new MeshStandardMaterial({ map, roughnessMap, bumpMap, bumpScale: 4, roughness: 1 });
   // Lift so the lowest lumps rest on y = 0.
   return mesh(geometry, meat, 0.006);
 }
@@ -594,21 +614,19 @@ function onion() {
   }), mat);
 }
 
-// Cheddar (Cheddar Duplo): a thick slab of soft melted cheddar, more orange and more liquid
-// than the Whopper's slice. A glossy body over the patty whose edge is a fat rounded lip that
-// rolls over the patty's edge and runs down the side in drips like thick goo. One smooth grid
-// around the burger: rings over the top, then a curtain from the rim (the lip, then the
-// drips) that curls back in under itself at its bottom edge, so the edge reads as a body, not
-// a sheet. Each drip leaves the lip through wide concave fillets (no crease), narrows into a
-// neck and ends in a rounded, slightly bulbous drop: the curtain's columns under a drip are
-// pulled in towards the drip's centre line, so the grid follows the drip's outline instead of
-// being cut by it. Columns are denser under the drips. The outline follows the patty's own
-// broad lumps, a little past it all round (a few % of its radius), with gentle lumps of its
-// own; the drips stay within the patty's height. Each Camada (cheddar1, cheddar2) gets its
-// own outline and drips, from a seed fixed by its id.
-const CHEDDAR_HEIGHT = 0.07;
-const CHEDDAR_ROLL = 0.06; // drop over which the sauce rolls out over the patty's rounded edge
-const CHEDDAR_LIP = 0.032; // radius of the rounded lip at the slab's edge
+// Cheddar (Cheddar Duplo): soft, gooey melted cheddar (ticket 14), not a disc. A thin body
+// with a fatter rounded bead along every edge (as melted cheese gathers at its rim), covering
+// most of the patty but not all: its outline recedes inside the patty's edge in places and,
+// where it poured over, rolls over the edge and runs down the side in a few soft drips (a neck
+// and a rounded drop, joined to the edge by wide fillets). A few holes in the middle, with the
+// same rounded bead, show the meat. The shape is a smooth signed field over the patty
+// (positive inside: smooth unions and differences of the outline, the drips and the holes); a
+// polar grid is cut to it, its border vertices snapped onto the field's zero line, and the
+// sheet is draped over the patty's edge, its thickness laid along the surface's normal. Each
+// Camada (cheddar1, cheddar2) gets its own outline, drips and holes, from a seed fixed by its id.
+const CHEDDAR_HEIGHT = 0.05;
+const CHEDDAR_BODY = 0.028; // the body's thickness
+const CHEDDAR_BEAD = 0.02; // how much fatter the rim's bead is
 
 /** The patty's side radius at angle a, at mid-height: its broad wobble, without the fine bites. */
 const pattyEdge = (a) => {
@@ -616,172 +634,154 @@ const pattyEdge = (a) => {
   return MEAT_RADIUS * 1.01 * (1 + coarse * 0.09);
 };
 
-/** A drip's outline, below the lip: half-width (radians, ~world units at the rim) by depth z. */
-function dripOutline({ width: w, length: l }) {
-  const rb = Math.min(0.6 * w, 0.4 * l); // the drop at the end: a full round bead
-  const neck = 0.52 * rb, zc = l - rb, zf = 0.6 * zc, k = 0.7 * rb;
-  const bulb = (z) => Math.sqrt(Math.max(0, rb * rb - (z - zc) ** 2));
-  const halfWidth = (z) => {
-    if (z >= zc) return bulb(z);
-    // Concave fillet (a quarter ellipse) from the lip's full width down to the neck, which
-    // then eases (cosine) a little thinner before a wide, soft union with the drop.
-    const f = Math.min(z / zf, 1);
-    const n = z <= zf ? w - (w - neck) * Math.sqrt(1 - (1 - f) ** 2) : neck * (1 - 0.06 * (1 - Math.cos((Math.PI * (z - zf)) / (zc - zf))));
-    const b = bulb(z), h = Math.max(k - Math.abs(n - b), 0) / k;
-    return Math.max(n, b) + (h * h * k) / 4;
-  };
-  // The outline by arc length (0 at the lip, 1 at the tip), so the columns under the drip end
-  // evenly spaced along it.
-  const steps = 128, zs = [], ss = [0];
-  for (let i = 0; i <= steps; i++) {
-    zs.push(l * (i / steps) ** 2);
-    if (i) ss.push(ss[i - 1] + Math.hypot(halfWidth(zs[i]) - halfWidth(zs[i - 1]), zs[i] - zs[i - 1]));
-  }
-  for (let i = 0; i <= steps; i++) ss[i] /= ss[steps];
-  const lerp = (xs, ys, x) => {
-    let lo = 0, hi = steps;
-    while (hi - lo > 1) { const m = (lo + hi) >> 1; if (xs[m] <= x) lo = m; else hi = m; }
-    const t = xs[hi] > xs[lo] ? Math.min(Math.max((x - xs[lo]) / (xs[hi] - xs[lo]), 0), 1) : 0;
-    return ys[lo] + (ys[hi] - ys[lo]) * t;
-  };
-  return { halfWidth, zf, rb, depthAt: (s) => lerp(ss, zs, s), lengthAt: (z) => lerp(zs, ss, z) };
-}
+/** Smooth minimum (k: the blend's width): a soft intersection of two signed fields. */
+const smin = (a, b, k) => {
+  const h = Math.max(k - Math.abs(a - b), 0) / k;
+  return Math.min(a, b) - (h * h * k) / 4;
+};
+/** Smooth maximum: a soft union. */
+const smax = (a, b, k) => -smin(-a, -b, k);
 
 function cheddar(camada = {}) {
   const id = camada.id ?? 'cheddar';
   const geometry = shared(`cheddar:${id}`, () => {
     const seed = [...id].reduce((h, c) => (h * 31 + c.charCodeAt(0)) % 9973, 7);
     const rnd = random(seed);
-    const count = 8;
-    const drips = Array.from({ length: count }, (_, k) => ({
-      a: ((k + 0.15 + rnd() * 0.7) / count) * Math.PI * 2,
-      width: 0.075 + rnd() * 0.06, // half-width at the lip, radians (~1 cm at the patty's edge)
-      // Below the lip, at most down to about three quarters of the patty's side.
-      length: 0.065 + rnd() ** 1.2 * 0.065,
-    }));
-    // Neighbours never overlap, so each column belongs to one drip at most.
+    const wave = (a, k, s) => (fbm(Math.cos(a) * k + seed, Math.sin(a) * k, s, { octaves: 2, seed: 72 + s }) - 0.5) * 2;
     const wrap = (a) => Math.atan2(Math.sin(a), Math.cos(a));
-    drips.forEach((d, k) => {
-      const gap = (o) => Math.abs(wrap(drips[(k + o + count) % count].a - d.a));
-      d.width = Math.min(d.width, 0.45 * gap(-1), 0.45 * gap(1));
-      Object.assign(d, dripOutline(d));
-  });
-  const base = 2 * CHEDDAR_LIP + 0.012; // the lip's own drop, where there is no drip
-  // The outline follows the patty's broad lumps, with gentle bulges and recesses of its own
-  // (where the sauce spread a little further or less); how far the lip rolls out past the
-  // patty also varies by angle. The lip's outer edge ends up ~2-6% past the patty's side.
-  const wave = (a, k, octaves, s) => (fbm(Math.cos(a) * k + seed, Math.sin(a) * k, s, { octaves, seed: 72 + s }) - 0.5) * 2;
-  const rim = (a) => pattyEdge(a) - 0.012 + 0.01 * wave(a, 2.7, 2, 7) + 0.005 * wave(a, 5, 2, 3);
-  const spread = (a) => smoothstep(-0.45, 0.45, wave(a, 1.8, 2, 5));
-  const reachAt = (a) => 0.006 + 0.016 * spread(a); // how far the lip rolls out past the rim
+    const scale = MEAT_HEIGHT / 0.19;
 
-  // Column angles: about three and a half times denser under the drips than along the bare lip.
-  const segments = 240, fine = 2048, cdf = [0];
-  const density = (a) => 1 + 2.5 * drips.reduce((m, d) => Math.max(m, smoothstep(1.25, 0.95, Math.abs(wrap(a - d.a)) / d.width)), 0);
-  for (let i = 1; i <= fine; i++) cdf.push(cdf[i - 1] + density(((i - 0.5) / fine) * Math.PI * 2));
-  const angles = [];
-  for (let j = 0, i = 0; j <= segments; j++) {
-    const target = (j / segments) * cdf[fine];
-    while (i < fine - 1 && cdf[i + 1] < target) i++;
-    angles.push(j === segments ? Math.PI * 2 : ((i + (target - cdf[i]) / (cdf[i + 1] - cdf[i])) / fine) * Math.PI * 2);
-  }
+    // Where it poured over the edge (> 0) or stopped short of it (< 0): broad, uneven.
+    const over = (a) => 0.11 * wave(a, 1.6, 5) + 0.035 * wave(a, 4.5, 3) + 0.01;
+    const bend = 0.03; // the roll over the patty's edge
+    const hangR = (a) => pattyEdge(a) + 0.02; // just clear of the side's crust
+    const outline = (a) => hangR(a) - bend + over(a);
 
-  // Curtain rows: `lipRows` over the lip, `tipRows` over the curled bottom edge, the rest between.
-  const top = 12, lipRows = 7, tipRows = 7, curtain = lipRows + 13 + tipRows;
-  const shoulder = 0.008;
-  const positions = [], colours = [], indices = [];
-  const colour = new Color();
-  for (let i = 0; i <= top + curtain; i++)
-    for (let j = 0; j <= segments; j++) {
-      let a = angles[j];
-      let r, y, drop = 0;
-      if (i <= top) {
-        // The top: nearly flat, pooled ripples, a soft shoulder just before the rim.
-        const f = i / top;
-        r = rim(a) * f;
-        const ripple = 0.009 * (fbm(Math.cos(a) * r * 4 + seed, Math.sin(a) * r * 4, 0, { octaves: 2, seed: 73 }) - 0.5) * 2;
-        y = CHEDDAR_HEIGHT + ripple * (1 - f) - shoulder * smoothstep(0.8, 1, f);
-      } else {
-        // The curtain: a fat rounded lip that rolls outward over the edge and hangs down in the
-        // drips, each round in section and fattest at its drop, then curls back in under itself.
-        const d = drips.find((D) => Math.abs(wrap(a - D.a)) < D.width);
-        const u = d ? wrap(a - d.a) / d.width : 0; // -1..1 across the drip at the lip
-        // The lip hangs a little lower where it rolls further out, so it stays round.
-        const reach = reachAt(a);
-        const lipDrop = base + 0.35 * reach;
-        const hang = d ? lipDrop + d.depthAt(1 - Math.abs(u)) : lipDrop;
-        // The bottom edge rounds off under itself in a quarter ellipse, about as tall as the
-        // drop's radius (or the lip's), so it has no crease.
-        const tip = Math.min(Math.max(CHEDDAR_LIP * 1.3, d ? d.rb * 1.1 : 0), hang * 0.5);
-        const k = i - top, roll = Math.max(k - (curtain - tipRows), 0) / tipRows * (Math.PI / 2);
-        // Over the lip the rows follow a quarter circle (level with the top where it leaves
-        // it, upright where it starts to hang), so the lip is round, not bevelled.
-        const theta = (Math.min(k, lipRows) / lipRows) * (Math.PI / 2);
-        drop = k <= lipRows
-          ? CHEDDAR_LIP * (1 - Math.cos(theta))
-          : k >= curtain - tipRows
-            ? hang - tip + Math.sin(roll) * tip
-            : CHEDDAR_LIP + ((k - lipRows) / (curtain - tipRows - lipRows)) * (hang - tip - CHEDDAR_LIP);
-        let body = 0, hug = 0;
-        const z = drop - lipDrop;
-        if (d && z > 0) {
-          // Below the lip the column keeps its place across the drip's (narrower) width there.
-          const across = 1 - d.lengthAt(z);
-          const t = across > 1e-6 ? Math.min(Math.max(u / across, -1), 1) : 0;
-          const half = d.halfWidth(z);
-          a = d.a + t * half;
-          // Round in section (a full half circle where it has filled out), plumpest at the drop.
-          body = 0.9 * half * Math.sqrt(Math.max(1 - t * t, 0)) * smoothstep(0, d.zf, z);
-          hug = 0.85 * smoothstep(0, d.length, z);
-        }
-        const lip = CHEDDAR_LIP * Math.sin(theta);
-        const out = reachAt(a) * Math.sin(Math.min(drop / CHEDDAR_ROLL, 1) * (Math.PI / 2));
-        const curl = Math.cos(roll);
-        // A drip leans back against the patty's side as it falls, and curls back in only to
-        // just behind its front, so it stays round in section.
-        const edge = rim(a), lean = Math.max(pattyEdge(a) + 0.008 - edge, 0.012);
-        const front = (lip + out) * (1 - hug) + lean * hug + body, back = Math.max(lean - 0.012, 0) * hug;
-        r = edge + back + (front - back) * curl;
-        y = CHEDDAR_HEIGHT - shoulder - drop;
+    // Drips only where it poured over: a neck and a rounded drop, in (across, down) from the outline.
+    const drips = [];
+    const wanted = 3 + Math.floor(rnd() * 3);
+    for (let tries = 0; drips.length < wanted && tries < 200; tries++) {
+      const a = rnd() * Math.PI * 2;
+      if (over(a) < 0.015 || drips.some((d) => Math.abs(wrap(d.a - a)) < 0.45)) continue;
+      const drop = 0.02 + rnd() * 0.012;
+      drips.push({ a, drop, neck: drop * (0.55 + rnd() * 0.15), length: (0.09 + rnd() * 0.08) * scale, R: 0 });
+    }
+    for (const d of drips) d.R = outline(d.a);
+    // Holes in the middle: irregular, soft (their own draws, so they don't move with the drips).
+    const pick = random(seed + 1);
+    const holes = Array.from({ length: 2 + Math.floor(pick() * 3) }, (_, k) => {
+      const [x, z] = polar(((k + 0.2 + pick() * 0.6) / 4) * Math.PI * 2, 0.2 + pick() * 0.45);
+      return { x, z, radius: 0.1 + pick() * 0.1, phase: pick() * 6, lobes: 2 + Math.floor(pick() * 3) };
+    });
+
+    /** Signed field: > 0 inside the cheese, ~ distance to its edge (flat, before draping). */
+    const field = (x, z, rim) => {
+      const r = Math.hypot(x, z), a = Math.atan2(z, x);
+      let s = (rim ?? outline(a)) - r;
+      for (const d of drips) {
+        const across = wrap(a - d.a) * d.R, down = r - d.R;
+        if (Math.abs(across) > 0.15) continue;
+        const t = Math.min(Math.max(down, -0.03), d.length - d.drop);
+        const neck = d.neck - Math.hypot(across, down - t);
+        const end = d.drop - Math.hypot(across, down - (d.length - d.drop));
+        s = smax(s, smax(neck, end, 0.02), 0.035);
       }
-      const c = Math.cos(a), s = Math.sin(a);
-      positions.push(c * r, y, s * r);
-      // Deeper orange where it runs thick, slightly yellower thin over the top; mottled.
-      const mottle = fbm(c * r * 6 + seed, s * r * 6, y * 6, { octaves: 2, seed: 74 });
-      const deep = smoothstep(0, 0.13, drop);
-      colour.setRGB(
-        (250 - deep * 20) / 255,
-        (172 - deep * 52 + (mottle - 0.5) * 22) / 255,
-        0,
-        SRGBColorSpace,
-      );
-      colours.push(colour.r, colour.g, colour.b);
+      for (const h of holes) {
+        const dx = x - h.x, dz = z - h.z;
+        const radius = h.radius * (1 + 0.25 * Math.sin(Math.atan2(dz, dx) * h.lobes + h.phase));
+        s = smin(s, Math.hypot(dx, dz) - radius, 0.04);
+      }
+      return s;
+    };
+
+    // Polar grid, finer near and past the patty's edge, where the drips are. The outline is
+    // read once per column.
+    const segments = 480;
+    const radii = [];
+    for (let i = 0; i <= 24; i++) radii.push((i / 24) * 0.84);
+    for (let i = 1; i <= 44; i++) radii.push(0.84 + (i / 44) * 0.42);
+    const row = segments + 1, count = row * radii.length;
+    const rims = Array.from({ length: row }, (_, j) => outline((j / segments) * Math.PI * 2));
+    const flat = new Float32Array(count * 2), sign = new Float32Array(count);
+    for (let i = 0; i < radii.length; i++)
+      for (let j = 0; j <= segments; j++) {
+        const v = i * row + j;
+        const [x, z] = polar((j / segments) * Math.PI * 2, radii[i]);
+        flat[v * 2] = x; flat[v * 2 + 1] = z;
+        sign[v] = field(x, z, rims[j]);
+      }
+    // Keep each triangle with a vertex inside; snap its outside vertices onto the edge.
+    const kept = [], used = new Uint8Array(count);
+    const tri = (a, b, c) => {
+      if (sign[a] > 0 || sign[b] > 0 || sign[c] > 0) {
+        kept.push(a, b, c);
+        used[a] = used[b] = used[c] = 1;
+      }
+    };
+    for (let i = 0; i < radii.length - 1; i++)
+      for (let j = 0; j < segments; j++) {
+        const a = i * row + j, b = a + row;
+        tri(a, b, a + 1);
+        tri(a + 1, b, b + 1);
+      }
+    const e = 0.002;
+    for (let v = 0; v < count; v++) {
+      if (!used[v] || sign[v] > 0) continue;
+      let x = flat[v * 2], z = flat[v * 2 + 1];
+      for (let step = 0; step < 3; step++) {
+        const s = field(x, z), gx = (field(x + e, z) - s) / e, gz = (field(x, z + e) - s) / e;
+        const g2 = gx * gx + gz * gz || 1;
+        x -= (s * gx) / g2; z -= (s * gz) / g2;
+      }
+      flat[v * 2] = x; flat[v * 2 + 1] = z; sign[v] = 0;
     }
-  const row = segments + 1;
-  for (let i = 0; i < top + curtain; i++)
-    for (let j = 0; j < segments; j++) {
-      const a = i * row + j, b = a + row;
-      indices.push(a, b, a + 1, a + 1, b, b + 1);
+
+    // Thickness: a quarter-round rise from the edge, a fatter bead just inside it, a thin body
+    // with broad swells. Then draped: past the roll's start it bends over the patty's edge and
+    // hangs down its side, the thickness along the surface's normal.
+    const positions = new Float32Array(count * 3), colours = new Float32Array(count * 3);
+    const colour = new Color();
+    const rise = 0.03;
+    for (let v = 0; v < count; v++) {
+      if (!used[v]) continue;
+      const x = flat[v * 2], z = flat[v * 2 + 1], s = Math.max(sign[v], 0);
+      const edge = Math.min(s / rise, 1);
+      const swell = 0.012 * (fbm(x * 3 + seed, z * 3, 0, { octaves: 2, seed: 76 }) - 0.5) * 2;
+      const thick = (CHEDDAR_BODY + swell * smoothstep(0, 0.08, s)) * Math.sqrt(1 - (1 - edge) ** 2) +
+        CHEDDAR_BEAD * Math.exp(-(((s - rise) / 0.03) ** 2)) * edge;
+      const r = Math.hypot(x, z), a = Math.atan2(z, x);
+      const r0 = hangR(a) - bend, past = Math.max(r - r0, 0);
+      const theta = Math.min(past / bend, Math.PI / 2);
+      let rr = past > 0 ? r0 + bend * Math.sin(theta) : r, y = 0.004 - bend * (1 - Math.cos(theta));
+      if (past > bend * (Math.PI / 2)) y -= past - bend * (Math.PI / 2);
+      rr += thick * Math.sin(theta);
+      y += thick * Math.cos(theta);
+      positions.set([Math.cos(a) * rr, y, Math.sin(a) * rr], v * 3);
+      // Deeper orange where it runs thick or hangs, a touch yellower thin over the top; mottled.
+      const mottle = fbm(x * 6 + seed, z * 6, 0, { octaves: 2, seed: 74 });
+      const deep = Math.max(smoothstep(0, 0.12, past), smoothstep(CHEDDAR_BODY, CHEDDAR_BODY + CHEDDAR_BEAD, thick) * 0.6);
+      colour.setRGB((250 - deep * 20) / 255, (172 - deep * 52 + (mottle - 0.5) * 22) / 255, 0, SRGBColorSpace);
+      colours.set([colour.r, colour.g, colour.b], v * 3);
     }
-  const geometry = new BufferGeometry();
-  geometry.setAttribute('position', new BufferAttribute(new Float32Array(positions), 3));
-  geometry.setAttribute('color', new BufferAttribute(new Float32Array(colours), 3));
-  geometry.setIndex(indices);
-  geometry.computeVertexNormals();
-  // Smooth across the grid's seam (first and last column) and at the centre of the top.
-  const normal = geometry.attributes.normal;
-  const average = (list) => {
-    const sum = [0, 1, 2].map((c) => list.reduce((t, v) => t + normal.array[v * 3 + c], 0));
-    const len = Math.hypot(...sum) || 1;
-    for (const v of list) normal.setXYZ(v, sum[0] / len, sum[1] / len, sum[2] / len);
-  };
-  average(Array.from({ length: row }, (_, j) => j));
-  for (let i = 1; i <= top + curtain; i++) average([i * row, i * row + segments]);
-  return geometry;
+    const geometry = new BufferGeometry();
+    geometry.setAttribute('position', new BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new BufferAttribute(colours, 3));
+    geometry.setIndex(kept);
+    geometry.computeVertexNormals();
+    // Smooth across the grid's seam (first and last column) and at the centre.
+    const normal = geometry.attributes.normal;
+    const average = (list) => {
+      const sum = [0, 1, 2].map((c) => list.reduce((t, v) => t + normal.array[v * 3 + c], 0));
+      const len = Math.hypot(...sum) || 1;
+      for (const v of list) normal.setXYZ(v, sum[0] / len, sum[1] / len, sum[2] / len);
+    };
+    average(Array.from({ length: row }, (_, j) => j));
+    for (let i = 1; i < radii.length; i++) average([i * row, i * row + segments]);
+    return geometry;
   });
   // A faint orange glow stands in for the light the sauce scatters inside (it would read
   // pale and flat otherwise against the orange page).
-  const mat = new MeshStandardMaterial({ vertexColors: true, roughness: 0.55, envMapIntensity: 0.35, emissive: '#3a1600', side: DoubleSide });
+  const mat = new MeshStandardMaterial({ vertexColors: true, roughness: 0.5, envMapIntensity: 0.35, emissive: '#3a1600', side: DoubleSide });
   return mesh(geometry, mat);
 }
 
@@ -1013,7 +1013,7 @@ export const layerModels = {
     build: bottomBun,
   },
   meat: {
-    height: MEAT_HEIGHT + 0.02, // the lumps and the slight dome rise above the nominal thickness
+    height: MEAT_HEIGHT + 0.02, // the lumps rise above the nominal thickness
     build: patty,
   },
   cheese: { height: CHEESE_HEIGHT, build: cheese },
