@@ -241,6 +241,13 @@ function render() {
   $('address-page').hidden = !inAddress;
   $('order-page').hidden = !inOrder;
   $('account-page').hidden = !inAccount;
+  // Endereço de entrega at the top of the menu (Figma 24-183): the street and the district, or "Onde vamos entregar?".
+  const where = delivery();
+  const bold = document.createElement('b');
+  bold.textContent = where ? [where.street, where.district].filter(Boolean).join(' · ') : 'Onde vamos entregar?';
+  $('deliver-text').replaceChildren(...(where ? ['Entregar em ', bold] : [bold]));
+  $('deliver-change').textContent = where ? 'Alterar' : 'Informar endereço';
+  $('deliver-change').setAttribute('aria-label', where ? 'Alterar o endereço de entrega' : 'Informar endereço de entrega');
   // Header / conta: Identifique-se, or the identified client's first name (ellipsis when long).
   const firstName = state.customer?.name.split(/\s+/)[0] ?? '';
   $('account-name').textContent = firstName || 'Identifique-se';
@@ -364,7 +371,10 @@ function rebuild(root, html, keep = '') {
  */
 function renderAddress() {
   $('address-step-back').hidden = cartLocked(state) || (state.addressPage === 'lista' && !state.locateError);
-  rebuild($('address-content'), progress(1) + addressFlow(state));
+  // From the menu (or for a visitor) the address pages are not a step of the Checkout: no indicador de etapas.
+  const outside = addressBack() === 'menu' || !state.customer;
+  $('address-back').textContent = addressBack() === 'menu' ? 'Voltar ao cardápio' : 'Voltar ao checkout';
+  rebuild($('address-content'), (outside ? '' : progress(1)) + addressFlow(state));
   // The menu ⋮ open: a modal dialog, its first option focused.
   $('address-menu')?.showModal();
 }
@@ -405,7 +415,9 @@ $('checkout-content').addEventListener('input', (e) => {
   } else if (t.id === 'id-code') dispatch({ type: 'idCode', value: t.value });
 });
 // Identified (Cliente cadastrado, or Novo cliente after the form): the Checkout's place in history becomes #endereco.
-const identified = () => state.customer && location.replace('#endereco');
+// Coming from the Identificação, Seus endereços is the next step, not an Alterar from the Pagamento.
+let identifiedJump = false;
+const identified = () => state.customer && ((identifiedJump = true), location.replace('#endereco'));
 $('checkout-content').addEventListener('submit', (e) => {
   e.preventDefault();
   const form = e.target.dataset.idForm;
@@ -698,6 +710,8 @@ $('add').onclick = () => {
 };
 // From the Pedido confirmado, the header's Carrinho opens the (empty) Carrinho; Back from there goes to the menu (fromHash).
 let cartClick = false;
+// "Entregar em": Seus endereços (a visitor: the search and the location, ADR 0002).
+$('deliver-change').onclick = () => (location.hash = 'endereco');
 // Header / conta: Minha conta (the Identificação comes first for a visitor, ticket 03).
 $('account-open').onclick = () => (location.hash = 'conta');
 $('cart-open').onclick = () => {
@@ -809,18 +823,18 @@ const fromHash = () => {
   else if (state.screen === 'pedido' && !cartClick && /^(carrinho|checkout|endereco)/.test(hash)) go(state.category);
   cartClick = false;
   const inFlow = hash === 'endereco' || hash.startsWith('endereco/');
-  if ((hash === 'checkout' || inFlow) && (!state.cart.length || state.cart.some((c) => c.combo && !c.drink))) go('carrinho');
-  // Within the session, a confirmed celular skips the Identificação; the address pages need it.
+  if (hash === 'checkout' && (!state.cart.length || state.cart.some((c) => c.combo && !c.drink))) go('carrinho');
+  // Within the session, a confirmed celular skips the Identificação. The address pages need neither the celular nor
+  // the cart (ADR 0002): a visitor chooses the Endereço de entrega from the menu.
   else if (hash === 'checkout' && state.customer && !delivery()) go('endereco');
-  else if (inFlow && !state.customer) go('checkout');
   // Carrinho travado: Seus endereços shows only its notice; the other address pages lead there.
   else if (inFlow && hash !== 'endereco' && cartLocked(state)) go('endereco');
   // The pages of a new address: Confirmar localização needs a place; the Dados de entrega, a served one.
   else if (inFlow && !['endereco', 'endereco/buscar', 'endereco/confirmar', 'endereco/dados', 'endereco/anteriores', 'endereco/editar', 'endereco/remover'].includes(hash)) go('endereco');
   // Endereços de pedidos anteriores: only a Cliente cadastrado has them.
-  else if (hash === 'endereco/anteriores' && !state.customer.registered) go('endereco');
+  else if (hash === 'endereco/anteriores' && !state.customer?.registered) go('endereco');
   // Editar and Remover need the Endereço salvo chosen in its menu ⋮ (none after saving or removing it).
-  else if (['endereco/editar', 'endereco/remover'].includes(hash) && !state.customer.addresses.some((a) => a.id === state.addressTarget)) go('endereco');
+  else if (['endereco/editar', 'endereco/remover'].includes(hash) && !state.customer?.addresses.some((a) => a.id === state.addressTarget)) go('endereco');
   else if ((hash === 'endereco/confirmar' && !state.addressPlace) || (hash === 'endereco/dados' && !state.addressPlace?.served)) go('endereco/buscar');
   const before = state.screen,
     beforePage = state.addressPage,
@@ -840,9 +854,12 @@ const fromHash = () => {
     history.replaceState(
       beforeFlow?.depth != null
         ? { addressBack: beforeFlow.addressBack, depth: beforeFlow.depth + 1 }
-        : { addressBack: before === 'checkout' && delivery() ? 'checkout' : before === 'carrinho' || (before === 'checkout' && fromCart) ? 'cart' : 'none', depth: 0 },
+        : { addressBack: before === 'cardapio' ? 'menu' : before === 'checkout' && delivery() && !identifiedJump ? 'checkout' : before === 'carrinho' || (before === 'checkout' && fromCart) ? 'cart' : 'none', depth: 0 },
       '',
     );
+  identifiedJump = false;
+  // The entry now says where the address pages came from (the menu: no indicador de etapas, "Voltar ao cardápio").
+  if (now === 'endereco') renderAddress();
   flowEntry = now === 'endereco' ? history.state : null;
   if (now === 'carrinho' && before !== 'checkout') fromMenu = before === 'cardapio' && started;
   if (now === 'checkout') fromCart = before === 'carrinho' && started;
@@ -863,6 +880,10 @@ $('checkout-page').addEventListener('click', (e) => {
 const addressBack = () => history.state?.addressBack,
   depth = () => history.state?.depth ?? 0;
 const toPayment = () => (addressBack() === 'checkout' ? history.go(-1 - depth()) : (location.hash = 'checkout'));
+/** Back to the category the address pages were opened from (over them), or to the last one seen. */
+const toMenu = () => (addressBack() === 'menu' ? history.go(-1 - depth()) : (location.hash = state.category));
+/** The Endereço de entrega chosen: back to the menu it came from; otherwise on to the Pagamento (a visitor: the menu). */
+const chosen = () => (addressBack() === 'menu' || !state.customer ? toMenu() : toPayment());
 $('address-page').addEventListener('change', (e) => {
   if (e.target.name !== 'saved-address') return;
   dispatch({ type: 'addressPick', id: e.target.value });
@@ -871,9 +892,9 @@ $('address-page').addEventListener('change', (e) => {
 $('address-page').addEventListener('click', (e) => {
   if (e.target.closest('[data-address-deliver]')) {
     dispatch({ type: 'addressDeliver' });
-    return toPayment();
+    return chosen();
   }
-  if (e.target.closest('[data-address-back]')) delivery() ? toPayment() : addressBack() === 'cart' ? history.go(-1 - depth()) : (location.hash = 'carrinho');
+  if (e.target.closest('[data-address-back]')) addressBack() === 'menu' ? toMenu() : delivery() ? toPayment() : addressBack() === 'cart' ? history.go(-1 - depth()) : (location.hash = 'carrinho');
   // The notice of the Carrinho travado.
   if (e.target.closest('[data-to-payment]')) toPayment();
 });
@@ -929,7 +950,12 @@ $('address-page').addEventListener('click', (e) => {
     dispatch({ type: 'addressLocated' });
     location.hash = 'endereco/confirmar';
   } else if (t.closest('[data-address-other], [data-address-adjust]')) stepBack();
-  else if (t.closest('[data-to-menu]')) location.hash = state.category;
+  else if (t.closest('[data-to-menu]')) toMenu();
+  // Salvar the visitor's Endereço de entrega, once identified: its Dados de entrega, then Seus endereços with it saved.
+  else if (t.closest('[data-address-save-unsaved]')) {
+    dispatch({ type: 'addressSaveUnsaved' });
+    location.hash = 'endereco/dados';
+  }
   else if (t.closest('[data-address-confirm]')) location.hash = 'endereco/dados';
   else if (t.closest('[data-map-center]')) dispatch({ type: 'addressPan', x: 0, y: 0 });
   // The menu ⋮: Editar endereço and Remover endereço open their page for that Endereço salvo; a click outside closes it.
@@ -975,13 +1001,15 @@ $('address-page').addEventListener('submit', (e) => {
   if (!e.target.matches('[data-address-form]')) return;
   const f = new FormData(e.target),
     text = (k) => String(f.get(k) ?? '');
-  const edit = state.addressPage === 'editar';
+  const edit = state.addressPage === 'editar',
+    guest = !state.customer;
   dispatch({
-    type: edit ? 'addressUpdate' : 'addressSave',
+    type: edit ? 'addressUpdate' : guest ? 'addressGuest' : 'addressSave',
     draft: { street: text('street'), district: text('district'), number: text('number'), noNumber: f.has('noNumber'), complement: text('complement'), noComplement: f.has('noComplement'), reference: text('reference'), label: text('label') },
   });
   if (edit) return state.addressTarget ? $('address-content').querySelector('[aria-invalid=true]')?.focus() : toList();
   if (state.addressPlace) return $('address-content').querySelector('[aria-invalid=true]')?.focus();
+  if (guest) return chosen();
   toList();
   toast('Endereço salvo e selecionado.');
 });

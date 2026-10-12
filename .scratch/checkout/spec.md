@@ -64,7 +64,7 @@ As histórias US01–US16 de `.scratch/checkout/historias-figma.md` valem como c
 
 - **Rotas (hash, na mesma página, como `#carrinho`):** `#checkout` (Identificação e Pagamento, como estados da mesma página "Finalizar pedido"); `#endereco` (Seus endereços), `#endereco/buscar`, `#endereco/confirmar`, `#endereco/dados`, `#endereco/anteriores` (páginas próprias do fluxo de endereço, cada uma com "Voltar" para o passo anterior e "Voltar ao checkout"); `#pedido/BK1024` (confirmação).
 - **Entrada:** o Continuar do Carrinho, depois da validação de combo sem bebida que já existe, abre `#checkout`. O toast "o pagamento não faz parte do protótipo" sai.
-- **Guardas:** `#checkout` ou `#endereco/*` com o carrinho vazio (ou pelo endereço digitado) leva ao Carrinho. `#pedido/<id>` sem um Pedido confirmado com esse id leva ao cardápio.
+- **Guardas:** `#checkout` com o carrinho vazio (ou pelo endereço digitado) leva ao Carrinho. `#endereco/*` não exige carrinho nem celular confirmado: o visitante escolhe o Endereço de entrega pelo cardápio (ADR 0002, `.scratch/minha-conta-pedidos/spec.md`). `#pedido/<id>` sem um Pedido confirmado com esse id leva ao cardápio.
 - **Voltar do navegador:** segue o histórico. Depois da confirmação, volta ao cardápio, sem recuperar o carrinho comprado nem abrir o Checkout.
 - **Cabeçalho:** o mesmo do projeto, mas **sem o "Entregar em"** em todas as telas do Checkout, do endereço e da confirmação. No cardápio e no Carrinho, nada muda. Nenhuma categoria fica ativa no Checkout.
 - **"Voltar ao carrinho"** (topo do Checkout) e **"Editar carrinho"** (Resumo do pedido) levam a `#carrinho`. Ao voltar com Continuar, o celular confirmado, o endereço e a forma de pagamento escolhidos continuam.
@@ -173,7 +173,7 @@ Ficam numa tabela de fixtures em `prototype/src/checkout-fixtures.js`, também d
 
 ### Memória e layouts
 
-- **Memória:** tudo fica em memória; recarregar zera carrinho, cliente, endereços, cartões e Pedidos. Na mesma sessão, um novo checkout reaproveita o celular confirmado e os endereços e cartões salvos.
+- **Sessão:** guardada no `sessionStorage` da aba (ticket 01 de minha-conta-pedidos); recarregar mantém carrinho, cliente, Endereço de entrega e Pedidos, e uma aba nova começa vazia. Na mesma sessão, um novo checkout reaproveita o celular confirmado e os endereços e cartões salvos.
 - **≥ 1024px:** conteúdo da etapa à esquerda e Resumo do pedido à direita (Figma desktop). O fluxo de endereço ocupa a coluna esquerda, sem Resumo.
 - **< 1024px** (US16): uma coluna com rolagem vertical e o Resumo do pedido abaixo do conteúdo.
   - Nas telas de seleção e preenchimento do pagamento, Total do pedido e a ação de pagamento ficam fixos no rodapé (Figma "Checkout / ação fixa"), sem esconder o fim do conteúdo.

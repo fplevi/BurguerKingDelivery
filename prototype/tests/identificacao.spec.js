@@ -217,14 +217,13 @@ test('na sessão, o celular confirmado não pede o código de novo: o Checkout a
   await expect(checkout(page)).toBeHidden();
 });
 
-test('#endereco precisa do carrinho e do celular confirmado', async ({ page }) => {
+test('#endereco abre sem carrinho e sem celular confirmado (ADR 0002): o visitante escolhe só o Endereço de entrega', async ({ page }) => {
   await page.goto('/#endereco');
-  await expect(carrinho(page)).toBeVisible();
-  await expect(page).toHaveURL(/#carrinho$/);
-
-  await irAoCheckout(page);
-  await page.evaluate(() => (location.hash = 'endereco'));
-  await expect(checkout(page)).toBeVisible();
-  await expect(page).toHaveURL(/#checkout$/);
-  await expect(endereco(page)).toBeHidden();
+  await expect(endereco(page)).toBeVisible();
+  await expect(page).toHaveURL(/#endereco$/);
+  await expect(carrinho(page)).toBeHidden();
+  await expect(endereco(page).getByRole('button', { name: /^Buscar endereço e número/ })).toBeVisible();
+  // Endereços de pedidos anteriores need a Cliente cadastrado.
+  await page.evaluate(() => (location.hash = 'endereco/anteriores'));
+  await expect(page).toHaveURL(/#endereco$/);
 });
