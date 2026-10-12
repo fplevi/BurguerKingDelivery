@@ -386,8 +386,10 @@ function rebuild(root, html, keep = '') {
 function renderAddress() {
   $('address-step-back').hidden = cartLocked(state) || (state.addressPage === 'lista' && !state.locateError);
   // From the menu (or for a visitor) the address pages are not a step of the Checkout: no indicador de etapas.
-  const outside = addressBack() === 'menu' || !state.customer;
-  $('address-back').textContent = addressBack() === 'menu' ? 'Voltar ao cardápio' : 'Voltar ao checkout';
+  const from = addressBack(),
+    outside = from === 'menu' || from === 'conta' || !state.customer;
+  $('address-back').textContent = from === 'menu' ? 'Voltar ao cardápio' : from === 'conta' ? 'Voltar aos endereços' : 'Voltar ao checkout';
+  $('address-title').textContent = from === 'conta' ? 'Endereços' : 'Endereço de entrega';
   rebuild($('address-content'), (outside ? '' : progress(1)) + addressFlow(state));
   // The menu ⋮ open: a modal dialog, its first option focused.
   $('address-menu')?.showModal();
@@ -487,6 +489,23 @@ $('account-page').addEventListener('click', (e) => {
     location.replace('#' + state.category);
     toast('Você saiu da sua conta.');
   } else if (e.target.closest('[data-stay]')) location.hash = 'conta';
+  // Endereços: Adicionar opens the Busca; Editar, the Dados de entrega of that Endereço salvo; both come back here.
+  else if (e.target.closest('[data-account-add]')) location.hash = 'endereco/buscar';
+  else if (e.target.closest('[data-account-keep]')) history.back();
+  else if (e.target.closest('[data-account-edit]')) {
+    dispatch({ type: 'addressManage', id: e.target.closest('[data-account-edit]').dataset.accountEdit });
+    location.hash = 'endereco/editar';
+  } else if (e.target.closest('[data-account-remove]')) {
+    dispatch({ type: 'addressManage', id: e.target.closest('[data-account-remove]').dataset.accountRemove });
+    location.hash = 'conta/remover-endereco';
+  } else if (e.target.closest('[data-account-removed]')) {
+    // The Endereço salvo in use while a payment waits (Carrinho travado) stays.
+    const id = state.addressTarget;
+    dispatch({ type: 'addressRemove' });
+    if (state.customer.addresses.some((a) => a.id === id)) return toast('Esse endereço está em uso no pagamento em andamento.');
+    location.replace('#conta/enderecos');
+    toast('Endereço removido.');
+  }
   // Alterar celular: Reenviar código and the other channel tell where the code went; Alterar celular (and Informar
   // outro celular, after "Celular já vinculado") goes back to the celular.
   else if (e.target.closest('[data-phone-resend]')) toast(sentTo(state.phoneChange.channel, state.phoneChange.phone));
@@ -902,6 +921,7 @@ const validAccount = (hash) => {
   const [, page, id, more] = hash.split('/');
   if (!page) return true;
   if (page === 'pedidos' && id) return !more && ordersOf(state, Date.now()).some((o) => o.id === id);
+  if (page === 'remover-endereco') return !id && state.customer.addresses.some((a) => a.id === state.addressTarget);
   return !id && page in accountPages && page !== 'inicio';
 };
 const fromHash = () => {
@@ -961,7 +981,7 @@ const fromHash = () => {
     history.replaceState(
       beforeFlow?.depth != null
         ? { addressBack: beforeFlow.addressBack, depth: beforeFlow.depth + 1 }
-        : { addressBack: before === 'cardapio' ? 'menu' : before === 'checkout' && delivery() && !identifiedJump ? 'checkout' : before === 'carrinho' || (before === 'checkout' && fromCart) ? 'cart' : 'none', depth: 0 },
+        : { addressBack: before === 'cardapio' ? 'menu' : before === 'conta' ? 'conta' : before === 'checkout' && delivery() && !identifiedJump ? 'checkout' : before === 'carrinho' || (before === 'checkout' && fromCart) ? 'cart' : 'none', depth: 0 },
       '',
     );
   identifiedJump = false;
@@ -992,7 +1012,7 @@ const addressBack = () => history.state?.addressBack,
   depth = () => history.state?.depth ?? 0;
 const toPayment = () => (addressBack() === 'checkout' ? history.go(-1 - depth()) : (location.hash = 'checkout'));
 /** Back to the category the address pages were opened from (over them), or to the last one seen. */
-const toMenu = () => (addressBack() === 'menu' ? history.go(-1 - depth()) : (location.hash = state.category));
+const toMenu = () => (addressBack() === 'menu' || addressBack() === 'conta' ? history.go(-1 - depth()) : (location.hash = state.category));
 /** The Endereço de entrega chosen: back to the menu it came from; otherwise on to the Pagamento (a visitor: the menu). */
 const chosen = () => (addressBack() === 'menu' || !state.customer ? toMenu() : toPayment());
 $('address-page').addEventListener('change', (e) => {
@@ -1005,7 +1025,7 @@ $('address-page').addEventListener('click', (e) => {
     dispatch({ type: 'addressDeliver' });
     return chosen();
   }
-  if (e.target.closest('[data-address-back]')) addressBack() === 'menu' ? toMenu() : delivery() ? toPayment() : addressBack() === 'cart' ? history.go(-1 - depth()) : (location.hash = 'carrinho');
+  if (e.target.closest('[data-address-back]')) addressBack() === 'menu' || addressBack() === 'conta' ? toMenu() : delivery() ? toPayment() : addressBack() === 'cart' ? history.go(-1 - depth()) : (location.hash = 'carrinho');
   // The notice of the Carrinho travado.
   if (e.target.closest('[data-to-payment]')) toPayment();
 });
@@ -1013,10 +1033,10 @@ $('address-page').addEventListener('click', (e) => {
 // page, the previous history entry when it is one. On Localização indisponível, back to Seus endereços.
 const parentPage = { buscar: 'endereco', confirmar: 'endereco/buscar', dados: 'endereco/confirmar', anteriores: 'endereco', editar: 'endereco', remover: 'endereco' };
 /** Back to Seus endereços over the address pages (the history entries before), after choosing or saving. */
-const toList = () => (depth() ? history.go(-depth()) : (location.hash = 'endereco'));
+const toList = () => (addressBack() === 'conta' ? history.go(-1 - depth()) : depth() ? history.go(-depth()) : (location.hash = 'endereco'));
 function stepBack() {
   if (state.addressPage === 'lista') return dispatch({ type: 'addressLocateReset' });
-  depth() ? history.back() : (location.hash = parentPage[state.addressPage]);
+  depth() || addressBack() === 'conta' ? history.back() : (location.hash = parentPage[state.addressPage]);
 }
 // "Usar localização atual" asks the browser: granted, Av. Paulista, 1578 (whatever the coordinates); denied or
 // unavailable, Localização indisponível.
@@ -1121,8 +1141,9 @@ $('address-page').addEventListener('submit', (e) => {
   if (edit) return state.addressTarget ? $('address-content').querySelector('[aria-invalid=true]')?.focus() : toList();
   if (state.addressPlace) return $('address-content').querySelector('[aria-invalid=true]')?.focus();
   if (guest) return chosen();
+  const fromAccount = addressBack() === 'conta';
   toList();
-  toast('Endereço salvo e selecionado.');
+  toast(fromAccount ? 'Endereço salvo.' : 'Endereço salvo e selecionado.');
 });
 // The map of Confirmar localização: dragged (pointer) or moved with the arrow keys under the fixed marker, never past
 // the tiles' edges (the marker stays 64 px inside them). The address stays as it was.

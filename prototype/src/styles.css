@@ -321,3 +321,6 @@ main[data-screen=pedido]{display:block;height:auto;min-height:0}
 .account-form .field{background:#fff}.account-form .field[readonly]{background:#fff;color:var(--brown)}.account-form .account-meta{margin:0}.account-form>.account-action{align-self:flex-start;margin-top:16px}
 .account-buttons-column{flex-direction:column;align-items:flex-start;margin-top:12px}.account-lead{margin:0;font-size:15px;color:var(--brown)}
 .account-body .checkout-step .field{background:#fff}
+/* Endereços (Figma Conta 12-14): "Remover endereço" in red, without background or border, under the 260px button. */
+.danger{min-width:260px;height:44px;padding:0 24px;border:0;background:none;color:var(--red);font:14px 'Flame Sans',Arial,sans-serif}.danger:hover{text-decoration:underline}
+@media(max-width:1023px){.danger{width:100%;min-width:0}}

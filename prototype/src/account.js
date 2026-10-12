@@ -27,6 +27,7 @@ export const accountPages = {
   sair: { hash: 'conta/sair', label: 'Sair', title: 'Sair da conta?' },
   // Alterar celular belongs to Dados pessoais in the navigation; its title follows the step.
   celular: { hash: 'conta/celular', label: 'Dados pessoais', title: 'Alterar celular', nav: 'dados' },
+  'remover-endereco': { hash: 'conta/remover-endereco', label: 'Endereços', title: 'Remover endereço?', nav: 'enderecos' },
 };
 
 /** One link of the navigation; the current section has aria-current and the red bar. */
@@ -78,6 +79,24 @@ function phoneChange({ phoneChange: p }) {
   return `<p class="account-lead">${phoneLeads[p.step]}</p><section class="account-card checkout-step" aria-label="Alterar celular">${card}</section><a class="secondary account-action" href="#conta/dados">Cancelar</a>`;
 }
 
+/** "Bela Vista, São Paulo — SP · Apto. 21": the district and the city, then the complement and the reference. */
+const addressMeta = (a) => [[a.district, a.city].filter(Boolean).join(', '), a.complement, a.reference].filter(Boolean).map(esc).join(' · ');
+/**
+ * Endereços (Figma 12): a card per Endereço salvo with "Editar endereço" and "Remover endereço" (red, no border), then
+ * "Adicionar endereço"; without any, the empty state. Adding and editing use the address pages (busca, mapa, dados).
+ */
+function addresses({ customer: c }) {
+  const card = (a) =>
+    `<section class="account-card" aria-labelledby="address-${a.id}"><h2 id="address-${a.id}">${esc(a.label)}</h2><p>${esc(a.street)}</p><p class="account-meta">${addressMeta(a)}</p><div class="account-buttons account-buttons-column"><button class="secondary account-action" type="button" data-account-edit="${a.id}" aria-label="Editar endereço ${esc(a.label)}">Editar endereço</button><button class="danger" type="button" data-account-remove="${a.id}" aria-label="Remover endereço ${esc(a.label)}">Remover endereço</button></div></section>`;
+  const list = c.addresses.length
+    ? c.addresses.map(card).join('')
+    : `<section class="account-card" aria-labelledby="no-address"><h2 id="no-address">Nenhum endereço salvo</h2><p>Salve um endereço para escolhê-lo mais rápido nos próximos pedidos.</p></section>`;
+  return `${list}<button class="primary account-action" type="button" data-account-add>Adicionar endereço</button>`;
+}
+/** Remover endereço (Figma 14): the label and street, "Remover endereço" (red) or "Manter endereço". */
+const removeAddress = (a) =>
+  `<section class="account-card" aria-labelledby="remove-title"><h2 id="remove-title">${esc(a.label)} · ${esc(a.street)}</h2><p>O endereço sai da sua lista. Os pedidos anteriores continuam no histórico.</p><div class="account-buttons account-buttons-column"><button class="danger" type="button" data-account-removed>Remover endereço</button><button class="secondary account-action" type="button" data-account-keep>Manter endereço</button></div></section>`;
+
 /** Sair (Figma 22): the confirmation; Sair da conta ends the session, Continuar conectado goes back. */
 const signOut = () =>
   `<section class="account-card" aria-labelledby="signout-title"><h2 id="signout-title">Quer sair da sua conta?</h2><p>Seus dados e pedidos ficam salvos. Para entrar de novo, basta confirmar seu celular.</p><div class="account-buttons"><button class="primary account-action" type="button" data-signout>Sair da conta</button><button class="secondary account-action" type="button" data-stay>Continuar conectado</button></div></section>`;
@@ -90,6 +109,12 @@ export function accountView(state, now, menuOpen) {
     {
       inicio: () => home(state, now),
       dados: () => profile(state),
+      enderecos: () => addresses(state),
+      // Right after removing it (no address any more), until Endereços opens.
+      'remover-endereco': () => {
+        const a = state.customer.addresses.find((x) => x.id === state.addressTarget);
+        return a ? removeAddress(a) : '';
+      },
       // Right after the change is confirmed (no phoneChange), until Dados pessoais opens.
       celular: () => (state.phoneChange ? phoneChange(state) : ''),
       sair: signOut,
