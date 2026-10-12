@@ -1,5 +1,6 @@
 // Meus pedidos (ticket 08 of minha-conta-pedidos).
 import { test, expect } from '@playwright/test';
+import { congelarRelogio } from './support.js';
 
 const conta = (page) => page.locator('#account-page');
 const titulo = (page) => page.getByRole('heading', { level: 1 });
@@ -8,6 +9,7 @@ const pedido = (page, id) => conta(page).getByRole('region', { name: `Pedido #${
 
 /** Identified with `numero` (a Novo cliente registers as Ana Souza), on Meus pedidos. */
 async function entrar(page, numero = '61999991234') {
+  await page.clock.install();
   await page.goto('/#conta/pedidos');
   const id = page.getByRole('region', { name: 'Identificação' });
   await id.getByRole('textbox', { name: 'Celular com DDD' }).fill(numero);
@@ -22,6 +24,7 @@ async function entrar(page, numero = '61999991234') {
 }
 /** A Pedido of the session for the identified client, confirmed `ago` ms before now (then reload). */
 async function pedidoDaSessao(page, ago, id = 'BK-10483') {
+  await congelarRelogio(page);
   await page.evaluate(
     ([ago, id]) => {
       const s = JSON.parse(sessionStorage.getItem('bk-sessao'));
@@ -67,7 +70,8 @@ test('um Pedido da sessão em andamento entra no topo, no lugar do #BK-10482, e 
   await expect(novo).toContainText('Pagamento confirmado');
   await expect(novo).toContainText('Entrega em Trabalho · BK Bela Vista · 2,4 km');
   await expect(novo).toContainText('2× Whopper® · R$ 72,70');
-  await expect(novo).toContainText('Pedido em preparação', { timeout: 10_000 });
+  await page.clock.runFor(6_000);
+  await expect(novo).toContainText('Pedido em preparação');
 });
 
 test('um Pedido da sessão já entregue vai para o Histórico e o #BK-10482 volta a Em andamento', async ({ page }) => {

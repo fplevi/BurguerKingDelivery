@@ -1,5 +1,6 @@
 // Minha conta, navegação e Sair (ticket 04 of minha-conta-pedidos).
 import { test, expect } from '@playwright/test';
+import { congelarRelogio } from './support.js';
 
 const cabecalho = (page) => page.getByRole('banner');
 const conta = (page) => page.locator('#account-page');
@@ -8,6 +9,7 @@ const identificacao = (page) => page.getByRole('region', { name: 'Identificaçã
 
 /** Identifique-se from the menu with `numero` (a Novo cliente also registers as Ana Souza), then Minha conta. */
 async function entrar(page, numero = '61999991234') {
+  await page.clock.install();
   await page.goto('/#conta');
   await identificacao(page).getByRole('textbox', { name: 'Celular com DDD' }).fill(numero);
   await identificacao(page).getByRole('button', { name: 'Receber código pelo WhatsApp' }).click();
@@ -46,6 +48,7 @@ test('sem Pedido em andamento (Novo cliente), Minha conta não mostra um pedido'
 
 test('um Pedido da sessão em andamento toma o lugar do #BK-10482', async ({ page }) => {
   await entrar(page);
+  await congelarRelogio(page);
   await page.evaluate(() => {
     const s = JSON.parse(sessionStorage.getItem('bk-sessao'));
     const address = s.customer.addresses[0];

@@ -1,5 +1,6 @@
 // Pedido entregue e cancelado: Ver detalhes, sem mapa nem entregador (ticket 10 of minha-conta-pedidos).
 import { test, expect } from '@playwright/test';
+import { congelarRelogio } from './support.js';
 
 const conta = (page) => page.locator('#account-page');
 const regiao = (page, nome) => conta(page).getByRole('region', { name: nome, exact: true });
@@ -8,6 +9,7 @@ const whatsapp = 'https://wa.me/5561999077204?text=Ol%C3%A1%2C%20vi%20seu%20proj
 
 /** Mariana identified, on Meus pedidos. */
 async function entrar(page) {
+  await page.clock.install();
   await page.goto('/#conta/pedidos');
   const id = page.getByRole('region', { name: 'Identificação' });
   await id.getByRole('textbox', { name: 'Celular com DDD' }).fill('61999991234');
@@ -57,6 +59,7 @@ test('Pedido cancelado: quando, a devolução sem prazo, e só as etapas que aco
 
 test('um Pedido da sessão, ao ser entregue, deixa o rastreamento e mostra quando foi entregue', async ({ page }) => {
   await entrar(page);
+  await congelarRelogio(page);
   await page.evaluate(() => {
     const s = JSON.parse(sessionStorage.getItem('bk-sessao'));
     const item = { product: 'whopper', qty: 1, combo: false, drink: '', removed: [], price: 3190 };
@@ -67,6 +70,7 @@ test('um Pedido da sessão, ao ser entregue, deixa o rastreamento e mostra quand
   await page.evaluate(() => (location.hash = 'conta/pedidos/BK-10483'));
   await expect(regiao(page, 'Pedido chegou')).toBeVisible();
   await expect(regiao(page, 'Acompanhe sua entrega').getByRole('status')).toHaveText('Chegou ao seu endereço');
-  await expect(regiao(page, 'Pedido entregue')).toContainText(/Entregue hoje, às \d+h\d\d/, { timeout: 5_000 });
+  await page.clock.runFor(3_000);
+  await expect(regiao(page, 'Pedido entregue')).toContainText(/Entregue hoje, às \d+h\d\d/);
   await semRastreamento(page);
 });

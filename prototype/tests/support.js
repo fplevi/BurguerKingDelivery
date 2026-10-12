@@ -145,6 +145,16 @@ export async function buscarEndereco(page, texto) {
 /** Results of the Busca, each a button named by its place. */
 export const resultadosDaBusca = (page) => paginaDeEndereco(page).getByRole('list', { name: 'Resultados da busca' }).getByRole('button');
 
+/**
+ * Freezes the page's clock (after page.clock.install(), before the first goto) and returns the frozen time. The
+ * Situação do pedido then moves only with page.clock.runFor, however long the page takes to load (software WebGL in CI).
+ */
+export async function congelarRelogio(page) {
+  const agora = (await page.evaluate(() => Date.now())) + 1000;
+  await page.clock.pauseAt(agora);
+  return agora;
+}
+
 // Pagamento com Pix (ticket 07 of checkout).
 /** The Pix Forma de pagamento chosen and "Gerar Pix" (Resumo do pedido, or the fixed footer below 1024px): the Pix pendente. */
 export async function gerarPix(page) {

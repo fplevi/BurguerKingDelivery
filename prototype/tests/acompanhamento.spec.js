@@ -1,6 +1,6 @@
 // Acompanhamento ao vivo de um Pedido confirmado (ticket 09 of minha-conta-pedidos).
 import { test, expect } from '@playwright/test';
-import { irAoPagamento, checkout, formaDePagamento, confirmarEPagar, pedidoConfirmado } from './support.js';
+import { irAoPagamento, checkout, formaDePagamento, confirmarEPagar, pedidoConfirmado, congelarRelogio } from './support.js';
 
 const cartaoDeCredito = (page) => formaDePagamento(page).getByRole('radio', { name: 'Cartão de crédito' });
 const campo = (page, nome) => checkout(page).getByRole('textbox', { name: nome, exact: true });
@@ -13,12 +13,15 @@ const whatsapp = 'https://wa.me/5561999077204?text=Ol%C3%A1%2C%20vi%20seu%20proj
 
 /** Mariana identified, with a Pedido of the session confirmed `ago` ms before now, on its acompanhamento. */
 async function acompanhar(page, ago) {
+  await page.clock.install();
   await page.goto('/#conta');
   const id = page.getByRole('region', { name: 'Identificação' });
   await id.getByRole('textbox', { name: 'Celular com DDD' }).fill('61999991234');
   await id.getByRole('button', { name: 'Receber código pelo WhatsApp' }).click();
   await id.getByRole('textbox', { name: 'Código de 6 dígitos' }).fill('123456');
   await id.getByRole('button', { name: 'Confirmar e continuar' }).click();
+  await expect(page).toHaveURL(/#conta$/);
+  await congelarRelogio(page);
   await page.evaluate((ago) => {
     const s = JSON.parse(sessionStorage.getItem('bk-sessao'));
     const item = { product: 'whopper', qty: 1, combo: true, drink: 'Coca-Cola', removed: ['onion'], price: 4390 };
@@ -31,10 +34,14 @@ async function acompanhar(page, ago) {
 }
 
 test('Acompanhar pedido, na confirmação do Checkout, abre o acompanhamento do Pedido confirmado', async ({ page }) => {
+  await page.clock.install();
   await irAoPagamento(page);
   await cartaoDeCredito(page).check();
   await campo(page, 'Código de segurança').fill('123');
+  // Frozen from the payment on: the card's processing, then the acompanhamento on its first step.
+  await congelarRelogio(page);
   await confirmarEPagar(page).click();
+  await page.clock.runFor(2_000);
   await pedidoConfirmado(page).getByRole('button', { name: 'Acompanhar pedido' }).click();
   await expect(page).toHaveURL(/#conta\/pedidos\/BK-10483$/);
   await expect(regiao(page, 'Pedido realizado')).toContainText('Pedido #BK-10483 · Hoje,');
@@ -77,11 +84,13 @@ test('a situação avança sozinha: o entregador aparece na retirada e a moto an
   await acompanhar(page, 38_000);
   await expect(regiao(page, 'Aguardando retirada')).toBeVisible();
   await expect(regiao(page, 'Entregador ainda não atribuído')).toBeVisible();
-  await expect(regiao(page, 'Pedido retirado')).toBeVisible({ timeout: 5_000 });
+  await page.clock.runFor(3_000);
+  await expect(regiao(page, 'Pedido retirado')).toBeVisible();
   await expect(regiao(page, 'Carlos · seu entregador')).toBeVisible();
   const moto = conta(page).locator('.map-rider');
   const antes = Number(await moto.getAttribute('x'));
-  await expect(regiao(page, 'Acompanhe sua entrega').getByRole('status')).toHaveText(/^A caminho/, { timeout: 5_000 });
+  await page.clock.runFor(5_000);
+  await expect(regiao(page, 'Acompanhe sua entrega').getByRole('status')).toHaveText(/^A caminho/);
   await expect.poll(async () => Number(await moto.getAttribute('x'))).toBeGreaterThan(antes);
   // Reloading keeps the step reached (it comes from the confirmation's time).
   await page.reload();
