@@ -62,7 +62,7 @@ As histórias US01–US16 de `.scratch/checkout/historias-figma.md` valem como c
 
 ### Rotas e navegação
 
-- **Rotas (hash, na mesma página, como `#carrinho`):** `#checkout` (Identificação e Pagamento, como estados da mesma página "Finalizar pedido"); `#endereco` (Seus endereços), `#endereco/buscar`, `#endereco/confirmar`, `#endereco/dados`, `#endereco/anteriores` (páginas próprias do fluxo de endereço, cada uma com "Voltar" para o passo anterior e "Voltar ao checkout"); `#pedido/BK1024` (confirmação).
+- **Rotas (hash, na mesma página, como `#carrinho`):** `#checkout` (Identificação e Pagamento, como estados da mesma página "Finalizar pedido"); `#endereco` (Seus endereços), `#endereco/buscar`, `#endereco/confirmar`, `#endereco/dados`, `#endereco/anteriores` (páginas próprias do fluxo de endereço, cada uma com "Voltar" para o passo anterior e "Voltar ao checkout"); `#pedido/BK-10483` (confirmação).
 - **Entrada:** o Continuar do Carrinho, depois da validação de combo sem bebida que já existe, abre `#checkout`. O toast "o pagamento não faz parte do protótipo" sai.
 - **Guardas:** `#checkout` com o carrinho vazio (ou pelo endereço digitado) leva ao Carrinho. `#endereco/*` não exige carrinho nem celular confirmado: o visitante escolhe o Endereço de entrega pelo cardápio (ADR 0002, `.scratch/minha-conta-pedidos/spec.md`). `#pedido/<id>` sem um Pedido confirmado com esse id leva ao cardápio.
 - **Voltar do navegador:** segue o histórico. Depois da confirmação, volta ao cardápio, sem recuperar o carrinho comprado nem abrir o Checkout.
@@ -141,8 +141,8 @@ As histórias US01–US16 de `.scratch/checkout/historias-figma.md` valem como c
 
 ### Confirmação (US13, US15)
 
-- `#pedido/BK1024`: o primeiro Pedido confirmado da sessão é #BK1024 e os seguintes seguem em sequência; recarregar volta a 1024.
-- A tela tem o indicador todo concluído, "Pedido confirmado!", "Seu pedido já está com a gente.", "Pedido #BK1024", "Previsão de entrega: 30–45 min", o endereço, "Pago com Pix · R$ X" ou "Pago com cartão Visa •••• 4242 · R$ X" (sempre mascarado) e o Resumo do pedido, sem "Editar carrinho".
+- `#pedido/BK-10483`: o primeiro Pedido confirmado da sessão é #BK-10483 e os seguintes seguem em sequência; recarregar volta a 1024.
+- A tela tem o indicador todo concluído, "Pedido confirmado!", "Seu pedido já está com a gente.", "Pedido #BK-10483", "Previsão de entrega: 30–45 min", o endereço, "Pago com Pix · R$ X" ou "Pago com cartão Visa •••• 4242 · R$ X" (sempre mascarado) e o Resumo do pedido, sem "Editar carrinho".
 - "Acompanhar pedido" é a ação principal. Por enquanto, mostra o toast "O acompanhamento do pedido ainda não faz parte do protótipo.".
 - "Voltar ao cardápio" é a ação secundária, com contorno, e leva à última categoria vista.
 - O carrinho comprado é encerrado: fica vazio e o contador mostra 0.

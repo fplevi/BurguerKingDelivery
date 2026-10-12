@@ -324,3 +324,5 @@ main[data-screen=pedido]{display:block;height:auto;min-height:0}
 /* Endereços (Figma Conta 12-14): "Remover endereço" in red, without background or border, under the 260px button. */
 .danger{min-width:260px;height:44px;padding:0 24px;border:0;background:none;color:var(--red);font:14px 'Flame Sans',Arial,sans-serif}.danger:hover{text-decoration:underline}
 @media(max-width:1023px){.danger{width:100%;min-width:0}}
+/* Meus pedidos (Figma Conta 18): the group titles and the cards one below the other. */
+.account-group{margin:8px 0 0;font-family:'Flame',Georgia,serif;font-size:18px;color:var(--title)}.account-group:first-child{margin-top:0}.account-list{display:flex;flex-direction:column;gap:16px;align-self:stretch}.order-forecast{font-size:17px}

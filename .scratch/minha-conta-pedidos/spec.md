@@ -106,8 +106,9 @@ Não há tela para "Pedido a caminho": segue a de "Pedido retirado", com a moto 
 | --- | --- |
 | Cliente cadastrado Mariana Silva ((61) 99999-1234) | Os dados de hoje em `checkout-fixtures.js`, mais o histórico abaixo |
 | #BK-10482 | Em andamento ("Pedido retirado", confirmado 21 min antes de a página carregar), Whopper em combo + Balde de Batata, R$ 77,70; aparece só quando não há Pedido da sessão em andamento |
-| #BK-10397 | Entregue em 8 de outubro, 12h24 → 13h02, R$ 121,50 |
-| #BK-10276 | Confirmado em 3 de outubro, 20h06, e cancelado pela loja em "Pedido em preparação" |
+| #BK-10397 | Entregue em 8 de outubro, 12h24 → 13h02, R$ 126,50 |
+| #BK-10276 | Whopper em combo, R$ 52,80; confirmado em 3 de outubro, 20h06, e cancelado pela loja em "Pedido em preparação" |
+| Pedidos da sessão | De #BK-10483 em diante, no formato do Figma |
 | Novo cliente | Sem Pedidos; sem Endereços salvos; sem Cartões salvos |
 | Alterar celular para (61) 90000-0000 | "Celular já vinculado" |
 | Loja | Burger King · Bela Vista, para qualquer endereço atendido |

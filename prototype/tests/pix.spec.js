@@ -64,10 +64,10 @@ test('(61) 99999-1234: o Pix é aprovado 10 s depois de gerado, passa por Pagame
   await expect(page.locator('header')).toHaveJSProperty('inert', true);
 
   await page.clock.runFor(1_500);
-  await expect(page).toHaveURL(/#pedido\/BK1024$/);
+  await expect(page).toHaveURL(/#pedido\/BK-10483$/);
   const pedido = pedidoConfirmado(page);
   await expect(pedido.getByText('Pago com Pix · R$ 40,80', { exact: true })).toBeVisible();
-  await expect(pedido.getByText('Pedido #BK1024', { exact: true })).toBeVisible();
+  await expect(pedido.getByText('Pedido #BK-10483', { exact: true })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Carrinho · 0' })).toBeVisible();
   await expect(page.locator('header')).toHaveJSProperty('inert', false);
 });
@@ -82,7 +82,7 @@ test('Novo cliente: o Pix também é aprovado 10 s depois de gerado', async ({ p
   await paginaDeEndereco(page).getByRole('button', { name: 'Entregar neste endereço' }).click();
   await gerarPix(page);
   await page.clock.runFor(11_500);
-  await expect(page).toHaveURL(/#pedido\/BK1024$/);
+  await expect(page).toHaveURL(/#pedido\/BK-10483$/);
   await expect(pedidoConfirmado(page).getByText('Pago com Pix · R$ 40,80', { exact: true })).toBeVisible();
 });
 
@@ -132,8 +132,8 @@ test('Escolher outra forma de pagamento cancela o Pix e a aprovação agendada, 
   await expect(page.getByText('Pagamento aprovado!')).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'Carrinho · 1' })).toBeVisible();
 
-  // A new Pix starts over: approved 10 s after it, as #BK1024.
+  // A new Pix starts over: approved 10 s after it, as #BK-10483.
   await gerarPix(page);
   await page.clock.runFor(11_500);
-  await expect(page).toHaveURL(/#pedido\/BK1024$/);
+  await expect(page).toHaveURL(/#pedido\/BK-10483$/);
 });

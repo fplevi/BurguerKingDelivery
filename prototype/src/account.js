@@ -2,7 +2,7 @@
 // content of each section. Rebuilt by main.js on every change; its links are plain hashes (#conta/<page>).
 import { maskPhone, esc, field, sentTo, maskCard, maskExpiry } from './checkout.js';
 import { money } from './state.js';
-import { currentOrder, situationName, forecast, hour, day, units } from './orders.js';
+import { currentOrder, ordersOf, situation, situationName, forecast, hour, day, units, summary, store, routeKm } from './orders.js';
 
 const icon = (path) => `<svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">${path}</svg>`;
 const line = 'fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
@@ -123,6 +123,26 @@ function addCard({ wallet: w }) {
 const removeCard = (k) =>
   `<section class="account-card" aria-labelledby="remove-card-title"><h2 id="remove-card-title">Remover ${cardName(k)}?</h2><p>Você poderá adicionar o cartão novamente quando quiser.</p><div class="account-buttons account-buttons-column"><button class="danger" type="button" data-card-removed>Remover cartão</button><button class="secondary account-action" type="button" data-account-keep>Manter cartão</button></div></section>`;
 
+/**
+ * Meus pedidos (Figma 18): Em andamento and Histórico de pedidos, the newest first. A card per Pedido: id, day and hour,
+ * Situação, (in progress) the previsão and where it goes, the Items and the Total do pedido; "Acompanhar pedido" or
+ * "Ver detalhes". Without any (Figma 21): "Seu primeiro pedido começa aqui".
+ */
+function orders(state, now) {
+  const all = ordersOf(state, now);
+  if (!all.length)
+    return `<section class="account-card" aria-labelledby="no-orders"><h2 id="no-orders">Seu primeiro pedido começa aqui</h2><p>Quando fizer um pedido com este celular, ele aparecerá nesta área.</p><div class="account-buttons account-buttons-column"><a class="primary account-action" href="#${state.category}">Explorar o cardápio</a><a class="secondary account-action" href="#conta">Voltar à minha conta</a></div></section>`;
+  const card = (o) => {
+    const live = !situation(o, now).done,
+      [from, to] = forecast(o);
+    const extra = live ? `<p class="order-forecast">Chega entre ${hour(from)} e ${hour(to)}</p><p class="account-meta">Entrega em ${esc(o.address.label)} · ${store.short} · ${routeKm}</p>` : '';
+    return `<section class="account-card" aria-labelledby="order-${o.id}"><h2 id="order-${o.id}">Pedido #${o.id}</h2><p class="account-meta">${day(o.confirmedAt, now)}, ${hour(o.confirmedAt)}</p><p class="account-meta">${situationName(o, now)}</p>${extra}<p>${summary(o)} · ${money(o.total)}</p><a class="${live ? 'primary' : 'secondary'} account-action" href="#conta/pedidos/${o.id}" aria-label="${live ? 'Acompanhar' : 'Ver detalhes do'} pedido #${o.id}">${live ? 'Acompanhar pedido' : 'Ver detalhes'}</a></section>`;
+  };
+  const group = (id, title, list) => (list.length ? `<h2 class="account-group" id="${id}">${title}</h2><div class="account-list" role="list" aria-labelledby="${id}">${list.map((o) => `<div role="listitem">${card(o)}</div>`).join('')}</div>` : '');
+  const live = all.filter((o) => !situation(o, now).done);
+  return group('orders-live', 'Em andamento', live) + group('orders-past', 'Histórico de pedidos', all.filter((o) => !live.includes(o)));
+}
+
 /** Sair (Figma 22): the confirmation; Sair da conta ends the session, Continuar conectado goes back. */
 const signOut = () =>
   `<section class="account-card" aria-labelledby="signout-title"><h2 id="signout-title">Quer sair da sua conta?</h2><p>Seus dados e pedidos ficam salvos. Para entrar de novo, basta confirmar seu celular.</p><div class="account-buttons"><button class="primary account-action" type="button" data-signout>Sair da conta</button><button class="secondary account-action" type="button" data-stay>Continuar conectado</button></div></section>`;
@@ -136,6 +156,7 @@ export function accountView(state, now, menuOpen) {
       inicio: () => home(state, now),
       dados: () => profile(state),
       enderecos: () => addresses(state),
+      pedidos: () => orders(state, now),
       pagamentos: () => payments(state),
       cartao: () => addCard(state),
       'remover-cartao': () => {

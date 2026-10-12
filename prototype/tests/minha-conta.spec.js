@@ -49,12 +49,12 @@ test('um Pedido da sessão em andamento toma o lugar do #BK-10482', async ({ pag
   await page.evaluate(() => {
     const s = JSON.parse(sessionStorage.getItem('bk-sessao'));
     const address = s.customer.addresses[0];
-    s.orders = [{ id: 'BK1024', phone: s.customer.phone, confirmedAt: Date.now() - 25_000, address, fee: 890, total: 4080, paidWith: 'Pix', items: [{ product: 'whopper', qty: 1, combo: false, drink: '', removed: [], price: 3190 }] }];
+    s.orders = [{ id: 'BK-10483', phone: s.customer.phone, confirmedAt: Date.now() - 25_000, address, fee: 890, total: 4080, paidWith: 'Pix', items: [{ product: 'whopper', qty: 1, combo: false, drink: '', removed: [], price: 3190 }] }];
     sessionStorage.setItem('bk-sessao', JSON.stringify(s));
   });
   await page.reload();
   const pedido = conta(page).getByRole('region', { name: 'Pedido em andamento' });
-  await expect(pedido).toContainText('#BK1024 · Hoje, às ');
+  await expect(pedido).toContainText('#BK-10483 · Hoje, às ');
   await expect(pedido).toContainText('Pedido em preparação · Previsão:');
   await expect(pedido).toContainText('1 item · R$ 40,80');
 });

@@ -4,7 +4,7 @@
 import { savedAddresses, customers, deliveryFee } from './checkout-fixtures.js';
 import { recipes } from './ingredients.js';
 import { products } from './products.js';
-import { comboFee } from './state.js';
+import { comboFee, itemName } from './state.js';
 
 /** The steps of a Pedido entregue by the entregador, in order (retirada: the entregador's, at the loja). */
 export const steps = ['Pedido realizado', 'Pagamento confirmado', 'Pedido em preparação', 'Aguardando retirada', 'Pedido retirado', 'Pedido a caminho', 'Pedido chegou', 'Pedido entregue'];
@@ -25,10 +25,10 @@ export function situation(order, now) {
   const current = Math.max(0, Math.min(delivered, Math.floor((now - order.confirmedAt) / stepTime)));
   return { times: steps.map((s, i) => (i <= current ? order.confirmedAt + i * stepTime : null)), current, cancelled: false, done: current === delivered };
 }
-/** Name of the Situação: the step reached, or "Pedido cancelado". */
+/** Name of the Situação: the step reached, or Cancelado. */
 export const situationName = (order, now) => {
   const s = situation(order, now);
-  return s.cancelled ? 'Pedido cancelado' : steps[s.current];
+  return s.cancelled ? 'Cancelado' : steps[s.current];
 };
 /** Previsão de entrega: between 30 and 45 min after the confirmation (the fixed ones keep their own). */
 export const forecast = (order) => order.forecast ?? [order.confirmedAt + 30 * minute, order.confirmedAt + 45 * minute];
@@ -47,6 +47,15 @@ export const day = (ms, now) => {
   if (same(d, new Date(today.getFullYear(), today.getMonth(), today.getDate() - 1))) return 'Ontem';
   return d.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' });
 };
+/** "Whopper® + 2 itens": the first Item's product and how many units come with it. */
+export const summary = (order) => {
+  const [first] = order.items,
+    more = units(order) - first.qty;
+  return `${first.qty > 1 ? `${first.qty}× ` : ''}${itemName(first)}${more ? ` + ${more} ${more === 1 ? 'item' : 'itens'}` : ''}`;
+};
+/** The loja of every Pedido of the demo, and the fixed distance of its route (Situações fixas of the spec). */
+export const store = { name: 'Burger King · Bela Vista', short: 'BK Bela Vista' };
+export const routeKm = '2,4 km';
 /** Units in a Pedido. */
 export const units = (order) => order.items.reduce((n, i) => n + i.qty, 0);
 
@@ -73,7 +82,7 @@ export function fixedOrders(now) {
     fixed('BK-10397', at(2026, 10, 8, 12, 24), casa, [item('whopper', 2, true, 'Coca-Cola Zero'), item('esferasPepperoni', 1), item('batataFrita', 1)], 'Pix', {
       times: [0, 1, 5, 18, 22, 26, 37, 38].map((m) => at(2026, 10, 8, 12, 24) + m * minute),
     }),
-    fixed('BK-10276', at(2026, 10, 3, 20, 6), casa, [item('cheddarDuplo', 1, true, 'Sprite')], 'cartão Visa •••• 4242', {
+    fixed('BK-10276', at(2026, 10, 3, 20, 6), casa, [item('whopper', 1, true, 'Sprite')], 'cartão Visa •••• 4242', {
       times: [0, 1, 6].map((m) => at(2026, 10, 3, 20, 6) + m * minute),
       cancelledAt: at(2026, 10, 3, 20, 20),
     }),

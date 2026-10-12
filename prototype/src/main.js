@@ -8,7 +8,7 @@ import { pixStep, pixApprovedStep, pixClock } from './checkout.js';
 import { pixApproval, pixApprovedTime, pixCode } from './checkout-fixtures.js';
 import { categories, products } from './products.js';
 import { accountView, accountPages } from './account.js';
-import { ordersOf } from './orders.js';
+import { ordersOf, situation } from './orders.js';
 import { createBurgerScene } from './scene/burger-scene.js';
 import whopperPhoto from '../Assets/burgers/official/site_Whopper.png';
 import cheddarDuploPhoto from '../Assets/burgers/official/site_Cheddar_Duplo.png';
@@ -476,6 +476,11 @@ const leaveSignin = (identified) => {
   location.replace('#' + (identified && from ? from : state.category));
 };
 bindIdentification($('signin-content'), () => leaveSignin(true));
+// Minha conta, Meus pedidos and the acompanhamento follow the Pedidos in progress: redrawn every second while one is.
+setInterval(() => {
+  if (state.screen !== 'conta' || !['inicio', 'pedidos', 'pedido'].includes(state.accountPage)) return;
+  if (ordersOf(state, Date.now()).some((o) => !o.fixed && !situation(o, Date.now()).done)) render();
+}, 1000);
 // Minha conta. Below 1024px the navigation is a list opened by its button (closed again on choosing a section).
 let accountMenu = false,
   cardFromList = false;
