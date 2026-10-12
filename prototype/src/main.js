@@ -477,7 +477,8 @@ const leaveSignin = (identified) => {
 };
 bindIdentification($('signin-content'), () => leaveSignin(true));
 // Minha conta. Below 1024px the navigation is a list opened by its button (closed again on choosing a section).
-let accountMenu = false;
+let accountMenu = false,
+  cardFromList = false;
 $('account-page').addEventListener('click', (e) => {
   if (e.target.closest('[data-account-menu]')) {
     accountMenu = !accountMenu;
@@ -498,6 +499,13 @@ $('account-page').addEventListener('click', (e) => {
   } else if (e.target.closest('[data-account-remove]')) {
     dispatch({ type: 'addressManage', id: e.target.closest('[data-account-remove]').dataset.accountRemove });
     location.hash = 'conta/remover-endereco';
+  } else if (e.target.closest('[data-card-remove]')) {
+    dispatch({ type: 'walletTarget', id: e.target.closest('[data-card-remove]').dataset.cardRemove });
+    location.hash = 'conta/remover-cartao';
+  } else if (e.target.closest('[data-card-removed]')) {
+    dispatch({ type: 'walletRemove' });
+    location.replace('#conta/pagamentos');
+    toast('Cartão removido.');
   } else if (e.target.closest('[data-account-removed]')) {
     // The Endereço salvo in use while a payment waits (Carrinho travado) stays.
     const id = state.addressTarget;
@@ -530,6 +538,17 @@ $('account-page').addEventListener('input', (e) => {
     for (let n = 0; at < masked.length && n < before; at++) if (/\d/.test(masked[at])) n++;
     field.setSelectionRange(at, at);
   } else if (t.id === 'new-code') dispatch({ type: 'phoneCode', value: t.value });
+  // Adicionar cartão: number and Validade masked as typed, the caret after the same digit.
+  else if (t.id.startsWith('wallet-')) {
+    const before = t.value.slice(0, t.selectionStart).replace(/\D/g, '').length;
+    dispatch({ type: 'walletInput', field: t.id.slice(7), value: t.value });
+    if (t.id !== 'wallet-number' && t.id !== 'wallet-expiry') return;
+    const input = $(t.id),
+      masked = input.value;
+    let at = 0;
+    for (let n = 0; at < masked.length && n < before; at++) if (/\d/.test(masked[at])) n++;
+    input.setSelectionRange(at, at);
+  }
 });
 $('account-page').addEventListener('submit', (e) => {
   e.preventDefault();
@@ -539,6 +558,14 @@ $('account-page').addEventListener('submit', (e) => {
     dispatch({ type: 'profileSave', name: $('profile-name').value, email: $('profile-email').value });
     const wrong = $('account-content').querySelector('[aria-invalid=true]');
     return wrong ? wrong.focus() : toast('Dados atualizados.');
+  }
+  // Adicionar cartão: saved, back to Formas de pagamento (Back does not reopen the form); errors, the first wrong field.
+  if (form.matches('[data-card-form]')) {
+    dispatch({ type: 'walletSave', today: new Date() });
+    const wrong = $('account-content').querySelector('[aria-invalid=true]');
+    if (wrong) return wrong.focus();
+    cardFromList ? history.back() : location.replace('#conta/pagamentos');
+    return toast('Cartão salvo.');
   }
   const step = form.dataset.phoneForm;
   if (step === 'phone') {
@@ -921,6 +948,7 @@ const validAccount = (hash) => {
   const [, page, id, more] = hash.split('/');
   if (!page) return true;
   if (page === 'pedidos' && id) return !more && ordersOf(state, Date.now()).some((o) => o.id === id);
+  if (page === 'remover-cartao') return !id && state.customer.cards.some((c) => c.id === state.cardTarget);
   if (page === 'remover-endereco') return !id && state.customer.addresses.some((a) => a.id === state.addressTarget);
   return !id && page in accountPages && page !== 'inicio';
 };
@@ -991,6 +1019,8 @@ const fromHash = () => {
   if (now === 'carrinho' && before !== 'checkout') fromMenu = before === 'cardapio' && started;
   if (now === 'checkout') fromCart = before === 'carrinho' && started;
   if (now === before && (now !== 'endereco' || state.addressPage === beforePage) && (now !== 'conta' || accountBefore === state.accountPage + state.accountOrder)) return;
+  // Adicionar cartão opened from Formas de pagamento: saving goes back to that entry.
+  if (now === 'conta' && state.accountPage === 'cartao') cardFromList = before === 'conta' && accountBefore === 'pagamentosnull';
   if (now === 'conta') {
     accountMenu = false;
     render();

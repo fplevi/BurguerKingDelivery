@@ -1,6 +1,6 @@
 // Minha conta (Figma Conta 07-22): the navigation (a side list on desktop, a list that opens below 1024px) and the
 // content of each section. Rebuilt by main.js on every change; its links are plain hashes (#conta/<page>).
-import { maskPhone, esc, field, sentTo } from './checkout.js';
+import { maskPhone, esc, field, sentTo, maskCard, maskExpiry } from './checkout.js';
 import { money } from './state.js';
 import { currentOrder, situationName, forecast, hour, day, units } from './orders.js';
 
@@ -27,6 +27,8 @@ export const accountPages = {
   sair: { hash: 'conta/sair', label: 'Sair', title: 'Sair da conta?' },
   // Alterar celular belongs to Dados pessoais in the navigation; its title follows the step.
   celular: { hash: 'conta/celular', label: 'Dados pessoais', title: 'Alterar celular', nav: 'dados' },
+  cartao: { hash: 'conta/cartao', label: 'Formas de pagamento', title: 'Adicionar cartão', nav: 'pagamentos' },
+  'remover-cartao': { hash: 'conta/remover-cartao', label: 'Formas de pagamento', title: 'Remover cartão?', nav: 'pagamentos' },
   'remover-endereco': { hash: 'conta/remover-endereco', label: 'Endereços', title: 'Remover endereço?', nav: 'enderecos' },
 };
 
@@ -97,6 +99,30 @@ function addresses({ customer: c }) {
 const removeAddress = (a) =>
   `<section class="account-card" aria-labelledby="remove-title"><h2 id="remove-title">${esc(a.label)} · ${esc(a.street)}</h2><p>O endereço sai da sua lista. Os pedidos anteriores continuam no histórico.</p><div class="account-buttons account-buttons-column"><button class="danger" type="button" data-account-removed>Remover endereço</button><button class="secondary account-action" type="button" data-account-keep>Manter endereço</button></div></section>`;
 
+/** "Visa final 4242". */
+const cardName = (c) => `${c.brand} final ${c.last4}`;
+/**
+ * Formas de pagamento (Figma 15): a card per Cartão salvo (the first one, "Cartão padrão") with "Remover cartão", then
+ * "Adicionar cartão" and the note on Pix; without any, the empty state.
+ */
+function payments({ customer: c }) {
+  const card = (k, i) =>
+    `<section class="account-card" aria-labelledby="card-${k.id}"><h2 id="card-${k.id}">${k.brand} · final ${k.last4}</h2><p>${esc(k.holder)} · Validade ${k.expiry}</p>${i === 0 ? '<p class="account-meta">Cartão padrão</p>' : ''}<button class="danger" type="button" data-card-remove="${k.id}" aria-label="Remover cartão ${cardName(k)}">Remover cartão</button></section>`;
+  const list = c.cards.length
+    ? c.cards.map(card).join('')
+    : `<section class="account-card" aria-labelledby="no-card"><h2 id="no-card">Nenhum cartão salvo</h2><p>Salve um cartão para pagar mais rápido nos próximos pedidos.</p></section>`;
+  return `<p class="account-lead">Gerencie os cartões salvos para usar nos próximos pedidos.</p>${list}<a class="primary account-action" href="#conta/cartao">Adicionar cartão</a><p class="account-meta">Pix também está disponível no checkout. Você não precisa cadastrar uma chave.</p>`;
+}
+/** Adicionar cartão (Figma 16): the Novo cartão's fields; the código de segurança is checked, not kept. */
+function addCard({ wallet: w }) {
+  const e = w.errors,
+    num = 'inputmode="numeric" autocomplete="off"';
+  return `<section class="account-card" aria-label="Adicionar cartão"><form class="id-form account-form" data-card-form novalidate>${field('wallet-number', 'Número do cartão', `${num} value="${maskCard(w.number)}"`, e.number)}${field('wallet-name', 'Nome impresso no cartão', `autocomplete="cc-name" value="${esc(w.name)}"`, e.name)}${field('wallet-expiry', 'Validade', `${num} placeholder="MM/AA" value="${maskExpiry(w.expiry)}"`, e.expiry)}${field('wallet-cvv', 'Código de segurança', `${num} maxlength="3" value="${w.cvv}"`, e.newCvv)}<p class="account-meta">O código de segurança não fica salvo. Ele será solicitado no pagamento.</p><div class="account-buttons account-buttons-column"><button class="primary account-action" type="submit">Salvar cartão</button><a class="secondary account-action" href="#conta/pagamentos">Cancelar</a></div></form></section>`;
+}
+/** Remover cartão (Figma 17): "Remover Visa final 4242?", "Remover cartão" (red) or "Manter cartão". */
+const removeCard = (k) =>
+  `<section class="account-card" aria-labelledby="remove-card-title"><h2 id="remove-card-title">Remover ${cardName(k)}?</h2><p>Você poderá adicionar o cartão novamente quando quiser.</p><div class="account-buttons account-buttons-column"><button class="danger" type="button" data-card-removed>Remover cartão</button><button class="secondary account-action" type="button" data-account-keep>Manter cartão</button></div></section>`;
+
 /** Sair (Figma 22): the confirmation; Sair da conta ends the session, Continuar conectado goes back. */
 const signOut = () =>
   `<section class="account-card" aria-labelledby="signout-title"><h2 id="signout-title">Quer sair da sua conta?</h2><p>Seus dados e pedidos ficam salvos. Para entrar de novo, basta confirmar seu celular.</p><div class="account-buttons"><button class="primary account-action" type="button" data-signout>Sair da conta</button><button class="secondary account-action" type="button" data-stay>Continuar conectado</button></div></section>`;
@@ -110,6 +136,12 @@ export function accountView(state, now, menuOpen) {
       inicio: () => home(state, now),
       dados: () => profile(state),
       enderecos: () => addresses(state),
+      pagamentos: () => payments(state),
+      cartao: () => addCard(state),
+      'remover-cartao': () => {
+        const k = state.customer.cards.find((x) => x.id === state.cardTarget);
+        return k ? removeCard(k) : '';
+      },
       // Right after removing it (no address any more), until Endereços opens.
       'remover-endereco': () => {
         const a = state.customer.addresses.find((x) => x.id === state.addressTarget);
