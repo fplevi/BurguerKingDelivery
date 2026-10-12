@@ -128,7 +128,7 @@ test('Esc cancela; não há botão de fechar', async ({ page }) => {
 });
 
 test('no desktop, Cancelar e Aplicar alterações ficam no cabeçalho, à direita do título', async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name !== 'desktop', 'abaixo de 1024px as ações vão para uma barra fixa embaixo (ticket 03)');
+  test.skip(testInfo.project.name !== 'desktop', 'abaixo de 1024px as ações ficam numa barra fixa embaixo (layout-ver-ingredientes.spec.js)');
   await openVerIngredientes(page);
   const titulo = await verIngredientes(page).getByRole('heading', { name: TITULO }).boundingBox();
   const palco = await camada(page, 'Pão superior').boundingBox();

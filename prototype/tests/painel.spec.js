@@ -90,7 +90,7 @@ test('com mouse, o hover mostra a ação e dá borda marrom ao retirado', async 
 });
 
 test('no desktop, Bandeja de 400px e cards de 104 × 88 com a imagem da Camada', async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name !== 'desktop', 'o celular é o ticket 03');
+  test.skip(testInfo.project.name !== 'desktop', 'o celular está em layout-ver-ingredientes.spec.js');
   await openVerIngredientes(page);
   expect((await bandeja(page).boundingBox()).height).toBe(400);
   await chip(page, 'Retirar', 'Picles').click();
