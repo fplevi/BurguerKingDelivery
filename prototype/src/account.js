@@ -2,6 +2,7 @@
 // content of each section. Rebuilt by main.js on every change; its links are plain hashes (#conta/<page>).
 import { maskPhone, esc, field, sentTo, maskCard, maskExpiry } from './checkout.js';
 import { money } from './state.js';
+import { trackingView } from './tracking.js';
 import { currentOrder, ordersOf, situation, situationName, forecast, hour, day, units, summary, store, routeKm } from './orders.js';
 
 const icon = (path) => `<svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">${path}</svg>`;
@@ -157,6 +158,10 @@ export function accountView(state, now, menuOpen) {
       dados: () => profile(state),
       enderecos: () => addresses(state),
       pedidos: () => orders(state, now),
+      pedido: () => {
+        const o = ordersOf(state, now).find((x) => x.id === state.accountOrder);
+        return o ? trackingView(o, now) : '';
+      },
       pagamentos: () => payments(state),
       cartao: () => addCard(state),
       'remover-cartao': () => {

@@ -235,7 +235,7 @@ function render() {
     inSignin = state.screen === 'identificar',
     inMenu = state.screen === 'cardapio';
   document
-    .querySelectorAll('nav a')
+    .querySelectorAll('header nav a')
     .forEach((a) => (inMenu && a.hash === '#' + state.category ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current')));
   document.querySelector('main').dataset.screen = state.screen;
   for (const el of document.querySelectorAll('main > .hero, main > .catalog')) el.hidden = !inMenu;
@@ -353,8 +353,12 @@ function render() {
     const view = accountView(state, Date.now(), accountMenu);
     $('account-title').textContent = view.title;
     // Rebuilt keeping the focused field and its caret, and the name and e-mail typed in Dados pessoais.
-    rebuild($('account-content'), view.html, '#profile-name, #profile-email');
-  } else $('account-content').replaceChildren();
+    // Redrawn only when something changed (the acompanhamento asks every second), so focus and images stay put.
+    if (view.html !== accountHtml) rebuild($('account-content'), (accountHtml = view.html), '#profile-name, #profile-email');
+  } else {
+    $('account-content').replaceChildren();
+    accountHtml = '';
+  }
   // Identifique-se (Figma Conta 01-06): the Identificação's forms in a card; Fechar above.
   if (inSignin) rebuild($('signin-content'), identificationStep(state.identification), '#id-name, #id-email');
   else $('signin-content').replaceChildren();
@@ -482,6 +486,7 @@ setInterval(() => {
   if (ordersOf(state, Date.now()).some((o) => !o.fixed && !situation(o, Date.now()).done)) render();
 }, 1000);
 // Minha conta. Below 1024px the navigation is a list opened by its button (closed again on choosing a section).
+let accountHtml = '';
 let accountMenu = false,
   cardFromList = false;
 $('account-page').addEventListener('click', (e) => {
@@ -1003,7 +1008,7 @@ const fromHash = () => {
   else openDrink = null;
   dispatch({ type: 'category', category: hash });
   // Phones: the tabs scroll sideways; keep the active one in view.
-  document.querySelector('nav a[aria-current]')?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  document.querySelector('header nav a[aria-current]')?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   const now = state.screen;
   // First arrival on Seus endereços (always forward, so the history entry has no state yet): note what the previous
   // entry is, kept in the entry for Back/Forward. 'checkout': the Pagamento (Alterar); 'cart': the Carrinho (the
@@ -1347,9 +1352,9 @@ $('checkout-content').addEventListener('click', (e) => {
 });
 /** Back to the Forma de pagamento, none chosen: the focus on its first option. */
 const formaFocus = () => $('checkout-content').querySelector('input[name="pay-method"]')?.focus();
-// Pedido confirmado: Acompanhar pedido is not part of the prototype yet; Voltar ao cardápio opens the last category seen.
+// Pedido confirmado: Acompanhar pedido opens its acompanhamento (Minha conta); Voltar ao cardápio opens the last category seen.
 $('order-page').addEventListener('click', (e) => {
-  if (e.target.closest('[data-order-track]')) toast('O acompanhamento do pedido ainda não faz parte do protótipo.');
+  if (e.target.closest('[data-order-track]')) location.hash = `conta/pedidos/${state.shownOrder}`;
   if (e.target.closest('[data-order-menu]')) location.hash = state.category;
 });
 

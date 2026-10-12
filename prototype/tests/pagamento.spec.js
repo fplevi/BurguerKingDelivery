@@ -13,7 +13,6 @@ import {
   openVerIngredientes,
   verIngredientes,
   chip,
-  aviso,
 } from './support.js';
 
 const cartaoDeCredito = (page) => formaDePagamento(page).getByRole('radio', { name: 'Cartão de crédito' });
@@ -236,7 +235,7 @@ test('O nome impresso de um cartão salvo aparece como texto em Seus cartões', 
   await expect(seusCartoes(page).getByRole('radio', { name: 'Mastercard •••• 4444' })).toHaveAccessibleDescription(`${nome} · validade 12/30`);
 });
 
-test('Pedido confirmado: Acompanhar pedido avisa, Voltar ao cardápio leva à última categoria e o Voltar do navegador ao cardápio', async ({ page }) => {
+test('Pedido confirmado: Acompanhar pedido abre o acompanhamento, Voltar ao cardápio leva à última categoria e o Voltar do navegador ao cardápio', async ({ page }) => {
   await irAoPagamento(page);
   await cartaoDeCredito(page).check();
   await campo(page, 'Código de segurança').fill('123');
@@ -246,7 +245,10 @@ test('Pedido confirmado: Acompanhar pedido avisa, Voltar ao cardápio leva à ú
   await expect(pedido.getByRole('button', { name: 'Acompanhar pedido' })).toHaveClass(/primary/);
   await expect(pedido.getByRole('button', { name: 'Voltar ao cardápio' })).toHaveClass(/secondary/);
   await pedido.getByRole('button', { name: 'Acompanhar pedido' }).click();
-  await expect(aviso(page)).toHaveText('O acompanhamento do pedido ainda não faz parte do protótipo.');
+  await expect(page).toHaveURL(/#conta\/pedidos\/BK-10483$/);
+  await expect(page.getByRole('heading', { level: 1, name: 'Pedido #BK-10483' })).toBeVisible();
+  await page.goBack();
+  await expect(pedido).toBeVisible();
 
   // Back: the menu, without the cart bought nor the Checkout.
   await page.goBack();
