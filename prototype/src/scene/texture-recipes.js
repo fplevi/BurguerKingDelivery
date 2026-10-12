@@ -4,6 +4,9 @@
 // code runs in the texture workers (OffscreenCanvas) and, without workers, on the page.
 import { random, fbm } from './noise.js';
 
+/** Radius of the patty faces' disc in its texture atlas (0.5 = the texture's edge); layer-models.js maps to it. */
+export const MEAT_FACE_UV = 0.4;
+
 const fields = new Map();
 
 /**
@@ -140,40 +143,74 @@ export const recipes = {
   },
 
   /**
-   * Flame-grilled patty seen from above (planar UV over the disc): coarse ground-beef grain,
-   * dark seared edge, broken char-broiler marks and a few glistening fat specks.
-   * Colour, roughness and bump maps that share the same features.
+   * Flame-grilled patty, an atlas (ticket 14): both faces map to the middle disc (radius
+   * MEAT_FACE_UV), the side to the ring around it, from the top edge (inner) to the bottom
+   * edge (outer). Faces: coarse ground-beef grain with crumbs, seared towards the edge,
+   * broken char-broiler marks and glistening fat specks. Side: a toasted-brown crust, darker
+   * on its lumps and paler in the recesses (never black), toasted bands along both edges and
+   * the marks of both faces turning over them. Colour, roughness and bump maps share the same features.
    */
   meat: {
     count: 3,
     size: 512,
     draw(contexts, size) {
+      const F = MEAT_FACE_UV;
       const grainField = field(128, 16, 2, 31);
+      const crumbField = field(128, 40, 2, 33);
       const clumpField = field(64, 7, 3, 32);
       const wobbleField = field(64, 7, 2, 41);
       const brokenField = field(64, 8, 3, 42);
       const widthField = field(64, 12, 2, 43);
+      const crustField = field(64, 10, 3, 44);
       const cos = Math.cos(0.52), sin = Math.sin(0.52); // marks run at ~30°
-      paintAll(contexts, size, (u, v, out) => {
-        const r = Math.hypot(u - 0.5, v - 0.5) * 2;
-        const grain = grainField(u * 4.4, v * 4.4);
-        const clumps = clumpField(u * 2, v * 2);
-        const sear = clamp01((r - 0.7) * 3.2) * (0.7 + clumps * 0.6);
-        // Parallel char marks, wavy, of varying width and broken up.
-        const across = u * cos + v * sin + (wobbleField(u, v) - 0.5) * 0.06;
-        const stripe = Math.abs(((across * 9) % 1) - 0.5) * 2; // 0 at the centre of a mark
+      /** Char of the marks at a face point (0..1), `phase` shifting them for the other face. */
+      const marks = (u, v, phase = 0) => {
+        const across = u * cos + v * sin + (wobbleField(u, v) - 0.5) * 0.06 + phase;
+        const stripe = Math.abs(((across * 9.8) % 1) - 0.5) * 2; // 0 at the centre of a mark
         const width = 0.2 + widthField(u, v) * 0.12;
-        const char = clamp01((width - stripe) / 0.1) * clamp01((brokenField(u, v) - 0.3) * 3.5);
+        return clamp01((width - stripe) / 0.1) * clamp01((brokenField(u + phase, v) - 0.3) * 3.5);
+      };
+      paintAll(contexts, size, (u, v, out) => {
+        const du = u - 0.5, dv = v - 0.5, ru = Math.hypot(du, dv);
+        const grain = grainField(u * 4.4, v * 4.4);
+        if (ru > F) {
+          // Side: d = 0 at the top edge, 1 at the bottom edge.
+          const d = clamp01((ru - F) / (0.5 - F));
+          const crust = crustField(u * 3, v * 3);
+          const dark = clamp01((crust - 0.55) * 5), pale = clamp01((0.45 - crust) * 5);
+          // The marks of each face, read where this column meets it, fade a little way down.
+          const rim = F / (ru || 1);
+          const char = Math.max(
+            marks(0.5 + du * rim, 0.5 + dv * rim) * clamp01((0.5 - d) * 4),
+            marks(0.5 + du * rim, 0.5 + dv * rim, 0.37) * clamp01((d - 0.5) * 4),
+          );
+          // Toasted, irregular bands along both edges, where the grill touched.
+          const band = Math.max(clamp01((0.22 - d) * 6), clamp01((d - 0.78) * 6)) * clamp01(0.4 + crust);
+          const sear = Math.max(char, band * 0.8);
+          const shade = 0.85 + grain * 0.3;
+          out[0] = blend(blend(blend(85, 45, dark), 120, pale) * shade, 45, sear);
+          out[1] = blend(blend(blend(48, 25, dark), 75, pale) * shade, 25, sear);
+          out[2] = blend(blend(blend(28, 15, dark), 45, pale) * shade, 15, sear);
+          out[3] = out[4] = out[5] = 255 * clamp01(0.72 + (grain - 0.5) * 0.3 - dark * 0.15);
+          out[6] = out[7] = out[8] = 255 * clamp01(0.5 + (crust - 0.5) * 1.4 + (grain - 0.5) * 0.6 - char * 0.2);
+          return;
+        }
+        const r = (ru / F) * 0.87; // as the faces' radius was before the atlas
+        const clumps = clumpField(u * 2, v * 2);
+        const crumbs = crumbField(u, v);
+        const sear = clamp01((r - 0.7) * 3.2) * (0.7 + clumps * 0.6);
+        const char = marks(u, v);
         const fat = grain > 0.74 && clumps > 0.5 ? clamp01((grain - 0.74) * 4) : 0;
+        const gloss = clamp01((crumbs - 0.72) * 6) * (1 - char);
 
-        const meat = clamp01(clumps * 1.4 - 0.2), shade = 0.72 + grain * 0.5;
+        const meat = clamp01(clumps * 1.4 - 0.2), shade = 0.64 + grain * 0.5 + (crumbs - 0.5) * 0.3;
         const k = char * 0.92;
-        out[0] = blend(blend(blend(92, 122, meat) * shade, 52, sear), 30, k);
-        out[1] = blend(blend(blend(50, 70, meat) * shade, 27, sear), 16, k);
-        out[2] = blend(blend(blend(30, 42, meat) * shade, 16, sear), 10, k);
+        out[0] = blend(blend(blend(80, 108, meat) * shade, 48, sear), 30, k);
+        out[1] = blend(blend(blend(43, 61, meat) * shade, 25, sear), 16, k);
+        out[2] = blend(blend(blend(26, 37, meat) * shade, 15, sear), 10, k);
         out[0] = blend(out[0], 168, fat); out[1] = blend(out[1], 112, fat); out[2] = blend(out[2], 70, fat);
-        out[3] = out[4] = out[5] = 255 * clamp01(0.62 + char * 0.3 - fat * 0.5 + (grain - 0.5) * 0.2);
-        out[6] = out[7] = out[8] = 255 * clamp01(0.5 + (grain - 0.5) * 0.9 + (clumps - 0.5) * 0.6 - char * 0.25);
+        out[3] = out[4] = out[5] = 255 * clamp01(0.62 + char * 0.3 - fat * 0.5 - gloss * 0.4 + (grain - 0.5) * 0.2);
+        out[6] = out[7] = out[8] = 255 * clamp01(0.5 + (grain - 0.5) * 1.1 + (crumbs - 0.5) * 0.6 + (clumps - 0.5) * 0.6 - char * 0.25);
       });
     },
   },

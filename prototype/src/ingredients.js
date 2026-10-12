@@ -3,7 +3,8 @@
 //
 // Camada: id (unique within the Receita), name, model (3D model in layerModels and SVG
 // illustration; defaults to the id, so a repeated ingredient shares one), locked (Base),
-// text (its part of the description; a repeated text is said once, none says nothing).
+// text (its part of the description; a repeated text is said once, none says nothing),
+// turn (radians about the vertical axis, so a repeated model doesn't look identical).
 // SVG fallback only: y, closed top in the hero (px); thickness, how much it raises the
 // Camada above it when assembled (px).
 const recipe = ({ layers, ...product }) => ({
@@ -40,8 +41,8 @@ export const recipes = {
       { id: 'bottom', name: 'Pão inferior', text: 'Pão com gergelim', y: 242, thickness: 0, locked: true },
       { id: 'meat', name: 'Carne grelhada', text: 'duas carnes grelhadas', y: 205, thickness: 36, locked: true },
       { id: 'cheddar1', name: 'Cheddar inferior', text: 'cheddar cremoso', model: 'cheddar', y: 179, thickness: 18 },
-      { id: 'meat2', name: 'Carne grelhada', model: 'meat', y: 145, thickness: 45, locked: true },
-      { id: 'cheddar2', name: 'Cheddar superior', text: 'cheddar cremoso', model: 'cheddar', y: 119, thickness: 18 },
+      { id: 'meat2', name: 'Carne grelhada', model: 'meat', turn: 1.9, y: 145, thickness: 45, locked: true },
+      { id: 'cheddar2', name: 'Cheddar superior', text: 'cheddar cremoso', model: 'cheddar', turn: 1.9, y: 119, thickness: 18 }, // turned with its patty, whose outline it follows
       { id: 'crispyOnion', name: 'Cebola crispy', text: 'cebola crispy', y: 92, thickness: 20 },
       { id: 'top', name: 'Pão superior', y: 21, thickness: 49, locked: true },
     ],
