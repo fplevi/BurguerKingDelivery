@@ -9,17 +9,18 @@ test.beforeEach(async ({ page }) => {
   await page.goto('/');
 });
 
-test('cabeçalho do Figma: logo, Entregar em, as quatro categorias com Hambúrgueres ativo e o carrinho com contador', async ({ page }) => {
+test('cabeçalho do Figma: logo, as quatro categorias com Hambúrgueres ativo, o carrinho só com o contador e Identifique-se', async ({ page }) => {
   await expect(cabecalho(page).getByRole('link', { name: 'Burger King' }).getByRole('img')).toBeVisible();
-  // Only visual: the address flow is another front.
-  await expect(cabecalho(page).getByText('Entregar em', { exact: true })).toBeVisible();
-  await expect(cabecalho(page).getByText('Av. Paulista, 1578 - Bela Vista', { exact: true })).toBeVisible();
+  // "Entregar em" left the header for the top of each category (ticket 02 of minha-conta-pedidos).
+  await expect(cabecalho(page).getByText('Entregar em')).toHaveCount(0);
   const links = categorias(page).getByRole('link');
   await expect(links).toHaveText(['Hambúrgueres', 'Acompanhamentos', 'Bebidas', 'Sobremesas']);
   await expect(categorias(page).getByRole('link', { name: 'Hambúrgueres' })).toHaveAttribute('aria-current', 'page');
   for (const outra of ['Acompanhamentos', 'Bebidas', 'Sobremesas'])
     await expect(categorias(page).getByRole('link', { name: outra })).not.toHaveAttribute('aria-current');
   await expect(cabecalho(page).getByRole('button', { name: 'Carrinho · 0' })).toBeVisible();
+  await expect(cabecalho(page).getByRole('button', { name: 'Carrinho · 0' })).toHaveText('0');
+  await expect(cabecalho(page).getByRole('button', { name: 'Identifique-se' })).toBeVisible();
 });
 
 test('os 6 hambúrgueres sem Receita parecem iguais aos outros, sem "Em breve", e clicar neles não faz nada', async ({ page }) => {
@@ -123,7 +124,7 @@ test.describe('desktop', () => {
     for (const c of linha.slice(1, 4)) expect(c.y).toBe(linha[0].y);
     expect(linha[4].x).toBe(linha[0].x);
     expect(linha[4].y).toBeGreaterThan(linha[0].y + linha[0].height - 1);
-    await expect(cabecalho(page).getByText('Carrinho', { exact: true })).toBeVisible();
+    await expect(cabecalho(page).getByRole('button', { name: 'Identifique-se' })).toBeVisible();
     await semRolagemHorizontal(page);
     await canvasNoPalco(h.palco);
     await verIngredientesFunciona(page);

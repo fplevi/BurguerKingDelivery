@@ -38,10 +38,12 @@ test('Localização indisponível: Usar endereço salvo volta aos Endereços sal
   await paginaDeEndereco(page).getByRole('button', { name: /^Usar localização atual/ }).click();
   await paginaDeEndereco(page).getByRole('button', { name: 'Usar endereço salvo' }).click();
   await expect(paginaDeEndereco(page).getByRole('radiogroup', { name: 'Endereços salvos' })).toBeVisible();
-  await irAosEnderecos(page, '11987654321');
-  await paginaDeEndereco(page).getByRole('button', { name: /^Usar localização atual/ }).click();
-  await expect(paginaDeEndereco(page).getByRole('heading', { name: 'Não conseguimos acessar sua localização' })).toBeVisible();
-  await expect(paginaDeEndereco(page).getByRole('button', { name: 'Usar endereço salvo' })).toHaveCount(0);
+  // The Novo cliente in a new tab: the session (and Mariana's identification) belongs to the first one.
+  const outra = await context.newPage();
+  await irAosEnderecos(outra, '11987654321');
+  await paginaDeEndereco(outra).getByRole('button', { name: /^Usar localização atual/ }).click();
+  await expect(paginaDeEndereco(outra).getByRole('heading', { name: 'Não conseguimos acessar sua localização' })).toBeVisible();
+  await expect(paginaDeEndereco(outra).getByRole('button', { name: 'Usar endereço salvo' })).toHaveCount(0);
 });
 
 /** The tiles' position on screen. */

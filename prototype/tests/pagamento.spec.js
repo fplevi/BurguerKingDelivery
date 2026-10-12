@@ -13,7 +13,6 @@ import {
   openVerIngredientes,
   verIngredientes,
   chip,
-  aviso,
 } from './support.js';
 
 const cartaoDeCredito = (page) => formaDePagamento(page).getByRole('radio', { name: 'Cartão de crédito' });
@@ -61,7 +60,7 @@ test('Forma de pagamento: Pix ou Cartão de crédito, uma só, e a ação do Res
   await expect(etapas(page).nth(2)).toHaveAttribute('aria-current', 'step');
 });
 
-test('Cartão salvo com código de segurança válido: processamento com a tela desabilitada e Pedido confirmado #BK1024', async ({ page }) => {
+test('Cartão salvo com código de segurança válido: processamento com a tela desabilitada e Pedido confirmado #BK-10483', async ({ page }) => {
   await page.clock.install();
   await irAoPagamento(page);
   await cartaoDeCredito(page).check();
@@ -96,7 +95,7 @@ test('Cartão salvo com código de segurança válido: processamento com a tela 
   await expect(page).toHaveURL(/#checkout$/);
 
   await page.clock.runFor(200);
-  await expect(page).toHaveURL(/#pedido\/BK1024$/);
+  await expect(page).toHaveURL(/#pedido\/BK-10483$/);
   const pedido = pedidoConfirmado(page);
   await expect(pedido).toBeVisible();
   await expect(checkout(page)).toBeHidden();
@@ -105,7 +104,7 @@ test('Cartão salvo com código de segurança válido: processamento com a tela 
   const passos = pedido.getByRole('list', { name: 'Etapas do pedido' }).getByRole('listitem');
   await expect(passos).toHaveText(['Identificação, concluída', 'Endereço, concluída', 'Pagamento, concluída']);
   await expect(pedido.locator('[aria-current]')).toHaveCount(0);
-  for (const texto of ['Seu pedido já está com a gente.', 'Pedido #BK1024', 'Previsão de entrega: 30–45 min', 'Av. Paulista, 1578', 'Apto. 21', 'Portaria principal'])
+  for (const texto of ['Seu pedido já está com a gente.', 'Pedido #BK-10483', 'Previsão de entrega: 30–45 min', 'Av. Paulista, 1578', 'Apto. 21', 'Portaria principal'])
     await expect(pedido.getByText(texto, { exact: true })).toBeVisible();
   await expect(pedido.getByText('Pago com cartão Visa •••• 4242 · R$ 40,80', { exact: true })).toBeVisible();
   const resumo = pedido.getByRole('complementary', { name: 'Resumo do pedido' });
@@ -141,11 +140,11 @@ test('Cartão salvo com CVV 000 é recusado: Itens, Personalizações e endereç
   await expect(checkout(page).getByRole('button', { name: 'Adicionar novo cartão' })).toBeEnabled();
   await expect(formaDePagamento(page).getByRole('radio', { name: 'Pix' })).toBeEnabled();
 
-  // Reviewing the data clears the failure; a valid código confirms the same Pedido as #BK1024.
+  // Reviewing the data clears the failure; a valid código confirms the same Pedido as #BK-10483.
   await campo(page, 'Código de segurança').fill('321');
   await expect(falha(page)).toHaveCount(0);
   await confirmarEPagar(page).click();
-  await expect(page).toHaveURL(/#pedido\/BK1024$/);
+  await expect(page).toHaveURL(/#pedido\/BK-10483$/);
   await expect(pedidoConfirmado(page).getByRole('complementary', { name: 'Resumo do pedido' }).getByText('Sem cebola')).toBeVisible();
 });
 
@@ -164,7 +163,7 @@ test('Novo cartão: a bandeira vem do número; Visa aprovado sem salvar, com o n
   await expect(campo(page, 'Validade')).toHaveValue('08/29');
   await campo(page, 'Código de segurança').fill('123');
   await confirmarEPagar(page).click();
-  await expect(page).toHaveURL(/#pedido\/BK1024$/);
+  await expect(page).toHaveURL(/#pedido\/BK-10483$/);
   await expect(pedidoConfirmado(page).getByText('Pago com cartão Visa •••• 4242 · R$ 40,80', { exact: true })).toBeVisible();
 });
 
@@ -195,7 +194,7 @@ test('Novo cartão 4000 0000 0000 0002 é recusado e continua preenchido para re
   await expect(page.getByText('Pedido confirmado!')).toHaveCount(0);
 });
 
-test('Mastercard salvo entra em Seus cartões; o próximo checkout da sessão reaproveita tudo e confirma #BK1025', async ({ page }) => {
+test('Mastercard salvo entra em Seus cartões; o próximo checkout da sessão reaproveita tudo e confirma #BK-10484', async ({ page }) => {
   await irAoPagamento(page);
   await novoCartao(page, '5555555555554444', { nome: 'Mariana S Silva', validade: '1230' });
   await expect(campo(page, 'Número do cartão')).toHaveAccessibleDescription(/Bandeira: Mastercard/);
@@ -217,8 +216,8 @@ test('Mastercard salvo entra em Seus cartões; o próximo checkout da sessão re
   await expect(master).toBeFocused();
   await campo(page, 'Código de segurança').fill('456');
   await confirmarEPagar(page).click();
-  await expect(page).toHaveURL(/#pedido\/BK1025$/);
-  await expect(pedidoConfirmado(page).getByText('Pedido #BK1025', { exact: true })).toBeVisible();
+  await expect(page).toHaveURL(/#pedido\/BK-10484$/);
+  await expect(pedidoConfirmado(page).getByText('Pedido #BK-10484', { exact: true })).toBeVisible();
   await expect(pedidoConfirmado(page).getByText('Pago com cartão Mastercard •••• 4444 · R$ 40,80', { exact: true })).toBeVisible();
 });
 
@@ -236,7 +235,7 @@ test('O nome impresso de um cartão salvo aparece como texto em Seus cartões', 
   await expect(seusCartoes(page).getByRole('radio', { name: 'Mastercard •••• 4444' })).toHaveAccessibleDescription(`${nome} · validade 12/30`);
 });
 
-test('Pedido confirmado: Acompanhar pedido avisa, Voltar ao cardápio leva à última categoria e o Voltar do navegador ao cardápio', async ({ page }) => {
+test('Pedido confirmado: Acompanhar pedido abre o acompanhamento, Voltar ao cardápio leva à última categoria e o Voltar do navegador ao cardápio', async ({ page }) => {
   await irAoPagamento(page);
   await cartaoDeCredito(page).check();
   await campo(page, 'Código de segurança').fill('123');
@@ -246,7 +245,10 @@ test('Pedido confirmado: Acompanhar pedido avisa, Voltar ao cardápio leva à ú
   await expect(pedido.getByRole('button', { name: 'Acompanhar pedido' })).toHaveClass(/primary/);
   await expect(pedido.getByRole('button', { name: 'Voltar ao cardápio' })).toHaveClass(/secondary/);
   await pedido.getByRole('button', { name: 'Acompanhar pedido' }).click();
-  await expect(aviso(page)).toHaveText('O acompanhamento do pedido ainda não faz parte do protótipo.');
+  await expect(page).toHaveURL(/#conta\/pedidos\/BK-10483$/);
+  await expect(page.getByRole('heading', { level: 1, name: 'Pedido #BK-10483' })).toBeVisible();
+  await page.goBack();
+  await expect(pedido).toBeVisible();
 
   // Back: the menu, without the cart bought nor the Checkout.
   await page.goBack();
@@ -260,7 +262,7 @@ test('Pedido confirmado: Acompanhar pedido avisa, Voltar ao cardápio leva à ú
 });
 
 test('Voltar ao cardápio leva à última categoria vista; #pedido sem Pedido confirmado leva ao cardápio', async ({ page }) => {
-  await page.goto('/#pedido/BK1024');
+  await page.goto('/#pedido/BK-10483');
   await expect(page.locator('#catalog')).toBeVisible();
   await expect(pedidoConfirmado(page)).toBeHidden();
 
@@ -279,6 +281,6 @@ test('Voltar ao cardápio leva à última categoria vista; #pedido sem Pedido co
   await expect(page).toHaveURL(/#sobremesas$/);
   await expect(page.getByRole('link', { name: 'Sobremesas' })).toHaveAttribute('aria-current', 'page');
   // An id not confirmed in this session: the menu.
-  await page.evaluate(() => (location.hash = 'pedido/BK1025'));
+  await page.evaluate(() => (location.hash = 'pedido/BK-10484'));
   await expect(page).toHaveURL(/#sobremesas$/);
 });

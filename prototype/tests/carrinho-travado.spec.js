@@ -89,11 +89,11 @@ test('Pix aprovado com o cliente fora do Checkout: toast de pagamento aprovado c
   // Still on the Carrinho, now closed (empty); the toast tells and links to the Pedido confirmado.
   await expect(page).toHaveURL(/#carrinho$/);
   await expect(aviso(page)).toBeVisible();
-  await expect(aviso(page)).toContainText('Pagamento aprovado! Pedido #BK1024 confirmado.');
+  await expect(aviso(page)).toContainText('Pagamento aprovado! Pedido #BK-10483 confirmado.');
   await expect(page.getByRole('button', { name: 'Carrinho · 0' })).toBeVisible();
   await expect(carrinho(page).getByRole('heading', { name: 'Seu carrinho está vazio' })).toBeVisible();
   await aviso(page).getByRole('link', { name: 'Ver pedido' }).click();
-  await expect(page).toHaveURL(/#pedido\/BK1024$/);
+  await expect(page).toHaveURL(/#pedido\/BK-10483$/);
   await expect(pedidoConfirmado(page).getByText('Pago com Pix · R$ 40,80', { exact: true })).toBeVisible();
 });
 
@@ -121,7 +121,7 @@ test('Pix aprovado com o cliente no cardápio: o toast com "Ver pedido" e o card
   await page.getByRole('navigation', { name: 'Categorias' }).getByRole('link', { name: 'Bebidas' }).click();
   await page.clock.runFor(11_500);
   await expect(page).toHaveURL(/#bebidas$/);
-  await expect(aviso(page).getByRole('link', { name: 'Ver pedido' })).toHaveAttribute('href', '#pedido/BK1024');
+  await expect(aviso(page).getByRole('link', { name: 'Ver pedido' })).toHaveAttribute('href', '#pedido/BK-10483');
   await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
   await expect(aviso(page)).toHaveText(/^Adicionado ao carrinho: /);
   await expect(page.getByRole('button', { name: 'Carrinho · 1' })).toBeVisible();
@@ -158,10 +158,10 @@ test('Processando o cartão, o Voltar do navegador leva a Seus endereços e ao C
 
   await page.clock.runFor(1600);
   await expect(page).toHaveURL(/#bebidas$/);
-  await expect(aviso(page)).toContainText('Pagamento aprovado! Pedido #BK1024 confirmado.');
+  await expect(aviso(page)).toContainText('Pagamento aprovado! Pedido #BK-10483 confirmado.');
   await expect(page.getByRole('button', { name: 'Carrinho · 0' })).toBeVisible();
   await aviso(page).getByRole('link', { name: 'Ver pedido' }).click();
-  await expect(page).toHaveURL(/#pedido\/BK1024$/);
+  await expect(page).toHaveURL(/#pedido\/BK-10483$/);
   await expect(pedidoConfirmado(page).getByText('Pago com cartão Visa •••• 4242 · R$ 40,80', { exact: true })).toBeVisible();
 });
 

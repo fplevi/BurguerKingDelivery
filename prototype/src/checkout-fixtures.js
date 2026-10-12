@@ -71,7 +71,7 @@ export const cardBrand = (number) => ({ 4: 'Visa', 5: 'Mastercard' })[String(num
 export const processingTime = 1500;
 
 /** Identifier of the first Pedido confirmado of the session; the next ones follow in sequence. */
-export const firstOrder = 1024;
+export const firstOrder = 10483;
 
 /** Same profile for both celulares: Mariana Silva, with Casa and Trabalho, the Endereços de pedidos anteriores and the Visa •••• 4242. */
 const mariana = { name: 'Mariana Silva', addresses: savedAddresses, previous: previousAddresses, cards: savedCards };

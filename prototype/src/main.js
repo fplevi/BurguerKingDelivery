@@ -1,12 +1,14 @@
 import { recipes, layer, description, removedLine } from './ingredients.js';
 import { art } from './art.js';
-import { initial, reducer, money, marks, drinks, pick, itemTotal, itemName, cartUnits, cartTotal, savedAddress } from './state.js';
+import { restore, sessionData, reducer, money, marks, drinks, pick, itemTotal, itemName, cartUnits, cartTotal, savedAddress } from './state.js';
 import { progress, orderSummary, identificationStep, sentTo, addressFlow, lockNotice, deliveryCard, paymentStep, paymentAction, paymentBar, processingStep, orderPage, mapSize, mapCenter } from './checkout.js';
 import { processingTime } from './checkout-fixtures.js';
 import { pixPending, cartLocked } from './state.js';
 import { pixStep, pixApprovedStep, pixClock } from './checkout.js';
 import { pixApproval, pixApprovedTime, pixCode } from './checkout-fixtures.js';
 import { categories, products } from './products.js';
+import { accountView, accountPages } from './account.js';
+import { ordersOf, situation } from './orders.js';
 import { createBurgerScene } from './scene/burger-scene.js';
 import whopperPhoto from '../Assets/burgers/official/site_Whopper.png';
 import cheddarDuploPhoto from '../Assets/burgers/official/site_Cheddar_Duplo.png';
@@ -18,13 +20,32 @@ import cheeseburgerPhoto from '../Assets/burgers/official/site_Cheeseburger.png'
 import rodeioPhoto from '../Assets/burgers/official/site_Rodeio.png';
 // Prototype question: can layered ingredients support opening, removal, restoration and order customization?
 
-let state = initial;
+// Sessão: restored from sessionStorage (the tab's), and saved after every change; storage refused (private mode), memory only.
+const sessionKey = 'bk-sessao';
+const readSession = () => {
+  try {
+    return JSON.parse(sessionStorage.getItem(sessionKey));
+  } catch {
+    return null;
+  }
+};
+let state = restore(readSession());
+let savedSession = '';
+function saveSession() {
+  const data = JSON.stringify(sessionData(state));
+  if (data === savedSession) return;
+  savedSession = data;
+  try {
+    sessionStorage.setItem(sessionKey, data);
+  } catch {}
+}
 const $ = (id) => document.getElementById(id);
 /** Receita of the selected product, and the name of one of its Camadas. */
 const recipe = () => recipes[state.product];
 const name = (id, r = recipe()) => layer(r, id).name;
 function dispatch(action) {
   state = reducer(state, action);
+  saveSession();
   render();
 }
 
@@ -210,18 +231,33 @@ function render() {
     inCheckout = state.screen === 'checkout',
     inAddress = state.screen === 'endereco',
     inOrder = state.screen === 'pedido',
+    inAccount = state.screen === 'conta',
+    inSignin = state.screen === 'identificar',
     inMenu = state.screen === 'cardapio';
   document
-    .querySelectorAll('nav a')
+    .querySelectorAll('header nav a')
     .forEach((a) => (inMenu && a.hash === '#' + state.category ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current')));
-  document.querySelector('main').dataset.screen = state.screen;
+  document.querySelector('main').dataset.screen = document.body.dataset.screen = state.screen;
   for (const el of document.querySelectorAll('main > .hero, main > .catalog')) el.hidden = !inMenu;
   $('cart-page').hidden = !inCart;
   $('checkout-page').hidden = !inCheckout;
   $('address-page').hidden = !inAddress;
   $('order-page').hidden = !inOrder;
-  // "Entregar em" leaves the header in the Checkout and the address pages.
-  document.querySelector('header .location').hidden = inCheckout || inAddress || inOrder;
+  $('account-page').hidden = !inAccount;
+  $('signin-page').hidden = !inSignin;
+  // Endereço de entrega at the top of the menu (Figma 24-183): the street and the district, or "Onde vamos entregar?".
+  const where = delivery();
+  const bold = document.createElement('b');
+  bold.textContent = where ? [where.street, where.district].filter(Boolean).join(' · ') : 'Onde vamos entregar?';
+  $('deliver-text').replaceChildren(...(where ? ['Entregar em ', bold] : [bold]));
+  $('deliver-change').textContent = where ? 'Alterar' : 'Informar endereço';
+  $('deliver-change').setAttribute('aria-label', where ? 'Alterar o endereço de entrega' : 'Informar endereço de entrega');
+  // Header / conta: Identifique-se, or the identified client's first name (ellipsis when long).
+  const firstName = state.customer?.name.split(/\s+/)[0] ?? '';
+  $('account-name').textContent = firstName || 'Identifique-se';
+  $('account-open').classList.toggle('identified', !!firstName);
+  if (firstName) $('account-open').setAttribute('aria-label', `Minha conta · ${firstName}`);
+  else $('account-open').removeAttribute('aria-label');
   // Processing the card: the whole screen is disabled (header, Voltar ao carrinho, Editar carrinho) until the result.
   const processing = inCheckout && (state.order?.status === 'processing' || state.order?.pix === 'approved');
   document.querySelector('header').inert = processing;
@@ -312,6 +348,20 @@ function render() {
   $('order-content').innerHTML = inOrder ? orderPage(shownOrder()) : '';
   if (inAddress) renderAddress();
   else $('address-content').replaceChildren();
+  // Minha conta: the title of the section and the navigation with its content.
+  if (inAccount && state.customer) {
+    const view = accountView(state, Date.now(), accountMenu);
+    $('account-title').textContent = view.title;
+    // Rebuilt keeping the focused field and its caret, and the name and e-mail typed in Dados pessoais.
+    // Redrawn only when something changed (the acompanhamento asks every second), so focus and images stay put.
+    if (view.html !== accountHtml) rebuild($('account-content'), (accountHtml = view.html), '#profile-name, #profile-email');
+  } else {
+    $('account-content').replaceChildren();
+    accountHtml = '';
+  }
+  // Identifique-se (Figma Conta 01-06): the Identificação's forms in a card; Fechar above.
+  if (inSignin) rebuild($('signin-content'), identificationStep(state.identification), '#id-name, #id-email');
+  else $('signin-content').replaceChildren();
 }
 /**
  * Replaces the content of `root` with `html`: the control that had the focus there (found again by its id) keeps it,
@@ -339,7 +389,12 @@ function rebuild(root, html, keep = '') {
  */
 function renderAddress() {
   $('address-step-back').hidden = cartLocked(state) || (state.addressPage === 'lista' && !state.locateError);
-  rebuild($('address-content'), progress(1) + addressFlow(state));
+  // From the menu (or for a visitor) the address pages are not a step of the Checkout: no indicador de etapas.
+  const from = addressBack(),
+    outside = from === 'menu' || from === 'conta' || !state.customer;
+  $('address-back').textContent = from === 'menu' ? 'Voltar ao cardápio' : from === 'conta' ? 'Voltar aos endereços' : 'Voltar ao checkout';
+  $('address-title').textContent = from === 'conta' ? 'Endereços' : 'Endereço de entrega';
+  rebuild($('address-content'), (outside ? '' : progress(1)) + addressFlow(state));
   // The menu ⋮ open: a modal dialog, its first option focused.
   $('address-menu')?.showModal();
 }
@@ -366,51 +421,181 @@ function renderCheckout() {
     : `${progress(0)}<div class="checkout-body"><section class="checkout-step" aria-label="Identificação">${identificationStep(state.identification)}</section>${orderSummary(state.cart)}</div>`;
   rebuild($('checkout-content'), html, '#id-name, #id-email');
 }
-// Identificação: the celular is masked as it is typed, the caret staying after the same digit; the code keeps digits only.
-$('checkout-content').addEventListener('input', (e) => {
+// Identificação, in the Checkout and in Identifique-se (#identificar): the same forms, bound to each page's content;
+// `done` runs after the code and the Novo cliente's form, and leaves the page once the client is identified.
+function bindIdentification(root, done) {
+  // The celular is masked as it is typed, the caret staying after the same digit; the code keeps digits only.
+  root.addEventListener('input', (e) => {
+    const t = e.target;
+    if (t.id === 'id-phone') {
+      const before = t.value.slice(0, t.selectionStart).replace(/\D/g, '').length;
+      dispatch({ type: 'idPhone', value: t.value });
+      const field = $('id-phone'),
+        masked = field.value;
+      let at = 0;
+      for (let n = 0; at < masked.length && n < before; at++) if (/\d/.test(masked[at])) n++;
+      field.setSelectionRange(at, at);
+    } else if (t.id === 'id-code') dispatch({ type: 'idCode', value: t.value });
+  });
+  root.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const form = e.target.dataset.idForm;
+    if (form === 'phone') {
+      dispatch({ type: 'idSend', channel: e.submitter?.dataset.idSend ?? 'whatsapp' });
+      $('id-code')?.focus();
+    } else if (form === 'code') {
+      dispatch({ type: 'idConfirm' });
+      // Código incorreto: back to the code, whose button is now disabled.
+      if (state.identification.codeError) $('id-code').focus();
+      if (state.customer) done();
+    } else if (form === 'register') {
+      dispatch({ type: 'idRegister', name: $('id-name').value, email: $('id-email').value });
+      root.querySelector('[aria-invalid=true]')?.focus();
+      if (state.customer) done();
+    }
+  });
+  // Reenviar código and switching the channel only tell where the code went (toast); Alterar celular goes back to the celular, filled.
+  root.addEventListener('click', (e) => {
+    const id = () => state.identification;
+    if (e.target.closest('[data-id-resend]')) toast(sentTo(id().channel, id().phone));
+    else if (e.target.closest('[data-id-channel]')) {
+      dispatch({ type: 'idChannel' });
+      root.querySelector('[data-id-channel]').focus();
+      toast(sentTo(id().channel, id().phone));
+    } else if (e.target.closest('[data-id-change]')) {
+      dispatch({ type: 'idChange' });
+      $('id-phone').focus();
+    }
+  });
+}
+// Identified in the Checkout (Cliente cadastrado, or Novo cliente after the form): its place in history becomes #endereco.
+// Coming from the Identificação, Seus endereços is the next step, not an Alterar from the Pagamento.
+let identifiedJump = false;
+bindIdentification($('checkout-content'), () => ((identifiedJump = true), location.replace('#endereco')));
+// Identifique-se: identified (or Fechar), back where it was opened from: the previous entry when the header opened it,
+// else the page asked for (a private one, #conta…) or, closing it, the menu.
+const leaveSignin = (identified) => {
+  const from = history.state?.signin;
+  if (from === 'back') return history.back();
+  location.replace('#' + (identified && from ? from : state.category));
+};
+bindIdentification($('signin-content'), () => leaveSignin(true));
+// Minha conta, Meus pedidos and the acompanhamento follow the Pedidos in progress: redrawn every second while one is.
+// Once more on the tick a Pedido ends, so it shows as entregue.
+let liveOrders = false;
+setInterval(() => {
+  if (state.screen !== 'conta' || !['inicio', 'pedidos', 'pedido'].includes(state.accountPage)) return (liveOrders = false);
+  const live = ordersOf(state, Date.now()).some((o) => !o.fixed && !situation(o, Date.now()).done);
+  if (live || liveOrders) render();
+  liveOrders = live;
+}, 1000);
+// Minha conta. Below 1024px the navigation is a list opened by its button (closed again on choosing a section).
+let accountHtml = '';
+let accountMenu = false,
+  cardFromList = false;
+$('account-page').addEventListener('click', (e) => {
+  if (e.target.closest('[data-account-menu]')) {
+    accountMenu = !accountMenu;
+    render();
+    $('account-content').querySelector('[data-account-menu]').focus();
+  } else if (e.target.closest('[data-signout]')) {
+    // Sair: the menu, without the client; Back finds only the Identificação in front of Minha conta.
+    dispatch({ type: 'signOut' });
+    location.replace('#' + state.category);
+    toast('Você saiu da sua conta.');
+  } else if (e.target.closest('[data-stay]')) location.hash = 'conta';
+  // Endereços: Adicionar opens the Busca; Editar, the Dados de entrega of that Endereço salvo; both come back here.
+  else if (e.target.closest('[data-account-add]')) location.hash = 'endereco/buscar';
+  else if (e.target.closest('[data-account-keep]')) history.back();
+  else if (e.target.closest('[data-account-edit]')) {
+    dispatch({ type: 'addressManage', id: e.target.closest('[data-account-edit]').dataset.accountEdit });
+    location.hash = 'endereco/editar';
+  } else if (e.target.closest('[data-account-remove]')) {
+    dispatch({ type: 'addressManage', id: e.target.closest('[data-account-remove]').dataset.accountRemove });
+    location.hash = 'conta/remover-endereco';
+  } else if (e.target.closest('[data-card-remove]')) {
+    dispatch({ type: 'walletTarget', id: e.target.closest('[data-card-remove]').dataset.cardRemove });
+    location.hash = 'conta/remover-cartao';
+  } else if (e.target.closest('[data-card-removed]')) {
+    dispatch({ type: 'walletRemove' });
+    location.replace('#conta/pagamentos');
+    toast('Cartão removido.');
+  } else if (e.target.closest('[data-account-removed]')) {
+    // The Endereço salvo in use while a payment waits (Carrinho travado) stays.
+    const id = state.addressTarget;
+    dispatch({ type: 'addressRemove' });
+    if (state.customer.addresses.some((a) => a.id === id)) return toast('Esse endereço está em uso no pagamento em andamento.');
+    location.replace('#conta/enderecos');
+    toast('Endereço removido.');
+  }
+  // Alterar celular: Reenviar código and the other channel tell where the code went; Alterar celular (and Informar
+  // outro celular, after "Celular já vinculado") goes back to the celular.
+  else if (e.target.closest('[data-phone-resend]')) toast(sentTo(state.phoneChange.channel, state.phoneChange.phone));
+  else if (e.target.closest('[data-phone-channel]')) {
+    dispatch({ type: 'phoneChannel' });
+    $('account-content').querySelector('[data-phone-channel]').focus();
+    toast(sentTo(state.phoneChange.channel, state.phoneChange.phone));
+  } else if (e.target.closest('[data-phone-back], [data-phone-other]')) {
+    dispatch({ type: 'phoneBack' });
+    $('account-title').textContent = 'Alterar celular';
+    $('new-phone').focus();
+  }
+});
+$('account-page').addEventListener('input', (e) => {
   const t = e.target;
-  if (t.id === 'id-phone') {
+  if (t.id === 'new-phone') {
     const before = t.value.slice(0, t.selectionStart).replace(/\D/g, '').length;
-    dispatch({ type: 'idPhone', value: t.value });
-    const field = $('id-phone'),
+    dispatch({ type: 'phoneInput', value: t.value });
+    const field = $('new-phone'),
       masked = field.value;
     let at = 0;
     for (let n = 0; at < masked.length && n < before; at++) if (/\d/.test(masked[at])) n++;
     field.setSelectionRange(at, at);
-  } else if (t.id === 'id-code') dispatch({ type: 'idCode', value: t.value });
+  } else if (t.id === 'new-code') dispatch({ type: 'phoneCode', value: t.value });
+  // Adicionar cartão: number and Validade masked as typed, the caret after the same digit.
+  else if (t.id.startsWith('wallet-')) {
+    const before = t.value.slice(0, t.selectionStart).replace(/\D/g, '').length;
+    dispatch({ type: 'walletInput', field: t.id.slice(7), value: t.value });
+    if (t.id !== 'wallet-number' && t.id !== 'wallet-expiry') return;
+    const input = $(t.id),
+      masked = input.value;
+    let at = 0;
+    for (let n = 0; at < masked.length && n < before; at++) if (/\d/.test(masked[at])) n++;
+    input.setSelectionRange(at, at);
+  }
 });
-// Identified (Cliente cadastrado, or Novo cliente after the form): the Checkout's place in history becomes #endereco.
-const identified = () => state.customer && location.replace('#endereco');
-$('checkout-content').addEventListener('submit', (e) => {
+$('account-page').addEventListener('submit', (e) => {
   e.preventDefault();
-  const form = e.target.dataset.idForm;
-  if (form === 'phone') {
-    dispatch({ type: 'idSend', channel: e.submitter?.dataset.idSend ?? 'whatsapp' });
-    $('id-code')?.focus();
-  } else if (form === 'code') {
-    dispatch({ type: 'idConfirm' });
-    // Código incorreto: back to the code, whose button is now disabled.
-    if (state.identification.codeError) $('id-code').focus();
-    identified();
-  } else if (form === 'register') {
-    dispatch({ type: 'idRegister', name: $('id-name').value, email: $('id-email').value });
-    $('checkout-content').querySelector('[aria-invalid=true]')?.focus();
-    identified();
+  const form = e.target;
+  // Dados pessoais: saved, the header shows the new name; with errors, the first wrong field.
+  if (form.matches('[data-profile-form]')) {
+    dispatch({ type: 'profileSave', name: $('profile-name').value, email: $('profile-email').value });
+    const wrong = $('account-content').querySelector('[aria-invalid=true]');
+    return wrong ? wrong.focus() : toast('Dados atualizados.');
   }
-});
-// Reenviar código and switching the channel only tell where the code went (toast); Alterar celular goes back to the celular, filled.
-$('checkout-content').addEventListener('click', (e) => {
-  const id = () => state.identification;
-  if (e.target.closest('[data-id-resend]')) toast(sentTo(id().channel, id().phone));
-  else if (e.target.closest('[data-id-channel]')) {
-    dispatch({ type: 'idChannel' });
-    $('checkout-content').querySelector('[data-id-channel]').focus();
-    toast(sentTo(id().channel, id().phone));
-  } else if (e.target.closest('[data-id-change]')) {
-    dispatch({ type: 'idChange' });
-    $('id-phone').focus();
+  // Adicionar cartão: saved, back to Formas de pagamento (Back does not reopen the form); errors, the first wrong field.
+  if (form.matches('[data-card-form]')) {
+    dispatch({ type: 'walletSave', today: new Date() });
+    const wrong = $('account-content').querySelector('[aria-invalid=true]');
+    if (wrong) return wrong.focus();
+    cardFromList ? history.back() : location.replace('#conta/pagamentos');
+    return toast('Cartão salvo.');
   }
+  const step = form.dataset.phoneForm;
+  if (step === 'phone') {
+    dispatch({ type: 'phoneSend', channel: e.submitter?.dataset.phoneSend ?? 'whatsapp' });
+    return ($('new-code') ?? $('new-phone')).focus();
+  }
+  if (step !== 'code') return;
+  dispatch({ type: 'phoneConfirm' });
+  // Confirmed: Dados pessoais with the new celular (Back does not return to the code). Already in another cadastro: its notice.
+  if (!state.phoneChange) {
+    location.replace('#conta/dados');
+    toast('Celular atualizado.');
+  } else if (state.phoneChange.step === 'conflict') $('account-title').focus();
+  else $('new-code').focus();
 });
+$('signin-close').onclick = () => leaveSignin(false);
 
 /** Carrinho screen: the Itens (each one editable, see itemCard) and the Resumo do carrinho, or the empty state. */
 const itemsText = (n) => (n === 1 ? '1 item' : `${n} itens`);
@@ -673,6 +858,10 @@ $('add').onclick = () => {
 };
 // From the Pedido confirmado, the header's Carrinho opens the (empty) Carrinho; Back from there goes to the menu (fromHash).
 let cartClick = false;
+// "Entregar em": Seus endereços (a visitor: the search and the location, ADR 0002).
+$('deliver-change').onclick = () => (location.hash = 'endereco');
+// Header / conta: Minha conta, or Identifique-se for a visitor (back where it was, once identified).
+$('account-open').onclick = () => (location.hash = state.customer ? 'conta' : 'identificar');
 $('cart-open').onclick = () => {
   cartClick = location.hash !== '#carrinho';
   location.hash = 'carrinho';
@@ -768,6 +957,15 @@ let menuScroll = 0,
 // #checkout with an empty cart, or with a combo still without a drink (typed or reloaded: the cart lives in memory), shows the Carrinho.
 // Entering the Checkout: top of the page, focus on its title. From the Checkout back to the Carrinho, the Carrinho's way back to the menu stays as it was.
 let flowEntry = null; // the history entry of the address page shown, read on the next one
+/** A page of Minha conta: a section, or the acompanhamento of one of the client's Pedidos (#conta/pedidos/<id>). */
+const validAccount = (hash) => {
+  const [, page, id, more] = hash.split('/');
+  if (!page) return true;
+  if (page === 'pedidos' && id) return !more && ordersOf(state, Date.now()).some((o) => o.id === id);
+  if (page === 'remover-cartao') return !id && state.customer.cards.some((c) => c.id === state.cardTarget);
+  if (page === 'remover-endereco') return !id && state.customer.addresses.some((a) => a.id === state.addressTarget);
+  return !id && page in accountPages && page !== 'inicio';
+};
 const fromHash = () => {
   // Back/Forward with Ver ingredientes open: cancel it first, as Esc does.
   if (state.editing) closeEditor('cancel');
@@ -782,27 +980,39 @@ const fromHash = () => {
   else if (state.screen === 'pedido' && !cartClick && /^(carrinho|checkout|endereco)/.test(hash)) go(state.category);
   cartClick = false;
   const inFlow = hash === 'endereco' || hash.startsWith('endereco/');
-  if ((hash === 'checkout' || inFlow) && (!state.cart.length || state.cart.some((c) => c.combo && !c.drink))) go('carrinho');
-  // Within the session, a confirmed celular skips the Identificação; the address pages need it.
+  // Private pages (Minha conta and everything in it) need the Identificação first, then open; an identified client
+  // asking for Identifique-se gets Minha conta. The entry of Identifique-se notes where to go once identified:
+  // 'back' (opened by the header: the previous entry) or the private page asked for.
+  const privatePage = hash === 'conta' || hash.startsWith('conta/');
+  if (privatePage && !state.customer) {
+    const asked = hash;
+    go('identificar');
+    history.replaceState({ signin: asked }, '', '#identificar');
+  } else if (privatePage && !validAccount(hash)) go('conta');
+  else if (hash === 'identificar' && state.customer) go('conta');
+  else if (hash === 'identificar' && history.state?.signin === undefined) history.replaceState({ signin: started && state.screen !== 'identificar' ? 'back' : null }, '', '#identificar');
+  if (hash === 'checkout' && (!state.cart.length || state.cart.some((c) => c.combo && !c.drink))) go('carrinho');
+  // Within the session, a confirmed celular skips the Identificação. The address pages need neither the celular nor
+  // the cart (ADR 0002): a visitor chooses the Endereço de entrega from the menu.
   else if (hash === 'checkout' && state.customer && !delivery()) go('endereco');
-  else if (inFlow && !state.customer) go('checkout');
   // Carrinho travado: Seus endereços shows only its notice; the other address pages lead there.
   else if (inFlow && hash !== 'endereco' && cartLocked(state)) go('endereco');
   // The pages of a new address: Confirmar localização needs a place; the Dados de entrega, a served one.
   else if (inFlow && !['endereco', 'endereco/buscar', 'endereco/confirmar', 'endereco/dados', 'endereco/anteriores', 'endereco/editar', 'endereco/remover'].includes(hash)) go('endereco');
   // Endereços de pedidos anteriores: only a Cliente cadastrado has them.
-  else if (hash === 'endereco/anteriores' && !state.customer.registered) go('endereco');
+  else if (hash === 'endereco/anteriores' && !state.customer?.registered) go('endereco');
   // Editar and Remover need the Endereço salvo chosen in its menu ⋮ (none after saving or removing it).
-  else if (['endereco/editar', 'endereco/remover'].includes(hash) && !state.customer.addresses.some((a) => a.id === state.addressTarget)) go('endereco');
+  else if (['endereco/editar', 'endereco/remover'].includes(hash) && !state.customer?.addresses.some((a) => a.id === state.addressTarget)) go('endereco');
   else if ((hash === 'endereco/confirmar' && !state.addressPlace) || (hash === 'endereco/dados' && !state.addressPlace?.served)) go('endereco/buscar');
   const before = state.screen,
     beforePage = state.addressPage,
+    accountBefore = state.accountPage + state.accountOrder,
     beforeFlow = before === 'endereco' ? flowEntry : null;
   if (before === 'cardapio') [menuScroll, menuFocus] = [scrollY, document.activeElement];
   else openDrink = null;
   dispatch({ type: 'category', category: hash });
   // Phones: the tabs scroll sideways; keep the active one in view.
-  document.querySelector('nav a[aria-current]')?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  document.querySelector('header nav a[aria-current]')?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   const now = state.screen;
   // First arrival on Seus endereços (always forward, so the history entry has no state yet): note what the previous
   // entry is, kept in the entry for Back/Forward. 'checkout': the Pagamento (Alterar); 'cart': the Carrinho (the
@@ -813,17 +1023,26 @@ const fromHash = () => {
     history.replaceState(
       beforeFlow?.depth != null
         ? { addressBack: beforeFlow.addressBack, depth: beforeFlow.depth + 1 }
-        : { addressBack: before === 'checkout' && delivery() ? 'checkout' : before === 'carrinho' || (before === 'checkout' && fromCart) ? 'cart' : 'none', depth: 0 },
+        : { addressBack: before === 'cardapio' ? 'menu' : before === 'conta' ? 'conta' : before === 'checkout' && delivery() && !identifiedJump ? 'checkout' : before === 'carrinho' || (before === 'checkout' && fromCart) ? 'cart' : 'none', depth: 0 },
       '',
     );
+  identifiedJump = false;
+  // The entry now says where the address pages came from (the menu: no indicador de etapas, "Voltar ao cardápio").
+  if (now === 'endereco') renderAddress();
   flowEntry = now === 'endereco' ? history.state : null;
   if (now === 'carrinho' && before !== 'checkout') fromMenu = before === 'cardapio' && started;
   if (now === 'checkout') fromCart = before === 'carrinho' && started;
-  if (now === before && (now !== 'endereco' || state.addressPage === beforePage)) return;
+  if (now === before && (now !== 'endereco' || state.addressPage === beforePage) && (now !== 'conta' || accountBefore === state.accountPage + state.accountOrder)) return;
+  // Adicionar cartão opened from Formas de pagamento: saving goes back to that entry.
+  if (now === 'conta' && state.accountPage === 'cartao') cardFromList = before === 'conta' && accountBefore === 'pagamentosnull';
+  if (now === 'conta') {
+    accountMenu = false;
+    render();
+  }
   scrollTo(0, now === 'cardapio' ? menuScroll : 0);
   if (!started) return;
   const back = menuFocus?.isConnected && menuFocus.checkVisibility?.() && menuFocus !== document.body ? menuFocus : $('cart-open');
-  (({ carrinho: $('cart-title'), checkout: $('checkout-title'), endereco: $(state.addressPage === 'buscar' ? 'address-query' : 'address-title'), pedido: $('order-title') })[now] ?? back).focus({ preventScroll: true });
+  (({ carrinho: $('cart-title'), checkout: $('checkout-title'), endereco: $(state.addressPage === 'buscar' ? 'address-query' : 'address-title'), pedido: $('order-title'), conta: $('account-title'), identificar: $('signin-title') })[now] ?? back).focus({ preventScroll: true });
 };
 // Voltar ao carrinho and Editar carrinho: back to the Carrinho (the previous history entry when the Checkout came from it).
 $('checkout-page').addEventListener('click', (e) => {
@@ -836,6 +1055,10 @@ $('checkout-page').addEventListener('click', (e) => {
 const addressBack = () => history.state?.addressBack,
   depth = () => history.state?.depth ?? 0;
 const toPayment = () => (addressBack() === 'checkout' ? history.go(-1 - depth()) : (location.hash = 'checkout'));
+/** Back to the category the address pages were opened from (over them), or to the last one seen. */
+const toMenu = () => (addressBack() === 'menu' || addressBack() === 'conta' ? history.go(-1 - depth()) : (location.hash = state.category));
+/** The Endereço de entrega chosen: back to the menu it came from; otherwise on to the Pagamento (a visitor: the menu). */
+const chosen = () => (addressBack() === 'menu' || !state.customer ? toMenu() : toPayment());
 $('address-page').addEventListener('change', (e) => {
   if (e.target.name !== 'saved-address') return;
   dispatch({ type: 'addressPick', id: e.target.value });
@@ -844,9 +1067,9 @@ $('address-page').addEventListener('change', (e) => {
 $('address-page').addEventListener('click', (e) => {
   if (e.target.closest('[data-address-deliver]')) {
     dispatch({ type: 'addressDeliver' });
-    return toPayment();
+    return chosen();
   }
-  if (e.target.closest('[data-address-back]')) delivery() ? toPayment() : addressBack() === 'cart' ? history.go(-1 - depth()) : (location.hash = 'carrinho');
+  if (e.target.closest('[data-address-back]')) addressBack() === 'menu' || addressBack() === 'conta' ? toMenu() : delivery() ? toPayment() : addressBack() === 'cart' ? history.go(-1 - depth()) : (location.hash = 'carrinho');
   // The notice of the Carrinho travado.
   if (e.target.closest('[data-to-payment]')) toPayment();
 });
@@ -854,10 +1077,10 @@ $('address-page').addEventListener('click', (e) => {
 // page, the previous history entry when it is one. On Localização indisponível, back to Seus endereços.
 const parentPage = { buscar: 'endereco', confirmar: 'endereco/buscar', dados: 'endereco/confirmar', anteriores: 'endereco', editar: 'endereco', remover: 'endereco' };
 /** Back to Seus endereços over the address pages (the history entries before), after choosing or saving. */
-const toList = () => (depth() ? history.go(-depth()) : (location.hash = 'endereco'));
+const toList = () => (addressBack() === 'conta' ? history.go(-1 - depth()) : depth() ? history.go(-depth()) : (location.hash = 'endereco'));
 function stepBack() {
   if (state.addressPage === 'lista') return dispatch({ type: 'addressLocateReset' });
-  depth() ? history.back() : (location.hash = parentPage[state.addressPage]);
+  depth() || addressBack() === 'conta' ? history.back() : (location.hash = parentPage[state.addressPage]);
 }
 // "Usar localização atual" asks the browser: granted, Av. Paulista, 1578 (whatever the coordinates); denied or
 // unavailable, Localização indisponível.
@@ -902,7 +1125,12 @@ $('address-page').addEventListener('click', (e) => {
     dispatch({ type: 'addressLocated' });
     location.hash = 'endereco/confirmar';
   } else if (t.closest('[data-address-other], [data-address-adjust]')) stepBack();
-  else if (t.closest('[data-to-menu]')) location.hash = state.category;
+  else if (t.closest('[data-to-menu]')) toMenu();
+  // Salvar the visitor's Endereço de entrega, once identified: its Dados de entrega, then Seus endereços with it saved.
+  else if (t.closest('[data-address-save-unsaved]')) {
+    dispatch({ type: 'addressSaveUnsaved' });
+    location.hash = 'endereco/dados';
+  }
   else if (t.closest('[data-address-confirm]')) location.hash = 'endereco/dados';
   else if (t.closest('[data-map-center]')) dispatch({ type: 'addressPan', x: 0, y: 0 });
   // The menu ⋮: Editar endereço and Remover endereço open their page for that Endereço salvo; a click outside closes it.
@@ -948,15 +1176,18 @@ $('address-page').addEventListener('submit', (e) => {
   if (!e.target.matches('[data-address-form]')) return;
   const f = new FormData(e.target),
     text = (k) => String(f.get(k) ?? '');
-  const edit = state.addressPage === 'editar';
+  const edit = state.addressPage === 'editar',
+    guest = !state.customer;
   dispatch({
-    type: edit ? 'addressUpdate' : 'addressSave',
+    type: edit ? 'addressUpdate' : guest ? 'addressGuest' : 'addressSave',
     draft: { street: text('street'), district: text('district'), number: text('number'), noNumber: f.has('noNumber'), complement: text('complement'), noComplement: f.has('noComplement'), reference: text('reference'), label: text('label') },
   });
   if (edit) return state.addressTarget ? $('address-content').querySelector('[aria-invalid=true]')?.focus() : toList();
   if (state.addressPlace) return $('address-content').querySelector('[aria-invalid=true]')?.focus();
+  if (guest) return chosen();
+  const fromAccount = addressBack() === 'conta';
   toList();
-  toast('Endereço salvo e selecionado.');
+  toast(fromAccount ? 'Endereço salvo.' : 'Endereço salvo e selecionado.');
 });
 // The map of Confirmar localização: dragged (pointer) or moved with the arrow keys under the fixed marker, never past
 // the tiles' edges (the marker stays 64 px inside them). The address stays as it was.
@@ -1045,7 +1276,7 @@ function confirmPayment() {
   $('checkout-content').querySelector('.processing-step').focus();
   setTimeout(() => {
     const orders = state.orders.length;
-    dispatch({ type: 'payResult' });
+    dispatch({ type: 'payResult', now: Date.now() });
     if (state.orders.length > orders) confirmed(state.orders.at(-1).id);
     else if (state.screen !== 'checkout') toast('Não conseguimos aprovar o pagamento.', { text: 'Voltar ao pagamento', href: '#checkout' });
     // The action on screen: the Resumo do pedido's, or the fixed footer's below 1024px.
@@ -1091,7 +1322,7 @@ function approvePix() {
   pixTimers.push(
     setTimeout(() => {
       const orders = state.orders.length;
-      dispatch({ type: 'pixConfirm' });
+      dispatch({ type: 'pixConfirm', now: Date.now() });
       if (state.orders.length > orders) confirmed(state.orders.at(-1).id);
     }, pixApprovedTime),
   );
@@ -1125,9 +1356,9 @@ $('checkout-content').addEventListener('click', (e) => {
 });
 /** Back to the Forma de pagamento, none chosen: the focus on its first option. */
 const formaFocus = () => $('checkout-content').querySelector('input[name="pay-method"]')?.focus();
-// Pedido confirmado: Acompanhar pedido is not part of the prototype yet; Voltar ao cardápio opens the last category seen.
+// Pedido confirmado: Acompanhar pedido opens its acompanhamento (Minha conta); Voltar ao cardápio opens the last category seen.
 $('order-page').addEventListener('click', (e) => {
-  if (e.target.closest('[data-order-track]')) toast('O acompanhamento do pedido ainda não faz parte do protótipo.');
+  if (e.target.closest('[data-order-track]')) location.hash = `conta/pedidos/${state.shownOrder}`;
   if (e.target.closest('[data-order-menu]')) location.hash = state.category;
 });
 

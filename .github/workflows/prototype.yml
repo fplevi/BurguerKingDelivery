@@ -22,7 +22,8 @@ jobs:
       fail-fast: false
       matrix:
         shard: [1, 2, 3, 4, 5, 6]
-    timeout-minutes: 30
+    # The heaviest shard took ~24 min once Minha conta joined the suite: room above it.
+    timeout-minutes: 45
     defaults:
       run:
         working-directory: prototype

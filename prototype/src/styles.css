@@ -56,14 +56,22 @@ header{height:90px;display:flex;align-items:center;gap:24px;padding:0 max(40px,c
 .location{display:flex;align-items:center;gap:10px;height:48px;padding:0 12px 0 14px;border-radius:8px;background:var(--neutral);color:var(--brown);font-size:15.8px;white-space:nowrap}
 .location small{display:block;font-size:12px;margin-bottom:3px}.location b{display:block;font-weight:400}.location .icon{flex-shrink:0}
 nav{display:flex;gap:36px;margin:0 auto;font-size:15.6px}nav a{padding:6px 0;border-bottom:2px solid transparent;white-space:nowrap}nav a[aria-current=page]{border-color:var(--red)}
-.cart-button{display:flex;align-items:center;gap:24px;border:0;background:none;color:var(--brown);font-size:15.6px;padding:6px}
+/* Header / conta (Figma 318-11114, 318-11541): the Carrinho, icon only, then Identifique-se (outlined pill, 34px) or the first name (48px). */
+.cart-button{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border:0;background:none;color:var(--brown);padding:0}
 .cart-icon{position:relative;display:block;height:32px}.cart-icon svg{display:block}
+.account-button{display:flex;align-items:center;gap:8px;height:34px;max-width:180px;padding:0 13px;border:1px solid var(--brown);border-radius:17px;background:none;color:var(--brown);font-size:14px;white-space:nowrap}.account-button .icon{flex-shrink:0}
+.account-button.identified{height:48px;padding:0 24px;border-color:var(--border);border-radius:24px;background:var(--card)}
+.account-name{overflow:hidden;text-overflow:ellipsis}
+header .cart-button+.account-button{margin-left:-8px}
 .cart-count{position:absolute;right:-8px;top:-6px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:var(--red);color:var(--cream);font-size:11px;line-height:20px;text-align:center}
-@media(max-width:1023px){header{height:auto;flex-wrap:wrap;gap:12px;padding:21px 16px 0}.logo img{width:42px;height:46px}.location{flex:1;min-width:0;font-size:13px}.location span{min-width:0}.location b{overflow:hidden;text-overflow:ellipsis}.cart-button{margin-left:auto;width:44px;height:44px;justify-content:center;padding:0}.cart-label{display:none}nav{order:3;flex:0 0 calc(100% + 32px);margin:9px -16px 0;padding:0 20px;gap:36px;overflow-x:auto;scrollbar-width:none;height:48px;align-items:center}}
+@media(max-width:1023px){header{height:auto;flex-wrap:wrap;gap:12px;padding:21px 16px 0}.logo img{width:42px;height:46px}.location{flex:1;min-width:0;font-size:13px}.location span{min-width:0}.location b{overflow:hidden;text-overflow:ellipsis}.cart-button{margin-left:auto}.account-button{max-width:150px}nav{order:3;flex:0 0 calc(100% + 32px);margin:9px -16px 0;padding:0 20px;gap:36px;overflow-x:auto;scrollbar-width:none;height:48px;align-items:center}}
 /* Hero: title and purchase card on the left, the 3D burger with Ver ingredientes and the description on the right. */
 .stage{position:relative;perspective:1000px}
 .hero{display:grid;grid-template-columns:424px minmax(0,1fr);gap:32px;padding:58px 40px 30px;background:var(--hero);color:var(--title)}
 .info{display:flex;flex-direction:column;gap:32px;min-width:0}
+/* "Entregar em" at the top of each category (Figma 24-183): pin, the Endereço de entrega and Alterar (outlined pill). */
+.deliver-to{display:flex;align-items:center;gap:10px;color:var(--brown);font-size:14px;line-height:1.3}.deliver-to .icon{flex-shrink:0}.deliver-text{margin:0;min-width:0}.deliver-text b{font-weight:bold}
+.deliver-change{flex-shrink:0;height:32px;padding:0 14px;border:1px solid var(--brown);border-radius:16px;background:none;color:var(--brown);font-size:14px;white-space:nowrap}
 h1{font-family:'Flame',Georgia,serif;font-weight:700;font-size:90px;line-height:.9;letter-spacing:-1px;margin:0;color:var(--title)}
 .visual{display:flex;flex-direction:column;align-items:center;min-width:0;padding-top:19px}
 .hero .stage{width:520px;max-width:100%;height:448px}
@@ -91,7 +99,7 @@ h1{font-family:'Flame',Georgia,serif;font-weight:700;font-size:90px;line-height:
 .card-name{position:relative;display:flex;align-items:center;justify-content:center;min-height:48px;line-height:1;text-align:center}
 .prototype-note{margin:32px 0 0;font-size:12px;color:#775b49;line-height:1.6}
 /* < 1024px: one column, title, 3D, Ver ingredientes, description, card, then the grid in 2 columns. */
-@media(max-width:1023px){.hero{display:flex;flex-direction:column;align-items:center;padding:24px 20px 28px}.info{display:contents}h1{font-size:54px;text-align:center}.visual{order:1;width:100%;padding-top:12px}.hero .stage{width:100%;max-width:390px;height:251px}.edit-btn{height:44px;margin-top:12px;max-width:100%}.description{width:350px;margin-top:12px;font-size:14px;line-height:19px}.purchase{order:2;width:100%;max-width:424px;margin-top:12px;padding:21px 14px}#add{width:100%;margin:0}.catalog{padding:28px 20px}.catalog h2{font-size:28px;margin-bottom:12px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.card{padding:17px;font-size:17px}.card[aria-pressed=true]{padding:16px}.catalog-photo{height:113px;transform:scale(1.6)}}
+@media(max-width:1023px){.hero{display:flex;flex-direction:column;align-items:center;padding:24px 20px 28px}.info{display:contents}.deliver-to{align-self:stretch;margin-bottom:20px;font-size:13px}.deliver-text{flex:1}h1{font-size:54px;text-align:center}.visual{order:1;width:100%;padding-top:12px}.hero .stage{width:100%;max-width:390px;height:251px}.edit-btn{height:44px;margin-top:12px;max-width:100%}.description{width:350px;margin-top:12px;font-size:14px;line-height:19px}.purchase{order:2;width:100%;max-width:424px;margin-top:12px;padding:21px 14px}#add{width:100%;margin:0}.catalog{padding:28px 20px}.catalog h2{font-size:28px;margin-bottom:12px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.card{padding:17px;font-size:17px}.card[aria-pressed=true]{padding:16px}.catalog-photo{height:113px;transform:scale(1.6)}}
 /* >= 1920px: the hero fills the screen beside a side column that scrolls on its own; the page doesn't scroll. */
 @media(min-width:1920px){main{display:grid;grid-template-columns:minmax(0,1fr) 622px;height:calc(100vh - 90px);min-height:610px}.hero{height:100%;grid-template-columns:424px 520px;column-gap:74px;justify-content:center;align-items:center;padding:0 40px}.visual{padding-top:46px}.hero .stage{height:min(448px,max(300px,100vh - 300px))}.catalog{height:100%;overflow-y:auto;padding:32px 48px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* Acompanhamentos, Bebidas, Sobremesas (revisao-figma 04): the hero shows the product's photo, cropped to its drawn area; no 3D, Ver ingredientes or combo. */
@@ -162,7 +170,7 @@ main[data-screen=checkout],main[data-screen=endereco]{display:block;height:auto;
 .checkout-page>.secondary{border-color:var(--border);padding:12px 28px}
 .checkout-page h1{font-size:46px;line-height:1;margin:40px 0 0;text-align:left;white-space:normal}
 .checkout-page h1,.checkout-page h2{font-family:'Flame',Georgia,serif}
-.checkout-page .primary,.checkout-page .secondary{font-family:'Flame Sans',Arial,sans-serif;font-weight:normal}
+.checkout-page .primary,.checkout-page .secondary,.signin-page .primary,.signin-page .secondary,.account-page .primary,.account-page .secondary{font-family:'Flame Sans',Arial,sans-serif;font-weight:normal}
 .steps{list-style:none;margin:40px 0 32px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
 .step{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:13px;color:#8a6a58;text-align:center}
 .step+.step:before{content:'';position:absolute;top:13px;right:50%;width:100%;height:2px;background:var(--border)}
@@ -202,6 +210,8 @@ main[data-screen=checkout],main[data-screen=endereco]{display:block;height:auto;
 .saved-check{align-self:start;color:var(--red);visibility:hidden}.saved-address:has(:checked) .saved-check{visibility:visible}
 .address-previous{display:flex;align-items:center;gap:10px;align-self:start;margin-top:16px;padding:12px 0;color:var(--red);font-size:12px}
 .saved-more{position:absolute;right:14px;top:calc(50% + 2px);z-index:2;display:grid;place-items:center;width:32px;height:32px;padding:0;border:0;border-radius:50%;background:none;color:var(--red)}.saved-more:hover{background:var(--card)}.saved-address:has(.saved-more) label{padding-right:52px;grid-template-columns:24px minmax(0,1fr) 0}.saved-address:has(.saved-more) .saved-check{position:absolute;right:20px;top:18px}
+/* The visitor's Endereço de entrega, once identified (ADR 0002): "Salvar" where the menu ⋮ of an Endereço salvo is. */
+.saved-save{position:absolute;right:8px;top:calc(50% + 2px);z-index:2;margin:0;padding:8px 12px;color:var(--red);font-weight:bold;font-size:14px;transform:translateY(-50%)}.saved-address:has(.saved-save) label{padding-right:84px;grid-template-columns:24px minmax(0,1fr) 0}.saved-address:has(.saved-save) .saved-check{position:absolute;right:20px;top:18px}
 .address-menu{width:min(282px,calc(100vw - 32px));padding:8px 0;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--title)}.address-menu::backdrop{background:rgb(0 0 0 / .76)}.address-menu button{display:block;width:100%;padding:14px 16px;border:0;background:none;color:var(--title);font-size:14px}.address-menu button:hover{background:var(--card)}.address-menu .address-menu-remove{color:var(--red)}
 .previous-addresses{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:14px}.previous-addresses button{display:grid;grid-template-columns:24px minmax(0,1fr);align-items:center;gap:16px;width:100%;padding:18px 20px 18px 14px;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--title);text-align:left}.previous-addresses button:hover{background:var(--card)}
 .address-action{margin-top:24px}.address-action .primary{min-width:264px;height:46px;font-size:14px}
@@ -289,3 +299,43 @@ main[data-screen=pedido]{display:block;height:auto;min-height:0}
 @media(max-width:1023px){.checkout-page:has(.pay-bar){padding-bottom:168px}.order-summary .pay-action{display:none}.order-summary .pay-note{margin-top:20px}.pay-bar{display:flex;flex-direction:column;gap:16px;position:fixed;z-index:20;left:0;right:0;bottom:0;background:var(--cream);border-top:1px solid var(--border);box-shadow:0 -6px 18px #6b2a0014;padding:20px 16px calc(16px + env(safe-area-inset-bottom))}.pay-bar p{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:0;font-size:13px}.pay-bar strong{font-family:'Flame',Georgia,serif;font-size:24px;white-space:nowrap}.pay-bar .primary{width:100%;height:52px;font-size:16px}}
 /* … and the main action of the address flow (Figma "Entrega / ação fixa"). */
 @media(max-width:1023px){.checkout-page:has(.address-action){padding-bottom:116px}.address-action{position:fixed;z-index:20;left:0;right:0;bottom:0;margin:0;background:var(--cream);border-top:1px solid var(--border);box-shadow:0 -6px 18px #6b2a0014;padding:16px 16px calc(16px + env(safe-area-inset-bottom))}main:has(.address-action)~.toast{bottom:104px}main:has(.pay-bar)~.toast{bottom:172px}}
+/* Minha conta (Figma Conta 07-22): the title, then the navigation (240px) beside the section's cards. */
+.account-page{padding:36px max(48px,calc((100% - 1184px) / 2)) 64px;color:var(--title)}.account-page h1{margin:0 0 28px;font-family:'Flame',Georgia,serif;font-size:40px;line-height:1.1}
+.account-layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:28px;align-items:start}
+/* Not the header's nav: none of its flex, tabs or underline. */
+.account-page .account-nav{display:block;order:0;flex:none;height:auto;margin:0;padding:0;overflow:visible;font-size:15px}.account-page .account-links a{border-bottom:0;padding:0 16px;white-space:normal}
+.account-menu{display:none}.account-links ul{list-style:none;margin:0;padding:0}.account-exit{margin-top:12px!important;padding-top:12px!important;border-top:1px solid var(--border)!important}
+.account-links a{position:relative;display:flex;align-items:center;gap:14px;height:52px;padding:0 16px;color:var(--brown);font-size:15px}.account-links a:hover{color:var(--red)}
+.account-links a[aria-current=page]{color:var(--red)}.account-links a[aria-current=page]::before{content:'';position:absolute;left:0;top:14px;bottom:14px;width:3px;border-radius:2px;background:var(--red)}
+.account-body{display:flex;flex-direction:column;align-items:flex-start;gap:20px;min-width:0}
+.account-card{align-self:stretch;padding:24px;border:1px solid var(--border);border-radius:16px;background:var(--card);color:var(--brown);font-size:15px}.account-card h2{margin:0 0 16px;font-family:'Flame',Georgia,serif;font-size:22px;color:var(--title)}.account-card p{margin:0 0 14px;line-height:1.4}.account-meta{font-size:13px}
+.account-action{display:inline-flex;align-items:center;justify-content:center;min-width:260px;height:48px;margin-top:6px;padding:0 24px;border-radius:24px;font-size:14px;font-weight:normal;text-align:center}.account-buttons{display:flex;flex-wrap:wrap;gap:12px}.secondary.account-action{border-color:var(--border)}
+@media(max-width:1023px){.account-page{padding:24px 16px 40px}.account-page h1{font-size:28px;margin-bottom:20px;text-align:left}.account-layout{grid-template-columns:minmax(0,1fr);gap:16px}
+.account-menu{position:relative;display:flex;align-items:center;gap:14px;width:100%;height:52px;padding:0 4px 0 16px;border:0;border-bottom:1px solid var(--border);background:none;color:var(--red);font-size:15px;text-align:left}.account-menu::before{content:'';position:absolute;left:0;top:14px;bottom:14px;width:3px;border-radius:2px;background:var(--red)}.account-menu span{flex:1}.account-menu .icon:last-child{color:var(--brown);transition:transform .2s}.account-nav.open .account-menu .icon:last-child{transform:rotate(180deg)}
+.account-links{display:none;padding-top:4px}.account-nav.open .account-links{display:block}.account-action{width:100%;min-width:0}.account-buttons{flex-direction:column;align-self:stretch}}
+/* Identifique-se (Figma Conta 01-06): the title with Fechar, the lead and the Identificação's card, 680px centred. */
+.signin-page{max-width:calc(680px + 32px);margin:0 auto;padding:48px 16px 64px;color:var(--title)}.signin-head{display:flex;align-items:center;justify-content:space-between;gap:16px}.signin-head h1{margin:0;font-family:'Flame',Georgia,serif;font-size:32px;line-height:1.1}
+.signin-head .secondary{height:48px;padding:0 22px;border-color:var(--border);background:var(--card);font-weight:normal;font-size:14px}.signin-lead{margin:20px 0 24px;font-size:15px}
+@media(max-width:1023px){.signin-page{padding:24px 16px 40px}.signin-head h1{font-size:28px}}
+/* Dados pessoais and Alterar celular (Figma Conta 08-11): white fields, the buttons one below the other (260px). */
+.account-form .field{background:#fff}.account-form .field[readonly]{background:#fff;color:var(--brown)}.account-form .account-meta{margin:0}.account-form>.account-action{align-self:flex-start;margin-top:16px}
+.account-buttons-column{flex-direction:column;align-items:flex-start;margin-top:12px}.account-lead{margin:0;font-size:15px;color:var(--brown)}
+.account-body .checkout-step .field{background:#fff}
+/* Endereços (Figma Conta 12-14): "Remover endereço" in red, without background or border, under the 260px button. */
+.danger{min-width:260px;height:44px;padding:0 24px;border:0;background:none;color:var(--red);font:14px 'Flame Sans',Arial,sans-serif}.danger:hover{text-decoration:underline}
+@media(max-width:1023px){.danger{width:100%;min-width:0}}
+/* Meus pedidos (Figma Conta 18): the group titles and the cards one below the other. */
+.account-group{margin:8px 0 0;font-family:'Flame',Georgia,serif;font-size:18px;color:var(--title)}.account-group:first-child{margin-top:0}.account-list{display:flex;flex-direction:column;gap:16px;align-self:stretch}.order-forecast{font-size:17px}
+/* Acompanhamento (Figma Pedidos 351-14130…): the Situação on top, the map and the contacts beside the linha do tempo (260px), the Items below. */
+.track{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:16px;align-self:stretch}.track-head{grid-column:1/-1}.track-head h2{font-size:26px;margin-bottom:12px}.track-eta{font-family:'Flame',Georgia,serif;font-size:18px;color:var(--title);margin-bottom:10px!important}
+.track-main{display:flex;flex-direction:column;gap:16px;min-width:0}.track-steps{align-self:start}.track-items{grid-column:1/-1}.track-items .order-summary{margin:0}
+.track-map{position:relative;margin:12px 0 14px;border-radius:12px;overflow:hidden;background:#eee}.track-map svg{display:block;width:100%;height:auto;aspect-ratio:22/15}.track-map .map-credit{position:absolute;left:0;bottom:0;margin:0;padding:2px 6px;background:#ffffffcc;font-size:11px}
+.track-whatsapp{display:flex;gap:8px;width:100%;margin:12px 0 16px}.track-store{margin-top:8px}.track-store .account-meta{margin-bottom:0}.track-store-name{margin:8px 0 4px!important;font-size:16px}
+.timeline{position:relative;list-style:none;margin:0;padding:0}.timeline li{position:relative;padding:0 0 22px 26px}.timeline li:last-child{padding-bottom:0}
+.timeline li::before{content:'';position:absolute;left:3px;top:6px;width:8px;height:8px;border-radius:50%;background:#e2d6c6;z-index:1}.timeline li::after{content:'';position:absolute;left:6px;top:10px;bottom:-10px;width:2px;background:#e2d6c6}.timeline li:last-child::after{display:none}
+.timeline .tl-done::before,.timeline .tl-current::before,.timeline .tl-cancelled::before{background:var(--red)}.timeline .tl-done::after,.timeline .tl-current:not(:last-child)::after{background:var(--red)}.timeline .tl-current:not(:last-child)::after{background:#e2d6c6}
+.timeline .tl-current::before{left:0;top:3px;width:14px;height:14px}.timeline .tl-current .tl-name{color:var(--red)}
+.tl-name{display:block;font-size:14px}.tl-when{display:block;margin-top:3px;font-size:11.5px}.tl-next{color:#8a6a58}
+@media(max-width:1023px){.track{grid-template-columns:minmax(0,1fr)}.track-head h2{font-size:24px}}
+/* Below 1024px, Minha conta and Identifique-se have no category tabs in the header (Figma Conta mobile: 76px header). */
+@media(max-width:1023px){body:is([data-screen=conta],[data-screen=identificar]) header nav{display:none}body:is([data-screen=conta],[data-screen=identificar]) header{padding-bottom:14px}}
