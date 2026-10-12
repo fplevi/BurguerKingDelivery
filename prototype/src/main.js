@@ -1,6 +1,11 @@
 import { recipes, layer, description, removedLine } from './ingredients.js';
 import { art } from './art.js';
-import { initial, reducer, money, drinks, pick, itemTotal, itemName, cartUnits, cartTotal } from './state.js';
+import { initial, reducer, money, marks, drinks, pick, itemTotal, itemName, cartUnits, cartTotal, savedAddress } from './state.js';
+import { progress, orderSummary, identificationStep, sentTo, addressFlow, lockNotice, deliveryCard, paymentStep, paymentAction, paymentBar, processingStep, orderPage, mapSize, mapCenter } from './checkout.js';
+import { processingTime } from './checkout-fixtures.js';
+import { pixPending, cartLocked } from './state.js';
+import { pixStep, pixApprovedStep, pixClock } from './checkout.js';
+import { pixApproval, pixApprovedTime, pixCode } from './checkout-fixtures.js';
 import { categories, products } from './products.js';
 import { createBurgerScene } from './scene/burger-scene.js';
 import whopperPhoto from '../Assets/burgers/official/site_Whopper.png';
@@ -112,8 +117,6 @@ const burgers = [
   { name: 'Cheeseburger', photo: cheeseburgerPhoto },
   { name: 'Rodeio', photo: rodeioPhoto },
 ];
-/** Product names with ® raised, as in the Figma. */
-const marks = (text) => text.replace(/®/g, '<span class="mark">®</span>');
 /** The photo's box in the 800 × 800 file, for .photo-crop: only it is drawn (the transparent margins are cut off, as in the Figma). */
 const crop = ([x0, y0, x1, y1]) => `--x:${x0};--y:${y0};--w:${x1 - x0};--h:${y1 - y0}`;
 const badge =
@@ -203,13 +206,30 @@ addEventListener('resize', fitTitle);
 
 function render() {
   buildGrid();
-  const inCart = state.screen === 'carrinho';
+  const inCart = state.screen === 'carrinho',
+    inCheckout = state.screen === 'checkout',
+    inAddress = state.screen === 'endereco',
+    inOrder = state.screen === 'pedido',
+    inMenu = state.screen === 'cardapio';
   document
     .querySelectorAll('nav a')
-    .forEach((a) => (!inCart && a.hash === '#' + state.category ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current')));
+    .forEach((a) => (inMenu && a.hash === '#' + state.category ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current')));
   document.querySelector('main').dataset.screen = state.screen;
-  for (const el of document.querySelectorAll('main > .hero, main > .catalog')) el.hidden = inCart;
+  for (const el of document.querySelectorAll('main > .hero, main > .catalog')) el.hidden = !inMenu;
   $('cart-page').hidden = !inCart;
+  $('checkout-page').hidden = !inCheckout;
+  $('address-page').hidden = !inAddress;
+  $('order-page').hidden = !inOrder;
+  // "Entregar em" leaves the header in the Checkout and the address pages.
+  document.querySelector('header .location').hidden = inCheckout || inAddress || inOrder;
+  // Processing the card: the whole screen is disabled (header, Voltar ao carrinho, Editar carrinho) until the result.
+  const processing = inCheckout && (state.order?.status === 'processing' || state.order?.pix === 'approved');
+  document.querySelector('header').inert = processing;
+  $('checkout-back').disabled = processing;
+  // Pix pendente: the cart is locked, so the Checkout has no way back to edit it (Voltar ao carrinho, Editar carrinho).
+  // Carrinho travado (Pix or card), Seus endereços has only its notice, with its own way back to the payment.
+  $('checkout-back').hidden = inCheckout && cartLocked(state) && state.order.status !== 'processing';
+  $('address-back').hidden = inAddress && cartLocked(state);
   const photo = pick(state) && products[pick(state).product];
   for (const id of ['hero-stage', 'edit', 'combo-options']) $(id).hidden = !!photo;
   $('product-frame').hidden = !photo;
@@ -288,7 +308,110 @@ function render() {
     $('cart-content').replaceChildren();
     $('cart-status').textContent = '';
   }
+  if (inCheckout) renderCheckout();
+  else $('checkout-content').replaceChildren();
+  $('order-content').innerHTML = inOrder ? orderPage(shownOrder()) : '';
+  if (inAddress) renderAddress();
+  else $('address-content').replaceChildren();
 }
+/**
+ * Replaces the content of `root` with `html`: the control that had the focus there (found again by its id) keeps it,
+ * with its caret, and the fields matching the selector `keep` keep the text typed in them.
+ */
+function rebuild(root, html, keep = '') {
+  const active = root.contains(document.activeElement) ? document.activeElement : null,
+    kept = keep ? [...root.querySelectorAll(keep)].map((i) => [i.id, i.value]) : [];
+  let caret = null;
+  try {
+    caret = active && active.selectionStart != null ? [active.selectionStart, active.selectionEnd] : null;
+  } catch {}
+  root.innerHTML = html;
+  for (const [id, value] of kept) if ($(id)) $(id).value = value;
+  const again = active?.id && $(active.id);
+  if (!again) return;
+  again.focus({ preventScroll: true });
+  try {
+    if (caret) again.setSelectionRange(...caret);
+  } catch {}
+}
+/**
+ * The address pages: Seus endereços, or the Busca, Confirmar localização and Dados de entrega (with "Voltar" above).
+ * Rebuilt on every change, so the focused control (the Busca's field, the map) keeps its focus and caret.
+ */
+function renderAddress() {
+  $('address-step-back').hidden = cartLocked(state) || (state.addressPage === 'lista' && !state.locateError);
+  rebuild($('address-content'), progress(1) + addressFlow(state));
+  // The menu ⋮ open: a modal dialog, its first option focused.
+  $('address-menu')?.showModal();
+}
+/** The address chosen with "Entregar neste endereço", while it is still an Endereço salvo; null otherwise. */
+const delivery = () => savedAddress(state, state.delivery);
+/** The Pedido confirmado of #pedido/<id>, or undefined. */
+const shownOrder = (id = state.shownOrder) => state.orders.find((o) => o.id === id);
+
+/**
+ * Checkout: the indicador de etapas, the current step (Identificação) and the Resumo do pedido. Rebuilt on every
+ * change, so the focused field keeps its focus and caret, and the Novo cliente's name and e-mail their text.
+ */
+function renderCheckout() {
+  const address = state.customer && delivery();
+  const order = state.order,
+    approved = order?.pix === 'approved',
+    processing = order?.status === 'processing' || approved,
+    pix = pixPending(state);
+  // Identified with an address: the Pagamento (the delivery card, then the Forma de pagamento; or the processing of
+  // the card; or the Pix pendente; or Pagamento aprovado, every step done); otherwise the Identificação.
+  const main = !address ? '' : processing ? (approved ? pixApprovedStep(order) : processingStep(order)) : pix ? pixStep(order, Date.now()) : deliveryCard(address) + paymentStep(state);
+  const html = address
+    ? `${progress(approved ? 3 : 2)}<div class="checkout-body"><div class="checkout-main">${main}</div>${orderSummary(state.cart, true, processing ? { edit: 'disabled' } : pix ? { edit: false } : { action: paymentAction(state) })}</div>${processing || pix ? '' : paymentBar(state)}`
+    : `${progress(0)}<div class="checkout-body"><section class="checkout-step" aria-label="Identificação">${identificationStep(state.identification)}</section>${orderSummary(state.cart)}</div>`;
+  rebuild($('checkout-content'), html, '#id-name, #id-email');
+}
+// Identificação: the celular is masked as it is typed, the caret staying after the same digit; the code keeps digits only.
+$('checkout-content').addEventListener('input', (e) => {
+  const t = e.target;
+  if (t.id === 'id-phone') {
+    const before = t.value.slice(0, t.selectionStart).replace(/\D/g, '').length;
+    dispatch({ type: 'idPhone', value: t.value });
+    const field = $('id-phone'),
+      masked = field.value;
+    let at = 0;
+    for (let n = 0; at < masked.length && n < before; at++) if (/\d/.test(masked[at])) n++;
+    field.setSelectionRange(at, at);
+  } else if (t.id === 'id-code') dispatch({ type: 'idCode', value: t.value });
+});
+// Identified (Cliente cadastrado, or Novo cliente after the form): the Checkout's place in history becomes #endereco.
+const identified = () => state.customer && location.replace('#endereco');
+$('checkout-content').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const form = e.target.dataset.idForm;
+  if (form === 'phone') {
+    dispatch({ type: 'idSend', channel: e.submitter?.dataset.idSend ?? 'whatsapp' });
+    $('id-code')?.focus();
+  } else if (form === 'code') {
+    dispatch({ type: 'idConfirm' });
+    // Código incorreto: back to the code, whose button is now disabled.
+    if (state.identification.codeError) $('id-code').focus();
+    identified();
+  } else if (form === 'register') {
+    dispatch({ type: 'idRegister', name: $('id-name').value, email: $('id-email').value });
+    $('checkout-content').querySelector('[aria-invalid=true]')?.focus();
+    identified();
+  }
+});
+// Reenviar código and switching the channel only tell where the code went (toast); Alterar celular goes back to the celular, filled.
+$('checkout-content').addEventListener('click', (e) => {
+  const id = () => state.identification;
+  if (e.target.closest('[data-id-resend]')) toast(sentTo(id().channel, id().phone));
+  else if (e.target.closest('[data-id-channel]')) {
+    dispatch({ type: 'idChannel' });
+    $('checkout-content').querySelector('[data-id-channel]').focus();
+    toast(sentTo(id().channel, id().phone));
+  } else if (e.target.closest('[data-id-change]')) {
+    dispatch({ type: 'idChange' });
+    $('id-phone').focus();
+  }
+});
 
 /** Carrinho screen: the Itens (each one editable, see itemCard) and the Resumo do carrinho, or the empty state. */
 const itemsText = (n) => (n === 1 ? '1 item' : `${n} itens`);
@@ -351,9 +474,21 @@ function removedNotice() {
   const last = state.lastRemoved;
   return last ? `<div class="cart-notice" role="group" aria-label="Item removido"><p>${marks(itemName(last.item))} removido do carrinho.</p><button class="secondary" data-key="undo">Desfazer</button></div>` : '';
 }
+/** Item `i` of the Carrinho travado: as itemCard, read-only (Combo · Bebida and "Quantidade: N" as text, no Remover). */
+function lockedCard(item) {
+  const combo = recipes[item.product] && item.combo ? `<p class="cart-locked-detail">Combo · ${item.drink}</p>` : '';
+  return `<li class="cart-item cart-locked${recipes[item.product] ? ' cart-burger' : ''}">${itemPhoto(item)}<div class="cart-head"><h2>${marks(itemName(item))}</h2></div>${ingredientsOf(item)}<div class="cart-controls"><div class="cart-locked-detail">${combo}<p>Quantidade: ${item.qty}</p></div><div class="total">Total do item<strong>${money(item.price * item.qty)}</strong></div></div></li>`;
+}
 function renderCart() {
   const units = cartUnits(state.cart);
   const count = state.cart.length;
+  // Carrinho travado (Pix pendente, card processing): the Itens read-only, the notice with "Voltar ao pagamento" and the Resumo do carrinho without Continuar.
+  if (count && cartLocked(state)) {
+    $('cart-subtitle').hidden = false;
+    $('cart-subtitle').textContent = units === count ? `${itemsText(count)} no carrinho` : `${units} unidades em ${itemsText(count)}`;
+    $('cart-content').innerHTML = `${lockNotice(state.order)}<ul class="cart-items" aria-label="Itens">${state.cart.map(lockedCard).join('')}</ul><aside class="cart-summary" aria-labelledby="summary-title"><h2 id="summary-title">Resumo do carrinho</h2><p class="summary-total">Total dos itens<strong>${money(cartTotal(state.cart))}</strong></p><p class="summary-note">Entrega calculada na próxima etapa.</p></aside>`;
+    return;
+  }
   $('cart-subtitle').hidden = !count;
   if (!count) {
     $('cart-content').innerHTML =
@@ -524,22 +659,32 @@ $('qty-minus').onclick = () => dispatch({ type: 'qty', value: qty() - 1 });
 $('qty-plus').onclick = () => dispatch({ type: 'qty', value: qty() + 1 });
 $('drink').onchange = (e) => dispatch({ type: 'drink', value: e.target.value });
 $('add').onclick = () => {
+  // Carrinho travado (Pix pendente, card processing): nothing is added.
+  if (cartLocked(state))
+    return toast(state.order.status === 'processing' ? 'Aguarde o processamento do pagamento para alterar o carrinho.' : 'Conclua o pagamento ou escolha outra forma de pagamento para alterar o carrinho.');
   const added = pick(state) ? products[pick(state).product].name : recipe().name;
   dispatch({ type: 'add' });
   // The combo's drink error belongs to the burger card only.
   if (!pick(state) && state.drinkError) return $('drink').focus();
   toast(`Adicionado ao carrinho: ${added}`);
 };
-$('cart-open').onclick = () => (location.hash = 'carrinho');
+// From the Pedido confirmado, the header's Carrinho opens the (empty) Carrinho; Back from there goes to the menu (fromHash).
+let cartClick = false;
+$('cart-open').onclick = () => {
+  cartClick = location.hash !== '#carrinho';
+  location.hash = 'carrinho';
+};
 // Voltar ao cardápio, Adicionar mais itens and Explorar cardápio: back to the last category seen, as it was.
 // Opened from the menu, that is the previous history entry (so Back doesn't return to the Carrinho);
 // opened by the address, there is none and the category's hash is pushed instead.
 let fromMenu = false,
+  fromCart = false,
   started = false;
 // One click handler for the whole screen: Continuar, the ways back to the menu (Voltar ao cardápio,
 // Adicionar mais itens, Explorar cardápio) and the controls of each Item (data-key "index:control").
 $('cart-page').addEventListener('click', (e) => {
   if (e.target.closest('[data-continue]')) return continueOrder();
+  if (e.target.closest('[data-to-payment]')) return (location.hash = 'checkout');
   if (e.target.closest('[data-back]')) return fromMenu ? history.back() : (location.hash = state.category);
   const key = e.target.closest('[data-key]')?.dataset.key;
   if (!key) return;
@@ -602,11 +747,11 @@ $('cart-page').addEventListener('mousedown', (e) => {
 document.addEventListener('pointerdown', (e) => {
   if (openDrink && !e.target.closest('.picker')) showDrinks(null);
 });
-// Continuar: the first combo without a drink is scrolled to and its Bebida do combo focused; none, the toast.
+// Continuar: the first combo without a drink is scrolled to and its Bebida do combo focused; none, the Checkout.
 function continueOrder() {
   dispatch({ type: 'continue' });
   const i = state.cart.findIndex((c) => c.drinkError);
-  if (i < 0) return toast('Tudo certo! O pagamento não faz parte deste protótipo.');
+  if (i < 0) return (location.hash = 'checkout');
   const picker = $('cart-content').querySelector(`[data-key="${i}:drink"]`);
   picker.closest('.cart-item').scrollIntoView({ block: 'center' });
   picker.focus({ preventScroll: true });
@@ -617,24 +762,371 @@ function continueOrder() {
 // control the customer left from come back (that control gone or hidden, the header's Carrinho button).
 let menuScroll = 0,
   menuFocus = null;
+// #checkout with an empty cart, or with a combo still without a drink (typed or reloaded: the cart lives in memory), shows the Carrinho.
+// Entering the Checkout: top of the page, focus on its title. From the Checkout back to the Carrinho, the Carrinho's way back to the menu stays as it was.
+let flowEntry = null; // the history entry of the address page shown, read on the next one
 const fromHash = () => {
   // Back/Forward with Ver ingredientes open: cancel it first, as Esc does.
   if (state.editing) closeEditor('cancel');
-  const wasMenu = state.screen === 'cardapio';
-  if (wasMenu) [menuScroll, menuFocus] = [scrollY, document.activeElement];
-  if (!wasMenu) openDrink = null;
-  dispatch({ type: 'category', category: location.hash.slice(1) });
+  let hash = location.hash.slice(1);
+  const go = (to) => {
+    hash = to;
+    history.replaceState(null, '', '#' + to);
+  };
+  // #pedido/<id> without that Pedido confirmado: the menu. Back from the Pedido confirmado into the Carrinho, the
+  // Checkout or an address page: the menu too (the cart was closed), without opening the Checkout.
+  if (hash.startsWith('pedido/') && !shownOrder(hash.slice(7))) go(state.category);
+  else if (state.screen === 'pedido' && !cartClick && /^(carrinho|checkout|endereco)/.test(hash)) go(state.category);
+  cartClick = false;
+  const inFlow = hash === 'endereco' || hash.startsWith('endereco/');
+  if ((hash === 'checkout' || inFlow) && (!state.cart.length || state.cart.some((c) => c.combo && !c.drink))) go('carrinho');
+  // Within the session, a confirmed celular skips the Identificação; the address pages need it.
+  else if (hash === 'checkout' && state.customer && !delivery()) go('endereco');
+  else if (inFlow && !state.customer) go('checkout');
+  // Carrinho travado: Seus endereços shows only its notice; the other address pages lead there.
+  else if (inFlow && hash !== 'endereco' && cartLocked(state)) go('endereco');
+  // The pages of a new address: Confirmar localização needs a place; the Dados de entrega, a served one.
+  else if (inFlow && !['endereco', 'endereco/buscar', 'endereco/confirmar', 'endereco/dados', 'endereco/anteriores', 'endereco/editar', 'endereco/remover'].includes(hash)) go('endereco');
+  // Endereços de pedidos anteriores: only a Cliente cadastrado has them.
+  else if (hash === 'endereco/anteriores' && !state.customer.registered) go('endereco');
+  // Editar and Remover need the Endereço salvo chosen in its menu ⋮ (none after saving or removing it).
+  else if (['endereco/editar', 'endereco/remover'].includes(hash) && !state.customer.addresses.some((a) => a.id === state.addressTarget)) go('endereco');
+  else if ((hash === 'endereco/confirmar' && !state.addressPlace) || (hash === 'endereco/dados' && !state.addressPlace?.served)) go('endereco/buscar');
+  const before = state.screen,
+    beforePage = state.addressPage,
+    beforeFlow = before === 'endereco' ? flowEntry : null;
+  if (before === 'cardapio') [menuScroll, menuFocus] = [scrollY, document.activeElement];
+  else openDrink = null;
+  dispatch({ type: 'category', category: hash });
   // Phones: the tabs scroll sideways; keep the active one in view.
   document.querySelector('nav a[aria-current]')?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
-  const inCart = state.screen === 'carrinho';
-  if (inCart) fromMenu = wasMenu && started;
-  if (inCart === !wasMenu) return;
-  scrollTo(0, inCart ? 0 : menuScroll);
+  const now = state.screen;
+  // First arrival on Seus endereços (always forward, so the history entry has no state yet): note what the previous
+  // entry is, kept in the entry for Back/Forward. 'checkout': the Pagamento (Alterar); 'cart': the Carrinho (the
+  // Checkout's entry became #endereco, or was skipped); null: anything else.
+  // The pages of a new address keep it too, with `depth`: how many address pages come before them in history (0 on
+  // the first one), so "Voltar", "Voltar ao checkout" and "Salvar endereço" go back over them.
+  if (now === 'endereco' && history.state?.depth == null && started)
+    history.replaceState(
+      beforeFlow?.depth != null
+        ? { addressBack: beforeFlow.addressBack, depth: beforeFlow.depth + 1 }
+        : { addressBack: before === 'checkout' && delivery() ? 'checkout' : before === 'carrinho' || (before === 'checkout' && fromCart) ? 'cart' : 'none', depth: 0 },
+      '',
+    );
+  flowEntry = now === 'endereco' ? history.state : null;
+  if (now === 'carrinho' && before !== 'checkout') fromMenu = before === 'cardapio' && started;
+  if (now === 'checkout') fromCart = before === 'carrinho' && started;
+  if (now === before && (now !== 'endereco' || state.addressPage === beforePage)) return;
+  scrollTo(0, now === 'cardapio' ? menuScroll : 0);
   if (!started) return;
   const back = menuFocus?.isConnected && menuFocus.checkVisibility?.() && menuFocus !== document.body ? menuFocus : $('cart-open');
-  (inCart ? $('cart-title') : back).focus({ preventScroll: true });
+  (({ carrinho: $('cart-title'), checkout: $('checkout-title'), endereco: $(state.addressPage === 'buscar' ? 'address-query' : 'address-title'), pedido: $('order-title') })[now] ?? back).focus({ preventScroll: true });
 };
+// Voltar ao carrinho and Editar carrinho: back to the Carrinho (the previous history entry when the Checkout came from it).
+$('checkout-page').addEventListener('click', (e) => {
+  if (e.target.closest('[data-to-cart]')) fromCart ? history.back() : (location.hash = 'carrinho');
+  if (e.target.closest('[data-change-address]')) location.hash = 'endereco';
+});
+// Seus endereços. Marking an Endereço salvo keeps the focus on it. "Entregar neste endereço" and "Voltar ao checkout"
+// return to the Pagamento (the previous history entry when Seus endereços came from it, else a new one); without an
+// address chosen yet the Checkout has nothing past the Identificação, so "Voltar ao checkout" returns to the Carrinho.
+const addressBack = () => history.state?.addressBack,
+  depth = () => history.state?.depth ?? 0;
+const toPayment = () => (addressBack() === 'checkout' ? history.go(-1 - depth()) : (location.hash = 'checkout'));
+$('address-page').addEventListener('change', (e) => {
+  if (e.target.name !== 'saved-address') return;
+  dispatch({ type: 'addressPick', id: e.target.value });
+  $('address-content').querySelector('input:checked').focus();
+});
+$('address-page').addEventListener('click', (e) => {
+  if (e.target.closest('[data-address-deliver]')) {
+    dispatch({ type: 'addressDeliver' });
+    return toPayment();
+  }
+  if (e.target.closest('[data-address-back]')) delivery() ? toPayment() : addressBack() === 'cart' ? history.go(-1 - depth()) : (location.hash = 'carrinho');
+  // The notice of the Carrinho travado.
+  if (e.target.closest('[data-to-payment]')) toPayment();
+});
+// Novo endereço. "Voltar" (also "Ajustar localização no mapa" and "Escolher outro endereço"): the previous address
+// page, the previous history entry when it is one. On Localização indisponível, back to Seus endereços.
+const parentPage = { buscar: 'endereco', confirmar: 'endereco/buscar', dados: 'endereco/confirmar', anteriores: 'endereco', editar: 'endereco', remover: 'endereco' };
+/** Back to Seus endereços over the address pages (the history entries before), after choosing or saving. */
+const toList = () => (depth() ? history.go(-depth()) : (location.hash = 'endereco'));
+function stepBack() {
+  if (state.addressPage === 'lista') return dispatch({ type: 'addressLocateReset' });
+  depth() ? history.back() : (location.hash = parentPage[state.addressPage]);
+}
+// "Usar localização atual" asks the browser: granted, Av. Paulista, 1578 (whatever the coordinates); denied or
+// unavailable, Localização indisponível.
+function locate() {
+  const failed = () => state.screen === 'endereco' && dispatch({ type: 'addressLocateFailed' });
+  if (!navigator.geolocation) return failed();
+  navigator.geolocation.getCurrentPosition(
+    () => {
+      if (state.screen !== 'endereco') return;
+      dispatch({ type: 'addressLocated' });
+      location.hash = 'endereco/confirmar';
+    },
+    failed,
+    { timeout: 10000 },
+  );
+}
+$('address-step-back').addEventListener('click', stepBack);
+/** Closes the menu ⋮ (Esc, or a click outside its options), the focus back on its button. */
+function closeMenu() {
+  const id = state.addressMenu;
+  dispatch({ type: 'addressMenu', id: null });
+  $('address-more-' + id)?.focus();
+}
+$('address-page').addEventListener(
+  'cancel',
+  (e) => {
+    if (e.target.id !== 'address-menu') return;
+    e.preventDefault();
+    closeMenu();
+  },
+  true,
+);
+$('address-page').addEventListener('click', (e) => {
+  const t = e.target;
+  if (t.closest('[data-address-search]')) location.hash = 'endereco/buscar';
+  else if (t.closest('[data-address-locate]')) locate();
+  else if (t.closest('[data-locate-reset]')) dispatch({ type: 'addressLocateReset' });
+  else if (t.closest('[data-place]')) {
+    dispatch({ type: 'addressChoose', id: t.closest('[data-place]').dataset.place });
+    location.hash = 'endereco/confirmar';
+  } else if (t.closest('[data-map-search]')) {
+    dispatch({ type: 'addressLocated' });
+    location.hash = 'endereco/confirmar';
+  } else if (t.closest('[data-address-other], [data-address-adjust]')) stepBack();
+  else if (t.closest('[data-to-menu]')) location.hash = state.category;
+  else if (t.closest('[data-address-confirm]')) location.hash = 'endereco/dados';
+  else if (t.closest('[data-map-center]')) dispatch({ type: 'addressPan', x: 0, y: 0 });
+  // The menu ⋮: Editar endereço and Remover endereço open their page for that Endereço salvo; a click outside closes it.
+  else if (t.closest('[data-address-more]')) dispatch({ type: 'addressMenu', id: t.closest('[data-address-more]').dataset.addressMore });
+  else if (t.closest('[data-address-edit]')) {
+    dispatch({ type: 'addressManage', id: t.closest('[data-address-edit]').dataset.addressEdit });
+    location.hash = 'endereco/editar';
+  } else if (t.closest('[data-address-remove]')) {
+    dispatch({ type: 'addressManage', id: t.closest('[data-address-remove]').dataset.addressRemove });
+    location.hash = 'endereco/remover';
+  } else if (t.id === 'address-menu') closeMenu();
+  // Remover endereço: confirmed, back to Seus endereços with the toast (Figma Endereço 09); Cancelar, back as it was.
+  else if (t.closest('[data-address-removed]')) {
+    dispatch({ type: 'addressRemove' });
+    toList();
+    toast('Endereço removido.');
+  } else if (t.closest('[data-address-cancel]')) stepBack();
+  // Endereços de pedidos anteriores: choosing one lists it first in Seus endereços, marked (Figma Endereço 17).
+  else if (t.closest('[data-address-previous]')) location.hash = 'endereco/anteriores';
+  else if (t.closest('[data-previous]')) {
+    dispatch({ type: 'addressPrevious', id: t.closest('[data-previous]').dataset.previous });
+    toList();
+  }
+});
+$('address-page').addEventListener('input', (e) => {
+  if (e.target.id === 'address-query') dispatch({ type: 'addressQuery', value: e.target.value });
+});
+// Dados de entrega: "Endereço sem número" and "Endereço sem complemento" empty and turn off their field; "Salvar
+// endereço" saves the Endereço salvo and goes back to Seus endereços (over the address pages), where it is marked;
+// "Salvar alterações" (Editar endereço) updates the Endereço salvo in place and goes back the same way.
+$('address-page').addEventListener('change', (e) => {
+  const off = { noNumber: 'delivery-number', noComplement: 'delivery-complement' }[e.target.name];
+  if (!off) return;
+  const input = $(off);
+  input.disabled = e.target.checked;
+  if (!e.target.checked) return input.focus();
+  input.value = '';
+  input.setAttribute('aria-invalid', 'false');
+  $(off + '-error').textContent = '';
+});
+$('address-page').addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (!e.target.matches('[data-address-form]')) return;
+  const f = new FormData(e.target),
+    text = (k) => String(f.get(k) ?? '');
+  const edit = state.addressPage === 'editar';
+  dispatch({
+    type: edit ? 'addressUpdate' : 'addressSave',
+    draft: { street: text('street'), district: text('district'), number: text('number'), noNumber: f.has('noNumber'), complement: text('complement'), noComplement: f.has('noComplement'), reference: text('reference'), label: text('label') },
+  });
+  if (edit) return state.addressTarget ? $('address-content').querySelector('[aria-invalid=true]')?.focus() : toList();
+  if (state.addressPlace) return $('address-content').querySelector('[aria-invalid=true]')?.focus();
+  toList();
+  toast('Endereço salvo e selecionado.');
+});
+// The map of Confirmar localização: dragged (pointer) or moved with the arrow keys under the fixed marker, never past
+// the tiles' edges (the marker stays 64 px inside them). The address stays as it was.
+function clampPan(x, y) {
+  const fit = (v, c) => Math.round(Math.max(c + 64 - mapSize, Math.min(c - 64, v)));
+  return { x: fit(x, mapCenter.x), y: fit(y, mapCenter.y) };
+}
+let mapDrag = null;
+$('address-page').addEventListener('pointerdown', (e) => {
+  const view = e.target.closest('[data-map]');
+  if (!view) return;
+  e.preventDefault();
+  view.focus({ preventScroll: true });
+  view.setPointerCapture(e.pointerId);
+  const { pan } = state.addressPlace;
+  mapDrag = { view, x: e.clientX - pan.x, y: e.clientY - pan.y, pan };
+});
+$('address-page').addEventListener('pointermove', (e) => {
+  if (!mapDrag) return;
+  mapDrag.pan = clampPan(e.clientX - mapDrag.x, e.clientY - mapDrag.y);
+  const tilesEl = mapDrag.view.querySelector('.map-tiles');
+  tilesEl.style.setProperty('--pan-x', mapDrag.pan.x + 'px');
+  tilesEl.style.setProperty('--pan-y', mapDrag.pan.y + 'px');
+});
+const endDrag = () => {
+  if (!mapDrag) return;
+  const { pan } = mapDrag;
+  mapDrag = null;
+  dispatch({ type: 'addressPan', ...pan });
+};
+$('address-page').addEventListener('pointerup', endDrag);
+$('address-page').addEventListener('pointercancel', endDrag);
+$('address-page').addEventListener('keydown', (e) => {
+  const view = e.target.closest?.('[data-map]'),
+    step = { ArrowLeft: [24, 0], ArrowRight: [-24, 0], ArrowUp: [0, 24], ArrowDown: [0, -24] }[e.key];
+  if (!view || !step) return;
+  e.preventDefault();
+  const { pan } = state.addressPlace;
+  dispatch({ type: 'addressPan', ...clampPan(pan.x + step[0], pan.y + step[1]) });
+});
+
 addEventListener('hashchange', fromHash);
+
+// Pagamento. Choosing the Forma de pagamento or a card keeps the focus on its radio; the card's fields keep digits
+// only (number and Validade masked as they are typed, the caret after the same digit).
+const payFields = { 'pay-cvv': 'cvv', 'pay-number': 'number', 'pay-name': 'name', 'pay-expiry': 'expiry', 'pay-new-cvv': 'newCvv' };
+$('checkout-content').addEventListener('change', (e) => {
+  const t = e.target;
+  if (t.name === 'pay-method') dispatch({ type: 'payMethod', method: t.value });
+  else if (t.name === 'pay-card') dispatch({ type: 'payCard', id: t.value });
+  else if (t.id === 'pay-save') return dispatch({ type: 'payInput', field: 'save', value: t.checked }), $('pay-save').focus();
+  else return;
+  $('checkout-content').querySelector(`input[name="${t.name}"]:checked`)?.focus();
+});
+$('checkout-content').addEventListener('input', (e) => {
+  const t = e.target,
+    field = payFields[t.id];
+  if (!field) return;
+  const before = t.value.slice(0, t.selectionStart).replace(/\D/g, '').length;
+  dispatch({ type: 'payInput', field, value: t.value });
+  if (t.id !== 'pay-number' && t.id !== 'pay-expiry') return;
+  const input = $(t.id),
+    masked = input.value;
+  let at = 0;
+  for (let n = 0; at < masked.length && n < before; at++) if (/\d/.test(masked[at])) n++;
+  input.setSelectionRange(at, at);
+});
+// Enter in a card field confirms, as the button does.
+$('checkout-content').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && payFields[e.target.id]) confirmPayment();
+});
+$('checkout-content').addEventListener('click', (e) => {
+  if (e.target.closest('[data-pay-new]')) {
+    dispatch({ type: 'payCard', id: 'new' });
+    $('pay-number').focus();
+  } else if (e.target.closest('[data-pay-confirm]')) confirmPayment();
+});
+/**
+ * "Confirmar e pagar": an invalid field takes the focus (no processing); otherwise the Pedido is created and processed
+ * for processingTime (the Carrinho travado meanwhile). Approved: the Pedido confirmado (see confirmed). Recusado: back to
+ * the Pagamento with the failure, the focus on the action; away from the Checkout (left with Back), a toast linking to it.
+ */
+function confirmPayment() {
+  dispatch({ type: 'payConfirm', today: new Date() });
+  if (state.order?.status !== 'processing') return $('checkout-content').querySelector('[aria-invalid=true]')?.focus();
+  $('checkout-content').querySelector('.processing-step').focus();
+  setTimeout(() => {
+    const orders = state.orders.length;
+    dispatch({ type: 'payResult' });
+    if (state.orders.length > orders) confirmed(state.orders.at(-1).id);
+    else if (state.screen !== 'checkout') toast('Não conseguimos aprovar o pagamento.', { text: 'Voltar ao pagamento', href: '#checkout' });
+    // The action on screen: the Resumo do pedido's, or the fixed footer's below 1024px.
+    else [...$('checkout-content').querySelectorAll('[data-pay-confirm]')].find((b) => b.checkVisibility())?.focus();
+  }, processingTime);
+}
+/** The Pedido confirmado `id` (card or Pix): #pedido/<id> from the Checkout; elsewhere (Carrinho, cardápio…) the customer stays where they are and the toast links to it. */
+function confirmed(id) {
+  if (state.screen === 'checkout') location.hash = `pedido/${id}`;
+  else toast(`Pagamento aprovado! Pedido #${id} confirmado.`, { text: 'Ver pedido', href: `#pedido/${id}` });
+}
+// Pix. "Gerar Pix" creates the Pedido and opens the Pix pendente (focus on its title); the countdown ticks every
+// second, the expiry comes at 10:00 and, for a celular whose Pix gets approved, the approval pixApproval after it was
+// generated: Pagamento aprovado for pixApprovedTime, then the Pedido confirmado (#pedido/<id> when still in the Checkout).
+// "Gerar novo Pix" starts the validity over; "Escolher outra forma de pagamento" cancels the Pix and its approval.
+let pixTimers = [];
+const stopPix = () => (pixTimers.forEach((t) => (clearTimeout(t), clearInterval(t))), (pixTimers = []));
+/** Focus on `id` when the Checkout is on screen and the focus was in its content (now rebuilt) or nowhere. */
+const pixFocus = (had, id) => state.screen === 'checkout' && (had || document.activeElement === document.body) && $(id)?.focus();
+const inPix = () => $('checkout-content').contains(document.activeElement);
+function startPix() {
+  stopPix();
+  const order = state.order;
+  pixTimers.push(
+    setInterval(() => {
+      const clock = $('checkout-content').querySelector('[data-pix-clock]');
+      if (clock) clock.textContent = pixClock(order.expiresAt, Date.now());
+    }, 1000),
+    setTimeout(() => {
+      const had = inPix();
+      stopPix();
+      dispatch({ type: 'pixExpire' });
+      pixFocus(had, 'pix-title');
+    }, order.expiresAt - Date.now()),
+  );
+  if (order.approves) pixTimers.push(setTimeout(approvePix, pixApproval));
+}
+function approvePix() {
+  const had = inPix();
+  stopPix();
+  dispatch({ type: 'pixApprove' });
+  pixFocus(had, 'pix-approved');
+  pixTimers.push(
+    setTimeout(() => {
+      const orders = state.orders.length;
+      dispatch({ type: 'pixConfirm' });
+      if (state.orders.length > orders) confirmed(state.orders.at(-1).id);
+    }, pixApprovedTime),
+  );
+}
+/** "Copiar código Pix": the fixed code to the clipboard (a hidden field when the Clipboard API is refused), and the toast. */
+async function copyPix() {
+  try {
+    await navigator.clipboard.writeText(pixCode);
+  } catch {
+    const t = Object.assign(document.createElement('textarea'), { value: pixCode });
+    document.body.append(t);
+    t.select();
+    document.execCommand('copy');
+    t.remove();
+    $('checkout-content').querySelector('[data-pix-copy]')?.focus();
+  }
+  toast('Código Pix copiado');
+}
+$('checkout-content').addEventListener('click', (e) => {
+  if (e.target.closest('[data-pix-generate]') || e.target.closest('[data-pix-renew]')) {
+    dispatch({ type: e.target.closest('[data-pix-renew]') ? 'pixRenew' : 'pixGenerate', now: Date.now() });
+    if (state.order?.pix !== 'waiting') return;
+    startPix();
+    $('pix-title').focus();
+  } else if (e.target.closest('[data-pix-copy]')) copyPix();
+  else if (e.target.closest('[data-pix-cancel]')) {
+    stopPix();
+    dispatch({ type: 'pixCancel' });
+    formaFocus();
+  }
+});
+/** Back to the Forma de pagamento, none chosen: the focus on its first option. */
+const formaFocus = () => $('checkout-content').querySelector('input[name="pay-method"]')?.focus();
+// Pedido confirmado: Acompanhar pedido is not part of the prototype yet; Voltar ao cardápio opens the last category seen.
+$('order-page').addEventListener('click', (e) => {
+  if (e.target.closest('[data-order-track]')) toast('O acompanhamento do pedido ainda não faz parte do protótipo.');
+  if (e.target.closest('[data-order-menu]')) location.hash = state.category;
+});
 
 document.addEventListener('keydown', (e) => {
   if (!state.editing) return;
@@ -657,11 +1149,13 @@ document.addEventListener('keydown', (e) => {
 });
 
 let timer;
-function toast(t) {
+/** Shows `t` for 2.8 s; with a `link` ({text, href}) after it, for 8 s, so there is time to reach it. */
+function toast(t, link = null) {
   $('toast').textContent = t;
+  if (link) $('toast').append(' ', Object.assign(document.createElement('a'), { className: 'toast-link', textContent: link.text, href: link.href }));
   $('toast').style.display = 'block';
   clearTimeout(timer);
-  timer = setTimeout(() => ($('toast').style.display = 'none'), 2800);
+  timer = setTimeout(() => ($('toast').style.display = 'none'), link ? 8000 : 2800);
 }
 
 // 3D tilt (ticket 10). Desktop: the pointer over the stage. Touch (iOS and Android): dragging
