@@ -402,34 +402,75 @@ function slice(radius, thickness, { shape, segments = 64 } = {}) {
   return revolve(profile, { segments, shape, uv: (x, y, z) => [x / (2 * radius) + 0.5, z / (2 * radius) + 0.5] });
 }
 
-// Queijo: a slice of processed cheese, turned 45°, melted over the patty: flat in the middle,
-// its rounded corners sagging over the edge, slightly rippled. Satin.
-const CHEESE_HEIGHT = 0.03;
+// Queijo: a slice of processed cheese (a real slab: top, bottom and a rounded edge), turned
+// 45°, melted over the patty: flat in the middle, slightly rippled, its rounded corners rolling
+// over the patty's edge and hanging down its side, each a little further than the next. Satin.
+const CHEESE_THICKNESS = 0.03;
+const CHEESE_HEIGHT = 0.045;
 function cheese() {
   const geometry = shared('cheese', () => {
-    const size = 0.82, n = 56;
+    const size = 0.9, n = 64, T = CHEESE_THICKNESS, bend = 0.07;
+    const mid = CHEESE_HEIGHT - 0.003 - T / 2; // the slab's mid-surface over the patty
+    /** Point of the top (side 1) or bottom (side -1) face at grid (i, j), and its outward edge direction. */
+    const point = (i, j, side) => {
+      // Square grid mapped to a rounded square (superellipse), so the corners are soft.
+      const u = (i / n) * 2 - 1, v = (j / n) * 2 - 1;
+      const g = Math.atan2(v, u), square = Math.max(Math.abs(u), Math.abs(v));
+      const c = Math.abs(Math.cos(g)), s = Math.abs(Math.sin(g));
+      const round = (c ** 6 + s ** 6) ** (-1 / 6) / (1 / Math.max(c, s));
+      let x = u * size * round, z = v * size * round;
+      [x, z] = [(x - z) * Math.SQRT1_2, (x + z) * Math.SQRT1_2]; // turned 45°
+      const a = Math.atan2(z, x), r = Math.hypot(x, z);
+      const ripple = 0.006 * (fbm(x * 4, z * 4, 0, { octaves: 2, seed: 71 }) - 0.5) * 2 * (square > 0.2 ? 1 : 0.3);
+      // Past the patty's edge the slab rolls over a quarter circle and then hangs down its side
+      // (clear of its lumps); the corners melted unevenly, so how far they hang varies.
+      const hang = pattyEdge(a) + 0.04;
+      const r0 = hang - bend;
+      const melt = 1 + 0.3 * (fbm(Math.cos(a) * 2 + 4, Math.sin(a) * 2, 0, { octaves: 2, seed: 75 }) - 0.5) * 2;
+      const e = Math.max(r - r0, 0) * melt;
+      const theta = Math.min(e / bend, Math.PI / 2);
+      let rr = r0 + bend * Math.sin(theta);
+      let y = mid - bend * (1 - Math.cos(theta));
+      if (e <= 0) [rr, y] = [r, mid];
+      else if (e > bend * (Math.PI / 2)) y -= e - bend * (Math.PI / 2);
+      // Top and bottom faces sit half the thickness either side of the mid-surface, along its normal.
+      rr += side * (T / 2) * Math.sin(theta);
+      y += side * (T / 2) * Math.cos(theta) + ripple * Math.cos(theta);
+      return [Math.cos(a) * rr, y, Math.sin(a) * rr];
+    };
     const positions = [], indices = [];
-    for (let i = 0; i <= n; i++)
-      for (let j = 0; j <= n; j++) {
-        // Square grid mapped to a rounded square (superellipse), so the corners are soft.
-        const u = (i / n) * 2 - 1, v = (j / n) * 2 - 1;
-        const a = Math.atan2(v, u), square = Math.max(Math.abs(u), Math.abs(v));
-        const c = Math.abs(Math.cos(a)), s = Math.abs(Math.sin(a));
-        const round = (c ** 6 + s ** 6) ** (-1 / 6) / (1 / Math.max(c, s));
-        let x = u * size * round, z = v * size * round;
-        [x, z] = [(x - z) * Math.SQRT1_2, (x + z) * Math.SQRT1_2]; // turned 45°
-        const r = Math.hypot(x, z);
-        // Sags past the patty's edge (radius ~1); ripples where it melted.
-        const over = Math.max(r - 0.9, 0);
-        const ripple = 0.006 * (fbm(x * 4, z * 4, 0, { octaves: 2, seed: 71 }) - 0.5) * 2;
-        const y = CHEESE_HEIGHT - over * over * 1.6 - over * 0.12 + ripple * (square > 0.2 ? 1 : 0.3);
-        positions.push(x, y, z);
-      }
+    const row = n + 1, face = row * row;
+    for (const side of [1, -1])
+      for (let i = 0; i <= n; i++)
+        for (let j = 0; j <= n; j++) positions.push(...point(i, j, side));
     for (let i = 0; i < n; i++)
       for (let j = 0; j < n; j++) {
-        const a = i * (n + 1) + j, b = a + n + 1;
-        indices.push(a, a + 1, b, a + 1, b + 1, b);
+        const a = i * row + j, b = a + row;
+        indices.push(a, a + 1, b, a + 1, b + 1, b); // top
+        indices.push(face + a, face + b, face + a + 1, face + a + 1, face + b, face + b + 1); // bottom
       }
+    // The edge: around the grid's border, a band from the top face's border to the bottom's,
+    // bulging outward (half the thickness) in the middle, so it reads round.
+    const border = [];
+    for (let k = 0; k < n; k++) border.push([k, 0]);
+    for (let k = 0; k < n; k++) border.push([n, k]);
+    for (let k = n; k > 0; k--) border.push([k, n]);
+    for (let k = n; k > 0; k--) border.push([0, k]);
+    const start = positions.length / 3;
+    const at = (index) => new Vector3().fromArray(positions, index * 3);
+    for (const [i, j] of border) {
+      const top = at(i * row + j), bottom = at(face + i * row + j);
+      // Outward: away from the neighbour one step inside the grid.
+      const inside = at(Math.min(Math.max(i, 1), n - 1) * row + Math.min(Math.max(j, 1), n - 1));
+      const out = top.clone().sub(inside).setY(0).normalize().multiplyScalar(T / 2);
+      const middle = top.clone().add(bottom).multiplyScalar(0.5).add(out);
+      positions.push(...top.toArray(), ...middle.toArray(), ...bottom.toArray());
+    }
+    const count = border.length;
+    for (let k = 0; k < count; k++) {
+      const a = start + k * 3, b = start + ((k + 1) % count) * 3;
+      indices.push(a, b, a + 1, a + 1, b, b + 1, a + 1, b + 1, a + 2, a + 2, b + 1, b + 2);
+    }
     const geometry = new BufferGeometry();
     geometry.setAttribute('position', new BufferAttribute(new Float32Array(positions), 3));
     geometry.setIndex(indices);
@@ -444,63 +485,110 @@ function cheese() {
   return mesh(geometry, mat);
 }
 
-// Picles: four crinkle-cut slices, dark skin, seeds, ridged faces, wet sheen.
-const PICKLE_HEIGHT = 0.04;
+// Fillings stay on the bun: no piece reaches past this radius (the bun's is 1); where the
+// edge would look bare, there are more pieces instead (ticket 13). Cheese and lettuce are
+// the exceptions: the cheese melts over the patty, the lettuce spills a little.
+const FILLING_REACH = 0.96;
+/** Angle (radians) and distance from the centre to [x, z]; front (towards the camera) is +z, a = π/2. */
+const polar = (a, r) => [Math.cos(a) * r, Math.sin(a) * r];
+
+// Picles: six crinkle-cut slices around the burger, one facing the front, reaching close to
+// the edge, and one in the middle; dark skin, seeds, ridged faces, wet sheen.
+const PICKLE_HEIGHT = 0.056;
 function pickles() {
   const { map, bumpMap } = pickleSlice();
   const mat = new MeshStandardMaterial({ map, bumpMap, bumpScale: 1.5, roughness: 0.35 });
   return mesh(shared('pickles', () => {
     const group = new Group();
     const rnd = random(93);
-    for (const [x, z] of [[0.42, 0.2], [-0.35, 0.32], [-0.18, -0.42], [0.3, -0.36]]) {
-      const radius = 0.21 + rnd() * 0.03;
-      const geometry = slice(radius, 0.032, {
+    const thickness = 0.04;
+    for (let k = 0; k < 7; k++) {
+      const radius = 0.27 + rnd() * 0.02;
+      const geometry = slice(radius, thickness, {
         shape: (px, py, pz) => {
           const a = Math.atan2(pz, px);
           const crinkle = 1 + 0.035 * Math.sin(a * 16); // wavy cut edge
           const ridge = 0.003 * Math.sin((px / radius) * Math.PI * 9); // ridged faces
-          return [px * crinkle, py + (py > 0.016 ? ridge : -ridge), pz * crinkle];
+          return [px * crinkle, py + (py > thickness / 2 ? ridge : -ridge), pz * crinkle];
         },
       });
       const part = piece(geometry);
-      part.position.set(x, 0.002, z);
-      part.rotation.set((rnd() - 0.5) * 0.12, rnd() * Math.PI, (rnd() - 0.5) * 0.12);
+      const distance = k === 6 ? 0.04 : FILLING_REACH - radius * 1.035 - 0.015 - rnd() * 0.03;
+      const [x, z] = polar(Math.PI / 2 + (k / 6) * Math.PI * 2 + (rnd() - 0.5) * 0.2, distance);
+      part.position.set(x, 0.004, z);
+      part.rotation.set((rnd() - 0.5) * 0.08, rnd() * Math.PI, (rnd() - 0.5) * 0.08);
       group.add(part);
     }
     return single(group);
   }), mat);
 }
 
-// Cebola: loose raw onion rings, some broken, translucent white with a faint yellow-green
-// inner edge, lying in two or three clusters.
-const ONION_HEIGHT = 0.04;
+// Cebola: pieces of raw onion ring, not whole rings: arcs of irregular length opening in
+// irregular directions, in six loose groups of nested arcs (as a slice falls apart) of
+// different sizes, the outer arcs reaching close to the edge. Each arc has a squarish
+// section, taller (the slice) than wide (the ring's wall), and narrows to rounded ends.
+// Translucent white with a faint yellow-green inner face.
+const ONION_HEIGHT = 0.085;
+const ONION_WALL = 0.05; // the ring's width
+const ONION_SLICE = 0.07; // the slice's thickness
+
+/**
+ * An arc of onion ring around the origin, lying flat (bottom at y = 0): `radius` to the middle
+ * of its wall, from angle `start` over `length` (radians). Swept squarish section (superellipse),
+ * shrinking to a rounded end at both ends; vertex colours, paler green on the inner face.
+ */
+function onionArc(radius, start, length) {
+  const steps = Math.max(12, Math.round(length * radius * 90)), around = 16;
+  const positions = [], colours = [], indices = [];
+  const pale = new Color('#e4eabf'), white = new Color('#f6f1e6'), colour = new Color();
+  const end = Math.min(0.06 / (length * radius), 0.3); // fraction of the arc over which each end rounds off
+  for (let i = 0; i <= steps; i++) {
+    const t = i / steps, a = start + t * length;
+    const edge = Math.min(t, 1 - t) / end;
+    const taper = edge >= 1 ? 1 : Math.sqrt(Math.max(1 - (1 - edge) ** 2, 0)); // quarter circle: a rounded end
+    for (let j = 0; j < around; j++) {
+      const q = (j / around) * Math.PI * 2, c = Math.cos(q), s = Math.sin(q);
+      // Superellipse (exponent 4): flat sides, rounded corners.
+      const u = Math.sign(c) * Math.abs(c) ** 0.5, v = Math.sign(s) * Math.abs(s) ** 0.5;
+      const r = radius + u * (ONION_WALL / 2) * Math.max(taper, 0.02);
+      const y = ONION_SLICE / 2 + v * (ONION_SLICE / 2) * Math.max(taper, 0.02);
+      positions.push(Math.cos(a) * r, y, Math.sin(a) * r);
+      colour.copy(white).lerp(pale, smoothstep(0.2, -0.6, u));
+      colours.push(colour.r, colour.g, colour.b);
+    }
+  }
+  for (let i = 0; i < steps; i++)
+    for (let j = 0; j < around; j++) {
+      const a = i * around + j, b = i * around + ((j + 1) % around);
+      indices.push(a, b, a + around, b, b + around, a + around);
+    }
+  const geometry = new BufferGeometry();
+  geometry.setAttribute('position', new BufferAttribute(new Float32Array(positions), 3));
+  geometry.setAttribute('color', new BufferAttribute(new Float32Array(colours), 3));
+  geometry.setIndex(indices);
+  geometry.computeVertexNormals();
+  return geometry;
+}
+
 function onion() {
   const mat = new MeshStandardMaterial({ vertexColors: true, roughness: 0.3 });
   return mesh(shared('onion', () => {
     const group = new Group();
     const rnd = random(55);
-    const clusters = [[-0.3, -0.15], [0.32, 0.22], [0.12, -0.42], [-0.22, 0.42]];
-    const colour = new Color();
-    for (const [cx, cz] of clusters) {
-      const rings = 2 + Math.floor(rnd() * 2);
-      for (let k = 0; k < rings; k++) {
-        const radius = 0.13 + k * 0.075 + rnd() * 0.02;
-        const arcLength = rnd() < 0.3 ? Math.PI * (1.2 + rnd() * 0.6) : Math.PI * 2; // some broken
-        const geometry = new TorusGeometry(radius, 0.022, 8, 48, arcLength);
-        geometry.scale(1, 1, 0.75); // flatter than round: a cut ring
-        const position = geometry.attributes.position;
-        const colors = new Float32Array(position.count * 3);
-        for (let i = 0; i < position.count; i++) {
-          const inner = Math.hypot(position.getX(i), position.getY(i)) < radius;
-          colour.set(inner ? '#e9ecc8' : '#f6f1e6');
-          colors.set([colour.r, colour.g, colour.b], i * 3);
-        }
-        geometry.setAttribute('color', new BufferAttribute(colors, 3));
-        const ring = piece(geometry);
-        ring.rotation.set(Math.PI / 2 + (rnd() - 0.5) * 0.15, (rnd() - 0.5) * 0.15, rnd() * Math.PI * 2);
-        ring.position.set(cx + (rnd() - 0.5) * 0.05, 0.018, cz + (rnd() - 0.5) * 0.05);
-        group.add(ring);
+    // Groups: [angle (deg, front = 90), outer radius]; nested arcs step inwards by a wall and a gap.
+    for (const [deg, outer] of [[100, 0.4], [215, 0.34], [330, 0.38], [25, 0.22], [160, 0.2], [270, 0.2]]) {
+      const [cx, cz] = polar((deg * Math.PI) / 180, FILLING_REACH - outer - ONION_WALL / 2 - 0.01);
+      const slab = new Group();
+      for (let radius = outer; radius > 0.07; radius -= 0.085) {
+        if (radius < outer && rnd() < 0.12) continue; // a ring that fell out
+        const length = Math.PI * (0.7 + rnd() * 0.95);
+        const part = piece(onionArc(radius, rnd() * Math.PI * 2, length));
+        part.position.set((rnd() - 0.5) * 0.02, 0, (rnd() - 0.5) * 0.02); // slipped a little
+        slab.add(part);
       }
+      slab.position.set(cx, 0.006, cz);
+      slab.rotation.set((rnd() - 0.5) * 0.05, 0, (rnd() - 0.5) * 0.05);
+      group.add(slab);
     }
     return single(group);
   }), mat);
@@ -782,17 +870,21 @@ function crispyOnion() {
   }), mat);
 }
 
-// Tomate: three slices with skin, red wall, gel-filled locules with seeds; wet and glossy.
-const TOMATO_HEIGHT = 0.08;
+// Tomate: three big slices covering the bun, two of them facing the front (left and right),
+// reaching close to the edge and
+// overlapping a little (each one a touch higher than the one before); skin, red wall,
+// gel-filled locules with seeds; wet and glossy.
+const TOMATO_HEIGHT = 0.11;
 function tomato() {
   const { map, bumpMap, roughnessMap } = tomatoSlice();
   const mat = new MeshStandardMaterial({ map, bumpMap, bumpScale: 2, roughnessMap, roughness: 0.7 });
   return mesh(shared('tomato', () => {
     const group = new Group();
     const rnd = random(66);
-    for (const [x, z] of [[0.36, 0.12], [-0.3, 0.3], [-0.06, -0.4]]) {
-      const radius = 0.4 + rnd() * 0.04;
-      const geometry = slice(radius, 0.065, {
+    for (let k = 0; k < 3; k++) {
+      const radius = 0.46 + rnd() * 0.02;
+      const [x, z] = polar(Math.PI / 6 + (k * 2 * Math.PI) / 3, FILLING_REACH - radius * 1.025);
+      const geometry = slice(radius, 0.08, {
         shape: (px, py, pz) => {
           const a = Math.atan2(pz, px);
           const s = 1 + 0.025 * (fbm(Math.cos(a) * 2 + x, Math.sin(a) * 2, 0, { octaves: 2, seed: 67 }) - 0.5) * 2;
@@ -800,64 +892,114 @@ function tomato() {
         },
       });
       const part = piece(geometry);
-      part.position.set(x, 0.006, z);
-      part.rotation.set((rnd() - 0.5) * 0.1, rnd() * Math.PI * 2, (rnd() - 0.5) * 0.1);
+      part.position.set(x, 0.006 + k * 0.008, z);
+      part.rotation.set((rnd() - 0.5) * 0.04, rnd() * Math.PI * 2, (rnd() - 0.5) * 0.04);
       group.add(part);
     }
     return single(group);
   }), mat);
 }
 
-// Alface: two overlapping ruffled leaves, wider than the bun, veined, edges waving up and
-// down more and more towards the rim.
-const LETTUCE_HEIGHT = 0.1;
+// Alface: four big pieces of torn leaf around the burger, overlapping in the middle and
+// crumpled (folds across each piece, not just a frilled rim). Each lies on the pieces laid
+// before it where they overlap and on the tomato elsewhere, so the heap has volume; they spill
+// a little past the bun and droop there. The veins fan out from each piece's stem side, towards
+// the centre of the burger.
+const LETTUCE_HEIGHT = 0.155;
+const LETTUCE_REACH = 1.03; // before the torn notches, which reach up to ~1.06
 function lettuce() {
   const { map, bumpMap } = lettuceLeaf();
   const mat = new MeshStandardMaterial({ map, bumpMap, bumpScale: 2, roughness: 0.5, side: DoubleSide });
   return mesh(shared('lettuce', () => {
-    const group = new Group();
-    for (const [seed, turn, reach] of [[1, 0, 1.12], [2, 2.1, 1.04]]) {
+    const rnd = random(81);
+    const leaves = Array.from({ length: 4 }, (_, k) => {
+      const seed = k + 1;
+      const turn = Math.PI / 4 + (k * Math.PI) / 2 + (rnd() - 0.5) * 0.3;
+      const [cx, cz] = polar(turn, 0.4 + rnd() * 0.05);
+      const size = 0.6 + rnd() * 0.06;
+      const along = (dx, dz) => cx * dx + cz * dz, c2 = cx * cx + cz * cz;
+      // Outline: broad lobes, cut back where the piece would spill too far, then torn notches.
+      const edge = (a) => {
+        const dx = Math.cos(a), dz = Math.sin(a);
+        const lobes = 0.82 + 0.3 * fbm(dx * 2.5 + seed * 3, dz * 2.5, 0, { octaves: 3, seed: 86 });
+        const b = along(dx, dz), fit = -b + Math.sqrt(b * b - c2 + LETTUCE_REACH ** 2);
+        const torn = 0.03 * (fbm(dx * 14 + seed, dz * 14, 0, { octaves: 2, seed: 87 }) - 0.5) * 2;
+        return Math.min(size * lobes, fit) + torn;
+      };
+      /** How much of this piece is at (x, z): 1 well inside, 0 outside. */
+      const cover = (x, z) => {
+        const dx = x - cx, dz = z - cz;
+        return smoothstep(0.02, -0.1, Math.hypot(dx, dz) - edge(Math.atan2(dz, dx)));
+      };
+      // Two folds across the piece, in their own directions.
+      const folds = [0, 1].map(() => ({ a: rnd() * Math.PI, k: 7 + rnd() * 7, phase: rnd() * Math.PI * 2 }));
+      return { seed, turn, cx, cz, edge, cover, folds, spin: rnd() * Math.PI * 2 };
+    });
+    const pieces = leaves.map((leaf, k) => {
+      const { seed, cx, cz, folds } = leaf;
       const geometry = polarSheet({
-        rings: 22,
-        segments: 160,
-        uvRadius: 1.25,
-        edge: (a) => reach * (0.9 + 0.1 * fbm(Math.cos(a) * 3 + seed, Math.sin(a) * 3, 0, { octaves: 3, seed: 81 + seed })),
+        rings: 16,
+        segments: 96,
+        uvRadius: 1,
+        edge: leaf.edge,
         lift: (r, a, f) => {
+          const x = cx + Math.cos(a) * r, z = cz + Math.sin(a) * r, R = Math.hypot(x, z);
+          const under = leaves.slice(0, k).reduce((sum, other) => sum + other.cover(x, z), 0);
+          const crumple = folds.reduce((sum, { a: d, k: w, phase }) =>
+            sum + 0.016 * (1 + Math.sin((x * Math.cos(d) + z * Math.sin(d)) * w + phase)), 0) * (0.4 + 0.6 * f) +
+            0.02 * fbm(x * 5 + seed, z * 5, 0, { octaves: 2, seed: 84 });
           // Uneven frills: the wave's phase and depth wander around the rim.
           const wander = fbm(Math.cos(a) * 2.5 + seed, Math.sin(a) * 2.5, seed, { octaves: 3, seed: 83 });
           const depth = 0.5 + fbm(Math.cos(a) * 4, Math.sin(a) * 4 + seed, 0, { octaves: 2, seed: 85 });
-          const frill = Math.sin(a * 13 + wander * 14);
-          return 0.035 + f ** 2.4 * 0.05 * depth * frill - f ** 3 * 0.03 + 0.014 * (fbm(r * 4 + seed, a, 0, { octaves: 2, seed: 84 }) - 0.5);
+          const frill = f ** 2.4 * 0.05 * depth * Math.sin(a * 11 + wander * 14);
+          const droop = 0.025 * smoothstep(0.9, 1.06, R);
+          const floor = 0.004 - 0.04 * smoothstep(0.93, 1.03, R); // the tomato ends just inside the bun
+          return Math.max(0.008 + 0.024 * under + crumple + frill - droop, floor);
         },
       });
-      const leaf = piece(geometry);
-      leaf.rotation.y = turn;
-      leaf.position.y = (seed - 1) * 0.015;
-      group.add(leaf);
-    }
-    return single(group);
+      geometry.translate(cx, 0, cz);
+      // Planar UVs centred on the stem side (just past the burger's centre), turned per piece.
+      const position = geometry.attributes.position, uv = geometry.attributes.uv;
+      const [sx, sz] = polar(leaf.turn, -0.1);
+      const c = Math.cos(leaf.spin), s = Math.sin(leaf.spin);
+      for (let i = 0; i < position.count; i++) {
+        const dx = position.getX(i) - sx, dz = position.getZ(i) - sz;
+        uv.setXY(i, (dx * c - dz * s) / 2.3 + 0.5, (dx * s + dz * c) / 2.3 + 0.5);
+      }
+      return geometry;
+    });
+    return mergeGeometries(pieces);
   }), mat);
 }
 
-// Ketchup and maionese: thin irregular puddles with a rounded bead edge and a wet gloss,
-// told apart by colour, sheen and shape (ketchup in lobed dollops, mayo spread thinner).
-const SAUCE_HEIGHT = 0.03;
+// Ketchup and maionese: soft, rounded dollops with a wet gloss, told apart
+// by colour, sheen and shape (ketchup in lobed dollops, mayo spread thinner). Besides the ones
+// in the middle, several reach close to the edge, so the sauce shows in the closed burger.
+// The dollops are taller than the room they take in the stack: squeezed between the Camadas,
+// they sink into the gaps of the one above (between onion rings, against the bun).
+const KETCHUP_HEIGHT = 0.045;
+const MAYO_HEIGHT = 0.035;
+const SAUCE_STACK = 0.015;
+/** A dollop [x, z, reach] at angle `deg` (front = 90), its edge at most `edge` from the centre. */
+const dollop = (deg, reach, edge = FILLING_REACH) => [...polar((deg * Math.PI) / 180, edge - reach), reach];
 function puddle({ seed, reach, lobes, bead }) {
   return polarSheet({
-    rings: 14,
+    rings: 18,
     segments: 120,
     uvRadius: 1,
-    edge: (a) => reach * (0.62 + 0.38 * fbm(Math.cos(a) * lobes + seed, Math.sin(a) * lobes, 0, { octaves: 3, seed })),
-    lift: (r, a, f) => bead * Math.sqrt(Math.max(1 - f ** 6, 0)) * (0.85 + 0.3 * fbm(r * 5, a, seed, { octaves: 2, seed: seed + 1 })),
+    // Soft outline: a few broad lobes, no fine notches.
+    edge: (a) => reach * (0.72 + 0.28 * fbm(Math.cos(a) * lobes * 0.8 + seed, Math.sin(a) * lobes * 0.8, 0, { octaves: 2, seed })),
+    // Rounded like a drop (a quarter ellipse to the edge), gently uneven on top.
+    lift: (r, a, f) => bead * Math.sqrt(Math.max(1 - f * f, 0)) * (0.9 + 0.2 * fbm(Math.cos(a) * r * 5 + seed, Math.sin(a) * r * 5, 0, { octaves: 2, seed: seed + 1 })),
   });
 }
-/** Puddles ([x, z, reach]) of one sauce, sharing a glossy material. */
+/** Puddles ([x, z, reach, bead scale?]) of one sauce, sharing a glossy material. */
 function sauce(key, { colour, roughness, seed, lobes, bead, puddles }) {
   const mat = new MeshStandardMaterial({ color: colour, roughness, side: DoubleSide });
   return mesh(shared(key, () => {
     const group = new Group();
-    puddles.forEach(([x, z, reach], i) => {
-      const drop = piece(puddle({ seed: seed + i * 7, reach, lobes, bead }));
+    puddles.forEach(([x, z, reach, scale = 1], i) => {
+      const drop = piece(puddle({ seed: seed + i * 7, reach, lobes, bead: bead * scale }));
       drop.position.set(x, 0, z);
       group.add(drop);
   });
@@ -878,16 +1020,19 @@ export const layerModels = {
   cheddar: { height: CHEDDAR_HEIGHT, build: cheddar },
   pickles: { height: PICKLE_HEIGHT, build: pickles },
   ketchup: {
-    height: SAUCE_HEIGHT,
-    // Dollops squeezed in a few spots.
+    height: SAUCE_STACK,
+    // Dollops squeezed all over: five near the edge, five further in.
     build: () =>
       sauce('ketchup', {
         colour: '#c0180c',
         roughness: 0.2,
         seed: 21,
         lobes: 2.2,
-        bead: SAUCE_HEIGHT,
-        puddles: [[0.3, 0.15, 0.36], [-0.32, 0.2, 0.3], [0.02, -0.34, 0.33], [-0.05, 0.42, 0.22]],
+        bead: KETCHUP_HEIGHT,
+        puddles: [
+          dollop(95, 0.16), dollop(25, 0.14), dollop(160, 0.15), dollop(235, 0.17), dollop(305, 0.13),
+          [0.02, -0.03, 0.18], dollop(60, 0.12, 0.6), dollop(130, 0.1, 0.58), dollop(200, 0.13, 0.6), dollop(280, 0.09, 0.56),
+        ],
       }),
   },
   onion: { height: ONION_HEIGHT, build: onion },
@@ -895,16 +1040,20 @@ export const layerModels = {
   tomato: { height: TOMATO_HEIGHT, build: tomato },
   lettuce: { height: LETTUCE_HEIGHT, build: lettuce },
   mayo: {
-    height: SAUCE_HEIGHT,
-    // Spread thinner and wider, under the top bun.
+    height: SAUCE_STACK,
+    // Spread thinner and wider in the middle, under the top bun, with seven dollops around it
+    // reaching close to the edge (the white line under the bun in the closed burger).
     build: () =>
       sauce('mayo', {
         colour: '#f6eccb',
         roughness: 0.32,
         seed: 31,
         lobes: 1.6,
-        bead: SAUCE_HEIGHT * 0.7,
-        puddles: [[0.12, 0.05, 0.62], [-0.38, -0.25, 0.3]],
+        bead: MAYO_HEIGHT,
+        puddles: [
+          [0.06, 0.02, 0.55, 0.7],
+          ...[12, 62, 112, 165, 214, 268, 320].map((deg, i) => dollop(deg, 0.1 + ((i * 3) % 5) * 0.01)),
+        ],
       }),
   },
   top: {
