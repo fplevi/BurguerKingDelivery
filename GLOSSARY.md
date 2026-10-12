@@ -63,8 +63,12 @@ O que o cliente compra, criado em "Confirmar e pagar" a partir dos Itens do carr
 _Avoid_: Compra, ordem
 
 **Pedido confirmado**:
-Um Pedido cujo pagamento foi aprovado; só então ganha identificador para o cliente e encerra o carrinho de que veio.
+Um Pedido cujo pagamento foi aprovado; só então ganha identificador para o cliente e encerra o carrinho de que veio. Só Pedidos confirmados aparecem para o cliente depois, inclusive os cancelados.
 _Avoid_: Pedido pago, pedido finalizado
+
+**Situação do pedido**:
+A etapa em que um Pedido confirmado está: Pedido realizado, Pagamento confirmado, Pedido em preparação, Aguardando retirada, Pedido retirado, Pedido a caminho, Pedido chegou e Pedido entregue, nessa ordem; ou Cancelado, que encerra a sequência. Retirada é a do entregador na loja.
+_Avoid_: Status, Saiu para entrega, Em rota
 
 ## Cliente
 
@@ -80,9 +84,21 @@ _Avoid_: Cliente logado, usuário
 Cliente cujo celular confirmado ainda não tem dados; informa o nome (e, se quiser, o e-mail) antes de seguir.
 _Avoid_: Visitante, convidado
 
+**Endereço de entrega**:
+O endereço escolhido para o Pedido em montagem; é um só, visível no cardápio e no Checkout, e mudá-lo em um muda no outro.
+_Avoid_: Localização, endereço atual, Entregar em
+
 **Endereço salvo**:
 Endereço que o cliente guardou e identificou como Casa, Trabalho ou Favoritos.
 _Avoid_: Endereço cadastrado, endereço favorito
+
+**Cartão salvo**:
+Cartão que o cliente guardou para os próximos Pedidos, mostrado só pela bandeira e pelos quatro últimos dígitos; nunca guarda o código de segurança.
+_Avoid_: Cartão cadastrado, cartão favorito
+
+**Cartão padrão**:
+O primeiro Cartão salvo, já marcado no Pagamento; ao removê-lo, o seguinte assume.
+_Avoid_: Cartão principal, cartão preferido
 
 **Endereço de pedido anterior**:
 Endereço usado em um Pedido confirmado anterior, oferecido para reutilizar sem estar entre os Endereços salvos.
@@ -109,3 +125,11 @@ _Avoid_: Finalização, pagamento (para a tela inteira)
 **Resumo do pedido**:
 O bloco do Checkout com os Itens, o Total dos itens e, depois de escolhido o endereço, a Taxa de entrega e o Total do pedido.
 _Avoid_: Resumo do carrinho (são blocos diferentes)
+
+**Minha conta**:
+A tela própria do cliente identificado, com Dados pessoais, Endereços salvos, cartões salvos e seus Pedidos confirmados; é um lugar, não um cadastro com senha.
+_Avoid_: Perfil, área do cliente, Minha conta como sinônimo de Cliente cadastrado
+
+**Dados pessoais**:
+A seção de Minha conta com o nome, o e-mail e o celular confirmado do cliente.
+_Avoid_: Meus dados, perfil
