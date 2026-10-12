@@ -352,7 +352,8 @@ function render() {
   if (inAccount && state.customer) {
     const view = accountView(state, Date.now(), accountMenu);
     $('account-title').textContent = view.title;
-    $('account-content').innerHTML = view.html;
+    // Rebuilt keeping the focused field and its caret, and the name and e-mail typed in Dados pessoais.
+    rebuild($('account-content'), view.html, '#profile-name, #profile-email');
   } else $('account-content').replaceChildren();
   // Identifique-se (Figma Conta 01-06): the Identificação's forms in a card; Fechar above.
   if (inSignin) rebuild($('signin-content'), identificationStep(state.identification), '#id-name, #id-email');
@@ -486,6 +487,53 @@ $('account-page').addEventListener('click', (e) => {
     location.replace('#' + state.category);
     toast('Você saiu da sua conta.');
   } else if (e.target.closest('[data-stay]')) location.hash = 'conta';
+  // Alterar celular: Reenviar código and the other channel tell where the code went; Alterar celular (and Informar
+  // outro celular, after "Celular já vinculado") goes back to the celular.
+  else if (e.target.closest('[data-phone-resend]')) toast(sentTo(state.phoneChange.channel, state.phoneChange.phone));
+  else if (e.target.closest('[data-phone-channel]')) {
+    dispatch({ type: 'phoneChannel' });
+    $('account-content').querySelector('[data-phone-channel]').focus();
+    toast(sentTo(state.phoneChange.channel, state.phoneChange.phone));
+  } else if (e.target.closest('[data-phone-back], [data-phone-other]')) {
+    dispatch({ type: 'phoneBack' });
+    $('account-title').textContent = 'Alterar celular';
+    $('new-phone').focus();
+  }
+});
+$('account-page').addEventListener('input', (e) => {
+  const t = e.target;
+  if (t.id === 'new-phone') {
+    const before = t.value.slice(0, t.selectionStart).replace(/\D/g, '').length;
+    dispatch({ type: 'phoneInput', value: t.value });
+    const field = $('new-phone'),
+      masked = field.value;
+    let at = 0;
+    for (let n = 0; at < masked.length && n < before; at++) if (/\d/.test(masked[at])) n++;
+    field.setSelectionRange(at, at);
+  } else if (t.id === 'new-code') dispatch({ type: 'phoneCode', value: t.value });
+});
+$('account-page').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const form = e.target;
+  // Dados pessoais: saved, the header shows the new name; with errors, the first wrong field.
+  if (form.matches('[data-profile-form]')) {
+    dispatch({ type: 'profileSave', name: $('profile-name').value, email: $('profile-email').value });
+    const wrong = $('account-content').querySelector('[aria-invalid=true]');
+    return wrong ? wrong.focus() : toast('Dados atualizados.');
+  }
+  const step = form.dataset.phoneForm;
+  if (step === 'phone') {
+    dispatch({ type: 'phoneSend', channel: e.submitter?.dataset.phoneSend ?? 'whatsapp' });
+    return ($('new-code') ?? $('new-phone')).focus();
+  }
+  if (step !== 'code') return;
+  dispatch({ type: 'phoneConfirm' });
+  // Confirmed: Dados pessoais with the new celular (Back does not return to the code). Already in another cadastro: its notice.
+  if (!state.phoneChange) {
+    location.replace('#conta/dados');
+    toast('Celular atualizado.');
+  } else if (state.phoneChange.step === 'conflict') $('account-title').focus();
+  else $('new-code').focus();
 });
 $('signin-close').onclick = () => leaveSignin(false);
 

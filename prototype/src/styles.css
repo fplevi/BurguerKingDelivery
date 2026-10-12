@@ -317,3 +317,7 @@ main[data-screen=pedido]{display:block;height:auto;min-height:0}
 .signin-page{max-width:calc(680px + 32px);margin:0 auto;padding:48px 16px 64px;color:var(--title)}.signin-head{display:flex;align-items:center;justify-content:space-between;gap:16px}.signin-head h1{margin:0;font-family:'Flame',Georgia,serif;font-size:32px;line-height:1.1}
 .signin-head .secondary{height:48px;padding:0 22px;border-color:var(--border);background:var(--card);font-weight:normal;font-size:14px}.signin-lead{margin:20px 0 24px;font-size:15px}
 @media(max-width:1023px){.signin-page{padding:24px 16px 40px}.signin-head h1{font-size:28px}}
+/* Dados pessoais and Alterar celular (Figma Conta 08-11): white fields, the buttons one below the other (260px). */
+.account-form .field{background:#fff}.account-form .field[readonly]{background:#fff;color:var(--brown)}.account-form .account-meta{margin:0}.account-form>.account-action{align-self:flex-start;margin-top:16px}
+.account-buttons-column{flex-direction:column;align-items:flex-start;margin-top:12px}.account-lead{margin:0;font-size:15px;color:var(--brown)}
+.account-body .checkout-step .field{background:#fff}

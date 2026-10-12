@@ -63,7 +63,7 @@ export function maskPhone(digits) {
 export const sentTo = (channel, phone) => `Enviamos um código ${channel === 'sms' ? 'por SMS' : 'pelo WhatsApp'} para ${maskPhone(phone)}.`;
 
 /** A labelled field with its error line (aria-describedby), invalid while it has an error. */
-function field(id, label, attrs, error = '') {
+export function field(id, label, attrs, error = '') {
   return `<label class="field-label" for="${id}">${label}</label><input class="field" id="${id}" ${attrs} aria-invalid="${!!error}" aria-describedby="${id}-error"><p class="field-error" id="${id}-error"${error ? ' role="alert"' : ''}>${error}</p>`;
 }
 

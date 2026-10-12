@@ -89,7 +89,8 @@ export function ordersOf(state, now) {
   if (!phone) return [];
   const mine = state.orders.filter((o) => o.phone === phone).reverse();
   const live = mine.some((o) => !situation(o, now).done);
-  const extra = customers[phone] ? fixedOrders(now).filter((o) => !(live && o.id === 'BK-10482')) : [];
+  // The fixed ones follow the cadastro, even after Alterar celular (its first celular: customer.key).
+  const extra = customers[state.customer.key ?? phone] ? fixedOrders(now).filter((o) => !(live && o.id === 'BK-10482')) : [];
   return [...mine, ...extra];
 }
 /** The most recent Pedido still in progress (neither entregue nor cancelado), or null. */
