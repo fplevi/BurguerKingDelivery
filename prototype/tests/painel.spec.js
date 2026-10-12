@@ -98,3 +98,13 @@ test('no desktop, Bandeja de 400px e cards de 104 × 88 com a imagem da Camada',
   expect([card.width, card.height]).toEqual([104, 88]);
   await expect(retirado(page, 'Picles').locator('img')).toHaveCount(1);
 });
+
+test('no desktop, com os 7 retirados a Bandeja rola e mantém 3 cards por linha', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'desktop', 'no celular a Bandeja cresce em vez de rolar');
+  await openVerIngredientes(page);
+  for (const nome of ['Queijo', 'Picles', 'Ketchup', 'Cebola', 'Tomate', 'Alface', 'Maionese']) await chip(page, 'Retirar', nome).click();
+  const lista = bandeja(page).getByRole('list', { name: 'Ingredientes retirados' });
+  expect(await lista.evaluate((el) => el.scrollHeight > el.clientHeight)).toBe(true);
+  const linhas = await lista.getByRole('listitem').evaluateAll((itens) => new Set(itens.map((li) => Math.round(li.getBoundingClientRect().top))).size);
+  expect(linhas).toBe(3);
+});

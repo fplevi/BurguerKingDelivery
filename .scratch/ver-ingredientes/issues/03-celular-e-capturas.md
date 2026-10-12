@@ -19,3 +19,7 @@
 - Testes: novo `tests/layout-ver-ingredientes.spec.js` (390: barra fixa ao rolar, cabeçalho só com o título, uma coluna terminando acima da barra, Bandeja 213 → 309 com o 4º ingrediente, cards 94 × 88; 768: uma coluna com a barra; 1024: lado a lado). `npm run test:build`: 393 passaram, 35 pulados.
 - Capturas em `capturas/`: `{whopper,cheddar-duplo}-{bandeja-vazia,com-retirados}-{desktop,390,390-completo}.png`, com as referências do Figma `figma-desktop.png`, `figma-390.png` e `figma-390-completo.png`.
 - Pendente: revisão humana das capturas ao lado do Figma.
+
+## Comments
+
+- 2026-10-12, revisão do responsável pelo case: (1) a Bandeja quebrava para 2 cards por linha quando a barra de rolagem aparecia; (2) barra de rolagem marrom e mais fina; (3) hambúrguer 50% maior no desktop. Feito: `scrollbar-gutter: stable` e barra de 6px marrom (`::-webkit-scrollbar`; `scrollbar-color` fino nos outros navegadores), sem rolagem abaixo de 1024px (lá a Bandeja cresce); no desktop o palco ocupa a altura livre do bloco bege e a cena aceita `--zoom` no CSS do palco (1.13 em Ver ingredientes). Em 1440 × 900 as Camadas abertas passaram de 203 × 403 para 306 × 608 px no Whopper (+51%) e de 252 × 401 para 380 × 605 no Cheddar Duplo; o celular não muda. Em `arrasto-3d.spec.js` o "soltar fora" passou a medir o centro da Camada (o topo da caixa sobe com a inclinação ao segurar). Novo teste: 7 retirados no desktop, a Bandeja rola com 3 cards por linha. `npm run test:build`: 394 passaram, 36 pulados. Capturas de desktop regeradas.
