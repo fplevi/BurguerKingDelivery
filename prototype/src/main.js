@@ -237,7 +237,7 @@ function render() {
   document
     .querySelectorAll('header nav a')
     .forEach((a) => (inMenu && a.hash === '#' + state.category ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current')));
-  document.querySelector('main').dataset.screen = state.screen;
+  document.querySelector('main').dataset.screen = document.body.dataset.screen = state.screen;
   for (const el of document.querySelectorAll('main > .hero, main > .catalog')) el.hidden = !inMenu;
   $('cart-page').hidden = !inCart;
   $('checkout-page').hidden = !inCheckout;

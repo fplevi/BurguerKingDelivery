@@ -1,6 +1,6 @@
 # Minha conta, Endereço de entrega no cardápio e acompanhamento de pedidos
 
-Status: ready-for-agent
+Status: resolved
 
 Contexto: `GLOSSARY.md` (Endereço de entrega, Situação do pedido, Minha conta, Dados pessoais, Cartão salvo, Cartão padrão, além dos termos de Pedido e Cliente), `docs/adr/0002-endereco-de-entrega-sem-identificacao.md`, spec `.scratch/checkout/spec.md`. Decisões tiradas da sessão de grilling de 2026-10-12; esta spec substitui o rascunho anterior, que não tinha sido validado.
 
