@@ -7,14 +7,17 @@ export const TITULO = 'Ver ingredientes';
 /** The full-screen "Ver ingredientes" dialog, named by its title. */
 export const verIngredientes = (page) => page.getByRole('dialog', { name: TITULO, exact: true });
 
-/** Bandeja: the aside holding removed ingredients, chips and "Recolocar todos". */
-export const bandeja = (page) => verIngredientes(page).getByRole('complementary');
+/** Bandeja: the dashed aside "Ingredientes retirados", the only place to drop a dragged Camada. */
+export const bandeja = (page) => verIngredientes(page).getByRole('complementary', { name: 'Ingredientes retirados' });
 
-/** Chip in the bandeja for an ingredient; its label is "Retirar X" or "Recolocar X". */
-export const chip = (page, action, name) =>
-  bandeja(page)
-    .getByRole('group', { name: /^Personalize seu / })
-    .getByRole('button', { name: `${action} ${name}`, exact: true });
+/** The chips under "Ingredientes", one per removable Camada, outside the Bandeja. */
+export const ingredientes = (page) => verIngredientes(page).getByRole('group', { name: 'Ingredientes', exact: true });
+
+/** Chip of an ingredient; its label is "Retirar X" or "Recolocar X". */
+export const chip = (page, action, name) => ingredientes(page).getByRole('button', { name: `${action} ${name}`, exact: true });
+
+/** "Recolocar todos", below the chips. */
+export const recolocarTodos = (page) => verIngredientes(page).getByRole('button', { name: 'Recolocar todos' });
 
 /** List of Ingredientes retirados in the bandeja, each an image button "Recolocar X". */
 export const retirados = (page) => bandeja(page).getByRole('list', { name: 'Ingredientes retirados' });

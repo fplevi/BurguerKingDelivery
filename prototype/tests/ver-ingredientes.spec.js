@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { openVerIngredientes, verIngredientes, bandeja, camada, chip, descricao, dragTo, escolher, TITULO } from './support.js';
+import { openVerIngredientes, verIngredientes, bandeja, ingredientes, recolocarTodos, camada, chip, descricao, dragTo, escolher, TITULO } from './support.js';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/');
@@ -58,7 +58,7 @@ test('Recolocar todos desfaz as retiradas do rascunho', async ({ page }) => {
   await openVerIngredientes(page);
   await chip(page, 'Retirar', 'Picles').click();
   await chip(page, 'Retirar', 'Maionese').click();
-  await bandeja(page).getByRole('button', { name: 'Recolocar todos' }).click();
+  await recolocarTodos(page).click();
   await expect(chip(page, 'Retirar', 'Picles')).toBeVisible();
   await expect(chip(page, 'Retirar', 'Maionese')).toBeVisible();
   await expect(verIngredientes(page).getByText('Whopper® · Todos os ingredientes')).toBeVisible();
@@ -68,7 +68,7 @@ test('a Base (pães e carne) não pode ser retirada', async ({ page }) => {
   await openVerIngredientes(page);
   for (const base of ['Pão inferior', 'Carne grelhada', 'Pão superior']) {
     await expect(camada(page, base)).toBeDisabled();
-    await expect(bandeja(page).getByRole('button', { name: new RegExp(base) })).toHaveCount(0);
+    await expect(ingredientes(page).getByRole('button', { name: new RegExp(base) })).toHaveCount(0);
   }
   await camada(page, 'Carne grelhada').click({ force: true });
   await expect(verIngredientes(page).getByText('Whopper® · Todos os ingredientes')).toBeVisible();
@@ -164,7 +164,7 @@ test('as 10 camadas abertas seguem a receita brasileira, de baixo para cima', as
   }).toBe(true);
 
   const removiveis = receita.filter((n) => !['Pão inferior', 'Carne grelhada', 'Pão superior'].includes(n));
-  await expect(bandeja(page).getByRole('button', { name: /^Retirar / }))
+  await expect(ingredientes(page).getByRole('button'))
     .toHaveText(removiveis.map((n) => new RegExp(`${n}$`)));
 });
 
