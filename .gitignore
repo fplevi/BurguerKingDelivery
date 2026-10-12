@@ -8,3 +8,9 @@ test-results/
 playwright-report/
 blob-report/
 playwright/.cache/
+
+# Material local de trabalho (fora do repositório)
+.claude/worktrees/
+tmp/
+backups/
+output/

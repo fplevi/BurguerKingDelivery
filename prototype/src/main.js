@@ -244,7 +244,7 @@ function render() {
     heroTitle(product.name);
     $('product-description').textContent = description(product, state.removed);
   }
-  $('controls-title').innerHTML = `Personalize seu ${marks(product.name)}`;
+  $('pg-caption').innerHTML = `O seu ${marks(product.name)} do seu jeito.`;
   document.querySelectorAll('#grid .card').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.product === (pick(state)?.product ?? state.product))));
   if (scenes) {
     scenes.hero.show({ open: false, removed: state.removed }, { animate: false });
@@ -277,14 +277,13 @@ function render() {
     b.setAttribute('aria-label', 'Retirar ' + name(b.dataset.id));
   });
   renderTray();
-  $('tray-message').textContent = state.draft.length
-    ? 'Toque em um ingrediente retirado para recolocá-lo.'
-    : 'Arraste os ingredientes para cá ou use os chips abaixo.';
+  $('controls-help').textContent = `${matchMedia('(hover:hover)').matches ? 'Clique' : 'Toque'} para retirar ou recolocar.`;
+  $('reset').disabled = !state.draft.length;
   $('controls').innerHTML = product.layers
     .filter((i) => !i.locked)
     .map((i) => {
       const removed = state.draft.includes(i.id);
-      return `<button class="ingredient-chip" data-toggle="${i.id}" aria-label="${removed ? 'Recolocar' : 'Retirar'} ${i.name}" aria-pressed="${!removed}"><span class="chip-icon" aria-hidden="true">${removed ? '＋' : '✓'}</span> ${i.name}</button>`;
+      return `<button class="ingredient-chip" data-toggle="${i.id}" aria-label="${removed ? 'Recolocar' : 'Retirar'} ${i.name}" aria-pressed="${!removed}">${icon(removed ? 'plus' : 'check', 'chip-now')}${icon(removed ? 'check' : 'minus', 'chip-next')}${i.name}</button>`;
     })
     .join('');
   $('controls')
@@ -508,10 +507,14 @@ function renderCart() {
 // Bandeja: each removed ingredient as an image of its own Camada (rendered by the scene,
 // cached per id) or, without WebGL, its SVG illustration. Tapping it puts it back.
 const trayImages = {};
+// Chips: the state now (Check present, Plus removed) and, on hover and focus, what the click will do.
+function icon(name, cls) {
+  return `<svg class="${cls}" width="14" height="14" aria-hidden="true"><use href="#icon-${name}"/></svg>`;
+}
 function trayArt(id) {
   if (!scenes) return art(layer(recipe(), id).model);
-  trayImages[id] ??= scenes.editor.snapshot(id);
-  return trayImages[id] ? `<img src="${trayImages[id]}" alt="" width="60" height="36">` : '';
+  trayImages[id] ??= scenes.editor.snapshot(id, { width: 88, height: 44 });
+  return trayImages[id] ? `<img src="${trayImages[id]}" alt="" width="88" height="44">` : '';
 }
 function renderTray() {
   const list = $('tray-items');
@@ -603,7 +606,7 @@ function openEditor() {
   document.body.style.overflow = 'hidden';
   document.querySelector('header').inert = true;
   document.querySelector('main').inert = true;
-  $('close').focus();
+  $('cancel').focus();
 }
 function closeEditor(type) {
   if (closing) return;
@@ -649,7 +652,7 @@ function closeEditor(type) {
 }
 
 $('edit').onclick = openEditor;
-$('close').onclick = $('cancel').onclick = () => closeEditor('cancel');
+$('cancel').onclick = () => closeEditor('cancel');
 $('apply').onclick = () => closeEditor('apply');
 $('reset').onclick = () => dispatch({ type: 'reset' });
 $('combo').onchange = (e) => dispatch({ type: 'combo', value: e.target.checked });

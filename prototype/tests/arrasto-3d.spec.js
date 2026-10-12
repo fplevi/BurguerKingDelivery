@@ -85,7 +85,8 @@ test('soltar fora da bandeja devolve a camada ao seu lugar', async ({ page }) =>
   await page.mouse.move(inicio.x, inicio.y);
   await page.mouse.down();
   await page.mouse.move(inicio.x - 60, inicio.y + 120, { steps: 10 });
-  await expect.poll(async () => (await camada(page, 'Alface').boundingBox()).y).toBeGreaterThan(antes.y + 60);
+  // The centre follows the pointer; the top barely moves, the held Camada leaning towards the camera grows its box upwards.
+  await expect.poll(async () => centre(await camada(page, 'Alface').boundingBox()).y).toBeGreaterThan(inicio.y + 60);
   await page.mouse.up();
 
   await expect

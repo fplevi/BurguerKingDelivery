@@ -193,7 +193,9 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
     const elevation = MathUtils.degToRad(CAMERA_ELEVATION);
     const halfFov = MathUtils.degToRad(FOV / 2);
     const halfHeight = (framedHeight / 2) * Math.cos(elevation) + RADIUS * Math.sin(elevation);
-    const distance = Math.max(halfHeight / Math.tan(halfFov), RADIUS / (Math.tan(halfFov) * camera.aspect)) * 1.3;
+    // --zoom on the stage (CSS) brings the camera closer, eating into the 1.3 margin (Ver ingredientes on desktop).
+    const zoom = parseFloat(getComputedStyle(stage).getPropertyValue('--zoom')) || 1;
+    const distance = (Math.max(halfHeight / Math.tan(halfFov), RADIUS / (Math.tan(halfFov) * camera.aspect)) * 1.3) / zoom;
     const target = new Vector3(0, framedHeight / 2, 0);
     camera.position.set(0, target.y + distance * Math.sin(elevation), distance * Math.cos(elevation));
     camera.lookAt(target);

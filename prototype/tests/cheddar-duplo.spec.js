@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { openVerIngredientes, verIngredientes, bandeja, camada, chip, descricao, retirado, dragTo, card, escolher, aviso, carrinho, itens, totalDoItem, totalDosItens } from './support.js';
+import { openVerIngredientes, verIngredientes, bandeja, ingredientes, recolocarTodos, camada, chip, descricao, retirado, dragTo, card, escolher, aviso, carrinho, itens, totalDoItem, totalDosItens } from './support.js';
 
 const heroTitle = (page) => page.getByRole('heading', { level: 1 });
 /** Camada of the assembled hero burger (a disabled button labelled "Retirar X"). */
@@ -51,7 +51,7 @@ test('Ver ingredientes abre as 7 camadas do Cheddar Duplo, de baixo para cima', 
       return centres.every((y, i) => i === 0 || y < centres[i - 1]);
     })
     .toBe(true);
-  await expect(bandeja(page).getByRole('button', { name: /^Retirar / })).toHaveText(removiveis.map((n) => new RegExp(`${n}$`)));
+  await expect(ingredientes(page).getByRole('button')).toHaveText(removiveis.map((n) => new RegExp(`${n}$`)));
 });
 
 for (const nome of removiveis) {
@@ -75,7 +75,7 @@ test('as duas carnes e os pães do Cheddar Duplo não podem ser retirados', asyn
   await expect(carnes).toHaveCount(2);
   for (let i = 0; i < 2; i++) await expect(carnes.nth(i)).toBeDisabled();
   for (const base of ['Pão inferior', 'Pão superior']) await expect(camada(page, base)).toBeDisabled();
-  await expect(bandeja(page).getByRole('button', { name: /Carne|Pão/ })).toHaveCount(0);
+  await expect(ingredientes(page).getByRole('button', { name: /Carne|Pão/ })).toHaveCount(0);
   await carnes.nth(1).click({ force: true });
   await expect(verIngredientes(page).getByText('Cheddar Duplo · Todos os ingredientes')).toBeVisible();
 });
@@ -85,7 +85,7 @@ test('Recolocar todos, aplicar e cancelar funcionam no Cheddar Duplo', async ({ 
   await openVerIngredientes(page);
   await chip(page, 'Retirar', 'Cheddar superior').click();
   await chip(page, 'Retirar', 'Cebola crispy').click();
-  await bandeja(page).getByRole('button', { name: 'Recolocar todos' }).click();
+  await recolocarTodos(page).click();
   await expect(verIngredientes(page).getByText('Cheddar Duplo · Todos os ingredientes')).toBeVisible();
 
   await chip(page, 'Retirar', 'Cebola crispy').click();

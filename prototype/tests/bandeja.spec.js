@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { openVerIngredientes, verIngredientes, bandeja, camada, chip, retirado, retirados } from './support.js';
+import { openVerIngredientes, verIngredientes, camada, chip, retirado, retirados, recolocarTodos } from './support.js';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/');
@@ -60,7 +60,7 @@ test('Recolocar todos esvazia a bandeja e cancelar descarta o rascunho', async (
   await openVerIngredientes(page);
   for (const nome of ['Queijo', 'Ketchup', 'Maionese']) await chip(page, 'Retirar', nome).click();
   await expect(retirados(page).getByRole('button')).toHaveCount(3);
-  await bandeja(page).getByRole('button', { name: 'Recolocar todos' }).click();
+  await recolocarTodos(page).click();
   await expect(retirados(page).getByRole('button')).toHaveCount(0);
 
   await chip(page, 'Retirar', 'Ketchup').click();
