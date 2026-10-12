@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { openVerIngredientes, verIngredientes, bandeja, camada, chip, descricao, dragTo, TITULO } from './support.js';
+import { openVerIngredientes, verIngredientes, bandeja, camada, chip, descricao, dragTo, escolher, TITULO } from './support.js';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/');
@@ -8,7 +8,7 @@ test.beforeEach(async ({ page }) => {
 test('abre Ver ingredientes em tela cheia a partir do hero', async ({ page }) => {
   await openVerIngredientes(page);
   await expect(verIngredientes(page)).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Cancelar e fechar' })).toBeFocused();
+  await expect(verIngredientes(page).getByRole('button', { name: 'Cancelar', exact: true })).toBeFocused();
   await expect(chip(page, 'Retirar', 'Queijo')).toHaveAttribute('aria-pressed', 'true');
 });
 
@@ -118,17 +118,36 @@ test('cancelar preserva a personalização anterior', async ({ page }) => {
   await expect(chip(page, 'Retirar', 'Picles')).toBeVisible();
 });
 
-test('Esc e o botão de fechar também cancelam', async ({ page }) => {
+test('Esc cancela; não há botão de fechar', async ({ page }) => {
   await openVerIngredientes(page);
+  await expect(verIngredientes(page).getByRole('button', { name: /fechar|✕/i })).toHaveCount(0);
   await chip(page, 'Retirar', 'Alface').click();
   await page.keyboard.press('Escape');
   await expect(verIngredientes(page)).toBeHidden();
   await expect(descricao(page)).toHaveText(WHOPPER);
+});
 
+test('no desktop, Cancelar e Aplicar alterações ficam no cabeçalho, à direita do título', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'desktop', 'abaixo de 1024px as ações vão para uma barra fixa embaixo (ticket 03)');
   await openVerIngredientes(page);
-  await chip(page, 'Retirar', 'Alface').click();
-  await page.getByRole('button', { name: 'Cancelar e fechar' }).click();
-  await expect(descricao(page)).toHaveText(WHOPPER);
+  const titulo = await verIngredientes(page).getByRole('heading', { name: TITULO }).boundingBox();
+  const palco = await camada(page, 'Pão superior').boundingBox();
+  for (const nome of ['Cancelar', 'Aplicar alterações']) {
+    const acao = await verIngredientes(page).getByRole('button', { name: nome, exact: true }).boundingBox();
+    expect(acao.x).toBeGreaterThan(titulo.x + titulo.width);
+    expect(Math.abs(acao.y + acao.height / 2 - (titulo.y + titulo.height / 2))).toBeLessThan(8);
+    expect(acao.y + acao.height).toBeLessThan(palco.y);
+  }
+});
+
+test('a legenda abaixo do hambúrguer leva o nome do produto', async ({ page }) => {
+  await openVerIngredientes(page);
+  await expect(verIngredientes(page).getByText('O seu Whopper® do seu jeito.', { exact: true })).toBeVisible();
+  await page.keyboard.press('Escape');
+
+  await escolher(page, 'Cheddar Duplo');
+  await openVerIngredientes(page);
+  await expect(verIngredientes(page).getByText('O seu Cheddar Duplo do seu jeito.', { exact: true })).toBeVisible();
 });
 
 test('as 10 camadas abertas seguem a receita brasileira, de baixo para cima', async ({ page }) => {

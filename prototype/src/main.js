@@ -245,6 +245,7 @@ function render() {
     $('product-description').textContent = description(product, state.removed);
   }
   $('controls-title').innerHTML = `Personalize seu ${marks(product.name)}`;
+  $('pg-caption').innerHTML = `O seu ${marks(product.name)} do seu jeito.`;
   document.querySelectorAll('#grid .card').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.product === (pick(state)?.product ?? state.product))));
   if (scenes) {
     scenes.hero.show({ open: false, removed: state.removed }, { animate: false });
@@ -603,7 +604,7 @@ function openEditor() {
   document.body.style.overflow = 'hidden';
   document.querySelector('header').inert = true;
   document.querySelector('main').inert = true;
-  $('close').focus();
+  $('cancel').focus();
 }
 function closeEditor(type) {
   if (closing) return;
@@ -649,7 +650,7 @@ function closeEditor(type) {
 }
 
 $('edit').onclick = openEditor;
-$('close').onclick = $('cancel').onclick = () => closeEditor('cancel');
+$('cancel').onclick = () => closeEditor('cancel');
 $('apply').onclick = () => closeEditor('apply');
 $('reset').onclick = () => dispatch({ type: 'reset' });
 $('combo').onchange = (e) => dispatch({ type: 'combo', value: e.target.checked });
