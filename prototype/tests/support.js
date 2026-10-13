@@ -50,6 +50,18 @@ export async function dragTo(page, source, target) {
 /** Hero description: the Camadas of the applied Personalização, "Pão com gergelim, …". */
 export const descricao = (page) => page.locator('main').getByText(/^Pão com /);
 
+/**
+ * Waits for the hero's Entrada (ticket 15) to end: the burger assembled and still, leaning
+ * with the pointer. With reduced motion there is none, so it returns once the hero is drawn.
+ */
+export async function fimDaEntrada(page) {
+  await page.waitForFunction(() =>
+    matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? performance.getEntriesByName('burger-scene:first-frame:assembled').length
+      : performance.getEntriesByName('burger-scene:entrance-end:assembled').length,
+  );
+}
+
 /** Card of the product grid, by the product's name (the selected one also holds the badge). */
 export const card = (page, nome) =>
   page.locator('#catalog').getByRole('button', { name: new RegExp(`^(Selecionado\\s*)?${nome}$`) });

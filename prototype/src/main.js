@@ -78,6 +78,8 @@ function placeButtons(burger, areas) {
 
 // One scene per stage; null when WebGL is unavailable (SVG fallback).
 let scenes = null;
+// The hero's next render() starts its Entrada (ticket 15): a new scene, or the hero shown again.
+let entering = false;
 // False once a stage could not get a WebGL context: from then on, SVG only.
 let webgl = true;
 function mountScenes() {
@@ -125,6 +127,7 @@ function mountScenes() {
     },
   };
   document.body.classList.add('burger-3d');
+  entering = true;
 }
 // Product grid, with the official photos. Hambúrgueres: only products with a Receita can be
 // chosen; the others look the same, but clicking them does nothing. Photo categories: all can.
@@ -178,12 +181,25 @@ function buildGrid() {
     );
 }
 
+// The hambúrguer chosen while the current one makes its Saída; the last click wins.
+let choosing = null;
 /**
  * Shows another product: its Camadas as layer buttons and, in 3D, a new scene per stage
- * built from its Receita (the old ones are disposed). Its Personalização starts over.
+ * built from its Receita (the old ones are disposed), after the current one's Saída (ticket 15).
+ * Its Personalização starts over.
  */
-function selectProduct(product) {
-  if (product === state.product) return;
+async function selectProduct(product) {
+  if (product === (choosing ?? state.product)) return;
+  choosing = product;
+  if (product === state.product) {
+    // Back to the one leaving, before it is gone: it comes in again (and ends the Saída).
+    choosing = null;
+    scenes?.hero.enter();
+    return;
+  }
+  await scenes?.hero.exit();
+  if (choosing !== product) return; // another click came during the Saída
+  choosing = null;
   scenes?.dispose();
   scenes = null;
   for (const id of Object.keys(trayImages)) delete trayImages[id];
@@ -267,6 +283,7 @@ function render() {
   $('checkout-back').hidden = inCheckout && cartLocked(state) && state.order.status !== 'processing';
   $('address-back').hidden = inAddress && cartLocked(state);
   const photo = pick(state) && products[pick(state).product];
+  if ($('hero-stage').hidden && !photo) entering = true; // back to the Hambúrgueres
   for (const id of ['hero-stage', 'edit', 'combo-options']) $(id).hidden = !!photo;
   $('product-frame').hidden = !photo;
   const product = recipe();
@@ -284,6 +301,10 @@ function render() {
   document.querySelectorAll('#grid .card').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.product === (pick(state)?.product ?? state.product))));
   if (scenes) {
     scenes.hero.show({ open: false, removed: state.removed }, { animate: false });
+    if (entering && !photo) {
+      entering = false;
+      scenes.hero.enter();
+    }
     if (state.editing && !closing) scenes.editor.show({ open: true, removed: state.draft });
   } else {
     const positions = closedPositions(state.removed);
@@ -1442,6 +1463,8 @@ $('hero-stage').onpointermove = (e) => {
   $('hero-burger').style.setProperty('--tilt', ((e.clientX - r.left) / r.width - 0.5) * 12 + 'deg');
 };
 $('hero-stage').onpointerleave = () => $('hero-burger').style.setProperty('--tilt', '0deg');
+// Any action of the client (a press, a key) ends the hero's Entrada at once (ticket 15).
+for (const type of ['pointerdown', 'keydown']) addEventListener(type, () => scenes?.hero.settle(), true);
 mountProduct();
 fromHash();
 started = true;
