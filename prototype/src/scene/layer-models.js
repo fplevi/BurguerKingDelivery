@@ -1156,7 +1156,7 @@ export const layerModels = {
     height: MEAT_HEIGHT + 0.02, // the lumps rise above the nominal thickness
     build: patty,
   },
-  cheese: { height: CHEESE_HEIGHT, build: cheese },
+  cheese: { height: CHEESE_HEIGHT, build: () => cheese() }, // not `build: cheese`: the Camada would become its colour
   cheddar: { height: CHEDDAR_HEIGHT, build: cheddar },
   pickles: { height: PICKLE_HEIGHT, build: pickles },
   ketchup: {
