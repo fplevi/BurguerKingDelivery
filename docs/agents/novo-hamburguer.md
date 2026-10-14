@@ -31,6 +31,7 @@ Referência para renderizar um hambúrguer além do Whopper (tickets em `.scratc
 - O que funcionou: parte 3D em chunk próprio, cena de Alterar ingredientes criada depois do primeiro quadro, `compileAsync` dos shaders, texturas em dois Web Workers, `noise()` sem closures.
 - Orçamento do ticket 11: 145 KB gzip de JS 3D (limite 250). Primeiro quadro 2,2–2,5 s com CPU 4x e fps variáveis são exceções aceitas; `tests/orcamento.spec.js` guarda os limites aceitos. Fps real e arrasto por toque só se confirmam em aparelho físico.
 - Camada nova pesa: cada hambúrguer com mais camadas ou fatias custa primeiro quadro. Meça com `npm run test:orcamento` (uma execução por vez, contra o build).
+- Receita de textura nova pesa em todos os hambúrgueres: todas são pintadas antes do primeiro quadro. Ponha-a no worker mais leve (`shares` em `textures.js`). No ticket 02 do Rodeio Duplo, 14 ms a mais no worker da carne bastaram para `tests/cena-3d.spec.js:104` falhar de vez em quando.
 
 ## Testes
 

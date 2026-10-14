@@ -37,7 +37,7 @@ import {
 } from 'three';
 import { mergeGeometries, mergeVertices } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import { MEAT_FACE_UV } from './texture-recipes.js';
-import { fbm, random, crustBump, crumb, grilledMeat, tomatoSlice, pickleSlice, lettuceLeaf, friedOnion, baconStrip } from './textures.js';
+import { fbm, random, crustBump, crumb, grilledMeat, tomatoSlice, pickleSlice, lettuceLeaf, friedOnion, baconStrip, breading } from './textures.js';
 
 const generated = new Map(); // key -> the first geometry generated for it
 
@@ -1079,23 +1079,101 @@ function bacon() {
 
 // Onion rings (Rodeio Duplo): two big breaded rings side by side across the burger, almost
 // touching in the middle, each a little past the patty's edge, the barbecue showing through
-// the holes. A simple shape for now: two golden tori, no texture (the breading comes in ticket 02).
-const ONION_RINGS_TUBE = 0.13;
-const ONION_RINGS_HEIGHT = 2 * ONION_RINGS_TUBE;
-const ONION_RINGS_RADIUS = 0.555; // to the outside of the ring: the pair reaches ~1.12, a little past the patty (1.05)
+// the holes. Thick, irregular breading, golden orange, its coarse crumb showing all over and no
+// onion in sight: each ring is a swept section wider than tall (a fried ring slumps a little),
+// its thickness wandering along the ring, its surface pushed in and out by lumps and crumbs
+// (seeded noise over the vertex's position, so it is seamless). Crevices are darker, as fried
+// breading is between its crumbs; the breading texture (texture-recipes.js) does the fine crumb.
+const ONION_RINGS_WIDTH = 0.155; // half the breaded wall, from the ring's middle line to its outside
+const ONION_RINGS_THICKNESS = 0.12; // half the ring's height
+const ONION_RINGS_LUMPS = 0.024; // how far the lumps push in or out
+const ONION_RINGS_HEIGHT = 2 * (ONION_RINGS_THICKNESS + ONION_RINGS_LUMPS);
+const ONION_RINGS_RADIUS = 0.555; // to the outside of the ring: the pair reaches ~1.12 (up to ~1.17 where a ring swells), a little past the patty (1.05)
 const ONION_RINGS_GAP = 0.02; // between the two rings in the middle
 const ONION_RINGS_STAGGER = 0.03; // one ring a little in front of the other, so they don't line up
 const ONION_RINGS_TURN = -Math.PI / 12; // the pair turned 15° clockwise seen from above, centred, so it doesn't sit square to the camera
+const ONION_RINGS_TWIST = 1.3; // each ring turned on itself, the two opposite ways, so their lumps don't face the same way
+const ONION_RINGS_SEEDS = [141, 147]; // left and right ring
+
+/**
+ * One breaded ring around the origin, lying flat (bottom near y = 0): `seed` gives it its own
+ * lumps. UVs tile the breading along the ring (u) and around the section (v); vertex colours
+ * darken the crevices.
+ */
+function breadedRing(seed) {
+  const along = 160, around = 40;
+  const middle = ONION_RINGS_RADIUS - ONION_RINGS_WIDTH;
+  const positions = new Float32Array((along + 1) * (around + 1) * 3);
+  const uvs = new Float32Array((along + 1) * (around + 1) * 2);
+  const colours = new Float32Array((along + 1) * (around + 1) * 3);
+  const crest = new Color('#ffffff'), crevice = new Color('#b4642a'), colour = new Color();
+  for (let i = 0; i <= along; i++) {
+    const a = (i / along) * Math.PI * 2, ca = Math.cos(a), sa = Math.sin(a);
+    // The ring is fatter in places and thinner in others, and a little out of round.
+    const swell = 1 + 0.14 * (fbm(ca * 1.6 + seed, sa * 1.6, 0, { octaves: 2, seed }) - 0.5) * 2;
+    const round = middle * (1 + 0.035 * (fbm(ca * 1.2, sa * 1.2 + seed, 1, { octaves: 2, seed: seed + 1 }) - 0.5) * 2);
+    for (let j = 0; j <= around; j++) {
+      const q = (j / around) * Math.PI * 2, cq = Math.cos(q), sq = Math.sin(q);
+      // Superellipse section (exponent ~2.6): a chunky slab with rounded sides, flatter top and bottom.
+      const su = Math.sign(cq) * Math.abs(cq) ** 0.77, sv = Math.sign(sq) * Math.abs(sq) ** 0.77;
+      let r = round + su * ONION_RINGS_WIDTH * swell, y = ONION_RINGS_THICKNESS + sv * ONION_RINGS_THICKNESS * swell;
+      // Out along the section's normal (an ellipse's, close enough for the slab).
+      let nr = cq / ONION_RINGS_WIDTH, ny = sq / ONION_RINGS_THICKNESS;
+      const n = Math.hypot(nr, ny);
+      nr /= n; ny /= n;
+      const x0 = ca * r, z0 = sa * r;
+      // Lumps of breading, and crumbs on them (ridged: sharp crests, soft hollows).
+      const lump = fbm(x0 * 7 + seed, y * 7, z0 * 7, { octaves: 2, seed: seed + 2 }) - 0.5;
+      const crumbs = 0.5 - Math.abs(fbm(x0 * 22, y * 22 + seed, z0 * 22, { octaves: 2, seed: seed + 3 }) - 0.5) * 2;
+      const push = ONION_RINGS_LUMPS * (lump * 1.3 + crumbs * 0.55);
+      // The ring rests on the sauce: the underside is pressed flat, not lumpy.
+      const under = smoothstep(-0.55, -0.9, sq);
+      const d = push * (1 - under * 0.8);
+      r += nr * d;
+      y = Math.max(y + ny * d, 0.004);
+      const k = i * (around + 1) + j;
+      positions.set([ca * r, y, sa * r], k * 3);
+      uvs.set([(i / along) * 6, (j / around) * 2], k * 2);
+      colour.copy(crevice).lerp(crest, smoothstep(-0.018, 0.012, d) * 0.5 + 0.5);
+      colours.set([colour.r, colour.g, colour.b], k * 3);
+    }
+  }
+  const indices = [];
+  for (let i = 0; i < along; i++)
+    for (let j = 0; j < around; j++) {
+      const a = i * (around + 1) + j, b = a + around + 1;
+      indices.push(a, a + 1, b, a + 1, b + 1, b);
+    }
+  const geometry = new BufferGeometry();
+  geometry.setAttribute('position', new BufferAttribute(positions, 3));
+  geometry.setAttribute('uv', new BufferAttribute(uvs, 2));
+  geometry.setAttribute('color', new BufferAttribute(colours, 3));
+  geometry.setIndex(indices);
+  geometry.computeVertexNormals();
+  // Weld the normals across both seams (the first and last row and column share positions).
+  const normal = geometry.attributes.normal;
+  const weld = (p, q) => {
+    const n = new Vector3(normal.getX(p) + normal.getX(q), normal.getY(p) + normal.getY(q), normal.getZ(p) + normal.getZ(q)).normalize();
+    normal.setXYZ(p, n.x, n.y, n.z);
+    normal.setXYZ(q, n.x, n.y, n.z);
+  };
+  for (let j = 0; j <= around; j++) weld(j, along * (around + 1) + j);
+  for (let i = 0; i <= along; i++) weld(i * (around + 1), i * (around + 1) + around);
+  return geometry;
+}
+
 function onionRings() {
-  const mat = new MeshStandardMaterial({ color: '#c98633', roughness: 0.8 });
+  const { map, bumpMap } = breading();
+  // A faint orange glow keeps the sides in the bun's shadow golden, not khaki (as the cheddar's).
+  const mat = new MeshStandardMaterial({ map, bumpMap, bumpScale: 3, vertexColors: true, roughness: 0.62, emissive: '#3a1400' });
   return mesh(shared('onionRings', () => {
     const group = new Group();
-    for (const side of [-1, 1]) {
-      const ring = piece(new TorusGeometry(ONION_RINGS_RADIUS - ONION_RINGS_TUBE, ONION_RINGS_TUBE, 16, 64));
-      ring.rotation.x = -Math.PI / 2;
-      ring.position.set(side * (ONION_RINGS_RADIUS + ONION_RINGS_GAP / 2), ONION_RINGS_TUBE, side * ONION_RINGS_STAGGER);
+    [-1, 1].forEach((side, i) => {
+      const ring = piece(breadedRing(ONION_RINGS_SEEDS[i]));
+      ring.position.set(side * (ONION_RINGS_RADIUS + ONION_RINGS_GAP / 2), 0, side * ONION_RINGS_STAGGER);
+      ring.rotation.y = side * ONION_RINGS_TWIST;
       group.add(ring);
-    }
+    });
     group.rotation.y = ONION_RINGS_TURN;
     return single(group);
   }), mat);
@@ -1242,18 +1320,18 @@ export const layerModels = {
   },
   bbqSauce: {
     height: BBQ_SAUCE_STACK,
-    // Molho barbecue: dark brown and glossy, spread over the upper patty almost to its edge,
-    // with dollops all round reaching it and sagging over the side.
+    // Molho barbecue: dark brown and glossy, one continuous spread over the upper patty to
+    // close to its edge, with dollops all round reaching past it and sagging over the side.
     build: () =>
       sauce('bbqSauce', {
-        colour: '#3a1808',
+        colour: '#45200b',
         roughness: 0.14,
         seed: 51,
         lobes: 2,
         bead: BBQ_SAUCE_HEIGHT,
         drip: 0.06,
         puddles: [
-          [0.02, 0.02, 0.78, 0.7],
+          [0.02, 0.02, 0.92, 0.55],
           ...[5, 40, 78, 112, 150, 190, 228, 262, 300, 338].map((deg, i) => dollop(deg, 0.18 + ((i * 3) % 4) * 0.02, i % 2 ? 1.02 : 1.06)),
         ],
       }),
