@@ -1077,6 +1077,28 @@ function bacon() {
   }), mat);
 }
 
+// Onion rings (Rodeio Duplo): two big breaded rings side by side across the burger, almost
+// touching in the middle, each a little past the patty's edge, the barbecue showing through
+// the holes. A simple shape for now: two golden tori, no texture (the breading comes in ticket 02).
+const ONION_RINGS_TUBE = 0.13;
+const ONION_RINGS_HEIGHT = 2 * ONION_RINGS_TUBE;
+const ONION_RINGS_RADIUS = 0.555; // to the outside of the ring: the pair reaches ~1.12, a little past the patty (1.05)
+const ONION_RINGS_GAP = 0.02; // between the two rings in the middle
+const ONION_RINGS_STAGGER = 0.03; // one ring a little in front of the other, so they don't line up
+function onionRings() {
+  const mat = new MeshStandardMaterial({ color: '#c98633', roughness: 0.8 });
+  return mesh(shared('onionRings', () => {
+    const group = new Group();
+    for (const side of [-1, 1]) {
+      const ring = piece(new TorusGeometry(ONION_RINGS_RADIUS - ONION_RINGS_TUBE, ONION_RINGS_TUBE, 16, 64));
+      ring.rotation.x = -Math.PI / 2;
+      ring.position.set(side * (ONION_RINGS_RADIUS + ONION_RINGS_GAP / 2), ONION_RINGS_TUBE, side * ONION_RINGS_STAGGER);
+      group.add(ring);
+    }
+    return single(group);
+  }), mat);
+}
+
 // Ketchup and maionese: soft, rounded dollops with a wet gloss, told apart
 // by colour, sheen and shape (ketchup in lobed dollops, mayo spread thinner). Besides the ones
 // in the middle, several reach close to the edge, so the sauce shows in the closed burger.
@@ -1087,6 +1109,8 @@ const MAYO_HEIGHT = 0.035;
 const SAUCE_STACK = 0.015;
 const STACKER_SAUCE_HEIGHT = 0.06;
 const STACKER_SAUCE_STACK = 0.04;
+const BBQ_SAUCE_HEIGHT = 0.04;
+const BBQ_SAUCE_STACK = 0.025;
 /** A dollop [x, z, reach] at angle `deg` (front = 90), its edge at most `edge` from the centre. */
 const dollop = (deg, reach, edge = FILLING_REACH) => [...polar((deg * Math.PI) / 180, edge - reach), reach];
 function puddle({ seed, reach, lobes, bead, wobble = 0.28 }) {
@@ -1214,6 +1238,25 @@ export const layerModels = {
         puddles: stackerPuddles(),
       }),
   },
+  bbqSauce: {
+    height: BBQ_SAUCE_STACK,
+    // Molho barbecue: dark brown and glossy, spread over the upper patty almost to its edge,
+    // with dollops all round reaching it and sagging over the side.
+    build: () =>
+      sauce('bbqSauce', {
+        colour: '#3a1808',
+        roughness: 0.14,
+        seed: 51,
+        lobes: 2,
+        bead: BBQ_SAUCE_HEIGHT,
+        drip: 0.06,
+        puddles: [
+          [0.02, 0.02, 0.78, 0.7],
+          ...[5, 40, 78, 112, 150, 190, 228, 262, 300, 338].map((deg, i) => dollop(deg, 0.18 + ((i * 3) % 4) * 0.02, i % 2 ? 1.02 : 1.06)),
+        ],
+      }),
+  },
+  onionRings: { height: ONION_RINGS_HEIGHT, build: onionRings },
   top: {
     height: TOP_HEIGHT,
     build: topBun,
