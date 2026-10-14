@@ -4,8 +4,17 @@
 
 **Blocked by:** 02.
 
-**Status:** ready-for-agent
+**Status:** resolved
 
-- [ ] Quatro capturas e quadros da Entrada e da Saída entregues juntos, com a foto oficial ao lado
-- [ ] Ajustes pedidos aplicados e novas capturas anexadas
-- [ ] Aprovação do responsável registrada em `## Comments`
+- [x] Quatro capturas e quadros da Entrada e da Saída entregues juntos, com a foto oficial ao lado
+- [x] Ajustes pedidos aplicados e novas capturas anexadas (nenhum ajuste pedido)
+- [x] Aprovação do responsável registrada em `## Comments`
+
+## Answer
+
+Aprovado sem ajustes na primeira rodada. As capturas finais são as de `capturas/03/`. A Maionese ficou como está, então o Whopper aprovado não mudou.
+
+## Comments
+
+- 2026-10-14 (agente): entrega única para a revisão, em `.scratch/rodeio-duplo/capturas/03/`. São as quatro capturas padrão (`desktop-montado`, `desktop-aberto`, `390x844-montado`, `390x844-aberto`, mais os dois `-hero` de página inteira) e a folha `revisao-lado-a-lado.png`, com as quatro vistas e `site_Rodeio_Duplo.png` à direita. Os quadros da Entrada e da Saída estão em `capturas/03/quadros/` (`entrada.png` e `saida-0200ms.png`). A Entrada acaba em ~800 ms. Aguardando a decisão do responsável pelo produto. Pontos para esta revisão: a Maionese quase não aparece no montado, e na foto é uma camada branca grossa sob o pão de cima; o pão superior da foto é mais alto e mais claro; no montado, os onion rings saem um pouco menos laranja que na foto, e o barbecue sai mais escuro e mais grosso que a camada fina da foto.
+- 2026-10-14 (responsável pelo produto): "Tudo certo. Aprovado sem ajustes."
