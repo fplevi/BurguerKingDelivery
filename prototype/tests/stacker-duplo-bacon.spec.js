@@ -172,6 +172,16 @@ test('a bandeja mostra a imagem do bacon retirado', async ({ page }) => {
   await expect(chip(page, 'Retirar', 'Bacon')).toHaveAttribute('aria-pressed', 'true');
 });
 
+test('arrastar o bacon aberto até a bandeja o retira', async ({ page }) => {
+  await escolher(page, STACKER);
+  await openVerIngredientes(page);
+  await expect(verIngredientes(page).locator('canvas')).toBeVisible();
+  await dragTo(page, camada(page, 'Bacon'), bandeja(page));
+  await expect(retirado(page, 'Bacon')).toBeVisible();
+  await expect(chip(page, 'Recolocar', 'Bacon')).toBeVisible();
+  await expect(chip(page, 'Retirar', 'Molho Stacker')).toHaveAttribute('aria-pressed', 'true');
+});
+
 test('as áreas de toque das camadas abertas do Stacker Duplo Bacon não se sobrepõem e têm pelo menos 24 × 44 px', async ({ page }) => {
   await escolher(page, STACKER);
   await openVerIngredientes(page);
