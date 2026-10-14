@@ -1085,7 +1085,7 @@ const ONION_RINGS_HEIGHT = 2 * ONION_RINGS_TUBE;
 const ONION_RINGS_RADIUS = 0.555; // to the outside of the ring: the pair reaches ~1.12, a little past the patty (1.05)
 const ONION_RINGS_GAP = 0.02; // between the two rings in the middle
 const ONION_RINGS_STAGGER = 0.03; // one ring a little in front of the other, so they don't line up
-const ONION_RINGS_TURN = -Math.PI / 6; // the pair turned 30° clockwise seen from above, centred, so it doesn't sit square to the camera
+const ONION_RINGS_TURN = -Math.PI / 12; // the pair turned 15° clockwise seen from above, centred, so it doesn't sit square to the camera
 function onionRings() {
   const mat = new MeshStandardMaterial({ color: '#c98633', roughness: 0.8 });
   return mesh(shared('onionRings', () => {
