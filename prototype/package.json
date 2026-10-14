@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "test": "playwright test",
     "test:build": "playwright test",
-    "test:orcamento": "playwright test"
+    "test:orcamento": "playwright test",
+    "quadros-entrada": "node scripts/quadros-entrada.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.64.0",

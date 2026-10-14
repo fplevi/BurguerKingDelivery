@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { openVerIngredientes, camada, chip } from './support.js';
+import { openVerIngredientes, camada, chip, fimDaEntrada } from './support.js';
 
 const heroStage = (page) => page.locator('main #hero-stage');
 /** Camada of the assembled hero burger (a disabled button labelled "Retirar X"). */
@@ -23,6 +23,7 @@ const differs = (a, b) => Math.max(Math.abs(a.x - b.x), Math.abs(a.y - b.y), Mat
 test.beforeEach(async ({ page }) => {
   await page.goto('/');
   await expect(heroStage(page).locator('canvas')).toBeVisible();
+  await fimDaEntrada(page);
 });
 
 test('no desktop, o hambúrguer inclina seguindo o ponteiro e volta ao centro', async ({ page, isMobile }) => {

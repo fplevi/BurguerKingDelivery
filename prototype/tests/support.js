@@ -50,6 +50,16 @@ export async function dragTo(page, source, target) {
 /** Hero description: the Camadas of the applied Personalização, "Pão com gergelim, …". */
 export const descricao = (page) => page.locator('main').getByText(/^Pão com /);
 
+/**
+ * Waits for the hero's first Entrada (ticket 15) to end: the burger drawn, assembled and still,
+ * leaning with the pointer.
+ */
+export async function fimDaEntrada(page) {
+  await page.waitForFunction(() =>
+    ['first-frame', 'entrance-end'].every((m) => performance.getEntriesByName(`burger-scene:${m}:assembled`).length),
+  );
+}
+
 /** Card of the product grid, by the product's name (the selected one also holds the badge). */
 export const card = (page, nome) =>
   page.locator('#catalog').getByRole('button', { name: new RegExp(`^(Selecionado\\s*)?${nome}$`) });

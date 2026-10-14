@@ -103,17 +103,18 @@ async function enesimoPrimeiroQuadro(page, n) {
 }
 
 /**
- * Milliseconds from choosing `nome` in the grid to the hero's first 3D frame of it: choosing a
- * product disposes both scenes and builds them again from its Receita (ticket 02 of the Cheddar Duplo).
+ * Milliseconds from the end of the current burger's Saída (ticket 15) to the hero's first 3D frame
+ * of `nome`, chosen in the grid: choosing a product disposes both scenes and builds them again from
+ * its Receita (ticket 02 of the Cheddar Duplo). The 250 ms Saída itself is not counted.
  */
 async function trocarPara(page, nome) {
-  const cenas = await page.evaluate(() => performance.getEntriesByName('burger-scene:first-frame:assembled').length);
-  await page.evaluate(() => {
-    document.addEventListener('click', () => (window.__clique = performance.now()), { capture: true, once: true });
-  });
+  const [cenas, saidas] = await page.evaluate(() =>
+    ['first-frame', 'exit-end'].map((m) => performance.getEntriesByName(`burger-scene:${m}:assembled`).length),
+  );
   await escolher(page, nome);
   const quadro = await enesimoPrimeiroQuadro(page, cenas + 1);
-  return Math.round(quadro - (await page.evaluate(() => window.__clique)));
+  const fimDaSaida = await page.evaluate((n) => performance.getEntriesByName('burger-scene:exit-end:assembled')[n].startTime, saidas);
+  return Math.round(quadro - fimDaSaida);
 }
 
 // Cheddar Duplo (ticket 05): the page opens on the Whopper, so the Cheddar Duplo's first frame is

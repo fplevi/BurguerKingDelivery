@@ -12,6 +12,8 @@
 //   scene.drag(id, clientX, clientY)             // the Camada follows the pointer, over the page
 //   scene.release()                              // ends the drag; back to its place (or wherever show() says)
 //   scene.tilt(x, y)                             // lean towards x, y in [-1, 1]; (0, 0) recentres
+//   scene.enter()                                // Entrada, from the next frame drawn; scene.settle() ends it
+//   await scene.exit()                           // Saída
 //   scene.dispose()
 import {
   WebGLRenderer,
@@ -53,11 +55,30 @@ const HOLD_SCALE = 0.85;
 // pitching shows more or less of the top, with a roll so the turn reads on round shapes.
 const TILT = { pitch: 10, yaw: 10, roll: 8 }; // degrees at |x| or |y| = 1
 const TILT_EASE = 0.12; // seconds to cover ~63% of the way to the target
+// Entrada (ticket 15): the present Camadas fall from above the frame, bottom to top, one every
+// `stagger` ms; each falls for 70% of `fall` ms, accelerating, and bounces back up a little
+// (a share of its drop) in the rest. Saída: the whole burger sinks, shrinks a little and fades.
+const ENTRANCE = { fall: 420, stagger: 55, land: 0.7, bounce: 0.035 };
+const EXIT = { duration: 250, sink: 0.6, shrink: 0.15 };
 
 const sum = (list) => list.reduce((a, b) => a + b, 0);
+/** A promise and the function that resolves it. */
+function deferred() {
+  let done;
+  const finished = new Promise((resolve) => (done = resolve));
+  return { finished, done };
+}
 
 const reducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 const easeOut = (t) => 1 - (1 - t) ** 3;
+
+/** Share of its drop still above a falling Camada, `t` in [0, 1] of its own fall: 1 -> 0, a hop, 0. */
+function dropLeft(t) {
+  const { land, bounce } = ENTRANCE;
+  if (t < land) return 1 - (t / land) ** 2;
+  const u = (t - land) / (1 - land);
+  return bounce * Math.sin(Math.PI * u) * (1 - u * 0.4);
+}
 
 /** Resting y of each Camada (ids, bottom to top, with their heights) and whether it is shown, for a displayed state. */
 function layout(ids, heights, { open, removed }) {
@@ -161,9 +182,10 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
   ground.position.y = -0.001;
   ground.receiveShadow = true;
   scene.add(ground);
+  const CONTACT_SHADOW = 0.55;
   const contact = new Mesh(
     new PlaneGeometry(2.7, 2.7),
-    new MeshBasicMaterial({ color: '#2a1206', alphaMap: contactShadow(), transparent: true, opacity: 0.55, depthWrite: false }),
+    new MeshBasicMaterial({ color: '#2a1206', alphaMap: contactShadow(), transparent: true, opacity: CONTACT_SHADOW, depthWrite: false }),
   );
   contact.rotation.x = -Math.PI / 2;
   contact.position.set(0.08, 0.001, -0.04); // nudged away from the light
@@ -218,6 +240,12 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
   let currentAreas = {};
   let shown = '';
   let drawn = false;
+  // Entrada or Saída running: { kind: 'entrance' | 'exit', start (set on the first frame drawn), duration, apply(ms), done }.
+  let effect = null;
+  const entering = () => effect?.kind === 'entrance';
+  // Share of each shadow drawn. In the Entrada, the contact shadow comes in with the bottom bun
+  // and the cast one with the last Camada (Camadas still in the air would cast it far to the side).
+  const shadow = { contact: 1, ground: 1 };
 
   function place() {
     for (const id of ids) {
@@ -231,8 +259,50 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
     // 0 assembled .. 1 opened, read from the top bun's lift above its stacked height.
     const top = layers[ids.at(-1)];
     const stackedTop = sum(ids.slice(0, -1).map((id, i) => (layers[id].scale > 0.5 ? heights[i] : 0)));
-    const openness = MathUtils.clamp((top.y - stackedTop) / (OPEN_GAP * (ids.length - 1)), 0, 1);
-    ground.material.opacity = GROUND_SHADOW * (1 - openness);
+    // (A top bun still falling in the Entrada is not an opened burger.)
+    const openness = entering() ? 0 : MathUtils.clamp((top.y - stackedTop) / (OPEN_GAP * (ids.length - 1)), 0, 1);
+    ground.material.opacity = GROUND_SHADOW * (1 - openness) * shadow.ground;
+    contact.material.opacity = CONTACT_SHADOW * shadow.contact;
+  }
+
+  function runEffect(kind, duration, apply) {
+    effect?.done();
+    const { finished, done } = deferred();
+    effect = { kind, start: null, duration, apply, done };
+    requestDraw();
+    return finished;
+  }
+
+  /** Read by the tests that wait for the hero to be still, and by the budget measurements. */
+  const markEnd = (kind) => performance.mark(`burger-scene:${kind}-end:${fit}`);
+
+  function endEffect() {
+    const { done, kind } = effect;
+    effect = null;
+    markEnd(kind);
+    done();
+  }
+
+  /**
+   * Puts the Camadas where the running effect has them at `now`, and asks for the next frame;
+   * ends it when its time is up. Only called while the stage draws: a hidden stage holds the
+   * effect, without spinning frames, until it is shown.
+   */
+  function stepEffect(now) {
+    if (!effect) return;
+    effect.start ??= now;
+    const ms = Math.min(now - effect.start, effect.duration);
+    effect.apply(ms);
+    if (ms < effect.duration) return requestDraw();
+    endEffect();
+  }
+
+  /** Undoes the Saída: the burger in place, full size, opaque, with its shadows. */
+  function restorePose() {
+    burger.position.y = -framedHeight / 2;
+    pivot.scale.setScalar(1);
+    canvas.style.opacity = '';
+    Object.assign(shadow, { contact: 1, ground: 1 });
   }
 
   function lean() {
@@ -278,6 +348,7 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
 
   function draw() {
     if (!size.width || !size.height || !compiled) return;
+    stepEffect(performance.now());
     place();
     renderer.render(scene, camera);
     if (!drawn) {
@@ -318,8 +389,8 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
       }
     }
     draw();
-    if (animation || tilting()) frameRequest = requestAnimationFrame(tick);
-    else lastTick = 0;
+    if (animation || tilting()) requestDraw();
+    if (!frameRequest) lastTick = 0;
   }
 
   function requestDraw() {
@@ -380,6 +451,8 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
     const width = stage.clientWidth, height = stage.clientHeight;
     if (width === size.width && height === size.height) return;
     size = { width, height };
+    // A hidden stage can't draw the Saída: it is over (the Entrada waits to be seen).
+    if ((!width || !height) && effect?.kind === 'exit') endEffect();
     resize();
     draw();
   });
@@ -396,8 +469,7 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
       return Promise.resolve();
     }
     const from = Object.fromEntries(ids.map((id) => [id, (({ x, y, z, scale }) => ({ x, y, z, scale }))(layers[id])]));
-    let done;
-    const finished = new Promise((resolve) => (done = resolve));
+    const { finished, done } = deferred();
     animation = { start: performance.now(), from, to, finished, done };
     requestDraw();
     return finished;
@@ -469,7 +541,7 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
      * there; (0, 0) recentres. Ignored with reduced motion and while a Camada is dragged.
      */
     tilt(x, y) {
-      if (reducedMotion() || dragging) return;
+      if (reducedMotion() || dragging || entering()) return;
       tiltTarget.x = MathUtils.clamp(x, -1, 1);
       tiltTarget.y = MathUtils.clamp(y, -1, 1);
       if (tilting()) requestDraw();
@@ -481,6 +553,62 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
       return animateTo(layout(ids, heights, lastView));
     },
     areas: () => currentAreas,
+    /**
+     * Entrada: the Camadas shown fall into place, bottom to top, from the next frame drawn (the
+     * first one, on a new scene; or once a hidden stage is shown). The contact shadow comes in
+     * with the bottom bun, the cast one with the last Camada. None with reduced motion.
+     */
+    enter() {
+      restorePose();
+      if (reducedMotion()) {
+        effect?.done();
+        effect = null;
+        draw();
+        markEnd('entrance');
+        return;
+      }
+      // Straight, so nothing leans while falling; tilt() waits for the end.
+      Object.assign(tiltTarget, { x: 0, y: 0 });
+      Object.assign(tiltNow, tiltTarget);
+      lean();
+      const present = ids.filter((id) => !lastView.removed.includes(id));
+      const height = framedHeight * 1.6 + 1; // from above the frame
+      const { fall, stagger } = ENTRANCE;
+      runEffect('entrance', fall + stagger * (present.length - 1), (ms) => {
+        const rest = layout(ids, heights, lastView);
+        present.forEach((id, i) => {
+          const left = dropLeft(MathUtils.clamp((ms - i * stagger) / fall, 0, 1));
+          layers[id].y = rest[id].y + height * left;
+          const landed = 1 - Math.min(left, 1);
+          if (i === 0) shadow.contact = landed ** 2; // seen only once the bun is in the frame
+          if (i === present.length - 1) shadow.ground = landed ** 2;
+        });
+      });
+    },
+    /** Ends a started Entrada at once: the burger assembled, where show() puts it. */
+    settle() {
+      if (!entering() || effect.start === null) return;
+      effect.start = -Infinity;
+      draw();
+    },
+    /**
+     * Saída: the whole burger sinks a little and fades out; resolves when it is gone (at once
+     * with reduced motion, before the first frame or with the stage hidden). The burger stays
+     * gone until enter().
+     */
+    exit() {
+      if (reducedMotion() || !drawn || !size.width || !size.height) {
+        markEnd('exit');
+        return Promise.resolve();
+      }
+      const base = -framedHeight / 2;
+      return runEffect('exit', EXIT.duration, (ms) => {
+        const k = (ms / EXIT.duration) ** 2;
+        burger.position.y = base - EXIT.sink * k;
+        pivot.scale.setScalar(1 - EXIT.shrink * k);
+        canvas.style.opacity = String(1 - k);
+      });
+    },
     /**
      * Image of one Camada on its own (even if removed), same light and camera elevation,
      * transparent background: for the Bandeja. Rendered into a corner of this stage's canvas

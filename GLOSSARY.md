@@ -24,6 +24,14 @@ _Avoid_: Ingrediente removido, excluído
 Área ao lado do hambúrguer aberto onde ficam os ingredientes retirados.
 _Avoid_: Lixeira, área de descarte, dragzone
 
+**Entrada**:
+O hambúrguer aparecendo no hero com suas Camadas caindo e se empilhando de baixo para cima; acontece ao abrir a página, ao trocar de hambúrguer e ao voltar à categoria Hambúrgueres.
+_Avoid_: Montagem, animação de abertura
+
+**Saída**:
+O hambúrguer deixando o hero, quando o cliente troca de hambúrguer.
+_Avoid_: Desmontagem, animação de fechamento
+
 **Personalização**:
 O conjunto de ingredientes retirados que o cliente confirmou ao aplicar; acompanha o Item e vale para todas as unidades dele.
 _Avoid_: Customização, configuração
