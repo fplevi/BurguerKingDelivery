@@ -4,12 +4,19 @@
 
 **Blocked by:** 03.
 
-**Status:** claimed
+**Status:** resolved
 
-- [ ] Medições registradas em `## Comments` (gzip 3D, primeiro quadro, fps)
-- [ ] Tudo dentro dos limites aceitos, ou otimizado até ficar
-- [ ] `npm run test:build` inteiro verde; se falhar "ao acaso", comparar com a `main` antes de chamar de instabilidade
-- [ ] PR aberto para a `main` com as capturas da revisão
+- [x] Medições registradas em `## Comments` (gzip 3D, primeiro quadro, fps)
+- [x] Tudo dentro dos limites aceitos, ou otimizado até ficar
+- [x] `npm run test:build` inteiro verde; se falhar "ao acaso", comparar com a `main` antes de chamar de instabilidade
+- [x] PR aberto para a `main` com as capturas da revisão
+
+## Answer
+
+- Tudo dentro dos limites aceitos; nenhuma otimização. Peso 153,3 KB gzip. Stacker Duplo Bacon na primeira escolha: 0,51–0,54 s com CPU 4x, e trava a página ~0,35 s, menos que o Cheddar Duplo (1,29–1,49 s e ~1,2 s).
+- `tests/orcamento.spec.js` cobre os três hambúrgueres e passa a medir e limitar a primeira troca de produto, que a mediana escondia desde a geometria gerada uma vez por página.
+- O ticket 03 foi aprovado sem ajustes, então as medições do Stacker Duplo Bacon valem como estão.
+- `npm run test:build` verde (557 aprovados, 39 pulados). PR aberto para a `main`.
 
 ## Comments
 
@@ -45,3 +52,4 @@ Leitura:
 - Medido antes da aprovação do ticket 03, que segue `claimed`: se a revisão mudar o bacon ou o molho, as linhas do Stacker Duplo Bacon precisam ser medidas de novo.
 - `npm run test:build` inteiro verde: 557 aprovados, 39 pulados (10,7 min, 2 workers).
 - PR para a `main` aguarda a aprovação do ticket 03 e as capturas finais da revisão.
+- 2026-10-14 (agente): ticket 03 aprovado sem ajustes; as pendências acima ficam resolvidas e o PR foi aberto.
