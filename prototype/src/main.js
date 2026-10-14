@@ -134,7 +134,7 @@ function mountScenes() {
 const burgers = [
   { recipe: 'whopper', photo: whopperPhoto },
   { recipe: 'cheddarDuplo', photo: cheddarDuploPhoto },
-  { name: 'Stacker Duplo Bacon', photo: stackerDuploPhoto },
+  { recipe: 'stackerDuploBacon', photo: stackerDuploPhoto },
   { name: 'Rodeio Duplo', photo: rodeioDuploPhoto },
   { name: 'Big King', photo: bigKingPhoto },
   { name: 'Cheeseburger Duplo', photo: cheeseburgerDuploPhoto },

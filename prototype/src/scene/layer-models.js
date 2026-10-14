@@ -425,9 +425,10 @@ function slice(radius, thickness, { shape, segments = 64 } = {}) {
 // Queijo: a slice of processed cheese (a real slab: top, bottom and a rounded edge), turned
 // 45°, melted over the patty: flat in the middle, slightly rippled, its rounded corners rolling
 // over the patty's edge and hanging down its side, each a little further than the next. Satin.
+// The Stacker Duplo Bacon's cheddar is the same slice in cheddar orange (`colour`).
 const CHEESE_THICKNESS = 0.03;
 const CHEESE_HEIGHT = 0.045;
-function cheese() {
+function cheese(colour = '#f7b512') {
   const geometry = shared('cheese', () => {
     const size = 0.9, n = 64, T = CHEESE_THICKNESS, bend = 0.07;
     const mid = CHEESE_HEIGHT - 0.003 - T / 2; // the slab's mid-surface over the patty
@@ -498,7 +499,7 @@ function cheese() {
     return geometry;
   });
   const mat = new MeshStandardMaterial({
-    color: '#f7b512', // yellower than the orange page, so it doesn't melt into the background
+    color: colour, // the Whopper's is yellower than the orange page, so it doesn't melt into the background
     roughness: 0.45,
     side: DoubleSide,
   });
@@ -972,6 +973,59 @@ function lettuce() {
   }), mat);
 }
 
+// Bacon (Stacker Duplo Bacon): three wavy strips laid across the burger, their ends poking
+// out past the patty's edge on both sides; lean red-brown with paler fat streaks along the
+// strip, toasted darker on the crests and edges. A simple shape for now: one thin sheet per
+// strip, vertex colours, no texture.
+const BACON_HEIGHT = 0.12;
+const BACON_WIDTH = 0.38;
+function bacon() {
+  const lean = [138, 44, 20], fat = [233, 180, 140], crisp = [74, 26, 12];
+  const mat = new MeshStandardMaterial({ vertexColors: true, roughness: 0.5, side: DoubleSide });
+  return mesh(shared('bacon', () => {
+    // [centre z, length, yaw, phase]: front strip towards the camera (+z).
+    const strips = [[-0.58, 2.0, 0.12, 0.4], [0.06, 2.3, -0.08, 2.1], [0.7, 1.95, 0.15, 4.2]];
+    const pieces = strips.map(([z0, L, yaw, ph], k) => {
+      const n = 72, m = 6, W = BACON_WIDTH, A = 0.09; // A: the waves' height
+      const positions = [], colours = [], indices = [];
+      const colour = new Color();
+      for (let i = 0; i <= n; i++) {
+        const u = (i / n - 0.5) * L;
+        const crest = 0.5 + 0.5 * Math.sin(u * 4.5 + ph);
+        for (let j = 0; j <= m; j++) {
+          const v = (j / m - 0.5) * W;
+          const side = Math.abs(v) / (W / 2);
+          // Wavy along the strip, twisted a little, the edges rippled; the ends droop past the patty.
+          let y = 0.012 + A * crest + v * 0.22 * Math.sin(u * 1.7 + ph * 2) + 0.008 * Math.sin(u * 23 + ph) * side * side;
+          const x = Math.cos(yaw) * u - Math.sin(yaw) * v;
+          const z = z0 + Math.sin(yaw) * u + Math.cos(yaw) * v + 0.04 * Math.sin(u * 2 + ph);
+          y -= Math.max(Math.hypot(x, z) - 0.95, 0) * 0.35;
+          positions.push(x, Math.max(y, 0.004), z);
+          // Fat streaks run along the strip, wandering across it.
+          const streak = 0.5 + 0.5 * Math.sin((v / W) * Math.PI * 3 + k * 1.3 + 0.6 * Math.sin(u * 1.3 + k));
+          let c = mixColor(lean, fat, smoothstep(0.62, 0.86, streak));
+          c = mixColor(c, crisp, Math.min(0.65, crest * 0.4 + smoothstep(0.7, 1, side) * 0.45));
+          colour.setRGB(c[0] / 255, c[1] / 255, c[2] / 255, SRGBColorSpace);
+          colours.push(colour.r, colour.g, colour.b);
+        }
+      }
+      const row = m + 1;
+      for (let i = 0; i < n; i++)
+        for (let j = 0; j < m; j++) {
+          const a = i * row + j, b = a + row;
+          indices.push(a, a + 1, b, a + 1, b + 1, b);
+        }
+      const geometry = new BufferGeometry();
+      geometry.setAttribute('position', new BufferAttribute(new Float32Array(positions), 3));
+      geometry.setAttribute('color', new BufferAttribute(new Float32Array(colours), 3));
+      geometry.setIndex(indices);
+      geometry.computeVertexNormals();
+      return geometry;
+    });
+    return mergeGeometries(pieces);
+  }), mat);
+}
+
 // Ketchup and maionese: soft, rounded dollops with a wet gloss, told apart
 // by colour, sheen and shape (ketchup in lobed dollops, mayo spread thinner). Besides the ones
 // in the middle, several reach close to the edge, so the sauce shows in the closed burger.
@@ -980,6 +1034,8 @@ function lettuce() {
 const KETCHUP_HEIGHT = 0.045;
 const MAYO_HEIGHT = 0.035;
 const SAUCE_STACK = 0.015;
+const STACKER_SAUCE_HEIGHT = 0.06;
+const STACKER_SAUCE_STACK = 0.04;
 /** A dollop [x, z, reach] at angle `deg` (front = 90), its edge at most `edge` from the centre. */
 const dollop = (deg, reach, edge = FILLING_REACH) => [...polar((deg * Math.PI) / 180, edge - reach), reach];
 function puddle({ seed, reach, lobes, bead }) {
@@ -1053,6 +1109,25 @@ export const layerModels = {
         puddles: [
           [0.06, 0.02, 0.55, 0.7],
           ...[12, 62, 112, 165, 214, 268, 320].map((deg, i) => dollop(deg, 0.1 + ((i * 3) % 5) * 0.01)),
+        ],
+      }),
+  },
+  cheddarSlice: { height: CHEESE_HEIGHT, build: () => cheese('#f59a0c') },
+  bacon: { height: BACON_HEIGHT, build: bacon },
+  stackerSauce: {
+    height: STACKER_SAUCE_STACK,
+    // Molho Stacker: creamy, pinkish orange, spread wide under the top bun, with dollops all
+    // round reaching the edge and a few just past it, dripping over the bacon.
+    build: () =>
+      sauce('stackerSauce', {
+        colour: '#ec8a64',
+        roughness: 0.34,
+        seed: 41,
+        lobes: 1.8,
+        bead: STACKER_SAUCE_HEIGHT,
+        puddles: [
+          [0.02, 0.03, 0.8, 0.75],
+          ...[8, 50, 75, 100, 128, 165, 210, 255, 300, 335].map((deg, i) => dollop(deg, 0.2 + ((i * 3) % 4) * 0.02, i % 3 ? 1 : 1.04)),
         ],
       }),
   },
