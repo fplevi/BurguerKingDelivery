@@ -47,6 +47,22 @@ export const recipes = {
       { id: 'top', name: 'Pão superior', y: 21, thickness: 49, locked: true },
     ],
   }),
+  stackerDuploBacon: recipe({
+    id: 'stackerDuploBacon',
+    name: 'Stacker Duplo Bacon',
+    price: 3790, // provisional (spec)
+    // As seen in the official photo; Base: buns and both meats. The cheddar is the Whopper's
+    // slice in cheddar orange, not the Cheddar Duplo's creamy cheddar.
+    layers: [
+      { id: 'bottom', name: 'Pão inferior', text: 'Pão com gergelim', y: 242, thickness: 0, locked: true },
+      { id: 'meat', name: 'Carne grelhada', text: 'duas carnes grelhadas', y: 205, thickness: 36, locked: true },
+      { id: 'cheddar', name: 'Cheddar', text: 'cheddar fatiado', model: 'cheddarSlice', y: 179, thickness: 9 },
+      { id: 'meat2', name: 'Carne grelhada', model: 'meat', turn: 1.9, y: 145, thickness: 40, locked: true },
+      { id: 'bacon', name: 'Bacon', text: 'bacon crocante', y: 113, thickness: 24 },
+      { id: 'stackerSauce', name: 'Molho Stacker', text: 'molho Stacker', y: 96, thickness: 8 },
+      { id: 'top', name: 'Pão superior', y: 21, thickness: 52, locked: true },
+    ],
+  }),
 };
 
 /** Camada `id` of a Receita. */

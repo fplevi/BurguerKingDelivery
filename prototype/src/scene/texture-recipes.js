@@ -254,6 +254,49 @@ export const recipes = {
     },
   },
 
+  /**
+   * Bacon strip, flat (ticket 02 of the Stacker Duplo Bacon): u runs along the strip (tiles, so
+   * each strip reads its own stretch), v across it. Pale fat along one edge and in a thin streak,
+   * red-brown lean with fibres along the strip, crinkles across it; fried unevenly, darker in
+   * patches and charred along the edges. Colour, bump and roughness share the same features
+   * (fat raised and glossier, char matte).
+   */
+  bacon: {
+    count: 3,
+    size: 256,
+    draw(contexts, size) {
+      const wobbleField = field(64, 6, 2, 121);
+      const fibreField = field(128, 24, 2, 122);
+      const toastField = field(64, 8, 3, 123);
+      const streakField = field(64, 5, 2, 124);
+      const crinkleField = field(64, 10, 2, 125);
+      const CHAR = [70, 26, 12];
+      /** 1 at `centre`, fading to 0 `width` away. */
+      const band = (v, centre, width) => clamp01(1 - Math.abs(v - centre) / width);
+      paintAll(contexts, size, (u, v, out) => {
+        // The fat streaks wander across the strip as it goes.
+        const w = v + (wobbleField(u, v * 0.3) - 0.5) * 0.16;
+        const fat = Math.max(
+          clamp01(band(w, 0.16, 0.16) * 2.2 - 0.4),
+          clamp01(band(w, 0.62, 0.07) * 2.2 - 0.6) * clamp01((streakField(u, v) - 0.3) * 3),
+        );
+        const fibre = fibreField(u * 0.5, v * 4);
+        const toast = toastField(u, v);
+        // Crisp, charred edges (unevenly) and dark fried patches.
+        const edge = Math.max(clamp01((0.08 - v) * 14), clamp01((v - 0.9) * 10)) * (0.6 + toast * 0.6);
+        const fried = clamp01((toast - 0.52) * 3);
+        const char = clamp01(Math.max(edge, fried * 0.75));
+        const shade = 0.82 + fibre * 0.36;
+        const lean = [blend(172, 116, toast) * shade, blend(50, 32, toast) * shade, blend(28, 16, toast) * shade];
+        const pale = [blend(238, 214, toast), blend(196, 150, toast), blend(150, 96, toast)];
+        for (let c = 0; c < 3; c++) out[c] = blend(blend(lean[c], pale[c], fat), CHAR[c], char * (1 - fat * 0.4));
+        const crinkle = Math.sin((u + (crinkleField(u, v) - 0.5) * 0.08) * Math.PI * 2 * 26);
+        out[3] = out[4] = out[5] = 128 + fat * 50 + (fibre - 0.5) * 70 + crinkle * 30 - char * 30;
+        out[6] = out[7] = out[8] = 255 * clamp01(0.55 - fat * 0.25 + char * 0.35 + (fibre - 0.5) * 0.15);
+      });
+    },
+  },
+
   /** Soft round contact shadow, used as an alphaMap (white = opaque). */
   'contact-shadow': {
     count: 1,

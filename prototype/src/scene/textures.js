@@ -44,7 +44,7 @@ export const texturesReady = new Promise((resolve) => {
   // Two workers, about the same work each (the 512 px, multi-map recipes are the heavy ones).
   const shares = [
     ['meat', 'lettuce', 'pickle', 'contact-shadow'],
-    ['crumb', 'tomato', 'crust-bump', 'fried-onion'],
+    ['crumb', 'tomato', 'crust-bump', 'fried-onion', 'bacon'],
   ];
   try {
     if (typeof OffscreenCanvas === 'undefined') throw new Error('no OffscreenCanvas');
@@ -121,4 +121,12 @@ export function lettuceLeaf() {
 export function friedOnion() {
   const [colour, bump] = canvases['fried-onion'];
   return { map: texture(colour, { color: true }), bumpMap: texture(bump) };
+}
+
+/** Bacon strip, flat (u along the strip, tiling): colour, bump and roughness. */
+export function baconStrip() {
+  const [colour, bump, rough] = canvases.bacon;
+  const maps = { map: texture(colour, { color: true }), bumpMap: texture(bump), roughnessMap: texture(rough) };
+  for (const t of Object.values(maps)) t.wrapS = RepeatWrapping;
+  return maps;
 }

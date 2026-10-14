@@ -37,7 +37,7 @@ import {
 } from 'three';
 import { mergeGeometries, mergeVertices } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import { MEAT_FACE_UV } from './texture-recipes.js';
-import { fbm, random, crustBump, crumb, grilledMeat, tomatoSlice, pickleSlice, lettuceLeaf, friedOnion } from './textures.js';
+import { fbm, random, crustBump, crumb, grilledMeat, tomatoSlice, pickleSlice, lettuceLeaf, friedOnion, baconStrip } from './textures.js';
 
 const generated = new Map(); // key -> the first geometry generated for it
 
@@ -425,9 +425,10 @@ function slice(radius, thickness, { shape, segments = 64 } = {}) {
 // Queijo: a slice of processed cheese (a real slab: top, bottom and a rounded edge), turned
 // 45°, melted over the patty: flat in the middle, slightly rippled, its rounded corners rolling
 // over the patty's edge and hanging down its side, each a little further than the next. Satin.
+// The Stacker Duplo Bacon's cheddar is the same slice in cheddar orange (`colour`).
 const CHEESE_THICKNESS = 0.03;
 const CHEESE_HEIGHT = 0.045;
-function cheese() {
+function cheese(colour = '#f7b512') {
   const geometry = shared('cheese', () => {
     const size = 0.9, n = 64, T = CHEESE_THICKNESS, bend = 0.07;
     const mid = CHEESE_HEIGHT - 0.003 - T / 2; // the slab's mid-surface over the patty
@@ -498,7 +499,7 @@ function cheese() {
     return geometry;
   });
   const mat = new MeshStandardMaterial({
-    color: '#f7b512', // yellower than the orange page, so it doesn't melt into the background
+    color: colour, // the Whopper's is yellower than the orange page, so it doesn't melt into the background
     roughness: 0.45,
     side: DoubleSide,
   });
@@ -972,6 +973,110 @@ function lettuce() {
   }), mat);
 }
 
+// Bacon (Stacker Duplo Bacon, ticket 02): three crisp strips laid across the burger, a little
+// apart, their ends poking out past the patty on both sides and curling down. Each is a thin slab
+// (top, bottom and edges), crinkled tightly and unevenly along its length, twisting a little and
+// cupped across; the texture (texture-recipes.js) runs along the strip: fat streaks, lean, fried
+// patches, charred edges. Vertex colours darken the crests and the ends, where it fries most.
+const BACON_HEIGHT = 0.12;
+const BACON_WIDTH = 0.34;
+const BACON_THICKNESS = 0.018;
+
+/** One strip: [x, y, z] of its mid-surface at (u along, v across), centred on z0, turned by yaw. */
+function baconPath({ z0, length, yaw, seed }) {
+  const W = BACON_WIDTH;
+  return (u, v) => {
+    // Crinkles: tight, uneven folds (sharper on top) whose phase and height wander along the
+    // strip, which also twists back and forth.
+    const wander = fbm(u * 0.9 + seed, seed, 0, { octaves: 2, seed: 131 });
+    const height = 0.55 + 0.6 * fbm(u * 1.4, seed * 2, 0, { octaves: 2, seed: 132 });
+    const crest = 1 - Math.abs(Math.sin(u * 5.6 + wander * 7 + seed)) ** 0.7;
+    const roll = 0.6 * (fbm(u * 1.3 + seed * 3, 0, 0, { octaves: 2, seed: 133 }) - 0.5) * 2;
+    const ripple = 0.014 * Math.sin(u * 29 + seed) * (Math.abs(v) / (W / 2)) ** 2;
+    const across = v * Math.cos(roll);
+    let y = 0.03 + 0.075 * crest * height + v * Math.sin(roll) + 0.3 * v * v + ripple;
+    const sway = 0.05 * Math.sin(u * 1.8 + seed);
+    const x = Math.cos(yaw) * u - Math.sin(yaw) * across;
+    const z = z0 + Math.sin(yaw) * u + Math.cos(yaw) * across + sway;
+    // Past the patty the ends stick out, curling down a little, just over its edge.
+    const r = Math.hypot(x, z), out = Math.max(r - 0.92, 0);
+    y -= out * 0.3 + out * out * 0.8;
+    const floor = 0.004 + BACON_THICKNESS / 2 - 0.06 * smoothstep(1, 1.15, r);
+    return [x, Math.max(y, floor), z, crest * height, Math.abs(u) / (length / 2)];
+  };
+}
+
+function bacon() {
+  const { map, bumpMap, roughnessMap } = baconStrip();
+  const mat = new MeshStandardMaterial({ map, bumpMap, bumpScale: 3, roughnessMap, roughness: 1, vertexColors: true, side: DoubleSide });
+  return mesh(shared('bacon', () => {
+    // Front strip towards the camera (+z).
+    const strips = [
+      { z0: -0.6, length: 2.2, yaw: 0.14, seed: 1 },
+      { z0: 0.04, length: 2.45, yaw: -0.09, seed: 2 },
+      { z0: 0.72, length: 2.1, yaw: 0.17, seed: 3 },
+    ];
+    const n = 150, m = 8, T = BACON_THICKNESS;
+    const pieces = strips.map((strip, k) => {
+      const at = baconPath(strip);
+      // The mid-surface first, for its normals; then the slab's two faces either side of it.
+      const mid = [], marks = [];
+      for (let i = 0; i <= n; i++)
+        for (let j = 0; j <= m; j++) {
+          const [x, y, z, crest, end] = at((i / n - 0.5) * strip.length, (j / m - 0.5) * BACON_WIDTH);
+          mid.push(x, y, z);
+          marks.push(crest, end);
+        }
+      const row = m + 1, face = (n + 1) * row;
+      const grid = [];
+      for (let i = 0; i < n; i++)
+        for (let j = 0; j < m; j++) {
+          const a = i * row + j, b = a + row;
+          grid.push(a, a + 1, b, a + 1, b + 1, b);
+        }
+      const sheet = new BufferGeometry();
+      sheet.setAttribute('position', new BufferAttribute(new Float32Array(mid), 3));
+      sheet.setIndex(grid);
+      sheet.computeVertexNormals();
+      const normal = sheet.attributes.normal;
+      const positions = [], uvs = [], colours = [], indices = [];
+      for (const side of [1, -1])
+        for (let p = 0; p < face; p++) {
+          for (let c = 0; c < 3; c++) positions.push(mid[p * 3 + c] + side * (T / 2) * normal.getComponent(p, c));
+          const i = Math.floor(p / row), j = p % row;
+          uvs.push((i / n) * (strip.length / 2.6) + k * 0.31, j / m);
+          // Darker on the crests and towards the ends, a little darker underneath.
+          const [crest, end] = [marks[p * 2], marks[p * 2 + 1]];
+          const tone = (1 - 0.3 * crest - 0.35 * smoothstep(0.75, 1, end)) * (side > 0 ? 1 : 0.85);
+          colours.push(tone, tone, tone);
+        }
+      for (const g of [0, 1])
+        for (let t = 0; t < grid.length; t += 3) {
+          const [a, b, c] = grid.slice(t, t + 3).map((x) => x + g * face);
+          indices.push(...(g ? [a, c, b] : [a, b, c]));
+        }
+      // Edges: the border of the grid, joining the top face to the bottom one.
+      const border = [];
+      for (let i = 0; i < n; i++) border.push(i * row);
+      for (let j = 0; j < m; j++) border.push(n * row + j);
+      for (let i = n; i > 0; i--) border.push(i * row + m);
+      for (let j = m; j > 0; j--) border.push(j);
+      border.forEach((p, e) => {
+        const q = border[(e + 1) % border.length];
+        indices.push(p, q, p + face, q, q + face, p + face);
+      });
+      const geometry = new BufferGeometry();
+      geometry.setAttribute('position', new BufferAttribute(new Float32Array(positions), 3));
+      geometry.setAttribute('uv', new BufferAttribute(new Float32Array(uvs), 2));
+      geometry.setAttribute('color', new BufferAttribute(new Float32Array(colours), 3));
+      geometry.setIndex(indices);
+      geometry.computeVertexNormals();
+      return geometry;
+    });
+    return mergeGeometries(pieces);
+  }), mat);
+}
+
 // Ketchup and maionese: soft, rounded dollops with a wet gloss, told apart
 // by colour, sheen and shape (ketchup in lobed dollops, mayo spread thinner). Besides the ones
 // in the middle, several reach close to the edge, so the sauce shows in the closed burger.
@@ -980,31 +1085,66 @@ function lettuce() {
 const KETCHUP_HEIGHT = 0.045;
 const MAYO_HEIGHT = 0.035;
 const SAUCE_STACK = 0.015;
+const STACKER_SAUCE_HEIGHT = 0.06;
+const STACKER_SAUCE_STACK = 0.04;
 /** A dollop [x, z, reach] at angle `deg` (front = 90), its edge at most `edge` from the centre. */
 const dollop = (deg, reach, edge = FILLING_REACH) => [...polar((deg * Math.PI) / 180, edge - reach), reach];
-function puddle({ seed, reach, lobes, bead }) {
+function puddle({ seed, reach, lobes, bead, wobble = 0.28 }) {
   return polarSheet({
     rings: 18,
     segments: 120,
     uvRadius: 1,
-    // Soft outline: a few broad lobes, no fine notches.
-    edge: (a) => reach * (0.72 + 0.28 * fbm(Math.cos(a) * lobes * 0.8 + seed, Math.sin(a) * lobes * 0.8, 0, { octaves: 2, seed })),
+    // Soft outline: a few broad lobes (deeper with more `wobble`), no fine notches.
+    edge: (a) => reach * (1 - wobble + wobble * fbm(Math.cos(a) * lobes * 0.8 + seed, Math.sin(a) * lobes * 0.8, 0, { octaves: 2, seed })),
     // Rounded like a drop (a quarter ellipse to the edge), gently uneven on top.
     lift: (r, a, f) => bead * Math.sqrt(Math.max(1 - f * f, 0)) * (0.9 + 0.2 * fbm(Math.cos(a) * r * 5 + seed, Math.sin(a) * r * 5, 0, { octaves: 2, seed: seed + 1 })),
   });
 }
-/** Puddles ([x, z, reach, bead scale?]) of one sauce, sharing a glossy material. */
-function sauce(key, { colour, roughness, seed, lobes, bead, puddles }) {
+/**
+ * Puddles ([x, z, reach, bead scale?, stretch?, turn?]) of one sauce, sharing a glossy material:
+ * a puddle `stretch`ed is that much longer than wide, along the angle `turn`. `wobble` deepens
+ * the lobes of the outline. With `drip`, the sauce sags that far down past the patty's edge,
+ * hanging over the Camada below.
+ */
+function sauce(key, { colour, roughness, seed, lobes, bead, puddles, wobble, drip = 0 }) {
   const mat = new MeshStandardMaterial({ color: colour, roughness, side: DoubleSide });
   return mesh(shared(key, () => {
     const group = new Group();
-    puddles.forEach(([x, z, reach, scale = 1], i) => {
-      const drop = piece(puddle({ seed: seed + i * 7, reach, lobes, bead: bead * scale }));
+    puddles.forEach(([x, z, reach, scale = 1, stretch = 1, turn = 0], i) => {
+      const drop = piece(puddle({ seed: seed + i * 7, reach, lobes, bead: bead * scale, wobble }));
       drop.position.set(x, 0, z);
+      drop.scale.set(stretch, 1, 1 / stretch);
+      drop.rotation.y = turn;
       group.add(drop);
-  });
-  return single(group);
+    });
+    const geometry = single(group);
+    if (drip) {
+      const position = geometry.attributes.position;
+      for (let i = 0; i < position.count; i++) {
+        const r = Math.hypot(position.getX(i), position.getZ(i));
+        position.setY(i, position.getY(i) - drip * smoothstep(0.9, 1.08, r));
+      }
+      geometry.computeVertexNormals();
+    }
+    return geometry;
   }), mat);
+}
+
+/**
+ * Molho Stacker's puddles, squeezed unevenly (seeded): two overlapping blobs off the centre and
+ * dollops of all sizes around the edge, some smeared long, some past the edge.
+ */
+function stackerPuddles() {
+  const rnd = random(43);
+  const around = Array.from({ length: 15 }, (_, i) => {
+    const deg = i * (360 / 15) + (rnd() - 0.5) * 18;
+    const reach = 0.16 + rnd() * 0.14;
+    const [x, z] = dollop(deg, reach, 0.95 + rnd() * 0.11);
+    // Smears run roughly along the edge, each at its own slant.
+    const turn = (deg * Math.PI) / 180 + Math.PI / 2 + (rnd() - 0.5) * 1.2;
+    return [x, z, reach, 0.75 + rnd() * 0.4, 1 + rnd() * 0.45, turn];
+  });
+  return [[0.12, 0.1, 0.68, 0.75, 1.2, 0.6], [-0.18, -0.14, 0.58, 0.65, 1.1, 2.2], ...around];
 }
 
 export const layerModels = {
@@ -1054,6 +1194,24 @@ export const layerModels = {
           [0.06, 0.02, 0.55, 0.7],
           ...[12, 62, 112, 165, 214, 268, 320].map((deg, i) => dollop(deg, 0.1 + ((i * 3) % 5) * 0.01)),
         ],
+      }),
+  },
+  cheddarSlice: { height: CHEESE_HEIGHT, build: () => cheese('#f59a0c') },
+  bacon: { height: BACON_HEIGHT, build: bacon },
+  stackerSauce: {
+    height: STACKER_SAUCE_STACK,
+    // Molho Stacker: creamy, pinkish orange, spread wide under the top bun, with dollops all
+    // round reaching the edge and a few just past it, sagging over the bacon (ticket 02).
+    build: () =>
+      sauce('stackerSauce', {
+        colour: '#ef9468',
+        roughness: 0.34,
+        seed: 41,
+        lobes: 2.6,
+        wobble: 0.38,
+        bead: STACKER_SAUCE_HEIGHT,
+        drip: 0.07,
+        puddles: stackerPuddles(),
       }),
   },
   top: {
