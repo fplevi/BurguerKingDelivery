@@ -25,6 +25,7 @@
 - Molho Stacker:
   - cor um pouco mais laranja (`#ef9468`);
   - nova opção `drip` de `sauce()`: o molho cai 0,07 depois da borda da carne, sobre o bacon, e a faixa sob o pão fica mais grossa, como na foto;
+  - poças em formas aleatórias (pedido na revisão), sorteadas com semente fixa: duas manchas sobrepostas fora do centro e 15 gotas de tamanhos, alturas e ângulos variados, algumas alongadas, com o contorno mais recortado (opções `wobble`, `stretch` e `turn` de `sauce()`);
   - ketchup e maionese não mudam.
 - Teste novo, em `tests/stacker-duplo-bacon.spec.js`: arrastar o bacon aberto até a Bandeja o retira, nos dois projetos. Ele já passava no modelo simples e guarda a área de toque e de arrasto do modelo novo. O teste das áreas de toque (pelo menos 24 × 44 px, sem sobreposição) segue verde.
 - Primeiro quadro: `npm run test:orcamento` (contra o build) passou nas duas execuções, uma antes e outra depois do ajuste do molho. Com CPU 4x, a mediana do Whopper foi 911 ms e depois 1316 ms (limite 3 s); esse quadro já espera todas as texturas, inclusive a do bacon. A segunda execução veio logo depois da suíte completa, e a troca para o Cheddar Duplo, que este ticket não toca, também subiu (192 para 266 ms). Por isso a diferença parece variação da máquina.

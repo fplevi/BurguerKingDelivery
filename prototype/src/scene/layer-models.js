@@ -1089,28 +1089,32 @@ const STACKER_SAUCE_HEIGHT = 0.06;
 const STACKER_SAUCE_STACK = 0.04;
 /** A dollop [x, z, reach] at angle `deg` (front = 90), its edge at most `edge` from the centre. */
 const dollop = (deg, reach, edge = FILLING_REACH) => [...polar((deg * Math.PI) / 180, edge - reach), reach];
-function puddle({ seed, reach, lobes, bead }) {
+function puddle({ seed, reach, lobes, bead, wobble = 0.28 }) {
   return polarSheet({
     rings: 18,
     segments: 120,
     uvRadius: 1,
-    // Soft outline: a few broad lobes, no fine notches.
-    edge: (a) => reach * (0.72 + 0.28 * fbm(Math.cos(a) * lobes * 0.8 + seed, Math.sin(a) * lobes * 0.8, 0, { octaves: 2, seed })),
+    // Soft outline: a few broad lobes (deeper with more `wobble`), no fine notches.
+    edge: (a) => reach * (1 - wobble + wobble * fbm(Math.cos(a) * lobes * 0.8 + seed, Math.sin(a) * lobes * 0.8, 0, { octaves: 2, seed })),
     // Rounded like a drop (a quarter ellipse to the edge), gently uneven on top.
     lift: (r, a, f) => bead * Math.sqrt(Math.max(1 - f * f, 0)) * (0.9 + 0.2 * fbm(Math.cos(a) * r * 5 + seed, Math.sin(a) * r * 5, 0, { octaves: 2, seed: seed + 1 })),
   });
 }
 /**
- * Puddles ([x, z, reach, bead scale?]) of one sauce, sharing a glossy material. With `drip`, the
- * sauce sags that far down past the patty's edge, hanging over the Camada below.
+ * Puddles ([x, z, reach, bead scale?, stretch?, turn?]) of one sauce, sharing a glossy material:
+ * a puddle `stretch`ed is that much longer than wide, along the angle `turn`. `wobble` deepens
+ * the lobes of the outline. With `drip`, the sauce sags that far down past the patty's edge,
+ * hanging over the Camada below.
  */
-function sauce(key, { colour, roughness, seed, lobes, bead, puddles, drip = 0 }) {
+function sauce(key, { colour, roughness, seed, lobes, bead, puddles, wobble, drip = 0 }) {
   const mat = new MeshStandardMaterial({ color: colour, roughness, side: DoubleSide });
   return mesh(shared(key, () => {
     const group = new Group();
-    puddles.forEach(([x, z, reach, scale = 1], i) => {
-      const drop = piece(puddle({ seed: seed + i * 7, reach, lobes, bead: bead * scale }));
+    puddles.forEach(([x, z, reach, scale = 1, stretch = 1, turn = 0], i) => {
+      const drop = piece(puddle({ seed: seed + i * 7, reach, lobes, bead: bead * scale, wobble }));
       drop.position.set(x, 0, z);
+      drop.scale.set(stretch, 1, 1 / stretch);
+      drop.rotation.y = turn;
       group.add(drop);
     });
     const geometry = single(group);
@@ -1124,6 +1128,23 @@ function sauce(key, { colour, roughness, seed, lobes, bead, puddles, drip = 0 })
     }
     return geometry;
   }), mat);
+}
+
+/**
+ * Molho Stacker's puddles, squeezed unevenly (seeded): two overlapping blobs off the centre and
+ * dollops of all sizes around the edge, some smeared long, some past the edge.
+ */
+function stackerPuddles() {
+  const rnd = random(43);
+  const around = Array.from({ length: 15 }, (_, i) => {
+    const deg = i * (360 / 15) + (rnd() - 0.5) * 18;
+    const reach = 0.16 + rnd() * 0.14;
+    const [x, z] = dollop(deg, reach, 0.95 + rnd() * 0.11);
+    // Smears run roughly along the edge, each at its own slant.
+    const turn = (deg * Math.PI) / 180 + Math.PI / 2 + (rnd() - 0.5) * 1.2;
+    return [x, z, reach, 0.75 + rnd() * 0.4, 1 + rnd() * 0.45, turn];
+  });
+  return [[0.12, 0.1, 0.68, 0.75, 1.2, 0.6], [-0.18, -0.14, 0.58, 0.65, 1.1, 2.2], ...around];
 }
 
 export const layerModels = {
@@ -1186,13 +1207,11 @@ export const layerModels = {
         colour: '#ef9468',
         roughness: 0.34,
         seed: 41,
-        lobes: 1.8,
+        lobes: 2.6,
+        wobble: 0.38,
         bead: STACKER_SAUCE_HEIGHT,
         drip: 0.07,
-        puddles: [
-          [0.02, 0.03, 0.8, 0.75],
-          ...[8, 50, 75, 100, 128, 165, 210, 255, 300, 335].map((deg, i) => dollop(deg, 0.2 + ((i * 3) % 4) * 0.02, i % 3 ? 1 : 1.04)),
-        ],
+        puddles: stackerPuddles(),
       }),
   },
   top: {
