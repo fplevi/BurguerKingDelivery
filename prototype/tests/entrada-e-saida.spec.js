@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { card } from './support.js';
+import { card, verIngredientes, itens, fimDaEntrada } from './support.js';
 
 // Entrada e Saída do hambúrguer no hero (ticket 15). Observed through the hero's Camada
 // buttons, which the scene places over each Camada on every frame.
@@ -44,6 +44,9 @@ async function aposAssentar(page) {
   });
   return page.evaluate(() => window.posicoes);
 }
+
+/** How far (px) the top bun fell to its final place: from its highest point in the samples. */
+const queda = (posicoes) => posicoes.at(-1).camadas.top - Math.min(...posicoes.map((a) => a.camadas.top));
 
 /** First time (ms) each Camada reached, and stayed within 1 px of, its final position. */
 function chegada(posicoes, id) {
@@ -96,8 +99,7 @@ test('ao voltar de Bebidas para Hambúrgueres, o hambúrguer faz a Entrada de no
   const posicoes = await aposAssentar(page);
 
   // (The buttons keep their old place until the scene draws again: look for the highest point.)
-  const maisAlto = Math.min(...posicoes.map((a) => a.camadas.top));
-  expect(posicoes.at(-1).camadas.top - maisAlto).toBeGreaterThan(100);
+  expect(queda(posicoes)).toBeGreaterThan(100);
 });
 
 test('no desktop, o hambúrguer só inclina com o ponteiro depois da Entrada', async ({ page, isMobile }) => {
@@ -136,7 +138,7 @@ test('ao trocar de hambúrguer, o atual faz a Saída antes de o novo fazer a Ent
   expect(durante.every((a) => 'lettuce' in a.camadas)).toBe(true);
   // ... with its own Entrada.
   const depois = posicoes.filter((a) => a.t >= cheddar);
-  expect(depois.at(-1).camadas.top - Math.min(...depois.map((a) => a.camadas.top))).toBeGreaterThan(100);
+  expect(queda(depois)).toBeGreaterThan(100);
 });
 
 test('dois cliques rápidos: vale o último, sem passar pelo outro hambúrguer', async ({ page }) => {
@@ -147,7 +149,8 @@ test('dois cliques rápidos: vale o último, sem passar pelo outro hambúrguer',
   await card(page, 'Cheddar Duplo').click();
   await card(page, 'Whopper®').click();
   const titulos = () => page.evaluate(() => [...window.titulos]);
-  await page.waitForTimeout(600); // past the Saída
+  // The Whopper's second Entrada (the first one was on opening the page).
+  await page.waitForFunction(() => performance.getEntriesByName('burger-scene:entrance-end:assembled').length >= 2);
   const posicoes = await aposAssentar(page);
 
   expect(posicoes.some((a) => 'crispyOnion' in a.camadas)).toBe(false);
@@ -155,7 +158,57 @@ test('dois cliques rápidos: vale o último, sem passar pelo outro hambúrguer',
   await expect(card(page, 'Whopper®')).toHaveAttribute('aria-pressed', 'true');
   await expect(page.getByRole('heading', { level: 1 })).toHaveAccessibleName('Whopper®');
   // The Whopper comes back with an Entrada.
-  expect(posicoes.at(-1).camadas.top - Math.min(...posicoes.map((a) => a.camadas.top))).toBeGreaterThan(100);
+  expect(queda(posicoes)).toBeGreaterThan(100);
+});
+
+test('aberta no carrinho, a página guarda a Entrada para quando o cliente volta ao cardápio', async ({ page }) => {
+  await gravarPosicoes(page);
+  await page.goto('/#carrinho');
+  await page.keyboard.press('Shift'); // actions on the way back don't spend the Entrada
+  await page.getByRole('button', { name: 'Voltar ao cardápio' }).first().click();
+  await page.waitForFunction(() => window.posicoes.length > 0);
+  const posicoes = await aposAssentar(page);
+
+  expect(queda(posicoes)).toBeGreaterThan(100);
+});
+
+test('durante a Saída, Ver ingredientes espera e abre o hambúrguer escolhido', async ({ page }) => {
+  await page.goto('/');
+  // Enter on the card moves the focus to Ver ingredientes; a second Enter right away opens it.
+  await card(page, 'Cheddar Duplo').focus();
+  await page.keyboard.press('Enter');
+  await page.keyboard.press('Enter');
+  await expect(verIngredientes(page).getByText('O seu Cheddar Duplo do seu jeito.', { exact: true })).toBeVisible();
+});
+
+test('durante a Saída, Adicionar ao carrinho não adiciona o hambúrguer que está saindo', async ({ page }) => {
+  // Tall enough for the card and the button to be on screen together, for two quick clicks.
+  await page.setViewportSize({ width: page.viewportSize().width, height: 2400 });
+  await page.goto('/');
+  await fimDaEntrada(page);
+  const centro = async (l) => ((b) => [b.x + b.width / 2, b.y + b.height / 2])(await l.boundingBox());
+  const [cheddar, adicionar] = [await centro(card(page, 'Cheddar Duplo')), await centro(page.getByRole('button', { name: 'Adicionar ao carrinho' }))];
+  await page.mouse.click(...cheddar);
+  await page.mouse.click(...adicionar); // well within the 250 ms Saída
+  await expect(card(page, 'Cheddar Duplo')).toHaveAttribute('aria-pressed', 'true');
+  await page.goto('/#carrinho');
+  await expect(itens(page).filter({ hasText: 'Whopper' })).toHaveCount(0);
+});
+
+test('durante a Entrada, as Camadas que caem não cobrem o cabeçalho: o Carrinho continua recebendo o clique', async ({ page }) => {
+  await page.goto('/');
+  const alvos = await page.evaluate(async () => {
+    const r = document.getElementById('cart-open').getBoundingClientRect();
+    const [x, y] = [r.left + r.width / 2, r.top + r.height / 2];
+    const vistos = new Set();
+    const fim = () => performance.getEntriesByName('burger-scene:entrance-end:assembled').length;
+    while (!fim()) {
+      vistos.add(document.elementFromPoint(x, y)?.closest('button')?.getAttribute('aria-label') ?? 'nenhum botão');
+      await new Promise(requestAnimationFrame);
+    }
+    return [...vistos];
+  });
+  expect(alvos).toEqual(['Carrinho · 0']);
 });
 
 test.describe('com movimento reduzido', () => {

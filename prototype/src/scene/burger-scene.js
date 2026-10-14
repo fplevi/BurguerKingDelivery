@@ -62,6 +62,12 @@ const ENTRANCE = { fall: 420, stagger: 55, land: 0.7, bounce: 0.035 };
 const EXIT = { duration: 250, sink: 0.6, shrink: 0.15 };
 
 const sum = (list) => list.reduce((a, b) => a + b, 0);
+/** A promise and the function that resolves it. */
+function deferred() {
+  let done;
+  const finished = new Promise((resolve) => (done = resolve));
+  return { finished, done };
+}
 
 const reducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 const easeOut = (t) => 1 - (1 - t) ** 3;
@@ -234,8 +240,9 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
   let currentAreas = {};
   let shown = '';
   let drawn = false;
-  // Entrada or Saída running: { kind, start (set on the first frame drawn), duration, apply(ms), done, finished }.
+  // Entrada or Saída running: { kind: 'entrance' | 'exit', start (set on the first frame drawn), duration, apply(ms), done }.
   let effect = null;
+  const entering = () => effect?.kind === 'entrance';
   // Share of each shadow drawn. In the Entrada, the contact shadow comes in with the bottom bun
   // and the cast one with the last Camada (Camadas still in the air would cast it far to the side).
   const shadow = { contact: 1, ground: 1 };
@@ -253,18 +260,27 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
     const top = layers[ids.at(-1)];
     const stackedTop = sum(ids.slice(0, -1).map((id, i) => (layers[id].scale > 0.5 ? heights[i] : 0)));
     // (A top bun still falling in the Entrada is not an opened burger.)
-    const openness = effect?.kind === 'entrance' ? 0 : MathUtils.clamp((top.y - stackedTop) / (OPEN_GAP * (ids.length - 1)), 0, 1);
+    const openness = entering() ? 0 : MathUtils.clamp((top.y - stackedTop) / (OPEN_GAP * (ids.length - 1)), 0, 1);
     ground.material.opacity = GROUND_SHADOW * (1 - openness) * shadow.ground;
     contact.material.opacity = CONTACT_SHADOW * shadow.contact;
   }
 
   function runEffect(kind, duration, apply) {
     effect?.done();
-    let done;
-    const finished = new Promise((resolve) => (done = resolve));
-    effect = { kind, start: null, duration, apply, done, finished };
+    const { finished, done } = deferred();
+    effect = { kind, start: null, duration, apply, done };
     requestDraw();
     return finished;
+  }
+
+  /** Read by the tests that wait for the hero to be still, and by the budget measurements. */
+  const markEnd = (kind) => performance.mark(`burger-scene:${kind}-end:${fit}`);
+
+  function endEffect() {
+    const { done, kind } = effect;
+    effect = null;
+    markEnd(kind);
+    done();
   }
 
   /**
@@ -278,15 +294,11 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
     const ms = Math.min(now - effect.start, effect.duration);
     effect.apply(ms);
     if (ms < effect.duration) return requestDraw();
-    const { done, kind } = effect;
-    effect = null;
-    // Read by the tests that wait for the hero to be still (and as a budget marker).
-    performance.mark(`burger-scene:${kind}-end:${fit}`);
-    done();
+    endEffect();
   }
 
-  /** Back to the burger as show() leaves it: in place, full size, opaque, with its shadows. */
-  function unsink() {
+  /** Undoes the Saída: the burger in place, full size, opaque, with its shadows. */
+  function restorePose() {
     burger.position.y = -framedHeight / 2;
     pivot.scale.setScalar(1);
     canvas.style.opacity = '';
@@ -439,6 +451,8 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
     const width = stage.clientWidth, height = stage.clientHeight;
     if (width === size.width && height === size.height) return;
     size = { width, height };
+    // A hidden stage can't draw the Saída: it is over (the Entrada waits to be seen).
+    if ((!width || !height) && effect?.kind === 'exit') endEffect();
     resize();
     draw();
   });
@@ -455,8 +469,7 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
       return Promise.resolve();
     }
     const from = Object.fromEntries(ids.map((id) => [id, (({ x, y, z, scale }) => ({ x, y, z, scale }))(layers[id])]));
-    let done;
-    const finished = new Promise((resolve) => (done = resolve));
+    const { finished, done } = deferred();
     animation = { start: performance.now(), from, to, finished, done };
     requestDraw();
     return finished;
@@ -528,7 +541,7 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
      * there; (0, 0) recentres. Ignored with reduced motion and while a Camada is dragged.
      */
     tilt(x, y) {
-      if (reducedMotion() || dragging || effect?.kind === 'entrance') return;
+      if (reducedMotion() || dragging || entering()) return;
       tiltTarget.x = MathUtils.clamp(x, -1, 1);
       tiltTarget.y = MathUtils.clamp(y, -1, 1);
       if (tilting()) requestDraw();
@@ -542,16 +555,17 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
     areas: () => currentAreas,
     /**
      * Entrada: the Camadas shown fall into place, bottom to top, from the next frame drawn (the
-     * first one, on a new scene), and the shadows come in with the bottom bun. Resolves when
-     * they have landed, or when settle() or another effect ends it. None with reduced motion.
+     * first one, on a new scene; or once a hidden stage is shown). The contact shadow comes in
+     * with the bottom bun, the cast one with the last Camada. None with reduced motion.
      */
     enter() {
-      unsink();
+      restorePose();
       if (reducedMotion()) {
         effect?.done();
         effect = null;
         draw();
-        return Promise.resolve();
+        markEnd('entrance');
+        return;
       }
       // Straight, so nothing leans while falling; tilt() waits for the end.
       Object.assign(tiltTarget, { x: 0, y: 0 });
@@ -560,7 +574,7 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
       const present = ids.filter((id) => !lastView.removed.includes(id));
       const height = framedHeight * 1.6 + 1; // from above the frame
       const { fall, stagger } = ENTRANCE;
-      return runEffect('entrance', fall + stagger * (present.length - 1), (ms) => {
+      runEffect('entrance', fall + stagger * (present.length - 1), (ms) => {
         const rest = layout(ids, heights, lastView);
         present.forEach((id, i) => {
           const left = dropLeft(MathUtils.clamp((ms - i * stagger) / fall, 0, 1));
@@ -571,18 +585,22 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
         });
       });
     },
-    /** Ends the Entrada at once: the burger assembled, where show() puts it. */
+    /** Ends a started Entrada at once: the burger assembled, where show() puts it. */
     settle() {
-      if (effect?.kind !== 'entrance') return;
+      if (!entering() || effect.start === null) return;
       effect.start = -Infinity;
       draw();
     },
     /**
      * Saída: the whole burger sinks a little and fades out; resolves when it is gone (at once
-     * with reduced motion or before the first frame). The burger stays gone until enter().
+     * with reduced motion, before the first frame or with the stage hidden). The burger stays
+     * gone until enter().
      */
     exit() {
-      if (reducedMotion() || !drawn) return Promise.resolve();
+      if (reducedMotion() || !drawn || !size.width || !size.height) {
+        markEnd('exit');
+        return Promise.resolve();
+      }
       const base = -framedHeight / 2;
       return runEffect('exit', EXIT.duration, (ms) => {
         const k = (ms / EXIT.duration) ** 2;

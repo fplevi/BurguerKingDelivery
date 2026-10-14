@@ -13,6 +13,8 @@
 .burger-canvas--overlay{position:fixed;inset:auto;left:0;top:0;z-index:5}
 .burger-3d .stage{perspective:none}
 .burger-3d .stage{touch-action:pan-y}
+/* Entrada (ticket 15): the Camadas still falling sit above the stage, and so do their buttons; clipped, they don't take clicks meant for the header. */
+.burger-3d .hero .stage{overflow:clip}
 .card[aria-pressed=false] .badge{display:none}
 /* Ver ingredientes (Figma 284-11569): cream header with Cancelar and Aplicar alterações, beige stage with the caption, 440px cream panel. */
 .pg-actions{display:flex;gap:12px}

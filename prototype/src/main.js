@@ -175,31 +175,35 @@ function buildGrid() {
             dispatch({ type: 'select', product: b.dataset.product });
             return $('add').focus();
           }
-          selectProduct(b.dataset.product);
-          $('edit').focus();
+          selectProduct(b.dataset.product).then(() => $('edit').focus());
         }),
     );
 }
 
 // The hambúrguer chosen while the current one makes its Saída; the last click wins.
-let choosing = null;
+let pendingProduct = null;
 /**
  * Shows another product: its Camadas as layer buttons and, in 3D, a new scene per stage
  * built from its Receita (the old ones are disposed), after the current one's Saída (ticket 15).
  * Its Personalização starts over.
  */
 async function selectProduct(product) {
-  if (product === (choosing ?? state.product)) return;
-  choosing = product;
+  if (product === (pendingProduct ?? state.product)) return;
+  pendingProduct = product;
+  // Meanwhile the hero is still the one leaving: nothing there acts on it (Ver ingredientes, Adicionar).
+  const hero = document.querySelector('main > .hero');
   if (product === state.product) {
     // Back to the one leaving, before it is gone: it comes in again (and ends the Saída).
-    choosing = null;
+    pendingProduct = null;
+    hero.inert = false;
     scenes?.hero.enter();
     return;
   }
+  hero.inert = true;
   await scenes?.hero.exit();
-  if (choosing !== product) return; // another click came during the Saída
-  choosing = null;
+  if (pendingProduct !== product) return; // another click came during the Saída
+  pendingProduct = null;
+  hero.inert = false;
   scenes?.dispose();
   scenes = null;
   for (const id of Object.keys(trayImages)) delete trayImages[id];

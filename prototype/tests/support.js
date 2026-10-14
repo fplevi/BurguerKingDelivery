@@ -51,14 +51,12 @@ export async function dragTo(page, source, target) {
 export const descricao = (page) => page.locator('main').getByText(/^Pão com /);
 
 /**
- * Waits for the hero's Entrada (ticket 15) to end: the burger assembled and still, leaning
- * with the pointer. With reduced motion there is none, so it returns once the hero is drawn.
+ * Waits for the hero's first Entrada (ticket 15) to end: the burger drawn, assembled and still,
+ * leaning with the pointer.
  */
 export async function fimDaEntrada(page) {
   await page.waitForFunction(() =>
-    matchMedia('(prefers-reduced-motion: reduce)').matches
-      ? performance.getEntriesByName('burger-scene:first-frame:assembled').length
-      : performance.getEntriesByName('burger-scene:entrance-end:assembled').length,
+    ['first-frame', 'entrance-end'].every((m) => performance.getEntriesByName(`burger-scene:${m}:assembled`).length),
   );
 }
 
