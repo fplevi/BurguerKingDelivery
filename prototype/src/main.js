@@ -139,7 +139,7 @@ const burgers = [
   { name: 'Big King', photo: bigKingPhoto },
   { name: 'Cheeseburger Duplo', photo: cheeseburgerDuploPhoto },
   { name: 'Cheeseburger', photo: cheeseburgerPhoto },
-  { name: 'Rodeio', photo: rodeioPhoto },
+  { recipe: 'rodeio', photo: rodeioPhoto },
 ];
 /** The photo's box in the 800 × 800 file, for .photo-crop: only it is drawn (the transparent margins are cut off, as in the Figma). */
 const crop = ([x0, y0, x1, y1]) => `--x:${x0};--y:${y0};--w:${x1 - x0};--h:${y1 - y0}`;

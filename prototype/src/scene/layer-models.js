@@ -1097,12 +1097,12 @@ const ONION_RINGS_SEEDS = [141, 147]; // left and right ring
 
 /**
  * One breaded ring around the origin, lying flat (bottom near y = 0): `seed` gives it its own
- * lumps. UVs tile the breading along the ring (u) and around the section (v); vertex colours
- * darken the crevices.
+ * lumps; `radius`, to its outside; `width`, half its breaded wall. UVs tile the breading along
+ * the ring (u) and around the section (v); vertex colours darken the crevices.
  */
-function breadedRing(seed) {
+function breadedRing(seed, radius = ONION_RINGS_RADIUS, width = ONION_RINGS_WIDTH) {
   const along = 160, around = 40;
-  const middle = ONION_RINGS_RADIUS - ONION_RINGS_WIDTH;
+  const middle = radius - width;
   const positions = new Float32Array((along + 1) * (around + 1) * 3);
   const uvs = new Float32Array((along + 1) * (around + 1) * 2);
   const colours = new Float32Array((along + 1) * (around + 1) * 3);
@@ -1116,9 +1116,9 @@ function breadedRing(seed) {
       const q = (j / around) * Math.PI * 2, cq = Math.cos(q), sq = Math.sin(q);
       // Superellipse section (exponent ~2.6): a chunky slab with rounded sides, flatter top and bottom.
       const su = Math.sign(cq) * Math.abs(cq) ** 0.77, sv = Math.sign(sq) * Math.abs(sq) ** 0.77;
-      let r = round + su * ONION_RINGS_WIDTH * swell, y = ONION_RINGS_THICKNESS + sv * ONION_RINGS_THICKNESS * swell;
+      let r = round + su * width * swell, y = ONION_RINGS_THICKNESS + sv * ONION_RINGS_THICKNESS * swell;
       // Out along the section's normal (an ellipse's, close enough for the slab).
-      let nr = cq / ONION_RINGS_WIDTH, ny = sq / ONION_RINGS_THICKNESS;
+      let nr = cq / width, ny = sq / ONION_RINGS_THICKNESS;
       const n = Math.hypot(nr, ny);
       nr /= n; ny /= n;
       const x0 = ca * r, z0 = sa * r;
@@ -1162,10 +1162,15 @@ function breadedRing(seed) {
   return geometry;
 }
 
-function onionRings() {
+/** The breading's material, shared by the onion rings and the Rodeio's single ring. */
+function breadingMaterial() {
   const { map, bumpMap } = breading();
   // A faint orange glow keeps the sides in the bun's shadow golden, not khaki (as the cheddar's).
-  const mat = new MeshStandardMaterial({ map, bumpMap, bumpScale: 3, vertexColors: true, roughness: 0.62, emissive: '#3a1400' });
+  return new MeshStandardMaterial({ map, bumpMap, bumpScale: 3, vertexColors: true, roughness: 0.62, emissive: '#3a1400' });
+}
+
+function onionRings() {
+  const mat = breadingMaterial();
   return mesh(shared('onionRings', () => {
     const group = new Group();
     [-1, 1].forEach((side, i) => {
@@ -1177,6 +1182,18 @@ function onionRings() {
     group.rotation.y = ONION_RINGS_TURN;
     return single(group);
   }), mat);
+}
+
+// Onion ring (Rodeio): one of the onion rings above, alone, centred and smaller: about half
+// the patty's width across, as in the official photo, the barbecue showing all round it.
+// Same section shape, lumps and breading, in a thinner wall; no texture of its own.
+const ONION_RING_RADIUS = 0.53; // to the outside: ~1.06 across, half the patty's 2.1
+const ONION_RING_WIDTH = 0.11; // a thinner wall than the pair's: with theirs, alone in the middle, the lumps filled the hole and it read as a disc
+const ONION_RING_SEED = 151;
+
+function onionRing() {
+  const mat = breadingMaterial();
+  return mesh(shared('onionRing', () => breadedRing(ONION_RING_SEED, ONION_RING_RADIUS, ONION_RING_WIDTH)), mat);
 }
 
 // Ketchup and maionese: soft, rounded dollops with a wet gloss, told apart
@@ -1337,6 +1354,7 @@ export const layerModels = {
       }),
   },
   onionRings: { height: ONION_RINGS_HEIGHT, build: onionRings },
+  onionRing: { height: ONION_RINGS_HEIGHT, build: onionRing },
   top: {
     height: TOP_HEIGHT,
     build: topBun,
