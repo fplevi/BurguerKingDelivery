@@ -171,6 +171,9 @@ test('a foto mostra só a área desenhada também sem object-view-box (fora do C
   const foto = page.getByRole('main').getByRole('img', { name: 'Coca-Cola Original' });
   const cartao = card(page, 'Coca-Cola');
   await expect.poll(() => page.evaluate(() => [...document.images].every((i) => i.complete))).toBe(true);
+  // Chrome's smoothing of the scaled-down photo is not repeatable bit for bit: two renderings alternate from one
+  // capture to the next even with nothing changed. Nearest-neighbour scaling is, and still shows any change in the drawn area.
+  await page.addStyleTag({ content: '.photo-crop img{image-rendering:pixelated}' });
   const antes = await cartao.screenshot({ animations: 'disabled' });
   // A browser without object-view-box (Firefox, Safari).
   await page.addStyleTag({ content: '*{object-view-box:none!important}' });
