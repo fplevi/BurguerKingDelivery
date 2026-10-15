@@ -6,10 +6,16 @@
 
 **Status:** claimed
 
-- [ ] Medições registradas em `## Comments` (gzip 3D, primeiro quadro, fps)
-- [ ] Tudo dentro dos limites aceitos, ou otimizado até ficar
-- [ ] `npm run test:build` inteiro verde; se falhar "ao acaso", comparar com a `main` antes de chamar de instabilidade
+- [x] Medições registradas em `## Comments` (gzip 3D, primeiro quadro, fps)
+- [x] Tudo dentro dos limites aceitos, ou otimizado até ficar
+- [x] `npm run test:build` inteiro verde; se falhar "ao acaso", comparar com a `main` antes de chamar de instabilidade
 - [ ] PR aberto para a `main` com as capturas da revisão
+
+## Answer
+
+- Tudo dentro dos limites aceitos; nenhuma otimização. Peso 154,9 KB gzip (+0,3 KB). Rodeio na primeira escolha: 0,31–0,35 s com CPU 4x, o mais leve dos quatro escolhidos na grade.
+- `tests/orcamento.spec.js` mede o Rodeio nos testes que já existiam; nenhum teste novo.
+- `npm run test:build` verde (627 aprovados, 39 pulados) na quarta rodada. As três primeiras tiveram uma falha cada, em testes sem 3D que passam isolados; a `main` passou inteira, mas a mesma falha de `categorias.spec.js:169` já aparecia com o código que hoje está na `main` (ver Comments).
 
 ## Comments
 
@@ -38,3 +44,13 @@ Leitura:
 **Testes (`tests/orcamento.spec.js`):** o Rodeio entra na lista de produtos, como o Rodeio Duplo no ticket 04 dele; nenhum teste novo ("`tests/orcamento.spec.js` não ganha testes", na spec). A chave do Rodeio Duplo nas medições registradas passou de `rodeio` para `rodeio-duplo`, e `rodeio` agora é o Rodeio.
 
 **Exige aparelho físico** (igual aos tickets anteriores): primeiro quadro e fps numa GPU de celular (GLES, não ANGLE/D3D11); a trava da primeira troca (~1,2 s do Cheddar Duplo, ~0,3 s do Rodeio com CPU 4x) num celular de verdade; arrasto por toque e inclinação pela orientação do aparelho.
+
+### Suíte (2026-10-15)
+
+- Rodada 1 de `npm run test:build`: 626 aprovados, 1 falha, 39 pulados. A falha foi `categorias.spec.js:169` (mobile-390), a foto sem `object-view-box`, por diferença de pixels entre as duas capturas do card.
+- Rodada 2: 626 aprovados, 1 falha. A falha foi `layout-conta.spec.js:31` (desktop): o campo "Celular com DDD" não apareceu em 30 s. Passou isolado (`layout-conta.spec.js` inteiro: 8 aprovados), assim como `categorias.spec.js` (21 aprovados).
+- Como as falhas mudaram de lugar, rodei a suíte da `main`: **591 aprovados, 39 pulados, 10,8 min**.
+- Rodada 3 da branch: 626 aprovados, 1 falha, de novo `categorias.spec.js:169` (desktop). O trace mostra as duas capturas diferentes de fato; os 19 s do teste são só o Playwright formatando o diff dos buffers.
+- Por que não é defeito desta branch: as falhas são em páginas sem 3D (categorias, conta), que o diff da branch não toca (`src` muda só na Receita, no anel e na inclinação do pão do Rodeio). E a mesma falha de `categorias.spec.js:169`, com o mesmo sintoma, aconteceu no ticket 04 do Rodeio Duplo (`195b658`), cujo `src` e `tests` são idênticos aos da `main` de hoje. É instabilidade que já existe na `main`, menos frequente do que aqui; a branch tem 35 testes 3D a mais disputando os 2 workers.
+- Rodada 4 da suíte inteira: **627 aprovados, 39 pulados, 12,6 min**.
+- Fica para depois: tornar `categorias.spec.js:169` estável (capturas do card que variam sob carga).
