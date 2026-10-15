@@ -135,7 +135,7 @@ const burgers = [
   { recipe: 'whopper', photo: whopperPhoto },
   { recipe: 'cheddarDuplo', photo: cheddarDuploPhoto },
   { recipe: 'stackerDuploBacon', photo: stackerDuploPhoto },
-  { name: 'Rodeio Duplo', photo: rodeioDuploPhoto },
+  { recipe: 'rodeioDuplo', photo: rodeioDuploPhoto },
   { name: 'Big King', photo: bigKingPhoto },
   { name: 'Cheeseburger Duplo', photo: cheeseburgerDuploPhoto },
   { name: 'Cheeseburger', photo: cheeseburgerPhoto },

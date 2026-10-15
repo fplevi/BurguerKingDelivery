@@ -63,6 +63,23 @@ export const recipes = {
       { id: 'top', name: 'Pão superior', y: 21, thickness: 52, locked: true },
     ],
   }),
+  rodeioDuplo: recipe({
+    id: 'rodeioDuplo',
+    name: 'Rodeio Duplo',
+    price: 3690, // provisional (spec)
+    // As seen in the official photo; Base: buns and both meats. Queijo and Maionese are the
+    // Whopper's; the barbecue is a sauce over the upper meat, under the onion rings.
+    layers: [
+      { id: 'bottom', name: 'Pão inferior', text: 'Pão com gergelim', y: 242, thickness: 0, locked: true },
+      { id: 'meat', name: 'Carne grelhada', text: 'duas carnes grelhadas', y: 205, thickness: 36, locked: true },
+      { id: 'cheese', name: 'Queijo', text: 'queijo derretido', y: 179, thickness: 9 },
+      { id: 'meat2', name: 'Carne grelhada', model: 'meat', turn: 1.9, y: 145, thickness: 40, locked: true },
+      { id: 'bbqSauce', name: 'Molho barbecue', text: 'molho barbecue', y: 128, thickness: 6 },
+      { id: 'onionRings', name: 'Onion rings', text: 'onion rings crocantes', y: 102, thickness: 26 },
+      { id: 'mayo', name: 'Maionese', text: 'maionese', y: 82, thickness: 6 },
+      { id: 'top', name: 'Pão superior', y: 21, thickness: 56, locked: true },
+    ],
+  }),
 };
 
 /** Camada `id` of a Receita. */

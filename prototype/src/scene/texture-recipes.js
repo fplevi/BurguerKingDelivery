@@ -255,6 +255,49 @@ export const recipes = {
   },
 
   /**
+   * Breading of the onion rings (Rodeio Duplo): coarse fried breadcrumbs, golden orange, darker
+   * where they fried longer, with paler crumb tips catching the light and dark gaps between
+   * them. Tiles both ways (u along the ring, v around its section). Colour, bump.
+   */
+  breading: {
+    count: 2,
+    size: 256,
+    draw(contexts, size) {
+      const toastField = field(64, 4, 3, 131);
+      const crumbField = field(128, 20, 2, 132);
+      paintAll(contexts, size, (u, v, out) => {
+        const toast = clamp01((toastField(u, v) - 0.35) * 2.2);
+        // The grit is the crumb field again, twice as fine (a whole multiple, so it still tiles).
+        const crumb = crumbField(u, v), grit = crumbField(u * 2 + 0.37, v * 2 + 0.61);
+        // Crumbs: the highs of the crumb field, separated by darker gaps.
+        const tip = clamp01((crumb - 0.5) * 4);
+        const gap = clamp01((0.42 - crumb) * 5);
+        const shade = (0.9 + tip * 0.22 - gap * 0.3) * (0.94 + grit * 0.12);
+        out[0] = blend(244, 196, toast) * shade;
+        out[1] = blend(160, 104, toast) * shade;
+        out[2] = blend(58, 32, toast) * shade;
+        out[3] = out[4] = out[5] = 120 + tip * 90 - gap * 80 + (grit - 0.5) * 60;
+      });
+      // Loose crumbs on top: small irregular flakes, pale or dark, the same in both maps; drawn
+      // again across the edges so the texture tiles without a seam.
+      const rnd = random(134);
+      const [colour, bump] = contexts;
+      for (let i = 0; i < 450; i++) {
+        const x = rnd() * size, y = rnd() * size;
+        const rx = (1 + rnd() * 3.2) * (size / 256), ry = rx * (0.45 + rnd() * 0.55), turn = rnd() * Math.PI;
+        const dark = rnd() < 0.15;
+        const fill = dark ? `rgba(120,58,18,0.55)` : `rgba(${246 + rnd() * 9},${178 + rnd() * 34},${78 + rnd() * 30},0.7)`;
+        for (const dx of [-size, 0, size])
+          for (const dy of [-size, 0, size]) {
+            if (x + dx < -8 || x + dx > size + 8 || y + dy < -8 || y + dy > size + 8) continue;
+            blot(colour, x + dx, y + dy, rx, ry, turn, fill);
+            blot(bump, x + dx, y + dy, rx, ry, turn, dark ? 'rgba(40,40,40,0.6)' : 'rgba(250,250,250,0.75)');
+          }
+      }
+    },
+  },
+
+  /**
    * Bacon strip, flat (ticket 02 of the Stacker Duplo Bacon): u runs along the strip (tiles, so
    * each strip reads its own stretch), v across it. Pale fat along one edge and in a thin streak,
    * red-brown lean with fibres along the strip, crinkles across it; fried unevenly, darker in
