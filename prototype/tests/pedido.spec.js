@@ -146,7 +146,7 @@ test('grade de produtos mostra os oito hambúrgueres oficiais com o Whopper sele
   await expect(cards.filter({ hasText: 'Cheddar Duplo' })).toHaveAttribute('aria-pressed', 'false');
   for (let i = 0; i < 8; i++) {
     // The official product photo (decorative, alt="") must actually load.
-    const photo = cards.nth(i).locator('img');
+    const photo = cards.nth(i).locator('.catalog-photo img');
     await photo.scrollIntoViewIfNeeded();
     await expect.poll(() => photo.evaluate((img) => img.complete && img.naturalWidth)).toBeGreaterThan(0);
   }
