@@ -670,11 +670,14 @@ function ingredientsOf(item) {
 }
 /** Quantidade (1-99; "−" disabled at 1) and Total do item of Item `i`. */
 function qtyAndTotal(item, i) {
-  return `<div class="cart-qty"><span class="item-label" id="item-${i}-qty">Quantidade</span><div class="qty" role="group" aria-labelledby="item-${i}-qty"><button data-key="${i}:minus" aria-label="Diminuir quantidade" ${item.qty <= 1 ? 'disabled' : ''}>−</button><span>${item.qty}</span><button data-key="${i}:plus" aria-label="Aumentar quantidade" ${item.qty >= 99 ? 'disabled' : ''}>+</button></div></div><div class="total">Total do item<strong>${money(item.price * item.qty)}</strong></div>`;
+  return `<div class="cart-qty"><span class="item-label" id="item-${i}-qty">Quantidade</span><div class="qty" role="group" aria-labelledby="item-${i}-qty"><button data-key="${i}:minus" aria-label="Diminuir quantidade" ${item.qty <= 1 ? 'disabled' : ''}><span class="bk-icon cart-minus" aria-hidden="true"></span></button><span>${item.qty}</span><button data-key="${i}:plus" aria-label="Aumentar quantidade" ${item.qty >= 99 ? 'disabled' : ''}><span class="bk-icon cart-plus" aria-hidden="true"></span></button></div></div><div class="total">Total do item<strong>${money(item.price * item.qty)}</strong></div>`;
 }
 // Bebida do combo of the Carrinho: a select-only combobox (ARIA listbox pattern) whose list opens over
 // the page. Which list is open, and its active option, is view state only: { index, active } or null.
 let openDrink = null;
+const cartBarObserver = new ResizeObserver(([entry]) => {
+  document.documentElement.style.setProperty('--cart-bar-height', `${entry.target.getBoundingClientRect().height}px`);
+});
 function drinkPicker(item, i) {
   const open = openDrink?.index === i;
   const options = drinks
@@ -714,7 +717,7 @@ function announce(text) {
 /** Aviso of the Item just removed, with Desfazer (Figma 06); gone at the next change in the cart or on leaving the Carrinho. */
 function removedNotice() {
   const last = state.lastRemoved;
-  return last ? `<div class="cart-notice" role="group" aria-label="Item removido"><p>${marks(itemName(last.item))} removido do carrinho.</p><button class="secondary" data-key="undo">Desfazer</button></div>` : '';
+  return last ? `<div class="cart-notice cart-removal-toast" role="group" aria-label="Item removido"><p>${marks(itemName(last.item))} removido do carrinho.</p><button class="secondary" data-key="undo">Desfazer</button></div>` : '';
 }
 /** Item `i` of the Carrinho travado: as itemCard, read-only (Combo · Bebida and "Quantidade: N" as text, no Remover). */
 function lockedCard(item) {
@@ -722,6 +725,7 @@ function lockedCard(item) {
   return `<li class="cart-item cart-locked${recipes[item.product] ? ' cart-burger' : ''}">${itemPhoto(item)}<div class="cart-head"><h2>${marks(itemName(item))}</h2></div>${ingredientsOf(item)}<div class="cart-controls"><div class="cart-locked-detail">${combo}<p>Quantidade: ${item.qty}</p></div><div class="total">Total do item<strong>${money(item.price * item.qty)}</strong></div></div></li>`;
 }
 function renderCart() {
+  cartBarObserver.disconnect();
   const units = cartUnits(state.cart);
   const count = state.cart.length;
   // Carrinho travado (Pix pendente, card processing): the Itens read-only, the notice with "Voltar ao pagamento" and the Resumo do carrinho without Continuar.
@@ -744,6 +748,7 @@ function renderCart() {
   // Phones (< 1024px): a bar fixed at the bottom repeats Total dos itens and Continuar; hidden on desktop.
   $('cart-content').innerHTML = `${removedNotice()}<ul class="cart-items" aria-label="Itens">${state.cart.map(itemCard).join('')}</ul><aside class="cart-summary" aria-labelledby="summary-title"><h2 id="summary-title">Resumo do carrinho</h2><p class="summary-total">Total dos itens<strong>${total}</strong></p><p class="summary-note">Entrega calculada na próxima etapa.</p><button class="primary" data-continue>Continuar</button><button class="secondary" data-back>Adicionar mais itens</button></aside><div class="cart-bar" role="region" aria-label="Total dos itens e Continuar"><p><span class="sr-only">Total dos itens</span><strong>${total}</strong></p><button class="primary" data-continue>Continuar</button></div>`;
   const again = focused && $('cart-content').querySelector(`[data-key="${focused}"]`);
+  cartBarObserver.observe($('cart-content').querySelector('.cart-bar'));
   if (again) (again.disabled ? again.parentElement.querySelector('[data-key]:not(:disabled)') : again)?.focus();
 }
 
@@ -949,6 +954,9 @@ $('cart-page').addEventListener('click', (e) => {
   if (control === 'option') chooseDrink(i, Number(key.split(':')[2]));
   if (control === 'remove') {
     openDrink = null;
+    // The removal toast replaces any transient feedback left by adding an Item.
+    clearTimeout(timer);
+    $('toast').style.display = 'none';
     dispatch({ type: 'itemRemove', index: i });
     announce(`${itemName(item)} removido do carrinho.`);
     $('cart-content').querySelector('[data-key="undo"]').focus();

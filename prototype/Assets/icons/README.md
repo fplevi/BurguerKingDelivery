@@ -1,5 +1,7 @@
 # Icons do Figma
 
+Ticket 05, Carrinho: consulta somente de leitura de `187:5486` em 15/10/2026 confirmou ArrowLeft 24 px e Check/CaretDown/Minus/Plus 16 px. O Carrinho reutiliza os exports originais acima em máscaras/backgrounds; o Check de 24 px é apresentado em caixa de 16 px, preservando as proporções do mesmo componente. A área de interação permanece independente. Tipografia consultada: Flame Regular nos nomes dos Itens e título do Resumo, Flame Bold no título da página e valores, Flame Sans em controles e quantidades.
+
 Ticket 04: `address-*.svg` são exports originais dos componentes abaixo (15/10/2026), biblioteca Icons, Format=Outline / Weight=Bold. `address-icons.js` preserva viewBox/paths e aplica cor de texto e caixa da instância: 24 px, exceto histórico e opções Casa/Trabalho/Favoritos do formulário em 16 px. O retorno usa máscara de 24 px. Referências: `157:4660`, `223:7527`, `157:3329`, `157:3230`. Marcador ilustrado e tiles do mapa permanecem separados.
 
 | Arquivo address-* | Componente | Key |

@@ -90,7 +90,7 @@ test('Voltar ao cardápio e Adicionar mais itens levam à última categoria vist
   await adicionar(page).click();
   await sundaeEmSobremesas(page);
   await page.getByRole('button', { name: 'Carrinho · 1' }).click();
-  await carrinho(page).getByRole('button', { name: 'Voltar ao cardápio' }).click();
+  await carrinho(page).getByRole('button', { name: 'Voltar', exact: true }).click();
   await voltouASobremesas(page);
   await page.getByRole('button', { name: 'Carrinho · 1' }).click();
   await carrinho(page).getByRole('button', { name: 'Adicionar mais itens' }).click();
@@ -110,7 +110,7 @@ test('Explorar cardápio e o Voltar do navegador levam à última categoria vist
 
 test('aberto pelo endereço #carrinho, Voltar ao cardápio leva a Hambúrgueres', async ({ page }) => {
   await page.goto('/#carrinho');
-  await carrinho(page).getByRole('button', { name: 'Voltar ao cardápio' }).click();
+  await carrinho(page).getByRole('button', { name: 'Voltar', exact: true }).click();
   await expect(categorias(page).getByRole('link', { name: 'Hambúrgueres' })).toHaveAttribute('aria-current', 'page');
   await expect(page.getByRole('heading', { level: 1 })).toHaveAccessibleName('Whopper®');
 });

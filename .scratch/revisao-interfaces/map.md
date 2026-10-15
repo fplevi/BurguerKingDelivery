@@ -9,6 +9,8 @@
 
 ## Decisions-so-far
 
+- [Ticket 05 concluído](issues/05-carrinho.md): tokens, fontes e ícones originais no Carrinho, Voltar único e toast com Desfazer acima da altura real da barra mobile. Valores, Combo, Personalização e quantidades preservados. [Matriz/evidências](matriz.md#ticket-05--carrinho): 168 combinações em 14 larguras e 72 capturas. Suíte completa no build: 669 aprovados/39 ignorados; checagem final: 16 aprovados/6 ignorados; zero falhas. [Revisão](revisao-05.md): Standards 0, Spec 0.
+
 - [Ticket 04 concluído](issues/04-endereco-de-entrega.md): tokens, fontes/ícones originais, único Voltar contextual, menu web ancorado e painéis móveis de ações/remoção. Toast compartilhado com quebra de linha e reserva da barra fixa; ADR 0002 preservada. [Matriz/evidências](matriz.md#ticket-04--endereço-de-entrega): 165 combinações em onze larguras. Build e 80 testes focados aprovados; suíte completa isolada de `37bc826`: 669 aprovados, 39 ignorados, zero falhas. [Revisão](revisao-04.md): Standards 0, Spec 0.
 
 - [Ticket 03 concluído](issues/03-ver-ingredientes.md): tokens, Bandeja e ícones originais de 16 px em Ver ingredientes; Cancelar/Aplicar e cena 3D preservados. [Matriz/evidências](matriz.md#ticket-03--ver-ingredientes): 36 combinações em 12 larguras e 12 verificações das demais receitas. Build e focados aprovados; suíte completa isolada do commit `763d830`: 627 aprovados, 39 ignorados, zero falhas. [Revisão](revisao-03.md): Standards 0, Spec 0.
@@ -28,7 +30,7 @@
 
 - Apuração inicial de ícones, implementação e meios de validação concluída; inventário exaustivo ficará como entrega da revisão.
 - Não há decisão de escopo pendente nesta entrevista. A reprodução dos problemas e o inventário exaustivo são trabalho da futura execução, não impedimento à conclusão da spec.
-- Tickets 05–09 ainda não implementados; 03 e 04 estão concluídos. Ticket 02 corrigiu os cards e registrou as falhas/repetições da sua suíte no Answer. A falha de inclinação da suíte ampla do ticket 01 continua registrada no Answer daquele ticket, sem conclusão sobre sua causa.
+- Tickets 06–09 ainda não implementados; 03, 04 e 05 estão concluídos. Ticket 02 corrigiu os cards e registrou as falhas/repetições da sua suíte no Answer. A falha de inclinação da suíte ampla do ticket 01 continua registrada no Answer daquele ticket, sem conclusão sobre sua causa.
 
 ## Tickets publicados
 
