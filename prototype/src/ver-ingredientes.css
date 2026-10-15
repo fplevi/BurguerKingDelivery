@@ -1,0 +1,36 @@
+/* Ver ingredientes: reference surfaces and typography, shared spacing tokens. */
+.pg-header { padding: var(--space-32) var(--space-40); gap: var(--space-16); }
+.pg-actions { gap: var(--space-12); }
+.pg-actions .primary, .pg-actions .secondary, #reset {
+  padding: 0 var(--space-16);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+}
+.pg-hero { padding: var(--space-24); gap: var(--space-12); }
+.pg-caption { line-height: 1.25; text-align: center; }
+.pg-panel { min-width: 0; padding: var(--space-32) var(--space-24) var(--space-24); gap: var(--space-16); }
+.tray { padding: var(--space-24); gap: var(--space-12); border-radius: var(--radius-panel); }
+.tray-items { min-height: 0; gap: var(--space-8); }
+.tray-item { gap: var(--space-8); padding: var(--space-8) 0; border-radius: var(--radius-panel); }
+.tray-item svg { margin: var(--space-8) 0; }
+.ingredient-list { gap: var(--space-8); }
+.ingredient-chip { gap: var(--space-8); padding: 0 var(--space-16); border-radius: var(--radius-pill); }
+/* Masks preserve the original Icons paths and inherit the chip's state color. */
+.ingredient-chip .bk-icon { width: 16px; height: 16px; background: currentColor; mask: var(--chip-icon) center / contain no-repeat; }
+.chip-icon-check { --chip-icon: url('../Assets/icons/check-16.svg'); }
+.chip-icon-plus { --chip-icon: url('../Assets/icons/plus-16.svg'); }
+.chip-icon-minus { --chip-icon: url('../Assets/icons/minus-16.svg'); }
+.ingredient-chip .chip-now { display: inline-block; }
+.ingredient-chip:focus-visible .chip-now { display: none; }
+.ingredient-chip:focus-visible .chip-next { display: inline-block; }
+@media (hover: hover) {
+  .ingredient-chip:hover .chip-now { display: none; }
+  .ingredient-chip:hover .chip-next { display: inline-block; }
+}
+@media (max-width: 1023px) {
+  .pg-header { padding: var(--space-12) var(--space-16); }
+  .pg-hero { padding: var(--space-16); }
+  .pg-panel { padding: var(--space-24) var(--space-16) calc(128px + env(safe-area-inset-bottom)); }
+  .pg-actions { padding: var(--space-24) var(--space-16) calc(24px + env(safe-area-inset-bottom)); }
+  .pg-actions .primary { min-width: 0; line-height: 1.25; }
+}

@@ -720,7 +720,7 @@ function renderCart() {
 const trayImages = {};
 // Chips: the state now (Check present, Plus removed) and, on hover and focus, what the click will do.
 function icon(name, cls) {
-  return `<svg class="${cls}" width="14" height="14" aria-hidden="true"><use href="#icon-${name}"/></svg>`;
+  return `<span class="bk-icon chip-icon-${name} ${cls}" aria-hidden="true"></span>`;
 }
 function trayArt(id) {
   if (!scenes) return art(layer(recipe(), id).model);

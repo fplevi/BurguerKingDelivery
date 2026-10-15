@@ -23,3 +23,5 @@ Os três exports de reserva são vetores com caixa ajustada ao desenho, não à 
 
 Os símbolos antigos de `index.html`, `account.js`, `checkout.js` e `tracking.js` têm consumidores nos fluxos pendentes. Remover somente após sua migração. Logo e fotos não são ícones.
 `crown-16.svg`: export original da instância Crown `I124:1293;124:1204;308:15117` em `24:183`, consultada em 15/10/2026. Caixa 16 × 16; selo Selecionado dos cards (ticket 02).
+
+`check-16.svg`: export original de Check `290:11156`, componente remoto `300:11418`, key `16c67e993965c3a46dc398337ef640e87446d926`, em `290:11151` (chips de Ver ingredientes), consultado em 15/10/2026. Plus `305:11371` usa o mesmo componente já exportado em `plus-16.svg`; Minus usa `minus-16.svg` para a ação de retirar no hover/foco. Os três SVGs são máscaras CSS de 16 × 16, com a cor herdada do chip em cada estado; os paths originais são preservados.

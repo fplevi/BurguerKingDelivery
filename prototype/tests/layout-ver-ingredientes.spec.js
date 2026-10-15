@@ -23,7 +23,7 @@ test.describe('celular (< 1024px)', () => {
     await openVerIngredientes(page);
     const embaixo = async () => {
       const [cancelar, aplicar] = [await caixa(acao(page, 'Cancelar')), await caixa(acao(page, 'Aplicar alterações'))];
-      expect(Math.abs(cancelar.y + cancelar.height + 20 - 844)).toBeLessThanOrEqual(1);
+      expect(Math.abs(cancelar.y + cancelar.height + 24 - 844)).toBeLessThanOrEqual(1);
       expect(aplicar.y).toBe(cancelar.y);
       expect(cancelar.x).toBe(16);
       expect(Math.round(aplicar.x + aplicar.width)).toBe(390 - 16);
@@ -47,15 +47,15 @@ test.describe('celular (< 1024px)', () => {
     const legenda = await caixa(verIngredientes(page).getByText('O seu Whopper® do seu jeito.'));
     const b = await caixa(bandeja(page));
     expect(b.y).toBeGreaterThan(legenda.y + legenda.height);
-    expect(b.x).toBe(20);
-    expect(b.width).toBe(350);
+    expect(b.x).toBe(16);
+    expect(b.width).toBe(358);
     expect(b.height).toBe(213);
     const c = await caixa(ingredientes(page));
     expect(c.y).toBeGreaterThan(b.y + b.height);
 
     await rolar(page, 5000);
     const [r, cancelar] = [await caixa(recolocarTodos(page)), await caixa(acao(page, 'Cancelar'))];
-    expect(r.y + r.height).toBeLessThanOrEqual(cancelar.y - 20);
+    expect(r.y + r.height).toBeLessThanOrEqual(cancelar.y - 24);
     await semRolagemHorizontal(page);
   });
 
@@ -79,7 +79,7 @@ test.describe('tablet (768 de largura)', () => {
     const [palco, b] = [await caixa(verIngredientes(page).getByText('O seu Whopper® do seu jeito.')), await caixa(bandeja(page))];
     expect(b.y).toBeGreaterThan(palco.y);
     const cancelar = await caixa(acao(page, 'Cancelar'));
-    expect(Math.abs(cancelar.y + cancelar.height + 20 - 1024)).toBeLessThanOrEqual(1);
+    expect(Math.abs(cancelar.y + cancelar.height + 24 - 1024)).toBeLessThanOrEqual(1);
     await semRolagemHorizontal(page);
   });
 });
