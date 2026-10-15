@@ -1184,11 +1184,12 @@ function onionRings() {
   }), mat);
 }
 
-// Onion ring (Rodeio): one of the onion rings above, alone, centred and smaller: about half
-// the patty's width across, as in the official photo, the barbecue showing all round it.
-// Same section shape, lumps and breading, in a thinner wall; no texture of its own.
+// Onion ring (Rodeio): one of the onion rings above, alone and smaller: about half the
+// patty's width across, as in the official photo. Modelled in the middle; the Receita moves it
+// toward the edge in the assembled burger. Same section shape, lumps and breading, in a
+// thinner wall; no texture of its own.
 const ONION_RING_RADIUS = 0.53; // to the outside: ~1.06 across, half the patty's 2.1
-const ONION_RING_WIDTH = 0.11; // a thinner wall than the pair's: with theirs, alone in the middle, the lumps filled the hole and it read as a disc
+const ONION_RING_WIDTH = 0.11; // a thinner wall than the pair's: with theirs, alone, the lumps filled the hole and it read as a disc
 const ONION_RING_SEED = 151;
 
 function onionRing() {

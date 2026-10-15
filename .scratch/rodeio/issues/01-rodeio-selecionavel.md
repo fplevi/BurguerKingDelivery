@@ -28,3 +28,7 @@
   - a maionese do Whopper quase não aparece no montado; na foto é uma faixa branca grossa sob o pão. A spec só muda o volume se a revisão pedir;
   - o anel tem quase o tamanho de cada anel do Rodeio Duplo (0,53 contra 0,555), porque cada um deles já tem cerca de metade da largura da carne; o tamanho e a parede mais fina ficam para a revisão confirmar;
   - em `tests/orcamento.spec.js`, a `chave` do Rodeio Duplo é `rodeio`: ao medir o Rodeio no 03, troque-a para `rodeioDuplo` e use `rodeio` para o novo.
+
+## Comments
+
+- Pedido do responsável pelo produto depois da primeira entrega: o anel centralizado sob o pão reto ficou irreal e nada apetitoso. O onion ring agora fica perto da borda (`offset: [0.42, 0.2]` na Receita) e o pão superior tomba para o lado sem apoio (`lean: { on: 'onionRing', angle: 0.16 }`), girando em torno do meio do anel. Isso vale só para o hambúrguer montado: em Ver ingredientes, e com o onion ring retirado, os dois voltam retos ao centro (`rest()` em `burger-scene.js`). Isso contraria o "centralizado" da spec, por decisão do responsável. O fallback SVG continua com o anel no centro e o pão reto. Capturas em `capturas/01/` refeitas.

@@ -36,6 +36,7 @@ import {
   PMREMGenerator,
   NeutralToneMapping,
   MathUtils,
+  Quaternion,
 } from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 import { layerModels } from './layer-models.js';
@@ -201,12 +202,15 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
     // The scene moves, scales and turns a holder; the model keeps its own transforms
     // (e.g. the cheese slice is turned 45°). A model may vary by Camada (two cheddars), and a
     // Camada may turn its model (`turn`, radians), so a repeated one doesn't look identical.
+    // Between them, `rest` moves and tips it as it sits in the assembled burger (see place()).
     const object = new Group();
+    const rest = new Group();
     const model = models[id].build(recipe.layers[index]);
     model.rotation.y += recipe.layers[index].turn ?? 0;
-    object.add(model);
+    rest.add(model);
+    object.add(rest);
     burger.add(object);
-    layers[id] = { object, x: 0, y: 0, z: 0, scale: 1, outline: outline(object) };
+    layers[id] = { object, rest, x: 0, y: 0, z: 0, scale: 1, outline: outline(object) };
   }
 
   // Frame the camera once per stage, for the tallest arrangement it shows.
@@ -261,8 +265,34 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
     const stackedTop = sum(ids.slice(0, -1).map((id, i) => (layers[id].scale > 0.5 ? heights[i] : 0)));
     // (A top bun still falling in the Entrada is not an opened burger.)
     const openness = entering() ? 0 : MathUtils.clamp((top.y - stackedTop) / (OPEN_GAP * (ids.length - 1)), 0, 1);
+    rest(1 - openness);
     ground.material.opacity = GROUND_SHADOW * (1 - openness) * shadow.ground;
     contact.material.opacity = CONTACT_SHADOW * shadow.contact;
+  }
+
+  /**
+   * How the Camadas sit in the assembled burger, `assembled` 0 (opened) .. 1: a Camada with an
+   * `offset` slides off-centre, and one that `lean`s on it (the Rodeio's top bun on its onion
+   * ring) tips over toward the side with nothing under it, around the support's middle. Opened,
+   * or with the support removed, both are back square in the middle.
+   */
+  const restPivot = new Vector3(), restTurned = new Vector3(), restAxis = new Vector3(), restTurn = new Quaternion();
+  const UP = new Vector3(0, 1, 0);
+  function rest(assembled) {
+    recipe.layers.forEach(({ id, offset, lean }) => {
+      const { rest } = layers[id];
+      rest.position.set(0, 0, 0);
+      rest.quaternion.identity();
+      if (offset) rest.position.set(offset[0] * assembled, 0, offset[1] * assembled);
+      if (!lean) return;
+      const [x, z] = recipe.layers.find((l) => l.id === lean.on).offset;
+      const k = assembled * MathUtils.clamp(layers[lean.on].scale, 0, 1);
+      restPivot.set(x * assembled, 0, z * assembled);
+      restAxis.set(x, 0, z).normalize().cross(UP); // the far side goes down
+      restTurn.setFromAxisAngle(restAxis, lean.angle * k);
+      rest.quaternion.copy(restTurn);
+      rest.position.copy(restPivot).sub(restTurned.copy(restPivot).applyQuaternion(restTurn));
+    });
   }
 
   function runEffect(kind, duration, apply) {
