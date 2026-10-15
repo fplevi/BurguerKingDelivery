@@ -9,6 +9,8 @@
 
 ## Decisions-so-far
 
+- [Ticket 02 concluído](issues/02-cards-cardapio-responsivos.md): fotos inteiras e nomes livres de sobreposição, colunas com largura mínima, Crown original e tokens dos cards. [Matriz/evidências](matriz.md#ticket-02--cards): 52 combinações aprovadas em 13 larguras, 403 cards e 52 seleções. Build aprovado; focados finais 32 aprovados/8 ignorados, repetições de falhas 8 aprovadas. Suíte ampla original 622 aprovados/39 ignorados/5 falhas, com histórico preservado no Answer. [Revisão](revisao-02.md): Standards 0, Spec 0.
+
 - [Ticket 01 concluído](issues/01-padroes-compartilhados-cardapio.md): tokens, fontes BK e SVGs exatos demonstrados no header e na compra; [matriz e evidências](matriz.md) para os demais fluxos. Build aprovado; suíte ampla com 626 aprovados, 39 ignorados e uma falha de inclinação 3D, não reproduzida em três repetições isoladas. Revisão Standards/Spec sem achados.
 
 - [Spec consolidada](spec.md): escala de espaçamentos, três raios, tamanhos de ícones e fontes BK vêm das decisões explícitas já tomadas com o usuário.
@@ -22,7 +24,7 @@
 
 - Apuração inicial de ícones, implementação e meios de validação concluída; inventário exaustivo ficará como entrega da revisão.
 - Não há decisão de escopo pendente nesta entrevista. A reprodução dos problemas e o inventário exaustivo são trabalho da futura execução, não impedimento à conclusão da spec.
-- Tickets 02–09 ainda não implementados. Cards com fotos sobre nomes e recorte reproduzidos a 768 px; evidência na matriz para o ticket 02. A falha de inclinação da suíte ampla está registrada no Answer do ticket 01, sem conclusão sobre sua causa.
+- Tickets 03–09 ainda não implementados. Ticket 02 corrigiu os cards e registrou as falhas/repetições da sua suíte no Answer. A falha de inclinação da suíte ampla do ticket 01 continua registrada no Answer daquele ticket, sem conclusão sobre sua causa.
 
 ## Tickets publicados
 

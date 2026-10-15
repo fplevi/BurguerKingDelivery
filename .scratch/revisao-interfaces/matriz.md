@@ -4,7 +4,7 @@ Inventário consultado na Page 1 do [Figma BK](https://www.figma.com/design/BElI
 
 | Família / entrada no código | Estados existentes a conferir | Referências ativas web / mobile | Ticket / resultado |
 | --- | --- | --- | --- |
-| Cardápio, `main.js`, quatro categorias | seleção, Combo, Bebida do combo desabilitada/vazia/selecionada, erro obrigatório, quantidade 1–99, adicionar, carrinho travado | `24:183`, `156:4442`, `168:4693`; categorias `40:509`, `40:701`, `40:893`, `49:1104`, `49:1313`, `49:1522`, `127:2594` | 01 header/compra; 02 cards pendente |
+| Cardápio, `main.js`, quatro categorias | seleção, Combo, Bebida do combo desabilitada/vazia/selecionada, erro obrigatório, quantidade 1–99, adicionar, carrinho travado | `24:183`, `156:4442`, `168:4693`; categorias `40:509`, `40:701`, `40:893`, `49:1104`, `49:1313`, `49:1522`, `127:2594` | 01 header/compra; 02 fotos e nomes conferidos em 13 larguras |
 | Ver ingredientes, `main.js` | abrir, Entrada/Saída, retirar/recolocar, Bandeja vazia/cheia, aplicar/cancelar, Base, fallback | `284:11569` / `294:11262`, `294:11399` | 03 pendente; Camadas fora do escopo |
 | Endereço de entrega, `checkout.js` addressFlow | lista, busca/foco/sem resultados, mapa ajustado, localização indisponível, fora da região, dados/validação, anterior, menu, editar/remover, salvo/removido | `157:4248` / `157:3130`; contexto Checkout `223:7319` / `240:17948` | 04 pendente |
 | Carrinho, `main.js` | vazio, Item com/sem Combo, lista da Bebida, obrigatório, quantidade, Personalização, removido/Desfazer, travado | `187:5485` / `187:8185` | 05 pendente |
@@ -22,6 +22,17 @@ Inventário consultado na Page 1 do [Figma BK](https://www.figma.com/design/BElI
 - Tokens novos em `prototype/src/tokens.css`; migração inicial em `cardapio.css`. Estilos antigos permanecem disponíveis. Superfícies específicas do Cardápio preservadas. Toasts, retornos, autenticação e menus aguardam seus tickets.
 - Os responsáveis pelos tickets 02–08 devem acrescentar viewport exato, estado, captura, divergência/correção e resultado. Ticket 09 fecha a integração; o inventário não aprova essas telas antecipadamente.
 - Divergência reproduzida a **768 px**, com fontes e imagens resolvidas: fotos ampliadas dos cards sobrepõem nomes e sofrem recorte (por exemplo Whopper, Cheddar Duplo e Stacker Duplo Bacon). Evidência: [captura 768](evidencias/cardapio-768.png). Registrada para o ticket 02; o ticket 01 não altera a grade.
+
+### Ticket 02 — cards
+
+- Reprodução antes da correção: Hambúrgueres em **320, 360, 390, 768, 1023, 1024, 1025, 1280, 1919, 1920 e 1921 px**. Fotos ampliadas escapavam da área da imagem, com sobreposição ao nome; não foi reproduzida remoção do texto do DOM. [Medidas anteriores](evidencias/cards-antes/medidas.json) e capturas na mesma pasta.
+- Também havia overflow da página em Acompanhamentos a **320/360/390** e Sobremesas a **320/360**: o título do hero não quebrava. Os demais produtos dessas categorias já cabiam nos recortes declarados. O ajuste permite quebra sem diminuir a fonte.
+- Correção: enquadramento da área desenhada dos oito hambúrgueres, com margem adicional; nenhuma foto de origem toca as bordas do arquivo. `photo-crop` mantém proporção e recorta somente as margens vazias. Imagem sem zoom, área estável separada do nome, card de altura livre e selo em uma linha própria. Fontes BK, tokens e Crown original de `24:183` aplicados.
+- Grade: **uma coluna abaixo de 360**, **duas de 360 a 1023**, **quatro de 1024 a 1919**, **duas na lateral a partir de 1920**. A largura mínima evita cards estreitos demais; as fontes mantêm os tamanhos existentes.
+- Aceite geométrico: **52/52 combinações** das quatro categorias em **320, 359, 360, 361, 390, 768, 1023, 1024, 1025, 1280, 1919, 1920, 1921 px**. Imagens decodificadas, fontes carregadas, área desenhada contida, texto integral dentro do card, foto sem sobrepor nome e overflow horizontal zero. Inclui seleção e captura do nome mais longo selecionável de cada categoria. [Medidas finais](evidencias/cards-depois/medidas.json).
+- Conferência visual: 320 Acompanhamentos, 360 Sobremesas, 390 Hambúrgueres, 1024 Hambúrgueres e 1920 Hambúrgueres, além das capturas selecionadas. A lateral de 1920 mantém rolagem própria; sua captura geral mostra apenas a região visível, e as capturas `*-selecionado.png` documentam cards trazidos à vista.
+- Repetir: iniciar Vite em `prototype`, executar `node scripts/revisao-cards.mjs depois`. `BK_REVIEW_URL` permite outra porta (padrão 5173). Coletor de evidências, não teste de igualdade de pixels; as capturas devem ser inspecionadas junto das medidas.
+- [Revisão Standards/Spec](revisao-02.md): sem achados nos dois eixos.
 
 ## Índice de estados do Figma
 

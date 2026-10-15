@@ -1,0 +1,8257 @@
+[
+  {
+    "width": 320,
+    "category": "Hambúrgueres",
+    "overflow": 0,
+    "columns": "288px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Whopper®",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            160,
+            299,
+            664,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheddar Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            192,
+            306,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Stacker Duplo Bacon",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            197,
+            317,
+            635,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            214,
+            337,
+            621,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Big King",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            193,
+            244,
+            625,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            175,
+            322,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            169,
+            360,
+            608,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            209,
+            363,
+            613,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Stacker Duplo Bacon",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 320,
+    "category": "Acompanhamentos",
+    "overflow": 0,
+    "columns": "288px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Esferas do Dragão de Pepperoni",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            98,
+            236,
+            692,
+            622
+          ]
+        }
+      },
+      {
+        "name": "Batata Frita",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            269,
+            222,
+            520,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Balde de Batata",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            107,
+            179,
+            561,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Onion Rings",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            300,
+            242,
+            499,
+            612
+          ]
+        }
+      },
+      {
+        "name": "BK Chicken",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            93,
+            354,
+            655,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Molhão Baconese",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Cebola Crispy",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Molhão Maionese Cítrica",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            202,
+            302,
+            560,
+            607
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Esferas do Dragão de Pepperoni",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 320,
+    "category": "Bebidas",
+    "overflow": 0,
+    "columns": "288px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Coca-Cola",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            306,
+            255,
+            494,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Coca-Cola Zero",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            493,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Natural One Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Natural One Uva",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Sprite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            310,
+            261,
+            493,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Fanta Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            494,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Água de Copo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            293,
+            258,
+            509,
+            611
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Natural One Laranja",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 320,
+    "category": "Sobremesas",
+    "overflow": 0,
+    "columns": "288px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "BK® Mix Nutella® com Brownie",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            224,
+            179,
+            733,
+            615
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Leite em Pó com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            193,
+            568,
+            624
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Cookies com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            225,
+            181,
+            733,
+            614
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Biscoff®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            215,
+            169,
+            536,
+            622
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix de Brownie",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            201,
+            568,
+            616
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Crocante",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            229,
+            190,
+            570,
+            619
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Chocolate",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            253,
+            211,
+            524,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Doce de Leite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            255,
+            210,
+            523,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "BK® Mix Leite em Pó com Nutella®",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 359,
+    "category": "Hambúrgueres",
+    "overflow": 0,
+    "columns": "327px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Whopper®",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            160,
+            299,
+            664,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheddar Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            192,
+            306,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Stacker Duplo Bacon",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            197,
+            317,
+            635,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            214,
+            337,
+            621,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Big King",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            193,
+            244,
+            625,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            175,
+            322,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            169,
+            360,
+            608,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            209,
+            363,
+            613,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Stacker Duplo Bacon",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 359,
+    "category": "Acompanhamentos",
+    "overflow": 0,
+    "columns": "327px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Esferas do Dragão de Pepperoni",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            98,
+            236,
+            692,
+            622
+          ]
+        }
+      },
+      {
+        "name": "Batata Frita",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            269,
+            222,
+            520,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Balde de Batata",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            107,
+            179,
+            561,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Onion Rings",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            300,
+            242,
+            499,
+            612
+          ]
+        }
+      },
+      {
+        "name": "BK Chicken",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            93,
+            354,
+            655,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Molhão Baconese",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Cebola Crispy",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Molhão Maionese Cítrica",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            202,
+            302,
+            560,
+            607
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Esferas do Dragão de Pepperoni",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 359,
+    "category": "Bebidas",
+    "overflow": 0,
+    "columns": "327px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Coca-Cola",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            306,
+            255,
+            494,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Coca-Cola Zero",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            493,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Natural One Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Natural One Uva",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Sprite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            310,
+            261,
+            493,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Fanta Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            494,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Água de Copo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            293,
+            258,
+            509,
+            611
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Natural One Laranja",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 359,
+    "category": "Sobremesas",
+    "overflow": 0,
+    "columns": "327px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "BK® Mix Nutella® com Brownie",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            224,
+            179,
+            733,
+            615
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Leite em Pó com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            193,
+            568,
+            624
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Cookies com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            225,
+            181,
+            733,
+            614
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Biscoff®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            215,
+            169,
+            536,
+            622
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix de Brownie",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            201,
+            568,
+            616
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Crocante",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            229,
+            190,
+            570,
+            619
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Chocolate",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            253,
+            211,
+            524,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Doce de Leite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            255,
+            210,
+            523,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "BK® Mix Leite em Pó com Nutella®",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 360,
+    "category": "Hambúrgueres",
+    "overflow": 0,
+    "columns": "156px 156px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Whopper®",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            160,
+            299,
+            664,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheddar Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            192,
+            306,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Stacker Duplo Bacon",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            197,
+            317,
+            635,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            214,
+            337,
+            621,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Big King",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            193,
+            244,
+            625,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            175,
+            322,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            169,
+            360,
+            608,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            209,
+            363,
+            613,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Stacker Duplo Bacon",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 360,
+    "category": "Acompanhamentos",
+    "overflow": 0,
+    "columns": "156px 156px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Esferas do Dragão de Pepperoni",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            98,
+            236,
+            692,
+            622
+          ]
+        }
+      },
+      {
+        "name": "Batata Frita",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            269,
+            222,
+            520,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Balde de Batata",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            107,
+            179,
+            561,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Onion Rings",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            300,
+            242,
+            499,
+            612
+          ]
+        }
+      },
+      {
+        "name": "BK Chicken",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            93,
+            354,
+            655,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Molhão Baconese",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Cebola Crispy",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Molhão Maionese Cítrica",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            202,
+            302,
+            560,
+            607
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Esferas do Dragão de Pepperoni",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 360,
+    "category": "Bebidas",
+    "overflow": 0,
+    "columns": "156px 156px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Coca-Cola",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            306,
+            255,
+            494,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Coca-Cola Zero",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            493,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Natural One Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Natural One Uva",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Sprite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            310,
+            261,
+            493,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Fanta Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            494,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Água de Copo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            293,
+            258,
+            509,
+            611
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Natural One Laranja",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 360,
+    "category": "Sobremesas",
+    "overflow": 0,
+    "columns": "156px 156px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "BK® Mix Nutella® com Brownie",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            224,
+            179,
+            733,
+            615
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Leite em Pó com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            193,
+            568,
+            624
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Cookies com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            225,
+            181,
+            733,
+            614
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Biscoff®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            215,
+            169,
+            536,
+            622
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix de Brownie",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            201,
+            568,
+            616
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Crocante",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            229,
+            190,
+            570,
+            619
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Chocolate",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            253,
+            211,
+            524,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Doce de Leite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            255,
+            210,
+            523,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "BK® Mix Leite em Pó com Nutella®",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 361,
+    "category": "Hambúrgueres",
+    "overflow": 0,
+    "columns": "156.5px 156.5px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Whopper®",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            160,
+            299,
+            664,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheddar Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            192,
+            306,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Stacker Duplo Bacon",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            197,
+            317,
+            635,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            214,
+            337,
+            621,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Big King",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            193,
+            244,
+            625,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            175,
+            322,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            169,
+            360,
+            608,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            209,
+            363,
+            613,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Stacker Duplo Bacon",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 361,
+    "category": "Acompanhamentos",
+    "overflow": 0,
+    "columns": "156.5px 156.5px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Esferas do Dragão de Pepperoni",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            98,
+            236,
+            692,
+            622
+          ]
+        }
+      },
+      {
+        "name": "Batata Frita",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            269,
+            222,
+            520,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Balde de Batata",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            107,
+            179,
+            561,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Onion Rings",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            300,
+            242,
+            499,
+            612
+          ]
+        }
+      },
+      {
+        "name": "BK Chicken",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            93,
+            354,
+            655,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Molhão Baconese",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Cebola Crispy",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Molhão Maionese Cítrica",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            202,
+            302,
+            560,
+            607
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Esferas do Dragão de Pepperoni",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 361,
+    "category": "Bebidas",
+    "overflow": 0,
+    "columns": "156.5px 156.5px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Coca-Cola",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            306,
+            255,
+            494,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Coca-Cola Zero",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            493,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Natural One Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Natural One Uva",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Sprite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            310,
+            261,
+            493,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Fanta Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            494,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Água de Copo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            293,
+            258,
+            509,
+            611
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Natural One Laranja",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 361,
+    "category": "Sobremesas",
+    "overflow": 0,
+    "columns": "156.5px 156.5px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "BK® Mix Nutella® com Brownie",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            224,
+            179,
+            733,
+            615
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Leite em Pó com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            193,
+            568,
+            624
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Cookies com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            225,
+            181,
+            733,
+            614
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Biscoff®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            215,
+            169,
+            536,
+            622
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix de Brownie",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            201,
+            568,
+            616
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Crocante",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            229,
+            190,
+            570,
+            619
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Chocolate",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            253,
+            211,
+            524,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Doce de Leite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            255,
+            210,
+            523,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "BK® Mix Leite em Pó com Nutella®",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 390,
+    "category": "Hambúrgueres",
+    "overflow": 0,
+    "columns": "171px 171px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Whopper®",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            160,
+            299,
+            664,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheddar Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            192,
+            306,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Stacker Duplo Bacon",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            197,
+            317,
+            635,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            214,
+            337,
+            621,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Big King",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            193,
+            244,
+            625,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            175,
+            322,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            169,
+            360,
+            608,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            209,
+            363,
+            613,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Stacker Duplo Bacon",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 390,
+    "category": "Acompanhamentos",
+    "overflow": 0,
+    "columns": "171px 171px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Esferas do Dragão de Pepperoni",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            98,
+            236,
+            692,
+            622
+          ]
+        }
+      },
+      {
+        "name": "Batata Frita",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            269,
+            222,
+            520,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Balde de Batata",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            107,
+            179,
+            561,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Onion Rings",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            300,
+            242,
+            499,
+            612
+          ]
+        }
+      },
+      {
+        "name": "BK Chicken",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            93,
+            354,
+            655,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Molhão Baconese",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Cebola Crispy",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Molhão Maionese Cítrica",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            202,
+            302,
+            560,
+            607
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Esferas do Dragão de Pepperoni",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 390,
+    "category": "Bebidas",
+    "overflow": 0,
+    "columns": "171px 171px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Coca-Cola",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            306,
+            255,
+            494,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Coca-Cola Zero",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            493,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Natural One Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Natural One Uva",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Sprite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            310,
+            261,
+            493,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Fanta Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            494,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Água de Copo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            293,
+            258,
+            509,
+            611
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Natural One Laranja",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 390,
+    "category": "Sobremesas",
+    "overflow": 0,
+    "columns": "171px 171px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "BK® Mix Nutella® com Brownie",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            224,
+            179,
+            733,
+            615
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Leite em Pó com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            193,
+            568,
+            624
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Cookies com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            225,
+            181,
+            733,
+            614
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Biscoff®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            215,
+            169,
+            536,
+            622
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix de Brownie",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            201,
+            568,
+            616
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Crocante",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            229,
+            190,
+            570,
+            619
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Chocolate",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            253,
+            211,
+            524,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Doce de Leite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            255,
+            210,
+            523,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "BK® Mix Leite em Pó com Nutella®",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 768,
+    "category": "Hambúrgueres",
+    "overflow": 0,
+    "columns": "360px 360px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Whopper®",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            160,
+            299,
+            664,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheddar Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            192,
+            306,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Stacker Duplo Bacon",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            197,
+            317,
+            635,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            214,
+            337,
+            621,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Big King",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            193,
+            244,
+            625,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            175,
+            322,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            169,
+            360,
+            608,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            209,
+            363,
+            613,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Stacker Duplo Bacon",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 768,
+    "category": "Acompanhamentos",
+    "overflow": 0,
+    "columns": "360px 360px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Esferas do Dragão de Pepperoni",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            98,
+            236,
+            692,
+            622
+          ]
+        }
+      },
+      {
+        "name": "Batata Frita",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            269,
+            222,
+            520,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Balde de Batata",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            107,
+            179,
+            561,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Onion Rings",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            300,
+            242,
+            499,
+            612
+          ]
+        }
+      },
+      {
+        "name": "BK Chicken",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            93,
+            354,
+            655,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Molhão Baconese",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Cebola Crispy",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Molhão Maionese Cítrica",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            202,
+            302,
+            560,
+            607
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Esferas do Dragão de Pepperoni",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 768,
+    "category": "Bebidas",
+    "overflow": 0,
+    "columns": "360px 360px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Coca-Cola",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            306,
+            255,
+            494,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Coca-Cola Zero",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            493,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Natural One Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Natural One Uva",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Sprite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            310,
+            261,
+            493,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Fanta Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            494,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Água de Copo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            293,
+            258,
+            509,
+            611
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Natural One Laranja",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 768,
+    "category": "Sobremesas",
+    "overflow": 0,
+    "columns": "360px 360px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "BK® Mix Nutella® com Brownie",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            224,
+            179,
+            733,
+            615
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Leite em Pó com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            193,
+            568,
+            624
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Cookies com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            225,
+            181,
+            733,
+            614
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Biscoff®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            215,
+            169,
+            536,
+            622
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix de Brownie",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            201,
+            568,
+            616
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Crocante",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            229,
+            190,
+            570,
+            619
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Chocolate",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            253,
+            211,
+            524,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Doce de Leite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            255,
+            210,
+            523,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "BK® Mix Leite em Pó com Nutella®",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1023,
+    "category": "Hambúrgueres",
+    "overflow": 0,
+    "columns": "487.5px 487.5px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Whopper®",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            160,
+            299,
+            664,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheddar Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            192,
+            306,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Stacker Duplo Bacon",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            197,
+            317,
+            635,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            214,
+            337,
+            621,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Big King",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            193,
+            244,
+            625,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            175,
+            322,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            169,
+            360,
+            608,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            209,
+            363,
+            613,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Stacker Duplo Bacon",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1023,
+    "category": "Acompanhamentos",
+    "overflow": 0,
+    "columns": "487.5px 487.5px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Esferas do Dragão de Pepperoni",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            98,
+            236,
+            692,
+            622
+          ]
+        }
+      },
+      {
+        "name": "Batata Frita",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            269,
+            222,
+            520,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Balde de Batata",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            107,
+            179,
+            561,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Onion Rings",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            300,
+            242,
+            499,
+            612
+          ]
+        }
+      },
+      {
+        "name": "BK Chicken",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            93,
+            354,
+            655,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Molhão Baconese",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Cebola Crispy",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Molhão Maionese Cítrica",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            202,
+            302,
+            560,
+            607
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Esferas do Dragão de Pepperoni",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1023,
+    "category": "Bebidas",
+    "overflow": 0,
+    "columns": "487.5px 487.5px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Coca-Cola",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            306,
+            255,
+            494,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Coca-Cola Zero",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            493,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Natural One Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Natural One Uva",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Sprite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            310,
+            261,
+            493,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Fanta Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            494,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Água de Copo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            293,
+            258,
+            509,
+            611
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Natural One Laranja",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1023,
+    "category": "Sobremesas",
+    "overflow": 0,
+    "columns": "487.5px 487.5px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "BK® Mix Nutella® com Brownie",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            224,
+            179,
+            733,
+            615
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Leite em Pó com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            193,
+            568,
+            624
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Cookies com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            225,
+            181,
+            733,
+            614
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Biscoff®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            215,
+            169,
+            536,
+            622
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix de Brownie",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            201,
+            568,
+            616
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Crocante",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            229,
+            190,
+            570,
+            619
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Chocolate",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            253,
+            211,
+            524,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Doce de Leite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            255,
+            210,
+            523,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "BK® Mix Leite em Pó com Nutella®",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1024,
+    "category": "Hambúrgueres",
+    "overflow": 0,
+    "columns": "224px 224px 224px 224px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Whopper®",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            160,
+            299,
+            664,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheddar Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            192,
+            306,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Stacker Duplo Bacon",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            197,
+            317,
+            635,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            214,
+            337,
+            621,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Big King",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            193,
+            244,
+            625,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            175,
+            322,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            169,
+            360,
+            608,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            209,
+            363,
+            613,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Stacker Duplo Bacon",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1024,
+    "category": "Acompanhamentos",
+    "overflow": 0,
+    "columns": "224px 224px 224px 224px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Esferas do Dragão de Pepperoni",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            98,
+            236,
+            692,
+            622
+          ]
+        }
+      },
+      {
+        "name": "Batata Frita",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            269,
+            222,
+            520,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Balde de Batata",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            107,
+            179,
+            561,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Onion Rings",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            300,
+            242,
+            499,
+            612
+          ]
+        }
+      },
+      {
+        "name": "BK Chicken",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            93,
+            354,
+            655,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Molhão Baconese",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Cebola Crispy",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Molhão Maionese Cítrica",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            202,
+            302,
+            560,
+            607
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Esferas do Dragão de Pepperoni",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1024,
+    "category": "Bebidas",
+    "overflow": 0,
+    "columns": "224px 224px 224px 224px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Coca-Cola",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            306,
+            255,
+            494,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Coca-Cola Zero",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            493,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Natural One Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Natural One Uva",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Sprite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            310,
+            261,
+            493,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Fanta Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            494,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Água de Copo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            293,
+            258,
+            509,
+            611
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Natural One Laranja",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1024,
+    "category": "Sobremesas",
+    "overflow": 0,
+    "columns": "224px 224px 224px 224px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "BK® Mix Nutella® com Brownie",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            224,
+            179,
+            733,
+            615
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Leite em Pó com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            193,
+            568,
+            624
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Cookies com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            225,
+            181,
+            733,
+            614
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Biscoff®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            215,
+            169,
+            536,
+            622
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix de Brownie",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            201,
+            568,
+            616
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Crocante",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            229,
+            190,
+            570,
+            619
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Chocolate",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            253,
+            211,
+            524,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Doce de Leite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            255,
+            210,
+            523,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "BK® Mix Leite em Pó com Nutella®",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1025,
+    "category": "Hambúrgueres",
+    "overflow": 0,
+    "columns": "224.25px 224.25px 224.25px 224.25px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Whopper®",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            160,
+            299,
+            664,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheddar Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            192,
+            306,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Stacker Duplo Bacon",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            197,
+            317,
+            635,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            214,
+            337,
+            621,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Big King",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            193,
+            244,
+            625,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            175,
+            322,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            169,
+            360,
+            608,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            209,
+            363,
+            613,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Stacker Duplo Bacon",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1025,
+    "category": "Acompanhamentos",
+    "overflow": 0,
+    "columns": "224.25px 224.25px 224.25px 224.25px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Esferas do Dragão de Pepperoni",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            98,
+            236,
+            692,
+            622
+          ]
+        }
+      },
+      {
+        "name": "Batata Frita",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            269,
+            222,
+            520,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Balde de Batata",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            107,
+            179,
+            561,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Onion Rings",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            300,
+            242,
+            499,
+            612
+          ]
+        }
+      },
+      {
+        "name": "BK Chicken",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            93,
+            354,
+            655,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Molhão Baconese",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Cebola Crispy",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Molhão Maionese Cítrica",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            202,
+            302,
+            560,
+            607
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Esferas do Dragão de Pepperoni",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1025,
+    "category": "Bebidas",
+    "overflow": 0,
+    "columns": "224.25px 224.25px 224.25px 224.25px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Coca-Cola",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            306,
+            255,
+            494,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Coca-Cola Zero",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            493,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Natural One Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Natural One Uva",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Sprite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            310,
+            261,
+            493,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Fanta Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            494,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Água de Copo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            293,
+            258,
+            509,
+            611
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Natural One Laranja",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1025,
+    "category": "Sobremesas",
+    "overflow": 0,
+    "columns": "224.25px 224.25px 224.25px 224.25px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "BK® Mix Nutella® com Brownie",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            224,
+            179,
+            733,
+            615
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Leite em Pó com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            193,
+            568,
+            624
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Cookies com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            225,
+            181,
+            733,
+            614
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Biscoff®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            215,
+            169,
+            536,
+            622
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix de Brownie",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            201,
+            568,
+            616
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Crocante",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            229,
+            190,
+            570,
+            619
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Chocolate",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            253,
+            211,
+            524,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Doce de Leite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            255,
+            210,
+            523,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "BK® Mix Leite em Pó com Nutella®",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1280,
+    "category": "Hambúrgueres",
+    "overflow": 0,
+    "columns": "288px 288px 288px 288px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Whopper®",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            160,
+            299,
+            664,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheddar Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            192,
+            306,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Stacker Duplo Bacon",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            197,
+            317,
+            635,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            214,
+            337,
+            621,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Big King",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            193,
+            244,
+            625,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            175,
+            322,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            169,
+            360,
+            608,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            209,
+            363,
+            613,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Stacker Duplo Bacon",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1280,
+    "category": "Acompanhamentos",
+    "overflow": 0,
+    "columns": "288px 288px 288px 288px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Esferas do Dragão de Pepperoni",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            98,
+            236,
+            692,
+            622
+          ]
+        }
+      },
+      {
+        "name": "Batata Frita",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            269,
+            222,
+            520,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Balde de Batata",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            107,
+            179,
+            561,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Onion Rings",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            300,
+            242,
+            499,
+            612
+          ]
+        }
+      },
+      {
+        "name": "BK Chicken",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            93,
+            354,
+            655,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Molhão Baconese",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Cebola Crispy",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Molhão Maionese Cítrica",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            202,
+            302,
+            560,
+            607
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Esferas do Dragão de Pepperoni",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1280,
+    "category": "Bebidas",
+    "overflow": 0,
+    "columns": "288px 288px 288px 288px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Coca-Cola",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            306,
+            255,
+            494,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Coca-Cola Zero",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            493,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Natural One Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Natural One Uva",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Sprite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            310,
+            261,
+            493,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Fanta Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            494,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Água de Copo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            293,
+            258,
+            509,
+            611
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Natural One Laranja",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1280,
+    "category": "Sobremesas",
+    "overflow": 0,
+    "columns": "288px 288px 288px 288px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "BK® Mix Nutella® com Brownie",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            224,
+            179,
+            733,
+            615
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Leite em Pó com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            193,
+            568,
+            624
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Cookies com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            225,
+            181,
+            733,
+            614
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Biscoff®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            215,
+            169,
+            536,
+            622
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix de Brownie",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            201,
+            568,
+            616
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Crocante",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            229,
+            190,
+            570,
+            619
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Chocolate",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            253,
+            211,
+            524,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Doce de Leite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            255,
+            210,
+            523,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "BK® Mix Leite em Pó com Nutella®",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1919,
+    "category": "Hambúrgueres",
+    "overflow": 0,
+    "columns": "447.75px 447.75px 447.75px 447.75px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Whopper®",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            160,
+            299,
+            664,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheddar Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            192,
+            306,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Stacker Duplo Bacon",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            197,
+            317,
+            635,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            214,
+            337,
+            621,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Big King",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            193,
+            244,
+            625,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            175,
+            322,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            169,
+            360,
+            608,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            209,
+            363,
+            613,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Stacker Duplo Bacon",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1919,
+    "category": "Acompanhamentos",
+    "overflow": 0,
+    "columns": "447.75px 447.75px 447.75px 447.75px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Esferas do Dragão de Pepperoni",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            98,
+            236,
+            692,
+            622
+          ]
+        }
+      },
+      {
+        "name": "Batata Frita",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            269,
+            222,
+            520,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Balde de Batata",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            107,
+            179,
+            561,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Onion Rings",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            300,
+            242,
+            499,
+            612
+          ]
+        }
+      },
+      {
+        "name": "BK Chicken",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            93,
+            354,
+            655,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Molhão Baconese",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Cebola Crispy",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Molhão Maionese Cítrica",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            202,
+            302,
+            560,
+            607
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Esferas do Dragão de Pepperoni",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1919,
+    "category": "Bebidas",
+    "overflow": 0,
+    "columns": "447.75px 447.75px 447.75px 447.75px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Coca-Cola",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            306,
+            255,
+            494,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Coca-Cola Zero",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            493,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Natural One Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Natural One Uva",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Sprite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            310,
+            261,
+            493,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Fanta Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            494,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Água de Copo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            293,
+            258,
+            509,
+            611
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Natural One Laranja",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1919,
+    "category": "Sobremesas",
+    "overflow": 0,
+    "columns": "447.75px 447.75px 447.75px 447.75px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "BK® Mix Nutella® com Brownie",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            224,
+            179,
+            733,
+            615
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Leite em Pó com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            193,
+            568,
+            624
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Cookies com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            225,
+            181,
+            733,
+            614
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Biscoff®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            215,
+            169,
+            536,
+            622
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix de Brownie",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            201,
+            568,
+            616
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Crocante",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            229,
+            190,
+            570,
+            619
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Chocolate",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            253,
+            211,
+            524,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Doce de Leite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            255,
+            210,
+            523,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "BK® Mix Leite em Pó com Nutella®",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1920,
+    "category": "Hambúrgueres",
+    "overflow": 0,
+    "columns": "255px 255px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Whopper®",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            160,
+            299,
+            664,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheddar Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            192,
+            306,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Stacker Duplo Bacon",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            197,
+            317,
+            635,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            214,
+            337,
+            621,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Big King",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            193,
+            244,
+            625,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            175,
+            322,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            169,
+            360,
+            608,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            209,
+            363,
+            613,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Stacker Duplo Bacon",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1920,
+    "category": "Acompanhamentos",
+    "overflow": 0,
+    "columns": "255px 255px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Esferas do Dragão de Pepperoni",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            98,
+            236,
+            692,
+            622
+          ]
+        }
+      },
+      {
+        "name": "Batata Frita",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            269,
+            222,
+            520,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Balde de Batata",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            107,
+            179,
+            561,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Onion Rings",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            300,
+            242,
+            499,
+            612
+          ]
+        }
+      },
+      {
+        "name": "BK Chicken",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            93,
+            354,
+            655,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Molhão Baconese",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Cebola Crispy",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Molhão Maionese Cítrica",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            202,
+            302,
+            560,
+            607
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Esferas do Dragão de Pepperoni",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1920,
+    "category": "Bebidas",
+    "overflow": 0,
+    "columns": "255px 255px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Coca-Cola",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            306,
+            255,
+            494,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Coca-Cola Zero",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            493,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Natural One Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Natural One Uva",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Sprite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            310,
+            261,
+            493,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Fanta Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            494,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Água de Copo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            293,
+            258,
+            509,
+            611
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Natural One Laranja",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1920,
+    "category": "Sobremesas",
+    "overflow": 0,
+    "columns": "255px 255px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "BK® Mix Nutella® com Brownie",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            224,
+            179,
+            733,
+            615
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Leite em Pó com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            193,
+            568,
+            624
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Cookies com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            225,
+            181,
+            733,
+            614
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Biscoff®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            215,
+            169,
+            536,
+            622
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix de Brownie",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            201,
+            568,
+            616
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Crocante",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            229,
+            190,
+            570,
+            619
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Chocolate",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            253,
+            211,
+            524,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Doce de Leite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            255,
+            210,
+            523,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "BK® Mix Leite em Pó com Nutella®",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1921,
+    "category": "Hambúrgueres",
+    "overflow": 0,
+    "columns": "255px 255px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Whopper®",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            160,
+            299,
+            664,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheddar Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            192,
+            306,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Stacker Duplo Bacon",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            197,
+            317,
+            635,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            214,
+            337,
+            621,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Big King",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            193,
+            244,
+            625,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger Duplo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            175,
+            322,
+            606,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Cheeseburger",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            169,
+            360,
+            608,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Rodeio",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            209,
+            363,
+            613,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Stacker Duplo Bacon",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1921,
+    "category": "Acompanhamentos",
+    "overflow": 0,
+    "columns": "255px 255px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Esferas do Dragão de Pepperoni",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            98,
+            236,
+            692,
+            622
+          ]
+        }
+      },
+      {
+        "name": "Batata Frita",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            269,
+            222,
+            520,
+            614
+          ]
+        }
+      },
+      {
+        "name": "Balde de Batata",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            107,
+            179,
+            561,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Onion Rings",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            300,
+            242,
+            499,
+            612
+          ]
+        }
+      },
+      {
+        "name": "BK Chicken",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            93,
+            354,
+            655,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Molhão Baconese",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Cebola Crispy",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            203,
+            303,
+            560,
+            608
+          ]
+        }
+      },
+      {
+        "name": "Molhão Maionese Cítrica",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            202,
+            302,
+            560,
+            607
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Esferas do Dragão de Pepperoni",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1921,
+    "category": "Bebidas",
+    "overflow": 0,
+    "columns": "255px 255px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "Coca-Cola",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            306,
+            255,
+            494,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Coca-Cola Zero",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            493,
+            612
+          ]
+        }
+      },
+      {
+        "name": "Natural One Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Natural One Uva",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            322,
+            149,
+            475,
+            615
+          ]
+        }
+      },
+      {
+        "name": "Sprite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            310,
+            261,
+            493,
+            611
+          ]
+        }
+      },
+      {
+        "name": "Fanta Laranja",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            307,
+            256,
+            494,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Água de Copo",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            293,
+            258,
+            509,
+            611
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "Natural One Laranja",
+      "overflow": 0,
+      "textVisible": true
+    }
+  },
+  {
+    "width": 1921,
+    "category": "Sobremesas",
+    "overflow": 0,
+    "columns": "255px 255px",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "cards": [
+      {
+        "name": "BK® Mix Nutella® com Brownie",
+        "selected": "true",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            224,
+            179,
+            733,
+            615
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Leite em Pó com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            193,
+            568,
+            624
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Cookies com Nutella®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            225,
+            181,
+            733,
+            614
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Biscoff®",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            215,
+            169,
+            536,
+            622
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix de Brownie",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            230,
+            201,
+            568,
+            616
+          ]
+        }
+      },
+      {
+        "name": "BK® Mix Crocante",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            229,
+            190,
+            570,
+            619
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Chocolate",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            253,
+            211,
+            524,
+            616
+          ]
+        }
+      },
+      {
+        "name": "Sundae de Doce de Leite",
+        "selected": "false",
+        "textVisible": true,
+        "photoOverName": false,
+        "productContained": true,
+        "asset": {
+          "width": 800,
+          "height": 800,
+          "bounds": [
+            255,
+            210,
+            523,
+            616
+          ]
+        }
+      }
+    ],
+    "selected": {
+      "name": "BK® Mix Leite em Pó com Nutella®",
+      "overflow": 0,
+      "textVisible": true
+    }
+  }
+]
