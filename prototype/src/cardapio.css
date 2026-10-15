@@ -55,7 +55,45 @@ header .cart-count { padding: 0 var(--space-4); border-radius: var(--radius-pill
   font-family: var(--font-body);
 }
 .hero .edit-btn { gap: var(--space-16); margin-top: var(--space-24); border-radius: var(--radius-pill); }
+/* Keep image and name in separate, growing rows. Columns follow available space. */
+.catalog .grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, max(216px, calc((100% - 48px) / 4))), 1fr)); gap: var(--space-16); }
+.catalog .card {
+  min-width: 0;
+  padding: var(--space-16);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-item);
+  font-family: var(--font-display);
+  overflow: visible;
+}
+.catalog .card[aria-pressed=true] { padding: var(--space-16); border-color: var(--red); }
+.catalog .catalog-photo,
+.catalog .grid:not([data-category=hamburgueres]) .catalog-photo {
+  flex: none;
+  height: 180px;
+  margin: 0;
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+}
+.catalog .card-name { width: 100%; min-height: 48px; height: auto; line-height: 1.25; overflow-wrap: anywhere; }
+.catalog .card .badge {
+  position: static;
+  align-self: flex-start;
+  flex: none;
+  gap: var(--space-4);
+  min-height: 32px;
+  height: auto;
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+}
+.catalog .card[aria-pressed=false] .badge { display: flex; visibility: hidden; }
 @media (max-width: 1023px) {
+  .hero h1 { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+  .catalog { padding: var(--space-24) var(--space-16); }
+  .catalog .grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, max(156px, calc((100% - 16px) / 2))), 1fr)); }
+  .catalog .catalog-photo,
+  .catalog .grid:not([data-category=hamburgueres]) .catalog-photo { height: 113px; }
   header { padding: var(--space-24) var(--space-16) 0; gap: var(--space-12); }
   header nav { margin-top: var(--space-8); padding: 0 var(--space-16); gap: var(--space-32); }
   .hero .purchase { padding: var(--space-24) var(--space-16); }

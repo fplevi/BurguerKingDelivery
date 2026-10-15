@@ -22,3 +22,4 @@ Os SVGs são exports originais, sem redesenho dos paths. Sufixos indicam a caixa
 Os três exports de reserva são vetores com caixa ajustada ao desenho, não à instância. Compor em uma caixa 24/32 conforme a referência e preservar proporção; não esticar os vetores. Não migrados neste ticket.
 
 Os símbolos antigos de `index.html`, `account.js`, `checkout.js` e `tracking.js` têm consumidores nos fluxos pendentes. Remover somente após sua migração. Logo e fotos não são ícones.
+`crown-16.svg`: export original da instância Crown `I124:1293;124:1204;308:15117` em `24:183`, consultada em 15/10/2026. Caixa 16 × 16; selo Selecionado dos cards (ticket 02).
