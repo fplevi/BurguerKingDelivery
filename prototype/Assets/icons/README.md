@@ -43,3 +43,5 @@ Os símbolos antigos de `index.html`, `account.js`, `checkout.js` e `tracking.js
 `crown-16.svg`: export original da instância Crown `I124:1293;124:1204;308:15117` em `24:183`, consultada em 15/10/2026. Caixa 16 × 16; selo Selecionado dos cards (ticket 02).
 
 `check-16.svg`: export original de Check `290:11156`, componente remoto `300:11418`, key `16c67e993965c3a46dc398337ef640e87446d926`, em `290:11151` (chips de Ver ingredientes), consultado em 15/10/2026. Plus `305:11371` usa o mesmo componente já exportado em `plus-16.svg`; Minus usa `minus-16.svg` para a ação de retirar no hover/foco. Os três SVGs são máscaras CSS de 16 × 16, com a cor herdada do chip em cada estado; os paths originais são preservados.
+
+Ticket 06: `address-back.svg` reutilizado como máscara de 24 × 24 em Voltar no Checkout e Identifique-se; corresponde ao ArrowLeft da referência ativa `218:6512` (`406:14013`), também usado em `218:7675`. `address-check.svg` mantém o Check de 16 × 16 nos indicadores de etapas; referências `246:11091`/`312:11195`. Origem da biblioteca Icons e geometria dos exports preservadas. Nenhum pacote novo.
