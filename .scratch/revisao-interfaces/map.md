@@ -9,6 +9,8 @@
 
 ## Decisions-so-far
 
+- [Ticket 03 concluído](issues/03-ver-ingredientes.md): tokens, Bandeja e ícones originais de 16 px em Ver ingredientes; Cancelar/Aplicar e cena 3D preservados. [Matriz/evidências](matriz.md#ticket-03--ver-ingredientes): 36 combinações em 12 larguras e 12 verificações das demais receitas. Build e focados aprovados; suíte completa isolada do commit `763d830`: 627 aprovados, 39 ignorados, zero falhas. [Revisão](revisao-03.md): Standards 0, Spec 0.
+
 - [Ticket 02 concluído](issues/02-cards-cardapio-responsivos.md): fotos inteiras e nomes livres de sobreposição, colunas com largura mínima, Crown original e tokens dos cards. [Matriz/evidências](matriz.md#ticket-02--cards): 52 combinações aprovadas em 13 larguras, 403 cards e 52 seleções. Build aprovado; focados finais 32 aprovados/8 ignorados, repetições de falhas 8 aprovadas. Suíte ampla original 622 aprovados/39 ignorados/5 falhas, com histórico preservado no Answer. [Revisão](revisao-02.md): Standards 0, Spec 0.
 
 - [Ticket 01 concluído](issues/01-padroes-compartilhados-cardapio.md): tokens, fontes BK e SVGs exatos demonstrados no header e na compra; [matriz e evidências](matriz.md) para os demais fluxos. Build aprovado; suíte ampla com 626 aprovados, 39 ignorados e uma falha de inclinação 3D, não reproduzida em três repetições isoladas. Revisão Standards/Spec sem achados.
