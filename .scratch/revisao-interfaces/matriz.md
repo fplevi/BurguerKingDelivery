@@ -36,6 +36,17 @@ Inventário consultado na Page 1 do [Figma BK](https://www.figma.com/design/BElI
 
 ## Índice de estados do Figma
 
+### Ticket 04 — Endereço de entrega
+
+- **165/165 combinações** de quinze estados em **320, 360, 390, 768, 1023, 1024, 1025, 1280, 1919, 1920 e 1921 px**: lista no Checkout, menu, edição, validação, confirmação de remoção, removido, pedidos anteriores, busca sem resultado, resultados, mapa, dados, salvo, lista sem Identificação, fora da região e localização indisponível. [Medidas finais](evidencias/endereco/medidas.json); 75 capturas nos tamanhos 320/390/768/1280/1920 na mesma pasta.
+- Referências: páginas de Endereço `157:4248`/`157:3130`, contexto Checkout `223:7319`/`240:17948`, menu web revisado `157:4660`/`223:7527` e confirmação mobile `157:3774`. [Referência web](evidencias/endereco-web-referencia.png) e [referência mobile](evidencias/endereco-mobile-referencia.png). Consultas de instâncias confirmaram símbolos e caixas. Origem dos SVGs e keys em `prototype/Assets/icons/README.md`.
+- Correções: body `#F5EBDC`, header `#FAF2E5`, tokens de espaçamento/raios, Flame Sans/Regular/Bold locais e ícones originais em 16/24 px. Um único Voltar, contextual; busca retorna à lista sem percorrer visitas antigas. O retorno tem seta vermelha e texto nativo.
+- Menu web não modal, posicionado no endereço e atualizado com rolagem/redimensionamento; abre acima quando falta espaço abaixo. Lista e header permanecem visíveis e utilizáveis. Fechamento externo preserva o primeiro clique na lista; Escape devolve foco ao botão de opções. Mobile mantém painel de ações e confirmação inferior, com foco modal e cancelamento por Escape.
+- Toast compartilhado com fundo marrom/mensagem branca, largura limitada para quebrar linhas e tokens; endereço salvo/removido sem duplicação. No mobile, fica acima da ação fixa, incluindo safe area. Sem mensagem nova na escolha de endereço atendido; sem feedback novo ao editar.
+- Medidas finais: overflow horizontal zero, retorno único, ícones na escala, superfícies corretas, menus modais somente abaixo de 1024 e toast separado da barra. Conferência visual de `320-editar`, `390-menu`, `390-remover`, `390-toast-salvo`, `1280-menu` e `1920-lista-visitante`; capturas de página inteira também mostram a continuação abaixo do viewport nos formulários/listas.
+- Repetir: iniciar Vite em `prototype`, executar `node scripts/revisao-endereco.mjs`; `BK_REVIEW_URL` permite outra porta (padrão 5173). O coletor usa o fluxo público, aguarda fontes, mede geometria e produz capturas; não exige igualdade de pixels.
+- [Revisão Standards/Spec](revisao-04.md): zero achados restantes nos dois eixos. Resultados funcionais e suíte completa no Answer do [ticket 04](issues/04-endereco-de-entrega.md).
+
 ### Endereço / mobile · referência iFood (`157:3130`)
 
 - [mobile / 01 · Seus endereços](https://www.figma.com/design/BElIaiOW5D1qFF8QStnoDo/BK?node-id=157-3131)

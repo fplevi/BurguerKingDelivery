@@ -38,7 +38,7 @@ async function capture(state) {
   for (const icon of measure.icons) expect([16, 24]).toContain(icon.width);
   if (measure.menu) {
     expect(measure.menu.modal).toBe(width < 1024);
-    if (width >= 1024) expect(Math.abs(measure.menu.y - measure.menu.anchor.y - measure.menu.anchor.height)).toBeLessThanOrEqual(8);
+    if (width >= 1024) expect(Math.min(Math.abs(measure.menu.y - measure.menu.anchor.y - measure.menu.anchor.height), Math.abs(measure.menu.anchor.y - measure.menu.y - measure.menu.height))).toBeLessThanOrEqual(8);
   }
   if (measure.toast && width < 1024 && measure.action) expect(measure.toast.y + measure.toast.height).toBeLessThan(measure.action.y);
   if ([320, 390, 768, 1280, 1920].includes(width)) await page.screenshot({ path: new URL(`${width}-${state}.png`, output).pathname.replace(/^\/(\w:)/, '$1'), fullPage: true });
@@ -54,7 +54,11 @@ try {
     await capture('lista-checkout');
     await menuDoEndereco(page, 'Trabalho').click();
     await capture('menu');
-    await page.keyboard.press('Escape');
+    if (width >= 1024) {
+      await paginaDeEndereco(page).getByRole('radio', { name: /^Trabalho/ }).check();
+      await expect(paginaDeEndereco(page).getByRole('radio', { name: /^Trabalho/ })).toBeChecked();
+      await expect(page.locator('#address-menu')).toHaveCount(0);
+    } else await page.keyboard.press('Escape');
     await menuDoEndereco(page, 'Trabalho').click();
     await page.getByRole('dialog', { name: 'Opções do endereço' }).getByRole('button', { name: 'Editar endereço' }).click();
     await capture('editar');

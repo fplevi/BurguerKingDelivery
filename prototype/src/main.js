@@ -444,7 +444,8 @@ function positionAddressMenu() {
   const anchor = $('address-more-' + menu.dataset.for)?.getBoundingClientRect();
   if (!anchor) return;
   menu.style.left = Math.max(16, Math.min(anchor.right - menu.offsetWidth, innerWidth - menu.offsetWidth - 16)) + 'px';
-  menu.style.top = Math.max(16, Math.min(anchor.bottom + 8, innerHeight - menu.offsetHeight - 16)) + 'px';
+  const below = anchor.bottom + 8;
+  menu.style.top = Math.max(16, below + menu.offsetHeight <= innerHeight - 16 ? below : anchor.top - menu.offsetHeight - 8) + 'px';
 }
 window.addEventListener('scroll', positionAddressMenu, true);
 window.addEventListener('resize', () => {
@@ -1157,14 +1158,16 @@ function locate() {
 }
 $('address-step-back').addEventListener('click', stepBack);
 /** Closes the menu ⋮ (Esc, or a click outside its options), the focus back on its button. */
-function closeMenu() {
+function closeMenu(restoreFocus = true) {
   const id = state.addressMenu;
-  dispatch({ type: 'addressMenu', id: null });
-  $('address-more-' + id)?.focus();
+  // View state only: keep the clicked list control alive through pointerdown/click.
+  state = reducer(state, { type: 'addressMenu', id: null });
+  $('address-menu')?.remove();
+  if (restoreFocus) $('address-more-' + id)?.focus();
 }
 document.addEventListener('pointerdown', (e) => {
   const menu = $('address-menu');
-  if (menu && !menu.matches(':modal') && !menu.contains(e.target) && !e.target.closest('[data-address-more]')) closeMenu();
+  if (menu && !menu.matches(':modal') && !menu.contains(e.target) && !e.target.closest('[data-address-more]')) closeMenu(false);
 });
 document.addEventListener('keydown', (e) => {
   const menu = $('address-menu');

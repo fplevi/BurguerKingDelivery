@@ -236,7 +236,7 @@ test('busca: vazia pede uma rua, "augusta" acha a Rua Augusta, 1508 e sem corres
   await expect(paginaDeEndereco(page).getByRole('heading', { name: 'Não encontramos esse endereço' })).toBeVisible();
 });
 
-test('"estrada do campo" está fora da região: não segue; Escolher outro endereço volta à busca e Voltar ao cardápio, ao cardápio', async ({ page }) => {
+test('"estrada do campo" está fora da região: não segue; Escolher outro endereço volta à busca e Voltar retorna ao Carrinho de origem', async ({ page }) => {
   await irAosEnderecos(page);
   await buscarEndereco(page, 'estrada do campo');
   await resultadosDaBusca(page).filter({ hasText: 'Estrada do Campo, 120' }).click();
@@ -257,6 +257,6 @@ test('"estrada do campo" está fora da região: não segue; Escolher outro ender
   await paginaDeEndereco(page).getByRole('button', { name: 'Voltar', exact: true }).click();
   await expect(page).toHaveURL(/#endereco$/);
   await paginaDeEndereco(page).getByRole('button', { name: 'Voltar', exact: true }).click();
-  await expect(page).toHaveURL(/#hamburgueres$/);
-  await expect(page.getByRole('button', { name: 'Adicionar ao carrinho' })).toBeVisible();
+  await expect(page).toHaveURL(/#carrinho$/);
+  await expect(page.getByRole('heading', { name: 'Seu carrinho' })).toBeVisible();
 });
