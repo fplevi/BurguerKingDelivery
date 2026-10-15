@@ -11,7 +11,7 @@ const measurements = [];
 try {
   for (const width of [320, 360, 390, 768, 1023, 1024, 1025, 1280, 1919, 1920, 1921]) {
     await page.setViewportSize({ width, height: 844 });
-    await page.goto(process.env.BK_REVIEW_URL ?? 'http://127.0.0.1:4181');
+    await page.goto(process.env.BK_REVIEW_URL ?? 'http://127.0.0.1:5173');
     await page.evaluate(() => document.fonts.ready);
     await page.locator('.bk-icon').evaluateAll(images => Promise.all(images.map(img => img.decode())));
     await page.locator('.catalog-photo').evaluateAll(images => Promise.all(images.map(async el => {

@@ -16,10 +16,12 @@ Inventário consultado na Page 1 do [Figma BK](https://www.figma.com/design/BElI
 
 - Viewports comuns: 390, 768, 1280 e 1920 px. Limites: 320, 360, 1023/1024/1025 e 1919/1920/1921 px.
 - Ticket 01: comparar header `165:6770` / `168:4694`, compra `25:222`, ajustes `25:231`; evidências e medidas em `evidencias/` geradas por `prototype/scripts/revisao-cardapio.mjs`.
+- Para repetir a coleta: em `prototype`, iniciar `npm run dev` (porta padrão 5173) e executar `node scripts/revisao-cardapio.mjs`; `BK_REVIEW_URL` permite usar outra URL local. O coletor aguarda fontes, imagens e o primeiro quadro 3D antes de capturar.
 - Conferir fonte carregada, caixa do ícone e área clicável separadamente. Fontes: Flame Sans no corpo/controles, Flame Regular na quantidade, Flame Bold no total. São TTFs locais em `prototype/Assets/fonts`; nenhum texto convertido em imagem foi introduzido. Os fallbacks Arial/Georgia permanecem para falhas de carregamento.
 - Biblioteca e SVGs: `prototype/Assets/icons/README.md`. Não há dependência de fonte externa nem pacote de ícones presumido.
 - Tokens novos em `prototype/src/tokens.css`; migração inicial em `cardapio.css`. Estilos antigos permanecem disponíveis. Superfícies específicas do Cardápio preservadas. Toasts, retornos, autenticação e menus aguardam seus tickets.
 - Os responsáveis pelos tickets 02–08 devem acrescentar viewport exato, estado, captura, divergência/correção e resultado. Ticket 09 fecha a integração; o inventário não aprova essas telas antecipadamente.
+- Divergência reproduzida a **768 px**, com fontes e imagens resolvidas: fotos ampliadas dos cards sobrepõem nomes e sofrem recorte (por exemplo Whopper, Cheddar Duplo e Stacker Duplo Bacon). Evidência: [captura 768](evidencias/cardapio-768.png). Registrada para o ticket 02; o ticket 01 não altera a grade.
 
 ## Índice de estados do Figma
 

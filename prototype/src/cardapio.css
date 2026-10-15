@@ -40,6 +40,7 @@ header .cart-count { padding: 0 var(--space-4); border-radius: var(--radius-pill
   background: white url('../Assets/icons/caret-down-16.svg') right 16px center no-repeat;
 }
 .purchase .field-error { margin-top: var(--space-8); }
+.purchase .field:disabled { background-color: var(--surface-disabled); }
 .purchase .qty-row { margin: var(--space-16) 0; gap: var(--space-12); }
 .purchase .qty { border-radius: var(--radius-control); }
 .purchase .qty button { display: flex; align-items: center; justify-content: center; padding: 0; }

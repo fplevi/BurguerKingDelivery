@@ -13,7 +13,7 @@ Os SVGs são exports originais, sem redesenho dos paths. Sufixos indicam a caixa
 | caret-down-16.svg | CaretDown `308:14818` | `5eff189a6333a488f64ec551e1744d1fc63a1803` | Bebida do combo 16 |
 | minus-16.svg | Minus `308:15070` | `b7c6410e29b4b0005d1d0ba54be3e3841bb2ed15` | diminuir 16 |
 | plus-16.svg | Plus `305:11337` | `ca8c1c17a5f57d938e45630bb801141ed812c226` | aumentar 16 |
-| check-24.svg | Check, instância `308:14976` em `25:222` | consultar instância | Combo 24 |
+| check-24.svg | Check `300:11418`, instância `308:14976` em `25:222` | `16c67e993965c3a46dc398337ef640e87446d926` | Combo 24 |
 | sliders-32.svg | Sliders `308:14903` | `cd5f5bb20d3a3cf0288df0dd851581cb3e2b200b` | Ver ingredientes 32 |
 | house.svg | House `300:11465` | `56cf73fbf287b7a72c34e976edcec3337db1ace7` | reserva para ticket 07 |
 | arrow-left.svg | ArrowLeft `307:11466` | `49f364e9f2711fb8115928da9648cfc346b9a0b3` | reserva para navegação |
