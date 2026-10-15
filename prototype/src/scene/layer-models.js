@@ -235,6 +235,26 @@ function sesame(R) {
   return seeds;
 }
 
+/** The crust of the bottom and middle buns (vertex colours), its bump repeated `rows` times up the side. */
+function heelCrust(rows) {
+  const crust = new MeshPhysicalMaterial({
+    vertexColors: true,
+    roughness: 0.78,
+    clearcoat: 0.1,
+    clearcoatRoughness: 0.7,
+    bumpMap: crustBump(),
+    bumpScale: 1.1,
+  });
+  crust.bumpMap.repeat.set(6, rows);
+  return crust;
+}
+
+/** The toasted crumb of a cut face (planar-mapped). */
+function cutCrumb() {
+  const { map, bumpMap } = crumb();
+  return new MeshStandardMaterial({ map, bumpMap, bumpScale: 2.5, roughness: 0.9 });
+}
+
 // Pão inferior: low heel with rounded edges; the cut face shows the toasted crumb (miolo).
 const BOTTOM_HEIGHT = 0.28;
 
@@ -265,15 +285,7 @@ function bottomBun() {
       return c.map((v) => v * (0.9 + speckle * 0.2));
     },
   }));
-  const crust = new MeshPhysicalMaterial({
-    vertexColors: true,
-    roughness: 0.78,
-    clearcoat: 0.1,
-    clearcoatRoughness: 0.7,
-    bumpMap: crustBump(),
-    bumpScale: 1.1,
-  });
-  crust.bumpMap.repeat.set(6, 2);
+  const crust = heelCrust(2);
 
   // Cut face: a gently domed disc of crumb, planar-mapped.
   const capProfile = [];
@@ -290,12 +302,71 @@ function bottomBun() {
     },
     uv: (x, y, z) => [x / (2 * R) + 0.5, z / (2 * R) + 0.5],
   }));
-  const { map, bumpMap } = crumb();
-  const crumbMaterial = new MeshStandardMaterial({ map, bumpMap, bumpScale: 2.5, roughness: 0.9 });
+  const crumbMaterial = cutCrumb();
 
   const group = new Group();
   group.add(mesh(crustGeometry, crust));
   group.add(mesh(capGeometry, crumbMaterial));
+  return group;
+}
+
+// Pão do meio (Big King): the bottom bun's variant cut on both sides: a thinner, flat disc with
+// the pale crumb on top and underneath and a golden crust round the edge, rounded at both cuts.
+// Same crust and crumb textures as the bottom bun (no texture of its own); that bun is untouched.
+const MIDDLE_HEIGHT = 0.18;
+
+function middleBun() {
+  const R = BUN_RADIUS;
+  const H = MIDDLE_HEIGHT;
+  const rim = 0.05;
+  // Only the side band: from the bottom cut's edge, round the side, to the top cut's edge.
+  const profile = [
+    ...arc(R - rim, rim, rim, -Math.PI / 2, 0, 6),
+    [R * 1.006, H / 2],
+    ...arc(R - rim, H - rim, rim, 0, Math.PI / 2, 6),
+  ];
+  const crustGeometry = shared('middleBun:crust', () => revolve(profile, {
+    shape: (x, y, z) => {
+      const a = Math.atan2(z, x);
+      const wall = 0.01 * (fbm(Math.cos(a) * 3 + 5, Math.sin(a) * 3, y * 6, { octaves: 2, seed: 17 }) - 0.5) * 2;
+      const s = rimScale(x - 2, z) + wall * smoothstep(0.02, 0.06, Math.min(y, H - y)); // not at the rounded cuts
+      return [x * s, y, z * s];
+    },
+    paint: (x, y, z) => {
+      const patches = fbm(x * 1.8 + 3, z * 1.8, y * 3, { octaves: 3, seed: 18 });
+      const speckle = fbm(x * 8, z * 8 + 2, y * 10, { octaves: 2, seed: 19 });
+      // Golden in the middle of the side, paler towards both cuts.
+      let c = mixColor([214, 160, 94], [182, 112, 52], smoothstep(H / 2, 0, Math.abs(y - H / 2)));
+      c = mixColor(c, [140, 80, 36], smoothstep(0.55, 0.78, patches) * 0.6);
+      return c.map((v) => v * (0.9 + speckle * 0.2));
+    },
+  }));
+  const crust = heelCrust(1);
+
+  // Cut faces: the bottom bun's crumb disc on top, and the same disc mirrored underneath.
+  const cap = (top) => {
+    const points = [];
+    for (let i = 0; i <= 10; i++) {
+      const f = top ? 1 - i / 10 : i / 10; // the top faces up (rim to centre), the bottom down
+      const bulge = 0.01 * (1 - f * f);
+      points.push([f * (R - rim + 0.004), top ? H - 0.004 + bulge : 0.004 - bulge]);
+    }
+    return shared(`middleBun:${top ? 'top' : 'bottom'}`, () => revolve(points, {
+      shape: (x, y, z) => {
+        const s = rimScale(x - 2, z);
+        const f = Math.hypot(x, z) / R;
+        const lumps = 0.007 * (fbm(x * 6 + (top ? 0 : 9), z * 6, 0, { octaves: 3, seed: 14 }) - 0.5) * 2 * (1 - f * f);
+        return [x * s, y + (top ? lumps : -lumps), z * s];
+      },
+      uv: (x, y, z) => [x / (2 * R) + 0.5, z / (2 * R) + 0.5],
+    }));
+  };
+  const crumbMaterial = cutCrumb();
+
+  const group = new Group();
+  group.add(mesh(crustGeometry, crust));
+  group.add(mesh(cap(true), crumbMaterial));
+  group.add(mesh(cap(false), crumbMaterial));
   return group;
 }
 
@@ -1274,6 +1345,7 @@ export const layerModels = {
     height: BOTTOM_HEIGHT,
     build: bottomBun,
   },
+  middleBun: { height: MIDDLE_HEIGHT, build: middleBun },
   meat: {
     height: MEAT_HEIGHT + 0.02, // the lumps rise above the nominal thickness
     build: patty,

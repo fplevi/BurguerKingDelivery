@@ -101,6 +101,27 @@ export const recipes = {
       { id: 'top', name: 'Pão superior', lean: { on: 'onionRing', angle: 0.16 }, y: 55, thickness: 56, locked: true },
     ],
   }),
+  bigKing: recipe({
+    id: 'bigKing',
+    name: 'Big King',
+    price: 3190, // provisional (spec)
+    // As seen in the official photo; Base: the three buns and both meats. The queijo is the
+    // Stacker Duplo Bacon's cheddar slice, on the lower meat; both sauces are its Molho Stacker,
+    // one on the middle bun, one under the top bun; picles, cebola and alface are the Whopper's.
+    layers: [
+      { id: 'bottom', name: 'Pão inferior', text: 'Pão com gergelim', y: 242, thickness: 0, locked: true },
+      { id: 'meat', name: 'Carne grelhada', text: 'duas carnes grelhadas', y: 210, thickness: 32, locked: true },
+      { id: 'cheese', name: 'Queijo', text: 'queijo', model: 'cheddarSlice', y: 192, thickness: 8 },
+      { id: 'middleBun', name: 'Pão do meio', text: 'pão do meio', y: 170, thickness: 22, locked: true },
+      { id: 'sauce1', name: 'Molho Big King inferior', text: 'molho Big King', model: 'stackerSauce', y: 154, thickness: 6 },
+      { id: 'meat2', name: 'Carne grelhada', model: 'meat', turn: 1.9, y: 126, thickness: 30, locked: true },
+      { id: 'pickles', name: 'Picles', text: 'picles', y: 108, thickness: 8 },
+      { id: 'onion', name: 'Cebola', text: 'cebola', y: 94, thickness: 8 },
+      { id: 'lettuce', name: 'Alface', text: 'alface', y: 74, thickness: 14 },
+      { id: 'sauce2', name: 'Molho Big King superior', text: 'molho Big King', model: 'stackerSauce', turn: 2.4, y: 58, thickness: 4 },
+      { id: 'top', name: 'Pão superior', y: 18, thickness: 52, locked: true },
+    ],
+  }),
 };
 
 /** Camada `id` of a Receita. */

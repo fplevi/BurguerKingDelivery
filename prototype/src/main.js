@@ -137,7 +137,7 @@ const burgers = [
   { recipe: 'cheddarDuplo', photo: cheddarDuploPhoto, box: [188, 302, 610, 619] },
   { recipe: 'stackerDuploBacon', photo: stackerDuploPhoto, box: [193, 313, 639, 618] },
   { recipe: 'rodeioDuplo', photo: rodeioDuploPhoto, box: [210, 333, 625, 620] },
-  { name: 'Big King', photo: bigKingPhoto, box: [189, 240, 629, 619] },
+  { recipe: 'bigKing', photo: bigKingPhoto, box: [189, 240, 629, 619] },
   { name: 'Cheeseburger Duplo', photo: cheeseburgerDuploPhoto, box: [171, 318, 610, 619] },
   { name: 'Cheeseburger', photo: cheeseburgerPhoto, box: [165, 356, 612, 618] },
   { recipe: 'rodeio', photo: rodeioPhoto, box: [205, 359, 617, 620] },
