@@ -22,12 +22,12 @@ Lida na foto oficial `site_Big_King.png` e confirmada pelo responsável pelo pro
 | carne | Carne grelhada | duas carnes grelhadas | não (Base) | carne existente |
 | queijo | Queijo | queijo | sim | `cheddarSlice`, sem mudança |
 | pão do meio | Pão do meio | pão do meio | não (Base) | **`middleBun`, novo** |
-| molho | Molho Big King inferior | molho Big King | sim | `stackerSauce`, sem mudança |
+| molho | Molho Big King inferior | molho Big King | sim | `bigKingSauce`, novo (revisão, ticket 02) |
 | carne | Carne grelhada | — | não (Base) | carne existente, girada (`turn`) |
 | picles | Picles | picles | sim | picles existente |
 | cebola | Cebola | cebola | sim | cebola existente |
 | alface | Alface | alface | sim | alface existente |
-| molho | Molho Big King superior | molho Big King | sim | `stackerSauce`, girado (`turn`) |
+| molho | Molho Big King superior | molho Big King | sim | `bigKingSauceTop`, novo (revisão, ticket 02) |
 | pão superior | Pão superior | — | não (Base) | pão superior existente |
 
 Ids sugeridos: `bottom`, `meat`, `cheese`, `middleBun`, `sauce1`, `meat2`, `pickles`, `onion`, `lettuce`, `sauce2`, `top`; Receita `bigKing`.
@@ -62,10 +62,10 @@ Pela foto: o queijo laranja fica sobre a carne de baixo e escorre em ponta para 
 - **Receita nova, sem prefactor:** o Big King entra como mais uma Receita, com nome "Big King", preço provisório R$ 31,90 e as 11 Camadas da tabela. Base: os três pães e as duas carnes. O glossário não muda.
 - **Descrição:** sai dos textos das Camadas, como nos outros (texto repetido é dito uma vez): "Pão com gergelim, duas carnes grelhadas, queijo, pão do meio, molho Big King, picles, cebola e alface."
 - **Pão do meio (modelo novo):** `middleBun` em `layer-models.js`, variante do pão inferior: achatado dos dois lados, mais fino, miolo claro em cima e embaixo e borda dourada. Mesma textura do pão inferior, **sem receita de textura nova**, para não pesar nenhum worker (lição do ticket 02 do Rodeio Duplo). O pão inferior aprovado não pode mudar.
-- **Dois molhos:** as duas Camadas usam o `stackerSauce` sem mudança (creme laranja-rosado com escorrido); a de cima gira com `turn` para não ficar idêntica. Cada uma é retirada sozinha, com nomes "Molho Big King inferior" e "Molho Big King superior", como o "Cheddar inferior/superior" do Cheddar Duplo. O Stacker Duplo Bacon aprovado não muda.
+- **Dois molhos:** as duas Camadas usam o `stackerSauce` sem mudança (creme laranja-rosado com escorrido); a de cima gira com `turn` para não ficar idêntica. Cada uma é retirada sozinha, com nomes "Molho Big King inferior" e "Molho Big King superior", como o "Cheddar inferior/superior" do Cheddar Duplo. O Stacker Duplo Bacon aprovado não muda. Na revisão (ticket 02), os dois passam a usar um molho próprio, laranja (`bigKingSauce` sobre o pão do meio, um corpo liso com a borda arredondada escorrendo em gotas pela lateral; `bigKingSauceTop` sob o pão de cima, menor), e o `stackerSauce` segue sem mudança.
 - **Queijo:** `cheddarSlice` sem mudança, com o nome "Queijo" na interface.
 - **Carnes:** a de cima gira com `turn`, como nos outros duplos.
-- **Picles, Cebola, Alface:** reaproveitam os modelos do Whopper sem mudança.
+- **Picles, Cebola, Alface:** reaproveitam os modelos do Whopper sem mudança; na revisão (ticket 02), a Cebola e a Alface se alargam com `spread` na Receita, sem mudar o modelo.
 - **Proporções pela foto desde o início:** espessura das carnes, do pão do meio e do pão superior, e quanto queijo, molho, picles, cebola e alface aparecem saem de `site_Big_King.png` já no ticket que torna o produto selecionável.
 - **Grade:** Whopper, Cheddar Duplo, Stacker Duplo Bacon, Rodeio Duplo, Big King e Rodeio selecionáveis; Cheeseburger Duplo e Cheeseburger seguem "Em breve neste protótipo".
 - **Entrada e Saída:** sem código novo; com 11 Camadas, a Entrada fica em ~1 s, abaixo do teto de ~1,2 s.

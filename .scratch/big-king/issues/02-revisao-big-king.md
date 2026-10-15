@@ -7,7 +7,7 @@
 **Status:** needs-info
 
 - [x] Quatro capturas e quadros da Entrada e da Saída entregues juntos, com a foto oficial ao lado
-- [ ] Ajustes pedidos aplicados e novas capturas anexadas
+- [x] Ajustes pedidos aplicados e novas capturas anexadas
 - [ ] Aprovação do responsável registrada em `## Comments`
 
 ## Comments
@@ -17,3 +17,12 @@
   - **Molho:** nas duas Camadas aparece pouco. O de baixo mostra só pontas rosadas na borda do pão do meio; na foto é uma faixa laranja grossa escorrendo por toda a frente. O de cima aparece como manchas rosadas entre a alface e o pão superior; na foto quase não aparece. Aumentar o escorrido exigiria mudar o `stackerSauce` (proibido) ou criar um modelo novo de molho só para o Big King.
   - **Proporções:** o montado sai mais largo e mais baixo que a foto, e a alface e a cebola passam menos da borda; as carnes e o pão superior são os modelos aprovados, sem escala por Camada.
   - **Cor do molho:** rosado-salmão, mais frio que o laranja da foto (é o do Stacker, que não pode mudar).
+- 2026-10-15 (responsável pelo produto): "Corrigir todos, menos o do pão. Arrumar a cor do molho também." Depois, sobre a primeira tentativa (molho dobrado para baixo na borda): "Esse visual da maionese expremida como se houvesse uma parede segurando a maionese não ficou nada legal, acredito que a gente deve deixar o molho sempre com aspecto meio arredondado suave em todas as pontas."
+- 2026-10-15 (agente): ajustes aplicados; novas capturas em `capturas/02/ajustes/` (as mesmas vistas, `revisao-lado-a-lado.png` com a foto oficial e `quadros/`). O pão do meio não mudou.
+  - **Molho Big King inferior:** modelo próprio, `bigKingSauce`. É uma peça única e lisa, levemente abaulada, com a borda num cordão grosso e arredondado logo além do pão do meio. Em 11 pontos o cordão cede e escorre pela lateral em gotas de ponta redonda, sem dobras nem cortes retos.
+  - **Molho Big King superior:** modelo próprio, `bigKingSauceTop`. Poça menor, com gotas antes da borda; quase não aparece sob o pão de cima.
+  - **Cor:** laranja cremoso e brilhante (`#f4a648`, pouco áspero), diferente do queijo. O `stackerSauce` e o Stacker Duplo Bacon não mudaram. O SVG sem WebGL usa a mesma cor.
+  - **Alface e Cebola:** os modelos do Whopper, alargados só no Big King pela Receita (`spread` 1,14 e 1,08); passam mais da borda.
+  - A Entrada continua em ~1 s.
+  - Suíte `npm run test:build` numa cópia isolada (HEAD + estas mudanças): 668 passaram, 1 falhou por tempo esgotado (`categorias.spec.js:169`, 23 s). Outra sessão rodava a suíte ao mesmo tempo nesta máquina; o teste passou 3 de 3 depois e também passa sem as mudanças.
+  - Aguardando a aprovação do responsável pelo produto.

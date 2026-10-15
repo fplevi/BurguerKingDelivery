@@ -1299,8 +1299,8 @@ function puddle({ seed, reach, lobes, bead, wobble = 0.28 }) {
  * the lobes of the outline. With `drip`, the sauce sags that far down past the patty's edge,
  * hanging over the Camada below.
  */
-function sauce(key, { colour, roughness, seed, lobes, bead, puddles, wobble, drip = 0 }) {
-  const mat = new MeshStandardMaterial({ color: colour, roughness, side: DoubleSide });
+function sauce(key, { colour, roughness, seed, lobes, bead, puddles, wobble, drip = 0, emissive = '#000000' }) {
+  const mat = new MeshStandardMaterial({ color: colour, roughness, emissive, side: DoubleSide });
   return mesh(shared(key, () => {
     const group = new Group();
     puddles.forEach(([x, z, reach, scale = 1, stretch = 1, turn = 0], i) => {
@@ -1339,6 +1339,55 @@ function stackerPuddles() {
   });
   return [[0.12, 0.1, 0.68, 0.75, 1.2, 0.6], [-0.18, -0.14, 0.58, 0.65, 1.1, 2.2], ...around];
 }
+
+/**
+ * Molho Big King under the top bun: a smaller spread with a few dollops short of the edge, so
+ * only a little peeks out.
+ */
+function bigKingTopPuddles() {
+  const rnd = random(67);
+  const around = Array.from({ length: 7 }, (_, i) => {
+    const deg = i * (360 / 7) + (rnd() - 0.5) * 14;
+    const turn = (deg * Math.PI) / 180 + Math.PI / 2 + (rnd() - 0.5) * 0.6;
+    return [...dollop(deg, 0.1 + rnd() * 0.06, 0.88 + rnd() * 0.06), 0.8 + rnd() * 0.3, 1 + rnd() * 0.3, turn];
+  });
+  return [[0.04, -0.02, 0.62, 0.55, 1.1, 0.4], ...around];
+}
+
+// Molho Big King on the pão do meio: one smooth, closed body, round at every edge (a sheet
+// stuck out past the bun, or a fold, reads as sauce held by a wall). A creamy disc, a little
+// domed, whose rim is a fat round bead just past the bun's edge, its outline gently lobed. In
+// places the bead sags over the edge into soft drops down the side: the outer half of the
+// bead is pulled down there, so each drop keeps the bead's round section and round end.
+const BIG_KING_SAUCE_HEIGHT = 0.07;
+const BIG_KING_BEAD = 0.04;
+function bigKingSauceBody(seed) {
+  const R = BUN_RADIUS + 0.025, b = BIG_KING_BEAD, t = 0.03;
+  const profile = [
+    [0, 0], [R - b, 0],
+    ...arc(R - b, b, b, -Math.PI / 2, Math.PI / 2, 14),
+    [R - 2.2 * b, 2 * b * 0.95], [0.6, t + 0.012], [0, t + 0.016],
+  ];
+  const rnd = random(seed);
+  const drops = Array.from({ length: 11 }, (_, i) => ({
+    a: ((i + 0.2 + rnd() * 0.6) / 11) * Math.PI * 2,
+    width: 0.07 + rnd() * 0.05,
+    depth: i % 3 ? 0.04 + rnd() * 0.03 : 0.08 + rnd() * 0.03,
+  }));
+  const wrap = (a) => Math.atan2(Math.sin(a), Math.cos(a));
+  return revolve(profile, {
+    segments: 240,
+    shape: (x, y, z) => {
+      const a = Math.atan2(z, x), r = Math.hypot(x, z);
+      const lobe = 1 + 0.025 * (fbm(Math.cos(a) * 2.5 + seed, Math.sin(a) * 2.5, 0, { octaves: 2, seed: seed + 1 }) - 0.5) * 2;
+      const sag = drops.reduce((m, d) => Math.max(m, d.depth * Math.exp(-((wrap(a - d.a) / d.width) ** 2))), 0);
+      const outer = smoothstep(R - 1.6 * b, R - 0.2 * b, r); // only the bead's outer half sags
+      const swell = 0.006 * (fbm(x * 4 + seed, z * 4, 0, { octaves: 2, seed: seed + 3 }) - 0.5) * 2 * (1 - outer);
+      return [x * lobe, y - sag * outer + swell, z * lobe];
+    },
+  });
+}
+const BIG_KING_SAUCE = { colour: '#f4a648', roughness: 0.2, emissive: '#2a1000', lobes: 2.4, wobble: 0.3 };
 
 export const layerModels = {
   bottom: {
@@ -1407,6 +1456,21 @@ export const layerModels = {
         drip: 0.07,
         puddles: stackerPuddles(),
       }),
+  },
+  // Molho Big King (Big King): creamy, warm orange. On the pão do meio, one round-edged body
+  // sagging over the rim in drops (bigKingSauceBody); under the top bun, only a little shows.
+  bigKingSauce: {
+    height: BIG_KING_SAUCE_HEIGHT - 0.02, // the dome rests a little into the patty above
+    build: () => {
+      const { colour, roughness, emissive } = BIG_KING_SAUCE;
+      const mat = new MeshStandardMaterial({ color: colour, roughness, emissive, side: DoubleSide });
+      return mesh(shared('bigKingSauce', () => bigKingSauceBody(61)), mat);
+    },
+  },
+  bigKingSauceTop: {
+    height: SAUCE_STACK,
+    build: () =>
+      sauce('bigKingSauceTop', { ...BIG_KING_SAUCE, seed: 67, bead: MAYO_HEIGHT, puddles: bigKingTopPuddles() }),
   },
   bbqSauce: {
     height: BBQ_SAUCE_STACK,
