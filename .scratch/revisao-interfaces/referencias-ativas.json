@@ -1,0 +1,1112 @@
+[
+  {
+    "id": "157:3130",
+    "name": "Endereço / mobile · referência iFood",
+    "screens": [
+      [
+        "157:3131",
+        "mobile / 01 · Seus endereços"
+      ],
+      [
+        "157:3230",
+        "mobile / 02 · Buscar endereço"
+      ],
+      [
+        "157:3284",
+        "mobile / 03 · Confirmar localização"
+      ],
+      [
+        "157:3329",
+        "mobile / 04 · Dados de entrega"
+      ],
+      [
+        "157:3449",
+        "mobile / 05 · Endereços de pedidos anteriores"
+      ],
+      [
+        "157:3544",
+        "mobile / 06 · Gerenciar endereço"
+      ],
+      [
+        "157:3654",
+        "mobile / 07 · Editar endereço"
+      ],
+      [
+        "157:3774",
+        "mobile / 08 · Remover endereço"
+      ],
+      [
+        "157:3879",
+        "mobile / 09 · Endereço removido"
+      ],
+      [
+        "157:3954",
+        "mobile / 10 · Endereço salvo"
+      ],
+      [
+        "157:4056",
+        "mobile / 11 · Localização indisponível"
+      ],
+      [
+        "157:4090",
+        "mobile / 12 · Fora da região de entrega"
+      ],
+      [
+        "157:4143",
+        "mobile / 13 · Busca em foco"
+      ],
+      [
+        "157:4173",
+        "mobile / 14 · Busca sem resultados"
+      ],
+      [
+        "157:4203",
+        "mobile / 15 · Localização ajustada"
+      ],
+      [
+        "159:4556",
+        "mobile / 16 · Trabalho selecionado"
+      ],
+      [
+        "159:4639",
+        "mobile / 17 · Endereço do histórico selecionado"
+      ]
+    ]
+  },
+  {
+    "id": "157:4248",
+    "name": "Endereço / Web · páginas",
+    "screens": [
+      [
+        "157:4249",
+        "BK / Endereço / web / 01 · Seus endereços"
+      ],
+      [
+        "157:4346",
+        "BK / Endereço / web / 02 · Buscar endereço"
+      ],
+      [
+        "157:4400",
+        "BK / Endereço / web / 03 · Confirmar localização"
+      ],
+      [
+        "157:4445",
+        "BK / Endereço / web / 04 · Dados de entrega"
+      ],
+      [
+        "157:4565",
+        "BK / Endereço / web / 05 · Endereços de pedidos anteriores"
+      ],
+      [
+        "157:4660",
+        "Endereço / Menu de gerenciamento"
+      ],
+      [
+        "157:4770",
+        "BK / Endereço / web / 07 · Editar endereço"
+      ],
+      [
+        "157:4890",
+        "BK / Endereço / web / 08 · Remover endereço"
+      ],
+      [
+        "157:4995",
+        "Endereço / lista com toast · removido"
+      ],
+      [
+        "157:5070",
+        "Endereço / lista com toast · salvo"
+      ],
+      [
+        "157:5172",
+        "BK / Endereço / web / 11 · Localização indisponível"
+      ],
+      [
+        "157:5206",
+        "BK / Endereço / web / 12 · Fora da região de entrega"
+      ],
+      [
+        "157:5259",
+        "BK / Endereço / web / 13 · Busca em foco"
+      ],
+      [
+        "157:5289",
+        "BK / Endereço / web / 14 · Busca sem resultados"
+      ],
+      [
+        "157:5319",
+        "BK / Endereço / web / 15 · Localização ajustada"
+      ],
+      [
+        "159:4990",
+        "BK / Endereço / web / 16 · Trabalho selecionado"
+      ],
+      [
+        "159:5073",
+        "BK / Endereço / web / 17 · Endereço do histórico selecionado"
+      ],
+      [
+        "212:6015",
+        "Endereço / lista após salvo · toast encerrado"
+      ],
+      [
+        "212:6154",
+        "Endereço / lista após removido · toast encerrado"
+      ]
+    ]
+  },
+  {
+    "id": "187:5485",
+    "name": "Carrinho / Web · fluxo",
+    "screens": [
+      [
+        "187:5486",
+        "BK / Carrinho / web / 01 · Carrinho"
+      ],
+      [
+        "187:5848",
+        "BK / Carrinho / web / 02 · Combo desmarcado"
+      ],
+      [
+        "187:6208",
+        "BK / Carrinho / web / 03 · Escolher bebida"
+      ],
+      [
+        "187:6570",
+        "BK / Carrinho / web / 04 · Lista de bebidas aberta"
+      ],
+      [
+        "187:6968",
+        "BK / Carrinho / web / 05 · Quantidade atualizada"
+      ],
+      [
+        "187:7330",
+        "BK / Carrinho / web / 06 · Item removido"
+      ],
+      [
+        "187:7609",
+        "BK / Carrinho / web / 07 · Carrinho vazio"
+      ],
+      [
+        "187:7676",
+        "BK / Carrinho / web / 08 · Bebida obrigatória"
+      ],
+      [
+        "187:8042",
+        "BK / Carrinho / web / 09 · Ver ingredientes"
+      ],
+      [
+        "189:10789",
+        "BK / Carrinho / web / Quantidade 2 / Cheddar Duplo"
+      ],
+      [
+        "189:11159",
+        "BK / Carrinho / web / Quantidade 2 / Batata Frita"
+      ],
+      [
+        "189:11529",
+        "BK / Carrinho / web / Quantidade 2 / BK® Mix de Brownie"
+      ],
+      [
+        "189:11899",
+        "BK / Carrinho / web / Remover / Cheddar Duplo"
+      ],
+      [
+        "189:12262",
+        "BK / Carrinho / web / Remover / Batata Frita"
+      ],
+      [
+        "189:12626",
+        "BK / Carrinho / web / Remover / BK® Mix de Brownie"
+      ],
+      [
+        "189:12991",
+        "BK / Carrinho / web / Bebida do combo / Coca-Cola"
+      ],
+      [
+        "189:13349",
+        "BK / Carrinho / web / Bebida do combo / Sprite"
+      ],
+      [
+        "189:13707",
+        "BK / Carrinho / web / Bebida do combo / Fanta Laranja"
+      ],
+      [
+        "189:14065",
+        "BK / Carrinho / web / Bebida do combo / Natural One Laranja"
+      ],
+      [
+        "189:14423",
+        "BK / Carrinho / web / Bebida do combo / Natural One Uva"
+      ],
+      [
+        "189:14781",
+        "BK / Carrinho / web / Bebida do combo / Água de Copo"
+      ],
+      [
+        "189:15139",
+        "BK / Carrinho / web / Cheddar Duplo / combo marcado"
+      ],
+      [
+        "189:15524",
+        "BK / Carrinho / web / Cheddar Duplo / bebida selecionada"
+      ],
+      [
+        "189:16293",
+        "BK / Carrinho / web / Visão completa"
+      ]
+    ]
+  },
+  {
+    "id": "187:8185",
+    "name": "Carrinho / Mobile · fluxo",
+    "screens": [
+      [
+        "187:8186",
+        "BK / Carrinho / mobile / 01 · Carrinho"
+      ],
+      [
+        "187:8510",
+        "BK / Carrinho / mobile / 02 · Combo desmarcado"
+      ],
+      [
+        "187:8832",
+        "BK / Carrinho / mobile / 03 · Escolher bebida"
+      ],
+      [
+        "187:9156",
+        "BK / Carrinho / mobile / 04 · Lista de bebidas aberta"
+      ],
+      [
+        "187:9516",
+        "BK / Carrinho / mobile / 05 · Quantidade atualizada"
+      ],
+      [
+        "187:9840",
+        "BK / Carrinho / mobile / 06 · Item removido"
+      ],
+      [
+        "187:10081",
+        "BK / Carrinho / mobile / 07 · Carrinho vazio"
+      ],
+      [
+        "187:10110",
+        "BK / Carrinho / mobile / 08 · Bebida obrigatória"
+      ],
+      [
+        "187:10438",
+        "BK / Carrinho / mobile / 09 · Ver ingredientes"
+      ],
+      [
+        "189:16655",
+        "BK / Carrinho / mobile / Quantidade 2 / Cheddar Duplo"
+      ],
+      [
+        "189:17004",
+        "BK / Carrinho / mobile / Quantidade 2 / Batata Frita"
+      ],
+      [
+        "189:17353",
+        "BK / Carrinho / mobile / Quantidade 2 / BK® Mix de Brownie"
+      ],
+      [
+        "189:17702",
+        "BK / Carrinho / mobile / Remover / Cheddar Duplo"
+      ],
+      [
+        "189:18044",
+        "BK / Carrinho / mobile / Remover / Batata Frita"
+      ],
+      [
+        "189:18387",
+        "BK / Carrinho / mobile / Remover / BK® Mix de Brownie"
+      ],
+      [
+        "189:18731",
+        "BK / Carrinho / mobile / Bebida do combo / Coca-Cola"
+      ],
+      [
+        "189:19068",
+        "BK / Carrinho / mobile / Bebida do combo / Sprite"
+      ],
+      [
+        "189:19405",
+        "BK / Carrinho / mobile / Bebida do combo / Fanta Laranja"
+      ],
+      [
+        "189:19742",
+        "BK / Carrinho / mobile / Bebida do combo / Natural One Laranja"
+      ],
+      [
+        "189:20079",
+        "BK / Carrinho / mobile / Bebida do combo / Natural One Uva"
+      ],
+      [
+        "189:20416",
+        "BK / Carrinho / mobile / Bebida do combo / Água de Copo"
+      ],
+      [
+        "189:20753",
+        "BK / Carrinho / mobile / Cheddar Duplo / combo marcado"
+      ],
+      [
+        "189:21117",
+        "BK / Carrinho / mobile / Cheddar Duplo / bebida selecionada"
+      ],
+      [
+        "189:22075",
+        "BK / Carrinho / mobile / Visão completa"
+      ]
+    ]
+  },
+  {
+    "id": "217:6185",
+    "name": "Checkout / Web · fluxo",
+    "screens": [
+      [
+        "218:6192",
+        "Checkout / phone"
+      ],
+      [
+        "218:6359",
+        "Checkout / phoneFilled"
+      ],
+      [
+        "218:6512",
+        "Checkout / waCode"
+      ],
+      [
+        "218:6671",
+        "Checkout / smsCode"
+      ],
+      [
+        "218:6830",
+        "Checkout / codeError"
+      ],
+      [
+        "218:6993",
+        "Checkout / newCustomer"
+      ],
+      [
+        "218:7464",
+        "Checkout / pix"
+      ],
+      [
+        "218:7675",
+        "Checkout / savedCard"
+      ],
+      [
+        "218:7918",
+        "Checkout / newCard"
+      ],
+      [
+        "218:8176",
+        "Checkout / cardError"
+      ],
+      [
+        "218:8428",
+        "Checkout / pixWaiting"
+      ],
+      [
+        "218:8822",
+        "Checkout / pixCopied"
+      ],
+      [
+        "218:9221",
+        "Checkout / pixExpired"
+      ],
+      [
+        "218:9360",
+        "Checkout / pixApproved"
+      ],
+      [
+        "218:9489",
+        "Checkout / cardProcessing"
+      ],
+      [
+        "218:9618",
+        "Checkout / successPix"
+      ],
+      [
+        "218:9773",
+        "Checkout / successCard"
+      ],
+      [
+        "223:7319",
+        "Checkout / endereço / BK / Endereço / web / 01 · Seus endereços"
+      ],
+      [
+        "223:7351",
+        "Checkout / endereço / BK / Endereço / web / 02 · Buscar endereço"
+      ],
+      [
+        "223:7384",
+        "Checkout / endereço / BK / Endereço / web / 03 · Confirmar localização"
+      ],
+      [
+        "223:7427",
+        "Checkout / endereço / BK / Endereço / web / 04 · Dados de entrega"
+      ],
+      [
+        "223:7496",
+        "Checkout / endereço / BK / Endereço / web / 05 · Endereços de pedidos anteriores"
+      ],
+      [
+        "223:7527",
+        "Checkout / endereço / Endereço / Menu de gerenciamento"
+      ],
+      [
+        "223:7575",
+        "Checkout / endereço / BK / Endereço / web / 07 · Editar endereço"
+      ],
+      [
+        "223:7644",
+        "Checkout / endereço / BK / Endereço / web / 08 · Remover endereço"
+      ],
+      [
+        "223:7694",
+        "Checkout / endereço / Endereço / lista com toast · removido"
+      ],
+      [
+        "223:7734",
+        "Checkout / endereço / Endereço / lista com toast · salvo"
+      ],
+      [
+        "223:7775",
+        "Checkout / endereço / BK / Endereço / web / 11 · Localização indisponível"
+      ],
+      [
+        "223:7810",
+        "Checkout / endereço / BK / Endereço / web / 12 · Fora da região de entrega"
+      ],
+      [
+        "223:7842",
+        "Checkout / endereço / BK / Endereço / web / 13 · Busca em foco"
+      ],
+      [
+        "223:7877",
+        "Checkout / endereço / BK / Endereço / web / 14 · Busca sem resultados"
+      ],
+      [
+        "223:7912",
+        "Checkout / endereço / BK / Endereço / web / 15 · Localização ajustada"
+      ],
+      [
+        "223:7955",
+        "Checkout / endereço / BK / Endereço / web / 16 · Trabalho selecionado"
+      ],
+      [
+        "223:7993",
+        "Checkout / endereço / BK / Endereço / web / 17 · Endereço do histórico selecionado"
+      ],
+      [
+        "223:8031",
+        "Checkout / endereço / Endereço / lista após salvo · toast encerrado"
+      ],
+      [
+        "223:8072",
+        "Checkout / endereço / Endereço / lista após removido · toast encerrado"
+      ],
+      [
+        "224:8706",
+        "Checkout / waResent"
+      ],
+      [
+        "224:8805",
+        "Checkout / smsResent"
+      ],
+      [
+        "224:8904",
+        "Checkout / newPhone"
+      ],
+      [
+        "224:8990",
+        "Checkout / newCode"
+      ],
+      [
+        "224:9083",
+        "Checkout / newCodeSMS"
+      ],
+      [
+        "227:8995",
+        "Checkout / novo cartão / visão completa"
+      ]
+    ]
+  },
+  {
+    "id": "239:8996",
+    "name": "Checkout / Mobile · fluxo",
+    "screens": [
+      [
+        "240:8996",
+        "Checkout mobile / phone"
+      ],
+      [
+        "240:9263",
+        "Checkout mobile / phoneFilled"
+      ],
+      [
+        "240:9532",
+        "Checkout mobile / waCode"
+      ],
+      [
+        "240:9813",
+        "Checkout mobile / smsCode"
+      ],
+      [
+        "240:10093",
+        "Checkout mobile / codeError"
+      ],
+      [
+        "240:10381",
+        "Checkout mobile / newCustomer"
+      ],
+      [
+        "240:10650",
+        "Checkout mobile / pix"
+      ],
+      [
+        "240:11012",
+        "Checkout mobile / savedCard"
+      ],
+      [
+        "240:11435",
+        "Checkout mobile / newCard"
+      ],
+      [
+        "240:11881",
+        "Checkout mobile / cardError"
+      ],
+      [
+        "240:12322",
+        "Checkout mobile / pixWaiting"
+      ],
+      [
+        "240:12864",
+        "Checkout mobile / pixCopied"
+      ],
+      [
+        "240:13415",
+        "Checkout mobile / pixExpired"
+      ],
+      [
+        "240:13692",
+        "Checkout mobile / pixApproved"
+      ],
+      [
+        "240:13949",
+        "Checkout mobile / cardProcessing"
+      ],
+      [
+        "240:14206",
+        "Checkout mobile / successPix"
+      ],
+      [
+        "240:14482",
+        "Checkout mobile / successCard"
+      ],
+      [
+        "240:14758",
+        "Checkout mobile / waResent"
+      ],
+      [
+        "240:15047",
+        "Checkout mobile / smsResent"
+      ],
+      [
+        "240:15336",
+        "Checkout mobile / newPhone"
+      ],
+      [
+        "240:15605",
+        "Checkout mobile / newCode"
+      ],
+      [
+        "240:15886",
+        "Checkout mobile / newCodeSMS"
+      ],
+      [
+        "240:17948",
+        "Checkout mobile / mobile / 01 · Seus endereços"
+      ],
+      [
+        "240:17971",
+        "Checkout mobile / mobile / 02 · Buscar endereço"
+      ],
+      [
+        "240:17989",
+        "Checkout mobile / mobile / 03 · Confirmar localização"
+      ],
+      [
+        "240:18019",
+        "Checkout mobile / mobile / 04 · Dados de entrega"
+      ],
+      [
+        "240:18073",
+        "Checkout mobile / mobile / 05 · Endereços de pedidos anteriores"
+      ],
+      [
+        "240:18089",
+        "Checkout mobile / mobile / 06 · Gerenciar endereço"
+      ],
+      [
+        "240:18122",
+        "Checkout mobile / mobile / 07 · Editar endereço"
+      ],
+      [
+        "240:18176",
+        "Checkout mobile / mobile / 08 · Remover endereço"
+      ],
+      [
+        "240:18206",
+        "Checkout mobile / mobile / 09 · Endereço removido"
+      ],
+      [
+        "240:18231",
+        "Checkout mobile / mobile / 10 · Endereço salvo"
+      ],
+      [
+        "240:18257",
+        "Checkout mobile / mobile / 11 · Localização indisponível"
+      ],
+      [
+        "240:18275",
+        "Checkout mobile / mobile / 12 · Fora da região de entrega"
+      ],
+      [
+        "240:18290",
+        "Checkout mobile / mobile / 13 · Busca em foco"
+      ],
+      [
+        "240:18308",
+        "Checkout mobile / mobile / 14 · Busca sem resultados"
+      ],
+      [
+        "240:18326",
+        "Checkout mobile / mobile / 15 · Localização ajustada"
+      ],
+      [
+        "240:18356",
+        "Checkout mobile / mobile / 16 · Trabalho selecionado"
+      ],
+      [
+        "240:18379",
+        "Checkout mobile / mobile / 17 · Endereço do histórico selecionado"
+      ],
+      [
+        "240:19443",
+        "Checkout mobile / Cartão · visão completa"
+      ]
+    ]
+  },
+  {
+    "id": "284:11568",
+    "name": "Ver ingredientes / Variações taste · Dragzone, dock e bancada",
+    "screens": [
+      [
+        "284:11569",
+        "Variação 01 / Dragzone lateral"
+      ],
+      [
+        "290:11151",
+        "Componentes / chips e bandeja"
+      ],
+      [
+        "294:11262",
+        "Ver ingredientes / Mobile · chips e bandeja dinâmica"
+      ],
+      [
+        "294:11399",
+        "Ver ingredientes / Mobile · visão completa"
+      ]
+    ]
+  },
+  {
+    "id": "318:11085",
+    "name": "Minha conta / celular, perfil e pedidos · Web + Mobile",
+    "screens": [
+      [
+        "318:11091",
+        "Conta / componentes · textos provisórios"
+      ],
+      [
+        "318:11096",
+        "Conta / web / 01 · Identifique-se"
+      ],
+      [
+        "318:11163",
+        "Conta / web / 02 · Celular preenchido"
+      ],
+      [
+        "318:11228",
+        "Conta / web / 03 · Código pelo WhatsApp"
+      ],
+      [
+        "318:11303",
+        "Conta / web / 04 · Código por SMS"
+      ],
+      [
+        "318:11376",
+        "Conta / web / 05 · Código incorreto"
+      ],
+      [
+        "318:11451",
+        "Conta / web / 06 · Código reenviado"
+      ],
+      [
+        "318:11523",
+        "Conta / web / 07 · Minha conta"
+      ],
+      [
+        "318:11597",
+        "Conta / web / 08 · Meus dados"
+      ],
+      [
+        "318:11675",
+        "Conta / web / 09 · Alterar celular"
+      ],
+      [
+        "318:11756",
+        "Conta / web / 10 · Confirmar novo celular"
+      ],
+      [
+        "318:11837",
+        "Conta / web / 11 · Celular já vinculado"
+      ],
+      [
+        "318:11887",
+        "Conta / web / 12 · Meus endereços"
+      ],
+      [
+        "318:11952",
+        "Conta / web / 13 · Adicionar ou editar endereço"
+      ],
+      [
+        "318:12030",
+        "Conta / web / 14 · Remover endereço"
+      ],
+      [
+        "318:12080",
+        "Conta / web / 15 · Formas de pagamento"
+      ],
+      [
+        "318:12135",
+        "Conta / web / 16 · Adicionar cartão"
+      ],
+      [
+        "318:12222",
+        "Conta / web / 17 · Remover cartão"
+      ],
+      [
+        "318:12272",
+        "Conta / web / 18 · Meus pedidos"
+      ],
+      [
+        "318:12340",
+        "Conta / web / 19 · Acompanhar pedido"
+      ],
+      [
+        "318:12402",
+        "Conta / web / 20 · Pedido entregue"
+      ],
+      [
+        "318:12460",
+        "Conta / web / 21 · Nenhum pedido ainda"
+      ],
+      [
+        "318:12510",
+        "Conta / web / 22 · Sair da conta"
+      ],
+      [
+        "318:12560",
+        "Conta / mobile / 01 · Identifique-se"
+      ],
+      [
+        "318:12608",
+        "Conta / mobile / 02 · Celular preenchido"
+      ],
+      [
+        "318:12656",
+        "Conta / mobile / 03 · Código pelo WhatsApp"
+      ],
+      [
+        "318:12712",
+        "Conta / mobile / 04 · Código por SMS"
+      ],
+      [
+        "318:12768",
+        "Conta / mobile / 05 · Código incorreto"
+      ],
+      [
+        "318:12826",
+        "Conta / mobile / 06 · Código reenviado"
+      ],
+      [
+        "318:12881",
+        "Conta / mobile / 07 · Minha conta"
+      ],
+      [
+        "318:12920",
+        "Conta / mobile / 08 · Meus dados"
+      ],
+      [
+        "318:12975",
+        "Conta / mobile / 09 · Alterar celular"
+      ],
+      [
+        "318:13035",
+        "Conta / mobile / 10 · Confirmar novo celular"
+      ],
+      [
+        "318:13099",
+        "Conta / mobile / 11 · Celular já vinculado"
+      ],
+      [
+        "318:13128",
+        "Conta / mobile / 12 · Meus endereços"
+      ],
+      [
+        "318:13168",
+        "Conta / mobile / 13 · Adicionar ou editar endereço"
+      ],
+      [
+        "318:13227",
+        "Conta / mobile / 14 · Remover endereço"
+      ],
+      [
+        "318:13256",
+        "Conta / mobile / 15 · Formas de pagamento"
+      ],
+      [
+        "318:13288",
+        "Conta / mobile / 16 · Adicionar cartão"
+      ],
+      [
+        "318:13356",
+        "Conta / mobile / 17 · Remover cartão"
+      ],
+      [
+        "318:13385",
+        "Conta / mobile / 18 · Meus pedidos"
+      ],
+      [
+        "318:13430",
+        "Conta / mobile / 19 · Acompanhar pedido"
+      ],
+      [
+        "318:13471",
+        "Conta / mobile / 20 · Pedido entregue"
+      ],
+      [
+        "318:13512",
+        "Conta / mobile / 21 · Nenhum pedido ainda"
+      ],
+      [
+        "318:13541",
+        "Conta / mobile / 22 · Sair da conta"
+      ],
+      [
+        "318:13570",
+        "Conta / notas do fluxo"
+      ],
+      [
+        "320:11332",
+        "Conta / web / 23 · Dados salvos"
+      ],
+      [
+        "320:11385",
+        "Conta / web / 24 · Endereço removido"
+      ],
+      [
+        "320:11439",
+        "Conta / web / 25 · Nenhum cartão salvo"
+      ],
+      [
+        "320:11488",
+        "Conta / web / 26 · Pedido cancelado"
+      ],
+      [
+        "320:11544",
+        "Conta / mobile / 23 · Dados salvos"
+      ],
+      [
+        "320:11580",
+        "Conta / mobile / 24 · Endereço removido"
+      ],
+      [
+        "320:11617",
+        "Conta / mobile / 25 · Nenhum cartão salvo"
+      ],
+      [
+        "320:11649",
+        "Conta / mobile / 26 · Pedido cancelado"
+      ],
+      [
+        "321:11394",
+        "Conta / web / 27 · Novo celular preenchido"
+      ],
+      [
+        "321:11472",
+        "Conta / web / 28 · Celular atualizado"
+      ],
+      [
+        "321:11525",
+        "Conta / mobile / 27 · Novo celular preenchido"
+      ],
+      [
+        "321:11586",
+        "Conta / mobile / 28 · Celular atualizado"
+      ],
+      [
+        "324:11494",
+        "Conta / web / 29 · Editar Trabalho"
+      ],
+      [
+        "324:11570",
+        "Conta / web / 30 · Remover Trabalho"
+      ],
+      [
+        "324:11614",
+        "Conta / web / 31 · Trabalho removido"
+      ],
+      [
+        "324:11667",
+        "Conta / web / 32 · Novo endereço"
+      ],
+      [
+        "324:11743",
+        "Conta / web / 33 · Novo endereço preenchido"
+      ],
+      [
+        "324:11819",
+        "Conta / web / 34 · Endereço salvo"
+      ],
+      [
+        "324:11880",
+        "Conta / web / 35 · Cartão salvo"
+      ],
+      [
+        "324:11938",
+        "Conta / mobile / 29 · Editar Trabalho"
+      ],
+      [
+        "324:11997",
+        "Conta / mobile / 30 · Remover Trabalho"
+      ],
+      [
+        "324:12024",
+        "Conta / mobile / 31 · Trabalho removido"
+      ],
+      [
+        "324:12060",
+        "Conta / mobile / 32 · Novo endereço"
+      ],
+      [
+        "324:12119",
+        "Conta / mobile / 33 · Novo endereço preenchido"
+      ],
+      [
+        "324:12178",
+        "Conta / mobile / 34 · Endereço salvo"
+      ],
+      [
+        "324:12222",
+        "Conta / mobile / 35 · Cartão salvo"
+      ],
+      [
+        "325:11823",
+        "Conta / web / 36 · Remover Mastercard"
+      ],
+      [
+        "325:11869",
+        "Conta / web / 37 · Editar Outro"
+      ],
+      [
+        "325:11945",
+        "Conta / web / 38 · Remover Outro"
+      ],
+      [
+        "325:11993",
+        "Conta / mobile / 36 · Remover Mastercard"
+      ],
+      [
+        "325:12022",
+        "Conta / mobile / 37 · Editar Outro"
+      ],
+      [
+        "325:12081",
+        "Conta / mobile / 38 · Remover Outro"
+      ]
+    ]
+  },
+  {
+    "id": "350:13171",
+    "name": "Pedidos / estados e componentes de acompanhamento",
+    "screens": [
+      [
+        "350:13172",
+        "Pedidos / componentes de acompanhamento"
+      ],
+      [
+        "351:14130",
+        "Pedidos / web / Pedido realizado"
+      ],
+      [
+        "351:14399",
+        "Pedidos / web / Pagamento confirmado"
+      ],
+      [
+        "351:14668",
+        "Pedidos / web / Pedido em preparação"
+      ],
+      [
+        "351:14937",
+        "Pedidos / web / Aguardando retirada"
+      ],
+      [
+        "351:15206",
+        "Pedidos / web / Pedido retirado"
+      ],
+      [
+        "351:15475",
+        "Pedidos / web / Pedido chegou"
+      ],
+      [
+        "351:15744",
+        "Pedidos / web / Pedido entregue"
+      ],
+      [
+        "351:16013",
+        "Pedidos / mobile / Pedido realizado"
+      ],
+      [
+        "351:16251",
+        "Pedidos / mobile / Pagamento confirmado"
+      ],
+      [
+        "351:16489",
+        "Pedidos / mobile / Pedido em preparação"
+      ],
+      [
+        "351:16727",
+        "Pedidos / mobile / Aguardando retirada"
+      ],
+      [
+        "351:16965",
+        "Pedidos / mobile / Pedido retirado"
+      ],
+      [
+        "351:17203",
+        "Pedidos / mobile / Pedido chegou"
+      ],
+      [
+        "351:17441",
+        "Pedidos / mobile / Pedido entregue"
+      ],
+      [
+        "372:13339",
+        "Pins BK / masters em alta e componentes"
+      ]
+    ]
+  }
+]

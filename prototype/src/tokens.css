@@ -1,0 +1,21 @@
+/* Shared foundations. Legacy aliases in styles.css stay until ticket 09. */
+:root {
+  --space-0: 0;
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --radius-control: 8px;
+  --radius-item: 12px;
+  --radius-panel: 16px;
+  --radius-pill: 999px;
+  --surface-page: #f5ebdc;
+  --surface-header: #faf2e5;
+  --surface-purchase: #fbf3e8;
+  --font-body: 'Flame Sans', Arial, sans-serif;
+  --font-display: 'Flame', Georgia, serif;
+}

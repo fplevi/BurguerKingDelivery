@@ -1,0 +1,1498 @@
+[
+  {
+    "width": 320,
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "weight": "400",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "weight": "400",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "weight": "700",
+        "status": "loaded"
+      }
+    ],
+    "quantityFont": "Flame, Georgia, serif",
+    "icons": [
+      {
+        "asset": "/Assets/icons/shopping-cart-32.svg",
+        "width": 32,
+        "height": 32,
+        "loaded": true,
+        "control": {
+          "x": 115.0625,
+          "y": 24,
+          "width": 48,
+          "height": 48,
+          "top": 24,
+          "right": 163.0625,
+          "bottom": 72,
+          "left": 115.0625
+        }
+      },
+      {
+        "asset": "/Assets/icons/user-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 167.0625,
+          "y": 31,
+          "width": 136.9375,
+          "height": 34,
+          "top": 31,
+          "right": 304,
+          "bottom": 65,
+          "left": 167.0625
+        }
+      },
+      {
+        "asset": "/Assets/icons/map-pin-24.svg",
+        "width": 24,
+        "height": 24,
+        "loaded": true
+      },
+      {
+        "asset": "/Assets/icons/minus-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 181,
+          "y": 928.375,
+          "width": 40,
+          "height": 42,
+          "top": 928.375,
+          "right": 221,
+          "bottom": 970.375,
+          "left": 181
+        }
+      },
+      {
+        "asset": "/Assets/icons/plus-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 243,
+          "y": 928.375,
+          "width": 40,
+          "height": 42,
+          "top": 928.375,
+          "right": 283,
+          "bottom": 970.375,
+          "left": 243
+        }
+      },
+      {
+        "asset": "/Assets/icons/shopping-cart-24.svg",
+        "width": 24,
+        "height": 24,
+        "loaded": true,
+        "control": {
+          "x": 36,
+          "y": 1101.375,
+          "width": 248,
+          "height": 58,
+          "top": 1101.375,
+          "right": 284,
+          "bottom": 1159.375,
+          "left": 36
+        }
+      },
+      {
+        "asset": "/Assets/icons/sliders-32.svg",
+        "width": 32,
+        "height": 32,
+        "loaded": true,
+        "control": {
+          "x": 20,
+          "y": 605.375,
+          "width": 280,
+          "height": 44,
+          "top": 605.375,
+          "right": 300,
+          "bottom": 649.375,
+          "left": 20
+        }
+      }
+    ],
+    "purchase": {
+      "x": 20,
+      "y": 762.375,
+      "width": 280,
+      "height": 421,
+      "top": 762.375,
+      "right": 300,
+      "bottom": 1183.375,
+      "left": 20
+    }
+  },
+  {
+    "width": 360,
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "weight": "400",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "weight": "400",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "weight": "700",
+        "status": "loaded"
+      }
+    ],
+    "quantityFont": "Flame, Georgia, serif",
+    "icons": [
+      {
+        "asset": "/Assets/icons/shopping-cart-32.svg",
+        "width": 32,
+        "height": 32,
+        "loaded": true,
+        "control": {
+          "x": 155.0625,
+          "y": 24,
+          "width": 48,
+          "height": 48,
+          "top": 24,
+          "right": 203.0625,
+          "bottom": 72,
+          "left": 155.0625
+        }
+      },
+      {
+        "asset": "/Assets/icons/user-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 207.0625,
+          "y": 31,
+          "width": 136.9375,
+          "height": 34,
+          "top": 31,
+          "right": 344,
+          "bottom": 65,
+          "left": 207.0625
+        }
+      },
+      {
+        "asset": "/Assets/icons/map-pin-24.svg",
+        "width": 24,
+        "height": 24,
+        "loaded": true
+      },
+      {
+        "asset": "/Assets/icons/minus-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 221,
+          "y": 928.375,
+          "width": 40,
+          "height": 42,
+          "top": 928.375,
+          "right": 261,
+          "bottom": 970.375,
+          "left": 221
+        }
+      },
+      {
+        "asset": "/Assets/icons/plus-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 283,
+          "y": 928.375,
+          "width": 40,
+          "height": 42,
+          "top": 928.375,
+          "right": 323,
+          "bottom": 970.375,
+          "left": 283
+        }
+      },
+      {
+        "asset": "/Assets/icons/shopping-cart-24.svg",
+        "width": 24,
+        "height": 24,
+        "loaded": true,
+        "control": {
+          "x": 36,
+          "y": 1101.375,
+          "width": 288,
+          "height": 58,
+          "top": 1101.375,
+          "right": 324,
+          "bottom": 1159.375,
+          "left": 36
+        }
+      },
+      {
+        "asset": "/Assets/icons/sliders-32.svg",
+        "width": 32,
+        "height": 32,
+        "loaded": true,
+        "control": {
+          "x": 32.5,
+          "y": 605.375,
+          "width": 295,
+          "height": 44,
+          "top": 605.375,
+          "right": 327.5,
+          "bottom": 649.375,
+          "left": 32.5
+        }
+      }
+    ],
+    "purchase": {
+      "x": 20,
+      "y": 762.375,
+      "width": 320,
+      "height": 421,
+      "top": 762.375,
+      "right": 340,
+      "bottom": 1183.375,
+      "left": 20
+    }
+  },
+  {
+    "width": 390,
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "weight": "400",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "weight": "400",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "weight": "700",
+        "status": "loaded"
+      }
+    ],
+    "quantityFont": "Flame, Georgia, serif",
+    "icons": [
+      {
+        "asset": "/Assets/icons/shopping-cart-32.svg",
+        "width": 32,
+        "height": 32,
+        "loaded": true,
+        "control": {
+          "x": 185.0625,
+          "y": 24,
+          "width": 48,
+          "height": 48,
+          "top": 24,
+          "right": 233.0625,
+          "bottom": 72,
+          "left": 185.0625
+        }
+      },
+      {
+        "asset": "/Assets/icons/user-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 237.0625,
+          "y": 31,
+          "width": 136.9375,
+          "height": 34,
+          "top": 31,
+          "right": 374,
+          "bottom": 65,
+          "left": 237.0625
+        }
+      },
+      {
+        "asset": "/Assets/icons/map-pin-24.svg",
+        "width": 24,
+        "height": 24,
+        "loaded": true
+      },
+      {
+        "asset": "/Assets/icons/minus-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 251,
+          "y": 926.59375,
+          "width": 40,
+          "height": 42,
+          "top": 926.59375,
+          "right": 291,
+          "bottom": 968.59375,
+          "left": 251
+        }
+      },
+      {
+        "asset": "/Assets/icons/plus-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 313,
+          "y": 926.59375,
+          "width": 40,
+          "height": 42,
+          "top": 926.59375,
+          "right": 353,
+          "bottom": 968.59375,
+          "left": 313
+        }
+      },
+      {
+        "asset": "/Assets/icons/shopping-cart-24.svg",
+        "width": 24,
+        "height": 24,
+        "loaded": true,
+        "control": {
+          "x": 36,
+          "y": 1099.59375,
+          "width": 318,
+          "height": 58,
+          "top": 1099.59375,
+          "right": 354,
+          "bottom": 1157.59375,
+          "left": 36
+        }
+      },
+      {
+        "asset": "/Assets/icons/sliders-32.svg",
+        "width": 32,
+        "height": 32,
+        "loaded": true,
+        "control": {
+          "x": 47.5,
+          "y": 603.59375,
+          "width": 295,
+          "height": 44,
+          "top": 603.59375,
+          "right": 342.5,
+          "bottom": 647.59375,
+          "left": 47.5
+        }
+      }
+    ],
+    "purchase": {
+      "x": 20,
+      "y": 760.59375,
+      "width": 350,
+      "height": 421,
+      "top": 760.59375,
+      "right": 370,
+      "bottom": 1181.59375,
+      "left": 20
+    }
+  },
+  {
+    "width": 768,
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "weight": "400",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "weight": "400",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "weight": "700",
+        "status": "loaded"
+      }
+    ],
+    "quantityFont": "Flame, Georgia, serif",
+    "icons": [
+      {
+        "asset": "/Assets/icons/shopping-cart-32.svg",
+        "width": 32,
+        "height": 32,
+        "loaded": true,
+        "control": {
+          "x": 563.0625,
+          "y": 24,
+          "width": 48,
+          "height": 48,
+          "top": 24,
+          "right": 611.0625,
+          "bottom": 72,
+          "left": 563.0625
+        }
+      },
+      {
+        "asset": "/Assets/icons/user-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 615.0625,
+          "y": 31,
+          "width": 136.9375,
+          "height": 34,
+          "top": 31,
+          "right": 752,
+          "bottom": 65,
+          "left": 615.0625
+        }
+      },
+      {
+        "asset": "/Assets/icons/map-pin-24.svg",
+        "width": 24,
+        "height": 24,
+        "loaded": true
+      },
+      {
+        "asset": "/Assets/icons/minus-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 477,
+          "y": 926.59375,
+          "width": 40,
+          "height": 42,
+          "top": 926.59375,
+          "right": 517,
+          "bottom": 968.59375,
+          "left": 477
+        }
+      },
+      {
+        "asset": "/Assets/icons/plus-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 539,
+          "y": 926.59375,
+          "width": 40,
+          "height": 42,
+          "top": 926.59375,
+          "right": 579,
+          "bottom": 968.59375,
+          "left": 539
+        }
+      },
+      {
+        "asset": "/Assets/icons/shopping-cart-24.svg",
+        "width": 24,
+        "height": 24,
+        "loaded": true,
+        "control": {
+          "x": 188,
+          "y": 1099.59375,
+          "width": 392,
+          "height": 58,
+          "top": 1099.59375,
+          "right": 580,
+          "bottom": 1157.59375,
+          "left": 188
+        }
+      },
+      {
+        "asset": "/Assets/icons/sliders-32.svg",
+        "width": 32,
+        "height": 32,
+        "loaded": true,
+        "control": {
+          "x": 236.5,
+          "y": 603.59375,
+          "width": 295,
+          "height": 44,
+          "top": 603.59375,
+          "right": 531.5,
+          "bottom": 647.59375,
+          "left": 236.5
+        }
+      }
+    ],
+    "purchase": {
+      "x": 172,
+      "y": 760.59375,
+      "width": 424,
+      "height": 421,
+      "top": 760.59375,
+      "right": 596,
+      "bottom": 1181.59375,
+      "left": 172
+    }
+  },
+  {
+    "width": 1023,
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "weight": "400",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "weight": "400",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "weight": "700",
+        "status": "loaded"
+      }
+    ],
+    "quantityFont": "Flame, Georgia, serif",
+    "icons": [
+      {
+        "asset": "/Assets/icons/shopping-cart-32.svg",
+        "width": 32,
+        "height": 32,
+        "loaded": true,
+        "control": {
+          "x": 818.0625,
+          "y": 24,
+          "width": 48,
+          "height": 48,
+          "top": 24,
+          "right": 866.0625,
+          "bottom": 72,
+          "left": 818.0625
+        }
+      },
+      {
+        "asset": "/Assets/icons/user-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 870.0625,
+          "y": 31,
+          "width": 136.9375,
+          "height": 34,
+          "top": 31,
+          "right": 1007,
+          "bottom": 65,
+          "left": 870.0625
+        }
+      },
+      {
+        "asset": "/Assets/icons/map-pin-24.svg",
+        "width": 24,
+        "height": 24,
+        "loaded": true
+      },
+      {
+        "asset": "/Assets/icons/minus-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 604.5,
+          "y": 926.59375,
+          "width": 40,
+          "height": 42,
+          "top": 926.59375,
+          "right": 644.5,
+          "bottom": 968.59375,
+          "left": 604.5
+        }
+      },
+      {
+        "asset": "/Assets/icons/plus-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 666.5,
+          "y": 926.59375,
+          "width": 40,
+          "height": 42,
+          "top": 926.59375,
+          "right": 706.5,
+          "bottom": 968.59375,
+          "left": 666.5
+        }
+      },
+      {
+        "asset": "/Assets/icons/shopping-cart-24.svg",
+        "width": 24,
+        "height": 24,
+        "loaded": true,
+        "control": {
+          "x": 315.5,
+          "y": 1099.59375,
+          "width": 392,
+          "height": 58,
+          "top": 1099.59375,
+          "right": 707.5,
+          "bottom": 1157.59375,
+          "left": 315.5
+        }
+      },
+      {
+        "asset": "/Assets/icons/sliders-32.svg",
+        "width": 32,
+        "height": 32,
+        "loaded": true,
+        "control": {
+          "x": 364,
+          "y": 603.59375,
+          "width": 295,
+          "height": 44,
+          "top": 603.59375,
+          "right": 659,
+          "bottom": 647.59375,
+          "left": 364
+        }
+      }
+    ],
+    "purchase": {
+      "x": 299.5,
+      "y": 760.59375,
+      "width": 424,
+      "height": 421,
+      "top": 760.59375,
+      "right": 723.5,
+      "bottom": 1181.59375,
+      "left": 299.5
+    }
+  },
+  {
+    "width": 1024,
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "weight": "400",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "weight": "400",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "weight": "700",
+        "status": "loaded"
+      }
+    ],
+    "quantityFont": "Flame, Georgia, serif",
+    "icons": [
+      {
+        "asset": "/Assets/icons/shopping-cart-32.svg",
+        "width": 32,
+        "height": 32,
+        "loaded": true,
+        "control": {
+          "x": 783.0625,
+          "y": 21,
+          "width": 48,
+          "height": 48,
+          "top": 21,
+          "right": 831.0625,
+          "bottom": 69,
+          "left": 783.0625
+        }
+      },
+      {
+        "asset": "/Assets/icons/user-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 847.0625,
+          "y": 28,
+          "width": 136.9375,
+          "height": 34,
+          "top": 28,
+          "right": 984,
+          "bottom": 62,
+          "left": 847.0625
+        }
+      },
+      {
+        "asset": "/Assets/icons/map-pin-24.svg",
+        "width": 24,
+        "height": 24,
+        "loaded": true
+      },
+      {
+        "asset": "/Assets/icons/minus-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 329,
+          "y": 491,
+          "width": 40,
+          "height": 42,
+          "top": 491,
+          "right": 369,
+          "bottom": 533,
+          "left": 329
+        }
+      },
+      {
+        "asset": "/Assets/icons/plus-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 391,
+          "y": 491,
+          "width": 40,
+          "height": 42,
+          "top": 491,
+          "right": 431,
+          "bottom": 533,
+          "left": 391
+        }
+      },
+      {
+        "asset": "/Assets/icons/shopping-cart-24.svg",
+        "width": 24,
+        "height": 24,
+        "loaded": true,
+        "control": {
+          "x": 56,
+          "y": 664,
+          "width": 392,
+          "height": 58,
+          "top": 664,
+          "right": 448,
+          "bottom": 722,
+          "left": 56
+        }
+      },
+      {
+        "asset": "/Assets/icons/sliders-32.svg",
+        "width": 32,
+        "height": 32,
+        "loaded": true,
+        "control": {
+          "x": 592.5,
+          "y": 639,
+          "width": 295,
+          "height": 36,
+          "top": 639,
+          "right": 887.5,
+          "bottom": 675,
+          "left": 592.5
+        }
+      }
+    ],
+    "purchase": {
+      "x": 40,
+      "y": 325,
+      "width": 424,
+      "height": 421,
+      "top": 325,
+      "right": 464,
+      "bottom": 746,
+      "left": 40
+    }
+  },
+  {
+    "width": 1025,
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "weight": "400",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "weight": "400",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "weight": "700",
+        "status": "loaded"
+      }
+    ],
+    "quantityFont": "Flame, Georgia, serif",
+    "icons": [
+      {
+        "asset": "/Assets/icons/shopping-cart-32.svg",
+        "width": 32,
+        "height": 32,
+        "loaded": true,
+        "control": {
+          "x": 784.0625,
+          "y": 21,
+          "width": 48,
+          "height": 48,
+          "top": 21,
+          "right": 832.0625,
+          "bottom": 69,
+          "left": 784.0625
+        }
+      },
+      {
+        "asset": "/Assets/icons/user-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 848.0625,
+          "y": 28,
+          "width": 136.9375,
+          "height": 34,
+          "top": 28,
+          "right": 985,
+          "bottom": 62,
+          "left": 848.0625
+        }
+      },
+      {
+        "asset": "/Assets/icons/map-pin-24.svg",
+        "width": 24,
+        "height": 24,
+        "loaded": true
+      },
+      {
+        "asset": "/Assets/icons/minus-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 329,
+          "y": 491,
+          "width": 40,
+          "height": 42,
+          "top": 491,
+          "right": 369,
+          "bottom": 533,
+          "left": 329
+        }
+      },
+      {
+        "asset": "/Assets/icons/plus-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 391,
+          "y": 491,
+          "width": 40,
+          "height": 42,
+          "top": 491,
+          "right": 431,
+          "bottom": 533,
+          "left": 391
+        }
+      },
+      {
+        "asset": "/Assets/icons/shopping-cart-24.svg",
+        "width": 24,
+        "height": 24,
+        "loaded": true,
+        "control": {
+          "x": 56,
+          "y": 664,
+          "width": 392,
+          "height": 58,
+          "top": 664,
+          "right": 448,
+          "bottom": 722,
+          "left": 56
+        }
+      },
+      {
+        "asset": "/Assets/icons/sliders-32.svg",
+        "width": 32,
+        "height": 32,
+        "loaded": true,
+        "control": {
+          "x": 593,
+          "y": 639,
+          "width": 295,
+          "height": 36,
+          "top": 639,
+          "right": 888,
+          "bottom": 675,
+          "left": 593
+        }
+      }
+    ],
+    "purchase": {
+      "x": 40,
+      "y": 325,
+      "width": 424,
+      "height": 421,
+      "top": 325,
+      "right": 464,
+      "bottom": 746,
+      "left": 40
+    }
+  },
+  {
+    "width": 1280,
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "weight": "400",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "weight": "400",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "weight": "700",
+        "status": "loaded"
+      }
+    ],
+    "quantityFont": "Flame, Georgia, serif",
+    "icons": [
+      {
+        "asset": "/Assets/icons/shopping-cart-32.svg",
+        "width": 32,
+        "height": 32,
+        "loaded": true,
+        "control": {
+          "x": 1039.0625,
+          "y": 21,
+          "width": 48,
+          "height": 48,
+          "top": 21,
+          "right": 1087.0625,
+          "bottom": 69,
+          "left": 1039.0625
+        }
+      },
+      {
+        "asset": "/Assets/icons/user-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 1103.0625,
+          "y": 28,
+          "width": 136.9375,
+          "height": 34,
+          "top": 28,
+          "right": 1240,
+          "bottom": 62,
+          "left": 1103.0625
+        }
+      },
+      {
+        "asset": "/Assets/icons/map-pin-24.svg",
+        "width": 24,
+        "height": 24,
+        "loaded": true
+      },
+      {
+        "asset": "/Assets/icons/minus-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 329,
+          "y": 491,
+          "width": 40,
+          "height": 42,
+          "top": 491,
+          "right": 369,
+          "bottom": 533,
+          "left": 329
+        }
+      },
+      {
+        "asset": "/Assets/icons/plus-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 391,
+          "y": 491,
+          "width": 40,
+          "height": 42,
+          "top": 491,
+          "right": 431,
+          "bottom": 533,
+          "left": 391
+        }
+      },
+      {
+        "asset": "/Assets/icons/shopping-cart-24.svg",
+        "width": 24,
+        "height": 24,
+        "loaded": true,
+        "control": {
+          "x": 56,
+          "y": 664,
+          "width": 392,
+          "height": 58,
+          "top": 664,
+          "right": 448,
+          "bottom": 722,
+          "left": 56
+        }
+      },
+      {
+        "asset": "/Assets/icons/sliders-32.svg",
+        "width": 32,
+        "height": 32,
+        "loaded": true,
+        "control": {
+          "x": 720.5,
+          "y": 639,
+          "width": 295,
+          "height": 36,
+          "top": 639,
+          "right": 1015.5,
+          "bottom": 675,
+          "left": 720.5
+        }
+      }
+    ],
+    "purchase": {
+      "x": 40,
+      "y": 325,
+      "width": 424,
+      "height": 421,
+      "top": 325,
+      "right": 464,
+      "bottom": 746,
+      "left": 40
+    }
+  },
+  {
+    "width": 1919,
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "weight": "400",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "weight": "400",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "weight": "700",
+        "status": "loaded"
+      }
+    ],
+    "quantityFont": "Flame, Georgia, serif",
+    "icons": [
+      {
+        "asset": "/Assets/icons/shopping-cart-32.svg",
+        "width": 32,
+        "height": 32,
+        "loaded": true,
+        "control": {
+          "x": 1398.5625,
+          "y": 21,
+          "width": 48,
+          "height": 48,
+          "top": 21,
+          "right": 1446.5625,
+          "bottom": 69,
+          "left": 1398.5625
+        }
+      },
+      {
+        "asset": "/Assets/icons/user-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 1462.5625,
+          "y": 28,
+          "width": 136.9375,
+          "height": 34,
+          "top": 28,
+          "right": 1599.5,
+          "bottom": 62,
+          "left": 1462.5625
+        }
+      },
+      {
+        "asset": "/Assets/icons/map-pin-24.svg",
+        "width": 24,
+        "height": 24,
+        "loaded": true
+      },
+      {
+        "asset": "/Assets/icons/minus-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 329,
+          "y": 491,
+          "width": 40,
+          "height": 42,
+          "top": 491,
+          "right": 369,
+          "bottom": 533,
+          "left": 329
+        }
+      },
+      {
+        "asset": "/Assets/icons/plus-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 391,
+          "y": 491,
+          "width": 40,
+          "height": 42,
+          "top": 491,
+          "right": 431,
+          "bottom": 533,
+          "left": 391
+        }
+      },
+      {
+        "asset": "/Assets/icons/shopping-cart-24.svg",
+        "width": 24,
+        "height": 24,
+        "loaded": true,
+        "control": {
+          "x": 56,
+          "y": 664,
+          "width": 392,
+          "height": 58,
+          "top": 664,
+          "right": 448,
+          "bottom": 722,
+          "left": 56
+        }
+      },
+      {
+        "asset": "/Assets/icons/sliders-32.svg",
+        "width": 32,
+        "height": 32,
+        "loaded": true,
+        "control": {
+          "x": 1040,
+          "y": 639,
+          "width": 295,
+          "height": 36,
+          "top": 639,
+          "right": 1335,
+          "bottom": 675,
+          "left": 1040
+        }
+      }
+    ],
+    "purchase": {
+      "x": 40,
+      "y": 325,
+      "width": 424,
+      "height": 421,
+      "top": 325,
+      "right": 464,
+      "bottom": 746,
+      "left": 40
+    }
+  },
+  {
+    "width": 1920,
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "weight": "400",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "weight": "400",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "weight": "700",
+        "status": "loaded"
+      }
+    ],
+    "quantityFont": "Flame, Georgia, serif",
+    "icons": [
+      {
+        "asset": "/Assets/icons/shopping-cart-32.svg",
+        "width": 32,
+        "height": 32,
+        "loaded": true,
+        "control": {
+          "x": 1399.0625,
+          "y": 21,
+          "width": 48,
+          "height": 48,
+          "top": 21,
+          "right": 1447.0625,
+          "bottom": 69,
+          "left": 1399.0625
+        }
+      },
+      {
+        "asset": "/Assets/icons/user-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 1463.0625,
+          "y": 28,
+          "width": 136.9375,
+          "height": 34,
+          "top": 28,
+          "right": 1600,
+          "bottom": 62,
+          "left": 1463.0625
+        }
+      },
+      {
+        "asset": "/Assets/icons/map-pin-24.svg",
+        "width": 24,
+        "height": 24,
+        "loaded": true
+      },
+      {
+        "asset": "/Assets/icons/minus-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 429,
+          "y": 511,
+          "width": 40,
+          "height": 42,
+          "top": 511,
+          "right": 469,
+          "bottom": 553,
+          "left": 429
+        }
+      },
+      {
+        "asset": "/Assets/icons/plus-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 491,
+          "y": 511,
+          "width": 40,
+          "height": 42,
+          "top": 511,
+          "right": 531,
+          "bottom": 553,
+          "left": 491
+        }
+      },
+      {
+        "asset": "/Assets/icons/shopping-cart-24.svg",
+        "width": 24,
+        "height": 24,
+        "loaded": true,
+        "control": {
+          "x": 156,
+          "y": 684,
+          "width": 392,
+          "height": 58,
+          "top": 684,
+          "right": 548,
+          "bottom": 742,
+          "left": 156
+        }
+      },
+      {
+        "asset": "/Assets/icons/sliders-32.svg",
+        "width": 32,
+        "height": 32,
+        "loaded": true,
+        "control": {
+          "x": 750.5,
+          "y": 658,
+          "width": 295,
+          "height": 36,
+          "top": 658,
+          "right": 1045.5,
+          "bottom": 694,
+          "left": 750.5
+        }
+      }
+    ],
+    "purchase": {
+      "x": 140,
+      "y": 345,
+      "width": 424,
+      "height": 421,
+      "top": 345,
+      "right": 564,
+      "bottom": 766,
+      "left": 140
+    }
+  },
+  {
+    "width": 1921,
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "weight": "400",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "weight": "400",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "weight": "700",
+        "status": "loaded"
+      }
+    ],
+    "quantityFont": "Flame, Georgia, serif",
+    "icons": [
+      {
+        "asset": "/Assets/icons/shopping-cart-32.svg",
+        "width": 32,
+        "height": 32,
+        "loaded": true,
+        "control": {
+          "x": 1399.5625,
+          "y": 21,
+          "width": 48,
+          "height": 48,
+          "top": 21,
+          "right": 1447.5625,
+          "bottom": 69,
+          "left": 1399.5625
+        }
+      },
+      {
+        "asset": "/Assets/icons/user-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 1463.5625,
+          "y": 28,
+          "width": 136.9375,
+          "height": 34,
+          "top": 28,
+          "right": 1600.5,
+          "bottom": 62,
+          "left": 1463.5625
+        }
+      },
+      {
+        "asset": "/Assets/icons/map-pin-24.svg",
+        "width": 24,
+        "height": 24,
+        "loaded": true
+      },
+      {
+        "asset": "/Assets/icons/minus-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 429.5,
+          "y": 511,
+          "width": 40,
+          "height": 42,
+          "top": 511,
+          "right": 469.5,
+          "bottom": 553,
+          "left": 429.5
+        }
+      },
+      {
+        "asset": "/Assets/icons/plus-16.svg",
+        "width": 16,
+        "height": 16,
+        "loaded": true,
+        "control": {
+          "x": 491.5,
+          "y": 511,
+          "width": 40,
+          "height": 42,
+          "top": 511,
+          "right": 531.5,
+          "bottom": 553,
+          "left": 491.5
+        }
+      },
+      {
+        "asset": "/Assets/icons/shopping-cart-24.svg",
+        "width": 24,
+        "height": 24,
+        "loaded": true,
+        "control": {
+          "x": 156.5,
+          "y": 684,
+          "width": 392,
+          "height": 58,
+          "top": 684,
+          "right": 548.5,
+          "bottom": 742,
+          "left": 156.5
+        }
+      },
+      {
+        "asset": "/Assets/icons/sliders-32.svg",
+        "width": 32,
+        "height": 32,
+        "loaded": true,
+        "control": {
+          "x": 751,
+          "y": 658,
+          "width": 295,
+          "height": 36,
+          "top": 658,
+          "right": 1046,
+          "bottom": 694,
+          "left": 751
+        }
+      }
+    ],
+    "purchase": {
+      "x": 140.5,
+      "y": 345,
+      "width": 424,
+      "height": 421,
+      "top": 345,
+      "right": 564.5,
+      "bottom": 766,
+      "left": 140.5
+    }
+  }
+]
