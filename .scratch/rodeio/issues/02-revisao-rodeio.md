@@ -4,8 +4,17 @@
 
 **Blocked by:** 01.
 
-**Status:** ready-for-agent
+**Status:** resolved
 
-- [ ] Quatro capturas e quadros da Entrada e da Saída entregues juntos, com a foto oficial ao lado
-- [ ] Ajustes pedidos aplicados e novas capturas anexadas
-- [ ] Aprovação do responsável registrada em `## Comments`
+- [x] Quatro capturas e quadros da Entrada e da Saída entregues juntos, com a foto oficial ao lado
+- [x] Ajustes pedidos aplicados e novas capturas anexadas (nenhum ajuste pedido)
+- [x] Aprovação do responsável registrada em `## Comments`
+
+## Answer
+
+Aprovado sem ajustes na primeira rodada. As capturas finais são as de `capturas/02/`. O anel (tamanho, parede, posição perto da borda com o pão tombado) e a Maionese ficaram como estão, então o Whopper e o Rodeio Duplo aprovados não mudaram.
+
+## Comments
+
+- 2026-10-15 (agente): entrega única para a revisão, em `.scratch/rodeio/capturas/02/`. São as quatro capturas padrão (`desktop-montado`, `desktop-aberto`, `390x844-montado`, `390x844-aberto`, mais os dois `-hero` de página inteira) e a folha `revisao-lado-a-lado.png`, com as quatro vistas e `site_Rodeio.png` à direita. Os quadros da Entrada e da Saída estão em `capturas/02/quadros/` (`entrada.png` e `saida-0200ms.png`). A Entrada acaba em ~800 ms. Aguardando a decisão do responsável pelo produto. Pontos para esta revisão: o tamanho do anel (0,53 de raio, quase o de cada anel do Rodeio Duplo) e a parede mais fina; a Maionese quase não aparece no montado, e na foto é uma faixa branca grossa sob o pão de cima; o anel fica perto da borda com o pão tombado (pedido no 01), e a foto tem o anel no centro sob o pão reto.
+- 2026-10-15 (responsável pelo produto): "Tudo certo. Aprovado sem ajustes."
