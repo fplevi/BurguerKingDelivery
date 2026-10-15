@@ -1,5 +1,5 @@
 // Visual evidence and geometry checks for ticket 02. Start Vite before running.
-import { chromium } from '@playwright/test';
+import { chromium, expect } from '@playwright/test';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 
@@ -12,7 +12,7 @@ const results = [];
 try {
   for (const width of [320, 359, 360, 361, 390, 768, 1023, 1024, 1025, 1280, 1919, 1920, 1921]) {
     await page.setViewportSize({ width, height: 844 });
-    await page.goto('http://127.0.0.1:5174');
+    await page.goto(process.env.BK_REVIEW_URL ?? 'http://127.0.0.1:5173');
     for (const category of ['Hambúrgueres', 'Acompanhamentos', 'Bebidas', 'Sobremesas']) {
       await page.getByRole('navigation', { name: 'Categorias' }).getByRole('link', { name: category, exact: true }).click();
       await page.waitForFunction(category => document.querySelector('#grid').dataset.category === ({ 'Hambúrgueres': 'hamburgueres', 'Acompanhamentos': 'acompanhamentos', 'Bebidas': 'bebidas', 'Sobremesas': 'sobremesas' })[category], category);
@@ -69,14 +69,24 @@ try {
       await page.evaluate(() => window.scrollTo(0, 0));
       await page.locator('#catalog').screenshot({ path: fileURLToPath(new URL(`${width}-${category}.png`, output)) });
       const selectable = page.locator('.card[data-product]');
-      const target = selectable.last();
+      const longest = await selectable.evaluateAll(cards => cards.reduce((best, card, index) =>
+        card.querySelector('.card-name').textContent.length > cards[best].querySelector('.card-name').textContent.length ? index : best, 0));
+      const target = selectable.nth(longest);
       await target.click();
-      await page.waitForFunction(() => document.querySelector('.card[data-product]:last-of-type')?.getAttribute('aria-pressed') === 'true' || [...document.querySelectorAll('.card[data-product]')].at(-1)?.getAttribute('aria-pressed') === 'true');
+      await expect(target).toHaveAttribute('aria-pressed', 'true');
       await target.getByText('Selecionado').waitFor({ state: 'visible' });
+      const selected = await target.evaluate(card => {
+        const c = card.getBoundingClientRect(), name = card.querySelector('.card-name');
+        const range = document.createRange(); range.selectNodeContents(name);
+        return { name: name.textContent, overflow: document.documentElement.scrollWidth - innerWidth,
+          textVisible: [...range.getClientRects()].every(r => r.left >= c.left && r.right <= c.right && r.top >= c.top && r.bottom <= c.bottom) };
+      });
+      results.at(-1).selected = selected;
+      await target.screenshot({ path: fileURLToPath(new URL(`${width}-${category}-selecionado.png`, output)) });
     }
   }
   await writeFile(new URL('medidas.json', output), JSON.stringify(results, null, 2));
-  const failures = results.filter(r => r.overflow > 0 || r.cards.some(c => !c.textVisible || c.photoOverName || !c.productContained));
+  const failures = results.filter(r => r.overflow > 0 || r.selected.overflow > 0 || !r.selected.textVisible || r.cards.some(c => !c.textVisible || c.photoOverName || !c.productContained));
   console.log(JSON.stringify(failures.map(r => ({ width: r.width, category: r.category, overflow: r.overflow, cards: r.cards.filter(c => !c.textVisible || c.photoOverName || !c.productContained) })), null, 2));
   console.log(`${results.length - failures.length}/${results.length} category/viewport checks passed`);
   if (failures.length) process.exitCode = 1;

@@ -155,7 +155,7 @@ test('todos os produtos das três categorias têm foto, nome, descrição e pre�
     await expect(grade(page)).toHaveText(nomes(lista));
     for (const nome of lista) {
       await escolher(page, nome);
-      for (const img of [page.locator('#product-photo'), card(page, nome).locator('img')]) {
+      for (const img of [page.locator('#product-photo'), card(page, nome).locator('.catalog-photo img')]) {
         await expect(img).toBeVisible();
         await expect.poll(() => img.evaluate((i) => i.complete && i.naturalWidth > 0)).toBe(true);
       }
