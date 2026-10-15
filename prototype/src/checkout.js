@@ -1,3 +1,4 @@
+import { addressIcon } from './address-icons.js';
 // Checkout ("Finalizar pedido", #checkout) and Seus endereços (#endereco): the indicador de etapas, the Resumo do pedido,
 // the Identificação, the address list, the pages of a new address (#endereco/buscar, /confirmar, /dados) and the
 // Pagamento, as HTML.
@@ -11,8 +12,7 @@ import tile3 from '../Assets/maps/paulista-3.png';
 
 /** The steps, in order; 'concluido' (all done) comes only after the payment is approved. */
 export const steps = ['Identificação', 'Endereço', 'Pagamento'];
-const check =
-  '<svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const check = addressIcon('check', 16);
 
 /**
  * Indicador de etapas (Figma 246-10579): an ordered list, the current step red with its number
@@ -81,17 +81,10 @@ export function identificationStep({ step, phone, channel, code, codeError, erro
   return `<h2>Qual é o seu celular?</h2><p class="step-text">Vamos enviar um código para confirmar que é você.</p><form class="id-form" data-id-form="phone" novalidate>${field('id-phone', 'Celular com DDD', `type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="(00) 00000-0000" value="${maskPhone(phone)}"`)}<button class="primary" type="submit" data-id-send="whatsapp"${ready}>Receber código pelo WhatsApp</button><button class="link" type="submit" data-id-send="sms"${ready}>Receber por SMS</button></form><p class="step-note">Seus dados só serão recuperados após a confirmação.</p>`;
 }
 
-const icon = (path, size = 24) => `<svg class="icon" viewBox="0 0 24 24" width="${size}" height="${size}" aria-hidden="true">${path}</svg>`;
-const stroke = 'fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"';
-/** Icon of each kind of Endereço salvo (Figma: a house, a briefcase; a heart for Favoritos). */
-const labelIcons = {
-  Casa: icon(`<path d="M3.5 11 12 4l8.5 7M6 9.5V20h12V9.5" ${stroke}/>`),
-  Trabalho: icon(`<rect x="3.5" y="7.5" width="17" height="12" rx="1.5" ${stroke}/><path d="M9 7.5V5.5h6v2M3.5 12.5h17" ${stroke}/>`),
-  Favoritos: icon(`<path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10C19.5 15.4 12 20 12 20z" ${stroke}/>`),
-};
-const searchIcon = icon(`<circle cx="10.5" cy="10.5" r="6" ${stroke} stroke-width="2"/><path d="m15 15 5 5" ${stroke} stroke-width="2"/>`);
-const locateIcon = icon(`<circle cx="12" cy="12" r="7" ${stroke}/><circle cx="12" cy="12" r="2.6" fill="currentColor"/>`, 20);
-const clockIcon = icon(`<circle cx="12" cy="12" r="8.5" ${stroke} stroke-dasharray="3 2"/><path d="M12 7.5V12l3 2" ${stroke}/>`, 20);
+const labelIcons = { Casa: addressIcon('house'), Trabalho: addressIcon('briefcase'), Favoritos: addressIcon('star') };
+const searchIcon = addressIcon('search');
+const locateIcon = addressIcon('navigation');
+const clockIcon = addressIcon('history', 16);
 
 /** What the customer typed (the fields of an address, the name on a card, the Busca) as HTML text or a "…" attribute value. */
 export const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
@@ -100,16 +93,16 @@ export const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/"/g, '&quot;
 const addressLines = (a) => [[a.district, a.city].filter(Boolean).join(', '), [a.complement, a.reference].filter(Boolean).join(' · ')].filter(Boolean).map(esc);
 
 /** One Endereço salvo of the list: a radio named by its whole text, marked with ✓ and a red border (Figma Endereço 01/16). */
-const moreIcon = icon('<circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="19" cy="12" r="1.6" fill="currentColor"/>', 20);
+const moreIcon = addressIcon('dots');
 /** The menu ⋮ of an Endereço salvo (data-address-more, Figma Endereço 06): a button opening the dialog of its options. */
 const moreButton = (a) => `<button class="saved-more" type="button" id="address-more-${a.id}" data-address-more="${a.id}" aria-haspopup="dialog" aria-label="Opções do endereço ${a.label}">${moreIcon}</button>`;
-const pinSmall = icon(`<path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z" ${stroke}/><circle cx="12" cy="10" r="2.3" ${stroke}/>`, 20);
+const pinSmall = addressIcon('pin');
 /** The visitor's Endereço de entrega (unsaved, with its place), once identified: "Salvar" opens its Dados de entrega (data-address-save-unsaved). */
 const saveButton = (a) => `<button class="link saved-save" type="button" data-address-save-unsaved aria-label="Salvar o endereço ${esc(a.street)}">Salvar</button>`;
 function savedAddressCard(a, picked, canSave = false) {
   return `<div class="saved-address" data-address="${a.id}"><label><input class="saved-radio" type="radio" name="saved-address" value="${a.id}"${picked ? ' checked' : ''}>${a.lastOrder ? clockIcon : a.place ? pinSmall : (labelIcons[a.label] ?? labelIcons.Favoritos)}<span class="saved-text"><b class="saved-label">${a.label}</b> <span class="saved-street">${esc(a.street)}</span> ${addressLines(a)
     .map((l) => `<span class="saved-line">${l}</span>`)
-    .join(' ')}</span><span class="saved-check" aria-hidden="true">${icon('<path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>', 20)}</span></label>${a.lastOrder ? '' : a.place ? (canSave ? saveButton(a) : '') : moreButton(a)}</div>`;
+    .join(' ')}</span><span class="saved-check" aria-hidden="true">${addressIcon('check')}</span></label>${a.lastOrder ? '' : a.place ? (canSave ? saveButton(a) : '') : moreButton(a)}</div>`;
 }
 
 /**
@@ -120,11 +113,11 @@ function savedAddressCard(a, picked, canSave = false) {
  * without addresses sees no empty sections.
  */
 /**
- * Opções do endereço (Figma Endereço 06): a modal dialog (main.js shows it) with "Editar endereço" (data-address-edit)
+ * Opções do endereço (Figma Endereço 06): an anchored dialog on web and an action sheet on mobile with "Editar endereço" (data-address-edit)
  * and "Remover endereço" (data-address-remove) for the Endereço salvo `a`.
  */
 const addressMenu = (a) =>
-  `<dialog class="address-menu" id="address-menu" aria-label="Opções do endereço ${a.label}" data-for="${a.id}"><button type="button" data-address-edit="${a.id}">Editar endereço</button><button type="button" class="address-menu-remove" data-address-remove="${a.id}">Remover endereço</button></dialog>`;
+  `<dialog class="address-menu" id="address-menu" aria-label="Opções do endereço ${a.label}" data-for="${a.id}"><button type="button" data-address-edit="${a.id}">Editar endereço</button><button type="button" class="address-menu-remove" data-address-remove="${a.id}">${addressIcon('trash')}Remover endereço</button></dialog>`;
 
 export function addressList({ customer, addressPick, unsaved, addressMenu: open }) {
   const saved = [unsaved, ...(customer?.addresses ?? [])].filter(Boolean);
@@ -152,12 +145,8 @@ function deliveryLines(a) {
 }
 
 // Novo endereço (#endereco/buscar, #endereco/confirmar, #endereco/dados; Figma Endereço 02-04 and 10-15).
-const pinIcon = icon(`<path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z" ${stroke}/><circle cx="12" cy="10" r="2.3" ${stroke}/>`);
-const saveIcons = {
-  Casa: icon(`<path d="M3.5 11 12 4l8.5 7M6 9.5V20h12V9.5" ${stroke}/>`, 18),
-  Trabalho: icon(`<rect x="3.5" y="7.5" width="17" height="12" rx="1.5" ${stroke}/><path d="M9 7.5V5.5h6v2M3.5 12.5h17" ${stroke}/>`, 18),
-  Favoritos: icon(`<path d="m12 4 2.4 5 5.4.6-4 3.7 1.1 5.3L12 16l-4.9 2.6 1.1-5.3-4-3.7 5.4-.6z" ${stroke}/>`, 18),
-};
+const pinIcon = addressIcon('pin');
+const saveIcons = { Casa: addressIcon('house', 16), Trabalho: addressIcon('briefcase', 16), Favoritos: addressIcon('star', 16) };
 
 /** The map's tiles (Assets/maps, OpenStreetMap, 2 × 2 of 256 px) and the point of the Av. Paulista, 1578 in them. */
 const tiles = [tile0, tile1, tile2, tile3];
@@ -208,7 +197,7 @@ function addressSearch({ addressQuery }) {
  */
 function addressConfirm({ addressPlace: p }) {
   if (!p.served)
-    return `<div class="address-flow"><h2 class="address-title">Ainda não entregamos nessa região</h2><p class="address-text">Tente outro endereço para continuar seu pedido.</p><div class="address-place">${pinIcon}<p><b>Local selecionado</b> <span class="place-street">${streetLine(p)}</span> <span>${p.city}</span> <span>Fora da área de entrega</span></p></div><div class="address-buttons"><button class="primary" type="button" data-address-other>Escolher outro endereço</button><button class="secondary" type="button" data-to-menu>Voltar ao cardápio</button></div></div>`;
+    return `<div class="address-flow"><h2 class="address-title">Ainda não entregamos nessa região</h2><p class="address-text">Tente outro endereço para continuar seu pedido.</p><div class="address-place">${pinIcon}<p><b>Local selecionado</b> <span class="place-street">${streetLine(p)}</span> <span>${p.city}</span> <span>Fora da área de entrega</span></p></div><div class="address-buttons"><button class="primary" type="button" data-address-other>Escolher outro endereço</button></div></div>`;
   return `<div class="address-flow"><h2 class="address-title">Confirme o local da entrega</h2><button class="address-search" type="button" data-address-search>${searchIcon}<span>${streetLine(p)}</span></button>${staticMap(p.pan, true)}<p class="address-chosen"><b>${streetLine(p)}</b> <span>${p.district}, ${p.city}</span></p><div class="address-action"><button class="primary" type="button" data-address-confirm>Confirmar localização</button></div></div>`;
 }
 
@@ -276,7 +265,7 @@ export function addressFlow(state) {
   if (state.addressPage === 'anteriores') return previousList(state);
   const target = state.customer?.addresses.find((a) => a.id === state.addressTarget);
   if (state.addressPage === 'editar' && target) return addressEdit(state, target);
-  if (state.addressPage === 'remover' && target) return addressRemove(target);
+  if (state.addressPage === 'remover' && target) return `<div class="address-removal-background" inert aria-hidden="true">${addressList({ ...state, addressMenu: null })}</div><dialog id="address-confirmation" aria-label="Remover endereço">${addressRemove(target)}</dialog>`;
   // Right after "Salvar endereço" (no place any more), the list, while history goes back to it.
   if (state.addressPage === 'confirmar' && state.addressPlace) return addressConfirm(state);
   if (state.addressPage === 'dados' && state.addressPlace) return addressDetails(state);

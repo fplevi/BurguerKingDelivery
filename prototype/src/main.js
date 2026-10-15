@@ -415,15 +415,46 @@ function rebuild(root, html, keep = '') {
  */
 function renderAddress() {
   $('address-step-back').hidden = cartLocked(state) || (state.addressPage === 'lista' && !state.locateError);
+  $('address-back').hidden = cartLocked(state) || !$('address-step-back').hidden;
   // From the menu (or for a visitor) the address pages are not a step of the Checkout: no indicador de etapas.
   const from = addressBack(),
     outside = from === 'menu' || from === 'conta' || !state.customer;
-  $('address-back').textContent = from === 'menu' ? 'Voltar ao cardápio' : from === 'conta' ? 'Voltar aos endereços' : 'Voltar ao checkout';
+  $('address-back').textContent = 'Voltar';
   $('address-title').textContent = from === 'conta' ? 'Endereços' : 'Endereço de entrega';
   rebuild($('address-content'), (outside ? '' : progress(1)) + addressFlow(state));
-  // The menu ⋮ open: a modal dialog, its first option focused.
-  $('address-menu')?.showModal();
+  const confirmation = $('address-confirmation');
+  if (confirmation) {
+    if (matchMedia('(max-width: 1023px)').matches) confirmation.showModal();
+    else confirmation.show();
+  }
+  // Desktop keeps the list interactive; mobile retains its modal action sheet.
+  const menu = $('address-menu');
+  if (menu) {
+    if (matchMedia('(max-width: 1023px)').matches) menu.showModal();
+    else {
+      menu.show();
+      positionAddressMenu();
+      menu.querySelector('button').focus({ preventScroll: true });
+    }
+  }
 }
+function positionAddressMenu() {
+  const menu = $('address-menu');
+  if (!menu || menu.matches(':modal')) return;
+  const anchor = $('address-more-' + menu.dataset.for)?.getBoundingClientRect();
+  if (!anchor) return;
+  menu.style.left = Math.max(16, Math.min(anchor.right - menu.offsetWidth, innerWidth - menu.offsetWidth - 16)) + 'px';
+  menu.style.top = Math.max(16, Math.min(anchor.bottom + 8, innerHeight - menu.offsetHeight - 16)) + 'px';
+}
+window.addEventListener('scroll', positionAddressMenu, true);
+window.addEventListener('resize', () => {
+  const confirmation = $('address-confirmation');
+  if (confirmation && confirmation.matches(':modal') !== matchMedia('(max-width: 1023px)').matches) renderAddress();
+  const menu = $('address-menu');
+  if (!menu) return;
+  if (menu.matches(':modal') !== matchMedia('(max-width: 1023px)').matches) renderAddress();
+  else positionAddressMenu();
+});
 /** The address chosen with "Entregar neste endereço", while it is still an Endereço salvo; null otherwise. */
 const delivery = () => savedAddress(state, state.delivery);
 /** The Pedido confirmado of #pedido/<id>, or undefined. */
@@ -1106,6 +1137,7 @@ const parentPage = { buscar: 'endereco', confirmar: 'endereco/buscar', dados: 'e
 const toList = () => (addressBack() === 'conta' ? history.go(-1 - depth()) : depth() ? history.go(-depth()) : (location.hash = 'endereco'));
 function stepBack() {
   if (state.addressPage === 'lista') return dispatch({ type: 'addressLocateReset' });
+  if (state.addressPage === 'buscar') return toList();
   depth() || addressBack() === 'conta' ? history.back() : (location.hash = parentPage[state.addressPage]);
 }
 // "Usar localização atual" asks the browser: granted, Av. Paulista, 1578 (whatever the coordinates); denied or
@@ -1130,9 +1162,24 @@ function closeMenu() {
   dispatch({ type: 'addressMenu', id: null });
   $('address-more-' + id)?.focus();
 }
+document.addEventListener('pointerdown', (e) => {
+  const menu = $('address-menu');
+  if (menu && !menu.matches(':modal') && !menu.contains(e.target) && !e.target.closest('[data-address-more]')) closeMenu();
+});
+document.addEventListener('keydown', (e) => {
+  const menu = $('address-menu');
+  if (e.key === 'Escape' && menu && !menu.matches(':modal')) {
+    e.preventDefault();
+    closeMenu();
+  }
+});
 $('address-page').addEventListener(
   'cancel',
   (e) => {
+    if (e.target.id === 'address-confirmation') {
+      e.preventDefault();
+      return stepBack();
+    }
     if (e.target.id !== 'address-menu') return;
     e.preventDefault();
     closeMenu();

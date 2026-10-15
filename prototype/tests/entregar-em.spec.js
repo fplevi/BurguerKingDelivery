@@ -56,7 +56,7 @@ test('o visitante escolhe o endereço sem se identificar e volta à categoria de
 test('Voltar ao cardápio, em Seus endereços aberto pelo cardápio, volta à categoria sem mudar nada', async ({ page }) => {
   await page.goto('/#sobremesas');
   await informar(page).click();
-  await paginaDeEndereco(page).getByRole('button', { name: 'Voltar ao cardápio' }).click();
+  await paginaDeEndereco(page).getByRole('button', { name: 'Voltar', exact: true }).click();
   await expect(page).toHaveURL(/#sobremesas$/);
   await expect(informar(page)).toBeVisible();
 });
@@ -66,7 +66,9 @@ test('fora da região: avisa e Voltar ao cardápio mantém o endereço anterior'
   await entregarNaPaulista(page);
   await escolherLugar(page, 'estrada do campo', 'Estrada do Campo, 120');
   await expect(paginaDeEndereco(page).getByRole('heading', { name: 'Ainda não entregamos nessa região' })).toBeVisible();
-  await page.locator('#address-content').getByRole('button', { name: 'Voltar ao cardápio' }).click();
+  await paginaDeEndereco(page).getByRole('button', { name: 'Voltar', exact: true }).click();
+  await paginaDeEndereco(page).getByRole('button', { name: 'Voltar', exact: true }).click();
+  await paginaDeEndereco(page).getByRole('button', { name: 'Voltar', exact: true }).click();
   await expect(page).toHaveURL(/#acompanhamentos$/);
   await expect(hero(page)).toContainText('Entregar em Av. Paulista, 1578 · Bela Vista');
 });

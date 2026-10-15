@@ -1,5 +1,21 @@
 # Icons do Figma
 
+Ticket 04: `address-*.svg` são exports originais dos componentes abaixo (15/10/2026), biblioteca Icons, Format=Outline / Weight=Bold. `address-icons.js` preserva viewBox/paths e aplica cor de texto e caixa da instância: 24 px, exceto histórico e opções Casa/Trabalho/Favoritos do formulário em 16 px. O retorno usa máscara de 24 px. Referências: `157:4660`, `223:7527`, `157:3329`, `157:3230`. Marcador ilustrado e tiles do mapa permanecem separados.
+
+| Arquivo address-* | Componente | Key |
+| --- | --- | --- |
+| search.svg | 307:11389 | f39dca7dd972ad2409935bab8273293c0dabf80f |
+| navigation.svg | 307:11431 | f45b5a5db1cc2475594bf1888469e3a29163bd2e |
+| history.svg | 307:11545 | 001d71c8d5c6e6ac492bc7f62e475d01b9537b05 |
+| dots.svg | 300:11504 | 12961a95b59af9c43ff5c114a8236fea406e641c |
+| briefcase.svg | 310:21433 | bda1915e2c7229d644ed0e3ee0e193e98e6b0f46 |
+| star.svg | 310:21488 | a05f5721015983dc38b6925b00c71d6a64e12980 |
+| trash.svg | 307:11604 | 9d1b20079030fa1f22490413d3b70854bb8b26f2 |
+| house.svg | 300:11465 | 56cf73fbf287b7a72c34e976edcec3337db1ace7 |
+| pin.svg | 307:11350 | b641ad217951cf3e6789ff17d2bb434839f7b6b0 |
+| check.svg | 300:11418 | 16c67e993965c3a46dc398337ef640e87446d926 |
+| back.svg | 307:11466 | 49f364e9f2711fb8115928da9648cfc346b9a0b3 |
+
 Fonte: arquivo BK `BElIaiOW5D1qFF8QStnoDo`, Page 1; consulta em 15/10/2026.
 Biblioteca **Icons**, variante **Format=Outline, Weight=Bold**. A origem de um pacote npm não foi comprovada. Não substituir por uma biblioteca presumida.
 

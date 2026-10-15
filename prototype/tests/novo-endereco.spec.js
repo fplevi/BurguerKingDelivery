@@ -146,7 +146,7 @@ test('O que o cliente digita no endereço aparece como texto, na lista, em Remov
   // Remover endereço names it; Cancelar keeps it.
   await paginaDeEndereco(page).getByRole('button', { name: 'Opções do endereço Favoritos' }).click();
   await page.getByRole('dialog').getByRole('button', { name: 'Remover endereço' }).click();
-  await expect(paginaDeEndereco(page).getByText(`${rua}, 1578`, { exact: true })).toBeVisible();
+  await expect(paginaDeEndereco(page).getByRole('dialog', { name: 'Remover endereço', exact: true }).getByText(`${rua}, 1578`, { exact: true })).toBeVisible();
   await paginaDeEndereco(page).getByRole('button', { name: 'Cancelar' }).click();
   await expect(novo).toBeChecked();
 
@@ -188,17 +188,21 @@ test('Voltar percorre Dados de entrega → Confirmar localização → Busca →
   await expect(paginaDeEndereco(page).getByRole('searchbox', { name: 'Buscar endereço e número' })).toHaveValue('paulista');
   await voltar.click();
   await expect(page).toHaveURL(/#endereco$/);
-  await expect(voltar).toBeHidden();
+  await expect(voltar).toBeVisible();
   await expect(paginaDeEndereco(page).getByRole('radiogroup', { name: 'Endereços salvos' })).toBeVisible();
 });
 
-test('Voltar ao checkout numa página do novo endereço volta ao Pagamento, de onde veio por Alterar', async ({ page }) => {
+test('Voltar percorre busca e lista antes do Checkout de origem', async ({ page }) => {
   await irAosEnderecos(page);
   await paginaDeEndereco(page).getByRole('button', { name: 'Entregar neste endereço' }).click();
   await page.getByRole('region', { name: 'Finalizar pedido' }).getByRole('button', { name: 'Alterar' }).click();
   await buscarEndereco(page, 'augusta');
   await resultadosDaBusca(page).first().click();
-  await paginaDeEndereco(page).getByRole('button', { name: 'Voltar ao checkout' }).click();
+  await paginaDeEndereco(page).getByRole('button', { name: 'Voltar', exact: true }).click();
+  await expect(page).toHaveURL(/#endereco\/buscar$/);
+  await paginaDeEndereco(page).getByRole('button', { name: 'Voltar', exact: true }).click();
+  await expect(page).toHaveURL(/#endereco$/);
+  await paginaDeEndereco(page).getByRole('button', { name: 'Voltar', exact: true }).click();
   await expect(page).toHaveURL(/#checkout$/);
   await expect(page.getByRole('region', { name: 'Finalizar pedido' }).getByRole('region', { name: 'Endereço de entrega' })).toContainText('Casa');
   // The same history entry as before Alterar: Back goes to the Seus endereços that came before it.
@@ -248,7 +252,11 @@ test('"estrada do campo" está fora da região: não segue; Escolher outro ender
   await expect(page).toHaveURL(/#endereco\/buscar$/);
   await expect(paginaDeEndereco(page).getByRole('searchbox', { name: 'Buscar endereço e número' })).toHaveValue('estrada do campo');
   await resultadosDaBusca(page).filter({ hasText: 'Estrada do Campo, 120' }).click();
-  await paginaDeEndereco(page).getByRole('button', { name: 'Voltar ao cardápio' }).click();
+  await paginaDeEndereco(page).getByRole('button', { name: 'Voltar', exact: true }).click();
+  await expect(page).toHaveURL(/#endereco\/buscar$/);
+  await paginaDeEndereco(page).getByRole('button', { name: 'Voltar', exact: true }).click();
+  await expect(page).toHaveURL(/#endereco$/);
+  await paginaDeEndereco(page).getByRole('button', { name: 'Voltar', exact: true }).click();
   await expect(page).toHaveURL(/#hamburgueres$/);
   await expect(page.getByRole('button', { name: 'Adicionar ao carrinho' })).toBeVisible();
 });

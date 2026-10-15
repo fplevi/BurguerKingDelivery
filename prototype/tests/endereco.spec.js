@@ -45,7 +45,7 @@ test('Cliente cadastrado vê os Endereços salvos Casa e Trabalho, com Casa marc
   await expect(endereco(page).getByRole('button', { name: /^Usar localização atual/ })).toBeVisible();
   await expect(endereco(page).getByRole('button', { name: 'Endereços de pedidos anteriores' })).toBeVisible();
   await expect(entregar(page)).toBeEnabled();
-  await expect(endereco(page).getByRole('button', { name: 'Voltar ao checkout' })).toBeVisible();
+  await expect(endereco(page).getByRole('button', { name: 'Voltar', exact: true })).toBeVisible();
 });
 
 test('Novo cliente vê só a busca e Usar localização atual, sem seções vazias nem Entregar neste endereço', async ({ page }) => {
@@ -128,7 +128,7 @@ test('Voltar ao checkout volta ao Pagamento sem trocar o endereço; Voltar do na
   await entregarEm(page, 'Casa');
   await pagamento(page).getByRole('button', { name: 'Alterar' }).click();
   await salvo(page, 'Trabalho').check();
-  await endereco(page).getByRole('button', { name: 'Voltar ao checkout' }).click();
+  await endereco(page).getByRole('button', { name: 'Voltar', exact: true }).click();
   await expect(pagamento(page).getByText('Av. Paulista, 1578', { exact: true })).toBeVisible();
   await expect(page.getByRole('heading', { level: 1, name: 'Finalizar pedido' })).toBeFocused();
 
@@ -139,14 +139,14 @@ test('Voltar ao checkout volta ao Pagamento sem trocar o endereço; Voltar do na
   await expect(pagamento(page).getByText('Av. Paulista, 1578', { exact: true })).toBeVisible();
   await page.goForward();
   await expect(endereco(page)).toBeVisible();
-  await endereco(page).getByRole('button', { name: 'Voltar ao checkout' }).click();
+  await endereco(page).getByRole('button', { name: 'Voltar', exact: true }).click();
   await expect(pagamento(page)).toBeVisible();
   await expect(page).toHaveURL(/#checkout$/);
 });
 
 test('sem endereço escolhido, Voltar ao checkout volta ao Carrinho', async ({ page }) => {
   await irAoEndereco(page);
-  await endereco(page).getByRole('button', { name: 'Voltar ao checkout' }).click();
+  await endereco(page).getByRole('button', { name: 'Voltar', exact: true }).click();
   await expect(carrinho(page)).toBeVisible();
   await expect(page).toHaveURL(/#carrinho$/);
 });
