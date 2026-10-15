@@ -4,11 +4,15 @@
 
 **Blocked by:** 01.
 
-**Status:** needs-info
+**Status:** resolved
 
 - [x] Quatro capturas e quadros da Entrada e da Saída entregues juntos, com a foto oficial ao lado
 - [x] Ajustes pedidos aplicados e novas capturas anexadas
-- [ ] Aprovação do responsável registrada em `## Comments`
+- [x] Aprovação do responsável registrada em `## Comments`
+
+## Answer
+
+Aprovado depois de uma rodada de ajustes; as capturas finais são as de `capturas/02/ajustes/`. O molho Big King ganhou modelos próprios: `bigKingSauce`, uma peça lisa e arredondada sobre o pão do meio, escorrendo em gotas pela lateral, e `bigKingSauceTop`, discreto sob o pão de cima, os dois em laranja cremoso. A Alface e a Cebola passaram a ser alargadas pela Receita (`spread`). O pão do meio, o pão inferior, o `stackerSauce` e os outros hambúrgueres não mudaram.
 
 ## Comments
 
@@ -26,3 +30,4 @@
   - A Entrada continua em ~1 s.
   - Suíte `npm run test:build` numa cópia isolada (HEAD + estas mudanças): 668 passaram, 1 falhou por tempo esgotado (`categorias.spec.js:169`, 23 s). Outra sessão rodava a suíte ao mesmo tempo nesta máquina; o teste passou 3 de 3 depois e também passa sem as mudanças.
   - Aguardando a aprovação do responsável pelo produto.
+- 2026-10-15 (responsável pelo produto): "Approved. Record the approval on ticket 02."
