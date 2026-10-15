@@ -84,6 +84,7 @@ body[data-screen="checkout"], body[data-screen="identificar"], body[data-screen=
 #order-page .delivery-street, #order-page .delivery-city { margin-bottom: var(--space-16); }
 #order-page .delivery-extra { gap: var(--space-8) var(--space-48); }
 #order-page .order-paid { margin-top: var(--space-24); }
+#signin-page .signin-card h2 { font-family: var(--font-display); font-weight: 700; }
 #signin-page .signin-card { padding: var(--space-24); background: var(--surface-purchase); border-radius: var(--radius-panel); }
 #signin-page .signin-lead { margin: var(--space-24) 0; }
 @media(max-width:1023px) {

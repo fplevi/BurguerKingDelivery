@@ -10,7 +10,7 @@ const results = [];
 try {
   for (const width of [320, 360, 390, 768, 1023, 1024, 1025, 1280, 1919, 1920, 1921]) {
     const context = await browser.newContext({ baseURL: process.env.BK_REVIEW_URL ?? 'http://127.0.0.1:4185', viewport: { width, height: 844 }, reducedMotion: 'reduce', permissions: ['clipboard-read', 'clipboard-write'] });
-    const page = await context.newPage();
+    let page = await context.newPage();
     const button = name => checkout(page).getByRole('button', { name, exact: true });
     const input = name => checkout(page).getByRole('textbox', { name, exact: true });
     async function capture(state) {
@@ -89,7 +89,9 @@ try {
     await page.getByRole('button', { name: 'Receber por SMS', exact: true }).click();
     await capture('novo-celular-sms');
     async function identify(phone) {
-      await page.evaluate(() => sessionStorage.clear());
+      await page.close();
+      page = await context.newPage();
+      await page.clock.install();
       await page.goto('/');
       await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
       await continuarDoCarrinho(page);
@@ -108,7 +110,9 @@ try {
     await page.clock.fastForward(600_000);
     await expect(checkout(page).getByRole('heading', { name: 'Seu Pix expirou' })).toBeVisible();
     await capture('pix-expirado');
-    await page.evaluate(() => sessionStorage.clear());
+    await page.close();
+    page = await context.newPage();
+    await page.clock.install();
     await page.goto('/#identificar');
     await expect(page.getByRole('button', { name: 'Fechar', exact: true })).toHaveCount(0);
     await capture('identifique-se');
