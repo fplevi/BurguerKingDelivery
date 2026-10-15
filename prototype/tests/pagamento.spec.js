@@ -87,7 +87,7 @@ test('Cartão salvo com código de segurança válido: processamento com a tela 
   await expect(checkout(page).getByText('Aguarde a confirmação do seu cartão.')).toBeVisible();
   await expect(checkout(page).getByRole('status').getByText('R$ 40,80')).toBeVisible();
   await expect(formaDePagamento(page)).toHaveCount(0);
-  await expect(checkout(page).getByRole('button', { name: 'Voltar ao carrinho' })).toBeDisabled();
+  await expect(checkout(page).getByRole('button', { name: 'Voltar', exact: true })).toBeDisabled();
   await expect(resumoDoPedido(page).getByRole('button', { name: 'Editar carrinho' })).toBeDisabled();
   await expect(page.locator('header')).toHaveJSProperty('inert', true);
   await expect(etapas(page).nth(2)).toHaveAttribute('aria-current', 'step');

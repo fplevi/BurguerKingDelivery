@@ -1,6 +1,6 @@
 // Minha conta (Figma Conta 07-22): the navigation (a side list on desktop, a list that opens below 1024px) and the
 // content of each section. Rebuilt by main.js on every change; its links are plain hashes (#conta/<page>).
-import { maskPhone, esc, field, sentTo, maskCard, maskExpiry } from './checkout.js';
+import { maskPhone, esc, field, confirmationCode, maskCard, maskExpiry } from './checkout.js';
 import { money } from './state.js';
 import { trackingView } from './tracking.js';
 import { currentOrder, ordersOf, situation, situationName, forecast, hour, day, units, summary, store, routeKm } from './orders.js';
@@ -77,7 +77,7 @@ function phoneChange({ phoneChange: p }) {
     return `<section class="account-card" aria-labelledby="conflict-title"><h2 id="conflict-title">Não foi possível vincular este número.</h2><p>Este celular já está vinculado a outro cadastro. Seus dados e pedidos permanecem no celular atual.</p><div class="account-buttons account-buttons-column"><button class="primary account-action" type="button" data-phone-other>Informar outro celular</button><a class="secondary account-action" href="#conta/dados">Voltar aos meus dados</a></div></section>`;
   const card =
     p.step === 'code'
-      ? `<h2>Confirme seu celular</h2><p class="step-text">${sentTo(p.channel, p.phone).replace(/\.$/, '')}. Confirme para atualizar seu celular.</p><form class="id-form" data-phone-form="code" novalidate>${field('new-code', 'Código de 6 dígitos', `inputmode="numeric" autocomplete="one-time-code" maxlength="6" value="${p.code}"`, p.codeError ? 'Código incorreto. Confira e tente novamente.' : '')}<button class="primary" type="submit"${p.code.length < 6 || p.codeError ? ' disabled' : ''}>Confirmar e continuar</button></form><div class="id-links"><button class="link" type="button" data-phone-resend>Reenviar código</button><button class="link" type="button" data-phone-channel>${p.channel === 'sms' ? 'Receber pelo WhatsApp' : 'Receber por SMS'}</button><button class="link" type="button" data-phone-back>Alterar celular</button></div>`
+      ? confirmationCode(p, { updating: true })
       : `<h2>Qual é o seu celular?</h2><p class="step-text">Vamos enviar um código para confirmar que é você.</p><form class="id-form" data-phone-form="phone" novalidate>${field('new-phone', 'Celular com DDD', `type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="(00) 00000-0000" value="${maskPhone(p.phone)}"`, p.error)}<button class="primary" type="submit" data-phone-send="whatsapp"${p.phone.length === 11 ? '' : ' disabled'}>Receber código pelo WhatsApp</button><button class="link" type="submit" data-phone-send="sms"${p.phone.length === 11 ? '' : ' disabled'}>Receber por SMS</button></form><p class="step-note">Seus dados só serão recuperados após a confirmação.</p>`;
   return `<p class="account-lead">${phoneLeads[p.step]}</p><section class="account-card checkout-step" aria-label="Alterar celular">${card}</section><a class="secondary account-action" href="#conta/dados">Cancelar</a>`;
 }

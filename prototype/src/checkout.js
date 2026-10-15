@@ -67,6 +67,15 @@ export function field(id, label, attrs, error = '') {
   return `<label class="field-label" for="${id}">${label}</label><input class="field" id="${id}" ${attrs} aria-invalid="${!!error}" aria-describedby="${id}-error"><p class="field-error" id="${id}-error"${error ? ' role="alert"' : ''}>${error}</p>`;
 }
 
+/** Shared Código de confirmação, preserving each flow's event attributes and availability. */
+export function confirmationCode({ phone, channel, code, codeError }, { updating = false } = {}) {
+  const inputId = updating ? 'new-code' : 'id-code';
+  const form = updating ? 'data-phone-form' : 'data-id-form';
+  const action = updating ? 'data-phone' : 'data-id';
+  const message = sentTo(channel, phone) + (updating ? ' Confirme para atualizar seu celular.' : '');
+  return `<div class="confirmation-code"><h2>Confirme seu celular</h2><p class="step-text">${message}</p><button class="link code-change" type="button" ${action}-${updating ? 'back' : 'change'}>Alterar celular</button><form class="id-form" ${form}="code" novalidate>${field(inputId, 'Código de 6 dígitos', `inputmode="numeric" autocomplete="one-time-code" maxlength="6" value="${code}"`, codeError ? 'Código incorreto. Confira e tente novamente.' : '')}<div class="code-actions"><button class="primary" type="submit"${code.length < 6 || codeError ? ' disabled' : ''}>Confirmar e continuar</button><button class="secondary" type="button" ${action}-channel>${channel === 'sms' ? 'Receber pelo WhatsApp' : 'Receber por SMS'}</button><button class="link" type="button" ${action}-resend>Reenviar código</button></div></form></div>`;
+}
+
 /**
  * Identificação (Figma phone, waCode/smsCode, codeError and newCustomer): the step's content for
  * `identification` (see state.js). Each step is a form; its buttons carry data-id-* for main.js.
@@ -74,7 +83,7 @@ export function field(id, label, attrs, error = '') {
  */
 export function identificationStep({ step, phone, channel, code, codeError, errors }) {
   if (step === 'code')
-    return `<h2>Confirme seu celular</h2><p class="step-text">${sentTo(channel, phone)}</p><form class="id-form" data-id-form="code" novalidate>${field('id-code', 'Código de 6 dígitos', `inputmode="numeric" autocomplete="one-time-code" maxlength="6" value="${code}"`, codeError ? 'Código incorreto. Confira e tente novamente.' : '')}<button class="primary" type="submit"${code.length < 6 || codeError ? ' disabled' : ''}>Confirmar e continuar</button></form><div class="id-links"><button class="link" type="button" data-id-resend>Reenviar código</button><button class="link" type="button" data-id-channel>${channel === 'sms' ? 'Receber pelo WhatsApp' : 'Receber por SMS'}</button><button class="link" type="button" data-id-change>Alterar celular</button></div>`;
+    return confirmationCode({ phone, channel, code, codeError });
   if (step === 'register')
     return `<h2>Como podemos te chamar?</h2><p class="step-text">Complete seus dados para receber seu pedido.</p><form class="id-form" data-id-form="register" novalidate>${field('id-name', 'Nome completo', 'autocomplete="name" required', errors.name)}${field('id-email', 'E-mail (opcional)', 'type="email" autocomplete="email"', errors.email)}${field('id-phone-read', 'Celular', `type="tel" readonly value="${maskPhone(phone)}"`)}<button class="primary" type="submit">Continuar</button></form>`;
   const ready = phone.length === 11 ? '' : ' disabled';

@@ -653,7 +653,7 @@ $('account-page').addEventListener('submit', (e) => {
   } else if (state.phoneChange.step === 'conflict') $('account-title').focus();
   else $('new-code').focus();
 });
-$('signin-close').onclick = () => leaveSignin(false);
+$('signin-back').onclick = () => leaveSignin(false);
 
 /** Carrinho screen: the Itens (each one editable, see itemCard) and the Resumo do carrinho, or the empty state. */
 const itemsText = (n) => (n === 1 ? '1 item' : `${n} itens`);

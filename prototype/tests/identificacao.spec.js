@@ -227,3 +227,20 @@ test('#endereco abre sem carrinho e sem celular confirmado (ADR 0002): o visitan
   await page.evaluate(() => (location.hash = 'endereco/anteriores'));
   await expect(page).toHaveURL(/#endereco$/);
 });
+
+// Fronteira confirmada: apresentação e ações públicas do Código de confirmação.
+test('Código apresenta Alterar celular antes do campo e ações empilhadas na ordem revisada', async ({ page }) => {
+  await irAoCheckout(page);
+  await celular(page).fill('61999991234');
+  await botao(page, 'Receber código pelo WhatsApp').click();
+  const change = await botao(page, 'Alterar celular').boundingBox();
+  const input = await codigo(page).boundingBox();
+  expect(change.y + change.height).toBeLessThanOrEqual(input.y);
+  const actions = await Promise.all(['Confirmar e continuar', 'Receber por SMS', 'Reenviar código'].map(name => botao(page, name).boundingBox()));
+  for (let i = 1; i < actions.length; i++) {
+    expect(actions[i].y).toBeGreaterThanOrEqual(actions[i - 1].y + actions[i - 1].height);
+    expect(actions[i].x).toBeCloseTo(actions[0].x, 0);
+    expect(actions[i].width).toBeCloseTo(actions[0].width, 0);
+  }
+  await expect(botao(page, 'Confirmar e continuar')).toBeDisabled();
+});
