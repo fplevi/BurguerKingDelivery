@@ -77,8 +77,8 @@ function timeline(order, now) {
   return `<section class="account-card track-steps" aria-labelledby="steps-title"><h2 id="steps-title">Situação do pedido</h2><ol class="timeline">${[...reached, ...rest].join('')}</ol></section>`;
 }
 
-const waIcon = `<svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3zm0 16.4a7.4 7.4 0 0 1-3.8-1l-.3-.2-2.7.7.7-2.6-.2-.3A7.4 7.4 0 1 1 12 19.4zm4-5.5c-.2-.1-1.3-.7-1.5-.7s-.4-.1-.5.1-.6.7-.7.9-.3.2-.5.1a6 6 0 0 1-3-2.6c-.2-.4.2-.4.6-1.2.1-.1 0-.3 0-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.4a.8.8 0 0 0-.6.3 2.5 2.5 0 0 0-.8 1.9 4.4 4.4 0 0 0 .9 2.3 10 10 0 0 0 3.8 3.4c1.4.6 2 .6 2.7.5a2.3 2.3 0 0 0 1.5-1 1.9 1.9 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z" fill="currentColor"/></svg>`;
-const waLink = (label, kind) => `<a class="${kind} account-action track-whatsapp" href="${whatsapp}" target="_blank" rel="noopener">${waIcon}${label}</a>`;
+const waIcon = '<span class="track-whatsapp-icon" aria-hidden="true"></span>';
+const waLink = (label, kind) => `<a class="${kind} account-action track-whatsapp" href="${whatsapp}" target="_blank" rel="noopener">${waIcon}<span>${label}</span></a>`;
 /** The loja: always, with its WhatsApp. */
 const storeCard = () => `<div class="track-store"><p class="track-store-name">${store.name}</p><p class="account-meta">Loja responsável pelo seu pedido</p>${waLink('WhatsApp da loja', 'secondary')}</div>`;
 
@@ -102,7 +102,7 @@ export function trackingView(order, now) {
   const head = s.done
     ? `<section class="account-card track-head" aria-labelledby="track-title"><h2 id="track-title">${s.cancelled ? 'Pedido cancelado' : 'Pedido entregue'}</h2><p>${s.cancelled ? 'Cancelado' : 'Entregue'} ${when(end, now)}</p>${s.cancelled ? '<p>O valor será devolvido na mesma forma de pagamento.</p>' : ''}<p class="account-meta">Pedido #${order.id} · ${day(order.confirmedAt, now)}, ${hour(order.confirmedAt)}</p></section>`
     : `<section class="account-card track-head" aria-labelledby="track-title"><h2 id="track-title">${situationName(order, now)}</h2><p class="track-eta">Chega entre ${hour(from)} e ${hour(to)}</p><p class="account-meta">Pedido #${order.id} · ${day(order.confirmedAt, now)}, ${hour(order.confirmedAt)}</p></section>`;
-  const items = `<div class="track-items">${orderSummary(order.items, true, { edit: false })}<p class="account-meta">Pago com ${esc(order.paidWith)}</p></div>`;
+  const items = `<div class="track-items">${orderSummary(order.items, true, { edit: false })}<p class="account-meta">Pago com ${esc(order.paidWith)}</p><a class="secondary account-action account-back" href="#conta/pedidos"><span class="navigation-arrow" aria-hidden="true"></span>Voltar</a></div>`;
   if (s.done) return `<div class="track">${head}<div class="track-main"><section class="account-card" aria-label="Loja">${storeCard()}</section></div>${timeline(order, now)}${items}</div>`;
   const at = riderAt(order, now);
   const status = at == null ? 'Acompanhe o motoboy após a retirada' : at >= 1 ? 'Chegou ao seu endereço' : `${at === 0 ? 'Saindo da loja' : 'A caminho'} · ${km(1 - at)} restantes`;

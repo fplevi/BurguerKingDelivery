@@ -55,3 +55,5 @@ Ticket 07: navegação de Minha conta consultada em `318:11597` / `318:12920`, a
 | address-receipt.svg | 335:12129 | 6163cd232ba141ad743ed5c0d148d6f9c6cd3f71 |
 | address-sign-out.svg | 335:12172 | 0bf4981f71054c55ad4d5dc71de189d50b8606f6 |
 | address-caret-down.svg | 308:14818 | 5eff189a6333a488f64ec551e1744d1fc63a1803 |
+
+Ticket 08 (16/10/2026): `whatsapp.svg` é o export original de WhatsappLogo, instância `I350:13367;350:13204` em `318:12340`, componente `355:13401`. Caixa nativa 16 × 16, biblioteca Icons Outline/Bold; máscara CSS em `tracking.css` herda a cor do contato. ArrowLeft e Receipt reutilizam os exports documentados. Tiles, rota e três marcadores ilustrados existentes foram preservados.

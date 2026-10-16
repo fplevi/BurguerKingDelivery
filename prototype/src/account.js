@@ -129,12 +129,12 @@ const removeCard = (k) =>
 function orders(state, now) {
   const all = ordersOf(state, now);
   if (!all.length)
-    return `<section class="account-card" aria-labelledby="no-orders"><h2 id="no-orders">Seu primeiro pedido começa aqui</h2><p>Quando fizer um pedido com este celular, ele aparecerá nesta área.</p><div class="account-buttons account-buttons-column"><a class="primary account-action" href="#${state.category}">Explorar o cardápio</a><a class="secondary account-action" href="#conta">Voltar à minha conta</a></div></section>`;
+    return `<section class="account-card orders-empty" aria-labelledby="no-orders"><h2 id="no-orders">Seu primeiro pedido começa aqui</h2><p>Quando fizer um pedido com este celular, ele aparecerá nesta área.</p><div class="account-buttons account-buttons-column"><a class="primary account-action" href="#${state.category}">Explorar o cardápio</a><a class="secondary account-action account-back" href="#conta"><span class="navigation-arrow" aria-hidden="true"></span>Voltar</a></div></section>`;
   const card = (o) => {
     const live = !situation(o, now).done,
       [from, to] = forecast(o);
     const extra = live ? `<p class="order-forecast">Chega entre ${hour(from)} e ${hour(to)}</p><p class="account-meta">Entrega em ${esc(o.address.label)} · ${store.short} · ${routeKm}</p>` : '';
-    return `<section class="account-card" aria-labelledby="order-${o.id}"><h2 id="order-${o.id}">Pedido #${o.id}</h2><p class="account-meta">${day(o.confirmedAt, now)}, ${hour(o.confirmedAt)}</p><p class="account-meta">${situationName(o, now)}</p>${extra}<p>${summary(o)} · ${money(o.total)}</p><a class="${live ? 'primary' : 'secondary'} account-action" href="#conta/pedidos/${o.id}" aria-label="${live ? 'Acompanhar' : 'Ver detalhes do'} pedido #${o.id}">${live ? 'Acompanhar pedido' : 'Ver detalhes'}</a></section>`;
+    return `<section class="account-card orders-card" aria-labelledby="order-${o.id}"><h2 id="order-${o.id}">Pedido #${o.id}</h2><p class="account-meta">${day(o.confirmedAt, now)}, ${hour(o.confirmedAt)}</p><p class="account-meta">${situationName(o, now)}</p>${extra}<p>${summary(o)} · ${money(o.total)}</p><a class="${live ? 'primary' : 'secondary'} account-action" href="#conta/pedidos/${o.id}" aria-label="${live ? 'Acompanhar' : 'Ver detalhes do'} pedido #${o.id}">${live ? 'Acompanhar pedido' : 'Ver detalhes'}</a></section>`;
   };
   const group = (id, title, list) => (list.length ? `<h2 class="account-group" id="${id}">${title}</h2><div class="account-list" role="list" aria-labelledby="${id}">${list.map((o) => `<div role="listitem">${card(o)}</div>`).join('')}</div>` : '');
   const live = all.filter((o) => !situation(o, now).done);
