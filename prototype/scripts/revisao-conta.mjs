@@ -57,6 +57,44 @@ try {
     await capture('novo-celular-reenvio');
     await button('Receber por SMS').click();
     await capture('novo-celular-sms');
+    await root.getByRole('textbox', { name: 'Código de 6 dígitos' }).fill('123456');
+    await button('Confirmar e continuar').click();
+    await expect(page).toHaveURL(/#conta\/dados$/);
+    await capture('celular-atualizado');
+    await page.clock.runFor(3000);
+    await root.getByRole('textbox', { name: 'Nome completo' }).fill('');
+    await button('Salvar alterações').click();
+    await capture('dados-invalidos');
+    await root.getByRole('textbox', { name: 'Nome completo' }).fill('Mariana Silva');
+    await button('Salvar alterações').click();
+    await capture('dados-salvos');
+    await page.clock.runFor(3000);
+    await page.evaluate(() => { location.hash = 'conta/celular'; });
+    await root.getByRole('textbox', { name: 'Celular com DDD' }).fill('61900000000');
+    await button('Receber código pelo WhatsApp').click();
+    await root.getByRole('textbox', { name: 'Código de 6 dígitos' }).fill('123456');
+    await button('Confirmar e continuar').click();
+    await capture('celular-vinculado');
+    await root.getByRole('link', { name: 'Voltar', exact: true }).click();
+    await expect(page).toHaveURL(/#conta\/dados$/);
+    await page.evaluate(() => { location.hash = 'conta/enderecos'; });
+    for (const label of ['Trabalho', 'Casa']) {
+      await root.getByRole('button', { name: `Remover endereço ${label}`, exact: true }).click();
+      await capture(`remover-endereco-${label}`);
+      await button('Remover endereço').click();
+      await expect(page).toHaveURL(/#conta\/enderecos$/);
+      await capture(`endereco-removido-${label}`);
+      await page.clock.runFor(3000);
+    }
+    await expect(root.getByText('Nenhum endereço salvo')).toBeVisible();
+    await page.evaluate(() => { location.hash = 'conta/pagamentos'; });
+    while (await root.locator('[data-card-remove]').count()) {
+      await root.locator('[data-card-remove]').first().click();
+      await capture('remover-cartao');
+      await button('Remover cartão').click();
+      await expect(page).toHaveURL(/#conta\/pagamentos$/);
+    }
+    await capture('nenhum-cartao');
     await page.close();
   }
 } finally { await browser.close(); }

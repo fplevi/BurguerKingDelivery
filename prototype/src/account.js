@@ -71,7 +71,7 @@ const phoneLeads = { phone: 'Confirme um novo celular para manter seus dados e p
 /** Alterar celular: the new celular, its code (Reenviar, the other channel, Alterar celular), or "Celular já vinculado". */
 function phoneChange({ phoneChange: p }) {
   if (p.step === 'conflict')
-    return `<section class="account-card" aria-labelledby="conflict-title"><h2 id="conflict-title">Não foi possível vincular este número.</h2><p>Este celular já está vinculado a outro cadastro. Seus dados e pedidos permanecem no celular atual.</p><div class="account-buttons account-buttons-column"><button class="primary account-action" type="button" data-phone-other>Informar outro celular</button><a class="secondary account-action" href="#conta/dados">Voltar aos meus dados</a></div></section>`;
+    return `<section class="account-card" aria-labelledby="conflict-title"><h2 id="conflict-title">Não foi possível vincular este número.</h2><p>Este celular já está vinculado a outro cadastro. Seus dados e pedidos permanecem no celular atual.</p><div class="account-buttons account-buttons-column"><button class="primary account-action" type="button" data-phone-other>Informar outro celular</button><a class="secondary account-action account-back" href="#conta/dados"><span class="navigation-arrow" aria-hidden="true"></span>Voltar</a></div></section>`;
   const card =
     p.step === 'code'
       ? confirmationCode(p, { updating: true })
@@ -176,4 +176,3 @@ export function accountView(state, now, menuOpen) {
     }[page]?.() ?? '';
   return { title, html: `${accountNav(page === 'pedido' ? 'pedidos' : (accountPages[page].nav ?? page), menuOpen)}<div class="account-body">${body}</div>` };
 }
-

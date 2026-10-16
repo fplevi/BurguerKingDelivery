@@ -20,4 +20,3 @@ export const addressIcon = (name, size = 24) => icons[name]
   .replace('<svg ', `<svg class="icon" aria-hidden="true" `)
   .replace('width="32" height="32"', `width="${size}" height="${size}"`)
   .replaceAll('fill="black"', 'fill="currentColor"');
-

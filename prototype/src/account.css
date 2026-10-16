@@ -14,6 +14,7 @@ body[data-screen=conta] { background: var(--surface-page); }
 #account-page .checkout-step h2 { font-weight: 700; font-size: 32px; margin-bottom: var(--space-24); }
 #account-page .account-action { min-height: 48px; height: auto; margin-top: var(--space-8); padding: var(--space-12) var(--space-24); border-radius: var(--radius-pill); max-width: 100%; }
 #account-page .account-buttons { gap: var(--space-12); }
+#account-page .account-back { gap: var(--space-8); }
 #account-page .secondary { background: var(--surface-header); }
 #account-page .field { padding: var(--space-16); border-radius: var(--radius-control); min-width: 0; }
 #account-page .field-label { margin: var(--space-24) 0 var(--space-8); }
