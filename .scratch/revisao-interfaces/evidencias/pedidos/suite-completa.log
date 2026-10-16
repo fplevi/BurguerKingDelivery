@@ -1,0 +1,893 @@
+
+> burger-king-prototype@0.0.0 test:build
+> playwright test
+
+[WebServer] (node:17504) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:28032) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] [plugin builtin:vite-reporter] 
+[WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:
+[WebServer] - Using dynamic import() to code-split the application
+[WebServer] - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+[WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[WebServer] (node:17136) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:14060) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 710 tests using 2 workers
+
+(node:27312) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:28596) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok   2 [desktop] › tests\acompanhamento.spec.js:66:1 › a caminho: a moto no mapa, a distância restante, o entregador com WhatsApp e a linha do tempo até ali (3.0s)
+  ok   1 [desktop] › tests\acompanhamento.spec.js:36:1 › Acompanhar pedido, na confirmação do Checkout, abre o acompanhamento do Pedido confirmado (3.2s)
+  ok   4 [desktop] › tests\acompanhamento.spec.js:100:1 › #BK-10482, fixo em Pedido retirado: saindo da loja, com 2,4 km restantes (2.0s)
+  ok   3 [desktop] › tests\acompanhamento.spec.js:83:1 › a situação avança sozinha: o entregador aparece na retirada e a moto anda até o endereço (2.7s)
+  ok   5 [desktop] › tests\acompanhamento.spec.js:108:1 › Acompanhar pedido de Minha conta e de Meus pedidos abre o mesmo acompanhamento (2.4s)
+  ok   6 [desktop] › tests\arrasto-3d.spec.js:30:1 › a camada 3D acompanha o cursor durante o arrasto e a bandeja reage (3.0s)
+  ok   7 [desktop] › tests\arrasto-3d.spec.js:58:1 › depois de soltar na bandeja, o hambúrguer volta para o palco com o cursor parado sobre a bandeja (3.4s)
+  ok   8 [desktop] › tests\arrasto-3d.spec.js:82:1 › soltar fora da bandeja devolve a camada ao seu lugar (3.0s)
+  ok  10 [desktop] › tests\bandeja.spec.js:18:1 › o ingrediente retirado aparece na bandeja como imagem da própria camada (2.2s)
+  ok   9 [desktop] › tests\arrasto-3d.spec.js:101:1 › a Base não pode ser arrastada (3.0s)
+  ok  12 [desktop] › tests\bandeja.spec.js:42:1 › a imagem da bandeja recoloca pelo teclado (1.8s)
+  ok  11 [desktop] › tests\bandeja.spec.js:27:1 › tocar na imagem da bandeja recoloca o ingrediente e atualiza o chip (2.5s)
+  ok  13 [desktop] › tests\bandeja.spec.js:51:1 › recolocar pelo chip tira a imagem da bandeja (1.9s)
+  ok  14 [desktop] › tests\bandeja.spec.js:59:1 › Recolocar todos esvazia a bandeja e cancelar descarta o rascunho (2.3s)
+  ok  15 [desktop] › tests\bandeja.spec.js:72:1 › a personalização aplicada volta para a bandeja ao reabrir (3.2s)
+  ok  16 [desktop] › tests\bandeja.spec.js:93:3 › sem WebGL › a bandeja mostra a ilustração SVG do ingrediente e recoloca ao tocar (3.8s)
+  ok  17 [desktop] › tests\big-king.spec.js:14:1 › escolher o Big King na grade troca nome, preço, descrição e o hambúrguer 3D do hero (2.9s)
+  ok  18 [desktop] › tests\big-king.spec.js:41:1 › Ver ingredientes abre as 11 camadas do Big King, de baixo para cima (3.8s)
+  ok  19 [desktop] › tests\big-king.spec.js:61:3 › retira só queijo do Big King (4.6s)
+  ok  20 [desktop] › tests\big-king.spec.js:61:3 › retira só molho big king inferior do Big King (4.3s)
+  ok  21 [desktop] › tests\big-king.spec.js:61:3 › retira só picles do Big King (2.7s)
+  ok  23 [desktop] › tests\big-king.spec.js:61:3 › retira só alface do Big King (2.7s)
+  ok  22 [desktop] › tests\big-king.spec.js:61:3 › retira só cebola do Big King (3.4s)
+  ok  25 [desktop] › tests\big-king.spec.js:77:1 › retirar os seis ingredientes juntos põe todos na bandeja (3.1s)
+  ok  24 [desktop] › tests\big-king.spec.js:61:3 › retira só molho big king superior do Big King (3.5s)
+  ok  26 [desktop] › tests\big-king.spec.js:87:1 › as carnes e os três pães do Big King não podem ser retirados (2.4s)
+  ok  27 [desktop] › tests\big-king.spec.js:99:1 › Recolocar todos, aplicar e cancelar funcionam no Big King (5.0s)
+  ok  28 [desktop] › tests\big-king.spec.js:128:1 › Big King personalizado chega ao carrinho, com combo e "Sem molho big king inferior e picles" (3.2s)
+  ok  29 [desktop] › tests\big-king.spec.js:160:3 › voltar ao Whopper® não deixa resto do Big King e mantém o carrinho (5.4s)
+  ok  30 [desktop] › tests\big-king.spec.js:160:3 › voltar ao Cheddar Duplo não deixa resto do Big King e mantém o carrinho (6.0s)
+  ok  31 [desktop] › tests\big-king.spec.js:160:3 › voltar ao Stacker Duplo Bacon não deixa resto do Big King e mantém o carrinho (5.1s)
+  ok  32 [desktop] › tests\big-king.spec.js:160:3 › voltar ao Rodeio Duplo não deixa resto do Big King e mantém o carrinho (5.0s)
+  ok  34 [desktop] › tests\big-king.spec.js:186:1 › a bandeja mostra a imagem do molho Big King retirado (3.1s)
+  ok  33 [desktop] › tests\big-king.spec.js:160:3 › voltar ao Rodeio não deixa resto do Big King e mantém o carrinho (5.4s)
+  ok  35 [desktop] › tests\big-king.spec.js:197:1 › arrastar a alface aberta até a bandeja a retira (3.2s)
+  ok  36 [desktop] › tests\big-king.spec.js:207:1 › as áreas de toque das camadas abertas do Big King não se sobrepõem e têm pelo menos 24 × 44 px (2.7s)
+  ok  37 [desktop] › tests\big-king.spec.js:238:3 › sem WebGL › o Big King usa as ilustrações SVG das 11 camadas e o fluxo de retirada continua funcionando (4.2s)
+  ok  38 [desktop] › tests\card-do-item.spec.js:20:1 › Whopper® com picles e cebola retirados: Ingredientes como no hero e "Sem picles e cebola" em vermelho (3.2s)
+  ok  40 [desktop] › tests\card-do-item.spec.js:55:1 › Quantidade de 1 a 99 com "−" desabilitado em 1; Total do item e Total dos itens acompanham (4.6s)
+  ok  39 [desktop] › tests\card-do-item.spec.js:33:1 › Cheddar Duplo: sem nada retirado, "Todos os ingredientes"; um cheddar mantém "cheddar cremoso"; os dois o tiram (5.1s)
+  ok  41 [desktop] › tests\card-do-item.spec.js:87:1 › Combo no carrinho: marcar soma R$ 12,00 já sem bebida; sem Combo a Bebida fica desabilitada no mesmo lugar; desmarcar apaga a bebida (2.2s)
+  ok  43 [desktop] › tests\card-do-item.spec.js:166:1 › Itens editados até ficarem iguais continuam separados (1.7s)
+  ok  42 [desktop] › tests\card-do-item.spec.js:115:1 › a lista de bebidas abre por cima, sem empurrar o resto, com as 7 bebidas, e responde ao teclado (3.7s)
+  ok  45 [desktop] › tests\card-do-item.spec.js:201:1 › produto só foto: foto, nome e Total do item, sem Ingredientes, Combo nem Bebida (1.5s)
+  ok  44 [desktop] › tests\card-do-item.spec.js:184:1 › todo Item tem "Remover": na linha do nome a partir de 1024px, abaixo dele no mobile (1.8s)
+  ok  47 [desktop] › tests\carrinho-travado.spec.js:23:1 › Com o Pix pendente, o Carrinho mostra os Itens só para leitura, com o aviso e "Voltar ao pagamento" (2.6s)
+  ok  46 [desktop] › tests\carrinho-travado.spec.js:5:1 › Com o Pix pendente, o Checkout não tem "Voltar ao carrinho" nem "Editar carrinho" (13.5s)
+  ok  49 [desktop] › tests\carrinho-travado.spec.js:82:1 › Pix aprovado com o cliente fora do Checkout: toast de pagamento aprovado com "Ver pedido" (1.4s)
+  ok  50 [desktop] › tests\carrinho-travado.spec.js:100:1 › Sem Pix pendente, editar o carrinho descarta o Pedido ainda não confirmado (3.2s)
+  ok  51 [desktop] › tests\carrinho-travado.spec.js:117:1 › Pix aprovado com o cliente no cardápio: o toast com "Ver pedido" e o cardápio destravado (1.4s)
+  ok  52 [desktop] › tests\carrinho-travado.spec.js:140:1 › Processando o cartão, o Voltar do navegador leva a Seus endereços e ao Carrinho travados; aprovado, o cliente fica onde está, com "Ver pedido" (1.5s)
+  ok  48 [desktop] › tests\carrinho-travado.spec.js:51:1 › Com o Pix pendente, "Adicionar ao carrinho" não adiciona e mostra o toast; só "Escolher outra forma de pagamento" destrava (19.1s)
+  ok  53 [desktop] › tests\carrinho-travado.spec.js:168:1 › Cartão recusado com o cliente fora do Checkout: o toast com "Voltar ao pagamento" e o carrinho destravado (1.4s)
+  ok  55 [desktop] › tests\carrinho.spec.js:12:1 › o botão Carrinho abre a tela #carrinho, sem diálogo, com o cabeçalho igual e nenhuma categoria ativa (766ms)
+  ok  54 [desktop] › tests\carrinho-travado.spec.js:183:1 › Com o Pix pendente, Seus endereços não muda o endereço do Pedido: o aviso com "Voltar ao pagamento", até "Escolher outra forma de pagamento" (1.7s)
+  ok  56 [desktop] › tests\carrinho.spec.js:25:1 › carrinho vazio: "Seu carrinho está vazio", sem subtítulo nem Resumo, com Explorar cardápio (812ms)
+  ok  57 [desktop] › tests\carrinho.spec.js:35:1 › cada Item mostra foto, nome e Total do item; o subtítulo conta itens ou unidades, como o contador do cabeçalho (1.4s)
+  ok  58 [desktop] › tests\carrinho.spec.js:57:1 › o Resumo do carrinho soma os Totais do item, avisa da entrega e tem Continuar e Adicionar mais itens (1.1s)
+  ok  59 [desktop] › tests\carrinho.spec.js:89:1 › Voltar ao cardápio e Adicionar mais itens levam à última categoria vista, com o estado dela (1.4s)
+  ok  60 [desktop] › tests\carrinho.spec.js:100:1 › Explorar cardápio e o Voltar do navegador levam à última categoria vista, com o estado dela (1.2s)
+  ok  61 [desktop] › tests\carrinho.spec.js:111:1 › aberto pelo endereço #carrinho, Voltar ao cardápio leva a Hambúrgueres (743ms)
+  ok  62 [desktop] › tests\carrinho.spec.js:118:1 › depois de adicionar, o cliente continua no cardápio (1.0s)
+  ok  63 [desktop] › tests\carrinho.spec.js:127:1 › com uma unidade por Item, o subtítulo diz "N itens no carrinho" (1.1s)
+  ok  64 [desktop] › tests\categorias.spec.js:17:1 › Bebidas: Coca-Cola selecionada, foto, descrição, card sem combo e grade "Escolha sua bebida" na ordem do Figma (1.1s)
+  ok  66 [desktop] › tests\categorias.spec.js:72:1 › o endereço com #acompanhamentos abre a categoria, e voltar no navegador retorna à anterior (1.0s)
+  ok  67 [desktop] › tests\categorias.spec.js:85:1 › voltar no navegador com Ver ingredientes aberto cancela e fecha antes de trocar de categoria (1.4s)
+  ok  65 [desktop] › tests\categorias.spec.js:34:1 › ir e voltar entre as categorias mantém a seleção de cada uma e o hambúrguer com a Personalização, o combo e a quantidade (3.5s)
+  ok  68 [desktop] › tests\categorias.spec.js:99:1 › acompanhamento, bebida e sobremesa chegam ao carrinho com nome e Total do item; Item idêntico soma (1.5s)
+  ok  69 [desktop] › tests\categorias.spec.js:127:1 › o erro do combo sem bebida no hambúrguer não impede adicionar uma bebida (1.3s)
+  ok  70 [desktop] › tests\categorias.spec.js:138:1 › cada página abre com o primeiro produto da grade selecionado (1.7s)
+  ok  72 [desktop] › tests\categorias.spec.js:169:1 › a foto mostra só a área desenhada também sem object-view-box (fora do Chrome) (1.1s)
+  -   73 [desktop] › tests\categorias.spec.js:202:3 › celular e tablet (< 1024px) › 390: Sobremesas em uma coluna (título, foto, descrição, card, grade em 2 colunas) e a aba ativa à vista
+  ok  74 [desktop] › tests\categorias.spec.js:223:3 › desktop › 1280: Acompanhamentos com título e card à esquerda, foto à direita com a descrição abaixo, grade em 4 colunas (841ms)
+  ok  71 [desktop] › tests\categorias.spec.js:147:1 › todos os produtos das três categorias têm foto, nome, descrição e preço (4.1s)
+  ok  76 [desktop] › tests\cena-3d.spec.js:11:1 › o hero desenha o Whopper em 3D, sem as ilustrações SVG (643ms)
+  ok  75 [desktop] › tests\categorias.spec.js:241:5 › desktop › ≥ 1920px › 1920: Bebidas sem rolagem da página, coluna lateral "Escolha sua bebida" em 2 colunas com rolagem própria (1.1s)
+  ok  77 [desktop] › tests\cena-3d.spec.js:19:1 › o hero mostra o hambúrguer montado sem os ingredientes retirados, mais baixo (4.1s)
+  ok  78 [desktop] › tests\cena-3d.spec.js:34:1 › cada ingrediente aberto em 3D tem sua própria área de toque (6.7s)
+  ok  79 [desktop] › tests\cena-3d.spec.js:55:1 › aplicar compacta as camadas abertas, com o pão superior descendo até a base (3.9s)
+  ok  80 [desktop] › tests\cena-3d.spec.js:104:3 › com movimento reduzido › abrir e retirar não animam as camadas; aplicar fecha na hora (2.0s)
+  ok  81 [desktop] › tests\cena-3d.spec.js:122:1 › cada ingrediente aberto tem área de toque de pelo menos 24 × 44 px (1.3s)
+  ok  82 [desktop] › tests\checkout.spec.js:32:1 › Continuar sem pendências abre o Checkout em #checkout, no topo e com o foco no título (2.5s)
+  ok  83 [desktop] › tests\checkout.spec.js:41:1 › o indicador de etapas começa em Identificação, sem textos de estado (2.5s)
+  ok  84 [desktop] › tests\checkout.spec.js:51:1 › o Resumo do pedido mostra os Itens com Combo, bebida e o que foi retirado, e o Total dos itens (2.5s)
+  ok  85 [desktop] › tests\checkout.spec.js:65:1 › Voltar ao carrinho, Editar carrinho e o Voltar do navegador levam ao Carrinho, que ainda volta ao cardápio (2.8s)
+  ok  87 [desktop] › tests\checkout.spec.js:91:1 › #checkout pelo endereço, ou com o carrinho vazio, mostra o Carrinho (1.0s)
+  ok  86 [desktop] › tests\checkout.spec.js:84:1 › o Checkout não tem categoria ativa no cabeçalho (2.5s)
+  ok  88 [desktop] › tests\checkout.spec.js:103:1 › #checkout com um combo ainda sem bebida mostra o Carrinho (1.0s)
+  ok  89 [desktop] › tests\cheddar-duplo.spec.js:12:1 › escolher o Cheddar Duplo na grade troca nome, preço e descrição do hero (1.3s)
+  ok  90 [desktop] › tests\cheddar-duplo.spec.js:22:1 › o hero desenha o Cheddar Duplo em 3D, numa cena só (1.4s)
+  ok  91 [desktop] › tests\cheddar-duplo.spec.js:38:1 › Ver ingredientes abre as 7 camadas do Cheddar Duplo, de baixo para cima (1.9s)
+  ok  92 [desktop] › tests\cheddar-duplo.spec.js:58:3 › retira só cheddar inferior do Cheddar Duplo (2.5s)
+  ok  93 [desktop] › tests\cheddar-duplo.spec.js:58:3 › retira só cheddar superior do Cheddar Duplo (2.4s)
+  ok  94 [desktop] › tests\cheddar-duplo.spec.js:58:3 › retira só cebola crispy do Cheddar Duplo (2.4s)
+  ok  95 [desktop] › tests\cheddar-duplo.spec.js:71:1 › as duas carnes e os pães do Cheddar Duplo não podem ser retirados (1.5s)
+  ok  96 [desktop] › tests\cheddar-duplo.spec.js:83:1 › Recolocar todos, aplicar e cancelar funcionam no Cheddar Duplo (2.9s)
+  ok  97 [desktop] › tests\cheddar-duplo.spec.js:102:1 › cheddar cremoso só sai da descrição com os dois cheddars retirados (3.6s)
+  ok  98 [desktop] › tests\cheddar-duplo.spec.js:116:1 › Cheddar Duplo personalizado chega ao carrinho, com combo e bebida (2.5s)
+  ok  99 [desktop] › tests\cheddar-duplo.spec.js:137:1 › a bandeja mostra a imagem da camada do Cheddar Duplo retirada (2.4s)
+  ok 100 [desktop] › tests\cheddar-duplo.spec.js:148:1 › voltar ao Whopper mostra as 10 camadas dele, sem resto do Cheddar Duplo, e mantém o carrinho (4.2s)
+  ok 101 [desktop] › tests\cheddar-duplo.spec.js:175:1 › trocar de produto e voltar não gera de novo o modelo de nenhuma camada (3.9s)
+  ok 102 [desktop] › tests\cheddar-duplo.spec.js:203:3 › sem WebGL › o Cheddar Duplo usa as ilustrações SVG e o fluxo de retirada continua funcionando (3.4s)
+  ok 103 [desktop] › tests\cheddar-duplo.spec.js:223:1 › cada camada aberta do Cheddar Duplo tem sua própria área de toque (3.2s)
+  ok 104 [desktop] › tests\cheddar-duplo.spec.js:237:1 › as áreas de toque das camadas abertas do Cheddar Duplo não se sobrepõem e têm pelo menos 24 × 44 px (1.6s)
+  ok 105 [desktop] › tests\conta-enderecos.spec.js:26:1 › lista os Endereços salvos com Editar e Remover (918ms)
+  ok 107 [desktop] › tests\conta-enderecos.spec.js:66:1 › Voltar aos endereços, na busca, volta sem salvar (897ms)
+  ok 106 [desktop] › tests\conta-enderecos.spec.js:39:1 › Adicionar endereço: busca, mapa e dados de entrega; salvo, volta à lista com ele (1.2s)
+  ok 108 [desktop] › tests\conta-enderecos.spec.js:74:1 › Editar endereço: os dados atuais; salvar volta à lista com as mudanças (972ms)
+  ok 110 [desktop] › tests\conta-enderecos.spec.js:116:1 › sem Endereços salvos, o estado vazio oferece Adicionar endereço (894ms)
+  ok 109 [desktop] › tests\conta-enderecos.spec.js:86:1 › Remover endereço pede confirmação: Manter não muda; Remover tira só ele e limpa o Endereço de entrega em uso (2.1s)
+  ok 111 [desktop] › tests\continuar.spec.js:17:1 › Continuar com combos sem bebida: o primeiro ganha o erro e a borda vermelha, e o seletor recebe o foco (1.9s)
+  ok 112 [desktop] › tests\continuar.spec.js:38:1 › Continuar rola a tela até o combo sem bebida (2.4s)
+  ok 113 [desktop] › tests\continuar.spec.js:63:1 › o erro some ao escolher a bebida ou ao desmarcar o combo (1.4s)
+  ok 115 [desktop] › tests\dados-pessoais.spec.js:29:1 › Dados pessoais abre com o cadastro; salvar atualiza o nome no header (1.3s)
+  ok 114 [desktop] › tests\continuar.spec.js:85:1 › Continuar sem pendências abre o Checkout (2.0s)
+  ok 116 [desktop] › tests\dados-pessoais.spec.js:47:1 › erros mantêm o que foi digitado; Cancelar descarta e volta a Minha conta (1.1s)
+  ok 117 [desktop] › tests\dados-pessoais.spec.js:64:1 › Alterar celular: código pelo canal escolhido; confirmado, o mesmo cadastro com o novo celular (1.3s)
+  ok 118 [desktop] › tests\dados-pessoais.spec.js:100:1 › Cancelar e Alterar celular, no código, não mudam o vínculo (1.1s)
+  ok 119 [desktop] › tests\dados-pessoais.spec.js:117:1 › celular de outro cadastro: "Celular já vinculado", sem juntar cadastros (1.1s)
+  ok 120 [desktop] › tests\endereco.spec.js:31:1 › Cliente cadastrado vê os Endereços salvos Casa e Trabalho, com Casa marcada, e os atalhos (1.3s)
+  ok 121 [desktop] › tests\endereco.spec.js:51:1 › Novo cliente vê só a busca e Usar localização atual, sem seções vazias nem Entregar neste endereço (1.3s)
+  ok 122 [desktop] › tests\endereco.spec.js:64:1 › Entregar neste endereço leva ao Pagamento, com o endereço, a Taxa de entrega e o Total do pedido (1.4s)
+  ok 123 [desktop] › tests\endereco.spec.js:104:1 › Alterar volta a Seus endereços com o endereço em uso marcado; Entregar troca o endereço do Pagamento (1.6s)
+  ok 124 [desktop] › tests\endereco.spec.js:126:1 › Voltar ao checkout volta ao Pagamento sem trocar o endereço; Voltar do navegador também (1.5s)
+  ok 125 [desktop] › tests\endereco.spec.js:147:1 › sem endereço escolhido, Voltar ao checkout volta ao Carrinho (1.2s)
+  ok 126 [desktop] › tests\endereco.spec.js:154:1 › na sessão, com o endereço escolhido, o Continuar do Carrinho abre o Checkout no Pagamento (1.4s)
+  ok 127 [desktop] › tests\endereco.spec.js:165:1 › Novo cliente: o Checkout continua em Seus endereços enquanto não há endereço (1.3s)
+  ok 129 [desktop] › tests\entrada-e-saida.spec.js:77:1 › uma tecla durante a Entrada mostra o hambúrguer montado na hora (1.3s)
+  ok 128 [desktop] › tests\entrada-e-saida.spec.js:62:1 › ao abrir a página, as Camadas caem e se empilham de baixo para cima (2.2s)
+  ok 131 [desktop] › tests\entrada-e-saida.spec.js:105:1 › no desktop, o hambúrguer só inclina com o ponteiro depois da Entrada (2.2s)
+  ok 130 [desktop] › tests\entrada-e-saida.spec.js:90:1 › ao voltar de Bebidas para Hambúrgueres, o hambúrguer faz a Entrada de novo (3.7s)
+  ok 132 [desktop] › tests\entrada-e-saida.spec.js:125:1 › ao trocar de hambúrguer, o atual faz a Saída antes de o novo fazer a Entrada (4.0s)
+  ok 133 [desktop] › tests\entrada-e-saida.spec.js:144:1 › dois cliques rápidos: vale o último, sem passar pelo outro hambúrguer (3.8s)
+  ok 135 [desktop] › tests\entrada-e-saida.spec.js:175:1 › durante a Saída, Ver ingredientes espera e abre o hambúrguer escolhido (1.3s)
+  ok 134 [desktop] › tests\entrada-e-saida.spec.js:164:1 › aberta no carrinho, a página guarda a Entrada para quando o cliente volta ao cardápio (2.1s)
+  ok 137 [desktop] › tests\entrada-e-saida.spec.js:198:1 › durante a Entrada, as Camadas que caem não cobrem o cabeçalho: o Carrinho continua recebendo o clique (1.7s)
+  ok 136 [desktop] › tests\entrada-e-saida.spec.js:184:1 › durante a Saída, Adicionar ao carrinho não adiciona o hambúrguer que está saindo (2.6s)
+  ok 139 [desktop] › tests\entregar-em.spec.js:24:1 › sem endereço, cada categoria mostra "Onde vamos entregar?" no topo; o Carrinho não tem a linha (831ms)
+  ok 138 [desktop] › tests\entrada-e-saida.spec.js:217:3 › com movimento reduzido › não há Entrada nem Saída: o hambúrguer aparece montado e a troca é na hora (1.8s)
+  ok 141 [desktop] › tests\entregar-em.spec.js:56:1 › Voltar ao cardápio, em Seus endereços aberto pelo cardápio, volta à categoria sem mudar nada (854ms)
+  ok 140 [desktop] › tests\entregar-em.spec.js:35:1 › o visitante escolhe o endereço sem se identificar e volta à categoria de onde saiu (1.7s)
+  ok 142 [desktop] › tests\entregar-em.spec.js:64:1 › fora da região: avisa e Voltar ao cardápio mantém o endereço anterior (1.3s)
+  ok 143 [desktop] › tests\entregar-em.spec.js:76:1 › identificado no Checkout, o endereço do visitante continua marcado e pode ser salvo (1.8s)
+  ok 145 [desktop] › tests\fallback-svg.spec.js:15:1 › sem WebGL, o hero mostra as ilustrações SVG (388ms)
+  ok 144 [desktop] › tests\entregar-em.spec.js:109:1 › identificado, Alterar abre Seus endereços; escolher outro volta ao cardápio com ele e o Checkout usa o mesmo (1.5s)
+  ok 147 [desktop] › tests\formas-de-pagamento.spec.js:34:1 › lista os Cartões salvos: bandeira e final, nome, validade e Cartão padrão; nota do Pix (831ms)
+  ok 148 [desktop] › tests\formas-de-pagamento.spec.js:44:1 › Adicionar cartão: com as validações do Novo cartão; salvo, volta à lista sem guardar o código (1.1s)
+  ok 146 [desktop] › tests\fallback-svg.spec.js:21:1 › sem WebGL, o fluxo de retirada continua funcionando (2.6s)
+  ok 149 [desktop] › tests\formas-de-pagamento.spec.js:70:1 › o mesmo cartão não é salvo duas vezes; Cancelar descarta (1.1s)
+  ok 151 [desktop] › tests\formas-de-pagamento.spec.js:113:1 › sem Cartões salvos, o estado vazio oferece Adicionar cartão (906ms)
+  ok 150 [desktop] › tests\formas-de-pagamento.spec.js:82:1 › Remover cartão pede confirmação; removido o padrão, o seguinte assume; o Checkout também muda (2.2s)
+  ok 152 [desktop] › tests\gerenciar-enderecos.spec.js:8:1 › Endereços de pedidos anteriores: escolher um volta aos Endereços salvos com ele marcado, até o Pagamento (1.4s)
+  ok 153 [desktop] › tests\gerenciar-enderecos.spec.js:27:1 › o Novo cliente não abre os Endereços de pedidos anteriores (1.2s)
+  ok 154 [desktop] › tests\gerenciar-enderecos.spec.js:33:1 › menu ⋮ pelo teclado: abre com Editar e Remover, Esc fecha e devolve o foco ao ⋮ (1.3s)
+  ok 155 [desktop] › tests\gerenciar-enderecos.spec.js:48:1 › Editar o endereço em uso: o formulário vem preenchido e a alteração já vale para o Checkout (1.8s)
+  ok 156 [desktop] › tests\gerenciar-enderecos.spec.js:75:1 › Editar: Voltar desiste sem mudar o endereço; o Voltar do navegador depois de salvar não reabre o formulário (1.8s)
+  ok 157 [desktop] › tests\gerenciar-enderecos.spec.js:93:1 › Remover o endereço marcado: confirmação, toast "Endereço removido." e nenhum marcado, com Entregar neste endereço desabilitado (1.6s)
+  ok 159 [desktop] › tests\header-e-sessao.spec.js:21:1 › visitante: o Carrinho só com o ícone e o contador, e Identifique-se à direita dele (635ms)
+  ok 158 [desktop] › tests\gerenciar-enderecos.spec.js:122:1 › Remover o endereço em uso no Checkout: o Checkout pede um novo endereço (1.4s)
+  ok 160 [desktop] › tests\header-e-sessao.spec.js:31:1 › identificado, o header mostra o primeiro nome e leva a Minha conta (1.3s)
+  ok 161 [desktop] › tests\header-e-sessao.spec.js:42:1 › Novo cliente com nome longo: só o primeiro nome, cortado com reticências (1.2s)
+  ok 163 [desktop] › tests\header-e-sessao.spec.js:63:1 › uma aba nova começa sem a sessão da outra (1.5s)
+  ok 162 [desktop] › tests\header-e-sessao.spec.js:51:1 › recarregar mantém o cliente, o Carrinho e o Endereço de entrega (1.6s)
+  ok 164 [desktop] › tests\identificacao.spec.js:19:1 › o celular ganha a máscara (DD) 9XXXX-XXXX e os envios só se habilitam com 11 dígitos (1.2s)
+  ok 165 [desktop] › tests\identificacao.spec.js:57:1 › Cliente cadastrado (61) 99999-1234 confirma pelo WhatsApp e vai direto ao Endereço (1.3s)
+  ok 166 [desktop] › tests\identificacao.spec.js:79:1 › Cliente cadastrado (61) 90000-0000 confirma por SMS e também vai direto ao Endereço (1.1s)
+  ok 167 [desktop] › tests\identificacao.spec.js:86:1 › Reenviar código e trocar de canal atualizam o destino e mostram o toast, sem sair da confirmação (1.3s)
+  ok 169 [desktop] › tests\identificacao.spec.js:143:1 › o código aceita só dígitos, até 6 (1.0s)
+  ok 168 [desktop] › tests\identificacao.spec.js:109:1 › Código incorreto mostra o erro e desabilita Confirmar até o código mudar (1.6s)
+  ok 170 [desktop] › tests\identificacao.spec.js:150:1 › Alterar celular volta ao celular preenchido, e o novo envio pede um novo código (1.3s)
+  ok 171 [desktop] › tests\identificacao.spec.js:166:1 › Novo cliente (qualquer outro celular) passa pelo cadastro: nome obrigatório, e-mail opcional e celular só para leitura (1.5s)
+  ok 172 [desktop] › tests\identificacao.spec.js:200:1 › Novo cliente com e-mail válido segue para o Endereço (1.3s)
+  ok 173 [desktop] › tests\identificacao.spec.js:209:1 › na sessão, o celular confirmado não pede o código de novo: o Checkout abre no Endereço (1.2s)
+  ok 174 [desktop] › tests\identificacao.spec.js:220:1 › #endereco abre sem carrinho e sem celular confirmado (ADR 0002): o visitante escolhe só o Endereço de entrega (641ms)
+  ok 175 [desktop] › tests\identificacao.spec.js:232:1 › Código apresenta Alterar celular antes do campo e ações empilhadas na ordem revisada (1.2s)
+  ok 176 [desktop] › tests\identifique-se.spec.js:18:1 › Identifique-se abre a página do Figma e, confirmado o celular, volta à página de origem com o nome (965ms)
+  ok 177 [desktop] › tests\identifique-se.spec.js:35:1 › SMS, reenviar, trocar o canal, alterar o celular e código incorreto, como no Checkout (1.1s)
+  ok 178 [desktop] › tests\identifique-se.spec.js:53:1 › Novo cliente informa nome e e-mail antes de voltar (1.0s)
+  ok 179 [desktop] › tests\identifique-se.spec.js:67:1 › Voltar retorna à página de origem sem mexer no Carrinho (958ms)
+  ok 180 [desktop] › tests\identifique-se.spec.js:78:1 › página privada sem identificação passa pela Identificação e depois abre; identificado, Identifique-se leva a Minha conta (947ms)
+  ok 181 [desktop] › tests\identifique-se.spec.js:90:1 › a identificação é uma só: pelo header pula a do Checkout; pelo Checkout, o header já mostra o nome (2.3s)
+  -  183 [desktop] › tests\inclinacao.spec.js:48:1 › no toque, arrastar na área vazia do palco inclina, sem pedir permissão de movimento
+  ok 182 [desktop] › tests\inclinacao.spec.js:29:1 › no desktop, o hambúrguer inclina seguindo o ponteiro e volta ao centro (7.8s)
+  ok 184 [desktop] › tests\inclinacao.spec.js:76:1 › em Ver ingredientes os botões seguem as camadas inclinadas e o toque continua retirando (4.7s)
+  -  186 [desktop] › tests\layout-carrinho.spec.js:39:3 › celular (< 1024px) › 390: barra fixa no rodapé com Total dos itens e Continuar, que fica na tela ao rolar
+  -  187 [desktop] › tests\layout-carrinho.spec.js:57:3 › celular (< 1024px) › 390: o Continuar da barra valida como o do Resumo, e o combo sem bebida fica acima da barra; sem pendências, abre o Checkout
+  -  188 [desktop] › tests\layout-carrinho.spec.js:74:3 › celular (< 1024px) › 390: no fim da página, o Resumo do carrinho termina acima da barra
+  -  189 [desktop] › tests\layout-carrinho.spec.js:87:3 › celular (< 1024px) › 390: uma coluna; ingredientes em parágrafo com quebra; Bebida do combo na largura do card; Quantidade e Total do item lado a lado
+  ok 185 [desktop] › tests\inclinacao.spec.js:91:3 › com movimento reduzido › o hambúrguer não inclina (1.6s)
+  ok 190 [desktop] › tests\layout-carrinho.spec.js:107:3 › desktop (≥ 1024px) › 1280: sem barra fixa; o Continuar fica no Resumo do carrinho (2.2s)
+  -  192 [desktop] › tests\layout-checkout.spec.js:25:3 › celular (< 1024px) › 390: Pagamento com Total do pedido e a ação fixos no rodapé, que acompanham a Forma de pagamento e ficam na tela ao rolar
+  -  193 [desktop] › tests\layout-checkout.spec.js:47:3 › celular (< 1024px) › 390: uma coluna, o Resumo do pedido abaixo do conteúdo e, no fim da página, Editar carrinho acima do rodapé; sem rolagem horizontal
+  -  194 [desktop] › tests\layout-checkout.spec.js:61:3 › celular (< 1024px) › 390: no fluxo de endereço, a ação principal fica fixa no rodapé e o fim do conteúdo termina acima dela; sem rolagem horizontal
+  -  195 [desktop] › tests\layout-checkout.spec.js:95:3 › celular (< 1024px) › 390: no cartão Endereço de entrega, complemento e referência em linhas separadas e o divisor antes da previsão
+  -  196 [desktop] › tests\layout-checkout.spec.js:109:3 › celular (< 1024px) › 390: sem o rodapé do pagamento no Pix pendente e no Pedido confirmado; sem rolagem horizontal
+  ok 191 [desktop] › tests\layout-carrinho.spec.js:114:3 › desktop (≥ 1024px) › 1280: Itens à esquerda e Resumo do carrinho à direita; Bebida do combo, Quantidade e Total do item lado a lado (2.4s)
+  ok 197 [desktop] › tests\layout-checkout.spec.js:126:3 › desktop (≥ 1024px) › 1280: conteúdo à esquerda e Resumo do pedido à direita, com a ação; sem rodapé fixo nem rolagem horizontal (1.2s)
+  ok 198 [desktop] › tests\layout-checkout.spec.js:137:3 › desktop (≥ 1024px) › 1280: no fluxo de endereço, a ação principal fica no conteúdo, logo depois dele (1.2s)
+  ok 199 [desktop] › tests\layout-conta.spec.js:10:5 › 390 de largura › Identifique-se e todas as páginas da conta: sem abas de categorias no header, navegação em lista e sem rolagem horizontal (1.6s)
+  x  200 [desktop] › tests\layout-conta.spec.js:31:5 › 390 de largura › o acompanhamento fica em uma coluna: situação, mapa, entregador, linha do tempo e itens (969ms)
+(node:16816) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 201 [desktop] › tests\layout-conta.spec.js:10:5 › 768 de largura › Identifique-se e todas as páginas da conta: sem abas de categorias no header, navegação em lista e sem rolagem horizontal (1.5s)
+  -  203 [desktop] › tests\layout-ver-ingredientes.spec.js:22:3 › celular (< 1024px) › 390: Cancelar e Aplicar alterações numa barra fixa embaixo, que fica na tela ao rolar
+  -  204 [desktop] › tests\layout-ver-ingredientes.spec.js:37:3 › celular (< 1024px) › 390: o cabeçalho tem só o título
+  -  205 [desktop] › tests\layout-ver-ingredientes.spec.js:45:3 › celular (< 1024px) › 390: uma coluna — palco com a legenda, Bandeja, chips e Recolocar todos, que termina acima da barra
+  -  206 [desktop] › tests\layout-ver-ingredientes.spec.js:62:3 › celular (< 1024px) › 390: cards de 94 × 88; a Bandeja cresce uma linha a partir do 4º ingrediente
+  x  202 [desktop] › tests\layout-conta.spec.js:31:5 › 768 de largura › o acompanhamento fica em uma coluna: situação, mapa, entregador, linha do tempo e itens (2.1s)
+(node:9688) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 207 [desktop] › tests\layout-ver-ingredientes.spec.js:77:3 › tablet (768 de largura) › 768: também uma coluna, com a barra fixa embaixo (936ms)
+  ok 209 [desktop] › tests\layout.spec.js:12:1 › cabeçalho do Figma: logo, as quatro categorias com Hambúrgueres ativo, o carrinho só com o contador e Identifique-se (734ms)
+  ok 210 [desktop] › tests\layout.spec.js:26:1 › os 2 hambúrgueres sem Receita parecem iguais aos outros, sem "Em breve", e clicar neles não faz nada (1.1s)
+  ok 208 [desktop] › tests\layout-ver-ingredientes.spec.js:90:3 › desktop (≥ 1024px) › 1024: palco e painel de 440px lado a lado, ações no cabeçalho (2.2s)
+  ok 211 [desktop] › tests\layout.spec.js:40:1 › o preço do hambúrguer aparece só no Total do item, como no Figma (677ms)
+  -  212 [desktop] › tests\layout.spec.js:83:3 › celular e tablet (< 1024px) › 390: uma coluna na ordem do Figma, grade em 2 colunas e categorias em abas roláveis
+  ok 213 [desktop] › tests\layout.spec.js:111:3 › desktop › 1280: título e card à esquerda, 3D à direita com Ver ingredientes e descrição abaixo, grade em 4 colunas (1.4s)
+  ok 214 [desktop] › tests\layout.spec.js:136:5 › desktop › ≥ 1920px › 1920: hero na altura da tela, página sem rolagem e coluna lateral em 2 colunas com rolagem própria (1.5s)
+  ok 215 [desktop] › tests\layout.spec.js:164:7 › desktop › ≥ 1920px e janela de 800px de altura › 1920 × 800: a página não rola e o hero cabe na tela, no hambúrguer e numa categoria de foto (1.2s)
+  ok 216 [desktop] › tests\layout.spec.js:164:7 › desktop › ≥ 1920px e janela de 720px de altura › 1920 × 720: a página não rola e o hero cabe na tela, no hambúrguer e numa categoria de foto (1.2s)
+  ok 217 [desktop] › tests\meus-pedidos.spec.js:40:1 › Em andamento e Histórico de pedidos, os mais recentes primeiro, com as situações fixas (1.1s)
+  ok 218 [desktop] › tests\meus-pedidos.spec.js:65:1 › um Pedido da sessão em andamento entra no topo, no lugar do #BK-10482, e a situação avança sozinha (1.3s)
+  ok 219 [desktop] › tests\meus-pedidos.spec.js:77:1 › um Pedido da sessão já entregue vai para o Histórico e o #BK-10482 volta a Em andamento (1.3s)
+  ok 220 [desktop] › tests\meus-pedidos.spec.js:85:1 › sem Pedidos: "Seu primeiro pedido começa aqui", com Explorar o cardápio e Voltar à Minha conta (1.1s)
+  ok 222 [desktop] › tests\minha-conta.spec.js:25:1 › Minha conta: Olá com o celular, Editar meus dados, o Pedido em andamento e Ver todos os pedidos (1.0s)
+  ok 221 [desktop] › tests\meus-pedidos.spec.js:96:1 › os Pedidos são do celular identificado: outro cliente na mesma aba não os vê (1.6s)
+  ok 223 [desktop] › tests\minha-conta.spec.js:43:1 › sem Pedido em andamento (Novo cliente), Minha conta não mostra um pedido (881ms)
+  ok 224 [desktop] › tests\minha-conta.spec.js:49:1 › um Pedido da sessão em andamento toma o lugar do #BK-10482 (1.2s)
+  -  226 [desktop] › tests\minha-conta.spec.js:86:3 › celular (< 1024px) › a lista mostra a seção atual e abre pelo botão; escolher um destino a recolhe
+  ok 225 [desktop] › tests\minha-conta.spec.js:65:1 › navegação: a seção atual destacada, Sair separado; páginas inexistentes voltam a Minha conta (1.0s)
+  ok 227 [desktop] › tests\minha-conta.spec.js:105:3 › desktop › a navegação é uma lista lateral, à esquerda das seções (896ms)
+  ok 229 [desktop] › tests\novo-endereco.spec.js:7:1 › busca com "paulista" lista a Av. Paulista, 1578 e vizinhos; escolher um abre Confirmar localização com o mapa (1.4s)
+  ok 228 [desktop] › tests\minha-conta.spec.js:114:1 › Sair pede confirmação: Continuar conectado mantém a sessão; Sair da conta esquece o cliente e o endereço, e mantém o Carrinho (1.8s)
+  ok 230 [desktop] › tests\novo-endereco.spec.js:21:1 › Usar localização atual negada mostra Localização indisponível; concedida, Tentar localização novamente leva à Av. Paulista, 1578 (1.3s)
+  ok 231 [desktop] › tests\novo-endereco.spec.js:35:1 › Localização indisponível: Usar endereço salvo volta aos Endereços salvos; o Novo cliente não tem esse botão (2.3s)
+  ok 232 [desktop] › tests\novo-endereco.spec.js:52:1 › Confirmar localização: arrastar o mapa move-o sob o marcador sem mudar o endereço; Centralizar no endereço o traz de volta (1.6s)
+  ok 233 [desktop] › tests\novo-endereco.spec.js:84:1 › Dados de entrega começam pelo local escolhido; Rua, Bairro e Número são obrigatórios (1.7s)
+  ok 234 [desktop] › tests\novo-endereco.spec.js:107:1 › Salvar endereço "sem número" e "sem complemento" como Trabalho volta à lista com ele marcado e o toast; Entregar neste endereço o usa (1.7s)
+  ok 236 [desktop] › tests\novo-endereco.spec.js:165:1 › Novo cliente salva o primeiro endereço: aparece marcado, com Entregar neste endereço (1.4s)
+  ok 237 [desktop] › tests\novo-endereco.spec.js:177:1 › Voltar percorre Dados de entrega → Confirmar localização → Busca → Seus endereços; Ajustar localização no mapa volta ao mapa (1.4s)
+  ok 235 [desktop] › tests\novo-endereco.spec.js:133:1 › O que o cliente digita no endereço aparece como texto, na lista, em Remover endereço, no Checkout e no Pedido confirmado (3.8s)
+  ok 239 [desktop] › tests\novo-endereco.spec.js:216:1 › sem um local escolhido, #endereco/confirmar e #endereco/dados levam à Busca (1.2s)
+  ok 238 [desktop] › tests\novo-endereco.spec.js:195:1 › Voltar percorre busca e lista antes do Checkout de origem (1.5s)
+  ok 240 [desktop] › tests\novo-endereco.spec.js:224:1 › busca: vazia pede uma rua, "augusta" acha a Rua Augusta, 1508 e sem correspondência não encontra nada (1.4s)
+  ok 241 [desktop] › tests\novo-endereco.spec.js:239:1 › "estrada do campo" está fora da região: não segue; Escolher outro endereço volta à busca e Voltar retorna ao Carrinho de origem (1.7s)
+  ok 242 [desktop] › tests\pagamento.spec.js:37:1 › Forma de pagamento: Pix ou Cartão de crédito, uma só, e a ação do Resumo do pedido acompanha a escolha (1.5s)
+  ok 243 [desktop] › tests\pagamento.spec.js:63:1 › Cartão salvo com código de segurança válido: processamento com a tela desabilitada e Pedido confirmado #BK-10483 (1.7s)
+  ok 245 [desktop] › tests\pagamento.spec.js:151:1 › Novo cartão: a bandeira vem do número; Visa aprovado sem salvar, com o número mascarado (3.3s)
+  ok 246 [desktop] › tests\pagamento.spec.js:170:1 › Novo cartão: campos obrigatórios e "Número de cartão inválido" sem chegar ao processamento (1.4s)
+  ok 244 [desktop] › tests\pagamento.spec.js:119:1 › Cartão salvo com CVV 000 é recusado: Itens, Personalizações e endereço ficam, com outro cartão ou Pix (6.3s)
+  ok 247 [desktop] › tests\pagamento.spec.js:188:1 › Novo cartão 4000 0000 0000 0002 é recusado e continua preenchido para revisar (3.2s)
+  ok 249 [desktop] › tests\pagamento.spec.js:224:1 › O nome impresso de um cartão salvo aparece como texto em Seus cartões (3.4s)
+  ok 248 [desktop] › tests\pagamento.spec.js:197:1 › Mastercard salvo entra em Seus cartões; o próximo checkout da sessão reaproveita tudo e confirma #BK-10484 (5.5s)
+  ok 251 [desktop] › tests\pagamento.spec.js:264:1 › Voltar ao cardápio leva à última categoria vista; #pedido sem Pedido confirmado leva ao cardápio (3.2s)
+  ok 250 [desktop] › tests\pagamento.spec.js:238:1 › Pedido confirmado: Acompanhar pedido abre o acompanhamento, Voltar ao cardápio leva à última categoria e o Voltar do navegador ao cardápio (3.4s)
+  ok 252 [desktop] › tests\painel.spec.js:13:1 › a Bandeja tem só o título, o texto fixo e os ingredientes retirados (1.2s)
+  ok 253 [desktop] › tests\painel.spec.js:26:1 › os chips ficam fora da Bandeja, sob o título Ingredientes (1.1s)
+  ok 254 [desktop] › tests\painel.spec.js:34:1 › o texto de ajuda segue o dispositivo de entrada (997ms)
+  ok 255 [desktop] › tests\painel.spec.js:40:1 › Recolocar todos fica desabilitado com a Bandeja vazia (1.2s)
+  ok 257 [desktop] › tests\painel.spec.js:57:1 › chip presente: marrom-escuro com Check; retirado: creme com Plus (1.2s)
+  ok 256 [desktop] › tests\painel.spec.js:49:1 › soltar sobre os chips, fora da Bandeja, não retira o ingrediente (2.2s)
+  ok 258 [desktop] › tests\painel.spec.js:70:1 › no foco, o ícone do chip mostra o que o clique vai fazer (1.3s)
+  ok 259 [desktop] › tests\painel.spec.js:82:1 › com mouse, o hover mostra a ação e dá borda marrom ao retirado (1.5s)
+  ok 260 [desktop] › tests\painel.spec.js:93:1 › no desktop, Bandeja de 400px e cards de 104 × 88 com a imagem da Camada (1.3s)
+  ok 261 [desktop] › tests\painel.spec.js:103:1 › no desktop, com os 7 retirados a Bandeja rola e mantém 3 cards por linha (1.6s)
+  ok 262 [desktop] › tests\pedido-encerrado.spec.js:30:1 › Pedido entregue: quando foi entregue, a linha do tempo concluída, a loja e os Itens (1.2s)
+  ok 263 [desktop] › tests\pedido-encerrado.spec.js:48:1 › Pedido cancelado: quando, a devolução sem prazo, e só as etapas que aconteceram até Cancelado (1.0s)
+  ok 264 [desktop] › tests\pedido-encerrado.spec.js:60:1 › um Pedido da sessão, ao ser entregue, deixa o rastreamento e mostra quando foi entregue (1.4s)
+  ok 265 [desktop] › tests\pedido.spec.js:15:1 › Whopper personalizado chega ao carrinho com combo, bebida, quantidade e ingredientes retirados (2.3s)
+  ok 266 [desktop] › tests\pedido.spec.js:38:1 › depois de adicionar, o card e o hambúrguer voltam ao padrão com o mesmo hambúrguer selecionado (2.6s)
+  ok 267 [desktop] › tests\pedido.spec.js:60:1 › Item idêntico soma na quantidade do que já está no carrinho (1.1s)
+  ok 269 [desktop] › tests\pedido.spec.js:85:1 › o Combo começa desmarcado e soma R$ 12,00, sem tamanhos (1.0s)
+  ok 268 [desktop] › tests\pedido.spec.js:74:1 › trocar de hambúrguer volta o card ao padrão (1.9s)
+  ok 270 [desktop] › tests\pedido.spec.js:95:1 › a Bebida do combo só se escolhe com o Combo marcado e nunca vem preenchida (1.0s)
+  ok 271 [desktop] › tests\pedido.spec.js:109:1 › adicionar um combo sem bebida pede a Bebida do combo e não adiciona (1.1s)
+  ok 272 [desktop] › tests\pedido.spec.js:125:1 › a Quantidade começa em 1 e multiplica o Total do item (1.1s)
+  ok 273 [desktop] › tests\pedido.spec.js:140:1 › grade de produtos mostra os oito hambúrgueres oficiais com o Whopper selecionado (1.3s)
+  ok 274 [desktop] › tests\pix.spec.js:5:1 › Gerar Pix abre "Só falta pagar o Pix" com QR Code, valor, contagem ao vivo e Aguardando pagamento (2.1s)
+  ok 275 [desktop] › tests\pix.spec.js:36:1 › Copiar código Pix vai para a área de transferência com o toast, e copiar não aprova (1.6s)
+  ok 276 [desktop] › tests\pix.spec.js:50:1 › (61) 99999-1234: o Pix é aprovado 10 s depois de gerado, passa por Pagamento aprovado e chega a "Pago com Pix" (1.5s)
+  ok 277 [desktop] › tests\pix.spec.js:75:1 › Novo cliente: o Pix também é aprovado 10 s depois de gerado (1.8s)
+  ok 279 [desktop] › tests\pix.spec.js:116:1 › Escolher outra forma de pagamento cancela o Pix e a aprovação agendada, sem forma pré-selecionada (1.7s)
+  ok 280 [desktop] › tests\remover.spec.js:29:1 › Remover tira o Item na hora e avisa "<nome> removido do carrinho."; Resumo, subtítulo e contador acompanham (2.0s)
+  ok 281 [desktop] › tests\remover.spec.js:43:1 › Desfazer devolve o Item na mesma posição e configuração, e o aviso some (2.1s)
+  ok 282 [desktop] › tests\remover.spec.js:60:1 › o aviso some na próxima mudança do carrinho, e Desfazer some com ele (2.1s)
+  ok 283 [desktop] › tests\remover.spec.js:78:1 › remover o último Item mostra o estado vazio com o aviso; Desfazer traz o Item de volta (944ms)
+  ok 284 [desktop] › tests\remover.spec.js:96:1 › o aviso some ao sair da tela do Carrinho (2.1s)
+  ok 285 [desktop] › tests\rodeio-duplo.spec.js:14:1 › escolher o Rodeio Duplo na grade troca nome, preço, descrição e o hambúrguer 3D do hero (916ms)
+  ok 286 [desktop] › tests\rodeio-duplo.spec.js:36:1 › Ver ingredientes abre as 8 camadas do Rodeio Duplo, de baixo para cima (1.2s)
+  ok 287 [desktop] › tests\rodeio-duplo.spec.js:56:3 › retira só queijo do Rodeio Duplo (2.0s)
+  ok 288 [desktop] › tests\rodeio-duplo.spec.js:56:3 › retira só molho barbecue do Rodeio Duplo (2.0s)
+  ok 289 [desktop] › tests\rodeio-duplo.spec.js:56:3 › retira só onion rings do Rodeio Duplo (1.9s)
+  ok 290 [desktop] › tests\rodeio-duplo.spec.js:56:3 › retira só maionese do Rodeio Duplo (1.9s)
+  ok 291 [desktop] › tests\rodeio-duplo.spec.js:72:1 › retirar queijo, barbecue, onion rings e maionese juntos põe os quatro na bandeja (1.3s)
+  ok 278 [desktop] › tests\pix.spec.js:89:1 › (61) 90000-0000: o Pix expira em 10:00; Gerar novo Pix volta a Aguardando pagamento com o mesmo Pedido (23.6s)
+  ok 292 [desktop] › tests\rodeio-duplo.spec.js:80:1 › as duas carnes e os pães do Rodeio Duplo não podem ser retirados (1.2s)
+  ok 293 [desktop] › tests\rodeio-duplo.spec.js:92:1 › Recolocar todos, aplicar e cancelar funcionam no Rodeio Duplo (2.5s)
+  ok 294 [desktop] › tests\rodeio-duplo.spec.js:112:1 › Rodeio Duplo personalizado chega ao carrinho, com combo e "Sem onion rings e maionese" (2.3s)
+  ok 295 [desktop] › tests\rodeio-duplo.spec.js:140:3 › voltar ao Whopper® não deixa resto do Rodeio Duplo e mantém o carrinho (3.9s)
+  ok 296 [desktop] › tests\rodeio-duplo.spec.js:140:3 › voltar ao Cheddar Duplo não deixa resto do Rodeio Duplo e mantém o carrinho (4.3s)
+  ok 298 [desktop] › tests\rodeio-duplo.spec.js:166:1 › a bandeja mostra a imagem dos onion rings retirados (2.0s)
+  ok 297 [desktop] › tests\rodeio-duplo.spec.js:140:3 › voltar ao Stacker Duplo Bacon não deixa resto do Rodeio Duplo e mantém o carrinho (4.1s)
+  ok 300 [desktop] › tests\rodeio-duplo.spec.js:187:1 › as áreas de toque das camadas abertas do Rodeio Duplo não se sobrepõem e têm pelo menos 24 × 44 px (1.2s)
+  ok 299 [desktop] › tests\rodeio-duplo.spec.js:177:1 › arrastar os onion rings abertos até a bandeja os retira (2.3s)
+  ok 302 [desktop] › tests\rodeio.spec.js:14:1 › escolher o Rodeio na grade troca nome, preço, descrição e o hambúrguer 3D do hero (1.2s)
+  ok 303 [desktop] › tests\rodeio.spec.js:37:1 › Ver ingredientes abre as 7 camadas do Rodeio, de baixo para cima (1.3s)
+  ok 301 [desktop] › tests\rodeio-duplo.spec.js:218:3 › sem WebGL › o Rodeio Duplo usa as ilustrações SVG das 8 camadas e o fluxo de retirada continua funcionando (3.4s)
+  ok 304 [desktop] › tests\rodeio.spec.js:57:3 › retira só queijo do Rodeio (2.1s)
+  ok 305 [desktop] › tests\rodeio.spec.js:57:3 › retira só molho barbecue do Rodeio (2.0s)
+  ok 306 [desktop] › tests\rodeio.spec.js:57:3 › retira só onion ring do Rodeio (2.1s)
+  ok 307 [desktop] › tests\rodeio.spec.js:57:3 › retira só maionese do Rodeio (2.1s)
+  ok 308 [desktop] › tests\rodeio.spec.js:73:1 › retirar queijo, barbecue, onion ring e maionese juntos põe os quatro na bandeja (1.4s)
+  ok 309 [desktop] › tests\rodeio.spec.js:81:1 › a carne e os pães do Rodeio não podem ser retirados (1.3s)
+  ok 310 [desktop] › tests\rodeio.spec.js:90:1 › Recolocar todos, aplicar e cancelar funcionam no Rodeio (2.5s)
+  ok 311 [desktop] › tests\rodeio.spec.js:110:1 › Rodeio personalizado chega ao carrinho, com combo e "Sem onion ring e maionese" (2.3s)
+  ok 312 [desktop] › tests\rodeio.spec.js:139:3 › voltar ao Whopper® não deixa resto do Rodeio e mantém o carrinho (4.0s)
+  ok 313 [desktop] › tests\rodeio.spec.js:139:3 › voltar ao Cheddar Duplo não deixa resto do Rodeio e mantém o carrinho (4.4s)
+  ok 314 [desktop] › tests\rodeio.spec.js:139:3 › voltar ao Stacker Duplo Bacon não deixa resto do Rodeio e mantém o carrinho (4.0s)
+  ok 315 [desktop] › tests\rodeio.spec.js:139:3 › voltar ao Rodeio Duplo não deixa resto do Rodeio e mantém o carrinho (4.0s)
+  ok 316 [desktop] › tests\rodeio.spec.js:165:1 › a bandeja mostra a imagem do onion ring retirado (2.3s)
+  ok 317 [desktop] › tests\rodeio.spec.js:176:1 › arrastar o onion ring aberto até a bandeja o retira (2.4s)
+  ok 318 [desktop] › tests\rodeio.spec.js:186:1 › as áreas de toque das camadas abertas do Rodeio não se sobrepõem e têm pelo menos 24 × 44 px (1.5s)
+  ok 320 [desktop] › tests\stacker-duplo-bacon.spec.js:14:1 › escolher o Stacker Duplo Bacon na grade troca nome, preço, descrição e o hambúrguer 3D do hero (1.3s)
+  ok 321 [desktop] › tests\stacker-duplo-bacon.spec.js:36:1 › Ver ingredientes abre as 7 camadas do Stacker Duplo Bacon, de baixo para cima (1.5s)
+  ok 319 [desktop] › tests\rodeio.spec.js:217:3 › sem WebGL › o Rodeio usa as ilustrações SVG das 7 camadas e o fluxo de retirada continua funcionando (3.5s)
+  ok 322 [desktop] › tests\stacker-duplo-bacon.spec.js:56:3 › retira só cheddar do Stacker Duplo Bacon (2.1s)
+  ok 323 [desktop] › tests\stacker-duplo-bacon.spec.js:56:3 › retira só bacon do Stacker Duplo Bacon (2.3s)
+  ok 325 [desktop] › tests\stacker-duplo-bacon.spec.js:72:1 › retirar cheddar, bacon e molho juntos põe os três na bandeja (1.5s)
+  ok 324 [desktop] › tests\stacker-duplo-bacon.spec.js:56:3 › retira só molho stacker do Stacker Duplo Bacon (2.2s)
+  ok 326 [desktop] › tests\stacker-duplo-bacon.spec.js:80:1 › as duas carnes e os pães do Stacker Duplo Bacon não podem ser retirados (1.3s)
+  ok 327 [desktop] › tests\stacker-duplo-bacon.spec.js:92:1 › Recolocar todos, aplicar e cancelar funcionam no Stacker Duplo Bacon (2.5s)
+  ok 328 [desktop] › tests\stacker-duplo-bacon.spec.js:111:1 › Stacker Duplo Bacon personalizado chega ao carrinho, com combo e "Sem bacon e molho stacker" (2.4s)
+  ok 329 [desktop] › tests\stacker-duplo-bacon.spec.js:138:3 › voltar ao Whopper® não deixa resto do Stacker Duplo Bacon e mantém o carrinho (4.1s)
+  ok 330 [desktop] › tests\stacker-duplo-bacon.spec.js:138:3 › voltar ao Cheddar Duplo não deixa resto do Stacker Duplo Bacon e mantém o carrinho (4.4s)
+  ok 331 [desktop] › tests\stacker-duplo-bacon.spec.js:164:1 › a bandeja mostra a imagem do bacon retirado (2.2s)
+  ok 333 [desktop] › tests\stacker-duplo-bacon.spec.js:185:1 › as áreas de toque das camadas abertas do Stacker Duplo Bacon não se sobrepõem e têm pelo menos 24 × 44 px (1.3s)
+  ok 332 [desktop] › tests\stacker-duplo-bacon.spec.js:175:1 › arrastar o bacon aberto até a bandeja o retira (2.5s)
+  ok 335 [desktop] › tests\tela-carrinho.spec.js:37:1 › o Carrinho abre no topo, e voltar ao cardápio devolve a rolagem que o cardápio tinha (2.3s)
+  ok 334 [desktop] › tests\stacker-duplo-bacon.spec.js:216:3 › sem WebGL › o Stacker Duplo Bacon usa as ilustrações SVG das 7 camadas e o fluxo de retirada continua funcionando (3.2s)
+  ok 336 [desktop] › tests\tela-carrinho.spec.js:47:1 › abrir o Carrinho leva o foco ao título "Seu carrinho"; voltar ao cardápio o devolve ao botão Carrinho (978ms)
+  ok 338 [desktop] › tests\tela-carrinho.spec.js:76:1 › a lista de bebidas aberta não continua aberta depois de sair do Carrinho e voltar (1.2s)
+  ok 339 [desktop] › tests\ver-ingredientes.spec.js:8:1 › abre Ver ingredientes em tela cheia a partir do hero (979ms)
+  ok 337 [desktop] › tests\tela-carrinho.spec.js:57:1 › remover e mudar a Quantidade são anunciados numa região viva que não é recriada (2.4s)
+  ok 341 [desktop] › tests\ver-ingredientes.spec.js:22:1 › retira um ingrediente pelo teclado com Enter e Espaço (1.2s)
+  ok 340 [desktop] › tests\ver-ingredientes.spec.js:15:1 › retira um ingrediente tocando na camada (2.0s)
+  ok 342 [desktop] › tests\ver-ingredientes.spec.js:34:1 › retira um ingrediente arrastando a camada até a bandeja (2.1s)
+  ok 343 [desktop] › tests\ver-ingredientes.spec.js:40:1 › arrastar e soltar fora da bandeja não retira o ingrediente (2.2s)
+  ok 344 [desktop] › tests\ver-ingredientes.spec.js:46:1 › retira e recoloca pelos chips (1.2s)
+  ok 345 [desktop] › tests\ver-ingredientes.spec.js:57:1 › Recolocar todos desfaz as retiradas do rascunho (1.4s)
+  ok 346 [desktop] › tests\ver-ingredientes.spec.js:67:1 › a Base (pães e carne) não pode ser retirada (1.3s)
+  ok 347 [desktop] › tests\ver-ingredientes.spec.js:79:1 › a descrição do Whopper lista as camadas, sem linha de personalização (692ms)
+  ok 348 [desktop] › tests\ver-ingredientes.spec.js:84:1 › aplicar fecha Ver ingredientes e tira da descrição o que foi retirado (2.1s)
+  ok 349 [desktop] › tests\ver-ingredientes.spec.js:95:1 › com tudo retirado, a descrição fica só com a Base (2.3s)
+  ok 351 [desktop] › tests\ver-ingredientes.spec.js:121:1 › Esc cancela; não há botão de fechar (1.1s)
+  ok 350 [desktop] › tests\ver-ingredientes.spec.js:102:1 › cancelar preserva a personalização anterior (2.3s)
+  ok 352 [desktop] › tests\ver-ingredientes.spec.js:130:1 › no desktop, Cancelar e Aplicar alterações ficam no cabeçalho, à direita do título (1.1s)
+  ok 354 [desktop] › tests\ver-ingredientes.spec.js:153:1 › as 10 camadas abertas seguem a receita brasileira, de baixo para cima (1.2s)
+  ok 353 [desktop] › tests\ver-ingredientes.spec.js:143:1 › a legenda abaixo do hambúrguer leva o nome do produto (2.1s)
+(node:10208) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 355 [desktop] › tests\ver-ingredientes.spec.js:171:1 › retira só o ketchup e mantém a maionese (3.0s)
+(node:6916) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 356 [mobile-390] › tests\acompanhamento.spec.js:36:1 › Acompanhar pedido, na confirmação do Checkout, abre o acompanhamento do Pedido confirmado (2.6s)
+  ok 358 [mobile-390] › tests\acompanhamento.spec.js:83:1 › a situação avança sozinha: o entregador aparece na retirada e a moto anda até o endereço (1.9s)
+  ok 357 [mobile-390] › tests\acompanhamento.spec.js:66:1 › a caminho: a moto no mapa, a distância restante, o entregador com WhatsApp e a linha do tempo até ali (2.6s)
+  ok 359 [mobile-390] › tests\acompanhamento.spec.js:100:1 › #BK-10482, fixo em Pedido retirado: saindo da loja, com 2,4 km restantes (1.4s)
+  ok 360 [mobile-390] › tests\acompanhamento.spec.js:108:1 › Acompanhar pedido de Minha conta e de Meus pedidos abre o mesmo acompanhamento (1.6s)
+  ok 361 [mobile-390] › tests\arrasto-3d.spec.js:30:1 › a camada 3D acompanha o cursor durante o arrasto e a bandeja reage (2.4s)
+  ok 362 [mobile-390] › tests\arrasto-3d.spec.js:58:1 › depois de soltar na bandeja, o hambúrguer volta para o palco com o cursor parado sobre a bandeja (3.0s)
+  ok 363 [mobile-390] › tests\arrasto-3d.spec.js:82:1 › soltar fora da bandeja devolve a camada ao seu lugar (3.2s)
+  ok 364 [mobile-390] › tests\arrasto-3d.spec.js:101:1 › a Base não pode ser arrastada (2.4s)
+  ok 365 [mobile-390] › tests\bandeja.spec.js:18:1 › o ingrediente retirado aparece na bandeja como imagem da própria camada (1.9s)
+  ok 366 [mobile-390] › tests\bandeja.spec.js:27:1 › tocar na imagem da bandeja recoloca o ingrediente e atualiza o chip (2.1s)
+  ok 367 [mobile-390] › tests\bandeja.spec.js:42:1 › a imagem da bandeja recoloca pelo teclado (1.1s)
+  ok 368 [mobile-390] › tests\bandeja.spec.js:51:1 › recolocar pelo chip tira a imagem da bandeja (1.2s)
+  ok 369 [mobile-390] › tests\bandeja.spec.js:59:1 › Recolocar todos esvazia a bandeja e cancelar descarta o rascunho (1.5s)
+  ok 370 [mobile-390] › tests\bandeja.spec.js:72:1 › a personalização aplicada volta para a bandeja ao reabrir (2.1s)
+  ok 371 [mobile-390] › tests\bandeja.spec.js:93:3 › sem WebGL › a bandeja mostra a ilustração SVG do ingrediente e recoloca ao tocar (2.0s)
+  ok 372 [mobile-390] › tests\big-king.spec.js:14:1 › escolher o Big King na grade troca nome, preço, descrição e o hambúrguer 3D do hero (1.2s)
+  ok 373 [mobile-390] › tests\big-king.spec.js:41:1 › Ver ingredientes abre as 11 camadas do Big King, de baixo para cima (1.7s)
+  ok 374 [mobile-390] › tests\big-king.spec.js:61:3 › retira só queijo do Big King (2.4s)
+  ok 375 [mobile-390] › tests\big-king.spec.js:61:3 › retira só molho big king inferior do Big King (2.3s)
+  ok 376 [mobile-390] › tests\big-king.spec.js:61:3 › retira só picles do Big King (2.3s)
+  ok 377 [mobile-390] › tests\big-king.spec.js:61:3 › retira só cebola do Big King (2.3s)
+  ok 378 [mobile-390] › tests\big-king.spec.js:61:3 › retira só alface do Big King (2.3s)
+  ok 379 [mobile-390] › tests\big-king.spec.js:61:3 › retira só molho big king superior do Big King (2.3s)
+  ok 380 [mobile-390] › tests\big-king.spec.js:77:1 › retirar os seis ingredientes juntos põe todos na bandeja (1.7s)
+  ok 381 [mobile-390] › tests\big-king.spec.js:87:1 › as carnes e os três pães do Big King não podem ser retirados (1.4s)
+  ok 383 [mobile-390] › tests\big-king.spec.js:128:1 › Big King personalizado chega ao carrinho, com combo e "Sem molho big king inferior e picles" (2.4s)
+  ok 382 [mobile-390] › tests\big-king.spec.js:99:1 › Recolocar todos, aplicar e cancelar funcionam no Big King (3.7s)
+  ok 384 [mobile-390] › tests\big-king.spec.js:160:3 › voltar ao Whopper® não deixa resto do Big King e mantém o carrinho (7.1s)
+  ok 385 [mobile-390] › tests\big-king.spec.js:160:3 › voltar ao Cheddar Duplo não deixa resto do Big King e mantém o carrinho (7.4s)
+  ok 386 [mobile-390] › tests\big-king.spec.js:160:3 › voltar ao Stacker Duplo Bacon não deixa resto do Big King e mantém o carrinho (7.0s)
+  ok 387 [mobile-390] › tests\big-king.spec.js:160:3 › voltar ao Rodeio Duplo não deixa resto do Big King e mantém o carrinho (6.9s)
+  ok 389 [mobile-390] › tests\big-king.spec.js:186:1 › a bandeja mostra a imagem do molho Big King retirado (2.3s)
+  ok 390 [mobile-390] › tests\big-king.spec.js:197:1 › arrastar a alface aberta até a bandeja a retira (2.2s)
+  ok 391 [mobile-390] › tests\big-king.spec.js:207:1 › as áreas de toque das camadas abertas do Big King não se sobrepõem e têm pelo menos 24 × 44 px (1.6s)
+  ok 388 [mobile-390] › tests\big-king.spec.js:160:3 › voltar ao Rodeio não deixa resto do Big King e mantém o carrinho (7.0s)
+  ok 393 [mobile-390] › tests\card-do-item.spec.js:20:1 › Whopper® com picles e cebola retirados: Ingredientes como no hero e "Sem picles e cebola" em vermelho (2.1s)
+  ok 392 [mobile-390] › tests\big-king.spec.js:238:3 › sem WebGL › o Big King usa as ilustrações SVG das 11 camadas e o fluxo de retirada continua funcionando (3.3s)
+  ok 395 [mobile-390] › tests\card-do-item.spec.js:55:1 › Quantidade de 1 a 99 com "−" desabilitado em 1; Total do item e Total dos itens acompanham (2.4s)
+  ok 396 [mobile-390] › tests\card-do-item.spec.js:87:1 › Combo no carrinho: marcar soma R$ 12,00 já sem bebida; sem Combo a Bebida fica desabilitada no mesmo lugar; desmarcar apaga a bebida (1.4s)
+  ok 397 [mobile-390] › tests\card-do-item.spec.js:115:1 › a lista de bebidas abre por cima, sem empurrar o resto, com as 7 bebidas, e responde ao teclado (2.2s)
+  ok 398 [mobile-390] › tests\card-do-item.spec.js:166:1 › Itens editados até ficarem iguais continuam separados (1.1s)
+  ok 399 [mobile-390] › tests\card-do-item.spec.js:184:1 › todo Item tem "Remover": na linha do nome a partir de 1024px, abaixo dele no mobile (967ms)
+  ok 394 [mobile-390] › tests\card-do-item.spec.js:33:1 › Cheddar Duplo: sem nada retirado, "Todos os ingredientes"; um cheddar mantém "cheddar cremoso"; os dois o tiram (9.3s)
+  ok 400 [mobile-390] › tests\card-do-item.spec.js:201:1 › produto só foto: foto, nome e Total do item, sem Ingredientes, Combo nem Bebida (895ms)
+  ok 402 [mobile-390] › tests\carrinho-travado.spec.js:23:1 › Com o Pix pendente, o Carrinho mostra os Itens só para leitura, com o aviso e "Voltar ao pagamento" (1.7s)
+  ok 401 [mobile-390] › tests\carrinho-travado.spec.js:5:1 › Com o Pix pendente, o Checkout não tem "Voltar ao carrinho" nem "Editar carrinho" (11.5s)
+  ok 404 [mobile-390] › tests\carrinho-travado.spec.js:82:1 › Pix aprovado com o cliente fora do Checkout: toast de pagamento aprovado com "Ver pedido" (1.5s)
+  ok 405 [mobile-390] › tests\carrinho-travado.spec.js:100:1 › Sem Pix pendente, editar o carrinho descarta o Pedido ainda não confirmado (4.6s)
+  ok 403 [mobile-390] › tests\carrinho-travado.spec.js:51:1 › Com o Pix pendente, "Adicionar ao carrinho" não adiciona e mostra o toast; só "Escolher outra forma de pagamento" destrava (15.7s)
+  ok 406 [mobile-390] › tests\carrinho-travado.spec.js:117:1 › Pix aprovado com o cliente no cardápio: o toast com "Ver pedido" e o cardápio destravado (1.6s)
+  ok 407 [mobile-390] › tests\carrinho-travado.spec.js:140:1 › Processando o cartão, o Voltar do navegador leva a Seus endereços e ao Carrinho travados; aprovado, o cliente fica onde está, com "Ver pedido" (1.6s)
+  ok 408 [mobile-390] › tests\carrinho-travado.spec.js:168:1 › Cartão recusado com o cliente fora do Checkout: o toast com "Voltar ao pagamento" e o carrinho destravado (1.6s)
+  ok 409 [mobile-390] › tests\carrinho-travado.spec.js:183:1 › Com o Pix pendente, Seus endereços não muda o endereço do Pedido: o aviso com "Voltar ao pagamento", até "Escolher outra forma de pagamento" (1.8s)
+  ok 410 [mobile-390] › tests\carrinho.spec.js:12:1 › o botão Carrinho abre a tela #carrinho, sem diálogo, com o cabeçalho igual e nenhuma categoria ativa (922ms)
+  ok 411 [mobile-390] › tests\carrinho.spec.js:25:1 › carrinho vazio: "Seu carrinho está vazio", sem subtítulo nem Resumo, com Explorar cardápio (950ms)
+  ok 412 [mobile-390] › tests\carrinho.spec.js:35:1 › cada Item mostra foto, nome e Total do item; o subtítulo conta itens ou unidades, como o contador do cabeçalho (1.5s)
+  ok 413 [mobile-390] › tests\carrinho.spec.js:57:1 › o Resumo do carrinho soma os Totais do item, avisa da entrega e tem Continuar e Adicionar mais itens (1.2s)
+  ok 414 [mobile-390] › tests\carrinho.spec.js:89:1 › Voltar ao cardápio e Adicionar mais itens levam à última categoria vista, com o estado dela (1.4s)
+  ok 415 [mobile-390] › tests\carrinho.spec.js:100:1 › Explorar cardápio e o Voltar do navegador levam à última categoria vista, com o estado dela (1.1s)
+  ok 416 [mobile-390] › tests\carrinho.spec.js:111:1 › aberto pelo endereço #carrinho, Voltar ao cardápio leva a Hambúrgueres (844ms)
+  ok 417 [mobile-390] › tests\carrinho.spec.js:118:1 › depois de adicionar, o cliente continua no cardápio (943ms)
+  ok 419 [mobile-390] › tests\categorias.spec.js:17:1 › Bebidas: Coca-Cola selecionada, foto, descrição, card sem combo e grade "Escolha sua bebida" na ordem do Figma (962ms)
+  ok 418 [mobile-390] › tests\carrinho.spec.js:127:1 › com uma unidade por Item, o subtítulo diz "N itens no carrinho" (1.1s)
+  ok 421 [mobile-390] › tests\categorias.spec.js:72:1 › o endereço com #acompanhamentos abre a categoria, e voltar no navegador retorna à anterior (958ms)
+  ok 422 [mobile-390] › tests\categorias.spec.js:85:1 › voltar no navegador com Ver ingredientes aberto cancela e fecha antes de trocar de categoria (1.2s)
+  ok 420 [mobile-390] › tests\categorias.spec.js:34:1 › ir e voltar entre as categorias mantém a seleção de cada uma e o hambúrguer com a Personalização, o combo e a quantidade (3.1s)
+  ok 423 [mobile-390] › tests\categorias.spec.js:99:1 › acompanhamento, bebida e sobremesa chegam ao carrinho com nome e Total do item; Item idêntico soma (1.3s)
+  ok 424 [mobile-390] › tests\categorias.spec.js:127:1 › o erro do combo sem bebida no hambúrguer não impede adicionar uma bebida (1.1s)
+  ok 425 [mobile-390] › tests\categorias.spec.js:138:1 › cada página abre com o primeiro produto da grade selecionado (1.5s)
+  ok 427 [mobile-390] › tests\categorias.spec.js:169:1 › a foto mostra só a área desenhada também sem object-view-box (fora do Chrome) (919ms)
+  ok 428 [mobile-390] › tests\categorias.spec.js:202:3 › celular e tablet (< 1024px) › 390: Sobremesas em uma coluna (título, foto, descrição, card, grade em 2 colunas) e a aba ativa à vista (855ms)
+  -  429 [mobile-390] › tests\categorias.spec.js:223:3 › desktop › 1280: Acompanhamentos com título e card à esquerda, foto à direita com a descrição abaixo, grade em 4 colunas
+  ok 426 [mobile-390] › tests\categorias.spec.js:147:1 › todos os produtos das três categorias têm foto, nome, descrição e preço (3.5s)
+  -  430 [mobile-390] › tests\categorias.spec.js:241:5 › desktop › ≥ 1920px › 1920: Bebidas sem rolagem da página, coluna lateral "Escolha sua bebida" em 2 colunas com rolagem própria
+  ok 431 [mobile-390] › tests\cena-3d.spec.js:11:1 › o hero desenha o Whopper em 3D, sem as ilustrações SVG (602ms)
+  ok 432 [mobile-390] › tests\cena-3d.spec.js:19:1 › o hero mostra o hambúrguer montado sem os ingredientes retirados, mais baixo (3.8s)
+  ok 433 [mobile-390] › tests\cena-3d.spec.js:34:1 › cada ingrediente aberto em 3D tem sua própria área de toque (6.1s)
+  ok 434 [mobile-390] › tests\cena-3d.spec.js:55:1 › aplicar compacta as camadas abertas, com o pão superior descendo até a base (3.8s)
+  ok 435 [mobile-390] › tests\cena-3d.spec.js:104:3 › com movimento reduzido › abrir e retirar não animam as camadas; aplicar fecha na hora (1.9s)
+  ok 436 [mobile-390] › tests\cena-3d.spec.js:122:1 › cada ingrediente aberto tem área de toque de pelo menos 24 × 44 px (1.3s)
+  ok 437 [mobile-390] › tests\checkout.spec.js:32:1 › Continuar sem pendências abre o Checkout em #checkout, no topo e com o foco no título (2.5s)
+  ok 438 [mobile-390] › tests\checkout.spec.js:41:1 › o indicador de etapas começa em Identificação, sem textos de estado (2.4s)
+  ok 439 [mobile-390] › tests\checkout.spec.js:51:1 › o Resumo do pedido mostra os Itens com Combo, bebida e o que foi retirado, e o Total dos itens (2.4s)
+  ok 440 [mobile-390] › tests\checkout.spec.js:65:1 › Voltar ao carrinho, Editar carrinho e o Voltar do navegador levam ao Carrinho, que ainda volta ao cardápio (2.7s)
+  ok 442 [mobile-390] › tests\checkout.spec.js:91:1 › #checkout pelo endereço, ou com o carrinho vazio, mostra o Carrinho (990ms)
+  ok 441 [mobile-390] › tests\checkout.spec.js:84:1 › o Checkout não tem categoria ativa no cabeçalho (2.4s)
+  ok 443 [mobile-390] › tests\checkout.spec.js:103:1 › #checkout com um combo ainda sem bebida mostra o Carrinho (888ms)
+  ok 444 [mobile-390] › tests\cheddar-duplo.spec.js:12:1 › escolher o Cheddar Duplo na grade troca nome, preço e descrição do hero (1.3s)
+  ok 445 [mobile-390] › tests\cheddar-duplo.spec.js:22:1 › o hero desenha o Cheddar Duplo em 3D, numa cena só (1.3s)
+  ok 446 [mobile-390] › tests\cheddar-duplo.spec.js:38:1 › Ver ingredientes abre as 7 camadas do Cheddar Duplo, de baixo para cima (1.6s)
+  ok 447 [mobile-390] › tests\cheddar-duplo.spec.js:58:3 › retira só cheddar inferior do Cheddar Duplo (2.4s)
+  ok 448 [mobile-390] › tests\cheddar-duplo.spec.js:58:3 › retira só cheddar superior do Cheddar Duplo (2.4s)
+  ok 449 [mobile-390] › tests\cheddar-duplo.spec.js:58:3 › retira só cebola crispy do Cheddar Duplo (2.3s)
+  ok 450 [mobile-390] › tests\cheddar-duplo.spec.js:71:1 › as duas carnes e os pães do Cheddar Duplo não podem ser retirados (1.5s)
+  ok 451 [mobile-390] › tests\cheddar-duplo.spec.js:83:1 › Recolocar todos, aplicar e cancelar funcionam no Cheddar Duplo (2.7s)
+  ok 452 [mobile-390] › tests\cheddar-duplo.spec.js:102:1 › cheddar cremoso só sai da descrição com os dois cheddars retirados (3.5s)
+  ok 453 [mobile-390] › tests\cheddar-duplo.spec.js:116:1 › Cheddar Duplo personalizado chega ao carrinho, com combo e bebida (2.5s)
+  ok 454 [mobile-390] › tests\cheddar-duplo.spec.js:137:1 › a bandeja mostra a imagem da camada do Cheddar Duplo retirada (2.4s)
+  ok 455 [mobile-390] › tests\cheddar-duplo.spec.js:148:1 › voltar ao Whopper mostra as 10 camadas dele, sem resto do Cheddar Duplo, e mantém o carrinho (4.1s)
+  ok 456 [mobile-390] › tests\cheddar-duplo.spec.js:175:1 › trocar de produto e voltar não gera de novo o modelo de nenhuma camada (3.9s)
+  ok 457 [mobile-390] › tests\cheddar-duplo.spec.js:203:3 › sem WebGL › o Cheddar Duplo usa as ilustrações SVG e o fluxo de retirada continua funcionando (3.2s)
+  ok 458 [mobile-390] › tests\cheddar-duplo.spec.js:223:1 › cada camada aberta do Cheddar Duplo tem sua própria área de toque (2.4s)
+  ok 460 [mobile-390] › tests\conta-enderecos.spec.js:26:1 › lista os Endereços salvos com Editar e Remover (934ms)
+  ok 459 [mobile-390] › tests\cheddar-duplo.spec.js:237:1 › as áreas de toque das camadas abertas do Cheddar Duplo não se sobrepõem e têm pelo menos 24 × 44 px (1.7s)
+  ok 461 [mobile-390] › tests\conta-enderecos.spec.js:39:1 › Adicionar endereço: busca, mapa e dados de entrega; salvo, volta à lista com ele (1.2s)
+  ok 462 [mobile-390] › tests\conta-enderecos.spec.js:66:1 › Voltar aos endereços, na busca, volta sem salvar (906ms)
+  ok 463 [mobile-390] › tests\conta-enderecos.spec.js:74:1 › Editar endereço: os dados atuais; salvar volta à lista com as mudanças (1.0s)
+  ok 465 [mobile-390] › tests\conta-enderecos.spec.js:116:1 › sem Endereços salvos, o estado vazio oferece Adicionar endereço (979ms)
+  ok 464 [mobile-390] › tests\conta-enderecos.spec.js:86:1 › Remover endereço pede confirmação: Manter não muda; Remover tira só ele e limpa o Endereço de entrega em uso (2.3s)
+  ok 466 [mobile-390] › tests\continuar.spec.js:17:1 › Continuar com combos sem bebida: o primeiro ganha o erro e a borda vermelha, e o seletor recebe o foco (2.1s)
+  ok 467 [mobile-390] › tests\continuar.spec.js:38:1 › Continuar rola a tela até o combo sem bebida (2.4s)
+  ok 468 [mobile-390] › tests\continuar.spec.js:63:1 › o erro some ao escolher a bebida ou ao desmarcar o combo (1.3s)
+  ok 470 [mobile-390] › tests\dados-pessoais.spec.js:29:1 › Dados pessoais abre com o cadastro; salvar atualiza o nome no header (1.3s)
+  ok 469 [mobile-390] › tests\continuar.spec.js:85:1 › Continuar sem pendências abre o Checkout (2.1s)
+  ok 471 [mobile-390] › tests\dados-pessoais.spec.js:47:1 › erros mantêm o que foi digitado; Cancelar descarta e volta a Minha conta (1.0s)
+  ok 472 [mobile-390] › tests\dados-pessoais.spec.js:64:1 › Alterar celular: código pelo canal escolhido; confirmado, o mesmo cadastro com o novo celular (1.3s)
+  ok 473 [mobile-390] › tests\dados-pessoais.spec.js:100:1 › Cancelar e Alterar celular, no código, não mudam o vínculo (1.1s)
+  ok 474 [mobile-390] › tests\dados-pessoais.spec.js:117:1 › celular de outro cadastro: "Celular já vinculado", sem juntar cadastros (1.1s)
+  ok 475 [mobile-390] › tests\endereco.spec.js:31:1 › Cliente cadastrado vê os Endereços salvos Casa e Trabalho, com Casa marcada, e os atalhos (1.2s)
+  ok 476 [mobile-390] › tests\endereco.spec.js:51:1 › Novo cliente vê só a busca e Usar localização atual, sem seções vazias nem Entregar neste endereço (1.2s)
+  ok 477 [mobile-390] › tests\endereco.spec.js:64:1 › Entregar neste endereço leva ao Pagamento, com o endereço, a Taxa de entrega e o Total do pedido (1.5s)
+  ok 478 [mobile-390] › tests\endereco.spec.js:104:1 › Alterar volta a Seus endereços com o endereço em uso marcado; Entregar troca o endereço do Pagamento (1.5s)
+  ok 479 [mobile-390] › tests\endereco.spec.js:126:1 › Voltar ao checkout volta ao Pagamento sem trocar o endereço; Voltar do navegador também (1.7s)
+  ok 480 [mobile-390] › tests\endereco.spec.js:147:1 › sem endereço escolhido, Voltar ao checkout volta ao Carrinho (1.2s)
+  ok 482 [mobile-390] › tests\endereco.spec.js:165:1 › Novo cliente: o Checkout continua em Seus endereços enquanto não há endereço (1.2s)
+  ok 481 [mobile-390] › tests\endereco.spec.js:154:1 › na sessão, com o endereço escolhido, o Continuar do Carrinho abre o Checkout no Pagamento (3.7s)
+  ok 483 [mobile-390] › tests\entrada-e-saida.spec.js:62:1 › ao abrir a página, as Camadas caem e se empilham de baixo para cima (2.0s)
+  ok 484 [mobile-390] › tests\entrada-e-saida.spec.js:77:1 › uma tecla durante a Entrada mostra o hambúrguer montado na hora (1.2s)
+  -  486 [mobile-390] › tests\entrada-e-saida.spec.js:105:1 › no desktop, o hambúrguer só inclina com o ponteiro depois da Entrada
+  ok 485 [mobile-390] › tests\entrada-e-saida.spec.js:90:1 › ao voltar de Bebidas para Hambúrgueres, o hambúrguer faz a Entrada de novo (3.8s)
+  ok 487 [mobile-390] › tests\entrada-e-saida.spec.js:125:1 › ao trocar de hambúrguer, o atual faz a Saída antes de o novo fazer a Entrada (4.0s)
+  ok 489 [mobile-390] › tests\entrada-e-saida.spec.js:164:1 › aberta no carrinho, a página guarda a Entrada para quando o cliente volta ao cardápio (2.0s)
+  ok 488 [mobile-390] › tests\entrada-e-saida.spec.js:144:1 › dois cliques rápidos: vale o último, sem passar pelo outro hambúrguer (3.8s)
+  ok 490 [mobile-390] › tests\entrada-e-saida.spec.js:175:1 › durante a Saída, Ver ingredientes espera e abre o hambúrguer escolhido (1.2s)
+  ok 491 [mobile-390] › tests\entrada-e-saida.spec.js:184:1 › durante a Saída, Adicionar ao carrinho não adiciona o hambúrguer que está saindo (2.4s)
+  ok 492 [mobile-390] › tests\entrada-e-saida.spec.js:198:1 › durante a Entrada, as Camadas que caem não cobrem o cabeçalho: o Carrinho continua recebendo o clique (1.6s)
+  ok 494 [mobile-390] › tests\entregar-em.spec.js:24:1 › sem endereço, cada categoria mostra "Onde vamos entregar?" no topo; o Carrinho não tem a linha (815ms)
+  ok 493 [mobile-390] › tests\entrada-e-saida.spec.js:217:3 › com movimento reduzido › não há Entrada nem Saída: o hambúrguer aparece montado e a troca é na hora (1.8s)
+  ok 495 [mobile-390] › tests\entregar-em.spec.js:35:1 › o visitante escolhe o endereço sem se identificar e volta à categoria de onde saiu (1.4s)
+  ok 496 [mobile-390] › tests\entregar-em.spec.js:56:1 › Voltar ao cardápio, em Seus endereços aberto pelo cardápio, volta à categoria sem mudar nada (765ms)
+  ok 497 [mobile-390] › tests\entregar-em.spec.js:64:1 › fora da região: avisa e Voltar ao cardápio mantém o endereço anterior (1.3s)
+  ok 498 [mobile-390] › tests\entregar-em.spec.js:76:1 › identificado no Checkout, o endereço do visitante continua marcado e pode ser salvo (1.8s)
+  ok 500 [mobile-390] › tests\fallback-svg.spec.js:15:1 › sem WebGL, o hero mostra as ilustrações SVG (401ms)
+  ok 499 [mobile-390] › tests\entregar-em.spec.js:109:1 › identificado, Alterar abre Seus endereços; escolher outro volta ao cardápio com ele e o Checkout usa o mesmo (1.6s)
+  ok 502 [mobile-390] › tests\formas-de-pagamento.spec.js:34:1 › lista os Cartões salvos: bandeira e final, nome, validade e Cartão padrão; nota do Pix (731ms)
+  ok 501 [mobile-390] › tests\fallback-svg.spec.js:21:1 › sem WebGL, o fluxo de retirada continua funcionando (2.5s)
+  ok 503 [mobile-390] › tests\formas-de-pagamento.spec.js:44:1 › Adicionar cartão: com as validações do Novo cartão; salvo, volta à lista sem guardar o código (1.2s)
+  ok 504 [mobile-390] › tests\formas-de-pagamento.spec.js:70:1 › o mesmo cartão não é salvo duas vezes; Cancelar descarta (1.1s)
+  ok 506 [mobile-390] › tests\formas-de-pagamento.spec.js:113:1 › sem Cartões salvos, o estado vazio oferece Adicionar cartão (874ms)
+  ok 505 [mobile-390] › tests\formas-de-pagamento.spec.js:82:1 › Remover cartão pede confirmação; removido o padrão, o seguinte assume; o Checkout também muda (2.2s)
+  ok 508 [mobile-390] › tests\gerenciar-enderecos.spec.js:27:1 › o Novo cliente não abre os Endereços de pedidos anteriores (1.2s)
+  ok 509 [mobile-390] › tests\gerenciar-enderecos.spec.js:33:1 › menu ⋮ pelo teclado: abre com Editar e Remover, Esc fecha e devolve o foco ao ⋮ (1.0s)
+  ok 507 [mobile-390] › tests\gerenciar-enderecos.spec.js:8:1 › Endereços de pedidos anteriores: escolher um volta aos Endereços salvos com ele marcado, até o Pagamento (3.8s)
+  ok 510 [mobile-390] › tests\gerenciar-enderecos.spec.js:48:1 › Editar o endereço em uso: o formulário vem preenchido e a alteração já vale para o Checkout (1.4s)
+  ok 512 [mobile-390] › tests\gerenciar-enderecos.spec.js:93:1 › Remover o endereço marcado: confirmação, toast "Endereço removido." e nenhum marcado, com Entregar neste endereço desabilitado (1.4s)
+  ok 511 [mobile-390] › tests\gerenciar-enderecos.spec.js:75:1 › Editar: Voltar desiste sem mudar o endereço; o Voltar do navegador depois de salvar não reabre o formulário (1.8s)
+  ok 514 [mobile-390] › tests\header-e-sessao.spec.js:21:1 › visitante: o Carrinho só com o ícone e o contador, e Identifique-se à direita dele (665ms)
+  ok 513 [mobile-390] › tests\gerenciar-enderecos.spec.js:122:1 › Remover o endereço em uso no Checkout: o Checkout pede um novo endereço (1.4s)
+  ok 515 [mobile-390] › tests\header-e-sessao.spec.js:31:1 › identificado, o header mostra o primeiro nome e leva a Minha conta (1.2s)
+  ok 516 [mobile-390] › tests\header-e-sessao.spec.js:42:1 › Novo cliente com nome longo: só o primeiro nome, cortado com reticências (1.1s)
+  ok 517 [mobile-390] › tests\header-e-sessao.spec.js:51:1 › recarregar mantém o cliente, o Carrinho e o Endereço de entrega (1.8s)
+  ok 518 [mobile-390] › tests\header-e-sessao.spec.js:63:1 › uma aba nova começa sem a sessão da outra (1.8s)
+  ok 519 [mobile-390] › tests\identificacao.spec.js:19:1 › o celular ganha a máscara (DD) 9XXXX-XXXX e os envios só se habilitam com 11 dígitos (1.1s)
+  ok 520 [mobile-390] › tests\identificacao.spec.js:57:1 › Cliente cadastrado (61) 99999-1234 confirma pelo WhatsApp e vai direto ao Endereço (1.3s)
+  ok 521 [mobile-390] › tests\identificacao.spec.js:79:1 › Cliente cadastrado (61) 90000-0000 confirma por SMS e também vai direto ao Endereço (1.2s)
+  ok 522 [mobile-390] › tests\identificacao.spec.js:86:1 › Reenviar código e trocar de canal atualizam o destino e mostram o toast, sem sair da confirmação (1.3s)
+  ok 523 [mobile-390] › tests\identificacao.spec.js:109:1 › Código incorreto mostra o erro e desabilita Confirmar até o código mudar (1.6s)
+  ok 524 [mobile-390] › tests\identificacao.spec.js:143:1 › o código aceita só dígitos, até 6 (1.0s)
+  ok 525 [mobile-390] › tests\identificacao.spec.js:150:1 › Alterar celular volta ao celular preenchido, e o novo envio pede um novo código (1.3s)
+  ok 526 [mobile-390] › tests\identificacao.spec.js:166:1 › Novo cliente (qualquer outro celular) passa pelo cadastro: nome obrigatório, e-mail opcional e celular só para leitura (1.5s)
+  ok 527 [mobile-390] › tests\identificacao.spec.js:200:1 › Novo cliente com e-mail válido segue para o Endereço (1.2s)
+  ok 528 [mobile-390] › tests\identificacao.spec.js:209:1 › na sessão, o celular confirmado não pede o código de novo: o Checkout abre no Endereço (1.3s)
+  ok 529 [mobile-390] › tests\identificacao.spec.js:220:1 › #endereco abre sem carrinho e sem celular confirmado (ADR 0002): o visitante escolhe só o Endereço de entrega (633ms)
+  ok 531 [mobile-390] › tests\identifique-se.spec.js:18:1 › Identifique-se abre a página do Figma e, confirmado o celular, volta à página de origem com o nome (1.0s)
+  ok 530 [mobile-390] › tests\identificacao.spec.js:232:1 › Código apresenta Alterar celular antes do campo e ações empilhadas na ordem revisada (1.2s)
+  ok 532 [mobile-390] › tests\identifique-se.spec.js:35:1 › SMS, reenviar, trocar o canal, alterar o celular e código incorreto, como no Checkout (1.0s)
+  ok 533 [mobile-390] › tests\identifique-se.spec.js:53:1 › Novo cliente informa nome e e-mail antes de voltar (1.0s)
+  ok 534 [mobile-390] › tests\identifique-se.spec.js:67:1 › Voltar retorna à página de origem sem mexer no Carrinho (880ms)
+  ok 535 [mobile-390] › tests\identifique-se.spec.js:78:1 › página privada sem identificação passa pela Identificação e depois abre; identificado, Identifique-se leva a Minha conta (899ms)
+  -  537 [mobile-390] › tests\inclinacao.spec.js:29:1 › no desktop, o hambúrguer inclina seguindo o ponteiro e volta ao centro
+  ok 536 [mobile-390] › tests\identifique-se.spec.js:90:1 › a identificação é uma só: pelo header pula a do Checkout; pelo Checkout, o header já mostra o nome (2.2s)
+  -  539 [mobile-390] › tests\inclinacao.spec.js:76:1 › em Ver ingredientes os botões seguem as camadas inclinadas e o toque continua retirando
+  ok 538 [mobile-390] › tests\inclinacao.spec.js:48:1 › no toque, arrastar na área vazia do palco inclina, sem pedir permissão de movimento (2.4s)
+  -  540 [mobile-390] › tests\inclinacao.spec.js:91:3 › com movimento reduzido › o hambúrguer não inclina
+  ok 541 [mobile-390] › tests\layout-carrinho.spec.js:39:3 › celular (< 1024px) › 390: barra fixa no rodapé com Total dos itens e Continuar, que fica na tela ao rolar (2.5s)
+  ok 542 [mobile-390] › tests\layout-carrinho.spec.js:57:3 › celular (< 1024px) › 390: o Continuar da barra valida como o do Resumo, e o combo sem bebida fica acima da barra; sem pendências, abre o Checkout (2.6s)
+  ok 543 [mobile-390] › tests\layout-carrinho.spec.js:74:3 › celular (< 1024px) › 390: no fim da página, o Resumo do carrinho termina acima da barra (2.5s)
+  -  545 [mobile-390] › tests\layout-carrinho.spec.js:107:3 › desktop (≥ 1024px) › 1280: sem barra fixa; o Continuar fica no Resumo do carrinho
+  -  546 [mobile-390] › tests\layout-carrinho.spec.js:114:3 › desktop (≥ 1024px) › 1280: Itens à esquerda e Resumo do carrinho à direita; Bebida do combo, Quantidade e Total do item lado a lado
+  ok 544 [mobile-390] › tests\layout-carrinho.spec.js:87:3 › celular (< 1024px) › 390: uma coluna; ingredientes em parágrafo com quebra; Bebida do combo na largura do card; Quantidade e Total do item lado a lado (2.7s)
+  ok 547 [mobile-390] › tests\layout-checkout.spec.js:25:3 › celular (< 1024px) › 390: Pagamento com Total do pedido e a ação fixos no rodapé, que acompanham a Forma de pagamento e ficam na tela ao rolar (1.7s)
+  ok 548 [mobile-390] › tests\layout-checkout.spec.js:47:3 › celular (< 1024px) › 390: uma coluna, o Resumo do pedido abaixo do conteúdo e, no fim da página, Editar carrinho acima do rodapé; sem rolagem horizontal (1.6s)
+  ok 549 [mobile-390] › tests\layout-checkout.spec.js:61:3 › celular (< 1024px) › 390: no fluxo de endereço, a ação principal fica fixa no rodapé e o fim do conteúdo termina acima dela; sem rolagem horizontal (1.7s)
+  ok 550 [mobile-390] › tests\layout-checkout.spec.js:95:3 › celular (< 1024px) › 390: no cartão Endereço de entrega, complemento e referência em linhas separadas e o divisor antes da previsão (1.2s)
+  -  552 [mobile-390] › tests\layout-checkout.spec.js:126:3 › desktop (≥ 1024px) › 1280: conteúdo à esquerda e Resumo do pedido à direita, com a ação; sem rodapé fixo nem rolagem horizontal
+  -  553 [mobile-390] › tests\layout-checkout.spec.js:137:3 › desktop (≥ 1024px) › 1280: no fluxo de endereço, a ação principal fica no conteúdo, logo depois dele
+  ok 554 [mobile-390] › tests\layout-conta.spec.js:10:5 › 390 de largura › Identifique-se e todas as páginas da conta: sem abas de categorias no header, navegação em lista e sem rolagem horizontal (1.6s)
+  x  555 [mobile-390] › tests\layout-conta.spec.js:31:5 › 390 de largura › o acompanhamento fica em uma coluna: situação, mapa, entregador, linha do tempo e itens (830ms)
+  ok 551 [mobile-390] › tests\layout-checkout.spec.js:109:3 › celular (< 1024px) › 390: sem o rodapé do pagamento no Pix pendente e no Pedido confirmado; sem rolagem horizontal (3.5s)
+(node:20788) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  556 [mobile-390] › tests\layout-conta.spec.js:31:5 › 768 de largura › o acompanhamento fica em uma coluna: situação, mapa, entregador, linha do tempo e itens (948ms)
+(node:10608) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 557 [mobile-390] › tests\layout-conta.spec.js:10:5 › 768 de largura › Identifique-se e todas as páginas da conta: sem abas de categorias no header, navegação em lista e sem rolagem horizontal (2.4s)
+  ok 559 [mobile-390] › tests\layout-ver-ingredientes.spec.js:37:3 › celular (< 1024px) › 390: o cabeçalho tem só o título (1.1s)
+  ok 558 [mobile-390] › tests\layout-ver-ingredientes.spec.js:22:3 › celular (< 1024px) › 390: Cancelar e Aplicar alterações numa barra fixa embaixo, que fica na tela ao rolar (2.2s)
+  ok 560 [mobile-390] › tests\layout-ver-ingredientes.spec.js:45:3 › celular (< 1024px) › 390: uma coluna — palco com a legenda, Bandeja, chips e Recolocar todos, que termina acima da barra (1.3s)
+  ok 561 [mobile-390] › tests\layout-ver-ingredientes.spec.js:62:3 › celular (< 1024px) › 390: cards de 94 × 88; a Bandeja cresce uma linha a partir do 4º ingrediente (1.4s)
+  -  562 [mobile-390] › tests\layout-ver-ingredientes.spec.js:77:3 › tablet (768 de largura) › 768: também uma coluna, com a barra fixa embaixo
+  -  563 [mobile-390] › tests\layout-ver-ingredientes.spec.js:90:3 › desktop (≥ 1024px) › 1024: palco e painel de 440px lado a lado, ações no cabeçalho
+  ok 564 [mobile-390] › tests\layout.spec.js:12:1 › cabeçalho do Figma: logo, as quatro categorias com Hambúrgueres ativo, o carrinho só com o contador e Identifique-se (912ms)
+  ok 566 [mobile-390] › tests\layout.spec.js:40:1 › o preço do hambúrguer aparece só no Total do item, como no Figma (606ms)
+  ok 565 [mobile-390] › tests\layout.spec.js:26:1 › os 2 hambúrgueres sem Receita parecem iguais aos outros, sem "Em breve", e clicar neles não faz nada (1.0s)
+  -  568 [mobile-390] › tests\layout.spec.js:111:3 › desktop › 1280: título e card à esquerda, 3D à direita com Ver ingredientes e descrição abaixo, grade em 4 colunas
+  -  569 [mobile-390] › tests\layout.spec.js:136:5 › desktop › ≥ 1920px › 1920: hero na altura da tela, página sem rolagem e coluna lateral em 2 colunas com rolagem própria
+  ok 567 [mobile-390] › tests\layout.spec.js:83:3 › celular e tablet (< 1024px) › 390: uma coluna na ordem do Figma, grade em 2 colunas e categorias em abas roláveis (1.6s)
+  -  570 [mobile-390] › tests\layout.spec.js:164:7 › desktop › ≥ 1920px e janela de 800px de altura › 1920 × 800: a página não rola e o hero cabe na tela, no hambúrguer e numa categoria de foto
+  -  571 [mobile-390] › tests\layout.spec.js:164:7 › desktop › ≥ 1920px e janela de 720px de altura › 1920 × 720: a página não rola e o hero cabe na tela, no hambúrguer e numa categoria de foto
+  ok 572 [mobile-390] › tests\meus-pedidos.spec.js:40:1 › Em andamento e Histórico de pedidos, os mais recentes primeiro, com as situações fixas (1.0s)
+  ok 573 [mobile-390] › tests\meus-pedidos.spec.js:65:1 › um Pedido da sessão em andamento entra no topo, no lugar do #BK-10482, e a situação avança sozinha (1.3s)
+  ok 574 [mobile-390] › tests\meus-pedidos.spec.js:77:1 › um Pedido da sessão já entregue vai para o Histórico e o #BK-10482 volta a Em andamento (1.2s)
+  ok 575 [mobile-390] › tests\meus-pedidos.spec.js:85:1 › sem Pedidos: "Seu primeiro pedido começa aqui", com Explorar o cardápio e Voltar à Minha conta (1.1s)
+  ok 577 [mobile-390] › tests\minha-conta.spec.js:25:1 › Minha conta: Olá com o celular, Editar meus dados, o Pedido em andamento e Ver todos os pedidos (1.0s)
+  ok 576 [mobile-390] › tests\meus-pedidos.spec.js:96:1 › os Pedidos são do celular identificado: outro cliente na mesma aba não os vê (1.7s)
+  ok 578 [mobile-390] › tests\minha-conta.spec.js:43:1 › sem Pedido em andamento (Novo cliente), Minha conta não mostra um pedido (963ms)
+  ok 579 [mobile-390] › tests\minha-conta.spec.js:49:1 › um Pedido da sessão em andamento toma o lugar do #BK-10482 (1.3s)
+  ok 580 [mobile-390] › tests\minha-conta.spec.js:65:1 › navegação: a seção atual destacada, Sair separado; páginas inexistentes voltam a Minha conta (1.1s)
+  -  582 [mobile-390] › tests\minha-conta.spec.js:105:3 › desktop › a navegação é uma lista lateral, à esquerda das seções
+  ok 581 [mobile-390] › tests\minha-conta.spec.js:86:3 › celular (< 1024px) › a lista mostra a seção atual e abre pelo botão; escolher um destino a recolhe (1.0s)
+  ok 584 [mobile-390] › tests\novo-endereco.spec.js:7:1 › busca com "paulista" lista a Av. Paulista, 1578 e vizinhos; escolher um abre Confirmar localização com o mapa (1.4s)
+  ok 583 [mobile-390] › tests\minha-conta.spec.js:114:1 › Sair pede confirmação: Continuar conectado mantém a sessão; Sair da conta esquece o cliente e o endereço, e mantém o Carrinho (1.9s)
+  ok 585 [mobile-390] › tests\novo-endereco.spec.js:21:1 › Usar localização atual negada mostra Localização indisponível; concedida, Tentar localização novamente leva à Av. Paulista, 1578 (1.3s)
+  ok 586 [mobile-390] › tests\novo-endereco.spec.js:35:1 › Localização indisponível: Usar endereço salvo volta aos Endereços salvos; o Novo cliente não tem esse botão (2.2s)
+  ok 587 [mobile-390] › tests\novo-endereco.spec.js:52:1 › Confirmar localização: arrastar o mapa move-o sob o marcador sem mudar o endereço; Centralizar no endereço o traz de volta (1.7s)
+  ok 588 [mobile-390] › tests\novo-endereco.spec.js:84:1 › Dados de entrega começam pelo local escolhido; Rua, Bairro e Número são obrigatórios (1.5s)
+  ok 589 [mobile-390] › tests\novo-endereco.spec.js:107:1 › Salvar endereço "sem número" e "sem complemento" como Trabalho volta à lista com ele marcado e o toast; Entregar neste endereço o usa (1.8s)
+  ok 591 [mobile-390] › tests\novo-endereco.spec.js:165:1 › Novo cliente salva o primeiro endereço: aparece marcado, com Entregar neste endereço (1.3s)
+  ok 592 [mobile-390] › tests\novo-endereco.spec.js:177:1 › Voltar percorre Dados de entrega → Confirmar localização → Busca → Seus endereços; Ajustar localização no mapa volta ao mapa (1.3s)
+  ok 590 [mobile-390] › tests\novo-endereco.spec.js:133:1 › O que o cliente digita no endereço aparece como texto, na lista, em Remover endereço, no Checkout e no Pedido confirmado (3.9s)
+  ok 594 [mobile-390] › tests\novo-endereco.spec.js:216:1 › sem um local escolhido, #endereco/confirmar e #endereco/dados levam à Busca (1.2s)
+  ok 593 [mobile-390] › tests\novo-endereco.spec.js:195:1 › Voltar percorre busca e lista antes do Checkout de origem (1.5s)
+  ok 595 [mobile-390] › tests\novo-endereco.spec.js:224:1 › busca: vazia pede uma rua, "augusta" acha a Rua Augusta, 1508 e sem correspondência não encontra nada (1.4s)
+  ok 596 [mobile-390] › tests\novo-endereco.spec.js:239:1 › "estrada do campo" está fora da região: não segue; Escolher outro endereço volta à busca e Voltar retorna ao Carrinho de origem (1.6s)
+  ok 597 [mobile-390] › tests\pagamento.spec.js:37:1 › Forma de pagamento: Pix ou Cartão de crédito, uma só, e a ação do Resumo do pedido acompanha a escolha (1.4s)
+  ok 598 [mobile-390] › tests\pagamento.spec.js:63:1 › Cartão salvo com código de segurança válido: processamento com a tela desabilitada e Pedido confirmado #BK-10483 (1.7s)
+  ok 600 [mobile-390] › tests\pagamento.spec.js:151:1 › Novo cartão: a bandeira vem do número; Visa aprovado sem salvar, com o número mascarado (3.7s)
+  ok 601 [mobile-390] › tests\pagamento.spec.js:170:1 › Novo cartão: campos obrigatórios e "Número de cartão inválido" sem chegar ao processamento (1.4s)
+  ok 599 [mobile-390] › tests\pagamento.spec.js:119:1 › Cartão salvo com CVV 000 é recusado: Itens, Personalizações e endereço ficam, com outro cartão ou Pix (6.5s)
+  ok 602 [mobile-390] › tests\pagamento.spec.js:188:1 › Novo cartão 4000 0000 0000 0002 é recusado e continua preenchido para revisar (3.3s)
+  ok 603 [mobile-390] › tests\pagamento.spec.js:197:1 › Mastercard salvo entra em Seus cartões; o próximo checkout da sessão reaproveita tudo e confirma #BK-10484 (5.7s)
+  ok 604 [mobile-390] › tests\pagamento.spec.js:224:1 › O nome impresso de um cartão salvo aparece como texto em Seus cartões (3.5s)
+  ok 605 [mobile-390] › tests\pagamento.spec.js:238:1 › Pedido confirmado: Acompanhar pedido abre o acompanhamento, Voltar ao cardápio leva à última categoria e o Voltar do navegador ao cardápio (3.4s)
+  ok 606 [mobile-390] › tests\pagamento.spec.js:264:1 › Voltar ao cardápio leva à última categoria vista; #pedido sem Pedido confirmado leva ao cardápio (3.2s)
+  ok 607 [mobile-390] › tests\painel.spec.js:13:1 › a Bandeja tem só o título, o texto fixo e os ingredientes retirados (1.1s)
+  ok 608 [mobile-390] › tests\painel.spec.js:26:1 › os chips ficam fora da Bandeja, sob o título Ingredientes (982ms)
+  ok 609 [mobile-390] › tests\painel.spec.js:34:1 › o texto de ajuda segue o dispositivo de entrada (810ms)
+  ok 610 [mobile-390] › tests\painel.spec.js:40:1 › Recolocar todos fica desabilitado com a Bandeja vazia (1.1s)
+  -  611 [mobile-390] › tests\painel.spec.js:49:1 › soltar sobre os chips, fora da Bandeja, não retira o ingrediente
+  ok 612 [mobile-390] › tests\painel.spec.js:57:1 › chip presente: marrom-escuro com Check; retirado: creme com Plus (1.2s)
+  ok 613 [mobile-390] › tests\painel.spec.js:70:1 › no foco, o ícone do chip mostra o que o clique vai fazer (1.2s)
+  -  614 [mobile-390] › tests\painel.spec.js:82:1 › com mouse, o hover mostra a ação e dá borda marrom ao retirado
+  -  615 [mobile-390] › tests\painel.spec.js:93:1 › no desktop, Bandeja de 400px e cards de 104 × 88 com a imagem da Camada
+  -  616 [mobile-390] › tests\painel.spec.js:103:1 › no desktop, com os 7 retirados a Bandeja rola e mantém 3 cards por linha
+  ok 617 [mobile-390] › tests\pedido-encerrado.spec.js:30:1 › Pedido entregue: quando foi entregue, a linha do tempo concluída, a loja e os Itens (1.1s)
+  ok 618 [mobile-390] › tests\pedido-encerrado.spec.js:48:1 › Pedido cancelado: quando, a devolução sem prazo, e só as etapas que aconteceram até Cancelado (986ms)
+  ok 619 [mobile-390] › tests\pedido-encerrado.spec.js:60:1 › um Pedido da sessão, ao ser entregue, deixa o rastreamento e mostra quando foi entregue (1.4s)
+  ok 620 [mobile-390] › tests\pedido.spec.js:15:1 › Whopper personalizado chega ao carrinho com combo, bebida, quantidade e ingredientes retirados (2.2s)
+  ok 622 [mobile-390] › tests\pedido.spec.js:60:1 › Item idêntico soma na quantidade do que já está no carrinho (1.1s)
+  ok 621 [mobile-390] › tests\pedido.spec.js:38:1 › depois de adicionar, o card e o hambúrguer voltam ao padrão com o mesmo hambúrguer selecionado (2.7s)
+  ok 624 [mobile-390] › tests\pedido.spec.js:85:1 › o Combo começa desmarcado e soma R$ 12,00, sem tamanhos (1.0s)
+  ok 623 [mobile-390] › tests\pedido.spec.js:74:1 › trocar de hambúrguer volta o card ao padrão (1.8s)
+  ok 625 [mobile-390] › tests\pedido.spec.js:95:1 › a Bebida do combo só se escolhe com o Combo marcado e nunca vem preenchida (1.0s)
+  ok 626 [mobile-390] › tests\pedido.spec.js:109:1 › adicionar um combo sem bebida pede a Bebida do combo e não adiciona (1.1s)
+  ok 627 [mobile-390] › tests\pedido.spec.js:125:1 › a Quantidade começa em 1 e multiplica o Total do item (1.1s)
+  ok 628 [mobile-390] › tests\pedido.spec.js:140:1 › grade de produtos mostra os oito hambúrgueres oficiais com o Whopper selecionado (1.5s)
+  ok 629 [mobile-390] › tests\pix.spec.js:5:1 › Gerar Pix abre "Só falta pagar o Pix" com QR Code, valor, contagem ao vivo e Aguardando pagamento (2.2s)
+  ok 630 [mobile-390] › tests\pix.spec.js:36:1 › Copiar código Pix vai para a área de transferência com o toast, e copiar não aprova (1.5s)
+  ok 631 [mobile-390] › tests\pix.spec.js:50:1 › (61) 99999-1234: o Pix é aprovado 10 s depois de gerado, passa por Pagamento aprovado e chega a "Pago com Pix" (1.7s)
+  ok 632 [mobile-390] › tests\pix.spec.js:75:1 › Novo cliente: o Pix também é aprovado 10 s depois de gerado (1.8s)
+  ok 634 [mobile-390] › tests\pix.spec.js:116:1 › Escolher outra forma de pagamento cancela o Pix e a aprovação agendada, sem forma pré-selecionada (1.8s)
+  ok 635 [mobile-390] › tests\remover.spec.js:29:1 › Remover tira o Item na hora e avisa "<nome> removido do carrinho."; Resumo, subtítulo e contador acompanham (2.0s)
+  ok 636 [mobile-390] › tests\remover.spec.js:43:1 › Desfazer devolve o Item na mesma posição e configuração, e o aviso some (2.1s)
+  ok 637 [mobile-390] › tests\remover.spec.js:60:1 › o aviso some na próxima mudança do carrinho, e Desfazer some com ele (2.1s)
+  ok 638 [mobile-390] › tests\remover.spec.js:78:1 › remover o último Item mostra o estado vazio com o aviso; Desfazer traz o Item de volta (896ms)
+  ok 639 [mobile-390] › tests\remover.spec.js:96:1 › o aviso some ao sair da tela do Carrinho (1.9s)
+  ok 640 [mobile-390] › tests\rodeio-duplo.spec.js:14:1 › escolher o Rodeio Duplo na grade troca nome, preço, descrição e o hambúrguer 3D do hero (908ms)
+  ok 641 [mobile-390] › tests\rodeio-duplo.spec.js:36:1 › Ver ingredientes abre as 8 camadas do Rodeio Duplo, de baixo para cima (1.2s)
+  ok 642 [mobile-390] › tests\rodeio-duplo.spec.js:56:3 › retira só queijo do Rodeio Duplo (1.9s)
+  ok 643 [mobile-390] › tests\rodeio-duplo.spec.js:56:3 › retira só molho barbecue do Rodeio Duplo (2.0s)
+  ok 644 [mobile-390] › tests\rodeio-duplo.spec.js:56:3 › retira só onion rings do Rodeio Duplo (2.0s)
+  ok 645 [mobile-390] › tests\rodeio-duplo.spec.js:56:3 › retira só maionese do Rodeio Duplo (2.1s)
+  ok 646 [mobile-390] › tests\rodeio-duplo.spec.js:72:1 › retirar queijo, barbecue, onion rings e maionese juntos põe os quatro na bandeja (1.2s)
+  ok 633 [mobile-390] › tests\pix.spec.js:89:1 › (61) 90000-0000: o Pix expira em 10:00; Gerar novo Pix volta a Aguardando pagamento com o mesmo Pedido (23.2s)
+  ok 647 [mobile-390] › tests\rodeio-duplo.spec.js:80:1 › as duas carnes e os pães do Rodeio Duplo não podem ser retirados (1.2s)
+  ok 648 [mobile-390] › tests\rodeio-duplo.spec.js:92:1 › Recolocar todos, aplicar e cancelar funcionam no Rodeio Duplo (2.5s)
+  ok 649 [mobile-390] › tests\rodeio-duplo.spec.js:112:1 › Rodeio Duplo personalizado chega ao carrinho, com combo e "Sem onion rings e maionese" (2.4s)
+  ok 650 [mobile-390] › tests\rodeio-duplo.spec.js:140:3 › voltar ao Whopper® não deixa resto do Rodeio Duplo e mantém o carrinho (6.9s)
+  ok 651 [mobile-390] › tests\rodeio-duplo.spec.js:140:3 › voltar ao Cheddar Duplo não deixa resto do Rodeio Duplo e mantém o carrinho (7.4s)
+  ok 653 [mobile-390] › tests\rodeio-duplo.spec.js:166:1 › a bandeja mostra a imagem dos onion rings retirados (2.1s)
+  ok 654 [mobile-390] › tests\rodeio-duplo.spec.js:177:1 › arrastar os onion rings abertos até a bandeja os retira (2.3s)
+  ok 652 [mobile-390] › tests\rodeio-duplo.spec.js:140:3 › voltar ao Stacker Duplo Bacon não deixa resto do Rodeio Duplo e mantém o carrinho (7.0s)
+  ok 655 [mobile-390] › tests\rodeio-duplo.spec.js:187:1 › as áreas de toque das camadas abertas do Rodeio Duplo não se sobrepõem e têm pelo menos 24 × 44 px (1.5s)
+  ok 657 [mobile-390] › tests\rodeio.spec.js:14:1 › escolher o Rodeio na grade troca nome, preço, descrição e o hambúrguer 3D do hero (1.2s)
+  ok 658 [mobile-390] › tests\rodeio.spec.js:37:1 › Ver ingredientes abre as 7 camadas do Rodeio, de baixo para cima (1.3s)
+  ok 656 [mobile-390] › tests\rodeio-duplo.spec.js:218:3 › sem WebGL › o Rodeio Duplo usa as ilustrações SVG das 8 camadas e o fluxo de retirada continua funcionando (3.4s)
+  ok 659 [mobile-390] › tests\rodeio.spec.js:57:3 › retira só queijo do Rodeio (2.1s)
+  ok 660 [mobile-390] › tests\rodeio.spec.js:57:3 › retira só molho barbecue do Rodeio (2.1s)
+  ok 661 [mobile-390] › tests\rodeio.spec.js:57:3 › retira só onion ring do Rodeio (2.2s)
+  ok 662 [mobile-390] › tests\rodeio.spec.js:57:3 › retira só maionese do Rodeio (2.2s)
+  ok 663 [mobile-390] › tests\rodeio.spec.js:73:1 › retirar queijo, barbecue, onion ring e maionese juntos põe os quatro na bandeja (1.6s)
+  ok 664 [mobile-390] › tests\rodeio.spec.js:81:1 › a carne e os pães do Rodeio não podem ser retirados (1.3s)
+  ok 665 [mobile-390] › tests\rodeio.spec.js:90:1 › Recolocar todos, aplicar e cancelar funcionam no Rodeio (2.5s)
+  ok 666 [mobile-390] › tests\rodeio.spec.js:110:1 › Rodeio personalizado chega ao carrinho, com combo e "Sem onion ring e maionese" (2.5s)
+  ok 667 [mobile-390] › tests\rodeio.spec.js:139:3 › voltar ao Whopper® não deixa resto do Rodeio e mantém o carrinho (6.9s)
+  ok 668 [mobile-390] › tests\rodeio.spec.js:139:3 › voltar ao Cheddar Duplo não deixa resto do Rodeio e mantém o carrinho (7.4s)
+  ok 669 [mobile-390] › tests\rodeio.spec.js:139:3 › voltar ao Stacker Duplo Bacon não deixa resto do Rodeio e mantém o carrinho (6.8s)
+  ok 670 [mobile-390] › tests\rodeio.spec.js:139:3 › voltar ao Rodeio Duplo não deixa resto do Rodeio e mantém o carrinho (6.8s)
+  ok 671 [mobile-390] › tests\rodeio.spec.js:165:1 › a bandeja mostra a imagem do onion ring retirado (2.2s)
+  ok 672 [mobile-390] › tests\rodeio.spec.js:176:1 › arrastar o onion ring aberto até a bandeja o retira (2.2s)
+  ok 673 [mobile-390] › tests\rodeio.spec.js:186:1 › as áreas de toque das camadas abertas do Rodeio não se sobrepõem e têm pelo menos 24 × 44 px (1.5s)
+  ok 675 [mobile-390] › tests\stacker-duplo-bacon.spec.js:14:1 › escolher o Stacker Duplo Bacon na grade troca nome, preço, descrição e o hambúrguer 3D do hero (1.1s)
+  ok 674 [mobile-390] › tests\rodeio.spec.js:217:3 › sem WebGL › o Rodeio usa as ilustrações SVG das 7 camadas e o fluxo de retirada continua funcionando (3.1s)
+  ok 677 [mobile-390] › tests\stacker-duplo-bacon.spec.js:56:3 › retira só cheddar do Stacker Duplo Bacon (1.9s)
+  ok 678 [mobile-390] › tests\stacker-duplo-bacon.spec.js:56:3 › retira só bacon do Stacker Duplo Bacon (1.9s)
+  ok 679 [mobile-390] › tests\stacker-duplo-bacon.spec.js:56:3 › retira só molho stacker do Stacker Duplo Bacon (1.9s)
+  ok 680 [mobile-390] › tests\stacker-duplo-bacon.spec.js:72:1 › retirar cheddar, bacon e molho juntos põe os três na bandeja (1.1s)
+  ok 681 [mobile-390] › tests\stacker-duplo-bacon.spec.js:80:1 › as duas carnes e os pães do Stacker Duplo Bacon não podem ser retirados (1.0s)
+  ok 682 [mobile-390] › tests\stacker-duplo-bacon.spec.js:92:1 › Recolocar todos, aplicar e cancelar funcionam no Stacker Duplo Bacon (2.6s)
+  ok 683 [mobile-390] › tests\stacker-duplo-bacon.spec.js:111:1 › Stacker Duplo Bacon personalizado chega ao carrinho, com combo e "Sem bacon e molho stacker" (2.2s)
+  ok 684 [mobile-390] › tests\stacker-duplo-bacon.spec.js:138:3 › voltar ao Whopper® não deixa resto do Stacker Duplo Bacon e mantém o carrinho (6.6s)
+  ok 685 [mobile-390] › tests\stacker-duplo-bacon.spec.js:138:3 › voltar ao Cheddar Duplo não deixa resto do Stacker Duplo Bacon e mantém o carrinho (6.9s)
+  ok 686 [mobile-390] › tests\stacker-duplo-bacon.spec.js:164:1 › a bandeja mostra a imagem do bacon retirado (2.0s)
+  x  676 [mobile-390] › tests\stacker-duplo-bacon.spec.js:36:1 › Ver ingredientes abre as 7 camadas do Stacker Duplo Bacon, de baixo para cima (30.1s)
+(node:20800) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 687 [mobile-390] › tests\stacker-duplo-bacon.spec.js:175:1 › arrastar o bacon aberto até a bandeja o retira (2.2s)
+  ok 688 [mobile-390] › tests\stacker-duplo-bacon.spec.js:185:1 › as áreas de toque das camadas abertas do Stacker Duplo Bacon não se sobrepõem e têm pelo menos 24 × 44 px (2.4s)
+  ok 689 [mobile-390] › tests\stacker-duplo-bacon.spec.js:216:3 › sem WebGL › o Stacker Duplo Bacon usa as ilustrações SVG das 7 camadas e o fluxo de retirada continua funcionando (3.2s)
+  ok 690 [mobile-390] › tests\tela-carrinho.spec.js:37:1 › o Carrinho abre no topo, e voltar ao cardápio devolve a rolagem que o cardápio tinha (2.0s)
+  ok 691 [mobile-390] › tests\tela-carrinho.spec.js:47:1 › abrir o Carrinho leva o foco ao título "Seu carrinho"; voltar ao cardápio o devolve ao botão Carrinho (1.0s)
+  ok 693 [mobile-390] › tests\tela-carrinho.spec.js:76:1 › a lista de bebidas aberta não continua aberta depois de sair do Carrinho e voltar (1.1s)
+  ok 692 [mobile-390] › tests\tela-carrinho.spec.js:57:1 › remover e mudar a Quantidade são anunciados numa região viva que não é recriada (2.4s)
+  ok 694 [mobile-390] › tests\ver-ingredientes.spec.js:8:1 › abre Ver ingredientes em tela cheia a partir do hero (1.0s)
+  ok 696 [mobile-390] › tests\ver-ingredientes.spec.js:22:1 › retira um ingrediente pelo teclado com Enter e Espaço (1.1s)
+  ok 695 [mobile-390] › tests\ver-ingredientes.spec.js:15:1 › retira um ingrediente tocando na camada (1.9s)
+  ok 697 [mobile-390] › tests\ver-ingredientes.spec.js:34:1 › retira um ingrediente arrastando a camada até a bandeja (2.1s)
+  ok 698 [mobile-390] › tests\ver-ingredientes.spec.js:40:1 › arrastar e soltar fora da bandeja não retira o ingrediente (2.1s)
+  ok 699 [mobile-390] › tests\ver-ingredientes.spec.js:46:1 › retira e recoloca pelos chips (1.1s)
+  ok 700 [mobile-390] › tests\ver-ingredientes.spec.js:57:1 › Recolocar todos desfaz as retiradas do rascunho (1.3s)
+  ok 701 [mobile-390] › tests\ver-ingredientes.spec.js:67:1 › a Base (pães e carne) não pode ser retirada (1.1s)
+  ok 702 [mobile-390] › tests\ver-ingredientes.spec.js:79:1 › a descrição do Whopper lista as camadas, sem linha de personalização (642ms)
+  ok 703 [mobile-390] › tests\ver-ingredientes.spec.js:84:1 › aplicar fecha Ver ingredientes e tira da descrição o que foi retirado (2.0s)
+  ok 704 [mobile-390] › tests\ver-ingredientes.spec.js:95:1 › com tudo retirado, a descrição fica só com a Base (2.3s)
+  ok 706 [mobile-390] › tests\ver-ingredientes.spec.js:121:1 › Esc cancela; não há botão de fechar (1.1s)
+  -  707 [mobile-390] › tests\ver-ingredientes.spec.js:130:1 › no desktop, Cancelar e Aplicar alterações ficam no cabeçalho, à direita do título
+  ok 705 [mobile-390] › tests\ver-ingredientes.spec.js:102:1 › cancelar preserva a personalização anterior (2.2s)
+  ok 709 [mobile-390] › tests\ver-ingredientes.spec.js:153:1 › as 10 camadas abertas seguem a receita brasileira, de baixo para cima (1.2s)
+  ok 708 [mobile-390] › tests\ver-ingredientes.spec.js:143:1 › a legenda abaixo do hambúrguer leva o nome do produto (2.0s)
+  ok 710 [mobile-390] › tests\ver-ingredientes.spec.js:171:1 › retira só o ketchup e mantém a maionese (2.9s)
+
+
+  1) [desktop] › tests\layout-conta.spec.js:31:5 › 390 de largura › o acompanhamento fica em uma coluna: situação, mapa, entregador, linha do tempo e itens 
+
+    Error: expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 1
+    Received:    25
+
+      42 |       for (let i = 1; i < caixas.length; i++) {
+      43 |         expect(caixas[i].y).toBeGreaterThanOrEqual(caixas[i - 1].y + caixas[i - 1].height);
+    > 44 |         expect(Math.abs(caixas[i].x - caixas[0].x)).toBeLessThanOrEqual(1);
+         |                                                     ^
+      45 |       }
+      46 |     });
+      47 |   });
+        at D:\Projetos\BurguerKingNewSite\prototype\tests\layout-conta.spec.js:44:53
+
+    Error Context: test-results\layout-conta-390-de-largur-933c3-ador-linha-do-tempo-e-itens-desktop\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\layout-conta-390-de-largur-933c3-ador-linha-do-tempo-e-itens-desktop\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\layout-conta-390-de-largur-933c3-ador-linha-do-tempo-e-itens-desktop\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [desktop] › tests\layout-conta.spec.js:31:5 › 768 de largura › o acompanhamento fica em uma coluna: situação, mapa, entregador, linha do tempo e itens 
+
+    Error: expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 1
+    Received:    25
+
+      42 |       for (let i = 1; i < caixas.length; i++) {
+      43 |         expect(caixas[i].y).toBeGreaterThanOrEqual(caixas[i - 1].y + caixas[i - 1].height);
+    > 44 |         expect(Math.abs(caixas[i].x - caixas[0].x)).toBeLessThanOrEqual(1);
+         |                                                     ^
+      45 |       }
+      46 |     });
+      47 |   });
+        at D:\Projetos\BurguerKingNewSite\prototype\tests\layout-conta.spec.js:44:53
+
+    Error Context: test-results\layout-conta-768-de-largur-9734e-ador-linha-do-tempo-e-itens-desktop\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\layout-conta-768-de-largur-9734e-ador-linha-do-tempo-e-itens-desktop\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\layout-conta-768-de-largur-9734e-ador-linha-do-tempo-e-itens-desktop\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [mobile-390] › tests\layout-conta.spec.js:31:5 › 390 de largura › o acompanhamento fica em uma coluna: situação, mapa, entregador, linha do tempo e itens 
+
+    Error: expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 1
+    Received:    25
+
+      42 |       for (let i = 1; i < caixas.length; i++) {
+      43 |         expect(caixas[i].y).toBeGreaterThanOrEqual(caixas[i - 1].y + caixas[i - 1].height);
+    > 44 |         expect(Math.abs(caixas[i].x - caixas[0].x)).toBeLessThanOrEqual(1);
+         |                                                     ^
+      45 |       }
+      46 |     });
+      47 |   });
+        at D:\Projetos\BurguerKingNewSite\prototype\tests\layout-conta.spec.js:44:53
+
+    Error Context: test-results\layout-conta-390-de-largur-933c3-ador-linha-do-tempo-e-itens-mobile-390\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\layout-conta-390-de-largur-933c3-ador-linha-do-tempo-e-itens-mobile-390\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\layout-conta-390-de-largur-933c3-ador-linha-do-tempo-e-itens-mobile-390\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [mobile-390] › tests\layout-conta.spec.js:31:5 › 768 de largura › o acompanhamento fica em uma coluna: situação, mapa, entregador, linha do tempo e itens 
+
+    Error: expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 1
+    Received:    25
+
+      42 |       for (let i = 1; i < caixas.length; i++) {
+      43 |         expect(caixas[i].y).toBeGreaterThanOrEqual(caixas[i - 1].y + caixas[i - 1].height);
+    > 44 |         expect(Math.abs(caixas[i].x - caixas[0].x)).toBeLessThanOrEqual(1);
+         |                                                     ^
+      45 |       }
+      46 |     });
+      47 |   });
+        at D:\Projetos\BurguerKingNewSite\prototype\tests\layout-conta.spec.js:44:53
+
+    Error Context: test-results\layout-conta-768-de-largur-9734e-ador-linha-do-tempo-e-itens-mobile-390\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\layout-conta-768-de-largur-9734e-ador-linha-do-tempo-e-itens-mobile-390\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\layout-conta-768-de-largur-9734e-ador-linha-do-tempo-e-itens-mobile-390\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [mobile-390] › tests\stacker-duplo-bacon.spec.js:36:1 › Ver ingredientes abre as 7 camadas do Stacker Duplo Bacon, de baixo para cima 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('#catalog').getByRole('button', { name: /^(Selecionado\s*)?Stacker Duplo Bacon$/ })
+
+
+       at support.js:69
+
+      67 | /** Chooses a product in the grid, as the customer does. */
+      68 | export async function escolher(page, nome) {
+    > 69 |   await card(page, nome).click();
+         |                          ^
+      70 |   await expect(card(page, nome)).toHaveAttribute('aria-pressed', 'true');
+      71 | }
+      72 |
+        at escolher (D:\Projetos\BurguerKingNewSite\prototype\tests\support.js:69:26)
+        at D:\Projetos\BurguerKingNewSite\prototype\tests\stacker-duplo-bacon.spec.js:37:9
+
+    Error Context: test-results\stacker-duplo-bacon-Ver-in-8145e-lo-Bacon-de-baixo-para-cima-mobile-390\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\stacker-duplo-bacon-Ver-in-8145e-lo-Bacon-de-baixo-para-cima-mobile-390\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\stacker-duplo-bacon-Ver-in-8145e-lo-Bacon-de-baixo-para-cima-mobile-390\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5 failed
+    [desktop] › tests\layout-conta.spec.js:31:5 › 390 de largura › o acompanhamento fica em uma coluna: situação, mapa, entregador, linha do tempo e itens 
+    [desktop] › tests\layout-conta.spec.js:31:5 › 768 de largura › o acompanhamento fica em uma coluna: situação, mapa, entregador, linha do tempo e itens 
+    [mobile-390] › tests\layout-conta.spec.js:31:5 › 390 de largura › o acompanhamento fica em uma coluna: situação, mapa, entregador, linha do tempo e itens 
+    [mobile-390] › tests\layout-conta.spec.js:31:5 › 768 de largura › o acompanhamento fica em uma coluna: situação, mapa, entregador, linha do tempo e itens 
+    [mobile-390] › tests\stacker-duplo-bacon.spec.js:36:1 › Ver ingredientes abre as 7 camadas do Stacker Duplo Bacon, de baixo para cima 
+  39 skipped
+  666 passed (12.9m)
