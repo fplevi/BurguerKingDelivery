@@ -24,14 +24,14 @@
 #account-page .timeline li:last-child { min-height: 0; padding-bottom: 0; }
 #account-page .tl-name { line-height: 20px; }
 #account-page .tl-when { margin-top: var(--space-4); font-size: 12px; line-height: 17px; }
-#account-page .track-items { min-width: 0; padding: var(--space-24); border: 1px solid var(--border); border-radius: var(--radius-panel); background: var(--surface-purchase); overflow-wrap: anywhere; }
-#account-page .track-items .order-summary { min-width: 0; padding: 0; border: 0; background: none; }
+#account-page .track-items { min-width: 0; overflow-wrap: anywhere; }
+#account-page .track-items .order-summary { min-width: 0; padding: var(--space-24); border: 1px solid var(--border); border-radius: var(--radius-panel); background: var(--surface-purchase); }
 #account-page .track-items h2 { margin-bottom: var(--space-16); font-family: var(--font-display); font-weight: 700; }
 #account-page .track-items .order-items { gap: var(--space-16); }
 #account-page .track-items .order-grand { margin-top: var(--space-16); padding-top: var(--space-16); }
 #account-page .track-items .order-total { margin-top: var(--space-16); padding-top: var(--space-16); }
-#account-page .track-items > .account-meta { margin: var(--space-16) 0; }
-#account-page .track-items .account-back { gap: var(--space-8); width: max-content; min-width: 112px; font-size: 16px; }
+#account-page .track-items .order-summary > .account-meta { margin: var(--space-16) 0; }
+#account-page .track-items .account-back { align-self: start; gap: var(--space-8); width: max-content; min-width: 112px; margin-top: var(--space-8); font-size: 16px; }
 /* The account sidebar leaves too little room for map + timeline below 1160px. */
 @media(max-width:1159px) {
   #account-page .track { grid-template-columns: minmax(0, 1fr); }
