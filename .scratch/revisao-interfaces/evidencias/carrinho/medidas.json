@@ -1,0 +1,9446 @@
+[
+  {
+    "width": 320,
+    "state": "sem-combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 320,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 644,
+        "width": 254,
+        "height": 67,
+        "scroll": 254,
+        "client": 254
+      },
+      {
+        "x": 33,
+        "y": 743,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 825,
+        "width": 254,
+        "height": 58,
+        "scroll": 254,
+        "client": 254
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 320,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 644,
+        "width": 254,
+        "height": 67,
+        "scroll": 254,
+        "client": 254
+      },
+      {
+        "x": 33,
+        "y": 743,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 825,
+        "width": 254,
+        "height": 58,
+        "scroll": 254,
+        "client": 254
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "erro",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 320,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 432,
+        "width": 254,
+        "height": 91,
+        "scroll": 254,
+        "client": 254
+      },
+      {
+        "x": 33,
+        "y": 555,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 637,
+        "width": 254,
+        "height": 58,
+        "scroll": 254,
+        "client": 254
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "lista",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 320,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 432,
+        "width": 254,
+        "height": 91,
+        "scroll": 254,
+        "client": 254
+      },
+      {
+        "x": 33,
+        "y": 555,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 637,
+        "width": 254,
+        "height": 58,
+        "scroll": 254,
+        "client": 254
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "quantidade",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 320,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 432,
+        "width": 254,
+        "height": 67,
+        "scroll": 254,
+        "client": 254
+      },
+      {
+        "x": 33,
+        "y": 531,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 613,
+        "width": 254,
+        "height": 58,
+        "scroll": 254,
+        "client": 254
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "vazio-removido",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 16,
+      "y": 732,
+      "width": 288,
+      "height": 88
+    },
+    "bar": null,
+    "controls": []
+  },
+  {
+    "width": 320,
+    "state": "desfeito",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 320,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 644,
+        "width": 254,
+        "height": 67,
+        "scroll": 254,
+        "client": 254
+      },
+      {
+        "x": 33,
+        "y": 743,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 825,
+        "width": 254,
+        "height": 58,
+        "scroll": 254,
+        "client": 254
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "quantidade-99",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 699,
+      "width": 320,
+      "height": 145
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 278,
+        "width": 254,
+        "height": 67,
+        "scroll": 254,
+        "client": 254
+      },
+      {
+        "x": 33,
+        "y": 377,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 459,
+        "width": 254,
+        "height": 58,
+        "scroll": 254,
+        "client": 254
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "removido-com-barra",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 16,
+      "y": 643,
+      "width": 288,
+      "height": 88
+    },
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 320,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 644,
+        "width": 254,
+        "height": 67,
+        "scroll": 254,
+        "client": 254
+      },
+      {
+        "x": 33,
+        "y": 743,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 825,
+        "width": 254,
+        "height": 58,
+        "scroll": 254,
+        "client": 254
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "acompanhamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 699,
+      "width": 320,
+      "height": 145
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 644,
+        "width": 254,
+        "height": 67,
+        "scroll": 254,
+        "client": 254
+      },
+      {
+        "x": 33,
+        "y": 743,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 825,
+        "width": 254,
+        "height": 58,
+        "scroll": 254,
+        "client": 254
+      },
+      {
+        "x": 33,
+        "y": 1216,
+        "width": 254,
+        "height": 67,
+        "scroll": 254,
+        "client": 254
+      },
+      {
+        "x": 33,
+        "y": 1315,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 1397,
+        "width": 254,
+        "height": 58,
+        "scroll": 254,
+        "client": 254
+      },
+      {
+        "x": 33,
+        "y": 1665,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 1747,
+        "width": 254,
+        "height": 58,
+        "scroll": 254,
+        "client": 254
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "removido-total-alto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 16,
+      "y": 579,
+      "width": 288,
+      "height": 104
+    },
+    "bar": {
+      "x": 0,
+      "y": 699,
+      "width": 320,
+      "height": 145
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": -521,
+        "width": 254,
+        "height": 67,
+        "scroll": 254,
+        "client": 254
+      },
+      {
+        "x": 33,
+        "y": -422,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": -340,
+        "width": 254,
+        "height": 58,
+        "scroll": 254,
+        "client": 254
+      },
+      {
+        "x": 33,
+        "y": 51,
+        "width": 254,
+        "height": 67,
+        "scroll": 254,
+        "client": 254
+      },
+      {
+        "x": 33,
+        "y": 150,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 232,
+        "width": 254,
+        "height": 58,
+        "scroll": 254,
+        "client": 254
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "travado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 33,
+        "y": 674,
+        "width": 97.5625,
+        "height": 27,
+        "scroll": 98,
+        "client": 98
+      },
+      {
+        "x": 33,
+        "y": 717,
+        "width": 254,
+        "height": 58,
+        "scroll": 254,
+        "client": 254
+      }
+    ]
+  },
+  {
+    "width": 358,
+    "state": "sem-combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 358,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 644,
+        "width": 292,
+        "height": 67,
+        "scroll": 292,
+        "client": 292
+      },
+      {
+        "x": 33,
+        "y": 743,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 825,
+        "width": 292,
+        "height": 58,
+        "scroll": 292,
+        "client": 292
+      }
+    ]
+  },
+  {
+    "width": 358,
+    "state": "combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 358,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 644,
+        "width": 292,
+        "height": 67,
+        "scroll": 292,
+        "client": 292
+      },
+      {
+        "x": 33,
+        "y": 743,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 825,
+        "width": 292,
+        "height": 58,
+        "scroll": 292,
+        "client": 292
+      }
+    ]
+  },
+  {
+    "width": 358,
+    "state": "erro",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 358,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 432,
+        "width": 292,
+        "height": 91,
+        "scroll": 292,
+        "client": 292
+      },
+      {
+        "x": 33,
+        "y": 555,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 637,
+        "width": 292,
+        "height": 58,
+        "scroll": 292,
+        "client": 292
+      }
+    ]
+  },
+  {
+    "width": 358,
+    "state": "lista",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 358,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 432,
+        "width": 292,
+        "height": 91,
+        "scroll": 292,
+        "client": 292
+      },
+      {
+        "x": 33,
+        "y": 555,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 637,
+        "width": 292,
+        "height": 58,
+        "scroll": 292,
+        "client": 292
+      }
+    ]
+  },
+  {
+    "width": 358,
+    "state": "quantidade",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 358,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 432,
+        "width": 292,
+        "height": 67,
+        "scroll": 292,
+        "client": 292
+      },
+      {
+        "x": 33,
+        "y": 531,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 613,
+        "width": 292,
+        "height": 58,
+        "scroll": 292,
+        "client": 292
+      }
+    ]
+  },
+  {
+    "width": 358,
+    "state": "vazio-removido",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 20.75,
+      "y": 756,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": null,
+    "controls": []
+  },
+  {
+    "width": 358,
+    "state": "desfeito",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 358,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 644,
+        "width": 292,
+        "height": 67,
+        "scroll": 292,
+        "client": 292
+      },
+      {
+        "x": 33,
+        "y": 743,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 825,
+        "width": 292,
+        "height": 58,
+        "scroll": 292,
+        "client": 292
+      }
+    ]
+  },
+  {
+    "width": 358,
+    "state": "quantidade-99",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 358,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 278,
+        "width": 292,
+        "height": 67,
+        "scroll": 292,
+        "client": 292
+      },
+      {
+        "x": 33,
+        "y": 377,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 459,
+        "width": 292,
+        "height": 58,
+        "scroll": 292,
+        "client": 292
+      }
+    ]
+  },
+  {
+    "width": 358,
+    "state": "removido-com-barra",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 20.75,
+      "y": 667,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 358,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 644,
+        "width": 292,
+        "height": 67,
+        "scroll": 292,
+        "client": 292
+      },
+      {
+        "x": 33,
+        "y": 743,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 825,
+        "width": 292,
+        "height": 58,
+        "scroll": 292,
+        "client": 292
+      }
+    ]
+  },
+  {
+    "width": 358,
+    "state": "acompanhamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 358,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 644,
+        "width": 292,
+        "height": 67,
+        "scroll": 292,
+        "client": 292
+      },
+      {
+        "x": 33,
+        "y": 743,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 825,
+        "width": 292,
+        "height": 58,
+        "scroll": 292,
+        "client": 292
+      },
+      {
+        "x": 33,
+        "y": 1216,
+        "width": 292,
+        "height": 67,
+        "scroll": 292,
+        "client": 292
+      },
+      {
+        "x": 33,
+        "y": 1315,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 1397,
+        "width": 292,
+        "height": 58,
+        "scroll": 292,
+        "client": 292
+      },
+      {
+        "x": 33,
+        "y": 1636,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 1718,
+        "width": 292,
+        "height": 58,
+        "scroll": 292,
+        "client": 292
+      }
+    ]
+  },
+  {
+    "width": 358,
+    "state": "removido-total-alto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 16,
+      "y": 627,
+      "width": 326,
+      "height": 104
+    },
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 358,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": -473,
+        "width": 292,
+        "height": 67,
+        "scroll": 292,
+        "client": 292
+      },
+      {
+        "x": 33,
+        "y": -374,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": -292,
+        "width": 292,
+        "height": 58,
+        "scroll": 292,
+        "client": 292
+      },
+      {
+        "x": 33,
+        "y": 99,
+        "width": 292,
+        "height": 67,
+        "scroll": 292,
+        "client": 292
+      },
+      {
+        "x": 33,
+        "y": 198,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 280,
+        "width": 292,
+        "height": 58,
+        "scroll": 292,
+        "client": 292
+      }
+    ]
+  },
+  {
+    "width": 358,
+    "state": "travado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 33,
+        "y": 674,
+        "width": 97.5625,
+        "height": 27,
+        "scroll": 98,
+        "client": 98
+      },
+      {
+        "x": 33,
+        "y": 717,
+        "width": 292,
+        "height": 58,
+        "scroll": 292,
+        "client": 292
+      }
+    ]
+  },
+  {
+    "width": 359,
+    "state": "sem-combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 359,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 644,
+        "width": 293,
+        "height": 67,
+        "scroll": 293,
+        "client": 293
+      },
+      {
+        "x": 33,
+        "y": 743,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 825,
+        "width": 293,
+        "height": 58,
+        "scroll": 293,
+        "client": 293
+      }
+    ]
+  },
+  {
+    "width": 359,
+    "state": "combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 359,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 644,
+        "width": 293,
+        "height": 67,
+        "scroll": 293,
+        "client": 293
+      },
+      {
+        "x": 33,
+        "y": 743,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 825,
+        "width": 293,
+        "height": 58,
+        "scroll": 293,
+        "client": 293
+      }
+    ]
+  },
+  {
+    "width": 359,
+    "state": "erro",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 359,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 432,
+        "width": 293,
+        "height": 91,
+        "scroll": 293,
+        "client": 293
+      },
+      {
+        "x": 33,
+        "y": 555,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 637,
+        "width": 293,
+        "height": 58,
+        "scroll": 293,
+        "client": 293
+      }
+    ]
+  },
+  {
+    "width": 359,
+    "state": "lista",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 359,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 432,
+        "width": 293,
+        "height": 91,
+        "scroll": 293,
+        "client": 293
+      },
+      {
+        "x": 33,
+        "y": 555,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 637,
+        "width": 293,
+        "height": 58,
+        "scroll": 293,
+        "client": 293
+      }
+    ]
+  },
+  {
+    "width": 359,
+    "state": "quantidade",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 359,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 432,
+        "width": 293,
+        "height": 67,
+        "scroll": 293,
+        "client": 293
+      },
+      {
+        "x": 33,
+        "y": 531,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 613,
+        "width": 293,
+        "height": 58,
+        "scroll": 293,
+        "client": 293
+      }
+    ]
+  },
+  {
+    "width": 359,
+    "state": "vazio-removido",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 21.25,
+      "y": 756,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": null,
+    "controls": []
+  },
+  {
+    "width": 359,
+    "state": "desfeito",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 359,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 644,
+        "width": 293,
+        "height": 67,
+        "scroll": 293,
+        "client": 293
+      },
+      {
+        "x": 33,
+        "y": 743,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 825,
+        "width": 293,
+        "height": 58,
+        "scroll": 293,
+        "client": 293
+      }
+    ]
+  },
+  {
+    "width": 359,
+    "state": "quantidade-99",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 359,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 278,
+        "width": 293,
+        "height": 67,
+        "scroll": 293,
+        "client": 293
+      },
+      {
+        "x": 33,
+        "y": 377,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 459,
+        "width": 293,
+        "height": 58,
+        "scroll": 293,
+        "client": 293
+      }
+    ]
+  },
+  {
+    "width": 359,
+    "state": "removido-com-barra",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 21.25,
+      "y": 667,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 359,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 644,
+        "width": 293,
+        "height": 67,
+        "scroll": 293,
+        "client": 293
+      },
+      {
+        "x": 33,
+        "y": 743,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 825,
+        "width": 293,
+        "height": 58,
+        "scroll": 293,
+        "client": 293
+      }
+    ]
+  },
+  {
+    "width": 359,
+    "state": "acompanhamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 359,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 644,
+        "width": 293,
+        "height": 67,
+        "scroll": 293,
+        "client": 293
+      },
+      {
+        "x": 33,
+        "y": 743,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 825,
+        "width": 293,
+        "height": 58,
+        "scroll": 293,
+        "client": 293
+      },
+      {
+        "x": 33,
+        "y": 1216,
+        "width": 293,
+        "height": 67,
+        "scroll": 293,
+        "client": 293
+      },
+      {
+        "x": 33,
+        "y": 1315,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 1397,
+        "width": 293,
+        "height": 58,
+        "scroll": 293,
+        "client": 293
+      },
+      {
+        "x": 33,
+        "y": 1636,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 1718,
+        "width": 293,
+        "height": 58,
+        "scroll": 293,
+        "client": 293
+      }
+    ]
+  },
+  {
+    "width": 359,
+    "state": "removido-total-alto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 16,
+      "y": 627,
+      "width": 327,
+      "height": 104
+    },
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 359,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": -473,
+        "width": 293,
+        "height": 67,
+        "scroll": 293,
+        "client": 293
+      },
+      {
+        "x": 33,
+        "y": -374,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": -292,
+        "width": 293,
+        "height": 58,
+        "scroll": 293,
+        "client": 293
+      },
+      {
+        "x": 33,
+        "y": 99,
+        "width": 293,
+        "height": 67,
+        "scroll": 293,
+        "client": 293
+      },
+      {
+        "x": 33,
+        "y": 198,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 33,
+        "y": 280,
+        "width": 293,
+        "height": 58,
+        "scroll": 293,
+        "client": 293
+      }
+    ]
+  },
+  {
+    "width": 359,
+    "state": "travado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 33,
+        "y": 674,
+        "width": 97.5625,
+        "height": 27,
+        "scroll": 98,
+        "client": 98
+      },
+      {
+        "x": 33,
+        "y": 717,
+        "width": 293,
+        "height": 58,
+        "scroll": 293,
+        "client": 293
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "sem-combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 360,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 628,
+        "width": 294,
+        "height": 67,
+        "scroll": 294,
+        "client": 294
+      },
+      {
+        "x": 33,
+        "y": 711,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 711,
+        "width": 174,
+        "height": 58,
+        "scroll": 174,
+        "client": 174
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 360,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 628,
+        "width": 294,
+        "height": 67,
+        "scroll": 294,
+        "client": 294
+      },
+      {
+        "x": 33,
+        "y": 711,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 711,
+        "width": 174,
+        "height": 58,
+        "scroll": 174,
+        "client": 174
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "erro",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 360,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 469,
+        "width": 294,
+        "height": 91,
+        "scroll": 294,
+        "client": 294
+      },
+      {
+        "x": 33,
+        "y": 576,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 576,
+        "width": 174,
+        "height": 58,
+        "scroll": 174,
+        "client": 174
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "lista",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 360,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 469,
+        "width": 294,
+        "height": 91,
+        "scroll": 294,
+        "client": 294
+      },
+      {
+        "x": 33,
+        "y": 576,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 576,
+        "width": 174,
+        "height": 58,
+        "scroll": 174,
+        "client": 174
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "quantidade",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 360,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 469,
+        "width": 294,
+        "height": 67,
+        "scroll": 294,
+        "client": 294
+      },
+      {
+        "x": 33,
+        "y": 552,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 552,
+        "width": 174,
+        "height": 58,
+        "scroll": 174,
+        "client": 174
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "vazio-removido",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 21.75,
+      "y": 756,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": null,
+    "controls": []
+  },
+  {
+    "width": 360,
+    "state": "desfeito",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 360,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 628,
+        "width": 294,
+        "height": 67,
+        "scroll": 294,
+        "client": 294
+      },
+      {
+        "x": 33,
+        "y": 711,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 711,
+        "width": 174,
+        "height": 58,
+        "scroll": 174,
+        "client": 174
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "quantidade-99",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 360,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 294,
+        "width": 294,
+        "height": 67,
+        "scroll": 294,
+        "client": 294
+      },
+      {
+        "x": 33,
+        "y": 377,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 377,
+        "width": 174,
+        "height": 58,
+        "scroll": 174,
+        "client": 174
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "removido-com-barra",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 21.75,
+      "y": 667,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 360,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 628,
+        "width": 294,
+        "height": 67,
+        "scroll": 294,
+        "client": 294
+      },
+      {
+        "x": 33,
+        "y": 711,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 711,
+        "width": 174,
+        "height": 58,
+        "scroll": 174,
+        "client": 174
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "acompanhamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 360,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 628,
+        "width": 294,
+        "height": 67,
+        "scroll": 294,
+        "client": 294
+      },
+      {
+        "x": 33,
+        "y": 711,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 711,
+        "width": 174,
+        "height": 58,
+        "scroll": 174,
+        "client": 174
+      },
+      {
+        "x": 33,
+        "y": 1094,
+        "width": 294,
+        "height": 67,
+        "scroll": 294,
+        "client": 294
+      },
+      {
+        "x": 33,
+        "y": 1177,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 1177,
+        "width": 174,
+        "height": 58,
+        "scroll": 174,
+        "client": 174
+      },
+      {
+        "x": 33,
+        "y": 1424,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 1424,
+        "width": 174,
+        "height": 58,
+        "scroll": 174,
+        "client": 174
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "removido-total-alto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 16,
+      "y": 627,
+      "width": 328,
+      "height": 104
+    },
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 360,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": -277,
+        "width": 294,
+        "height": 67,
+        "scroll": 294,
+        "client": 294
+      },
+      {
+        "x": 33,
+        "y": -194,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": -194,
+        "width": 174,
+        "height": 58,
+        "scroll": 174,
+        "client": 174
+      },
+      {
+        "x": 33,
+        "y": 189,
+        "width": 294,
+        "height": 67,
+        "scroll": 294,
+        "client": 294
+      },
+      {
+        "x": 33,
+        "y": 272,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 272,
+        "width": 174,
+        "height": 58,
+        "scroll": 174,
+        "client": 174
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "travado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 33,
+        "y": 674,
+        "width": 97.5625,
+        "height": 27,
+        "scroll": 98,
+        "client": 98
+      },
+      {
+        "x": 146.5625,
+        "y": 674,
+        "width": 180.4375,
+        "height": 58,
+        "scroll": 180,
+        "client": 180
+      }
+    ]
+  },
+  {
+    "width": 361,
+    "state": "sem-combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 361,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 628,
+        "width": 295,
+        "height": 67,
+        "scroll": 295,
+        "client": 295
+      },
+      {
+        "x": 33,
+        "y": 711,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 711,
+        "width": 175,
+        "height": 58,
+        "scroll": 175,
+        "client": 175
+      }
+    ]
+  },
+  {
+    "width": 361,
+    "state": "combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 361,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 628,
+        "width": 295,
+        "height": 67,
+        "scroll": 295,
+        "client": 295
+      },
+      {
+        "x": 33,
+        "y": 711,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 711,
+        "width": 175,
+        "height": 58,
+        "scroll": 175,
+        "client": 175
+      }
+    ]
+  },
+  {
+    "width": 361,
+    "state": "erro",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 361,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 469,
+        "width": 295,
+        "height": 91,
+        "scroll": 295,
+        "client": 295
+      },
+      {
+        "x": 33,
+        "y": 576,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 576,
+        "width": 175,
+        "height": 58,
+        "scroll": 175,
+        "client": 175
+      }
+    ]
+  },
+  {
+    "width": 361,
+    "state": "lista",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 361,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 469,
+        "width": 295,
+        "height": 91,
+        "scroll": 295,
+        "client": 295
+      },
+      {
+        "x": 33,
+        "y": 576,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 576,
+        "width": 175,
+        "height": 58,
+        "scroll": 175,
+        "client": 175
+      }
+    ]
+  },
+  {
+    "width": 361,
+    "state": "quantidade",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 361,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 469,
+        "width": 295,
+        "height": 67,
+        "scroll": 295,
+        "client": 295
+      },
+      {
+        "x": 33,
+        "y": 552,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 552,
+        "width": 175,
+        "height": 58,
+        "scroll": 175,
+        "client": 175
+      }
+    ]
+  },
+  {
+    "width": 361,
+    "state": "vazio-removido",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 22.25,
+      "y": 756,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": null,
+    "controls": []
+  },
+  {
+    "width": 361,
+    "state": "desfeito",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 361,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 628,
+        "width": 295,
+        "height": 67,
+        "scroll": 295,
+        "client": 295
+      },
+      {
+        "x": 33,
+        "y": 711,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 711,
+        "width": 175,
+        "height": 58,
+        "scroll": 175,
+        "client": 175
+      }
+    ]
+  },
+  {
+    "width": 361,
+    "state": "quantidade-99",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 361,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 294,
+        "width": 295,
+        "height": 67,
+        "scroll": 295,
+        "client": 295
+      },
+      {
+        "x": 33,
+        "y": 377,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 377,
+        "width": 175,
+        "height": 58,
+        "scroll": 175,
+        "client": 175
+      }
+    ]
+  },
+  {
+    "width": 361,
+    "state": "removido-com-barra",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 22.25,
+      "y": 667,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 361,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 628,
+        "width": 295,
+        "height": 67,
+        "scroll": 295,
+        "client": 295
+      },
+      {
+        "x": 33,
+        "y": 711,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 711,
+        "width": 175,
+        "height": 58,
+        "scroll": 175,
+        "client": 175
+      }
+    ]
+  },
+  {
+    "width": 361,
+    "state": "acompanhamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 361,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 628,
+        "width": 295,
+        "height": 67,
+        "scroll": 295,
+        "client": 295
+      },
+      {
+        "x": 33,
+        "y": 711,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 711,
+        "width": 175,
+        "height": 58,
+        "scroll": 175,
+        "client": 175
+      },
+      {
+        "x": 33,
+        "y": 1094,
+        "width": 295,
+        "height": 67,
+        "scroll": 295,
+        "client": 295
+      },
+      {
+        "x": 33,
+        "y": 1177,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 1177,
+        "width": 175,
+        "height": 58,
+        "scroll": 175,
+        "client": 175
+      },
+      {
+        "x": 33,
+        "y": 1424,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 1424,
+        "width": 175,
+        "height": 58,
+        "scroll": 175,
+        "client": 175
+      }
+    ]
+  },
+  {
+    "width": 361,
+    "state": "removido-total-alto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 16,
+      "y": 627,
+      "width": 329,
+      "height": 104
+    },
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 361,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": -277,
+        "width": 295,
+        "height": 67,
+        "scroll": 295,
+        "client": 295
+      },
+      {
+        "x": 33,
+        "y": -194,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": -194,
+        "width": 175,
+        "height": 58,
+        "scroll": 175,
+        "client": 175
+      },
+      {
+        "x": 33,
+        "y": 189,
+        "width": 295,
+        "height": 67,
+        "scroll": 295,
+        "client": 295
+      },
+      {
+        "x": 33,
+        "y": 272,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 272,
+        "width": 175,
+        "height": 58,
+        "scroll": 175,
+        "client": 175
+      }
+    ]
+  },
+  {
+    "width": 361,
+    "state": "travado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 33,
+        "y": 674,
+        "width": 97.5625,
+        "height": 27,
+        "scroll": 98,
+        "client": 98
+      },
+      {
+        "x": 146.5625,
+        "y": 674,
+        "width": 181.4375,
+        "height": 58,
+        "scroll": 181,
+        "client": 181
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "sem-combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 390,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 628,
+        "width": 324,
+        "height": 67,
+        "scroll": 324,
+        "client": 324
+      },
+      {
+        "x": 33,
+        "y": 711,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 711,
+        "width": 204,
+        "height": 58,
+        "scroll": 204,
+        "client": 204
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 390,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 628,
+        "width": 324,
+        "height": 67,
+        "scroll": 324,
+        "client": 324
+      },
+      {
+        "x": 33,
+        "y": 711,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 711,
+        "width": 204,
+        "height": 58,
+        "scroll": 204,
+        "client": 204
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "erro",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 390,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 469,
+        "width": 324,
+        "height": 91,
+        "scroll": 324,
+        "client": 324
+      },
+      {
+        "x": 33,
+        "y": 576,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 576,
+        "width": 204,
+        "height": 58,
+        "scroll": 204,
+        "client": 204
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "lista",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 390,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 469,
+        "width": 324,
+        "height": 91,
+        "scroll": 324,
+        "client": 324
+      },
+      {
+        "x": 33,
+        "y": 576,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 576,
+        "width": 204,
+        "height": 58,
+        "scroll": 204,
+        "client": 204
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "quantidade",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 390,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 469,
+        "width": 324,
+        "height": 67,
+        "scroll": 324,
+        "client": 324
+      },
+      {
+        "x": 33,
+        "y": 552,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 552,
+        "width": 204,
+        "height": 58,
+        "scroll": 204,
+        "client": 204
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "vazio-removido",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 36.75,
+      "y": 756,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": null,
+    "controls": []
+  },
+  {
+    "width": 390,
+    "state": "desfeito",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 390,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 628,
+        "width": 324,
+        "height": 67,
+        "scroll": 324,
+        "client": 324
+      },
+      {
+        "x": 33,
+        "y": 711,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 711,
+        "width": 204,
+        "height": 58,
+        "scroll": 204,
+        "client": 204
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "quantidade-99",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 390,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 294,
+        "width": 324,
+        "height": 67,
+        "scroll": 324,
+        "client": 324
+      },
+      {
+        "x": 33,
+        "y": 377,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 377,
+        "width": 204,
+        "height": 58,
+        "scroll": 204,
+        "client": 204
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "removido-com-barra",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 36.75,
+      "y": 667,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 390,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 628,
+        "width": 324,
+        "height": 67,
+        "scroll": 324,
+        "client": 324
+      },
+      {
+        "x": 33,
+        "y": 711,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 711,
+        "width": 204,
+        "height": 58,
+        "scroll": 204,
+        "client": 204
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "acompanhamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 390,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 628,
+        "width": 324,
+        "height": 67,
+        "scroll": 324,
+        "client": 324
+      },
+      {
+        "x": 33,
+        "y": 711,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 711,
+        "width": 204,
+        "height": 58,
+        "scroll": 204,
+        "client": 204
+      },
+      {
+        "x": 33,
+        "y": 1094,
+        "width": 324,
+        "height": 67,
+        "scroll": 324,
+        "client": 324
+      },
+      {
+        "x": 33,
+        "y": 1177,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 1177,
+        "width": 204,
+        "height": 58,
+        "scroll": 204,
+        "client": 204
+      },
+      {
+        "x": 33,
+        "y": 1424,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 1424,
+        "width": 204,
+        "height": 58,
+        "scroll": 204,
+        "client": 204
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "removido-total-alto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 16,
+      "y": 627,
+      "width": 358,
+      "height": 104
+    },
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 390,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": -277,
+        "width": 324,
+        "height": 67,
+        "scroll": 324,
+        "client": 324
+      },
+      {
+        "x": 33,
+        "y": -194,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": -194,
+        "width": 204,
+        "height": 58,
+        "scroll": 204,
+        "client": 204
+      },
+      {
+        "x": 33,
+        "y": 189,
+        "width": 324,
+        "height": 67,
+        "scroll": 324,
+        "client": 324
+      },
+      {
+        "x": 33,
+        "y": 272,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 272,
+        "width": 204,
+        "height": 58,
+        "scroll": 204,
+        "client": 204
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "travado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 33,
+        "y": 674,
+        "width": 97.5625,
+        "height": 27,
+        "scroll": 98,
+        "client": 98
+      },
+      {
+        "x": 146.5625,
+        "y": 674,
+        "width": 210.4375,
+        "height": 58,
+        "scroll": 210,
+        "client": 210
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "sem-combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 768,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 596,
+        "width": 702,
+        "height": 67,
+        "scroll": 702,
+        "client": 702
+      },
+      {
+        "x": 33,
+        "y": 679,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 679,
+        "width": 582,
+        "height": 58,
+        "scroll": 582,
+        "client": 582
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 768,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 596,
+        "width": 702,
+        "height": 67,
+        "scroll": 702,
+        "client": 702
+      },
+      {
+        "x": 33,
+        "y": 679,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 679,
+        "width": 582,
+        "height": 58,
+        "scroll": 582,
+        "client": 582
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "erro",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 768,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 453,
+        "width": 702,
+        "height": 91,
+        "scroll": 702,
+        "client": 702
+      },
+      {
+        "x": 33,
+        "y": 560,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 560,
+        "width": 582,
+        "height": 58,
+        "scroll": 582,
+        "client": 582
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "lista",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 768,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 453,
+        "width": 702,
+        "height": 91,
+        "scroll": 702,
+        "client": 702
+      },
+      {
+        "x": 33,
+        "y": 560,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 560,
+        "width": 582,
+        "height": 58,
+        "scroll": 582,
+        "client": 582
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "quantidade",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 768,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 453,
+        "width": 702,
+        "height": 67,
+        "scroll": 702,
+        "client": 702
+      },
+      {
+        "x": 33,
+        "y": 536,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 536,
+        "width": 582,
+        "height": 58,
+        "scroll": 582,
+        "client": 582
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "vazio-removido",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 225.75,
+      "y": 756,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": null,
+    "controls": []
+  },
+  {
+    "width": 768,
+    "state": "desfeito",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 768,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 596,
+        "width": 702,
+        "height": 67,
+        "scroll": 702,
+        "client": 702
+      },
+      {
+        "x": 33,
+        "y": 679,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 679,
+        "width": 582,
+        "height": 58,
+        "scroll": 582,
+        "client": 582
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "quantidade-99",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 768,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 596,
+        "width": 702,
+        "height": 67,
+        "scroll": 702,
+        "client": 702
+      },
+      {
+        "x": 33,
+        "y": 679,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 679,
+        "width": 582,
+        "height": 58,
+        "scroll": 582,
+        "client": 582
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "removido-com-barra",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 225.75,
+      "y": 667,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 768,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 596,
+        "width": 702,
+        "height": 67,
+        "scroll": 702,
+        "client": 702
+      },
+      {
+        "x": 33,
+        "y": 679,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 679,
+        "width": 582,
+        "height": 58,
+        "scroll": 582,
+        "client": 582
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "acompanhamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 768,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 596,
+        "width": 702,
+        "height": 67,
+        "scroll": 702,
+        "client": 702
+      },
+      {
+        "x": 33,
+        "y": 679,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 679,
+        "width": 582,
+        "height": 58,
+        "scroll": 582,
+        "client": 582
+      },
+      {
+        "x": 33,
+        "y": 1030,
+        "width": 702,
+        "height": 67,
+        "scroll": 702,
+        "client": 702
+      },
+      {
+        "x": 33,
+        "y": 1113,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 1113,
+        "width": 582,
+        "height": 58,
+        "scroll": 582,
+        "client": 582
+      },
+      {
+        "x": 33,
+        "y": 1331,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 1331,
+        "width": 582,
+        "height": 58,
+        "scroll": 582,
+        "client": 582
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "removido-total-alto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 160.5390625,
+      "y": 667,
+      "width": 446.921875,
+      "height": 64
+    },
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 768,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": -245,
+        "width": 702,
+        "height": 67,
+        "scroll": 702,
+        "client": 702
+      },
+      {
+        "x": 33,
+        "y": -162,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": -162,
+        "width": 582,
+        "height": 58,
+        "scroll": 582,
+        "client": 582
+      },
+      {
+        "x": 33,
+        "y": 189,
+        "width": 702,
+        "height": 67,
+        "scroll": 702,
+        "client": 702
+      },
+      {
+        "x": 33,
+        "y": 272,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 272,
+        "width": 582,
+        "height": 58,
+        "scroll": 582,
+        "client": 582
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "travado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 33,
+        "y": 618,
+        "width": 97.5625,
+        "height": 27,
+        "scroll": 98,
+        "client": 98
+      },
+      {
+        "x": 146.5625,
+        "y": 618,
+        "width": 588.4375,
+        "height": 58,
+        "scroll": 588,
+        "client": 588
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "sem-combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 1023,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 596,
+        "width": 957,
+        "height": 67,
+        "scroll": 957,
+        "client": 957
+      },
+      {
+        "x": 33,
+        "y": 679,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 679,
+        "width": 837,
+        "height": 58,
+        "scroll": 837,
+        "client": 837
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 1023,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 596,
+        "width": 957,
+        "height": 67,
+        "scroll": 957,
+        "client": 957
+      },
+      {
+        "x": 33,
+        "y": 679,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 679,
+        "width": 837,
+        "height": 58,
+        "scroll": 837,
+        "client": 837
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "erro",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 1023,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 453,
+        "width": 957,
+        "height": 91,
+        "scroll": 957,
+        "client": 957
+      },
+      {
+        "x": 33,
+        "y": 560,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 560,
+        "width": 837,
+        "height": 58,
+        "scroll": 837,
+        "client": 837
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "lista",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 1023,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 453,
+        "width": 957,
+        "height": 91,
+        "scroll": 957,
+        "client": 957
+      },
+      {
+        "x": 33,
+        "y": 560,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 560,
+        "width": 837,
+        "height": 58,
+        "scroll": 837,
+        "client": 837
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "quantidade",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 1023,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 453,
+        "width": 957,
+        "height": 67,
+        "scroll": 957,
+        "client": 957
+      },
+      {
+        "x": 33,
+        "y": 536,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 536,
+        "width": 837,
+        "height": 58,
+        "scroll": 837,
+        "client": 837
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "vazio-removido",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 353.25,
+      "y": 756,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": null,
+    "controls": []
+  },
+  {
+    "width": 1023,
+    "state": "desfeito",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 1023,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 596,
+        "width": 957,
+        "height": 67,
+        "scroll": 957,
+        "client": 957
+      },
+      {
+        "x": 33,
+        "y": 679,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 679,
+        "width": 837,
+        "height": 58,
+        "scroll": 837,
+        "client": 837
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "quantidade-99",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 1023,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 596,
+        "width": 957,
+        "height": 67,
+        "scroll": 957,
+        "client": 957
+      },
+      {
+        "x": 33,
+        "y": 679,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 679,
+        "width": 837,
+        "height": 58,
+        "scroll": 837,
+        "client": 837
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "removido-com-barra",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 353.25,
+      "y": 667,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 1023,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 596,
+        "width": 957,
+        "height": 67,
+        "scroll": 957,
+        "client": 957
+      },
+      {
+        "x": 33,
+        "y": 679,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 679,
+        "width": 837,
+        "height": 58,
+        "scroll": 837,
+        "client": 837
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "acompanhamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 1023,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": 596,
+        "width": 957,
+        "height": 67,
+        "scroll": 957,
+        "client": 957
+      },
+      {
+        "x": 33,
+        "y": 679,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 679,
+        "width": 837,
+        "height": 58,
+        "scroll": 837,
+        "client": 837
+      },
+      {
+        "x": 33,
+        "y": 1030,
+        "width": 957,
+        "height": 67,
+        "scroll": 957,
+        "client": 957
+      },
+      {
+        "x": 33,
+        "y": 1113,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 1113,
+        "width": 837,
+        "height": 58,
+        "scroll": 837,
+        "client": 837
+      },
+      {
+        "x": 33,
+        "y": 1331,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 1331,
+        "width": 837,
+        "height": 58,
+        "scroll": 837,
+        "client": 837
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "removido-total-alto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 288.0390625,
+      "y": 667,
+      "width": 446.921875,
+      "height": 64
+    },
+    "bar": {
+      "x": 0,
+      "y": 747,
+      "width": 1023,
+      "height": 97
+    },
+    "controls": [
+      {
+        "x": 33,
+        "y": -245,
+        "width": 957,
+        "height": 67,
+        "scroll": 957,
+        "client": 957
+      },
+      {
+        "x": 33,
+        "y": -162,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": -162,
+        "width": 837,
+        "height": 58,
+        "scroll": 837,
+        "client": 837
+      },
+      {
+        "x": 33,
+        "y": 189,
+        "width": 957,
+        "height": 67,
+        "scroll": 957,
+        "client": 957
+      },
+      {
+        "x": 33,
+        "y": 272,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 153,
+        "y": 272,
+        "width": 837,
+        "height": 58,
+        "scroll": 837,
+        "client": 837
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "travado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 33,
+        "y": 618,
+        "width": 97.5625,
+        "height": 27,
+        "scroll": 98,
+        "client": 98
+      },
+      {
+        "x": 146.5625,
+        "y": 618,
+        "width": 843.4375,
+        "height": 58,
+        "scroll": 843,
+        "client": 843
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "sem-combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 616,
+        "width": 252,
+        "height": 67,
+        "scroll": 252,
+        "client": 252
+      },
+      {
+        "x": 341,
+        "y": 616,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 461,
+        "y": 616,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 616,
+        "width": 252,
+        "height": 67,
+        "scroll": 252,
+        "client": 252
+      },
+      {
+        "x": 341,
+        "y": 616,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 461,
+        "y": 616,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "erro",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 616,
+        "width": 252,
+        "height": 91,
+        "scroll": 252,
+        "client": 252
+      },
+      {
+        "x": 341,
+        "y": 616,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 461,
+        "y": 616,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "lista",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 616,
+        "width": 252,
+        "height": 91,
+        "scroll": 252,
+        "client": 252
+      },
+      {
+        "x": 341,
+        "y": 616,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 461,
+        "y": 616,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "quantidade",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 616,
+        "width": 252,
+        "height": 67,
+        "scroll": 252,
+        "client": 252
+      },
+      {
+        "x": 341,
+        "y": 616,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 461,
+        "y": 616,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "vazio-removido",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 353.75,
+      "y": 756,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": null,
+    "controls": []
+  },
+  {
+    "width": 1024,
+    "state": "desfeito",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 616,
+        "width": 252,
+        "height": 67,
+        "scroll": 252,
+        "client": 252
+      },
+      {
+        "x": 341,
+        "y": 616,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 461,
+        "y": 616,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "quantidade-99",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 616,
+        "width": 252,
+        "height": 67,
+        "scroll": 252,
+        "client": 252
+      },
+      {
+        "x": 341,
+        "y": 616,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 461,
+        "y": 616,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "removido-com-barra",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 353.75,
+      "y": 756,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 616,
+        "width": 252,
+        "height": 67,
+        "scroll": 252,
+        "client": 252
+      },
+      {
+        "x": 341,
+        "y": 616,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 461,
+        "y": 616,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "acompanhamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 616,
+        "width": 252,
+        "height": 67,
+        "scroll": 252,
+        "client": 252
+      },
+      {
+        "x": 341,
+        "y": 616,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 461,
+        "y": 616,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      },
+      {
+        "x": 73,
+        "y": 994,
+        "width": 252,
+        "height": 67,
+        "scroll": 252,
+        "client": 252
+      },
+      {
+        "x": 341,
+        "y": 994,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 461,
+        "y": 994,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      },
+      {
+        "x": 73,
+        "y": 1215,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 193,
+        "y": 1215,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "removido-total-alto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 288.5390625,
+      "y": 756,
+      "width": 446.921875,
+      "height": 64
+    },
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 326,
+        "width": 252,
+        "height": 67,
+        "scroll": 252,
+        "client": 252
+      },
+      {
+        "x": 341,
+        "y": 326,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 461,
+        "y": 326,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      },
+      {
+        "x": 73,
+        "y": 704,
+        "width": 252,
+        "height": 67,
+        "scroll": 252,
+        "client": 252
+      },
+      {
+        "x": 341,
+        "y": 704,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 461,
+        "y": 704,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "travado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 676,
+        "width": 243.15625,
+        "height": 27,
+        "scroll": 243,
+        "client": 243
+      },
+      {
+        "x": 332.15625,
+        "y": 676,
+        "width": 112.84375,
+        "height": 58,
+        "scroll": 113,
+        "client": 113
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "sem-combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 616,
+        "width": 253,
+        "height": 67,
+        "scroll": 253,
+        "client": 253
+      },
+      {
+        "x": 342,
+        "y": 616,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 462,
+        "y": 616,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 616,
+        "width": 253,
+        "height": 67,
+        "scroll": 253,
+        "client": 253
+      },
+      {
+        "x": 342,
+        "y": 616,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 462,
+        "y": 616,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "erro",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 616,
+        "width": 253,
+        "height": 91,
+        "scroll": 253,
+        "client": 253
+      },
+      {
+        "x": 342,
+        "y": 616,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 462,
+        "y": 616,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "lista",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 616,
+        "width": 253,
+        "height": 91,
+        "scroll": 253,
+        "client": 253
+      },
+      {
+        "x": 342,
+        "y": 616,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 462,
+        "y": 616,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "quantidade",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 616,
+        "width": 253,
+        "height": 67,
+        "scroll": 253,
+        "client": 253
+      },
+      {
+        "x": 342,
+        "y": 616,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 462,
+        "y": 616,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "vazio-removido",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 354.25,
+      "y": 756,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": null,
+    "controls": []
+  },
+  {
+    "width": 1025,
+    "state": "desfeito",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 616,
+        "width": 253,
+        "height": 67,
+        "scroll": 253,
+        "client": 253
+      },
+      {
+        "x": 342,
+        "y": 616,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 462,
+        "y": 616,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "quantidade-99",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 616,
+        "width": 253,
+        "height": 67,
+        "scroll": 253,
+        "client": 253
+      },
+      {
+        "x": 342,
+        "y": 616,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 462,
+        "y": 616,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "removido-com-barra",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 354.25,
+      "y": 756,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 616,
+        "width": 253,
+        "height": 67,
+        "scroll": 253,
+        "client": 253
+      },
+      {
+        "x": 342,
+        "y": 616,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 462,
+        "y": 616,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "acompanhamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 616,
+        "width": 253,
+        "height": 67,
+        "scroll": 253,
+        "client": 253
+      },
+      {
+        "x": 342,
+        "y": 616,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 462,
+        "y": 616,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      },
+      {
+        "x": 73,
+        "y": 994,
+        "width": 253,
+        "height": 67,
+        "scroll": 253,
+        "client": 253
+      },
+      {
+        "x": 342,
+        "y": 994,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 462,
+        "y": 994,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      },
+      {
+        "x": 73,
+        "y": 1215,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 193,
+        "y": 1215,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "removido-total-alto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 289.0390625,
+      "y": 756,
+      "width": 446.921875,
+      "height": 64
+    },
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 326,
+        "width": 253,
+        "height": 67,
+        "scroll": 253,
+        "client": 253
+      },
+      {
+        "x": 342,
+        "y": 326,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 462,
+        "y": 326,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      },
+      {
+        "x": 73,
+        "y": 704,
+        "width": 253,
+        "height": 67,
+        "scroll": 253,
+        "client": 253
+      },
+      {
+        "x": 342,
+        "y": 704,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 462,
+        "y": 704,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "travado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 676,
+        "width": 244.15625,
+        "height": 27,
+        "scroll": 244,
+        "client": 244
+      },
+      {
+        "x": 333.15625,
+        "y": 676,
+        "width": 112.84375,
+        "height": 58,
+        "scroll": 113,
+        "client": 113
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "sem-combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 508,
+        "height": 67,
+        "scroll": 508,
+        "client": 508
+      },
+      {
+        "x": 597,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 717,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 508,
+        "height": 67,
+        "scroll": 508,
+        "client": 508
+      },
+      {
+        "x": 597,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 717,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "erro",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 508,
+        "height": 91,
+        "scroll": 508,
+        "client": 508
+      },
+      {
+        "x": 597,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 717,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "lista",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 508,
+        "height": 91,
+        "scroll": 508,
+        "client": 508
+      },
+      {
+        "x": 597,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 717,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "quantidade",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 508,
+        "height": 67,
+        "scroll": 508,
+        "client": 508
+      },
+      {
+        "x": 597,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 717,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "vazio-removido",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 481.75,
+      "y": 756,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": null,
+    "controls": []
+  },
+  {
+    "width": 1280,
+    "state": "desfeito",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 508,
+        "height": 67,
+        "scroll": 508,
+        "client": 508
+      },
+      {
+        "x": 597,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 717,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "quantidade-99",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 508,
+        "height": 67,
+        "scroll": 508,
+        "client": 508
+      },
+      {
+        "x": 597,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 717,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "removido-com-barra",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 481.75,
+      "y": 756,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 508,
+        "height": 67,
+        "scroll": 508,
+        "client": 508
+      },
+      {
+        "x": 597,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 717,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "acompanhamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 508,
+        "height": 67,
+        "scroll": 508,
+        "client": 508
+      },
+      {
+        "x": 597,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 717,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      },
+      {
+        "x": 73,
+        "y": 962,
+        "width": 508,
+        "height": 67,
+        "scroll": 508,
+        "client": 508
+      },
+      {
+        "x": 597,
+        "y": 962,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 717,
+        "y": 962,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      },
+      {
+        "x": 73,
+        "y": 1183,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 193,
+        "y": 1183,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "removido-total-alto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 416.5390625,
+      "y": 756,
+      "width": 446.921875,
+      "height": 64
+    },
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 342,
+        "width": 508,
+        "height": 67,
+        "scroll": 508,
+        "client": 508
+      },
+      {
+        "x": 597,
+        "y": 342,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 717,
+        "y": 342,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      },
+      {
+        "x": 73,
+        "y": 704,
+        "width": 508,
+        "height": 67,
+        "scroll": 508,
+        "client": 508
+      },
+      {
+        "x": 597,
+        "y": 704,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 717,
+        "y": 704,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "travado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 660,
+        "width": 499.15625,
+        "height": 27,
+        "scroll": 499,
+        "client": 499
+      },
+      {
+        "x": 588.15625,
+        "y": 660,
+        "width": 112.84375,
+        "height": 58,
+        "scroll": 113,
+        "client": 113
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "sem-combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1147,
+        "height": 67,
+        "scroll": 1147,
+        "client": 1147
+      },
+      {
+        "x": 1236,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1356,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1147,
+        "height": 67,
+        "scroll": 1147,
+        "client": 1147
+      },
+      {
+        "x": 1236,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1356,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "erro",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1147,
+        "height": 91,
+        "scroll": 1147,
+        "client": 1147
+      },
+      {
+        "x": 1236,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1356,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "lista",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1147,
+        "height": 91,
+        "scroll": 1147,
+        "client": 1147
+      },
+      {
+        "x": 1236,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1356,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "quantidade",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1147,
+        "height": 67,
+        "scroll": 1147,
+        "client": 1147
+      },
+      {
+        "x": 1236,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1356,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "vazio-removido",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 801.25,
+      "y": 756,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": null,
+    "controls": []
+  },
+  {
+    "width": 1919,
+    "state": "desfeito",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1147,
+        "height": 67,
+        "scroll": 1147,
+        "client": 1147
+      },
+      {
+        "x": 1236,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1356,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "quantidade-99",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1147,
+        "height": 67,
+        "scroll": 1147,
+        "client": 1147
+      },
+      {
+        "x": 1236,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1356,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "removido-com-barra",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 801.25,
+      "y": 756,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1147,
+        "height": 67,
+        "scroll": 1147,
+        "client": 1147
+      },
+      {
+        "x": 1236,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1356,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "acompanhamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1147,
+        "height": 67,
+        "scroll": 1147,
+        "client": 1147
+      },
+      {
+        "x": 1236,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1356,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      },
+      {
+        "x": 73,
+        "y": 962,
+        "width": 1147,
+        "height": 67,
+        "scroll": 1147,
+        "client": 1147
+      },
+      {
+        "x": 1236,
+        "y": 962,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1356,
+        "y": 962,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      },
+      {
+        "x": 73,
+        "y": 1183,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 193,
+        "y": 1183,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "removido-total-alto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 736.0390625,
+      "y": 756,
+      "width": 446.921875,
+      "height": 64
+    },
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 342,
+        "width": 1147,
+        "height": 67,
+        "scroll": 1147,
+        "client": 1147
+      },
+      {
+        "x": 1236,
+        "y": 342,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1356,
+        "y": 342,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      },
+      {
+        "x": 73,
+        "y": 704,
+        "width": 1147,
+        "height": 67,
+        "scroll": 1147,
+        "client": 1147
+      },
+      {
+        "x": 1236,
+        "y": 704,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1356,
+        "y": 704,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "travado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 660,
+        "width": 1138.15625,
+        "height": 27,
+        "scroll": 1138,
+        "client": 1138
+      },
+      {
+        "x": 1227.15625,
+        "y": 660,
+        "width": 112.84375,
+        "height": 58,
+        "scroll": 113,
+        "client": 113
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "sem-combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1148,
+        "height": 67,
+        "scroll": 1148,
+        "client": 1148
+      },
+      {
+        "x": 1237,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1357,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1148,
+        "height": 67,
+        "scroll": 1148,
+        "client": 1148
+      },
+      {
+        "x": 1237,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1357,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "erro",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1148,
+        "height": 91,
+        "scroll": 1148,
+        "client": 1148
+      },
+      {
+        "x": 1237,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1357,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "lista",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1148,
+        "height": 91,
+        "scroll": 1148,
+        "client": 1148
+      },
+      {
+        "x": 1237,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1357,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "quantidade",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1148,
+        "height": 67,
+        "scroll": 1148,
+        "client": 1148
+      },
+      {
+        "x": 1237,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1357,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "vazio-removido",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 801.75,
+      "y": 756,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": null,
+    "controls": []
+  },
+  {
+    "width": 1920,
+    "state": "desfeito",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1148,
+        "height": 67,
+        "scroll": 1148,
+        "client": 1148
+      },
+      {
+        "x": 1237,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1357,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "quantidade-99",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1148,
+        "height": 67,
+        "scroll": 1148,
+        "client": 1148
+      },
+      {
+        "x": 1237,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1357,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "removido-com-barra",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 801.75,
+      "y": 756,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1148,
+        "height": 67,
+        "scroll": 1148,
+        "client": 1148
+      },
+      {
+        "x": 1237,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1357,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "acompanhamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1148,
+        "height": 67,
+        "scroll": 1148,
+        "client": 1148
+      },
+      {
+        "x": 1237,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1357,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      },
+      {
+        "x": 73,
+        "y": 962,
+        "width": 1148,
+        "height": 67,
+        "scroll": 1148,
+        "client": 1148
+      },
+      {
+        "x": 1237,
+        "y": 962,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1357,
+        "y": 962,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      },
+      {
+        "x": 73,
+        "y": 1183,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 193,
+        "y": 1183,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "removido-total-alto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 736.5390625,
+      "y": 756,
+      "width": 446.921875,
+      "height": 64
+    },
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 342,
+        "width": 1148,
+        "height": 67,
+        "scroll": 1148,
+        "client": 1148
+      },
+      {
+        "x": 1237,
+        "y": 342,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1357,
+        "y": 342,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      },
+      {
+        "x": 73,
+        "y": 704,
+        "width": 1148,
+        "height": 67,
+        "scroll": 1148,
+        "client": 1148
+      },
+      {
+        "x": 1237,
+        "y": 704,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1357,
+        "y": 704,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "travado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 660,
+        "width": 1139.15625,
+        "height": 27,
+        "scroll": 1139,
+        "client": 1139
+      },
+      {
+        "x": 1228.15625,
+        "y": 660,
+        "width": 112.84375,
+        "height": 58,
+        "scroll": 113,
+        "client": 113
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "sem-combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1149,
+        "height": 67,
+        "scroll": 1149,
+        "client": 1149
+      },
+      {
+        "x": 1238,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1358,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "combo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1149,
+        "height": 67,
+        "scroll": 1149,
+        "client": 1149
+      },
+      {
+        "x": 1238,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1358,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "erro",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1149,
+        "height": 91,
+        "scroll": 1149,
+        "client": 1149
+      },
+      {
+        "x": 1238,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1358,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "lista",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1149,
+        "height": 91,
+        "scroll": 1149,
+        "client": 1149
+      },
+      {
+        "x": 1238,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1358,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "quantidade",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1149,
+        "height": 67,
+        "scroll": 1149,
+        "client": 1149
+      },
+      {
+        "x": 1238,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1358,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "vazio-removido",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 802.25,
+      "y": 756,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": null,
+    "controls": []
+  },
+  {
+    "width": 1921,
+    "state": "desfeito",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1149,
+        "height": 67,
+        "scroll": 1149,
+        "client": 1149
+      },
+      {
+        "x": 1238,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1358,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "quantidade-99",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1149,
+        "height": 67,
+        "scroll": 1149,
+        "client": 1149
+      },
+      {
+        "x": 1238,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1358,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "removido-com-barra",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 802.25,
+      "y": 756,
+      "width": 316.5,
+      "height": 64
+    },
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1149,
+        "height": 67,
+        "scroll": 1149,
+        "client": 1149
+      },
+      {
+        "x": 1238,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1358,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "acompanhamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 600,
+        "width": 1149,
+        "height": 67,
+        "scroll": 1149,
+        "client": 1149
+      },
+      {
+        "x": 1238,
+        "y": 600,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1358,
+        "y": 600,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      },
+      {
+        "x": 73,
+        "y": 962,
+        "width": 1149,
+        "height": 67,
+        "scroll": 1149,
+        "client": 1149
+      },
+      {
+        "x": 1238,
+        "y": 962,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1358,
+        "y": 962,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      },
+      {
+        "x": 73,
+        "y": 1183,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 193,
+        "y": 1183,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "removido-total-alto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": {
+      "x": 737.0390625,
+      "y": 756,
+      "width": 446.921875,
+      "height": 64
+    },
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 342,
+        "width": 1149,
+        "height": 67,
+        "scroll": 1149,
+        "client": 1149
+      },
+      {
+        "x": 1238,
+        "y": 342,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1358,
+        "y": 342,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      },
+      {
+        "x": 73,
+        "y": 704,
+        "width": 1149,
+        "height": 67,
+        "scroll": 1149,
+        "client": 1149
+      },
+      {
+        "x": 1238,
+        "y": 704,
+        "width": 104,
+        "height": 66,
+        "scroll": 104,
+        "client": 104
+      },
+      {
+        "x": 1358,
+        "y": 704,
+        "width": 176,
+        "height": 58,
+        "scroll": 176,
+        "client": 176
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "travado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "back": "Voltar",
+    "notice": null,
+    "bar": null,
+    "controls": [
+      {
+        "x": 73,
+        "y": 660,
+        "width": 1140.15625,
+        "height": 27,
+        "scroll": 1140,
+        "client": 1140
+      },
+      {
+        "x": 1229.15625,
+        "y": 660,
+        "width": 112.84375,
+        "height": 58,
+        "scroll": 113,
+        "client": 113
+      }
+    ]
+  }
+]

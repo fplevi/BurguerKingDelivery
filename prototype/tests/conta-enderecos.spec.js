@@ -41,7 +41,7 @@ test('Adicionar endereço: busca, mapa e dados de entrega; salvo, volta à lista
   await conta(page).getByRole('button', { name: 'Adicionar endereço' }).click();
   await expect(page).toHaveURL(/#endereco\/buscar$/);
   await expect(paginaDeEndereco(page).getByRole('list', { name: 'Etapas do pedido' })).toHaveCount(0);
-  await expect(page.locator('#address-back')).toHaveText('Voltar aos endereços');
+  await expect(paginaDeEndereco(page).getByRole('button', { name: 'Voltar', exact: true })).toHaveCount(1);
   await expect(titulo(page)).toHaveText('Endereços');
   await buscarEnderecoAqui(page, 'augusta');
   await resultadosDaBusca(page).filter({ hasText: 'Rua Augusta, 1508' }).click();
@@ -66,7 +66,7 @@ async function buscarEnderecoAqui(page, texto) {
 test('Voltar aos endereços, na busca, volta sem salvar', async ({ page }) => {
   await entrar(page);
   await conta(page).getByRole('button', { name: 'Adicionar endereço' }).click();
-  await page.locator('#address-back').click();
+  await paginaDeEndereco(page).getByRole('button', { name: 'Voltar', exact: true }).click();
   await expect(page).toHaveURL(/#conta\/enderecos$/);
   await expect(conta(page).getByRole('region')).toHaveCount(2);
 });

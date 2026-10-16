@@ -235,6 +235,26 @@ function sesame(R) {
   return seeds;
 }
 
+/** The crust of the bottom and middle buns (vertex colours), its bump repeated `rows` times up the side. */
+function heelCrust(rows) {
+  const crust = new MeshPhysicalMaterial({
+    vertexColors: true,
+    roughness: 0.78,
+    clearcoat: 0.1,
+    clearcoatRoughness: 0.7,
+    bumpMap: crustBump(),
+    bumpScale: 1.1,
+  });
+  crust.bumpMap.repeat.set(6, rows);
+  return crust;
+}
+
+/** The toasted crumb of a cut face (planar-mapped). */
+function cutCrumb() {
+  const { map, bumpMap } = crumb();
+  return new MeshStandardMaterial({ map, bumpMap, bumpScale: 2.5, roughness: 0.9 });
+}
+
 // Pão inferior: low heel with rounded edges; the cut face shows the toasted crumb (miolo).
 const BOTTOM_HEIGHT = 0.28;
 
@@ -265,15 +285,7 @@ function bottomBun() {
       return c.map((v) => v * (0.9 + speckle * 0.2));
     },
   }));
-  const crust = new MeshPhysicalMaterial({
-    vertexColors: true,
-    roughness: 0.78,
-    clearcoat: 0.1,
-    clearcoatRoughness: 0.7,
-    bumpMap: crustBump(),
-    bumpScale: 1.1,
-  });
-  crust.bumpMap.repeat.set(6, 2);
+  const crust = heelCrust(2);
 
   // Cut face: a gently domed disc of crumb, planar-mapped.
   const capProfile = [];
@@ -290,12 +302,71 @@ function bottomBun() {
     },
     uv: (x, y, z) => [x / (2 * R) + 0.5, z / (2 * R) + 0.5],
   }));
-  const { map, bumpMap } = crumb();
-  const crumbMaterial = new MeshStandardMaterial({ map, bumpMap, bumpScale: 2.5, roughness: 0.9 });
+  const crumbMaterial = cutCrumb();
 
   const group = new Group();
   group.add(mesh(crustGeometry, crust));
   group.add(mesh(capGeometry, crumbMaterial));
+  return group;
+}
+
+// Pão do meio (Big King): the bottom bun's variant cut on both sides: a thinner, flat disc with
+// the pale crumb on top and underneath and a golden crust round the edge, rounded at both cuts.
+// Same crust and crumb textures as the bottom bun (no texture of its own); that bun is untouched.
+const MIDDLE_HEIGHT = 0.18;
+
+function middleBun() {
+  const R = BUN_RADIUS;
+  const H = MIDDLE_HEIGHT;
+  const rim = 0.05;
+  // Only the side band: from the bottom cut's edge, round the side, to the top cut's edge.
+  const profile = [
+    ...arc(R - rim, rim, rim, -Math.PI / 2, 0, 6),
+    [R * 1.006, H / 2],
+    ...arc(R - rim, H - rim, rim, 0, Math.PI / 2, 6),
+  ];
+  const crustGeometry = shared('middleBun:crust', () => revolve(profile, {
+    shape: (x, y, z) => {
+      const a = Math.atan2(z, x);
+      const wall = 0.01 * (fbm(Math.cos(a) * 3 + 5, Math.sin(a) * 3, y * 6, { octaves: 2, seed: 17 }) - 0.5) * 2;
+      const s = rimScale(x - 2, z) + wall * smoothstep(0.02, 0.06, Math.min(y, H - y)); // not at the rounded cuts
+      return [x * s, y, z * s];
+    },
+    paint: (x, y, z) => {
+      const patches = fbm(x * 1.8 + 3, z * 1.8, y * 3, { octaves: 3, seed: 18 });
+      const speckle = fbm(x * 8, z * 8 + 2, y * 10, { octaves: 2, seed: 19 });
+      // Golden in the middle of the side, paler towards both cuts.
+      let c = mixColor([214, 160, 94], [182, 112, 52], smoothstep(H / 2, 0, Math.abs(y - H / 2)));
+      c = mixColor(c, [140, 80, 36], smoothstep(0.55, 0.78, patches) * 0.6);
+      return c.map((v) => v * (0.9 + speckle * 0.2));
+    },
+  }));
+  const crust = heelCrust(1);
+
+  // Cut faces: the bottom bun's crumb disc on top, and the same disc mirrored underneath.
+  const cap = (top) => {
+    const points = [];
+    for (let i = 0; i <= 10; i++) {
+      const f = top ? 1 - i / 10 : i / 10; // the top faces up (rim to centre), the bottom down
+      const bulge = 0.01 * (1 - f * f);
+      points.push([f * (R - rim + 0.004), top ? H - 0.004 + bulge : 0.004 - bulge]);
+    }
+    return shared(`middleBun:${top ? 'top' : 'bottom'}`, () => revolve(points, {
+      shape: (x, y, z) => {
+        const s = rimScale(x - 2, z);
+        const f = Math.hypot(x, z) / R;
+        const lumps = 0.007 * (fbm(x * 6 + (top ? 0 : 9), z * 6, 0, { octaves: 3, seed: 14 }) - 0.5) * 2 * (1 - f * f);
+        return [x * s, y + (top ? lumps : -lumps), z * s];
+      },
+      uv: (x, y, z) => [x / (2 * R) + 0.5, z / (2 * R) + 0.5],
+    }));
+  };
+  const crumbMaterial = cutCrumb();
+
+  const group = new Group();
+  group.add(mesh(crustGeometry, crust));
+  group.add(mesh(cap(true), crumbMaterial));
+  group.add(mesh(cap(false), crumbMaterial));
   return group;
 }
 
@@ -1228,8 +1299,8 @@ function puddle({ seed, reach, lobes, bead, wobble = 0.28 }) {
  * the lobes of the outline. With `drip`, the sauce sags that far down past the patty's edge,
  * hanging over the Camada below.
  */
-function sauce(key, { colour, roughness, seed, lobes, bead, puddles, wobble, drip = 0 }) {
-  const mat = new MeshStandardMaterial({ color: colour, roughness, side: DoubleSide });
+function sauce(key, { colour, roughness, seed, lobes, bead, puddles, wobble, drip = 0, emissive = '#000000' }) {
+  const mat = new MeshStandardMaterial({ color: colour, roughness, emissive, side: DoubleSide });
   return mesh(shared(key, () => {
     const group = new Group();
     puddles.forEach(([x, z, reach, scale = 1, stretch = 1, turn = 0], i) => {
@@ -1269,11 +1340,61 @@ function stackerPuddles() {
   return [[0.12, 0.1, 0.68, 0.75, 1.2, 0.6], [-0.18, -0.14, 0.58, 0.65, 1.1, 2.2], ...around];
 }
 
+/**
+ * Molho Big King under the top bun: a smaller spread with a few dollops short of the edge, so
+ * only a little peeks out.
+ */
+function bigKingTopPuddles() {
+  const rnd = random(67);
+  const around = Array.from({ length: 7 }, (_, i) => {
+    const deg = i * (360 / 7) + (rnd() - 0.5) * 14;
+    const turn = (deg * Math.PI) / 180 + Math.PI / 2 + (rnd() - 0.5) * 0.6;
+    return [...dollop(deg, 0.1 + rnd() * 0.06, 0.88 + rnd() * 0.06), 0.8 + rnd() * 0.3, 1 + rnd() * 0.3, turn];
+  });
+  return [[0.04, -0.02, 0.62, 0.55, 1.1, 0.4], ...around];
+}
+
+// Molho Big King on the pão do meio: one smooth, closed body, round at every edge (a sheet
+// stuck out past the bun, or a fold, reads as sauce held by a wall). A creamy disc, a little
+// domed, whose rim is a fat round bead just past the bun's edge, its outline gently lobed. In
+// places the bead sags over the edge into soft drops down the side: the outer half of the
+// bead is pulled down there, so each drop keeps the bead's round section and round end.
+const BIG_KING_SAUCE_HEIGHT = 0.07;
+const BIG_KING_BEAD = 0.04;
+function bigKingSauceBody(seed) {
+  const R = BUN_RADIUS + 0.025, b = BIG_KING_BEAD, t = 0.03;
+  const profile = [
+    [0, 0], [R - b, 0],
+    ...arc(R - b, b, b, -Math.PI / 2, Math.PI / 2, 14),
+    [R - 2.2 * b, 2 * b * 0.95], [0.6, t + 0.012], [0, t + 0.016],
+  ];
+  const rnd = random(seed);
+  const drops = Array.from({ length: 11 }, (_, i) => ({
+    a: ((i + 0.2 + rnd() * 0.6) / 11) * Math.PI * 2,
+    width: 0.07 + rnd() * 0.05,
+    depth: i % 3 ? 0.04 + rnd() * 0.03 : 0.08 + rnd() * 0.03,
+  }));
+  const wrap = (a) => Math.atan2(Math.sin(a), Math.cos(a));
+  return revolve(profile, {
+    segments: 240,
+    shape: (x, y, z) => {
+      const a = Math.atan2(z, x), r = Math.hypot(x, z);
+      const lobe = 1 + 0.025 * (fbm(Math.cos(a) * 2.5 + seed, Math.sin(a) * 2.5, 0, { octaves: 2, seed: seed + 1 }) - 0.5) * 2;
+      const sag = drops.reduce((m, d) => Math.max(m, d.depth * Math.exp(-((wrap(a - d.a) / d.width) ** 2))), 0);
+      const outer = smoothstep(R - 1.6 * b, R - 0.2 * b, r); // only the bead's outer half sags
+      const swell = 0.006 * (fbm(x * 4 + seed, z * 4, 0, { octaves: 2, seed: seed + 3 }) - 0.5) * 2 * (1 - outer);
+      return [x * lobe, y - sag * outer + swell, z * lobe];
+    },
+  });
+}
+const BIG_KING_SAUCE = { colour: '#f4a648', roughness: 0.2, emissive: '#2a1000', lobes: 2.4, wobble: 0.3 };
+
 export const layerModels = {
   bottom: {
     height: BOTTOM_HEIGHT,
     build: bottomBun,
   },
+  middleBun: { height: MIDDLE_HEIGHT, build: middleBun },
   meat: {
     height: MEAT_HEIGHT + 0.02, // the lumps rise above the nominal thickness
     build: patty,
@@ -1335,6 +1456,21 @@ export const layerModels = {
         drip: 0.07,
         puddles: stackerPuddles(),
       }),
+  },
+  // Molho Big King (Big King): creamy, warm orange. On the pão do meio, one round-edged body
+  // sagging over the rim in drops (bigKingSauceBody); under the top bun, only a little shows.
+  bigKingSauce: {
+    height: BIG_KING_SAUCE_HEIGHT - 0.02, // the dome rests a little into the patty above
+    build: () => {
+      const { colour, roughness, emissive } = BIG_KING_SAUCE;
+      const mat = new MeshStandardMaterial({ color: colour, roughness, emissive, side: DoubleSide });
+      return mesh(shared('bigKingSauce', () => bigKingSauceBody(61)), mat);
+    },
+  },
+  bigKingSauceTop: {
+    height: SAUCE_STACK,
+    build: () =>
+      sauce('bigKingSauceTop', { ...BIG_KING_SAUCE, seed: 67, bead: MAYO_HEIGHT, puddles: bigKingTopPuddles() }),
   },
   bbqSauce: {
     height: BBQ_SAUCE_STACK,

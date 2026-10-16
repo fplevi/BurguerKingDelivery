@@ -137,7 +137,7 @@ const burgers = [
   { recipe: 'cheddarDuplo', photo: cheddarDuploPhoto, box: [188, 302, 610, 619] },
   { recipe: 'stackerDuploBacon', photo: stackerDuploPhoto, box: [193, 313, 639, 618] },
   { recipe: 'rodeioDuplo', photo: rodeioDuploPhoto, box: [210, 333, 625, 620] },
-  { name: 'Big King', photo: bigKingPhoto, box: [189, 240, 629, 619] },
+  { recipe: 'bigKing', photo: bigKingPhoto, box: [189, 240, 629, 619] },
   { name: 'Cheeseburger Duplo', photo: cheeseburgerDuploPhoto, box: [171, 318, 610, 619] },
   { name: 'Cheeseburger', photo: cheeseburgerPhoto, box: [165, 356, 612, 618] },
   { recipe: 'rodeio', photo: rodeioPhoto, box: [205, 359, 617, 620] },
@@ -415,15 +415,47 @@ function rebuild(root, html, keep = '') {
  */
 function renderAddress() {
   $('address-step-back').hidden = cartLocked(state) || (state.addressPage === 'lista' && !state.locateError);
+  $('address-back').hidden = cartLocked(state) || !$('address-step-back').hidden;
   // From the menu (or for a visitor) the address pages are not a step of the Checkout: no indicador de etapas.
   const from = addressBack(),
     outside = from === 'menu' || from === 'conta' || !state.customer;
-  $('address-back').textContent = from === 'menu' ? 'Voltar ao cardápio' : from === 'conta' ? 'Voltar aos endereços' : 'Voltar ao checkout';
+  $('address-back').textContent = 'Voltar';
   $('address-title').textContent = from === 'conta' ? 'Endereços' : 'Endereço de entrega';
   rebuild($('address-content'), (outside ? '' : progress(1)) + addressFlow(state));
-  // The menu ⋮ open: a modal dialog, its first option focused.
-  $('address-menu')?.showModal();
+  const confirmation = $('address-confirmation');
+  if (confirmation) {
+    if (matchMedia('(max-width: 1023px)').matches) confirmation.showModal();
+    else confirmation.show();
+  }
+  // Desktop keeps the list interactive; mobile retains its modal action sheet.
+  const menu = $('address-menu');
+  if (menu) {
+    if (matchMedia('(max-width: 1023px)').matches) menu.showModal();
+    else {
+      menu.show();
+      positionAddressMenu();
+      menu.querySelector('button').focus({ preventScroll: true });
+    }
+  }
 }
+function positionAddressMenu() {
+  const menu = $('address-menu');
+  if (!menu || menu.matches(':modal')) return;
+  const anchor = $('address-more-' + menu.dataset.for)?.getBoundingClientRect();
+  if (!anchor) return;
+  menu.style.left = Math.max(16, Math.min(anchor.right - menu.offsetWidth, innerWidth - menu.offsetWidth - 16)) + 'px';
+  const below = anchor.bottom + 8;
+  menu.style.top = Math.max(16, below + menu.offsetHeight <= innerHeight - 16 ? below : anchor.top - menu.offsetHeight - 8) + 'px';
+}
+window.addEventListener('scroll', positionAddressMenu, true);
+window.addEventListener('resize', () => {
+  const confirmation = $('address-confirmation');
+  if (confirmation && confirmation.matches(':modal') !== matchMedia('(max-width: 1023px)').matches) renderAddress();
+  const menu = $('address-menu');
+  if (!menu) return;
+  if (menu.matches(':modal') !== matchMedia('(max-width: 1023px)').matches) renderAddress();
+  else positionAddressMenu();
+});
 /** The address chosen with "Entregar neste endereço", while it is still an Endereço salvo; null otherwise. */
 const delivery = () => savedAddress(state, state.delivery);
 /** The Pedido confirmado of #pedido/<id>, or undefined. */
@@ -621,7 +653,7 @@ $('account-page').addEventListener('submit', (e) => {
   } else if (state.phoneChange.step === 'conflict') $('account-title').focus();
   else $('new-code').focus();
 });
-$('signin-close').onclick = () => leaveSignin(false);
+$('signin-back').onclick = () => leaveSignin(false);
 
 /** Carrinho screen: the Itens (each one editable, see itemCard) and the Resumo do carrinho, or the empty state. */
 const itemsText = (n) => (n === 1 ? '1 item' : `${n} itens`);
@@ -638,11 +670,14 @@ function ingredientsOf(item) {
 }
 /** Quantidade (1-99; "−" disabled at 1) and Total do item of Item `i`. */
 function qtyAndTotal(item, i) {
-  return `<div class="cart-qty"><span class="item-label" id="item-${i}-qty">Quantidade</span><div class="qty" role="group" aria-labelledby="item-${i}-qty"><button data-key="${i}:minus" aria-label="Diminuir quantidade" ${item.qty <= 1 ? 'disabled' : ''}>−</button><span>${item.qty}</span><button data-key="${i}:plus" aria-label="Aumentar quantidade" ${item.qty >= 99 ? 'disabled' : ''}>+</button></div></div><div class="total">Total do item<strong>${money(item.price * item.qty)}</strong></div>`;
+  return `<div class="cart-qty"><span class="item-label" id="item-${i}-qty">Quantidade</span><div class="qty" role="group" aria-labelledby="item-${i}-qty"><button data-key="${i}:minus" aria-label="Diminuir quantidade" ${item.qty <= 1 ? 'disabled' : ''}><span class="bk-icon cart-minus" aria-hidden="true"></span></button><span>${item.qty}</span><button data-key="${i}:plus" aria-label="Aumentar quantidade" ${item.qty >= 99 ? 'disabled' : ''}><span class="bk-icon cart-plus" aria-hidden="true"></span></button></div></div><div class="total">Total do item<strong>${money(item.price * item.qty)}</strong></div>`;
 }
 // Bebida do combo of the Carrinho: a select-only combobox (ARIA listbox pattern) whose list opens over
 // the page. Which list is open, and its active option, is view state only: { index, active } or null.
 let openDrink = null;
+const cartBarObserver = new ResizeObserver(([entry]) => {
+  document.documentElement.style.setProperty('--cart-bar-height', `${entry.target.getBoundingClientRect().height}px`);
+});
 function drinkPicker(item, i) {
   const open = openDrink?.index === i;
   const options = drinks
@@ -682,7 +717,7 @@ function announce(text) {
 /** Aviso of the Item just removed, with Desfazer (Figma 06); gone at the next change in the cart or on leaving the Carrinho. */
 function removedNotice() {
   const last = state.lastRemoved;
-  return last ? `<div class="cart-notice" role="group" aria-label="Item removido"><p>${marks(itemName(last.item))} removido do carrinho.</p><button class="secondary" data-key="undo">Desfazer</button></div>` : '';
+  return last ? `<div class="cart-notice cart-removal-toast" role="group" aria-label="Item removido"><p>${marks(itemName(last.item))} removido do carrinho.</p><button class="secondary" data-key="undo">Desfazer</button></div>` : '';
 }
 /** Item `i` of the Carrinho travado: as itemCard, read-only (Combo · Bebida and "Quantidade: N" as text, no Remover). */
 function lockedCard(item) {
@@ -690,6 +725,7 @@ function lockedCard(item) {
   return `<li class="cart-item cart-locked${recipes[item.product] ? ' cart-burger' : ''}">${itemPhoto(item)}<div class="cart-head"><h2>${marks(itemName(item))}</h2></div>${ingredientsOf(item)}<div class="cart-controls"><div class="cart-locked-detail">${combo}<p>Quantidade: ${item.qty}</p></div><div class="total">Total do item<strong>${money(item.price * item.qty)}</strong></div></div></li>`;
 }
 function renderCart() {
+  cartBarObserver.disconnect();
   const units = cartUnits(state.cart);
   const count = state.cart.length;
   // Carrinho travado (Pix pendente, card processing): the Itens read-only, the notice with "Voltar ao pagamento" and the Resumo do carrinho without Continuar.
@@ -712,6 +748,7 @@ function renderCart() {
   // Phones (< 1024px): a bar fixed at the bottom repeats Total dos itens and Continuar; hidden on desktop.
   $('cart-content').innerHTML = `${removedNotice()}<ul class="cart-items" aria-label="Itens">${state.cart.map(itemCard).join('')}</ul><aside class="cart-summary" aria-labelledby="summary-title"><h2 id="summary-title">Resumo do carrinho</h2><p class="summary-total">Total dos itens<strong>${total}</strong></p><p class="summary-note">Entrega calculada na próxima etapa.</p><button class="primary" data-continue>Continuar</button><button class="secondary" data-back>Adicionar mais itens</button></aside><div class="cart-bar" role="region" aria-label="Total dos itens e Continuar"><p><span class="sr-only">Total dos itens</span><strong>${total}</strong></p><button class="primary" data-continue>Continuar</button></div>`;
   const again = focused && $('cart-content').querySelector(`[data-key="${focused}"]`);
+  cartBarObserver.observe($('cart-content').querySelector('.cart-bar'));
   if (again) (again.disabled ? again.parentElement.querySelector('[data-key]:not(:disabled)') : again)?.focus();
 }
 
@@ -720,7 +757,7 @@ function renderCart() {
 const trayImages = {};
 // Chips: the state now (Check present, Plus removed) and, on hover and focus, what the click will do.
 function icon(name, cls) {
-  return `<svg class="${cls}" width="14" height="14" aria-hidden="true"><use href="#icon-${name}"/></svg>`;
+  return `<span class="bk-icon chip-icon-${name} ${cls}" aria-hidden="true"></span>`;
 }
 function trayArt(id) {
   if (!scenes) return art(layer(recipe(), id).model);
@@ -917,6 +954,9 @@ $('cart-page').addEventListener('click', (e) => {
   if (control === 'option') chooseDrink(i, Number(key.split(':')[2]));
   if (control === 'remove') {
     openDrink = null;
+    // The removal toast replaces any transient feedback left by adding an Item.
+    clearTimeout(timer);
+    $('toast').style.display = 'none';
     dispatch({ type: 'itemRemove', index: i });
     announce(`${itemName(item)} removido do carrinho.`);
     $('cart-content').querySelector('[data-key="undo"]').focus();
@@ -1106,6 +1146,7 @@ const parentPage = { buscar: 'endereco', confirmar: 'endereco/buscar', dados: 'e
 const toList = () => (addressBack() === 'conta' ? history.go(-1 - depth()) : depth() ? history.go(-depth()) : (location.hash = 'endereco'));
 function stepBack() {
   if (state.addressPage === 'lista') return dispatch({ type: 'addressLocateReset' });
+  if (state.addressPage === 'buscar') return toList();
   depth() || addressBack() === 'conta' ? history.back() : (location.hash = parentPage[state.addressPage]);
 }
 // "Usar localização atual" asks the browser: granted, Av. Paulista, 1578 (whatever the coordinates); denied or
@@ -1125,14 +1166,31 @@ function locate() {
 }
 $('address-step-back').addEventListener('click', stepBack);
 /** Closes the menu ⋮ (Esc, or a click outside its options), the focus back on its button. */
-function closeMenu() {
+function closeMenu(restoreFocus = true) {
   const id = state.addressMenu;
-  dispatch({ type: 'addressMenu', id: null });
-  $('address-more-' + id)?.focus();
+  // View state only: keep the clicked list control alive through pointerdown/click.
+  state = reducer(state, { type: 'addressMenu', id: null });
+  $('address-menu')?.remove();
+  if (restoreFocus) $('address-more-' + id)?.focus();
 }
+document.addEventListener('pointerdown', (e) => {
+  const menu = $('address-menu');
+  if (menu && !menu.matches(':modal') && !menu.contains(e.target) && !e.target.closest('[data-address-more]')) closeMenu(false);
+});
+document.addEventListener('keydown', (e) => {
+  const menu = $('address-menu');
+  if (e.key === 'Escape' && menu && !menu.matches(':modal')) {
+    e.preventDefault();
+    closeMenu();
+  }
+});
 $('address-page').addEventListener(
   'cancel',
   (e) => {
+    if (e.target.id === 'address-confirmation') {
+      e.preventDefault();
+      return stepBack();
+    }
     if (e.target.id !== 'address-menu') return;
     e.preventDefault();
     closeMenu();

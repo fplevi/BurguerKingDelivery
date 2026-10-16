@@ -1,0 +1,64 @@
+
+> burger-king-prototype@0.0.0 test:build
+> playwright test tests/layout-conta.spec.js tests/meus-pedidos.spec.js tests/acompanhamento.spec.js tests/pedido-encerrado.spec.js
+
+[WebServer] (node:24680) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:8880) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] [plugin builtin:vite-reporter] 
+[WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:
+[WebServer] - Using dynamic import() to code-split the application
+[WebServer] - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+[WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[WebServer] (node:24776) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:29032) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 34 tests using 2 workers
+
+(node:14424) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:29440) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  2 [desktop] › tests\acompanhamento.spec.js:66:1 › a caminho: a moto no mapa, a distância restante, o entregador com WhatsApp e a linha do tempo até ali (2.2s)
+  ok  1 [desktop] › tests\acompanhamento.spec.js:36:1 › Acompanhar pedido, na confirmação do Checkout, abre o acompanhamento do Pedido confirmado (2.6s)
+  ok  4 [desktop] › tests\acompanhamento.spec.js:100:1 › #BK-10482, fixo em Pedido retirado: saindo da loja, com 2,4 km restantes (1.3s)
+  ok  3 [desktop] › tests\acompanhamento.spec.js:83:1 › a situação avança sozinha: o entregador aparece na retirada e a moto anda até o endereço (1.8s)
+  ok  5 [desktop] › tests\acompanhamento.spec.js:108:1 › Acompanhar pedido de Minha conta e de Meus pedidos abre o mesmo acompanhamento (1.5s)
+  ok  6 [desktop] › tests\layout-conta.spec.js:10:5 › 390 de largura › Identifique-se e todas as páginas da conta: sem abas de categorias no header, navegação em lista e sem rolagem horizontal (1.6s)
+  ok  7 [desktop] › tests\layout-conta.spec.js:31:5 › 390 de largura › o acompanhamento fica em uma coluna: situação, mapa, entregador, linha do tempo e itens (886ms)
+  ok  9 [desktop] › tests\layout-conta.spec.js:31:5 › 768 de largura › o acompanhamento fica em uma coluna: situação, mapa, entregador, linha do tempo e itens (894ms)
+  ok  8 [desktop] › tests\layout-conta.spec.js:10:5 › 768 de largura › Identifique-se e todas as páginas da conta: sem abas de categorias no header, navegação em lista e sem rolagem horizontal (1.7s)
+  ok 10 [desktop] › tests\meus-pedidos.spec.js:40:1 › Em andamento e Histórico de pedidos, os mais recentes primeiro, com as situações fixas (1.2s)
+  ok 11 [desktop] › tests\meus-pedidos.spec.js:65:1 › um Pedido da sessão em andamento entra no topo, no lugar do #BK-10482, e a situação avança sozinha (1.4s)
+  ok 12 [desktop] › tests\meus-pedidos.spec.js:77:1 › um Pedido da sessão já entregue vai para o Histórico e o #BK-10482 volta a Em andamento (1.3s)
+  ok 13 [desktop] › tests\meus-pedidos.spec.js:85:1 › sem Pedidos: "Seu primeiro pedido começa aqui", com Explorar o cardápio e Voltar à Minha conta (1.1s)
+  ok 15 [desktop] › tests\pedido-encerrado.spec.js:30:1 › Pedido entregue: quando foi entregue, a linha do tempo concluída, a loja e os Itens (1.1s)
+  ok 14 [desktop] › tests\meus-pedidos.spec.js:96:1 › os Pedidos são do celular identificado: outro cliente na mesma aba não os vê (1.7s)
+  ok 16 [desktop] › tests\pedido-encerrado.spec.js:48:1 › Pedido cancelado: quando, a devolução sem prazo, e só as etapas que aconteceram até Cancelado (966ms)
+(node:26384) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 17 [desktop] › tests\pedido-encerrado.spec.js:60:1 › um Pedido da sessão, ao ser entregue, deixa o rastreamento e mostra quando foi entregue (1.3s)
+(node:25216) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 18 [mobile-390] › tests\acompanhamento.spec.js:36:1 › Acompanhar pedido, na confirmação do Checkout, abre o acompanhamento do Pedido confirmado (2.8s)
+  ok 19 [mobile-390] › tests\acompanhamento.spec.js:66:1 › a caminho: a moto no mapa, a distância restante, o entregador com WhatsApp e a linha do tempo até ali (2.8s)
+  ok 21 [mobile-390] › tests\acompanhamento.spec.js:100:1 › #BK-10482, fixo em Pedido retirado: saindo da loja, com 2,4 km restantes (1.7s)
+  ok 20 [mobile-390] › tests\acompanhamento.spec.js:83:1 › a situação avança sozinha: o entregador aparece na retirada e a moto anda até o endereço (2.5s)
+  ok 22 [mobile-390] › tests\acompanhamento.spec.js:108:1 › Acompanhar pedido de Minha conta e de Meus pedidos abre o mesmo acompanhamento (1.9s)
+  ok 23 [mobile-390] › tests\layout-conta.spec.js:10:5 › 390 de largura › Identifique-se e todas as páginas da conta: sem abas de categorias no header, navegação em lista e sem rolagem horizontal (2.2s)
+  ok 24 [mobile-390] › tests\layout-conta.spec.js:31:5 › 390 de largura › o acompanhamento fica em uma coluna: situação, mapa, entregador, linha do tempo e itens (1.2s)
+  ok 26 [mobile-390] › tests\layout-conta.spec.js:31:5 › 768 de largura › o acompanhamento fica em uma coluna: situação, mapa, entregador, linha do tempo e itens (1.2s)
+  ok 25 [mobile-390] › tests\layout-conta.spec.js:10:5 › 768 de largura › Identifique-se e todas as páginas da conta: sem abas de categorias no header, navegação em lista e sem rolagem horizontal (2.3s)
+  ok 27 [mobile-390] › tests\meus-pedidos.spec.js:40:1 › Em andamento e Histórico de pedidos, os mais recentes primeiro, com as situações fixas (1.4s)
+  ok 28 [mobile-390] › tests\meus-pedidos.spec.js:65:1 › um Pedido da sessão em andamento entra no topo, no lugar do #BK-10482, e a situação avança sozinha (1.7s)
+  ok 29 [mobile-390] › tests\meus-pedidos.spec.js:77:1 › um Pedido da sessão já entregue vai para o Histórico e o #BK-10482 volta a Em andamento (1.8s)
+  ok 30 [mobile-390] › tests\meus-pedidos.spec.js:85:1 › sem Pedidos: "Seu primeiro pedido começa aqui", com Explorar o cardápio e Voltar à Minha conta (1.5s)
+  ok 32 [mobile-390] › tests\pedido-encerrado.spec.js:30:1 › Pedido entregue: quando foi entregue, a linha do tempo concluída, a loja e os Itens (1.4s)
+  ok 31 [mobile-390] › tests\meus-pedidos.spec.js:96:1 › os Pedidos são do celular identificado: outro cliente na mesma aba não os vê (2.2s)
+  ok 33 [mobile-390] › tests\pedido-encerrado.spec.js:48:1 › Pedido cancelado: quando, a devolução sem prazo, e só as etapas que aconteceram até Cancelado (1.3s)
+  ok 34 [mobile-390] › tests\pedido-encerrado.spec.js:60:1 › um Pedido da sessão, ao ser entregue, deixa o rastreamento e mostra quando foi entregue (1.7s)
+
+  34 passed (33.7s)

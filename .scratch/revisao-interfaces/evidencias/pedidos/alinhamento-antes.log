@@ -1,0 +1,83 @@
+
+> burger-king-prototype@0.0.0 test:build
+> playwright test tests/layout-conta.spec.js -g o acompanhamento --project=desktop
+
+[WebServer] (node:27900) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:5052) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] [plugin builtin:vite-reporter] 
+[WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:
+[WebServer] - Using dynamic import() to code-split the application
+[WebServer] - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+[WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[WebServer] (node:16768) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:29444) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 2 workers
+
+(node:3692) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:9240) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [desktop] › tests\layout-conta.spec.js:31:5 › 768 de largura › o acompanhamento fica em uma coluna: situação, mapa, entregador, linha do tempo e itens (2.4s)
+  x  2 [desktop] › tests\layout-conta.spec.js:31:5 › 390 de largura › o acompanhamento fica em uma coluna: situação, mapa, entregador, linha do tempo e itens (2.4s)
+
+
+  1) [desktop] › tests\layout-conta.spec.js:31:5 › 390 de largura › o acompanhamento fica em uma coluna: situação, mapa, entregador, linha do tempo e itens 
+
+    Error: expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 1
+    Received:    25
+
+      42 |       for (let i = 1; i < caixas.length; i++) {
+      43 |         expect(caixas[i].y).toBeGreaterThanOrEqual(caixas[i - 1].y + caixas[i - 1].height);
+    > 44 |         expect(Math.abs(caixas[i].x - caixas[0].x)).toBeLessThanOrEqual(1);
+         |                                                     ^
+      45 |       }
+      46 |     });
+      47 |   });
+        at D:\Projetos\BurguerKingNewSite\prototype\tests\layout-conta.spec.js:44:53
+
+    Error Context: test-results\layout-conta-390-de-largur-933c3-ador-linha-do-tempo-e-itens-desktop\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\layout-conta-390-de-largur-933c3-ador-linha-do-tempo-e-itens-desktop\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\layout-conta-390-de-largur-933c3-ador-linha-do-tempo-e-itens-desktop\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [desktop] › tests\layout-conta.spec.js:31:5 › 768 de largura › o acompanhamento fica em uma coluna: situação, mapa, entregador, linha do tempo e itens 
+
+    Error: expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 1
+    Received:    25
+
+      42 |       for (let i = 1; i < caixas.length; i++) {
+      43 |         expect(caixas[i].y).toBeGreaterThanOrEqual(caixas[i - 1].y + caixas[i - 1].height);
+    > 44 |         expect(Math.abs(caixas[i].x - caixas[0].x)).toBeLessThanOrEqual(1);
+         |                                                     ^
+      45 |       }
+      46 |     });
+      47 |   });
+        at D:\Projetos\BurguerKingNewSite\prototype\tests\layout-conta.spec.js:44:53
+
+    Error Context: test-results\layout-conta-768-de-largur-9734e-ador-linha-do-tempo-e-itens-desktop\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\layout-conta-768-de-largur-9734e-ador-linha-do-tempo-e-itens-desktop\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\layout-conta-768-de-largur-9734e-ador-linha-do-tempo-e-itens-desktop\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [desktop] › tests\layout-conta.spec.js:31:5 › 390 de largura › o acompanhamento fica em uma coluna: situação, mapa, entregador, linha do tempo e itens 
+    [desktop] › tests\layout-conta.spec.js:31:5 › 768 de largura › o acompanhamento fica em uma coluna: situação, mapa, entregador, linha do tempo e itens 

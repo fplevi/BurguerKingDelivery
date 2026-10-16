@@ -1,0 +1,10801 @@
+[
+  {
+    "width": 320,
+    "state": "lista-checkout",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 56,
+        "y": 354,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 447,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 514.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 659.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 263,
+        "y": 621,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 263,
+        "y": 681.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 794.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 263,
+        "y": 816.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 894,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 16,
+      "y": 670,
+      "width": 288,
+      "height": 70
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 320,
+      "height": 85
+    }
+  },
+  {
+    "width": 320,
+    "state": "menu",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 56,
+        "y": 164,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 257,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 324.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 469.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 263,
+        "y": 431,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 263,
+        "y": 491.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 604.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 263,
+        "y": 626.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 704,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 85.21875,
+        "y": 787,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": {
+      "x": 0,
+      "y": 705,
+      "width": 320,
+      "height": 139,
+      "modal": true,
+      "anchor": {
+        "x": 255,
+        "y": 618.5,
+        "width": 40,
+        "height": 40
+      }
+    },
+    "confirmationModal": false,
+    "toast": {
+      "x": 16,
+      "y": 670,
+      "width": 288,
+      "height": 70
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 320,
+      "height": 85
+    }
+  },
+  {
+    "width": 320,
+    "state": "editar",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 56,
+        "y": 354,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 35.484375,
+        "y": 1153,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 124.296875,
+        "y": 1153,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 222.09375,
+        "y": 1153,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 16,
+      "y": 670,
+      "width": 288,
+      "height": 70
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 320,
+      "height": 85
+    }
+  },
+  {
+    "width": 320,
+    "state": "validacao",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 56,
+        "y": 334,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 35.484375,
+        "y": 1157,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 124.296875,
+        "y": 1157,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 222.09375,
+        "y": 1157,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 16,
+      "y": 670,
+      "width": 288,
+      "height": 70
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 320,
+      "height": 85
+    }
+  },
+  {
+    "width": 320,
+    "state": "remover",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 56,
+        "y": 354,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 447,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 514.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 659.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 263,
+        "y": 621,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 263,
+        "y": 681.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 794.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 263,
+        "y": 816.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 894,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": true,
+    "toast": {
+      "x": 16,
+      "y": 670,
+      "width": 288,
+      "height": 70
+    },
+    "action": null
+  },
+  {
+    "width": 320,
+    "state": "toast-removido",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 56,
+        "y": 354,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 447,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 514.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 659.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 263,
+        "y": 621,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 263,
+        "y": 681.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 759,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 65.2109375,
+      "y": 689,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 320,
+      "height": 85
+    }
+  },
+  {
+    "width": 320,
+    "state": "anteriores",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 56,
+        "y": 354,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 566.5,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 701.5,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 836.5,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 320,
+    "state": "sem-resultados",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 56,
+        "y": 354,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 448,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 320,
+    "state": "busca",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 56,
+        "y": 354,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 448,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 32,
+        "y": 554,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 32,
+        "y": 664,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 32,
+        "y": 755,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 320,
+    "state": "mapa",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 56,
+        "y": 354,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 483,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 260,
+        "y": 556,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 320,
+      "height": 85
+    }
+  },
+  {
+    "width": 320,
+    "state": "dados",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 56,
+        "y": 354,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 16,
+        "y": 650,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 35.484375,
+        "y": 1209,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 124.296875,
+        "y": 1209,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 222.09375,
+        "y": 1209,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 320,
+      "height": 85
+    }
+  },
+  {
+    "width": 320,
+    "state": "toast-salvo",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 56,
+        "y": 354,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 447,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 514.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 659.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 263,
+        "y": 681.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 784,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 263,
+        "y": 756,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 263,
+        "y": 806,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 873,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 28.78125,
+      "y": 689,
+      "width": 262.4375,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 320,
+      "height": 85
+    }
+  },
+  {
+    "width": 320,
+    "state": "lista-visitante",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 33,
+        "y": 351,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 418.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 320,
+    "state": "fora-regiao",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 33,
+        "y": 511.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 320,
+    "state": "localizacao-indisponivel",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 33,
+        "y": 453,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 578,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 360,
+    "state": "lista-checkout",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 62.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 413,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 480.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 625.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 303,
+        "y": 587,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 303,
+        "y": 647.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 760.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 303,
+        "y": 782.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 860,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 33.5234375,
+      "y": 689,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 360,
+      "height": 85
+    }
+  },
+  {
+    "width": 360,
+    "state": "menu",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 62.65625,
+        "y": 164,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 257,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 324.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 469.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 303,
+        "y": 431,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 303,
+        "y": 491.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 604.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 303,
+        "y": 626.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 704,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 105.21875,
+        "y": 787,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": {
+      "x": 0,
+      "y": 705,
+      "width": 360,
+      "height": 139,
+      "modal": true,
+      "anchor": {
+        "x": 295,
+        "y": 618.5,
+        "width": 40,
+        "height": 40
+      }
+    },
+    "confirmationModal": false,
+    "toast": {
+      "x": 33.5234375,
+      "y": 689,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 360,
+      "height": 85
+    }
+  },
+  {
+    "width": 360,
+    "state": "editar",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 62.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 42.15625,
+        "y": 1119,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 144.296875,
+        "y": 1119,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 255.4375,
+        "y": 1119,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 33.5234375,
+      "y": 689,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 360,
+      "height": 85
+    }
+  },
+  {
+    "width": 360,
+    "state": "validacao",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 62.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 42.15625,
+        "y": 1143,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 144.296875,
+        "y": 1143,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 255.4375,
+        "y": 1143,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 33.5234375,
+      "y": 689,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 360,
+      "height": 85
+    }
+  },
+  {
+    "width": 360,
+    "state": "remover",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 62.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 413,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 480.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 625.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 303,
+        "y": 587,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 303,
+        "y": 647.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 760.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 303,
+        "y": 782.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 860,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": true,
+    "toast": {
+      "x": 33.5234375,
+      "y": 689,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 360,
+    "state": "toast-removido",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 62.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 413,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 480.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 625.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 303,
+        "y": 587,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 303,
+        "y": 647.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 725,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 85.2109375,
+      "y": 689,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 360,
+      "height": 85
+    }
+  },
+  {
+    "width": 360,
+    "state": "anteriores",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 62.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 532.5,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 667.5,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 802.5,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 360,
+    "state": "sem-resultados",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 62.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 414,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 360,
+    "state": "busca",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 62.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 414,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 32,
+        "y": 520,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 32,
+        "y": 630,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 32,
+        "y": 721,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 360,
+    "state": "mapa",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 62.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 449,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 300,
+        "y": 522,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 360,
+      "height": 85
+    }
+  },
+  {
+    "width": 360,
+    "state": "dados",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 62.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 16,
+        "y": 616,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 42.15625,
+        "y": 1175,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 144.296875,
+        "y": 1175,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 255.4375,
+        "y": 1175,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 360,
+      "height": 85
+    }
+  },
+  {
+    "width": 360,
+    "state": "toast-salvo",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 62.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 413,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 480.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 625.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 303,
+        "y": 647.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 750,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 303,
+        "y": 722,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 303,
+        "y": 772,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 839,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 48.78125,
+      "y": 689,
+      "width": 262.4375,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 360,
+      "height": 85
+    }
+  },
+  {
+    "width": 360,
+    "state": "lista-visitante",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 33,
+        "y": 317,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 384.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 360,
+    "state": "fora-regiao",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 33,
+        "y": 432.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 360,
+    "state": "localizacao-indisponivel",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 33,
+        "y": 419,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 544,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 390,
+    "state": "lista-checkout",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 67.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 413,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 480.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 625.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 333,
+        "y": 587,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 333,
+        "y": 647.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 760.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 333,
+        "y": 782.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 860,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 48.5234375,
+      "y": 689,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 390,
+      "height": 85
+    }
+  },
+  {
+    "width": 390,
+    "state": "menu",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 67.65625,
+        "y": 164,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 257,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 324.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 469.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 333,
+        "y": 431,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 333,
+        "y": 491.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 604.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 333,
+        "y": 626.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 704,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 120.21875,
+        "y": 787,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": {
+      "x": 0,
+      "y": 705,
+      "width": 390,
+      "height": 139,
+      "modal": true,
+      "anchor": {
+        "x": 325,
+        "y": 618.5,
+        "width": 40,
+        "height": 40
+      }
+    },
+    "confirmationModal": false,
+    "toast": {
+      "x": 48.5234375,
+      "y": 689,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 390,
+      "height": 85
+    }
+  },
+  {
+    "width": 390,
+    "state": "editar",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 67.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 47.15625,
+        "y": 1119,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 159.296875,
+        "y": 1119,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 280.4375,
+        "y": 1119,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 48.5234375,
+      "y": 689,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 390,
+      "height": 85
+    }
+  },
+  {
+    "width": 390,
+    "state": "validacao",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 67.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 47.15625,
+        "y": 1143,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 159.296875,
+        "y": 1143,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 280.4375,
+        "y": 1143,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 48.5234375,
+      "y": 689,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 390,
+      "height": 85
+    }
+  },
+  {
+    "width": 390,
+    "state": "remover",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 67.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 413,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 480.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 625.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 333,
+        "y": 587,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 333,
+        "y": 647.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 760.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 333,
+        "y": 782.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 860,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": true,
+    "toast": {
+      "x": 48.5234375,
+      "y": 689,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 390,
+    "state": "toast-removido",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 67.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 413,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 480.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 625.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 333,
+        "y": 587,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 333,
+        "y": 647.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 725,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 100.2109375,
+      "y": 689,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 390,
+      "height": 85
+    }
+  },
+  {
+    "width": 390,
+    "state": "anteriores",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 67.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 532.5,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 667.5,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 802.5,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 390,
+    "state": "sem-resultados",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 67.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 414,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 390,
+    "state": "busca",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 67.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 414,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 32,
+        "y": 510,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 32,
+        "y": 610,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 32,
+        "y": 701,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 390,
+    "state": "mapa",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 67.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 449,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 330,
+        "y": 522,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 390,
+      "height": 85
+    }
+  },
+  {
+    "width": 390,
+    "state": "dados",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 67.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 16,
+        "y": 616,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 47.15625,
+        "y": 1175,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 159.296875,
+        "y": 1175,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 280.4375,
+        "y": 1175,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 390,
+      "height": 85
+    }
+  },
+  {
+    "width": 390,
+    "state": "toast-salvo",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 67.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 413,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 480.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 625.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 333,
+        "y": 647.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 750,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 333,
+        "y": 722,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 333,
+        "y": 772,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 839,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 63.78125,
+      "y": 689,
+      "width": 262.4375,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 390,
+      "height": 85
+    }
+  },
+  {
+    "width": 390,
+    "state": "lista-visitante",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 33,
+        "y": 317,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 384.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 390,
+    "state": "fora-regiao",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 33,
+        "y": 432.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 390,
+    "state": "localizacao-indisponivel",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 33,
+        "y": 419,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 544,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 768,
+    "state": "lista-checkout",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 130.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 413,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 480.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 625.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 711,
+        "y": 587,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 711,
+        "y": 647.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 760.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 711,
+        "y": 782.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 860,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 237.5234375,
+      "y": 689,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 768,
+      "height": 85
+    }
+  },
+  {
+    "width": 768,
+    "state": "menu",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 130.65625,
+        "y": 164,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 257,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 324.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 469.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 711,
+        "y": 431,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 711,
+        "y": 491.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 604.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 711,
+        "y": 626.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 704,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 309.21875,
+        "y": 787,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": {
+      "x": 0,
+      "y": 705,
+      "width": 768,
+      "height": 139,
+      "modal": true,
+      "anchor": {
+        "x": 703,
+        "y": 618.5,
+        "width": 40,
+        "height": 40
+      }
+    },
+    "confirmationModal": false,
+    "toast": {
+      "x": 237.5234375,
+      "y": 689,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 768,
+      "height": 85
+    }
+  },
+  {
+    "width": 768,
+    "state": "editar",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 130.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 110.15625,
+        "y": 1119,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 348.296875,
+        "y": 1119,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 595.4375,
+        "y": 1119,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 237.5234375,
+      "y": 689,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 768,
+      "height": 85
+    }
+  },
+  {
+    "width": 768,
+    "state": "validacao",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 130.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 110.15625,
+        "y": 1143,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 348.296875,
+        "y": 1143,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 595.4375,
+        "y": 1143,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 237.5234375,
+      "y": 689,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 768,
+      "height": 85
+    }
+  },
+  {
+    "width": 768,
+    "state": "remover",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 130.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 413,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 480.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 625.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 711,
+        "y": 587,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 711,
+        "y": 647.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 760.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 711,
+        "y": 782.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 860,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": true,
+    "toast": {
+      "x": 237.5234375,
+      "y": 689,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 768,
+    "state": "toast-removido",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 130.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 413,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 480.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 625.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 711,
+        "y": 587,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 711,
+        "y": 647.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 725,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 289.2109375,
+      "y": 689,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 768,
+      "height": 85
+    }
+  },
+  {
+    "width": 768,
+    "state": "anteriores",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 130.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 532.5,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 667.5,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 802.5,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 289.2109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 768,
+    "state": "sem-resultados",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 130.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 414,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 289.2109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 768,
+    "state": "busca",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 130.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 414,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 32,
+        "y": 510,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 32,
+        "y": 610,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 32,
+        "y": 701,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 289.2109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 768,
+    "state": "mapa",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 130.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 449,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 484,
+        "y": 522,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 289.2109375,
+      "y": 689,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 768,
+      "height": 85
+    }
+  },
+  {
+    "width": 768,
+    "state": "dados",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 130.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 16,
+        "y": 616,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 110.15625,
+        "y": 1175,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 348.296875,
+        "y": 1175,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 595.4375,
+        "y": 1175,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 289.2109375,
+      "y": 689,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 768,
+      "height": 85
+    }
+  },
+  {
+    "width": 768,
+    "state": "toast-salvo",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 130.65625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 413,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 480.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 625.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 711,
+        "y": 647.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 750,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 711,
+        "y": 722,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 711,
+        "y": 772,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 839,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 252.78125,
+      "y": 689,
+      "width": 262.4375,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 768,
+      "height": 85
+    }
+  },
+  {
+    "width": 768,
+    "state": "lista-visitante",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 33,
+        "y": 317,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 384.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 768,
+    "state": "fora-regiao",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 33,
+        "y": 432.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 768,
+    "state": "localizacao-indisponivel",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 33,
+        "y": 374,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 499,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 1023,
+    "state": "lista-checkout",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 173.15625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 413,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 480.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 625.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 966,
+        "y": 587,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 966,
+        "y": 647.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 760.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 966,
+        "y": 782.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 860,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 365.0234375,
+      "y": 689,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 1023,
+      "height": 85
+    }
+  },
+  {
+    "width": 1023,
+    "state": "menu",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 173.15625,
+        "y": 164,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 257,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 324.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 469.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 966,
+        "y": 431,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 966,
+        "y": 491.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 604.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 966,
+        "y": 626.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 704,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 436.71875,
+        "y": 787,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": {
+      "x": 0,
+      "y": 705,
+      "width": 1023,
+      "height": 139,
+      "modal": true,
+      "anchor": {
+        "x": 958,
+        "y": 618.5,
+        "width": 40,
+        "height": 40
+      }
+    },
+    "confirmationModal": false,
+    "toast": {
+      "x": 365.0234375,
+      "y": 689,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 1023,
+      "height": 85
+    }
+  },
+  {
+    "width": 1023,
+    "state": "editar",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 173.15625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 152.65625,
+        "y": 1119,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 475.796875,
+        "y": 1119,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 807.9375,
+        "y": 1119,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 365.0234375,
+      "y": 689,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 1023,
+      "height": 85
+    }
+  },
+  {
+    "width": 1023,
+    "state": "validacao",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 173.15625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 152.65625,
+        "y": 1143,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 475.796875,
+        "y": 1143,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 807.9375,
+        "y": 1143,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 365.0234375,
+      "y": 689,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 1023,
+      "height": 85
+    }
+  },
+  {
+    "width": 1023,
+    "state": "remover",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 173.15625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 413,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 480.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 625.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 966,
+        "y": 587,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 966,
+        "y": 647.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 760.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 966,
+        "y": 782.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 860,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": true,
+    "toast": {
+      "x": 365.0234375,
+      "y": 689,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1023,
+    "state": "toast-removido",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 173.15625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 413,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 480.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 625.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 966,
+        "y": 587,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 966,
+        "y": 647.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 725,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 416.7109375,
+      "y": 689,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 1023,
+      "height": 85
+    }
+  },
+  {
+    "width": 1023,
+    "state": "anteriores",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 173.15625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 532.5,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 667.5,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 802.5,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 416.7109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1023,
+    "state": "sem-resultados",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 173.15625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 414,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 416.7109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1023,
+    "state": "busca",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 173.15625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 414,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 32,
+        "y": 510,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 32,
+        "y": 610,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 32,
+        "y": 701,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 416.7109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1023,
+    "state": "mapa",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 173.15625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 449,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 484,
+        "y": 522,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 416.7109375,
+      "y": 689,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 1023,
+      "height": 85
+    }
+  },
+  {
+    "width": 1023,
+    "state": "dados",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 173.15625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 16,
+        "y": 616,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 152.65625,
+        "y": 1175,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 475.796875,
+        "y": 1175,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 807.9375,
+        "y": 1175,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 416.7109375,
+      "y": 689,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 1023,
+      "height": 85
+    }
+  },
+  {
+    "width": 1023,
+    "state": "toast-salvo",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 173.15625,
+        "y": 320,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 33,
+        "y": 413,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 480.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 625.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 966,
+        "y": 647.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 33,
+        "y": 750,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 966,
+        "y": 722,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 966,
+        "y": 772,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 839,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 380.28125,
+      "y": 689,
+      "width": 262.4375,
+      "height": 51
+    },
+    "action": {
+      "x": 0,
+      "y": 759,
+      "width": 1023,
+      "height": 85
+    }
+  },
+  {
+    "width": 1023,
+    "state": "lista-visitante",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 33,
+        "y": 317,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 20,
+        "y": 384.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 1023,
+    "state": "fora-regiao",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 33,
+        "y": 432.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 1023,
+    "state": "localizacao-indisponivel",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 33,
+        "y": 374,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 16,
+        "y": 499,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 1024,
+    "state": "lista-checkout",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 194.65625,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 383,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 450.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 595.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 557,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 617.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 730.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 752.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 830,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 365.5234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 882,
+      "width": 580,
+      "height": 48
+    }
+  },
+  {
+    "width": 1024,
+    "state": "menu",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 194.65625,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 383,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 450.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 595.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 557,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 617.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 730.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 752.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 830,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 403.21875,
+        "y": 687.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": {
+      "x": 337,
+      "y": 613.5,
+      "width": 282,
+      "height": 123,
+      "modal": false,
+      "anchor": {
+        "x": 579,
+        "y": 744.5,
+        "width": 40,
+        "height": 40
+      }
+    },
+    "confirmationModal": false,
+    "toast": {
+      "x": 365.5234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 882,
+      "width": 580,
+      "height": 48
+    }
+  },
+  {
+    "width": 1024,
+    "state": "editar",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 194.65625,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 104.8125,
+        "y": 1009,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 268.296875,
+        "y": 1009,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 440.75,
+        "y": 1009,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 365.5234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 1115,
+      "width": 512,
+      "height": 48
+    }
+  },
+  {
+    "width": 1024,
+    "state": "validacao",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 194.65625,
+        "y": -77,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 104.8125,
+        "y": 666,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 268.296875,
+        "y": 666,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 440.75,
+        "y": 666,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 365.5234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 772,
+      "width": 512,
+      "height": 48
+    }
+  },
+  {
+    "width": 1024,
+    "state": "remover",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 194.65625,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 365.5234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1024,
+    "state": "toast-removido",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 194.65625,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 383,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 450.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 595.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 617.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 695,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 417.2109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 747,
+      "width": 580,
+      "height": 48
+    }
+  },
+  {
+    "width": 1024,
+    "state": "anteriores",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 194.65625,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 502.5,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 637.5,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 772.5,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 417.2109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1024,
+    "state": "sem-resultados",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 194.65625,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 384,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 417.2109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1024,
+    "state": "busca",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 194.65625,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 384,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 64,
+        "y": 480,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 64,
+        "y": 580,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 64,
+        "y": 671,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 417.2109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1024,
+    "state": "mapa",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 194.65625,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 419,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 516,
+        "y": 492,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 417.2109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 836,
+      "width": 512,
+      "height": 48
+    }
+  },
+  {
+    "width": 1024,
+    "state": "dados",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 194.65625,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 48,
+        "y": 586,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 104.8125,
+        "y": 1065,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 268.296875,
+        "y": 1065,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 440.75,
+        "y": 1065,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 417.2109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 1171,
+      "width": 512,
+      "height": 48
+    }
+  },
+  {
+    "width": 1024,
+    "state": "toast-salvo",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 194.65625,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 383,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 450.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 595.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 617.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 720,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 692,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 742,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 809,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 380.78125,
+      "y": 769,
+      "width": 262.4375,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 861,
+      "width": 580,
+      "height": 48
+    }
+  },
+  {
+    "width": 1024,
+    "state": "lista-visitante",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 65,
+        "y": 287,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 354.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 1024,
+    "state": "fora-regiao",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 65,
+        "y": 402.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 1024,
+    "state": "localizacao-indisponivel",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 65,
+        "y": 344,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 469,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 1025,
+    "state": "lista-checkout",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 194.828125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 383,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 450.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 595.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 557,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 617.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 730.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 752.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 830,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 366.0234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 882,
+      "width": 580,
+      "height": 48
+    }
+  },
+  {
+    "width": 1025,
+    "state": "menu",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 194.828125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 383,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 450.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 595.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 557,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 617.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 730.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 752.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 830,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 403.21875,
+        "y": 687.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": {
+      "x": 337,
+      "y": 613.5,
+      "width": 282,
+      "height": 123,
+      "modal": false,
+      "anchor": {
+        "x": 579,
+        "y": 744.5,
+        "width": 40,
+        "height": 40
+      }
+    },
+    "confirmationModal": false,
+    "toast": {
+      "x": 366.0234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 882,
+      "width": 580,
+      "height": 48
+    }
+  },
+  {
+    "width": 1025,
+    "state": "editar",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 194.828125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 104.8125,
+        "y": 1009,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 268.296875,
+        "y": 1009,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 440.75,
+        "y": 1009,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 366.0234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 1115,
+      "width": 512,
+      "height": 48
+    }
+  },
+  {
+    "width": 1025,
+    "state": "validacao",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 194.828125,
+        "y": -77,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 104.8125,
+        "y": 666,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 268.296875,
+        "y": 666,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 440.75,
+        "y": 666,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 366.0234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 772,
+      "width": 512,
+      "height": 48
+    }
+  },
+  {
+    "width": 1025,
+    "state": "remover",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 194.828125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 366.0234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1025,
+    "state": "toast-removido",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 194.828125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 383,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 450.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 595.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 617.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 695,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 417.7109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 747,
+      "width": 580,
+      "height": 48
+    }
+  },
+  {
+    "width": 1025,
+    "state": "anteriores",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 194.828125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 502.5,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 637.5,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 772.5,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 417.7109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1025,
+    "state": "sem-resultados",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 194.828125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 384,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 417.7109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1025,
+    "state": "busca",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 194.828125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 384,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 64,
+        "y": 480,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 64,
+        "y": 580,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 64,
+        "y": 671,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 417.7109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1025,
+    "state": "mapa",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 194.828125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 419,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 516,
+        "y": 492,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 417.7109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 836,
+      "width": 512,
+      "height": 48
+    }
+  },
+  {
+    "width": 1025,
+    "state": "dados",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 194.828125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 48,
+        "y": 586,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 104.8125,
+        "y": 1065,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 268.296875,
+        "y": 1065,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 440.75,
+        "y": 1065,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 417.7109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 1171,
+      "width": 512,
+      "height": 48
+    }
+  },
+  {
+    "width": 1025,
+    "state": "toast-salvo",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 194.828125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 383,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 450.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 595.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 617.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 720,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 692,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 742,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 809,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 381.28125,
+      "y": 769,
+      "width": 262.4375,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 861,
+      "width": 580,
+      "height": 48
+    }
+  },
+  {
+    "width": 1025,
+    "state": "lista-visitante",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 65,
+        "y": 287,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 354.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 1025,
+    "state": "fora-regiao",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 65,
+        "y": 402.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 1025,
+    "state": "localizacao-indisponivel",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 65,
+        "y": 344,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 469,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 1280,
+    "state": "lista-checkout",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 237.328125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 383,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 450.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 595.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 557,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 617.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 730.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 752.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 830,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 493.5234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 882,
+      "width": 580,
+      "height": 48
+    }
+  },
+  {
+    "width": 1280,
+    "state": "menu",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 237.328125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 383,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 450.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 595.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 557,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 617.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 730.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 752.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 830,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 403.21875,
+        "y": 687.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": {
+      "x": 337,
+      "y": 613.5,
+      "width": 282,
+      "height": 123,
+      "modal": false,
+      "anchor": {
+        "x": 579,
+        "y": 744.5,
+        "width": 40,
+        "height": 40
+      }
+    },
+    "confirmationModal": false,
+    "toast": {
+      "x": 493.5234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 882,
+      "width": 580,
+      "height": 48
+    }
+  },
+  {
+    "width": 1280,
+    "state": "editar",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 237.328125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 104.8125,
+        "y": 1009,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 268.296875,
+        "y": 1009,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 440.75,
+        "y": 1009,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 493.5234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 1115,
+      "width": 512,
+      "height": 48
+    }
+  },
+  {
+    "width": 1280,
+    "state": "validacao",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 237.328125,
+        "y": -77,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 104.8125,
+        "y": 666,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 268.296875,
+        "y": 666,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 440.75,
+        "y": 666,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 493.5234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 772,
+      "width": 512,
+      "height": 48
+    }
+  },
+  {
+    "width": 1280,
+    "state": "remover",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 237.328125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 493.5234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1280,
+    "state": "toast-removido",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 237.328125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 383,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 450.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 595.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 617.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 695,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 545.2109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 747,
+      "width": 580,
+      "height": 48
+    }
+  },
+  {
+    "width": 1280,
+    "state": "anteriores",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 237.328125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 502.5,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 637.5,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 772.5,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 545.2109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1280,
+    "state": "sem-resultados",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 237.328125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 384,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 545.2109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1280,
+    "state": "busca",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 237.328125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 384,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 64,
+        "y": 480,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 64,
+        "y": 580,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 64,
+        "y": 671,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 545.2109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1280,
+    "state": "mapa",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 237.328125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 419,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 516,
+        "y": 492,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 545.2109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 836,
+      "width": 512,
+      "height": 48
+    }
+  },
+  {
+    "width": 1280,
+    "state": "dados",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 237.328125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 48,
+        "y": 586,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 104.8125,
+        "y": 1065,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 268.296875,
+        "y": 1065,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 440.75,
+        "y": 1065,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 545.2109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 1171,
+      "width": 512,
+      "height": 48
+    }
+  },
+  {
+    "width": 1280,
+    "state": "toast-salvo",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 237.328125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 383,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 450.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 595.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 617.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 720,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 692,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 742,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 809,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 508.78125,
+      "y": 769,
+      "width": 262.4375,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 861,
+      "width": 580,
+      "height": 48
+    }
+  },
+  {
+    "width": 1280,
+    "state": "lista-visitante",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 65,
+        "y": 287,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 354.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 1280,
+    "state": "fora-regiao",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 65,
+        "y": 402.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 1280,
+    "state": "localizacao-indisponivel",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 65,
+        "y": 344,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 469,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 1919,
+    "state": "lista-checkout",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 343.828125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 383,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 450.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 595.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 557,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 617.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 730.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 752.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 830,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 813.0234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 882,
+      "width": 580,
+      "height": 48
+    }
+  },
+  {
+    "width": 1919,
+    "state": "menu",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 343.828125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 383,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 450.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 595.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 557,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 617.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 730.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 752.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 830,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 403.21875,
+        "y": 687.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": {
+      "x": 337,
+      "y": 613.5,
+      "width": 282,
+      "height": 123,
+      "modal": false,
+      "anchor": {
+        "x": 579,
+        "y": 744.5,
+        "width": 40,
+        "height": 40
+      }
+    },
+    "confirmationModal": false,
+    "toast": {
+      "x": 813.0234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 882,
+      "width": 580,
+      "height": 48
+    }
+  },
+  {
+    "width": 1919,
+    "state": "editar",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 343.828125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 104.8125,
+        "y": 1009,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 268.296875,
+        "y": 1009,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 440.75,
+        "y": 1009,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 813.0234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 1115,
+      "width": 512,
+      "height": 48
+    }
+  },
+  {
+    "width": 1919,
+    "state": "validacao",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 343.828125,
+        "y": -77,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 104.8125,
+        "y": 666,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 268.296875,
+        "y": 666,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 440.75,
+        "y": 666,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 813.0234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 772,
+      "width": 512,
+      "height": 48
+    }
+  },
+  {
+    "width": 1919,
+    "state": "remover",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 343.828125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 813.0234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1919,
+    "state": "toast-removido",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 343.828125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 383,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 450.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 595.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 617.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 695,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 864.7109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 747,
+      "width": 580,
+      "height": 48
+    }
+  },
+  {
+    "width": 1919,
+    "state": "anteriores",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 343.828125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 502.5,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 637.5,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 772.5,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 864.7109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1919,
+    "state": "sem-resultados",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 343.828125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 384,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 864.7109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1919,
+    "state": "busca",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 343.828125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 384,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 64,
+        "y": 480,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 64,
+        "y": 580,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 64,
+        "y": 671,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 864.7109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1919,
+    "state": "mapa",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 343.828125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 419,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 516,
+        "y": 492,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 864.7109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 836,
+      "width": 512,
+      "height": 48
+    }
+  },
+  {
+    "width": 1919,
+    "state": "dados",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 343.828125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 48,
+        "y": 586,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 104.8125,
+        "y": 1065,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 268.296875,
+        "y": 1065,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 440.75,
+        "y": 1065,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 864.7109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 1171,
+      "width": 512,
+      "height": 48
+    }
+  },
+  {
+    "width": 1919,
+    "state": "toast-salvo",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 343.828125,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 383,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 450.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 595.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 617.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 720,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 692,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 742,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 809,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 828.28125,
+      "y": 769,
+      "width": 262.4375,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 861,
+      "width": 580,
+      "height": 48
+    }
+  },
+  {
+    "width": 1919,
+    "state": "lista-visitante",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 65,
+        "y": 287,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 354.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 1919,
+    "state": "fora-regiao",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 65,
+        "y": 402.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 1919,
+    "state": "localizacao-indisponivel",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 65,
+        "y": 344,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 469,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 1920,
+    "state": "lista-checkout",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 344,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 383,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 450.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 595.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 557,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 617.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 730.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 752.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 830,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 813.5234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 882,
+      "width": 580,
+      "height": 48
+    }
+  },
+  {
+    "width": 1920,
+    "state": "menu",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 344,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 383,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 450.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 595.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 557,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 617.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 730.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 752.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 830,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 403.21875,
+        "y": 687.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": {
+      "x": 337,
+      "y": 613.5,
+      "width": 282,
+      "height": 123,
+      "modal": false,
+      "anchor": {
+        "x": 579,
+        "y": 744.5,
+        "width": 40,
+        "height": 40
+      }
+    },
+    "confirmationModal": false,
+    "toast": {
+      "x": 813.5234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 882,
+      "width": 580,
+      "height": 48
+    }
+  },
+  {
+    "width": 1920,
+    "state": "editar",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 344,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 104.8125,
+        "y": 1009,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 268.296875,
+        "y": 1009,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 440.75,
+        "y": 1009,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 813.5234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 1115,
+      "width": 512,
+      "height": 48
+    }
+  },
+  {
+    "width": 1920,
+    "state": "validacao",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 344,
+        "y": -77,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 104.8125,
+        "y": 666,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 268.296875,
+        "y": 666,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 440.75,
+        "y": 666,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 813.5234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 772,
+      "width": 512,
+      "height": 48
+    }
+  },
+  {
+    "width": 1920,
+    "state": "remover",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 344,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 813.5234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1920,
+    "state": "toast-removido",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 344,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 383,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 450.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 595.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 617.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 695,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 865.2109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 747,
+      "width": 580,
+      "height": 48
+    }
+  },
+  {
+    "width": 1920,
+    "state": "anteriores",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 344,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 502.5,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 637.5,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 772.5,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 865.2109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1920,
+    "state": "sem-resultados",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 344,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 384,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 865.2109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1920,
+    "state": "busca",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 344,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 384,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 64,
+        "y": 480,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 64,
+        "y": 580,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 64,
+        "y": 671,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 865.2109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1920,
+    "state": "mapa",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 344,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 419,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 516,
+        "y": 492,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 865.2109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 836,
+      "width": 512,
+      "height": 48
+    }
+  },
+  {
+    "width": 1920,
+    "state": "dados",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 344,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 48,
+        "y": 586,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 104.8125,
+        "y": 1065,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 268.296875,
+        "y": 1065,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 440.75,
+        "y": 1065,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 865.2109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 1171,
+      "width": 512,
+      "height": 48
+    }
+  },
+  {
+    "width": 1920,
+    "state": "toast-salvo",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 344,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 383,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 450.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 595.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 617.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 720,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 692,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 742,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 809,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 828.78125,
+      "y": 769,
+      "width": 262.4375,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 861,
+      "width": 580,
+      "height": 48
+    }
+  },
+  {
+    "width": 1920,
+    "state": "lista-visitante",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 65,
+        "y": 287,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 354.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 1920,
+    "state": "fora-regiao",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 65,
+        "y": 402.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 1920,
+    "state": "localizacao-indisponivel",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 65,
+        "y": 344,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 469,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 1921,
+    "state": "lista-checkout",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 344.15625,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 383,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 450.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 595.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 557,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 617.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 730.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 752.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 830,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 814.0234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 882,
+      "width": 580,
+      "height": 48
+    }
+  },
+  {
+    "width": 1921,
+    "state": "menu",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 344.15625,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 383,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 450.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 595.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 557,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 617.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 730.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 752.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 830,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 403.21875,
+        "y": 687.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": {
+      "x": 337,
+      "y": 613.5,
+      "width": 282,
+      "height": 123,
+      "modal": false,
+      "anchor": {
+        "x": 579,
+        "y": 744.5,
+        "width": 40,
+        "height": 40
+      }
+    },
+    "confirmationModal": false,
+    "toast": {
+      "x": 814.0234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 882,
+      "width": 580,
+      "height": 48
+    }
+  },
+  {
+    "width": 1921,
+    "state": "editar",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 344.15625,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 104.8125,
+        "y": 1009,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 268.296875,
+        "y": 1009,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 440.75,
+        "y": 1009,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 814.0234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 1115,
+      "width": 512,
+      "height": 48
+    }
+  },
+  {
+    "width": 1921,
+    "state": "validacao",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 344.15625,
+        "y": -77,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 104.8125,
+        "y": 666,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 268.296875,
+        "y": 666,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 440.75,
+        "y": 666,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 814.0234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 772,
+      "width": 512,
+      "height": 48
+    }
+  },
+  {
+    "width": 1921,
+    "state": "remover",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 344.15625,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 814.0234375,
+      "y": 769,
+      "width": 292.953125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1921,
+    "state": "toast-removido",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 344.15625,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 383,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 450.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 595.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 617.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 695,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 865.7109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 747,
+      "width": 580,
+      "height": 48
+    }
+  },
+  {
+    "width": 1921,
+    "state": "anteriores",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 344.15625,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 502.5,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 637.5,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 772.5,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 865.7109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1921,
+    "state": "sem-resultados",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 344.15625,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 384,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 865.7109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1921,
+    "state": "busca",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 344.15625,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 384,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 64,
+        "y": 480,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 64,
+        "y": 580,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 64,
+        "y": 671,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 865.7109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": null
+  },
+  {
+    "width": 1921,
+    "state": "mapa",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 344.15625,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 419,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 516,
+        "y": 492,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 865.7109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 836,
+      "width": 512,
+      "height": 48
+    }
+  },
+  {
+    "width": 1921,
+    "state": "dados",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 344.15625,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 48,
+        "y": 586,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 104.8125,
+        "y": 1065,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 268.296875,
+        "y": 1065,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 440.75,
+        "y": 1065,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 865.7109375,
+      "y": 769,
+      "width": 189.578125,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 1171,
+      "width": 512,
+      "height": 48
+    }
+  },
+  {
+    "width": 1921,
+    "state": "toast-salvo",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 344.15625,
+        "y": 290,
+        "width": 16,
+        "height": 16
+      },
+      {
+        "x": 65,
+        "y": 383,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 450.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 595.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 617.5,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 65,
+        "y": 720,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 692,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 587,
+        "y": 742,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 809,
+        "width": 16,
+        "height": 16
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": {
+      "x": 829.28125,
+      "y": 769,
+      "width": 262.4375,
+      "height": 51
+    },
+    "action": {
+      "x": 48,
+      "y": 861,
+      "width": 580,
+      "height": 48
+    }
+  },
+  {
+    "width": 1921,
+    "state": "lista-visitante",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 65,
+        "y": 287,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 52,
+        "y": 354.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 1921,
+    "state": "fora-regiao",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 65,
+        "y": 402.5,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  },
+  {
+    "width": 1921,
+    "state": "localizacao-indisponivel",
+    "overflow": 0,
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "back": [
+      "Voltar"
+    ],
+    "icons": [
+      {
+        "x": 65,
+        "y": 344,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 48,
+        "y": 469,
+        "width": 24,
+        "height": 24
+      }
+    ],
+    "menu": null,
+    "confirmationModal": false,
+    "toast": null,
+    "action": null
+  }
+]

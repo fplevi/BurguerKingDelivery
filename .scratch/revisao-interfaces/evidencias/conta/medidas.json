@@ -1,0 +1,10345 @@
+[
+  {
+    "width": 320,
+    "state": "conta",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "conta-dados",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "conta-enderecos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "conta-pagamentos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "conta-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "conta-sair",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "conta-celular",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "novo-celular-whatsapp",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 671.78125,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 727.78125,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 783.78125,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "novo-celular-incorreto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 734.15625,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 790.15625,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 846.15625,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "novo-celular-reenvio",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 539.15625,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 595.15625,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 651.15625,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "novo-celular-sms",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 539.15625,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "y": 595.15625,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 651.15625,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "celular-atualizado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "dados-invalidos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "dados-salvos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "celular-vinculado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "remover-endereco-Trabalho",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "endereco-removido-Trabalho",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "remover-endereco-Casa",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "endereco-removido-Casa",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "remover-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "nenhum-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "conta",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "conta-dados",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "conta-enderecos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "conta-pagamentos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "conta-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "conta-sair",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "conta-celular",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "novo-celular-whatsapp",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 619.984375,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 675.984375,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 731.984375,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "novo-celular-incorreto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 664.171875,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 720.171875,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 776.171875,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "novo-celular-reenvio",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 664.171875,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 720.171875,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 776.171875,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "novo-celular-sms",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 664.171875,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "y": 720.171875,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 776.171875,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "celular-atualizado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "dados-invalidos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "dados-salvos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "celular-vinculado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "remover-endereco-Trabalho",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "endereco-removido-Trabalho",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "remover-endereco-Casa",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "endereco-removido-Casa",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "remover-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "nenhum-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "conta",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "conta-dados",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "conta-enderecos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "conta-pagamentos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "conta-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "conta-sair",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "conta-celular",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "novo-celular-whatsapp",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 619.984375,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 675.984375,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 731.984375,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "novo-celular-incorreto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 664.171875,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 720.171875,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 776.171875,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "novo-celular-reenvio",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 664.171875,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 720.171875,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 776.171875,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "novo-celular-sms",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 643.171875,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "y": 699.171875,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 755.171875,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "celular-atualizado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "dados-invalidos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "dados-salvos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "celular-vinculado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "remover-endereco-Trabalho",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "endereco-removido-Trabalho",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "remover-endereco-Casa",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "endereco-removido-Casa",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "remover-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "nenhum-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "conta",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "conta-dados",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "conta-enderecos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "conta-pagamentos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "conta-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "conta-sair",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "conta-celular",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "novo-celular-whatsapp",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 559.984375,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 615.984375,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 671.984375,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "novo-celular-incorreto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 604.171875,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 660.171875,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 716.171875,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "novo-celular-reenvio",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 604.171875,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 660.171875,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 716.171875,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "novo-celular-sms",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 604.171875,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "y": 660.171875,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 716.171875,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "celular-atualizado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "dados-invalidos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "dados-salvos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "celular-vinculado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "remover-endereco-Trabalho",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "endereco-removido-Trabalho",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "remover-endereco-Casa",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "endereco-removido-Casa",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "remover-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "nenhum-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "conta",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "conta-dados",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "conta-enderecos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "conta-pagamentos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "conta-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "conta-sair",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "conta-celular",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "novo-celular-whatsapp",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 559.984375,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 615.984375,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 671.984375,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "novo-celular-incorreto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 604.171875,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 660.171875,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 716.171875,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "novo-celular-reenvio",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 604.171875,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 660.171875,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 716.171875,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "novo-celular-sms",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 604.171875,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "y": 660.171875,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 716.171875,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "celular-atualizado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "dados-invalidos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "dados-salvos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "celular-vinculado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "remover-endereco-Trabalho",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "endereco-removido-Trabalho",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "remover-endereco-Casa",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "endereco-removido-Casa",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "remover-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "nenhum-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "conta",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "conta-dados",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "conta-enderecos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "conta-pagamentos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "conta-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "conta-sair",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "conta-celular",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "novo-celular-whatsapp",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 541.375,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 597.375,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 653.375,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "novo-celular-incorreto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 585.5625,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 641.5625,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 697.5625,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "novo-celular-reenvio",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 585.5625,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 641.5625,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 697.5625,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "novo-celular-sms",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 564.5625,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "y": 620.5625,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 676.5625,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "celular-atualizado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "dados-invalidos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "dados-salvos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "celular-vinculado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "remover-endereco-Trabalho",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "endereco-removido-Trabalho",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "remover-endereco-Casa",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "endereco-removido-Casa",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "remover-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "nenhum-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "conta",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "conta-dados",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "conta-enderecos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "conta-pagamentos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "conta-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "conta-sair",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "conta-celular",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "novo-celular-whatsapp",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 541.375,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 597.375,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 653.375,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "novo-celular-incorreto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 585.5625,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 641.5625,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 697.5625,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "novo-celular-reenvio",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 585.5625,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 641.5625,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 697.5625,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "novo-celular-sms",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 564.5625,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "y": 620.5625,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 676.5625,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "celular-atualizado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "dados-invalidos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "dados-salvos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "celular-vinculado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "remover-endereco-Trabalho",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "endereco-removido-Trabalho",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "remover-endereco-Casa",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "endereco-removido-Casa",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "remover-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "nenhum-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "conta",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "conta-dados",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "conta-enderecos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "conta-pagamentos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "conta-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "conta-sair",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "conta-celular",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "novo-celular-whatsapp",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 520.375,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 576.375,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 632.375,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "novo-celular-incorreto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 564.5625,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 620.5625,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 676.5625,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "novo-celular-reenvio",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 564.5625,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 620.5625,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 676.5625,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "novo-celular-sms",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 564.5625,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "y": 620.5625,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 676.5625,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "celular-atualizado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "dados-invalidos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "dados-salvos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "celular-vinculado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "remover-endereco-Trabalho",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "endereco-removido-Trabalho",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "remover-endereco-Casa",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "endereco-removido-Casa",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "remover-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "nenhum-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "conta",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "conta-dados",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "conta-enderecos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "conta-pagamentos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "conta-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "conta-sair",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "conta-celular",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "novo-celular-whatsapp",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 520.375,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 576.375,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 632.375,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "novo-celular-incorreto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 564.5625,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 620.5625,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 676.5625,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "novo-celular-reenvio",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 564.5625,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 620.5625,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 676.5625,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "novo-celular-sms",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 564.5625,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "y": 620.5625,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 676.5625,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "celular-atualizado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "dados-invalidos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "dados-salvos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "celular-vinculado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "remover-endereco-Trabalho",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "endereco-removido-Trabalho",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "remover-endereco-Casa",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "endereco-removido-Casa",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "remover-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "nenhum-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "conta",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "conta-dados",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "conta-enderecos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "conta-pagamentos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "conta-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "conta-sair",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "conta-celular",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "novo-celular-whatsapp",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 520.375,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 576.375,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 632.375,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "novo-celular-incorreto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 564.5625,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 620.5625,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 676.5625,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "novo-celular-reenvio",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 564.5625,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 620.5625,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 676.5625,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "novo-celular-sms",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 564.5625,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "y": 620.5625,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 676.5625,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "celular-atualizado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "dados-invalidos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "dados-salvos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "celular-vinculado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "remover-endereco-Trabalho",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "endereco-removido-Trabalho",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "remover-endereco-Casa",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "endereco-removido-Casa",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "remover-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "nenhum-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "conta",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "conta-dados",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "conta-enderecos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "conta-pagamentos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "conta-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "conta-sair",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "conta-celular",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "novo-celular-whatsapp",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 520.375,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 576.375,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 632.375,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "novo-celular-incorreto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 564.5625,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 620.5625,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 676.5625,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "novo-celular-reenvio",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 564.5625,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "y": 620.5625,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 676.5625,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "novo-celular-sms",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [
+      {
+        "text": "Confirmar e continuar",
+        "y": 564.5625,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "y": 620.5625,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "y": 676.5625,
+        "height": 48
+      }
+    ],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "celular-atualizado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "dados-invalidos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "dados-salvos",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "celular-vinculado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "remover-endereco-Trabalho",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "endereco-removido-Trabalho",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "remover-endereco-Casa",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "endereco-removido-Casa",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "remover-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "nenhum-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "spacing": [],
+    "actions": [],
+    "icons": [
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      },
+      {
+        "width": 24,
+        "height": 24
+      }
+    ]
+  }
+]

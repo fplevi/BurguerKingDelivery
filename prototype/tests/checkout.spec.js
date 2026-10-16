@@ -64,7 +64,7 @@ test('o Resumo do pedido mostra os Itens com Combo, bebida e o que foi retirado,
 
 test('Voltar ao carrinho, Editar carrinho e o Voltar do navegador levam ao Carrinho, que ainda volta ao cardápio', async ({ page }) => {
   await irAoCheckout(page);
-  await checkout(page).getByRole('button', { name: 'Voltar ao carrinho' }).click();
+  await checkout(page).getByRole('button', { name: 'Voltar', exact: true }).click();
   await expect(carrinho(page)).toBeVisible();
   await expect(page).toHaveURL(/#carrinho$/);
 
@@ -76,7 +76,7 @@ test('Voltar ao carrinho, Editar carrinho e o Voltar do navegador levam ao Carri
   await page.goBack();
   await expect(carrinho(page)).toBeVisible();
   // The Carrinho's own way back still goes to the category it was opened from.
-  await carrinho(page).getByRole('button', { name: 'Voltar ao cardápio' }).click();
+  await carrinho(page).getByRole('button', { name: 'Voltar', exact: true }).click();
   await expect(page).toHaveURL(/#acompanhamentos$/);
   await expect(page.getByRole('heading', { name: 'Escolha seu acompanhamento' })).toBeVisible();
 });
@@ -84,7 +84,7 @@ test('Voltar ao carrinho, Editar carrinho e o Voltar do navegador levam ao Carri
 test('o Checkout não tem categoria ativa no cabeçalho', async ({ page }) => {
   await irAoCheckout(page);
   await expect(categorias(page).locator('[aria-current]')).toHaveCount(0);
-  await checkout(page).getByRole('button', { name: 'Voltar ao carrinho' }).click();
+  await checkout(page).getByRole('button', { name: 'Voltar', exact: true }).click();
   await expect(carrinho(page)).toBeVisible();
 });
 

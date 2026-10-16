@@ -1,0 +1,60 @@
+
+> burger-king-prototype@0.0.0 test:build
+> playwright test tests/pagamento.spec.js tests/acompanhamento.spec.js
+
+[WebServer] (node:25864) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:25944) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] [plugin builtin:vite-reporter] 
+[WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:
+[WebServer] - Using dynamic import() to code-split the application
+[WebServer] - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+[WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[WebServer] (node:18352) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:20408) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 30 tests using 2 workers
+
+(node:17120) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:13996) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [desktop] › tests\acompanhamento.spec.js:66:1 › a caminho: a moto no mapa, a distância restante, o entregador com WhatsApp e a linha do tempo até ali (2.4s)
+  ok  2 [desktop] › tests\acompanhamento.spec.js:36:1 › Acompanhar pedido, na confirmação do Checkout, abre o acompanhamento do Pedido confirmado (2.5s)
+  ok  4 [desktop] › tests\acompanhamento.spec.js:100:1 › #BK-10482, fixo em Pedido retirado: saindo da loja, com 2,4 km restantes (1.3s)
+  ok  3 [desktop] › tests\acompanhamento.spec.js:83:1 › a situação avança sozinha: o entregador aparece na retirada e a moto anda até o endereço (1.8s)
+  ok  5 [desktop] › tests\acompanhamento.spec.js:108:1 › Acompanhar pedido de Minha conta e de Meus pedidos abre o mesmo acompanhamento (1.4s)
+  ok  6 [desktop] › tests\pagamento.spec.js:37:1 › Forma de pagamento: Pix ou Cartão de crédito, uma só, e a ação do Resumo do pedido acompanha a escolha (1.5s)
+  ok  7 [desktop] › tests\pagamento.spec.js:63:1 › Cartão salvo com código de segurança válido: processamento com a tela desabilitada e Pedido confirmado #BK-10483 (1.7s)
+  ok  9 [desktop] › tests\pagamento.spec.js:151:1 › Novo cartão: a bandeira vem do número; Visa aprovado sem salvar, com o número mascarado (3.4s)
+  ok 10 [desktop] › tests\pagamento.spec.js:170:1 › Novo cartão: campos obrigatórios e "Número de cartão inválido" sem chegar ao processamento (1.4s)
+  ok  8 [desktop] › tests\pagamento.spec.js:119:1 › Cartão salvo com CVV 000 é recusado: Itens, Personalizações e endereço ficam, com outro cartão ou Pix (6.4s)
+  ok 11 [desktop] › tests\pagamento.spec.js:188:1 › Novo cartão 4000 0000 0000 0002 é recusado e continua preenchido para revisar (3.5s)
+  ok 12 [desktop] › tests\pagamento.spec.js:197:1 › Mastercard salvo entra em Seus cartões; o próximo checkout da sessão reaproveita tudo e confirma #BK-10484 (6.0s)
+  ok 13 [desktop] › tests\pagamento.spec.js:224:1 › O nome impresso de um cartão salvo aparece como texto em Seus cartões (3.8s)
+  ok 14 [desktop] › tests\pagamento.spec.js:238:1 › Pedido confirmado: Acompanhar pedido abre o acompanhamento, Voltar ao cardápio leva à última categoria e o Voltar do navegador ao cardápio (3.4s)
+(node:27536) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 15 [desktop] › tests\pagamento.spec.js:264:1 › Voltar ao cardápio leva à última categoria vista; #pedido sem Pedido confirmado leva ao cardápio (3.2s)
+(node:19492) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 16 [mobile-390] › tests\acompanhamento.spec.js:36:1 › Acompanhar pedido, na confirmação do Checkout, abre o acompanhamento do Pedido confirmado (2.8s)
+  ok 17 [mobile-390] › tests\acompanhamento.spec.js:66:1 › a caminho: a moto no mapa, a distância restante, o entregador com WhatsApp e a linha do tempo até ali (2.8s)
+  ok 18 [mobile-390] › tests\acompanhamento.spec.js:83:1 › a situação avança sozinha: o entregador aparece na retirada e a moto anda até o endereço (2.3s)
+  ok 19 [mobile-390] › tests\acompanhamento.spec.js:100:1 › #BK-10482, fixo em Pedido retirado: saindo da loja, com 2,4 km restantes (1.6s)
+  ok 20 [mobile-390] › tests\acompanhamento.spec.js:108:1 › Acompanhar pedido de Minha conta e de Meus pedidos abre o mesmo acompanhamento (1.8s)
+  ok 21 [mobile-390] › tests\pagamento.spec.js:37:1 › Forma de pagamento: Pix ou Cartão de crédito, uma só, e a ação do Resumo do pedido acompanha a escolha (2.0s)
+  ok 22 [mobile-390] › tests\pagamento.spec.js:63:1 › Cartão salvo com código de segurança válido: processamento com a tela desabilitada e Pedido confirmado #BK-10483 (2.1s)
+  ok 24 [mobile-390] › tests\pagamento.spec.js:151:1 › Novo cartão: a bandeira vem do número; Visa aprovado sem salvar, com o número mascarado (3.6s)
+  ok 23 [mobile-390] › tests\pagamento.spec.js:119:1 › Cartão salvo com CVV 000 é recusado: Itens, Personalizações e endereço ficam, com outro cartão ou Pix (6.7s)
+  ok 25 [mobile-390] › tests\pagamento.spec.js:170:1 › Novo cartão: campos obrigatórios e "Número de cartão inválido" sem chegar ao processamento (1.6s)
+  ok 26 [mobile-390] › tests\pagamento.spec.js:188:1 › Novo cartão 4000 0000 0000 0002 é recusado e continua preenchido para revisar (3.6s)
+  ok 27 [mobile-390] › tests\pagamento.spec.js:197:1 › Mastercard salvo entra em Seus cartões; o próximo checkout da sessão reaproveita tudo e confirma #BK-10484 (6.2s)
+  ok 28 [mobile-390] › tests\pagamento.spec.js:224:1 › O nome impresso de um cartão salvo aparece como texto em Seus cartões (3.9s)
+  ok 29 [mobile-390] › tests\pagamento.spec.js:238:1 › Pedido confirmado: Acompanhar pedido abre o acompanhamento, Voltar ao cardápio leva à última categoria e o Voltar do navegador ao cardápio (3.8s)
+  ok 30 [mobile-390] › tests\pagamento.spec.js:264:1 › Voltar ao cardápio leva à última categoria vista; #pedido sem Pedido confirmado leva ao cardápio (3.8s)
+
+  30 passed (52.1s)

@@ -82,11 +82,11 @@ test('um Pedido da sessão já entregue vai para o Histórico e o #BK-10482 volt
   await expect(pedido(page, 'BK-10483')).toContainText('Pedido entregue');
 });
 
-test('sem Pedidos: "Seu primeiro pedido começa aqui", com Explorar o cardápio e Voltar à minha conta', async ({ page }) => {
+test('sem Pedidos: "Seu primeiro pedido começa aqui", com Explorar o cardápio e Voltar à Minha conta', async ({ page }) => {
   await entrar(page, '11987654321');
   const vazio = conta(page).getByRole('region', { name: 'Seu primeiro pedido começa aqui' });
   await expect(vazio).toContainText('Quando fizer um pedido com este celular, ele aparecerá nesta área.');
-  await vazio.getByRole('link', { name: 'Voltar à minha conta' }).click();
+  await vazio.getByRole('link', { name: 'Voltar', exact: true }).click();
   await expect(page).toHaveURL(/#conta$/);
   await page.goBack();
   await vazio.getByRole('link', { name: 'Explorar o cardápio' }).click();

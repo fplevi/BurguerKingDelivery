@@ -64,12 +64,12 @@ test('Novo cliente informa nome e e-mail antes de voltar', async ({ page }) => {
   await expect(cabecalho(page).getByRole('button', { name: 'Minha conta · Ana' })).toBeVisible();
 });
 
-test('Fechar volta à página de origem sem mexer no Carrinho', async ({ page }) => {
+test('Voltar retorna à página de origem sem mexer no Carrinho', async ({ page }) => {
   await page.goto('/#acompanhamentos');
   await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
   await cabecalho(page).getByRole('button', { name: 'Identifique-se' }).click();
   await identificacao(page).getByRole('textbox', { name: 'Celular com DDD' }).fill('61999991234');
-  await pagina(page).getByRole('button', { name: 'Fechar' }).click();
+  await pagina(page).getByRole('button', { name: 'Voltar', exact: true }).click();
   await expect(page).toHaveURL(/#acompanhamentos$/);
   await expect(cabecalho(page).getByRole('button', { name: 'Carrinho · 1' })).toBeVisible();
   await expect(cabecalho(page).getByRole('button', { name: 'Identifique-se' })).toBeVisible();

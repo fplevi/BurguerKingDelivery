@@ -98,7 +98,7 @@ test('o aviso some ao sair da tela do Carrinho', async ({ page }) => {
   await itens(page).nth(2).getByRole('button', { name: 'Remover' }).click();
   await expect(removido(page)).toBeVisible();
 
-  await carrinho(page).getByRole('button', { name: 'Voltar ao cardápio' }).click();
+  await carrinho(page).getByRole('button', { name: 'Voltar', exact: true }).click();
   await page.getByRole('button', { name: 'Carrinho · 3' }).click();
   await expect(itens(page)).toHaveCount(2);
   await expect(removido(page)).toHaveCount(0);
