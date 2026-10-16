@@ -1,0 +1,41 @@
+/* Pedidos: Figma Conta 18–21 / Pedidos, using the shared account foundations. */
+#account-page .orders-card, #account-page .orders-empty { font-size: 16px; }
+#account-page :is(.orders-card, .orders-empty) h2,
+#account-page .account-group { font-weight: 700; }
+#account-page .order-forecast { font-size: 16px; }
+#account-page .account-list { gap: var(--space-16); }
+#account-page .orders-empty .account-back { width: max-content; min-width: 112px; }
+#account-page .track { width: 100%; gap: var(--space-16); grid-template-columns: minmax(0, 1.32fr) minmax(260px, 1fr); }
+#account-page .track-main { gap: var(--space-16); }
+#account-page .track .account-card { padding: var(--space-16); }
+#account-page .track .account-card h2 { font-size: 18px; font-weight: 700; line-height: 1.45; margin-bottom: var(--space-12); }
+#account-page .track .track-head h2 { font-size: 28px; }
+#account-page .track .account-card p { margin-bottom: var(--space-12); }
+#account-page .track .account-card > :last-child { margin-bottom: 0; }
+#account-page .track .track-eta { font-weight: 700; margin-bottom: var(--space-12) !important; }
+#account-page .track-map { margin: var(--space-12) 0; border-radius: var(--radius-item); }
+#account-page .track-map .map-credit { margin: 0; padding: var(--space-4); font-size: 11px; }
+#account-page .track-whatsapp { gap: var(--space-8); margin: var(--space-12) 0; padding: var(--space-12) var(--space-16); font-family: var(--font-display); font-weight: 700; }
+#account-page .track-whatsapp span:last-child { min-width: 0; }
+.track-whatsapp-icon { display: inline-block; flex: none; width: 16px; height: 16px; background: currentColor; mask: url('../Assets/icons/whatsapp.svg') center / contain no-repeat; }
+#account-page .track-store { margin-top: var(--space-8); }
+#account-page .track-store-name { margin: var(--space-8) 0 var(--space-4) !important; }
+#account-page .timeline li { min-height: 72px; padding: 0 0 var(--space-24) var(--space-32); }
+#account-page .timeline li:last-child { min-height: 0; padding-bottom: 0; }
+#account-page .tl-name { line-height: 20px; }
+#account-page .tl-when { margin-top: var(--space-4); font-size: 12px; line-height: 17px; }
+#account-page .track-items { min-width: 0; overflow-wrap: anywhere; }
+#account-page .track-items .order-summary { min-width: 0; padding: var(--space-24); border: 1px solid var(--border); border-radius: var(--radius-panel); background: var(--surface-purchase); }
+#account-page .track-items h2 { margin-bottom: var(--space-16); font-family: var(--font-display); font-weight: 700; }
+#account-page .track-items .order-items { gap: var(--space-16); }
+#account-page .track-items .order-grand { margin-top: var(--space-16); padding-top: var(--space-16); }
+#account-page .track-items .order-total { margin-top: var(--space-16); padding-top: var(--space-16); }
+#account-page .track-items .order-summary > .account-meta { margin: var(--space-16) 0; }
+#account-page .track-items .account-back { align-self: start; gap: var(--space-8); width: max-content; min-width: 112px; margin-top: var(--space-8); font-size: 16px; }
+/* The account sidebar leaves too little room for map + timeline below 1160px. */
+@media(max-width:1159px) {
+  #account-page .track { grid-template-columns: minmax(0, 1fr); }
+}
+@media(max-width:359px) {
+  #account-page .track-items .order-line { flex-wrap: wrap; gap: var(--space-4) var(--space-16); }
+}

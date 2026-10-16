@@ -6,8 +6,9 @@ test.beforeEach(async ({ page }) => {
   await page.goto('/');
 });
 
-/** The icon the chip shows now: the `use` of its visible svg ("check", "plus" or "minus"). */
-const icone = (botao) => botao.locator('svg:visible use').getAttribute('href').then((href) => href.replace('#icon-', ''));
+/** The original SVG used as the visible chip icon's mask. */
+const icone = (botao) => botao.locator('.bk-icon:visible').evaluate(el =>
+  [...el.classList].find(name => name.startsWith('chip-icon-')).replace('chip-icon-', ''));
 
 test('a Bandeja tem só o título, o texto fixo e os ingredientes retirados', async ({ page }) => {
   await openVerIngredientes(page);

@@ -49,7 +49,7 @@ test('abrir o Carrinho leva o foco ao título "Seu carrinho"; voltar ao cardápi
   await botaoCarrinho(page, 1).click();
   await expect(page.getByRole('heading', { level: 1, name: 'Seu carrinho' })).toBeFocused();
 
-  await carrinho(page).getByRole('button', { name: 'Voltar ao cardápio' }).click();
+  await carrinho(page).getByRole('button', { name: 'Voltar', exact: true }).click();
   await expect(carrinho(page)).toBeHidden();
   await expect(botaoCarrinho(page, 1)).toBeFocused();
 });

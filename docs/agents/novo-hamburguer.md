@@ -5,7 +5,7 @@ Referência para renderizar um hambúrguer além do Whopper (tickets em `.scratc
 ## Passos
 
 1. **Receita como dado.** `prototype/src/ingredients.js` e `src/art.js` (fallback SVG) têm as camadas do Whopper escritas direto. Torne a lista configurável por produto antes de modelar qualquer camada nova.
-2. **Camadas já prontas valem para qualquer produto:** pães, carne, queijo, picles, cebola, tomate, alface, ketchup e maionese. Cada uma é um item de `layerModels` (`height` + `build`) em `src/scene/layer-models.js`. Camada nova entra ali e em `texture-recipes.js`; a cena e `main.js` não mudam.
+2. **Camadas já prontas valem para qualquer produto:** pães, carne, queijo, picles, cebola, tomate, alface, ketchup e maionese. Cada uma é um item de `layerModels` (`height` + `build`) em `src/scene/layer-models.js`. Camada nova entra ali e em `texture-recipes.js`; a cena e `main.js` não mudam, salvo opções genéricas da Receita lidas pela cena (`turn`, `spread`).
 3. **Foto de referência** de cada produto em `prototype/Assets/catalog/`. Serve só para proporção e cor (ADR 0001: sem imagens de ingrediente).
 4. **Revisão.** Gere as quatro capturas padrão (desktop e 390 × 844, montado e aberto) com a foto de referência ao lado, mais os quadros da Entrada e da Saída (`npm run quadros-entrada -- <id da Receita>`, com `npm run dev` rodando), e entregue tudo ao responsável pelo produto de uma vez. O Whopper precisou de duas rodadas, porque os pães saíram lisos e "de plástico".
 5. **Fechar:** `npm run test:build` verde e capturas anexadas ao ticket.
@@ -16,6 +16,7 @@ Referência para renderizar um hambúrguer além do Whopper (tickets em `.scratc
 - Cada camada fica dentro de um grupo próprio, e a cena só mexe nesse grupo. Zerar a rotação do modelo fez o queijo perder o losango (regressão do ticket 09, achada só na revisão do 05).
 - A rodada extra de realismo (ticket 12) foi excluída: a qualidade atual basta para a proposta.
 - Camada repetida (duas carnes, dois cheddars) gira o modelo com `turn` na receita, para não ficar idêntica; o que acompanha o contorno da carne (o cheddar de cima) gira junto (ticket 14).
+- Camada compartilhada que precisa sair mais da borda num produto (Alface e Cebola do Big King) se alarga com `spread` na receita, sem mexer no modelo dos outros. Molho com cor ou volume diferente vira modelo próprio em `layer-models.js`, nunca mudança no de um produto aprovado. Molho que escorre pela borda precisa ser arredondado em todas as pontas: dobrar a folha para baixo deixou um corte reto, "como se uma parede segurasse o molho" (revisão do Big King); o `bigKingSauce` é um corpo torneado cujo cordão da borda cede em gotas.
 
 ## Entrada e Saída (ticket 15)
 

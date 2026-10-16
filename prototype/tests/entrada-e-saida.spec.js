@@ -165,7 +165,7 @@ test('aberta no carrinho, a página guarda a Entrada para quando o cliente volta
   await gravarPosicoes(page);
   await page.goto('/#carrinho');
   await page.keyboard.press('Shift'); // actions on the way back don't spend the Entrada
-  await page.getByRole('button', { name: 'Voltar ao cardápio' }).first().click();
+  await page.getByRole('button', { name: 'Voltar', exact: true }).first().click();
   await page.waitForFunction(() => window.posicoes.length > 0);
   const posicoes = await aposAssentar(page);
 

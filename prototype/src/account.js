@@ -1,23 +1,20 @@
+import { addressIcon } from './address-icons.js';
 // Minha conta (Figma Conta 07-22): the navigation (a side list on desktop, a list that opens below 1024px) and the
 // content of each section. Rebuilt by main.js on every change; its links are plain hashes (#conta/<page>).
-import { maskPhone, esc, field, sentTo, maskCard, maskExpiry } from './checkout.js';
+import { maskPhone, esc, field, confirmationCode, maskCard, maskExpiry } from './checkout.js';
 import { money } from './state.js';
 import { trackingView } from './tracking.js';
 import { currentOrder, ordersOf, situation, situationName, forecast, hour, day, units, summary, store, routeKm } from './orders.js';
 
-const icon = (path) => `<svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">${path}</svg>`;
-const line = 'fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
-/** Icons Outline Bold of the Figma: house, person, pin, card, receipt, exit. */
 const icons = {
-  inicio: icon(`<path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z" ${line}/>`),
-  dados: icon(`<circle cx="12" cy="8" r="4" ${line}/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" ${line}/>`),
-  enderecos: icon(`<path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z" ${line}/><circle cx="12" cy="10" r="2.3" ${line}/>`),
-  pagamentos: icon(`<rect x="3" y="6" width="18" height="13" rx="2" ${line}/><path d="M3 10.5h18M7 15h4" ${line}/>`),
-  pedidos: icon(`<rect x="4" y="4" width="16" height="16" rx="2" ${line}/><path d="M8 9h8M8 13h8M8 17h5" ${line}/>`),
-  sair: icon(`<path d="M10 4H5v16h5M14 8l4 4-4 4M18 12H9" ${line}/>`),
+  inicio: addressIcon('house'),
+  dados: addressIcon('user'),
+  enderecos: addressIcon('pin'),
+  pagamentos: addressIcon('creditCard'),
+  pedidos: addressIcon('receipt'),
+  sair: addressIcon('signOut'),
 };
-const chevron = icon(`<path d="m6 9 6 6 6-6" ${line}/>`);
-
+const chevron = addressIcon('caretDown');
 /** The sections of Minha conta, in the navigation's order; Sair is apart, below a divider. */
 export const accountPages = {
   inicio: { hash: 'conta', label: 'Minha conta', title: 'Minha conta' },
@@ -74,10 +71,10 @@ const phoneLeads = { phone: 'Confirme um novo celular para manter seus dados e p
 /** Alterar celular: the new celular, its code (Reenviar, the other channel, Alterar celular), or "Celular já vinculado". */
 function phoneChange({ phoneChange: p }) {
   if (p.step === 'conflict')
-    return `<section class="account-card" aria-labelledby="conflict-title"><h2 id="conflict-title">Não foi possível vincular este número.</h2><p>Este celular já está vinculado a outro cadastro. Seus dados e pedidos permanecem no celular atual.</p><div class="account-buttons account-buttons-column"><button class="primary account-action" type="button" data-phone-other>Informar outro celular</button><a class="secondary account-action" href="#conta/dados">Voltar aos meus dados</a></div></section>`;
+    return `<section class="account-card" aria-labelledby="conflict-title"><h2 id="conflict-title">Não foi possível vincular este número.</h2><p>Este celular já está vinculado a outro cadastro. Seus dados e pedidos permanecem no celular atual.</p><div class="account-buttons account-buttons-column"><button class="primary account-action" type="button" data-phone-other>Informar outro celular</button><a class="secondary account-action account-back" href="#conta/dados"><span class="navigation-arrow" aria-hidden="true"></span>Voltar</a></div></section>`;
   const card =
     p.step === 'code'
-      ? `<h2>Confirme seu celular</h2><p class="step-text">${sentTo(p.channel, p.phone).replace(/\.$/, '')}. Confirme para atualizar seu celular.</p><form class="id-form" data-phone-form="code" novalidate>${field('new-code', 'Código de 6 dígitos', `inputmode="numeric" autocomplete="one-time-code" maxlength="6" value="${p.code}"`, p.codeError ? 'Código incorreto. Confira e tente novamente.' : '')}<button class="primary" type="submit"${p.code.length < 6 || p.codeError ? ' disabled' : ''}>Confirmar e continuar</button></form><div class="id-links"><button class="link" type="button" data-phone-resend>Reenviar código</button><button class="link" type="button" data-phone-channel>${p.channel === 'sms' ? 'Receber pelo WhatsApp' : 'Receber por SMS'}</button><button class="link" type="button" data-phone-back>Alterar celular</button></div>`
+      ? confirmationCode(p, { updating: true })
       : `<h2>Qual é o seu celular?</h2><p class="step-text">Vamos enviar um código para confirmar que é você.</p><form class="id-form" data-phone-form="phone" novalidate>${field('new-phone', 'Celular com DDD', `type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="(00) 00000-0000" value="${maskPhone(p.phone)}"`, p.error)}<button class="primary" type="submit" data-phone-send="whatsapp"${p.phone.length === 11 ? '' : ' disabled'}>Receber código pelo WhatsApp</button><button class="link" type="submit" data-phone-send="sms"${p.phone.length === 11 ? '' : ' disabled'}>Receber por SMS</button></form><p class="step-note">Seus dados só serão recuperados após a confirmação.</p>`;
   return `<p class="account-lead">${phoneLeads[p.step]}</p><section class="account-card checkout-step" aria-label="Alterar celular">${card}</section><a class="secondary account-action" href="#conta/dados">Cancelar</a>`;
 }
@@ -132,12 +129,12 @@ const removeCard = (k) =>
 function orders(state, now) {
   const all = ordersOf(state, now);
   if (!all.length)
-    return `<section class="account-card" aria-labelledby="no-orders"><h2 id="no-orders">Seu primeiro pedido começa aqui</h2><p>Quando fizer um pedido com este celular, ele aparecerá nesta área.</p><div class="account-buttons account-buttons-column"><a class="primary account-action" href="#${state.category}">Explorar o cardápio</a><a class="secondary account-action" href="#conta">Voltar à minha conta</a></div></section>`;
+    return `<section class="account-card orders-empty" aria-labelledby="no-orders"><h2 id="no-orders">Seu primeiro pedido começa aqui</h2><p>Quando fizer um pedido com este celular, ele aparecerá nesta área.</p><div class="account-buttons account-buttons-column"><a class="primary account-action" href="#${state.category}">Explorar o cardápio</a><a class="secondary account-action account-back" href="#conta"><span class="navigation-arrow" aria-hidden="true"></span>Voltar</a></div></section>`;
   const card = (o) => {
     const live = !situation(o, now).done,
       [from, to] = forecast(o);
     const extra = live ? `<p class="order-forecast">Chega entre ${hour(from)} e ${hour(to)}</p><p class="account-meta">Entrega em ${esc(o.address.label)} · ${store.short} · ${routeKm}</p>` : '';
-    return `<section class="account-card" aria-labelledby="order-${o.id}"><h2 id="order-${o.id}">Pedido #${o.id}</h2><p class="account-meta">${day(o.confirmedAt, now)}, ${hour(o.confirmedAt)}</p><p class="account-meta">${situationName(o, now)}</p>${extra}<p>${summary(o)} · ${money(o.total)}</p><a class="${live ? 'primary' : 'secondary'} account-action" href="#conta/pedidos/${o.id}" aria-label="${live ? 'Acompanhar' : 'Ver detalhes do'} pedido #${o.id}">${live ? 'Acompanhar pedido' : 'Ver detalhes'}</a></section>`;
+    return `<section class="account-card orders-card" aria-labelledby="order-${o.id}"><h2 id="order-${o.id}">Pedido #${o.id}</h2><p class="account-meta">${day(o.confirmedAt, now)}, ${hour(o.confirmedAt)}</p><p class="account-meta">${situationName(o, now)}</p>${extra}<p>${summary(o)} · ${money(o.total)}</p><a class="${live ? 'primary' : 'secondary'} account-action" href="#conta/pedidos/${o.id}" aria-label="${live ? 'Acompanhar' : 'Ver detalhes do'} pedido #${o.id}">${live ? 'Acompanhar pedido' : 'Ver detalhes'}</a></section>`;
   };
   const group = (id, title, list) => (list.length ? `<h2 class="account-group" id="${id}">${title}</h2><div class="account-list" role="list" aria-labelledby="${id}">${list.map((o) => `<div role="listitem">${card(o)}</div>`).join('')}</div>` : '');
   const live = all.filter((o) => !situation(o, now).done);

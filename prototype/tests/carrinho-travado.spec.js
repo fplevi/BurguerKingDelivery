@@ -6,16 +6,16 @@ test('Com o Pix pendente, o Checkout não tem "Voltar ao carrinho" nem "Editar c
   await page.clock.install();
   await irAoPagamento(page, '61900000000');
   await gerarPix(page);
-  await expect(checkout(page).getByRole('button', { name: 'Voltar ao carrinho' })).toBeHidden();
+  await expect(checkout(page).getByRole('button', { name: 'Voltar', exact: true })).toBeHidden();
   await expect(resumoDoPedido(page).getByRole('button', { name: 'Editar carrinho' })).toHaveCount(0);
   // Expired, still pending.
   await page.clock.runFor(600_000);
   await expect(checkout(page).getByRole('region', { name: 'Seu Pix expirou' })).toBeVisible();
-  await expect(checkout(page).getByRole('button', { name: 'Voltar ao carrinho' })).toBeHidden();
+  await expect(checkout(page).getByRole('button', { name: 'Voltar', exact: true })).toBeHidden();
   await expect(resumoDoPedido(page).getByRole('button', { name: 'Editar carrinho' })).toHaveCount(0);
   // "Escolher outra forma de pagamento" brings them back.
   await checkout(page).getByRole('button', { name: 'Escolher outra forma de pagamento' }).click();
-  await expect(checkout(page).getByRole('button', { name: 'Voltar ao carrinho' })).toBeVisible();
+  await expect(checkout(page).getByRole('button', { name: 'Voltar', exact: true })).toBeVisible();
   await expect(resumoDoPedido(page).getByRole('button', { name: 'Editar carrinho' })).toBeEnabled();
   await expect(pixPendente(page)).toHaveCount(0);
 });

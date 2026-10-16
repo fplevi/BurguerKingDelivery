@@ -67,7 +67,7 @@ test('Editar o endereço em uso: o formulário vem preenchido e a alteração j�
   await pagina.getByRole('button', { name: 'Salvar alterações' }).click();
   await expect(page).toHaveURL(/#endereco$/);
   await expect(enderecosSalvos(page).getByRole('radio', { checked: true })).toHaveAccessibleName(/^Casa Av\. Paulista, 1580 .*Apto\. 92/);
-  await paginaDeEndereco(page).getByRole('button', { name: 'Voltar ao checkout' }).click();
+  await paginaDeEndereco(page).getByRole('button', { name: 'Voltar', exact: true }).click();
   await expect(checkout(page).getByText('Av. Paulista, 1580')).toBeVisible();
   await expect(checkout(page).getByText('Apto. 92')).toBeVisible();
 });
@@ -97,7 +97,7 @@ test('Remover o endereço marcado: confirmação, toast "Endereço removido." e 
   await expect(page).toHaveURL(/#endereco\/remover$/);
   const pagina = paginaDeEndereco(page);
   await expect(pagina.getByRole('heading', { name: 'Remover endereço?' })).toBeVisible();
-  await expect(pagina.getByText('Av. Paulista, 1578')).toBeVisible();
+  await expect(pagina.getByRole('dialog', { name: 'Remover endereço', exact: true }).getByText('Av. Paulista, 1578')).toBeVisible();
   await expect(pagina.getByText('Você poderá cadastrar esse endereço novamente.')).toBeVisible();
   // Cancelar keeps it.
   await pagina.getByRole('button', { name: 'Cancelar' }).click();

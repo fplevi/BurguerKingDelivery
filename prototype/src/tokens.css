@@ -1,4 +1,4 @@
-/* Shared foundations. Legacy aliases in styles.css stay until ticket 09. */
+/* Shared foundations. Color aliases in styles.css still serve the base layout. */
 :root {
   --space-0: 0;
   --space-4: 4px;

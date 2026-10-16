@@ -1,0 +1,49 @@
+{
+  "commit": "fc94916",
+  "date": "2026-10-15",
+  "command": "npm test -- --output=<diretorio-proprio>",
+  "isolation": "Snapshot git archive fc94916, porta 4193, dependencias locais por junction",
+  "completeSuite": {
+    "passed": 670,
+    "skipped": 39,
+    "failed": 1,
+    "durationMinutes": 17.1,
+    "failure": {
+      "file": "prototype/tests/entrada-e-saida.spec.js",
+      "line": 71,
+      "project": "desktop",
+      "assertion": "chegada(bottom) < chegada(meat)",
+      "expected": "< 2849.9",
+      "received": 2849.9
+    }
+  },
+  "isolatedRepeat": {
+    "command": "npx playwright test tests/entrada-e-saida.spec.js --project=desktop --grep 'ao abrir a página' --repeat-each=3 --workers=1",
+    "passed": 3,
+    "failed": 0
+  },
+  "focused": {
+    "passed": 107,
+    "skipped": 7,
+    "failed": 0
+  },
+  "visual": {
+    "combinations": 220,
+    "states": 20,
+    "widths": [
+      320,
+      360,
+      390,
+      768,
+      1023,
+      1024,
+      1025,
+      1280,
+      1919,
+      1920,
+      1921
+    ],
+    "screenshots": 100
+  },
+  "limitation": "A repeticao isolada nao torna a suite completa verde nem comprova a causa da falha 3D. Nenhum arquivo do renderizador ou teste 3D foi alterado neste ticket."
+}

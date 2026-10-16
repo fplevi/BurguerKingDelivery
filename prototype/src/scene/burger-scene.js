@@ -201,12 +201,16 @@ export function createBurgerScene(stage, { recipe, fit = 'assembled', onAreas = 
   for (const [index, id] of ids.entries()) {
     // The scene moves, scales and turns a holder; the model keeps its own transforms
     // (e.g. the cheese slice is turned 45°). A model may vary by Camada (two cheddars), and a
-    // Camada may turn its model (`turn`, radians), so a repeated one doesn't look identical.
+    // Camada may turn its model (`turn`, radians), so a repeated one doesn't look identical,
+    // and widen it (`spread`), so a shared filling spills further past the bun in one Receita.
     // Between them, `rest` moves and tips it as it sits in the assembled burger (see place()).
     const object = new Group();
     const rest = new Group();
     const model = models[id].build(recipe.layers[index]);
     model.rotation.y += recipe.layers[index].turn ?? 0;
+    const spread = recipe.layers[index].spread ?? 1;
+    model.scale.x *= spread;
+    model.scale.z *= spread;
     rest.add(model);
     object.add(rest);
     burger.add(object);

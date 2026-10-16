@@ -87,7 +87,7 @@ test('Cartão salvo com código de segurança válido: processamento com a tela 
   await expect(checkout(page).getByText('Aguarde a confirmação do seu cartão.')).toBeVisible();
   await expect(checkout(page).getByRole('status').getByText('R$ 40,80')).toBeVisible();
   await expect(formaDePagamento(page)).toHaveCount(0);
-  await expect(checkout(page).getByRole('button', { name: 'Voltar ao carrinho' })).toBeDisabled();
+  await expect(checkout(page).getByRole('button', { name: 'Voltar', exact: true })).toBeDisabled();
   await expect(resumoDoPedido(page).getByRole('button', { name: 'Editar carrinho' })).toBeDisabled();
   await expect(page.locator('header')).toHaveJSProperty('inert', true);
   await expect(etapas(page).nth(2)).toHaveAttribute('aria-current', 'step');
@@ -203,7 +203,7 @@ test('Mastercard salvo entra em Seus cartões; o próximo checkout da sessão re
   await expect(pedidoConfirmado(page).getByText('Pago com cartão Mastercard •••• 4444 · R$ 40,80', { exact: true })).toBeVisible();
 
   // A new checkout: no Identificação, the same address, the cards saved, no Forma de pagamento chosen yet.
-  await pedidoConfirmado(page).getByRole('button', { name: 'Voltar ao cardápio' }).click();
+  await pedidoConfirmado(page).getByRole('button', { name: 'Voltar', exact: true }).click();
   await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
   await continuarDoCarrinho(page);
   await expect(enderecoDeEntrega(page).getByText('Av. Paulista, 1578', { exact: true })).toBeVisible();
@@ -228,7 +228,7 @@ test('O nome impresso de um cartão salvo aparece como texto em Seus cartões', 
   await expect(campo(page, 'Nome impresso no cartão')).toHaveValue(nome);
   await checkout(page).getByRole('checkbox', { name: 'Salvar cartão para os próximos pedidos' }).check();
   await confirmarEPagar(page).click();
-  await pedidoConfirmado(page).getByRole('button', { name: 'Voltar ao cardápio' }).click();
+  await pedidoConfirmado(page).getByRole('button', { name: 'Voltar', exact: true }).click();
   await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
   await continuarDoCarrinho(page);
   await cartaoDeCredito(page).check();
@@ -243,7 +243,7 @@ test('Pedido confirmado: Acompanhar pedido abre o acompanhamento, Voltar ao card
   const pedido = pedidoConfirmado(page);
   await expect(pedido).toBeVisible();
   await expect(pedido.getByRole('button', { name: 'Acompanhar pedido' })).toHaveClass(/primary/);
-  await expect(pedido.getByRole('button', { name: 'Voltar ao cardápio' })).toHaveClass(/secondary/);
+  await expect(pedido.getByRole('button', { name: 'Voltar', exact: true })).toHaveClass(/secondary/);
   await pedido.getByRole('button', { name: 'Acompanhar pedido' }).click();
   await expect(page).toHaveURL(/#conta\/pedidos\/BK-10483$/);
   await expect(page.getByRole('heading', { level: 1, name: 'Pedido #BK-10483' })).toBeVisible();
@@ -277,7 +277,7 @@ test('Voltar ao cardápio leva à última categoria vista; #pedido sem Pedido co
   await cartaoDeCredito(page).check();
   await campo(page, 'Código de segurança').fill('123');
   await confirmarEPagar(page).click();
-  await pedidoConfirmado(page).getByRole('button', { name: 'Voltar ao cardápio' }).click();
+  await pedidoConfirmado(page).getByRole('button', { name: 'Voltar', exact: true }).click();
   await expect(page).toHaveURL(/#sobremesas$/);
   await expect(page.getByRole('link', { name: 'Sobremesas' })).toHaveAttribute('aria-current', 'page');
   // An id not confirmed in this session: the menu.

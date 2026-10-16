@@ -1,0 +1,8894 @@
+[
+  {
+    "width": 320,
+    "state": "inicial",
+    "overflow": 0,
+    "reset": {
+      "x": 16,
+      "y": 723.5,
+      "width": 288,
+      "height": 48,
+      "right": 304,
+      "bottom": 771.5
+    },
+    "actions": {
+      "x": 0,
+      "y": 804,
+      "width": 320,
+      "height": 96,
+      "right": 320,
+      "bottom": 900
+    },
+    "tray": {
+      "x": 16,
+      "y": 192.5,
+      "width": 288,
+      "height": 213,
+      "right": 304,
+      "bottom": 405.5
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 16,
+          "y": 828,
+          "width": 112,
+          "height": 48,
+          "right": 128,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 140,
+          "y": 828,
+          "width": 164,
+          "height": 48,
+          "right": 304,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 16,
+          "y": 507.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 551.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 134,
+          "y": 507.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 551.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 16,
+          "y": 559.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 603.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 134,
+          "y": 559.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 603.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 16,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 134,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 16,
+          "y": 663.5,
+          "width": 118.046875,
+          "height": 44,
+          "right": 134.046875,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 38.765625,
+        "y": 521.5,
+        "width": 16,
+        "height": 16,
+        "right": 54.765625,
+        "bottom": 537.5
+      },
+      {
+        "x": 158.6875,
+        "y": 521.5,
+        "width": 16,
+        "height": 16,
+        "right": 174.6875,
+        "bottom": 537.5
+      },
+      {
+        "x": 33,
+        "y": 573.5,
+        "width": 16,
+        "height": 16,
+        "right": 49,
+        "bottom": 589.5
+      },
+      {
+        "x": 154.640625,
+        "y": 573.5,
+        "width": 16,
+        "height": 16,
+        "right": 170.640625,
+        "bottom": 589.5
+      },
+      {
+        "x": 35.984375,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 51.984375,
+        "bottom": 641.5
+      },
+      {
+        "x": 157.078125,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 173.078125,
+        "bottom": 641.5
+      },
+      {
+        "x": 33,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 49,
+        "bottom": 693.5
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "retirados",
+    "overflow": 0,
+    "reset": {
+      "x": 16,
+      "y": 723.5,
+      "width": 288,
+      "height": 48,
+      "right": 304,
+      "bottom": 771.5
+    },
+    "actions": {
+      "x": 0,
+      "y": 804,
+      "width": 320,
+      "height": 96,
+      "right": 320,
+      "bottom": 900
+    },
+    "tray": {
+      "x": 16,
+      "y": 192.5,
+      "width": 288,
+      "height": 213,
+      "right": 304,
+      "bottom": 405.5
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 16,
+          "y": 828,
+          "width": 112,
+          "height": 48,
+          "right": 128,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 140,
+          "y": 828,
+          "width": 164,
+          "height": 48,
+          "right": 304,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 42,
+          "y": 291.5,
+          "width": 94,
+          "height": 88,
+          "right": 136,
+          "bottom": 379.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 144,
+          "y": 291.5,
+          "width": 94,
+          "height": 88,
+          "right": 238,
+          "bottom": 379.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 16,
+          "y": 507.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 551.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 134,
+          "y": 507.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 551.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 16,
+          "y": 559.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 603.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 134,
+          "y": 559.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 603.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 16,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 134,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 16,
+          "y": 663.5,
+          "width": 118.046875,
+          "height": 44,
+          "right": 134.046875,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 38.765625,
+        "y": 521.5,
+        "width": 16,
+        "height": 16,
+        "right": 54.765625,
+        "bottom": 537.5
+      },
+      {
+        "x": 158.6875,
+        "y": 521.5,
+        "width": 16,
+        "height": 16,
+        "right": 174.6875,
+        "bottom": 537.5
+      },
+      {
+        "x": 33,
+        "y": 573.5,
+        "width": 16,
+        "height": 16,
+        "right": 49,
+        "bottom": 589.5
+      },
+      {
+        "x": 154.640625,
+        "y": 573.5,
+        "width": 16,
+        "height": 16,
+        "right": 170.640625,
+        "bottom": 589.5
+      },
+      {
+        "x": 35.984375,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 51.984375,
+        "bottom": 641.5
+      },
+      {
+        "x": 157.078125,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 173.078125,
+        "bottom": 641.5
+      },
+      {
+        "x": 33,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 49,
+        "bottom": 693.5
+      }
+    ]
+  },
+  {
+    "width": 320,
+    "state": "todos-retirados",
+    "overflow": 0,
+    "reset": {
+      "x": 16,
+      "y": 723.5,
+      "width": 288,
+      "height": 48,
+      "right": 304,
+      "bottom": 771.5
+    },
+    "actions": {
+      "x": 0,
+      "y": 804,
+      "width": 320,
+      "height": 96,
+      "right": 320,
+      "bottom": 900
+    },
+    "tray": {
+      "x": 16,
+      "y": -95.5,
+      "width": 288,
+      "height": 501,
+      "right": 304,
+      "bottom": 405.5
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 16,
+          "y": 828,
+          "width": 112,
+          "height": 48,
+          "right": 128,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 140,
+          "y": 828,
+          "width": 164,
+          "height": 48,
+          "right": 304,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 42,
+          "y": 3.5,
+          "width": 94,
+          "height": 88,
+          "right": 136,
+          "bottom": 91.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 144,
+          "y": 3.5,
+          "width": 94,
+          "height": 88,
+          "right": 238,
+          "bottom": 91.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 42,
+          "y": 99.5,
+          "width": 94,
+          "height": 88,
+          "right": 136,
+          "bottom": 187.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 144,
+          "y": 99.5,
+          "width": 94,
+          "height": 88,
+          "right": 238,
+          "bottom": 187.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 42,
+          "y": 195.5,
+          "width": 94,
+          "height": 88,
+          "right": 136,
+          "bottom": 283.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 144,
+          "y": 195.5,
+          "width": 94,
+          "height": 88,
+          "right": 238,
+          "bottom": 283.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 42,
+          "y": 291.5,
+          "width": 94,
+          "height": 88,
+          "right": 136,
+          "bottom": 379.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 16,
+          "y": 507.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 551.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 134,
+          "y": 507.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 551.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 16,
+          "y": 559.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 603.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 134,
+          "y": 559.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 603.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 16,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 134,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 16,
+          "y": 663.5,
+          "width": 118.046875,
+          "height": 44,
+          "right": 134.046875,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 38.765625,
+        "y": 521.5,
+        "width": 16,
+        "height": 16,
+        "right": 54.765625,
+        "bottom": 537.5
+      },
+      {
+        "x": 158.6875,
+        "y": 521.5,
+        "width": 16,
+        "height": 16,
+        "right": 174.6875,
+        "bottom": 537.5
+      },
+      {
+        "x": 33,
+        "y": 573.5,
+        "width": 16,
+        "height": 16,
+        "right": 49,
+        "bottom": 589.5
+      },
+      {
+        "x": 154.640625,
+        "y": 573.5,
+        "width": 16,
+        "height": 16,
+        "right": 170.640625,
+        "bottom": 589.5
+      },
+      {
+        "x": 35.984375,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 51.984375,
+        "bottom": 641.5
+      },
+      {
+        "x": 157.078125,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 173.078125,
+        "bottom": 641.5
+      },
+      {
+        "x": 33,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 49,
+        "bottom": 693.5
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "inicial",
+    "overflow": 0,
+    "reset": {
+      "x": 16,
+      "y": 723.5,
+      "width": 328,
+      "height": 48,
+      "right": 344,
+      "bottom": 771.5
+    },
+    "actions": {
+      "x": 0,
+      "y": 804,
+      "width": 360,
+      "height": 96,
+      "right": 360,
+      "bottom": 900
+    },
+    "tray": {
+      "x": 16,
+      "y": 192.5,
+      "width": 328,
+      "height": 213,
+      "right": 344,
+      "bottom": 405.5
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 16,
+          "y": 828,
+          "width": 112,
+          "height": 48,
+          "right": 128,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 140,
+          "y": 828,
+          "width": 204,
+          "height": 48,
+          "right": 344,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 16,
+          "y": 507.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 551.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 134,
+          "y": 507.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 551.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 16,
+          "y": 559.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 603.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 134,
+          "y": 559.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 603.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 16,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 134,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 16,
+          "y": 663.5,
+          "width": 118.046875,
+          "height": 44,
+          "right": 134.046875,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 38.765625,
+        "y": 521.5,
+        "width": 16,
+        "height": 16,
+        "right": 54.765625,
+        "bottom": 537.5
+      },
+      {
+        "x": 158.6875,
+        "y": 521.5,
+        "width": 16,
+        "height": 16,
+        "right": 174.6875,
+        "bottom": 537.5
+      },
+      {
+        "x": 33,
+        "y": 573.5,
+        "width": 16,
+        "height": 16,
+        "right": 49,
+        "bottom": 589.5
+      },
+      {
+        "x": 154.640625,
+        "y": 573.5,
+        "width": 16,
+        "height": 16,
+        "right": 170.640625,
+        "bottom": 589.5
+      },
+      {
+        "x": 35.984375,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 51.984375,
+        "bottom": 641.5
+      },
+      {
+        "x": 157.078125,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 173.078125,
+        "bottom": 641.5
+      },
+      {
+        "x": 33,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 49,
+        "bottom": 693.5
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "retirados",
+    "overflow": 0,
+    "reset": {
+      "x": 16,
+      "y": 723.5,
+      "width": 328,
+      "height": 48,
+      "right": 344,
+      "bottom": 771.5
+    },
+    "actions": {
+      "x": 0,
+      "y": 804,
+      "width": 360,
+      "height": 96,
+      "right": 360,
+      "bottom": 900
+    },
+    "tray": {
+      "x": 16,
+      "y": 192.5,
+      "width": 328,
+      "height": 213,
+      "right": 344,
+      "bottom": 405.5
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 16,
+          "y": 828,
+          "width": 112,
+          "height": 48,
+          "right": 128,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 140,
+          "y": 828,
+          "width": 204,
+          "height": 48,
+          "right": 344,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 42,
+          "y": 291.5,
+          "width": 94,
+          "height": 88,
+          "right": 136,
+          "bottom": 379.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 144,
+          "y": 291.5,
+          "width": 94,
+          "height": 88,
+          "right": 238,
+          "bottom": 379.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 16,
+          "y": 507.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 551.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 134,
+          "y": 507.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 551.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 16,
+          "y": 559.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 603.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 134,
+          "y": 559.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 603.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 16,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 134,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 16,
+          "y": 663.5,
+          "width": 118.046875,
+          "height": 44,
+          "right": 134.046875,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 38.765625,
+        "y": 521.5,
+        "width": 16,
+        "height": 16,
+        "right": 54.765625,
+        "bottom": 537.5
+      },
+      {
+        "x": 158.6875,
+        "y": 521.5,
+        "width": 16,
+        "height": 16,
+        "right": 174.6875,
+        "bottom": 537.5
+      },
+      {
+        "x": 33,
+        "y": 573.5,
+        "width": 16,
+        "height": 16,
+        "right": 49,
+        "bottom": 589.5
+      },
+      {
+        "x": 154.640625,
+        "y": 573.5,
+        "width": 16,
+        "height": 16,
+        "right": 170.640625,
+        "bottom": 589.5
+      },
+      {
+        "x": 35.984375,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 51.984375,
+        "bottom": 641.5
+      },
+      {
+        "x": 157.078125,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 173.078125,
+        "bottom": 641.5
+      },
+      {
+        "x": 33,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 49,
+        "bottom": 693.5
+      }
+    ]
+  },
+  {
+    "width": 360,
+    "state": "todos-retirados",
+    "overflow": 0,
+    "reset": {
+      "x": 16,
+      "y": 723.5,
+      "width": 328,
+      "height": 48,
+      "right": 344,
+      "bottom": 771.5
+    },
+    "actions": {
+      "x": 0,
+      "y": 804,
+      "width": 360,
+      "height": 96,
+      "right": 360,
+      "bottom": 900
+    },
+    "tray": {
+      "x": 16,
+      "y": -95.5,
+      "width": 328,
+      "height": 501,
+      "right": 344,
+      "bottom": 405.5
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 16,
+          "y": 828,
+          "width": 112,
+          "height": 48,
+          "right": 128,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 140,
+          "y": 828,
+          "width": 204,
+          "height": 48,
+          "right": 344,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 42,
+          "y": 3.5,
+          "width": 94,
+          "height": 88,
+          "right": 136,
+          "bottom": 91.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 144,
+          "y": 3.5,
+          "width": 94,
+          "height": 88,
+          "right": 238,
+          "bottom": 91.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 42,
+          "y": 99.5,
+          "width": 94,
+          "height": 88,
+          "right": 136,
+          "bottom": 187.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 144,
+          "y": 99.5,
+          "width": 94,
+          "height": 88,
+          "right": 238,
+          "bottom": 187.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 42,
+          "y": 195.5,
+          "width": 94,
+          "height": 88,
+          "right": 136,
+          "bottom": 283.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 144,
+          "y": 195.5,
+          "width": 94,
+          "height": 88,
+          "right": 238,
+          "bottom": 283.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 42,
+          "y": 291.5,
+          "width": 94,
+          "height": 88,
+          "right": 136,
+          "bottom": 379.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 16,
+          "y": 507.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 551.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 134,
+          "y": 507.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 551.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 16,
+          "y": 559.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 603.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 134,
+          "y": 559.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 603.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 16,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 134,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 16,
+          "y": 663.5,
+          "width": 118.046875,
+          "height": 44,
+          "right": 134.046875,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 38.765625,
+        "y": 521.5,
+        "width": 16,
+        "height": 16,
+        "right": 54.765625,
+        "bottom": 537.5
+      },
+      {
+        "x": 158.6875,
+        "y": 521.5,
+        "width": 16,
+        "height": 16,
+        "right": 174.6875,
+        "bottom": 537.5
+      },
+      {
+        "x": 33,
+        "y": 573.5,
+        "width": 16,
+        "height": 16,
+        "right": 49,
+        "bottom": 589.5
+      },
+      {
+        "x": 154.640625,
+        "y": 573.5,
+        "width": 16,
+        "height": 16,
+        "right": 170.640625,
+        "bottom": 589.5
+      },
+      {
+        "x": 35.984375,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 51.984375,
+        "bottom": 641.5
+      },
+      {
+        "x": 157.078125,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 173.078125,
+        "bottom": 641.5
+      },
+      {
+        "x": 33,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 49,
+        "bottom": 693.5
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "inicial",
+    "overflow": 0,
+    "reset": {
+      "x": 16,
+      "y": 723.5,
+      "width": 358,
+      "height": 48,
+      "right": 374,
+      "bottom": 771.5
+    },
+    "actions": {
+      "x": 0,
+      "y": 804,
+      "width": 390,
+      "height": 96,
+      "right": 390,
+      "bottom": 900
+    },
+    "tray": {
+      "x": 16,
+      "y": 244.5,
+      "width": 358,
+      "height": 213,
+      "right": 374,
+      "bottom": 457.5
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 16,
+          "y": 828,
+          "width": 112,
+          "height": 48,
+          "right": 128,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 140,
+          "y": 828,
+          "width": 234,
+          "height": 48,
+          "right": 374,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 16,
+          "y": 559.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 603.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 134,
+          "y": 559.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 603.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 252,
+          "y": 559.5,
+          "width": 110,
+          "height": 44,
+          "right": 362,
+          "bottom": 603.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 16,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 134,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 252,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 362,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 16,
+          "y": 663.5,
+          "width": 118.046875,
+          "height": 44,
+          "right": 134.046875,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 38.765625,
+        "y": 573.5,
+        "width": 16,
+        "height": 16,
+        "right": 54.765625,
+        "bottom": 589.5
+      },
+      {
+        "x": 158.6875,
+        "y": 573.5,
+        "width": 16,
+        "height": 16,
+        "right": 174.6875,
+        "bottom": 589.5
+      },
+      {
+        "x": 269,
+        "y": 573.5,
+        "width": 16,
+        "height": 16,
+        "right": 285,
+        "bottom": 589.5
+      },
+      {
+        "x": 36.640625,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 52.640625,
+        "bottom": 641.5
+      },
+      {
+        "x": 153.984375,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 169.984375,
+        "bottom": 641.5
+      },
+      {
+        "x": 275.078125,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 291.078125,
+        "bottom": 641.5
+      },
+      {
+        "x": 33,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 49,
+        "bottom": 693.5
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "retirados",
+    "overflow": 0,
+    "reset": {
+      "x": 16,
+      "y": 723.5,
+      "width": 358,
+      "height": 48,
+      "right": 374,
+      "bottom": 771.5
+    },
+    "actions": {
+      "x": 0,
+      "y": 804,
+      "width": 390,
+      "height": 96,
+      "right": 390,
+      "bottom": 900
+    },
+    "tray": {
+      "x": 16,
+      "y": 244.5,
+      "width": 358,
+      "height": 213,
+      "right": 374,
+      "bottom": 457.5
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 16,
+          "y": 828,
+          "width": 112,
+          "height": 48,
+          "right": 128,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 140,
+          "y": 828,
+          "width": 234,
+          "height": 48,
+          "right": 374,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 42,
+          "y": 343.5,
+          "width": 94,
+          "height": 88,
+          "right": 136,
+          "bottom": 431.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 144,
+          "y": 343.5,
+          "width": 94,
+          "height": 88,
+          "right": 238,
+          "bottom": 431.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 16,
+          "y": 559.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 603.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 134,
+          "y": 559.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 603.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 252,
+          "y": 559.5,
+          "width": 110,
+          "height": 44,
+          "right": 362,
+          "bottom": 603.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 16,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 134,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 252,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 362,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 16,
+          "y": 663.5,
+          "width": 118.046875,
+          "height": 44,
+          "right": 134.046875,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 38.765625,
+        "y": 573.5,
+        "width": 16,
+        "height": 16,
+        "right": 54.765625,
+        "bottom": 589.5
+      },
+      {
+        "x": 158.6875,
+        "y": 573.5,
+        "width": 16,
+        "height": 16,
+        "right": 174.6875,
+        "bottom": 589.5
+      },
+      {
+        "x": 269,
+        "y": 573.5,
+        "width": 16,
+        "height": 16,
+        "right": 285,
+        "bottom": 589.5
+      },
+      {
+        "x": 36.640625,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 52.640625,
+        "bottom": 641.5
+      },
+      {
+        "x": 153.984375,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 169.984375,
+        "bottom": 641.5
+      },
+      {
+        "x": 275.078125,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 291.078125,
+        "bottom": 641.5
+      },
+      {
+        "x": 33,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 49,
+        "bottom": 693.5
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "state": "todos-retirados",
+    "overflow": 0,
+    "reset": {
+      "x": 16,
+      "y": 723.5,
+      "width": 358,
+      "height": 48,
+      "right": 374,
+      "bottom": 771.5
+    },
+    "actions": {
+      "x": 0,
+      "y": 804,
+      "width": 390,
+      "height": 96,
+      "right": 390,
+      "bottom": 900
+    },
+    "tray": {
+      "x": 16,
+      "y": 52.5,
+      "width": 358,
+      "height": 405,
+      "right": 374,
+      "bottom": 457.5
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 16,
+          "y": 828,
+          "width": 112,
+          "height": 48,
+          "right": 128,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 140,
+          "y": 828,
+          "width": 234,
+          "height": 48,
+          "right": 374,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 42,
+          "y": 151.5,
+          "width": 94,
+          "height": 88,
+          "right": 136,
+          "bottom": 239.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 144,
+          "y": 151.5,
+          "width": 94,
+          "height": 88,
+          "right": 238,
+          "bottom": 239.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 246,
+          "y": 151.5,
+          "width": 94,
+          "height": 88,
+          "right": 340,
+          "bottom": 239.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 42,
+          "y": 247.5,
+          "width": 94,
+          "height": 88,
+          "right": 136,
+          "bottom": 335.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 144,
+          "y": 247.5,
+          "width": 94,
+          "height": 88,
+          "right": 238,
+          "bottom": 335.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 246,
+          "y": 247.5,
+          "width": 94,
+          "height": 88,
+          "right": 340,
+          "bottom": 335.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 42,
+          "y": 343.5,
+          "width": 94,
+          "height": 88,
+          "right": 136,
+          "bottom": 431.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 16,
+          "y": 559.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 603.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 134,
+          "y": 559.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 603.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 252,
+          "y": 559.5,
+          "width": 110,
+          "height": 44,
+          "right": 362,
+          "bottom": 603.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 16,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 134,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 252,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 362,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 16,
+          "y": 663.5,
+          "width": 118.046875,
+          "height": 44,
+          "right": 134.046875,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 38.765625,
+        "y": 573.5,
+        "width": 16,
+        "height": 16,
+        "right": 54.765625,
+        "bottom": 589.5
+      },
+      {
+        "x": 158.6875,
+        "y": 573.5,
+        "width": 16,
+        "height": 16,
+        "right": 174.6875,
+        "bottom": 589.5
+      },
+      {
+        "x": 269,
+        "y": 573.5,
+        "width": 16,
+        "height": 16,
+        "right": 285,
+        "bottom": 589.5
+      },
+      {
+        "x": 36.640625,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 52.640625,
+        "bottom": 641.5
+      },
+      {
+        "x": 153.984375,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 169.984375,
+        "bottom": 641.5
+      },
+      {
+        "x": 275.078125,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 291.078125,
+        "bottom": 641.5
+      },
+      {
+        "x": 33,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 49,
+        "bottom": 693.5
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "inicial",
+    "overflow": 0,
+    "reset": {
+      "x": 16,
+      "y": 723.5,
+      "width": 736,
+      "height": 48,
+      "right": 752,
+      "bottom": 771.5
+    },
+    "actions": {
+      "x": 0,
+      "y": 804,
+      "width": 768,
+      "height": 96,
+      "right": 768,
+      "bottom": 900
+    },
+    "tray": {
+      "x": 16,
+      "y": 296.5,
+      "width": 736,
+      "height": 213,
+      "right": 752,
+      "bottom": 509.5
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 16,
+          "y": 828,
+          "width": 112,
+          "height": 48,
+          "right": 128,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 140,
+          "y": 828,
+          "width": 612,
+          "height": 48,
+          "right": 752,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 16,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 134,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 252,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 362,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 370,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 480,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 488,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 598,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 606,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 716,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 16,
+          "y": 663.5,
+          "width": 118.046875,
+          "height": 44,
+          "right": 134.046875,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 38.765625,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 54.765625,
+        "bottom": 641.5
+      },
+      {
+        "x": 158.6875,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 174.6875,
+        "bottom": 641.5
+      },
+      {
+        "x": 269,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 285,
+        "bottom": 641.5
+      },
+      {
+        "x": 390.640625,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 406.640625,
+        "bottom": 641.5
+      },
+      {
+        "x": 507.984375,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 523.984375,
+        "bottom": 641.5
+      },
+      {
+        "x": 629.078125,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 645.078125,
+        "bottom": 641.5
+      },
+      {
+        "x": 33,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 49,
+        "bottom": 693.5
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "retirados",
+    "overflow": 0,
+    "reset": {
+      "x": 16,
+      "y": 723.5,
+      "width": 736,
+      "height": 48,
+      "right": 752,
+      "bottom": 771.5
+    },
+    "actions": {
+      "x": 0,
+      "y": 804,
+      "width": 768,
+      "height": 96,
+      "right": 768,
+      "bottom": 900
+    },
+    "tray": {
+      "x": 16,
+      "y": 296.5,
+      "width": 736,
+      "height": 213,
+      "right": 752,
+      "bottom": 509.5
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 16,
+          "y": 828,
+          "width": 112,
+          "height": 48,
+          "right": 128,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 140,
+          "y": 828,
+          "width": 612,
+          "height": 48,
+          "right": 752,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 42,
+          "y": 395.5,
+          "width": 94,
+          "height": 88,
+          "right": 136,
+          "bottom": 483.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 144,
+          "y": 395.5,
+          "width": 94,
+          "height": 88,
+          "right": 238,
+          "bottom": 483.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 16,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 134,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 252,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 362,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 370,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 480,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 488,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 598,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 606,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 716,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 16,
+          "y": 663.5,
+          "width": 118.046875,
+          "height": 44,
+          "right": 134.046875,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 38.765625,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 54.765625,
+        "bottom": 641.5
+      },
+      {
+        "x": 158.6875,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 174.6875,
+        "bottom": 641.5
+      },
+      {
+        "x": 269,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 285,
+        "bottom": 641.5
+      },
+      {
+        "x": 390.640625,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 406.640625,
+        "bottom": 641.5
+      },
+      {
+        "x": 507.984375,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 523.984375,
+        "bottom": 641.5
+      },
+      {
+        "x": 629.078125,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 645.078125,
+        "bottom": 641.5
+      },
+      {
+        "x": 33,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 49,
+        "bottom": 693.5
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "state": "todos-retirados",
+    "overflow": 0,
+    "reset": {
+      "x": 16,
+      "y": 723.5,
+      "width": 736,
+      "height": 48,
+      "right": 752,
+      "bottom": 771.5
+    },
+    "actions": {
+      "x": 0,
+      "y": 804,
+      "width": 768,
+      "height": 96,
+      "right": 768,
+      "bottom": 900
+    },
+    "tray": {
+      "x": 16,
+      "y": 200.5,
+      "width": 736,
+      "height": 309,
+      "right": 752,
+      "bottom": 509.5
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 16,
+          "y": 828,
+          "width": 112,
+          "height": 48,
+          "right": 128,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 140,
+          "y": 828,
+          "width": 612,
+          "height": 48,
+          "right": 752,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 42,
+          "y": 299.5,
+          "width": 94,
+          "height": 88,
+          "right": 136,
+          "bottom": 387.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 144,
+          "y": 299.5,
+          "width": 94,
+          "height": 88,
+          "right": 238,
+          "bottom": 387.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 246,
+          "y": 299.5,
+          "width": 94,
+          "height": 88,
+          "right": 340,
+          "bottom": 387.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 348,
+          "y": 299.5,
+          "width": 94,
+          "height": 88,
+          "right": 442,
+          "bottom": 387.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 450,
+          "y": 299.5,
+          "width": 94,
+          "height": 88,
+          "right": 544,
+          "bottom": 387.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 552,
+          "y": 299.5,
+          "width": 94,
+          "height": 88,
+          "right": 646,
+          "bottom": 387.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 42,
+          "y": 395.5,
+          "width": 94,
+          "height": 88,
+          "right": 136,
+          "bottom": 483.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 16,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 134,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 252,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 362,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 370,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 480,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 488,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 598,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 606,
+          "y": 611.5,
+          "width": 110,
+          "height": 44,
+          "right": 716,
+          "bottom": 655.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 16,
+          "y": 663.5,
+          "width": 118.046875,
+          "height": 44,
+          "right": 134.046875,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 38.765625,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 54.765625,
+        "bottom": 641.5
+      },
+      {
+        "x": 158.6875,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 174.6875,
+        "bottom": 641.5
+      },
+      {
+        "x": 269,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 285,
+        "bottom": 641.5
+      },
+      {
+        "x": 390.640625,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 406.640625,
+        "bottom": 641.5
+      },
+      {
+        "x": 507.984375,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 523.984375,
+        "bottom": 641.5
+      },
+      {
+        "x": 629.078125,
+        "y": 625.5,
+        "width": 16,
+        "height": 16,
+        "right": 645.078125,
+        "bottom": 641.5
+      },
+      {
+        "x": 33,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 49,
+        "bottom": 693.5
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "inicial",
+    "overflow": 0,
+    "reset": {
+      "x": 16,
+      "y": 723.5,
+      "width": 991,
+      "height": 48,
+      "right": 1007,
+      "bottom": 771.5
+    },
+    "actions": {
+      "x": 0,
+      "y": 804,
+      "width": 1023,
+      "height": 96,
+      "right": 1023,
+      "bottom": 900
+    },
+    "tray": {
+      "x": 16,
+      "y": 348.5,
+      "width": 991,
+      "height": 213,
+      "right": 1007,
+      "bottom": 561.5
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 16,
+          "y": 828,
+          "width": 112,
+          "height": 48,
+          "right": 128,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 140,
+          "y": 828,
+          "width": 867,
+          "height": 48,
+          "right": 1007,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 16,
+          "y": 663.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 134,
+          "y": 663.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 252,
+          "y": 663.5,
+          "width": 110,
+          "height": 44,
+          "right": 362,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 370,
+          "y": 663.5,
+          "width": 110,
+          "height": 44,
+          "right": 480,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 488,
+          "y": 663.5,
+          "width": 110,
+          "height": 44,
+          "right": 598,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 606,
+          "y": 663.5,
+          "width": 110,
+          "height": 44,
+          "right": 716,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 724,
+          "y": 663.5,
+          "width": 118.046875,
+          "height": 44,
+          "right": 842.046875,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 38.765625,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 54.765625,
+        "bottom": 693.5
+      },
+      {
+        "x": 158.6875,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 174.6875,
+        "bottom": 693.5
+      },
+      {
+        "x": 269,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 285,
+        "bottom": 693.5
+      },
+      {
+        "x": 390.640625,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 406.640625,
+        "bottom": 693.5
+      },
+      {
+        "x": 507.984375,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 523.984375,
+        "bottom": 693.5
+      },
+      {
+        "x": 629.078125,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 645.078125,
+        "bottom": 693.5
+      },
+      {
+        "x": 741,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 757,
+        "bottom": 693.5
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "retirados",
+    "overflow": 0,
+    "reset": {
+      "x": 16,
+      "y": 723.5,
+      "width": 991,
+      "height": 48,
+      "right": 1007,
+      "bottom": 771.5
+    },
+    "actions": {
+      "x": 0,
+      "y": 804,
+      "width": 1023,
+      "height": 96,
+      "right": 1023,
+      "bottom": 900
+    },
+    "tray": {
+      "x": 16,
+      "y": 348.5,
+      "width": 991,
+      "height": 213,
+      "right": 1007,
+      "bottom": 561.5
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 16,
+          "y": 828,
+          "width": 112,
+          "height": 48,
+          "right": 128,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 140,
+          "y": 828,
+          "width": 867,
+          "height": 48,
+          "right": 1007,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 42,
+          "y": 447.5,
+          "width": 94,
+          "height": 88,
+          "right": 136,
+          "bottom": 535.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 144,
+          "y": 447.5,
+          "width": 94,
+          "height": 88,
+          "right": 238,
+          "bottom": 535.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 16,
+          "y": 663.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 134,
+          "y": 663.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 252,
+          "y": 663.5,
+          "width": 110,
+          "height": 44,
+          "right": 362,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 370,
+          "y": 663.5,
+          "width": 110,
+          "height": 44,
+          "right": 480,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 488,
+          "y": 663.5,
+          "width": 110,
+          "height": 44,
+          "right": 598,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 606,
+          "y": 663.5,
+          "width": 110,
+          "height": 44,
+          "right": 716,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 724,
+          "y": 663.5,
+          "width": 118.046875,
+          "height": 44,
+          "right": 842.046875,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 38.765625,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 54.765625,
+        "bottom": 693.5
+      },
+      {
+        "x": 158.6875,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 174.6875,
+        "bottom": 693.5
+      },
+      {
+        "x": 269,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 285,
+        "bottom": 693.5
+      },
+      {
+        "x": 390.640625,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 406.640625,
+        "bottom": 693.5
+      },
+      {
+        "x": 507.984375,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 523.984375,
+        "bottom": 693.5
+      },
+      {
+        "x": 629.078125,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 645.078125,
+        "bottom": 693.5
+      },
+      {
+        "x": 741,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 757,
+        "bottom": 693.5
+      }
+    ]
+  },
+  {
+    "width": 1023,
+    "state": "todos-retirados",
+    "overflow": 0,
+    "reset": {
+      "x": 16,
+      "y": 723.5,
+      "width": 991,
+      "height": 48,
+      "right": 1007,
+      "bottom": 771.5
+    },
+    "actions": {
+      "x": 0,
+      "y": 804,
+      "width": 1023,
+      "height": 96,
+      "right": 1023,
+      "bottom": 900
+    },
+    "tray": {
+      "x": 16,
+      "y": 348.5,
+      "width": 991,
+      "height": 213,
+      "right": 1007,
+      "bottom": 561.5
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 16,
+          "y": 828,
+          "width": 112,
+          "height": 48,
+          "right": 128,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 140,
+          "y": 828,
+          "width": 867,
+          "height": 48,
+          "right": 1007,
+          "bottom": 876
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 42,
+          "y": 447.5,
+          "width": 94,
+          "height": 88,
+          "right": 136,
+          "bottom": 535.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 144,
+          "y": 447.5,
+          "width": 94,
+          "height": 88,
+          "right": 238,
+          "bottom": 535.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 246,
+          "y": 447.5,
+          "width": 94,
+          "height": 88,
+          "right": 340,
+          "bottom": 535.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 348,
+          "y": 447.5,
+          "width": 94,
+          "height": 88,
+          "right": 442,
+          "bottom": 535.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 450,
+          "y": 447.5,
+          "width": 94,
+          "height": 88,
+          "right": 544,
+          "bottom": 535.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 552,
+          "y": 447.5,
+          "width": 94,
+          "height": 88,
+          "right": 646,
+          "bottom": 535.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 654,
+          "y": 447.5,
+          "width": 94,
+          "height": 88,
+          "right": 748,
+          "bottom": 535.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 16,
+          "y": 663.5,
+          "width": 110,
+          "height": 44,
+          "right": 126,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 134,
+          "y": 663.5,
+          "width": 110,
+          "height": 44,
+          "right": 244,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 252,
+          "y": 663.5,
+          "width": 110,
+          "height": 44,
+          "right": 362,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 370,
+          "y": 663.5,
+          "width": 110,
+          "height": 44,
+          "right": 480,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 488,
+          "y": 663.5,
+          "width": 110,
+          "height": 44,
+          "right": 598,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 606,
+          "y": 663.5,
+          "width": 110,
+          "height": 44,
+          "right": 716,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 724,
+          "y": 663.5,
+          "width": 118.046875,
+          "height": 44,
+          "right": 842.046875,
+          "bottom": 707.5
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 38.765625,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 54.765625,
+        "bottom": 693.5
+      },
+      {
+        "x": 158.6875,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 174.6875,
+        "bottom": 693.5
+      },
+      {
+        "x": 269,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 285,
+        "bottom": 693.5
+      },
+      {
+        "x": 390.640625,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 406.640625,
+        "bottom": 693.5
+      },
+      {
+        "x": 507.984375,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 523.984375,
+        "bottom": 693.5
+      },
+      {
+        "x": 629.078125,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 645.078125,
+        "bottom": 693.5
+      },
+      {
+        "x": 741,
+        "y": 677.5,
+        "width": 16,
+        "height": 16,
+        "right": 757,
+        "bottom": 693.5
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "inicial",
+    "overflow": 0,
+    "reset": {
+      "x": 608,
+      "y": 810,
+      "width": 392,
+      "height": 48,
+      "right": 1000,
+      "bottom": 858
+    },
+    "actions": {
+      "x": 560,
+      "y": 32,
+      "width": 424,
+      "height": 48,
+      "right": 984,
+      "bottom": 80
+    },
+    "tray": {
+      "x": 608,
+      "y": 144,
+      "width": 392,
+      "height": 400,
+      "right": 1000,
+      "bottom": 544
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 560,
+          "y": 32,
+          "width": 160,
+          "height": 48,
+          "right": 720,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 732,
+          "y": 32,
+          "width": 252,
+          "height": 48,
+          "right": 984,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 608,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 730,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 738,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 860,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 868,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 990,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 608,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 730,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 738,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 860,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 868,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 990,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 608,
+          "y": 750,
+          "width": 122,
+          "height": 44,
+          "right": 730,
+          "bottom": 794
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 636.765625,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 652.765625,
+        "bottom": 676
+      },
+      {
+        "x": 768.6875,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 784.6875,
+        "bottom": 676
+      },
+      {
+        "x": 891,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 907,
+        "bottom": 676
+      },
+      {
+        "x": 634.640625,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 650.640625,
+        "bottom": 728
+      },
+      {
+        "x": 763.984375,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 779.984375,
+        "bottom": 728
+      },
+      {
+        "x": 897.078125,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 913.078125,
+        "bottom": 728
+      },
+      {
+        "x": 626.96875,
+        "y": 764,
+        "width": 16,
+        "height": 16,
+        "right": 642.96875,
+        "bottom": 780
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "retirados",
+    "overflow": 0,
+    "reset": {
+      "x": 608,
+      "y": 810,
+      "width": 392,
+      "height": 48,
+      "right": 1000,
+      "bottom": 858
+    },
+    "actions": {
+      "x": 560,
+      "y": 32,
+      "width": 424,
+      "height": 48,
+      "right": 984,
+      "bottom": 80
+    },
+    "tray": {
+      "x": 608,
+      "y": 144,
+      "width": 392,
+      "height": 400,
+      "right": 1000,
+      "bottom": 544
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 560,
+          "y": 32,
+          "width": 160,
+          "height": 48,
+          "right": 720,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 732,
+          "y": 32,
+          "width": 252,
+          "height": 48,
+          "right": 984,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 634,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 738,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 746,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 850,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 608,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 730,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 738,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 860,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 868,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 990,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 608,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 730,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 738,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 860,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 868,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 990,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 608,
+          "y": 750,
+          "width": 122,
+          "height": 44,
+          "right": 730,
+          "bottom": 794
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 636.765625,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 652.765625,
+        "bottom": 676
+      },
+      {
+        "x": 768.6875,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 784.6875,
+        "bottom": 676
+      },
+      {
+        "x": 891,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 907,
+        "bottom": 676
+      },
+      {
+        "x": 634.640625,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 650.640625,
+        "bottom": 728
+      },
+      {
+        "x": 763.984375,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 779.984375,
+        "bottom": 728
+      },
+      {
+        "x": 897.078125,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 913.078125,
+        "bottom": 728
+      },
+      {
+        "x": 626.96875,
+        "y": 764,
+        "width": 16,
+        "height": 16,
+        "right": 642.96875,
+        "bottom": 780
+      }
+    ]
+  },
+  {
+    "width": 1024,
+    "state": "todos-retirados",
+    "overflow": 0,
+    "reset": {
+      "x": 608,
+      "y": 810,
+      "width": 392,
+      "height": 48,
+      "right": 1000,
+      "bottom": 858
+    },
+    "actions": {
+      "x": 560,
+      "y": 32,
+      "width": 424,
+      "height": 48,
+      "right": 984,
+      "bottom": 80
+    },
+    "tray": {
+      "x": 608,
+      "y": 144,
+      "width": 392,
+      "height": 400,
+      "right": 1000,
+      "bottom": 544
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 560,
+          "y": 32,
+          "width": 160,
+          "height": 48,
+          "right": 720,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 732,
+          "y": 32,
+          "width": 252,
+          "height": 48,
+          "right": 984,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 634,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 738,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 746,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 850,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 858,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 962,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 634,
+          "y": 339,
+          "width": 104,
+          "height": 88,
+          "right": 738,
+          "bottom": 427
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 746,
+          "y": 339,
+          "width": 104,
+          "height": 88,
+          "right": 850,
+          "bottom": 427
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 858,
+          "y": 339,
+          "width": 104,
+          "height": 88,
+          "right": 962,
+          "bottom": 427
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 634,
+          "y": 435,
+          "width": 104,
+          "height": 88,
+          "right": 738,
+          "bottom": 523
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 608,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 730,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 738,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 860,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 868,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 990,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 608,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 730,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 738,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 860,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 868,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 990,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 608,
+          "y": 750,
+          "width": 122,
+          "height": 44,
+          "right": 730,
+          "bottom": 794
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 636.765625,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 652.765625,
+        "bottom": 676
+      },
+      {
+        "x": 768.6875,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 784.6875,
+        "bottom": 676
+      },
+      {
+        "x": 891,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 907,
+        "bottom": 676
+      },
+      {
+        "x": 634.640625,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 650.640625,
+        "bottom": 728
+      },
+      {
+        "x": 763.984375,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 779.984375,
+        "bottom": 728
+      },
+      {
+        "x": 897.078125,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 913.078125,
+        "bottom": 728
+      },
+      {
+        "x": 626.96875,
+        "y": 764,
+        "width": 16,
+        "height": 16,
+        "right": 642.96875,
+        "bottom": 780
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "inicial",
+    "overflow": 0,
+    "reset": {
+      "x": 609,
+      "y": 810,
+      "width": 392,
+      "height": 48,
+      "right": 1001,
+      "bottom": 858
+    },
+    "actions": {
+      "x": 561,
+      "y": 32,
+      "width": 424,
+      "height": 48,
+      "right": 985,
+      "bottom": 80
+    },
+    "tray": {
+      "x": 609,
+      "y": 144,
+      "width": 392,
+      "height": 400,
+      "right": 1001,
+      "bottom": 544
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 561,
+          "y": 32,
+          "width": 160,
+          "height": 48,
+          "right": 721,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 733,
+          "y": 32,
+          "width": 252,
+          "height": 48,
+          "right": 985,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 609,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 731,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 739,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 861,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 869,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 991,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 609,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 731,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 739,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 861,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 869,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 991,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 609,
+          "y": 750,
+          "width": 122,
+          "height": 44,
+          "right": 731,
+          "bottom": 794
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 637.765625,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 653.765625,
+        "bottom": 676
+      },
+      {
+        "x": 769.6875,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 785.6875,
+        "bottom": 676
+      },
+      {
+        "x": 892,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 908,
+        "bottom": 676
+      },
+      {
+        "x": 635.640625,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 651.640625,
+        "bottom": 728
+      },
+      {
+        "x": 764.984375,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 780.984375,
+        "bottom": 728
+      },
+      {
+        "x": 898.078125,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 914.078125,
+        "bottom": 728
+      },
+      {
+        "x": 627.96875,
+        "y": 764,
+        "width": 16,
+        "height": 16,
+        "right": 643.96875,
+        "bottom": 780
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "retirados",
+    "overflow": 0,
+    "reset": {
+      "x": 609,
+      "y": 810,
+      "width": 392,
+      "height": 48,
+      "right": 1001,
+      "bottom": 858
+    },
+    "actions": {
+      "x": 561,
+      "y": 32,
+      "width": 424,
+      "height": 48,
+      "right": 985,
+      "bottom": 80
+    },
+    "tray": {
+      "x": 609,
+      "y": 144,
+      "width": 392,
+      "height": 400,
+      "right": 1001,
+      "bottom": 544
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 561,
+          "y": 32,
+          "width": 160,
+          "height": 48,
+          "right": 721,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 733,
+          "y": 32,
+          "width": 252,
+          "height": 48,
+          "right": 985,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 635,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 739,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 747,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 851,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 609,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 731,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 739,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 861,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 869,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 991,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 609,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 731,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 739,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 861,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 869,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 991,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 609,
+          "y": 750,
+          "width": 122,
+          "height": 44,
+          "right": 731,
+          "bottom": 794
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 637.765625,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 653.765625,
+        "bottom": 676
+      },
+      {
+        "x": 769.6875,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 785.6875,
+        "bottom": 676
+      },
+      {
+        "x": 892,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 908,
+        "bottom": 676
+      },
+      {
+        "x": 635.640625,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 651.640625,
+        "bottom": 728
+      },
+      {
+        "x": 764.984375,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 780.984375,
+        "bottom": 728
+      },
+      {
+        "x": 898.078125,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 914.078125,
+        "bottom": 728
+      },
+      {
+        "x": 627.96875,
+        "y": 764,
+        "width": 16,
+        "height": 16,
+        "right": 643.96875,
+        "bottom": 780
+      }
+    ]
+  },
+  {
+    "width": 1025,
+    "state": "todos-retirados",
+    "overflow": 0,
+    "reset": {
+      "x": 609,
+      "y": 810,
+      "width": 392,
+      "height": 48,
+      "right": 1001,
+      "bottom": 858
+    },
+    "actions": {
+      "x": 561,
+      "y": 32,
+      "width": 424,
+      "height": 48,
+      "right": 985,
+      "bottom": 80
+    },
+    "tray": {
+      "x": 609,
+      "y": 144,
+      "width": 392,
+      "height": 400,
+      "right": 1001,
+      "bottom": 544
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 561,
+          "y": 32,
+          "width": 160,
+          "height": 48,
+          "right": 721,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 733,
+          "y": 32,
+          "width": 252,
+          "height": 48,
+          "right": 985,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 635,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 739,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 747,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 851,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 859,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 963,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 635,
+          "y": 339,
+          "width": 104,
+          "height": 88,
+          "right": 739,
+          "bottom": 427
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 747,
+          "y": 339,
+          "width": 104,
+          "height": 88,
+          "right": 851,
+          "bottom": 427
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 859,
+          "y": 339,
+          "width": 104,
+          "height": 88,
+          "right": 963,
+          "bottom": 427
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 635,
+          "y": 435,
+          "width": 104,
+          "height": 88,
+          "right": 739,
+          "bottom": 523
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 609,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 731,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 739,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 861,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 869,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 991,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 609,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 731,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 739,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 861,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 869,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 991,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 609,
+          "y": 750,
+          "width": 122,
+          "height": 44,
+          "right": 731,
+          "bottom": 794
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 637.765625,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 653.765625,
+        "bottom": 676
+      },
+      {
+        "x": 769.6875,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 785.6875,
+        "bottom": 676
+      },
+      {
+        "x": 892,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 908,
+        "bottom": 676
+      },
+      {
+        "x": 635.640625,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 651.640625,
+        "bottom": 728
+      },
+      {
+        "x": 764.984375,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 780.984375,
+        "bottom": 728
+      },
+      {
+        "x": 898.078125,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 914.078125,
+        "bottom": 728
+      },
+      {
+        "x": 627.96875,
+        "y": 764,
+        "width": 16,
+        "height": 16,
+        "right": 643.96875,
+        "bottom": 780
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "inicial",
+    "overflow": 0,
+    "reset": {
+      "x": 864,
+      "y": 810,
+      "width": 392,
+      "height": 48,
+      "right": 1256,
+      "bottom": 858
+    },
+    "actions": {
+      "x": 816,
+      "y": 32,
+      "width": 424,
+      "height": 48,
+      "right": 1240,
+      "bottom": 80
+    },
+    "tray": {
+      "x": 864,
+      "y": 144,
+      "width": 392,
+      "height": 400,
+      "right": 1256,
+      "bottom": 544
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 816,
+          "y": 32,
+          "width": 160,
+          "height": 48,
+          "right": 976,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 988,
+          "y": 32,
+          "width": 252,
+          "height": 48,
+          "right": 1240,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 864,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 986,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 994,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1116,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 1124,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1246,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 864,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 986,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 994,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1116,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 1124,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1246,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 864,
+          "y": 750,
+          "width": 122,
+          "height": 44,
+          "right": 986,
+          "bottom": 794
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 892.765625,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 908.765625,
+        "bottom": 676
+      },
+      {
+        "x": 1024.6875,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1040.6875,
+        "bottom": 676
+      },
+      {
+        "x": 1147,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1163,
+        "bottom": 676
+      },
+      {
+        "x": 890.640625,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 906.640625,
+        "bottom": 728
+      },
+      {
+        "x": 1019.984375,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1035.984375,
+        "bottom": 728
+      },
+      {
+        "x": 1153.078125,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1169.078125,
+        "bottom": 728
+      },
+      {
+        "x": 882.96875,
+        "y": 764,
+        "width": 16,
+        "height": 16,
+        "right": 898.96875,
+        "bottom": 780
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "retirados",
+    "overflow": 0,
+    "reset": {
+      "x": 864,
+      "y": 810,
+      "width": 392,
+      "height": 48,
+      "right": 1256,
+      "bottom": 858
+    },
+    "actions": {
+      "x": 816,
+      "y": 32,
+      "width": 424,
+      "height": 48,
+      "right": 1240,
+      "bottom": 80
+    },
+    "tray": {
+      "x": 864,
+      "y": 144,
+      "width": 392,
+      "height": 400,
+      "right": 1256,
+      "bottom": 544
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 816,
+          "y": 32,
+          "width": 160,
+          "height": 48,
+          "right": 976,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 988,
+          "y": 32,
+          "width": 252,
+          "height": 48,
+          "right": 1240,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 890,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 994,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 1002,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 1106,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 864,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 986,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 994,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1116,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 1124,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1246,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 864,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 986,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 994,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1116,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 1124,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1246,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 864,
+          "y": 750,
+          "width": 122,
+          "height": 44,
+          "right": 986,
+          "bottom": 794
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 892.765625,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 908.765625,
+        "bottom": 676
+      },
+      {
+        "x": 1024.6875,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1040.6875,
+        "bottom": 676
+      },
+      {
+        "x": 1147,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1163,
+        "bottom": 676
+      },
+      {
+        "x": 890.640625,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 906.640625,
+        "bottom": 728
+      },
+      {
+        "x": 1019.984375,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1035.984375,
+        "bottom": 728
+      },
+      {
+        "x": 1153.078125,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1169.078125,
+        "bottom": 728
+      },
+      {
+        "x": 882.96875,
+        "y": 764,
+        "width": 16,
+        "height": 16,
+        "right": 898.96875,
+        "bottom": 780
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "state": "todos-retirados",
+    "overflow": 0,
+    "reset": {
+      "x": 864,
+      "y": 810,
+      "width": 392,
+      "height": 48,
+      "right": 1256,
+      "bottom": 858
+    },
+    "actions": {
+      "x": 816,
+      "y": 32,
+      "width": 424,
+      "height": 48,
+      "right": 1240,
+      "bottom": 80
+    },
+    "tray": {
+      "x": 864,
+      "y": 144,
+      "width": 392,
+      "height": 400,
+      "right": 1256,
+      "bottom": 544
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 816,
+          "y": 32,
+          "width": 160,
+          "height": 48,
+          "right": 976,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 988,
+          "y": 32,
+          "width": 252,
+          "height": 48,
+          "right": 1240,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 890,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 994,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 1002,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 1106,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 1114,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 1218,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 890,
+          "y": 339,
+          "width": 104,
+          "height": 88,
+          "right": 994,
+          "bottom": 427
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 1002,
+          "y": 339,
+          "width": 104,
+          "height": 88,
+          "right": 1106,
+          "bottom": 427
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 1114,
+          "y": 339,
+          "width": 104,
+          "height": 88,
+          "right": 1218,
+          "bottom": 427
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 890,
+          "y": 435,
+          "width": 104,
+          "height": 88,
+          "right": 994,
+          "bottom": 523
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 864,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 986,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 994,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1116,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 1124,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1246,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 864,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 986,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 994,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1116,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 1124,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1246,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 864,
+          "y": 750,
+          "width": 122,
+          "height": 44,
+          "right": 986,
+          "bottom": 794
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 892.765625,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 908.765625,
+        "bottom": 676
+      },
+      {
+        "x": 1024.6875,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1040.6875,
+        "bottom": 676
+      },
+      {
+        "x": 1147,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1163,
+        "bottom": 676
+      },
+      {
+        "x": 890.640625,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 906.640625,
+        "bottom": 728
+      },
+      {
+        "x": 1019.984375,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1035.984375,
+        "bottom": 728
+      },
+      {
+        "x": 1153.078125,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1169.078125,
+        "bottom": 728
+      },
+      {
+        "x": 882.96875,
+        "y": 764,
+        "width": 16,
+        "height": 16,
+        "right": 898.96875,
+        "bottom": 780
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "state": "inicial",
+    "overflow": 0,
+    "reset": {
+      "x": 1024,
+      "y": 810,
+      "width": 392,
+      "height": 48,
+      "right": 1416,
+      "bottom": 858
+    },
+    "actions": {
+      "x": 976,
+      "y": 32,
+      "width": 424,
+      "height": 48,
+      "right": 1400,
+      "bottom": 80
+    },
+    "tray": {
+      "x": 1024,
+      "y": 144,
+      "width": 392,
+      "height": 400,
+      "right": 1416,
+      "bottom": 544
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 976,
+          "y": 32,
+          "width": 160,
+          "height": 48,
+          "right": 1136,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 1148,
+          "y": 32,
+          "width": 252,
+          "height": 48,
+          "right": 1400,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 1024,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1146,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 1154,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1276,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 1284,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1406,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 1024,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1146,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 1154,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1276,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 1284,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1406,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 1024,
+          "y": 750,
+          "width": 122,
+          "height": 44,
+          "right": 1146,
+          "bottom": 794
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 1052.765625,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1068.765625,
+        "bottom": 676
+      },
+      {
+        "x": 1184.6875,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1200.6875,
+        "bottom": 676
+      },
+      {
+        "x": 1307,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1323,
+        "bottom": 676
+      },
+      {
+        "x": 1050.640625,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1066.640625,
+        "bottom": 728
+      },
+      {
+        "x": 1179.984375,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1195.984375,
+        "bottom": 728
+      },
+      {
+        "x": 1313.078125,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1329.078125,
+        "bottom": 728
+      },
+      {
+        "x": 1042.96875,
+        "y": 764,
+        "width": 16,
+        "height": 16,
+        "right": 1058.96875,
+        "bottom": 780
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "state": "retirados",
+    "overflow": 0,
+    "reset": {
+      "x": 1024,
+      "y": 810,
+      "width": 392,
+      "height": 48,
+      "right": 1416,
+      "bottom": 858
+    },
+    "actions": {
+      "x": 976,
+      "y": 32,
+      "width": 424,
+      "height": 48,
+      "right": 1400,
+      "bottom": 80
+    },
+    "tray": {
+      "x": 1024,
+      "y": 144,
+      "width": 392,
+      "height": 400,
+      "right": 1416,
+      "bottom": 544
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 976,
+          "y": 32,
+          "width": 160,
+          "height": 48,
+          "right": 1136,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 1148,
+          "y": 32,
+          "width": 252,
+          "height": 48,
+          "right": 1400,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 1050,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 1154,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 1162,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 1266,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 1024,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1146,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 1154,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1276,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 1284,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1406,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 1024,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1146,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 1154,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1276,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 1284,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1406,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 1024,
+          "y": 750,
+          "width": 122,
+          "height": 44,
+          "right": 1146,
+          "bottom": 794
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 1052.765625,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1068.765625,
+        "bottom": 676
+      },
+      {
+        "x": 1184.6875,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1200.6875,
+        "bottom": 676
+      },
+      {
+        "x": 1307,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1323,
+        "bottom": 676
+      },
+      {
+        "x": 1050.640625,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1066.640625,
+        "bottom": 728
+      },
+      {
+        "x": 1179.984375,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1195.984375,
+        "bottom": 728
+      },
+      {
+        "x": 1313.078125,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1329.078125,
+        "bottom": 728
+      },
+      {
+        "x": 1042.96875,
+        "y": 764,
+        "width": 16,
+        "height": 16,
+        "right": 1058.96875,
+        "bottom": 780
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "state": "todos-retirados",
+    "overflow": 0,
+    "reset": {
+      "x": 1024,
+      "y": 810,
+      "width": 392,
+      "height": 48,
+      "right": 1416,
+      "bottom": 858
+    },
+    "actions": {
+      "x": 976,
+      "y": 32,
+      "width": 424,
+      "height": 48,
+      "right": 1400,
+      "bottom": 80
+    },
+    "tray": {
+      "x": 1024,
+      "y": 144,
+      "width": 392,
+      "height": 400,
+      "right": 1416,
+      "bottom": 544
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 976,
+          "y": 32,
+          "width": 160,
+          "height": 48,
+          "right": 1136,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 1148,
+          "y": 32,
+          "width": 252,
+          "height": 48,
+          "right": 1400,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 1050,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 1154,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 1162,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 1266,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 1274,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 1378,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 1050,
+          "y": 339,
+          "width": 104,
+          "height": 88,
+          "right": 1154,
+          "bottom": 427
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 1162,
+          "y": 339,
+          "width": 104,
+          "height": 88,
+          "right": 1266,
+          "bottom": 427
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 1274,
+          "y": 339,
+          "width": 104,
+          "height": 88,
+          "right": 1378,
+          "bottom": 427
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 1050,
+          "y": 435,
+          "width": 104,
+          "height": 88,
+          "right": 1154,
+          "bottom": 523
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 1024,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1146,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 1154,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1276,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 1284,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1406,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 1024,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1146,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 1154,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1276,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 1284,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1406,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 1024,
+          "y": 750,
+          "width": 122,
+          "height": 44,
+          "right": 1146,
+          "bottom": 794
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 1052.765625,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1068.765625,
+        "bottom": 676
+      },
+      {
+        "x": 1184.6875,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1200.6875,
+        "bottom": 676
+      },
+      {
+        "x": 1307,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1323,
+        "bottom": 676
+      },
+      {
+        "x": 1050.640625,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1066.640625,
+        "bottom": 728
+      },
+      {
+        "x": 1179.984375,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1195.984375,
+        "bottom": 728
+      },
+      {
+        "x": 1313.078125,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1329.078125,
+        "bottom": 728
+      },
+      {
+        "x": 1042.96875,
+        "y": 764,
+        "width": 16,
+        "height": 16,
+        "right": 1058.96875,
+        "bottom": 780
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "inicial",
+    "overflow": 0,
+    "reset": {
+      "x": 1503,
+      "y": 810,
+      "width": 392,
+      "height": 48,
+      "right": 1895,
+      "bottom": 858
+    },
+    "actions": {
+      "x": 1455,
+      "y": 32,
+      "width": 424,
+      "height": 48,
+      "right": 1879,
+      "bottom": 80
+    },
+    "tray": {
+      "x": 1503,
+      "y": 144,
+      "width": 392,
+      "height": 400,
+      "right": 1895,
+      "bottom": 544
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 1455,
+          "y": 32,
+          "width": 160,
+          "height": 48,
+          "right": 1615,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 1627,
+          "y": 32,
+          "width": 252,
+          "height": 48,
+          "right": 1879,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 1503,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1625,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 1633,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1755,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 1763,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1885,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 1503,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1625,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 1633,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1755,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 1763,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1885,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 1503,
+          "y": 750,
+          "width": 122,
+          "height": 44,
+          "right": 1625,
+          "bottom": 794
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 1531.765625,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1547.765625,
+        "bottom": 676
+      },
+      {
+        "x": 1663.6875,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1679.6875,
+        "bottom": 676
+      },
+      {
+        "x": 1786,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1802,
+        "bottom": 676
+      },
+      {
+        "x": 1529.640625,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1545.640625,
+        "bottom": 728
+      },
+      {
+        "x": 1658.984375,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1674.984375,
+        "bottom": 728
+      },
+      {
+        "x": 1792.078125,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1808.078125,
+        "bottom": 728
+      },
+      {
+        "x": 1521.96875,
+        "y": 764,
+        "width": 16,
+        "height": 16,
+        "right": 1537.96875,
+        "bottom": 780
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "retirados",
+    "overflow": 0,
+    "reset": {
+      "x": 1503,
+      "y": 810,
+      "width": 392,
+      "height": 48,
+      "right": 1895,
+      "bottom": 858
+    },
+    "actions": {
+      "x": 1455,
+      "y": 32,
+      "width": 424,
+      "height": 48,
+      "right": 1879,
+      "bottom": 80
+    },
+    "tray": {
+      "x": 1503,
+      "y": 144,
+      "width": 392,
+      "height": 400,
+      "right": 1895,
+      "bottom": 544
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 1455,
+          "y": 32,
+          "width": 160,
+          "height": 48,
+          "right": 1615,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 1627,
+          "y": 32,
+          "width": 252,
+          "height": 48,
+          "right": 1879,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 1529,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 1633,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 1641,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 1745,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 1503,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1625,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 1633,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1755,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 1763,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1885,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 1503,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1625,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 1633,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1755,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 1763,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1885,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 1503,
+          "y": 750,
+          "width": 122,
+          "height": 44,
+          "right": 1625,
+          "bottom": 794
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 1531.765625,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1547.765625,
+        "bottom": 676
+      },
+      {
+        "x": 1663.6875,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1679.6875,
+        "bottom": 676
+      },
+      {
+        "x": 1786,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1802,
+        "bottom": 676
+      },
+      {
+        "x": 1529.640625,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1545.640625,
+        "bottom": 728
+      },
+      {
+        "x": 1658.984375,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1674.984375,
+        "bottom": 728
+      },
+      {
+        "x": 1792.078125,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1808.078125,
+        "bottom": 728
+      },
+      {
+        "x": 1521.96875,
+        "y": 764,
+        "width": 16,
+        "height": 16,
+        "right": 1537.96875,
+        "bottom": 780
+      }
+    ]
+  },
+  {
+    "width": 1919,
+    "state": "todos-retirados",
+    "overflow": 0,
+    "reset": {
+      "x": 1503,
+      "y": 810,
+      "width": 392,
+      "height": 48,
+      "right": 1895,
+      "bottom": 858
+    },
+    "actions": {
+      "x": 1455,
+      "y": 32,
+      "width": 424,
+      "height": 48,
+      "right": 1879,
+      "bottom": 80
+    },
+    "tray": {
+      "x": 1503,
+      "y": 144,
+      "width": 392,
+      "height": 400,
+      "right": 1895,
+      "bottom": 544
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 1455,
+          "y": 32,
+          "width": 160,
+          "height": 48,
+          "right": 1615,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 1627,
+          "y": 32,
+          "width": 252,
+          "height": 48,
+          "right": 1879,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 1529,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 1633,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 1641,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 1745,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 1753,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 1857,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 1529,
+          "y": 339,
+          "width": 104,
+          "height": 88,
+          "right": 1633,
+          "bottom": 427
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 1641,
+          "y": 339,
+          "width": 104,
+          "height": 88,
+          "right": 1745,
+          "bottom": 427
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 1753,
+          "y": 339,
+          "width": 104,
+          "height": 88,
+          "right": 1857,
+          "bottom": 427
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 1529,
+          "y": 435,
+          "width": 104,
+          "height": 88,
+          "right": 1633,
+          "bottom": 523
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 1503,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1625,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 1633,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1755,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 1763,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1885,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 1503,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1625,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 1633,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1755,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 1763,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1885,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 1503,
+          "y": 750,
+          "width": 122,
+          "height": 44,
+          "right": 1625,
+          "bottom": 794
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 1531.765625,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1547.765625,
+        "bottom": 676
+      },
+      {
+        "x": 1663.6875,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1679.6875,
+        "bottom": 676
+      },
+      {
+        "x": 1786,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1802,
+        "bottom": 676
+      },
+      {
+        "x": 1529.640625,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1545.640625,
+        "bottom": 728
+      },
+      {
+        "x": 1658.984375,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1674.984375,
+        "bottom": 728
+      },
+      {
+        "x": 1792.078125,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1808.078125,
+        "bottom": 728
+      },
+      {
+        "x": 1521.96875,
+        "y": 764,
+        "width": 16,
+        "height": 16,
+        "right": 1537.96875,
+        "bottom": 780
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "inicial",
+    "overflow": 0,
+    "reset": {
+      "x": 1504,
+      "y": 810,
+      "width": 392,
+      "height": 48,
+      "right": 1896,
+      "bottom": 858
+    },
+    "actions": {
+      "x": 1456,
+      "y": 32,
+      "width": 424,
+      "height": 48,
+      "right": 1880,
+      "bottom": 80
+    },
+    "tray": {
+      "x": 1504,
+      "y": 144,
+      "width": 392,
+      "height": 400,
+      "right": 1896,
+      "bottom": 544
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 1456,
+          "y": 32,
+          "width": 160,
+          "height": 48,
+          "right": 1616,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 1628,
+          "y": 32,
+          "width": 252,
+          "height": 48,
+          "right": 1880,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 1504,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1626,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 1634,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1756,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 1764,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1886,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 1504,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1626,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 1634,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1756,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 1764,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1886,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 1504,
+          "y": 750,
+          "width": 122,
+          "height": 44,
+          "right": 1626,
+          "bottom": 794
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 1532.765625,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1548.765625,
+        "bottom": 676
+      },
+      {
+        "x": 1664.6875,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1680.6875,
+        "bottom": 676
+      },
+      {
+        "x": 1787,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1803,
+        "bottom": 676
+      },
+      {
+        "x": 1530.640625,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1546.640625,
+        "bottom": 728
+      },
+      {
+        "x": 1659.984375,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1675.984375,
+        "bottom": 728
+      },
+      {
+        "x": 1793.078125,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1809.078125,
+        "bottom": 728
+      },
+      {
+        "x": 1522.96875,
+        "y": 764,
+        "width": 16,
+        "height": 16,
+        "right": 1538.96875,
+        "bottom": 780
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "retirados",
+    "overflow": 0,
+    "reset": {
+      "x": 1504,
+      "y": 810,
+      "width": 392,
+      "height": 48,
+      "right": 1896,
+      "bottom": 858
+    },
+    "actions": {
+      "x": 1456,
+      "y": 32,
+      "width": 424,
+      "height": 48,
+      "right": 1880,
+      "bottom": 80
+    },
+    "tray": {
+      "x": 1504,
+      "y": 144,
+      "width": 392,
+      "height": 400,
+      "right": 1896,
+      "bottom": 544
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 1456,
+          "y": 32,
+          "width": 160,
+          "height": 48,
+          "right": 1616,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 1628,
+          "y": 32,
+          "width": 252,
+          "height": 48,
+          "right": 1880,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 1530,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 1634,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 1642,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 1746,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 1504,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1626,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 1634,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1756,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 1764,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1886,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 1504,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1626,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 1634,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1756,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 1764,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1886,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 1504,
+          "y": 750,
+          "width": 122,
+          "height": 44,
+          "right": 1626,
+          "bottom": 794
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 1532.765625,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1548.765625,
+        "bottom": 676
+      },
+      {
+        "x": 1664.6875,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1680.6875,
+        "bottom": 676
+      },
+      {
+        "x": 1787,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1803,
+        "bottom": 676
+      },
+      {
+        "x": 1530.640625,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1546.640625,
+        "bottom": 728
+      },
+      {
+        "x": 1659.984375,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1675.984375,
+        "bottom": 728
+      },
+      {
+        "x": 1793.078125,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1809.078125,
+        "bottom": 728
+      },
+      {
+        "x": 1522.96875,
+        "y": 764,
+        "width": 16,
+        "height": 16,
+        "right": 1538.96875,
+        "bottom": 780
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "state": "todos-retirados",
+    "overflow": 0,
+    "reset": {
+      "x": 1504,
+      "y": 810,
+      "width": 392,
+      "height": 48,
+      "right": 1896,
+      "bottom": 858
+    },
+    "actions": {
+      "x": 1456,
+      "y": 32,
+      "width": 424,
+      "height": 48,
+      "right": 1880,
+      "bottom": 80
+    },
+    "tray": {
+      "x": 1504,
+      "y": 144,
+      "width": 392,
+      "height": 400,
+      "right": 1896,
+      "bottom": 544
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 1456,
+          "y": 32,
+          "width": 160,
+          "height": 48,
+          "right": 1616,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 1628,
+          "y": 32,
+          "width": 252,
+          "height": 48,
+          "right": 1880,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 1530,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 1634,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 1642,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 1746,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 1754,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 1858,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 1530,
+          "y": 339,
+          "width": 104,
+          "height": 88,
+          "right": 1634,
+          "bottom": 427
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 1642,
+          "y": 339,
+          "width": 104,
+          "height": 88,
+          "right": 1746,
+          "bottom": 427
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 1754,
+          "y": 339,
+          "width": 104,
+          "height": 88,
+          "right": 1858,
+          "bottom": 427
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 1530,
+          "y": 435,
+          "width": 104,
+          "height": 88,
+          "right": 1634,
+          "bottom": 523
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 1504,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1626,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 1634,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1756,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 1764,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1886,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 1504,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1626,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 1634,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1756,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 1764,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1886,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 1504,
+          "y": 750,
+          "width": 122,
+          "height": 44,
+          "right": 1626,
+          "bottom": 794
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 1532.765625,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1548.765625,
+        "bottom": 676
+      },
+      {
+        "x": 1664.6875,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1680.6875,
+        "bottom": 676
+      },
+      {
+        "x": 1787,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1803,
+        "bottom": 676
+      },
+      {
+        "x": 1530.640625,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1546.640625,
+        "bottom": 728
+      },
+      {
+        "x": 1659.984375,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1675.984375,
+        "bottom": 728
+      },
+      {
+        "x": 1793.078125,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1809.078125,
+        "bottom": 728
+      },
+      {
+        "x": 1522.96875,
+        "y": 764,
+        "width": 16,
+        "height": 16,
+        "right": 1538.96875,
+        "bottom": 780
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "inicial",
+    "overflow": 0,
+    "reset": {
+      "x": 1505,
+      "y": 810,
+      "width": 392,
+      "height": 48,
+      "right": 1897,
+      "bottom": 858
+    },
+    "actions": {
+      "x": 1457,
+      "y": 32,
+      "width": 424,
+      "height": 48,
+      "right": 1881,
+      "bottom": 80
+    },
+    "tray": {
+      "x": 1505,
+      "y": 144,
+      "width": 392,
+      "height": 400,
+      "right": 1897,
+      "bottom": 544
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 1457,
+          "y": 32,
+          "width": 160,
+          "height": 48,
+          "right": 1617,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 1629,
+          "y": 32,
+          "width": 252,
+          "height": 48,
+          "right": 1881,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 1505,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1627,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 1635,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1757,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 1765,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1887,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 1505,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1627,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 1635,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1757,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 1765,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1887,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 1505,
+          "y": 750,
+          "width": 122,
+          "height": 44,
+          "right": 1627,
+          "bottom": 794
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 1533.765625,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1549.765625,
+        "bottom": 676
+      },
+      {
+        "x": 1665.6875,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1681.6875,
+        "bottom": 676
+      },
+      {
+        "x": 1788,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1804,
+        "bottom": 676
+      },
+      {
+        "x": 1531.640625,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1547.640625,
+        "bottom": 728
+      },
+      {
+        "x": 1660.984375,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1676.984375,
+        "bottom": 728
+      },
+      {
+        "x": 1794.078125,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1810.078125,
+        "bottom": 728
+      },
+      {
+        "x": 1523.96875,
+        "y": 764,
+        "width": 16,
+        "height": 16,
+        "right": 1539.96875,
+        "bottom": 780
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "retirados",
+    "overflow": 0,
+    "reset": {
+      "x": 1505,
+      "y": 810,
+      "width": 392,
+      "height": 48,
+      "right": 1897,
+      "bottom": 858
+    },
+    "actions": {
+      "x": 1457,
+      "y": 32,
+      "width": 424,
+      "height": 48,
+      "right": 1881,
+      "bottom": 80
+    },
+    "tray": {
+      "x": 1505,
+      "y": 144,
+      "width": 392,
+      "height": 400,
+      "right": 1897,
+      "bottom": 544
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 1457,
+          "y": 32,
+          "width": 160,
+          "height": 48,
+          "right": 1617,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 1629,
+          "y": 32,
+          "width": 252,
+          "height": 48,
+          "right": 1881,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 1531,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 1635,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 1643,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 1747,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 1505,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1627,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 1635,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1757,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 1765,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1887,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 1505,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1627,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 1635,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1757,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 1765,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1887,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 1505,
+          "y": 750,
+          "width": 122,
+          "height": 44,
+          "right": 1627,
+          "bottom": 794
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 1533.765625,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1549.765625,
+        "bottom": 676
+      },
+      {
+        "x": 1665.6875,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1681.6875,
+        "bottom": 676
+      },
+      {
+        "x": 1788,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1804,
+        "bottom": 676
+      },
+      {
+        "x": 1531.640625,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1547.640625,
+        "bottom": 728
+      },
+      {
+        "x": 1660.984375,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1676.984375,
+        "bottom": 728
+      },
+      {
+        "x": 1794.078125,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1810.078125,
+        "bottom": 728
+      },
+      {
+        "x": 1523.96875,
+        "y": 764,
+        "width": 16,
+        "height": 16,
+        "right": 1539.96875,
+        "bottom": 780
+      }
+    ]
+  },
+  {
+    "width": 1921,
+    "state": "todos-retirados",
+    "overflow": 0,
+    "reset": {
+      "x": 1505,
+      "y": 810,
+      "width": 392,
+      "height": 48,
+      "right": 1897,
+      "bottom": 858
+    },
+    "actions": {
+      "x": 1457,
+      "y": 32,
+      "width": 424,
+      "height": 48,
+      "right": 1881,
+      "bottom": 80
+    },
+    "tray": {
+      "x": 1505,
+      "y": 144,
+      "width": 392,
+      "height": 400,
+      "right": 1897,
+      "bottom": 544
+    },
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "controls": [
+      {
+        "text": "Cancelar",
+        "box": {
+          "x": 1457,
+          "y": 32,
+          "width": 160,
+          "height": 48,
+          "right": 1617,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Aplicar alterações",
+        "box": {
+          "x": 1629,
+          "y": 32,
+          "width": 252,
+          "height": 48,
+          "right": 1881,
+          "bottom": 80
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 1531,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 1635,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 1643,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 1747,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 1755,
+          "y": 243,
+          "width": 104,
+          "height": 88,
+          "right": 1859,
+          "bottom": 331
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 1531,
+          "y": 339,
+          "width": 104,
+          "height": 88,
+          "right": 1635,
+          "bottom": 427
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 1643,
+          "y": 339,
+          "width": 104,
+          "height": 88,
+          "right": 1747,
+          "bottom": 427
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 1755,
+          "y": 339,
+          "width": 104,
+          "height": 88,
+          "right": 1859,
+          "bottom": 427
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 1531,
+          "y": 435,
+          "width": 104,
+          "height": 88,
+          "right": 1635,
+          "bottom": 523
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Queijo",
+        "box": {
+          "x": 1505,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1627,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Picles",
+        "box": {
+          "x": 1635,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1757,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Ketchup",
+        "box": {
+          "x": 1765,
+          "y": 646,
+          "width": 122,
+          "height": 44,
+          "right": 1887,
+          "bottom": 690
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Cebola",
+        "box": {
+          "x": 1505,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1627,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Tomate",
+        "box": {
+          "x": 1635,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1757,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Alface",
+        "box": {
+          "x": 1765,
+          "y": 698,
+          "width": 122,
+          "height": 44,
+          "right": 1887,
+          "bottom": 742
+        },
+        "overflow": 0
+      },
+      {
+        "text": "Maionese",
+        "box": {
+          "x": 1505,
+          "y": 750,
+          "width": 122,
+          "height": 44,
+          "right": 1627,
+          "bottom": 794
+        },
+        "overflow": 0
+      }
+    ],
+    "iconSizes": [
+      {
+        "x": 1533.765625,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1549.765625,
+        "bottom": 676
+      },
+      {
+        "x": 1665.6875,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1681.6875,
+        "bottom": 676
+      },
+      {
+        "x": 1788,
+        "y": 660,
+        "width": 16,
+        "height": 16,
+        "right": 1804,
+        "bottom": 676
+      },
+      {
+        "x": 1531.640625,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1547.640625,
+        "bottom": 728
+      },
+      {
+        "x": 1660.984375,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1676.984375,
+        "bottom": 728
+      },
+      {
+        "x": 1794.078125,
+        "y": 712,
+        "width": 16,
+        "height": 16,
+        "right": 1810.078125,
+        "bottom": 728
+      },
+      {
+        "x": 1523.96875,
+        "y": 764,
+        "width": 16,
+        "height": 16,
+        "right": 1539.96875,
+        "bottom": 780
+      }
+    ]
+  }
+]
