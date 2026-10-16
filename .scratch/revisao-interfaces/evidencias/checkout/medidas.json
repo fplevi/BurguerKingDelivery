@@ -1,0 +1,7614 @@
+[
+  {
+    "width": 320,
+    "state": "celular",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 320,
+    "state": "whatsapp",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 733.375,
+        "width": 238,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 41,
+        "y": 789.375,
+        "width": 238,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 845.375,
+        "width": 238,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 320,
+    "state": "codigo-incorreto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 775.375,
+        "width": 238,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 41,
+        "y": 831.375,
+        "width": 238,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 887.375,
+        "width": 238,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 320,
+    "state": "reenviado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 382.375,
+        "width": 238,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 41,
+        "y": 438.375,
+        "width": 238,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 494.375,
+        "width": 238,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 16,
+      "y": 750,
+      "width": 288,
+      "height": 70
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 320,
+    "state": "sms",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 382.375,
+        "width": 238,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "x": 41,
+        "y": 438.375,
+        "width": 238,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 494.375,
+        "width": 238,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 16,
+      "y": 750,
+      "width": 288,
+      "height": 70
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 320,
+    "state": "pagamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 320,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 320,
+    "state": "cartao-salvo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 320,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 320,
+    "state": "validacao-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 320,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 320,
+    "state": "cartao-processando",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 320,
+    "state": "cartao-recusado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 320,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 320,
+    "state": "novo-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 320,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 320,
+    "state": "pix-pendente",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 320,
+    "state": "pix-copiado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 320,
+    "state": "pix-aprovado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 320,
+    "state": "pedido-confirmado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 320,
+    "state": "novo-celular-whatsapp",
+    "overflow": 0,
+    "body": "rgb(250, 242, 229)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 617.984375,
+        "width": 238,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 41,
+        "y": 673.984375,
+        "width": 238,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 729.984375,
+        "width": 238,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 320,
+    "state": "novo-celular-sms",
+    "overflow": 0,
+    "body": "rgb(250, 242, 229)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 596.984375,
+        "width": 238,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "x": 41,
+        "y": 652.984375,
+        "width": 238,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 708.984375,
+        "width": 238,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 16,
+      "y": 750,
+      "width": 288,
+      "height": 70
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 320,
+    "state": "novo-cliente",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 320,
+    "state": "pix-expirado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 320,
+    "state": "identifique-se",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 360,
+    "state": "celular",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 360,
+    "state": "whatsapp",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 702.578125,
+        "width": 278,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 41,
+        "y": 758.578125,
+        "width": 278,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 814.578125,
+        "width": 278,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 360,
+    "state": "codigo-incorreto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 728.578125,
+        "width": 278,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 41,
+        "y": 784.578125,
+        "width": 278,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 840.578125,
+        "width": 278,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 360,
+    "state": "reenviado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 683.578125,
+        "width": 278,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 41,
+        "y": 739.578125,
+        "width": 278,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 795.578125,
+        "width": 278,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 16,
+      "y": 750,
+      "width": 328,
+      "height": 70
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 360,
+    "state": "sms",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 381.578125,
+        "width": 278,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "x": 41,
+        "y": 437.578125,
+        "width": 278,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 493.578125,
+        "width": 278,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 16,
+      "y": 750,
+      "width": 328,
+      "height": 70
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 360,
+    "state": "pagamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 360,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 360,
+    "state": "cartao-salvo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 360,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 360,
+    "state": "validacao-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 360,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 360,
+    "state": "cartao-processando",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 360,
+    "state": "cartao-recusado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 360,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 360,
+    "state": "novo-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 360,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 360,
+    "state": "pix-pendente",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 360,
+    "state": "pix-copiado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 360,
+    "state": "pix-aprovado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 360,
+    "state": "pedido-confirmado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 360,
+    "state": "novo-celular-whatsapp",
+    "overflow": 0,
+    "body": "rgb(250, 242, 229)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 596.984375,
+        "width": 278,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 41,
+        "y": 652.984375,
+        "width": 278,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 708.984375,
+        "width": 278,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 360,
+    "state": "novo-celular-sms",
+    "overflow": 0,
+    "body": "rgb(250, 242, 229)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 596.984375,
+        "width": 278,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "x": 41,
+        "y": 652.984375,
+        "width": 278,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 708.984375,
+        "width": 278,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 16,
+      "y": 750,
+      "width": 328,
+      "height": 70
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 360,
+    "state": "novo-cliente",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 360,
+    "state": "pix-expirado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 360,
+    "state": "identifique-se",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 390,
+    "state": "celular",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 390,
+    "state": "whatsapp",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 702.578125,
+        "width": 308,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 41,
+        "y": 758.578125,
+        "width": 308,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 814.578125,
+        "width": 308,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 390,
+    "state": "codigo-incorreto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 728.578125,
+        "width": 308,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 41,
+        "y": 784.578125,
+        "width": 308,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 840.578125,
+        "width": 308,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 390,
+    "state": "reenviado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 683.578125,
+        "width": 308,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 41,
+        "y": 739.578125,
+        "width": 308,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 795.578125,
+        "width": 308,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 16,
+      "y": 750,
+      "width": 358,
+      "height": 70
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 390,
+    "state": "sms",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 381.578125,
+        "width": 308,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "x": 41,
+        "y": 437.578125,
+        "width": 308,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 493.578125,
+        "width": 308,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 16,
+      "y": 750,
+      "width": 358,
+      "height": 70
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 390,
+    "state": "pagamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 390,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 390,
+    "state": "cartao-salvo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 390,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 390,
+    "state": "validacao-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 390,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 390,
+    "state": "cartao-processando",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 390,
+    "state": "cartao-recusado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 390,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 390,
+    "state": "novo-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 390,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 390,
+    "state": "pix-pendente",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 390,
+    "state": "pix-copiado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 390,
+    "state": "pix-aprovado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 390,
+    "state": "pedido-confirmado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 390,
+    "state": "novo-celular-whatsapp",
+    "overflow": 0,
+    "body": "rgb(250, 242, 229)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 596.984375,
+        "width": 308,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 41,
+        "y": 652.984375,
+        "width": 308,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 708.984375,
+        "width": 308,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 390,
+    "state": "novo-celular-sms",
+    "overflow": 0,
+    "body": "rgb(250, 242, 229)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 575.984375,
+        "width": 308,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "x": 41,
+        "y": 631.984375,
+        "width": 308,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 687.984375,
+        "width": 308,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 16,
+      "y": 750,
+      "width": 358,
+      "height": 70
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 390,
+    "state": "novo-cliente",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 390,
+    "state": "pix-expirado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 390,
+    "state": "identifique-se",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 768,
+    "state": "celular",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 768,
+    "state": "whatsapp",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 680.1875,
+        "width": 686,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 41,
+        "y": 736.1875,
+        "width": 686,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 792.1875,
+        "width": 686,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 768,
+    "state": "codigo-incorreto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 706.1875,
+        "width": 686,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 41,
+        "y": 762.1875,
+        "width": 686,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 818.1875,
+        "width": 686,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 768,
+    "state": "reenviado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 684.1875,
+        "width": 686,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 41,
+        "y": 740.1875,
+        "width": 686,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 796.1875,
+        "width": 686,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 155.9609375,
+      "y": 769,
+      "width": 456.078125,
+      "height": 51
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 768,
+    "state": "sms",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 684.1875,
+        "width": 686,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "x": 41,
+        "y": 740.1875,
+        "width": 686,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 796.1875,
+        "width": 686,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 180.8046875,
+      "y": 769,
+      "width": 406.390625,
+      "height": 51
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 768,
+    "state": "pagamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 768,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 768,
+    "state": "cartao-salvo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 768,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 768,
+    "state": "validacao-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 768,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 768,
+    "state": "cartao-processando",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 768,
+    "state": "cartao-recusado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 768,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 768,
+    "state": "novo-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 768,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 768,
+    "state": "pix-pendente",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 768,
+    "state": "pix-copiado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 768,
+    "state": "pix-aprovado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 768,
+    "state": "pedido-confirmado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 768,
+    "state": "novo-celular-whatsapp",
+    "overflow": 0,
+    "body": "rgb(250, 242, 229)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 536.984375,
+        "width": 686,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 41,
+        "y": 592.984375,
+        "width": 686,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 648.984375,
+        "width": 686,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 768,
+    "state": "novo-celular-sms",
+    "overflow": 0,
+    "body": "rgb(250, 242, 229)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 536.984375,
+        "width": 686,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "x": 41,
+        "y": 592.984375,
+        "width": 686,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 648.984375,
+        "width": 686,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 184.3359375,
+      "y": 769,
+      "width": 399.328125,
+      "height": 51
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 768,
+    "state": "novo-cliente",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 768,
+    "state": "pix-expirado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 768,
+    "state": "identifique-se",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1023,
+    "state": "celular",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1023,
+    "state": "whatsapp",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 680.1875,
+        "width": 941,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 41,
+        "y": 736.1875,
+        "width": 941,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 792.1875,
+        "width": 941,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1023,
+    "state": "codigo-incorreto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 706.1875,
+        "width": 941,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 41,
+        "y": 762.1875,
+        "width": 941,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 818.1875,
+        "width": 941,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1023,
+    "state": "reenviado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 684.1875,
+        "width": 941,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 41,
+        "y": 740.1875,
+        "width": 941,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 796.1875,
+        "width": 941,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 283.4609375,
+      "y": 769,
+      "width": 456.078125,
+      "height": 51
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1023,
+    "state": "sms",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 684.1875,
+        "width": 941,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "x": 41,
+        "y": 740.1875,
+        "width": 941,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 796.1875,
+        "width": 941,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 308.3046875,
+      "y": 769,
+      "width": 406.390625,
+      "height": 51
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1023,
+    "state": "pagamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 1023,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1023,
+    "state": "cartao-salvo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 1023,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1023,
+    "state": "validacao-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 1023,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1023,
+    "state": "cartao-processando",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1023,
+    "state": "cartao-recusado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 1023,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1023,
+    "state": "novo-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 718,
+      "width": 1023,
+      "height": 126
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1023,
+    "state": "pix-pendente",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1023,
+    "state": "pix-copiado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1023,
+    "state": "pix-aprovado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1023,
+    "state": "pedido-confirmado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1023,
+    "state": "novo-celular-whatsapp",
+    "overflow": 0,
+    "body": "rgb(250, 242, 229)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 536.984375,
+        "width": 941,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 41,
+        "y": 592.984375,
+        "width": 941,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 648.984375,
+        "width": 941,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1023,
+    "state": "novo-celular-sms",
+    "overflow": 0,
+    "body": "rgb(250, 242, 229)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 41,
+        "y": 536.984375,
+        "width": 941,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "x": 41,
+        "y": 592.984375,
+        "width": 941,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 41,
+        "y": 648.984375,
+        "width": 941,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 311.8359375,
+      "y": 769,
+      "width": 399.328125,
+      "height": 51
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1023,
+    "state": "novo-cliente",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1023,
+    "state": "pix-expirado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1023,
+    "state": "identifique-se",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1024,
+    "state": "celular",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1024,
+    "state": "whatsapp",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 73,
+        "y": 650.578125,
+        "width": 490,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 73,
+        "y": 706.578125,
+        "width": 490,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 73,
+        "y": 762.578125,
+        "width": 490,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1024,
+    "state": "codigo-incorreto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 73,
+        "y": 676.578125,
+        "width": 490,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 73,
+        "y": 732.578125,
+        "width": 490,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 73,
+        "y": 788.578125,
+        "width": 490,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1024,
+    "state": "reenviado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 73,
+        "y": 676.578125,
+        "width": 490,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 73,
+        "y": 732.578125,
+        "width": 490,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 73,
+        "y": 788.578125,
+        "width": 490,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 283.9609375,
+      "y": 769,
+      "width": 456.078125,
+      "height": 51
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1024,
+    "state": "sms",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 73,
+        "y": 676.578125,
+        "width": 490,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "x": 73,
+        "y": 732.578125,
+        "width": 490,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 73,
+        "y": 788.578125,
+        "width": 490,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 308.8046875,
+      "y": 769,
+      "width": 406.390625,
+      "height": 51
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1024,
+    "state": "pagamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1024,
+    "state": "cartao-salvo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1024,
+    "state": "validacao-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1024,
+    "state": "cartao-processando",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1024,
+    "state": "cartao-recusado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1024,
+    "state": "novo-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1024,
+    "state": "pix-pendente",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1024,
+    "state": "pix-copiado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1024,
+    "state": "pix-aprovado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1024,
+    "state": "pedido-confirmado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1024,
+    "state": "novo-celular-whatsapp",
+    "overflow": 0,
+    "body": "rgb(250, 242, 229)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 341,
+        "y": 527.1875,
+        "width": 610,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 341,
+        "y": 583.1875,
+        "width": 610,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 341,
+        "y": 639.1875,
+        "width": 610,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1024,
+    "state": "novo-celular-sms",
+    "overflow": 0,
+    "body": "rgb(250, 242, 229)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 341,
+        "y": 506.1875,
+        "width": 610,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "x": 341,
+        "y": 562.1875,
+        "width": 610,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 341,
+        "y": 618.1875,
+        "width": 610,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 312.3359375,
+      "y": 769,
+      "width": 399.328125,
+      "height": 51
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1024,
+    "state": "novo-cliente",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1024,
+    "state": "pix-expirado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1024,
+    "state": "identifique-se",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1025,
+    "state": "celular",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1025,
+    "state": "whatsapp",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 73,
+        "y": 650.578125,
+        "width": 491,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 73,
+        "y": 706.578125,
+        "width": 491,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 73,
+        "y": 762.578125,
+        "width": 491,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1025,
+    "state": "codigo-incorreto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 73,
+        "y": 676.578125,
+        "width": 491,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 73,
+        "y": 732.578125,
+        "width": 491,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 73,
+        "y": 788.578125,
+        "width": 491,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1025,
+    "state": "reenviado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 73,
+        "y": 676.578125,
+        "width": 491,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 73,
+        "y": 732.578125,
+        "width": 491,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 73,
+        "y": 788.578125,
+        "width": 491,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 284.4609375,
+      "y": 769,
+      "width": 456.078125,
+      "height": 51
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1025,
+    "state": "sms",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 73,
+        "y": 676.578125,
+        "width": 491,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "x": 73,
+        "y": 732.578125,
+        "width": 491,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 73,
+        "y": 788.578125,
+        "width": 491,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 309.3046875,
+      "y": 769,
+      "width": 406.390625,
+      "height": 51
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1025,
+    "state": "pagamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1025,
+    "state": "cartao-salvo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1025,
+    "state": "validacao-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1025,
+    "state": "cartao-processando",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1025,
+    "state": "cartao-recusado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1025,
+    "state": "novo-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1025,
+    "state": "pix-pendente",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1025,
+    "state": "pix-copiado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1025,
+    "state": "pix-aprovado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1025,
+    "state": "pedido-confirmado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1025,
+    "state": "novo-celular-whatsapp",
+    "overflow": 0,
+    "body": "rgb(250, 242, 229)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 341,
+        "y": 527.1875,
+        "width": 611,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 341,
+        "y": 583.1875,
+        "width": 611,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 341,
+        "y": 639.1875,
+        "width": 611,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1025,
+    "state": "novo-celular-sms",
+    "overflow": 0,
+    "body": "rgb(250, 242, 229)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 341,
+        "y": 506.1875,
+        "width": 611,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "x": 341,
+        "y": 562.1875,
+        "width": 611,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 341,
+        "y": 618.1875,
+        "width": 611,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 312.8359375,
+      "y": 769,
+      "width": 399.328125,
+      "height": 51
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1025,
+    "state": "novo-cliente",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1025,
+    "state": "pix-expirado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1025,
+    "state": "identifique-se",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1280,
+    "state": "celular",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1280,
+    "state": "whatsapp",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 73,
+        "y": 650.578125,
+        "width": 746,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 73,
+        "y": 706.578125,
+        "width": 746,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 73,
+        "y": 762.578125,
+        "width": 746,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1280,
+    "state": "codigo-incorreto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 73,
+        "y": 676.578125,
+        "width": 746,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 73,
+        "y": 732.578125,
+        "width": 746,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 73,
+        "y": 788.578125,
+        "width": 746,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1280,
+    "state": "reenviado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 73,
+        "y": 676.578125,
+        "width": 746,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 73,
+        "y": 732.578125,
+        "width": 746,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 73,
+        "y": 788.578125,
+        "width": 746,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 411.9609375,
+      "y": 769,
+      "width": 456.078125,
+      "height": 51
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1280,
+    "state": "sms",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 73,
+        "y": 676.578125,
+        "width": 746,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "x": 73,
+        "y": 732.578125,
+        "width": 746,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 73,
+        "y": 788.578125,
+        "width": 746,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 436.8046875,
+      "y": 769,
+      "width": 406.390625,
+      "height": 51
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1280,
+    "state": "pagamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1280,
+    "state": "cartao-salvo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1280,
+    "state": "validacao-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1280,
+    "state": "cartao-processando",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1280,
+    "state": "cartao-recusado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1280,
+    "state": "novo-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1280,
+    "state": "pix-pendente",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1280,
+    "state": "pix-copiado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1280,
+    "state": "pix-aprovado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1280,
+    "state": "pedido-confirmado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1280,
+    "state": "novo-celular-whatsapp",
+    "overflow": 0,
+    "body": "rgb(250, 242, 229)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 341,
+        "y": 506.1875,
+        "width": 866,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 341,
+        "y": 562.1875,
+        "width": 866,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 341,
+        "y": 618.1875,
+        "width": 866,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1280,
+    "state": "novo-celular-sms",
+    "overflow": 0,
+    "body": "rgb(250, 242, 229)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 341,
+        "y": 506.1875,
+        "width": 866,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "x": 341,
+        "y": 562.1875,
+        "width": 866,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 341,
+        "y": 618.1875,
+        "width": 866,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 440.3359375,
+      "y": 769,
+      "width": 399.328125,
+      "height": 51
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1280,
+    "state": "novo-cliente",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1280,
+    "state": "pix-expirado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1280,
+    "state": "identifique-se",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1919,
+    "state": "celular",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1919,
+    "state": "whatsapp",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 73,
+        "y": 650.578125,
+        "width": 1385,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 73,
+        "y": 706.578125,
+        "width": 1385,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 73,
+        "y": 762.578125,
+        "width": 1385,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1919,
+    "state": "codigo-incorreto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 73,
+        "y": 676.578125,
+        "width": 1385,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 73,
+        "y": 732.578125,
+        "width": 1385,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 73,
+        "y": 788.578125,
+        "width": 1385,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1919,
+    "state": "reenviado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 73,
+        "y": 676.578125,
+        "width": 1385,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 73,
+        "y": 732.578125,
+        "width": 1385,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 73,
+        "y": 788.578125,
+        "width": 1385,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 731.4609375,
+      "y": 769,
+      "width": 456.078125,
+      "height": 51
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1919,
+    "state": "sms",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 73,
+        "y": 676.578125,
+        "width": 1385,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "x": 73,
+        "y": 732.578125,
+        "width": 1385,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 73,
+        "y": 788.578125,
+        "width": 1385,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 756.3046875,
+      "y": 769,
+      "width": 406.390625,
+      "height": 51
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1919,
+    "state": "pagamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1919,
+    "state": "cartao-salvo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1919,
+    "state": "validacao-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1919,
+    "state": "cartao-processando",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1919,
+    "state": "cartao-recusado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1919,
+    "state": "novo-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1919,
+    "state": "pix-pendente",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1919,
+    "state": "pix-copiado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1919,
+    "state": "pix-aprovado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1919,
+    "state": "pedido-confirmado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1919,
+    "state": "novo-celular-whatsapp",
+    "overflow": 0,
+    "body": "rgb(250, 242, 229)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 660.5,
+        "y": 506.1875,
+        "width": 866,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 660.5,
+        "y": 562.1875,
+        "width": 866,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 660.5,
+        "y": 618.1875,
+        "width": 866,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1919,
+    "state": "novo-celular-sms",
+    "overflow": 0,
+    "body": "rgb(250, 242, 229)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 660.5,
+        "y": 506.1875,
+        "width": 866,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "x": 660.5,
+        "y": 562.1875,
+        "width": 866,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 660.5,
+        "y": 618.1875,
+        "width": 866,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 759.8359375,
+      "y": 769,
+      "width": 399.328125,
+      "height": 51
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1919,
+    "state": "novo-cliente",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1919,
+    "state": "pix-expirado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1919,
+    "state": "identifique-se",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1920,
+    "state": "celular",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1920,
+    "state": "whatsapp",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 73,
+        "y": 650.578125,
+        "width": 1386,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 73,
+        "y": 706.578125,
+        "width": 1386,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 73,
+        "y": 762.578125,
+        "width": 1386,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1920,
+    "state": "codigo-incorreto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 73,
+        "y": 676.578125,
+        "width": 1386,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 73,
+        "y": 732.578125,
+        "width": 1386,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 73,
+        "y": 788.578125,
+        "width": 1386,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1920,
+    "state": "reenviado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 73,
+        "y": 676.578125,
+        "width": 1386,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 73,
+        "y": 732.578125,
+        "width": 1386,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 73,
+        "y": 788.578125,
+        "width": 1386,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 731.9609375,
+      "y": 769,
+      "width": 456.078125,
+      "height": 51
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1920,
+    "state": "sms",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "unloaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 73,
+        "y": 676.578125,
+        "width": 1386,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "x": 73,
+        "y": 732.578125,
+        "width": 1386,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 73,
+        "y": 788.578125,
+        "width": 1386,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 756.8046875,
+      "y": 769,
+      "width": 406.390625,
+      "height": 51
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1920,
+    "state": "pagamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1920,
+    "state": "cartao-salvo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1920,
+    "state": "validacao-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1920,
+    "state": "cartao-processando",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1920,
+    "state": "cartao-recusado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1920,
+    "state": "novo-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1920,
+    "state": "pix-pendente",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1920,
+    "state": "pix-copiado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1920,
+    "state": "pix-aprovado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1920,
+    "state": "pedido-confirmado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1920,
+    "state": "novo-celular-whatsapp",
+    "overflow": 0,
+    "body": "rgb(250, 242, 229)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 350,
+        "y": 506.1875,
+        "width": 866,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 350,
+        "y": 562.1875,
+        "width": 866,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 350,
+        "y": 618.1875,
+        "width": 866,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1920,
+    "state": "novo-celular-sms",
+    "overflow": 0,
+    "body": "rgb(250, 242, 229)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 350,
+        "y": 506.1875,
+        "width": 866,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "x": 350,
+        "y": 562.1875,
+        "width": 866,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 350,
+        "y": 618.1875,
+        "width": 866,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 760.3359375,
+      "y": 769,
+      "width": 399.328125,
+      "height": 51
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1920,
+    "state": "novo-cliente",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1920,
+    "state": "pix-expirado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1920,
+    "state": "identifique-se",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1921,
+    "state": "celular",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1921,
+    "state": "whatsapp",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 73,
+        "y": 650.578125,
+        "width": 1387,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 73,
+        "y": 706.578125,
+        "width": 1387,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 73,
+        "y": 762.578125,
+        "width": 1387,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1921,
+    "state": "codigo-incorreto",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 73,
+        "y": 676.578125,
+        "width": 1387,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 73,
+        "y": 732.578125,
+        "width": 1387,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 73,
+        "y": 788.578125,
+        "width": 1387,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1921,
+    "state": "reenviado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 73,
+        "y": 676.578125,
+        "width": 1387,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 73,
+        "y": 732.578125,
+        "width": 1387,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 73,
+        "y": 788.578125,
+        "width": 1387,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 732.4609375,
+      "y": 769,
+      "width": 456.078125,
+      "height": 51
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1921,
+    "state": "sms",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 73,
+        "y": 676.578125,
+        "width": 1387,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "x": 73,
+        "y": 732.578125,
+        "width": 1387,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 73,
+        "y": 788.578125,
+        "width": 1387,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 757.3046875,
+      "y": 769,
+      "width": 406.390625,
+      "height": 51
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1921,
+    "state": "pagamento",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1921,
+    "state": "cartao-salvo",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1921,
+    "state": "validacao-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1921,
+    "state": "cartao-processando",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1921,
+    "state": "cartao-recusado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1921,
+    "state": "novo-cartao",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1921,
+    "state": "pix-pendente",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1921,
+    "state": "pix-copiado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1921,
+    "state": "pix-aprovado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1921,
+    "state": "pedido-confirmado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1921,
+    "state": "novo-celular-whatsapp",
+    "overflow": 0,
+    "body": "rgb(250, 242, 229)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 350.5,
+        "y": 506.1875,
+        "width": 866,
+        "height": 48
+      },
+      {
+        "text": "Receber por SMS",
+        "x": 350.5,
+        "y": 562.1875,
+        "width": 866,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 350.5,
+        "y": 618.1875,
+        "width": 866,
+        "height": 48
+      }
+    ],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1921,
+    "state": "novo-celular-sms",
+    "overflow": 0,
+    "body": "rgb(250, 242, 229)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [
+      {
+        "text": "Confirmar e continuar",
+        "x": 350.5,
+        "y": 506.1875,
+        "width": 866,
+        "height": 48
+      },
+      {
+        "text": "Receber pelo WhatsApp",
+        "x": 350.5,
+        "y": 562.1875,
+        "width": 866,
+        "height": 48
+      },
+      {
+        "text": "Reenviar código",
+        "x": 350.5,
+        "y": 618.1875,
+        "width": 866,
+        "height": 48
+      }
+    ],
+    "toast": {
+      "x": 760.8359375,
+      "y": 769,
+      "width": 399.328125,
+      "height": 51
+    },
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1921,
+    "state": "novo-cliente",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1921,
+    "state": "pix-expirado",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  },
+  {
+    "width": 1921,
+    "state": "identifique-se",
+    "overflow": 0,
+    "body": "rgb(245, 235, 220)",
+    "header": "rgb(250, 242, 229)",
+    "fonts": [
+      {
+        "family": "Flame Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      },
+      {
+        "family": "Flame",
+        "status": "loaded"
+      }
+    ],
+    "codeActions": [],
+    "toast": null,
+    "bar": null,
+    "spacing": [],
+    "brokenImages": []
+  }
+]
