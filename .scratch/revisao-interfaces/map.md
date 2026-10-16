@@ -9,6 +9,8 @@
 
 ## Decisions-so-far
 
+- [Ticket 08 concluído](issues/08-pedidos-acompanhamento.md): lista e acompanhamento com fontes/tokens/WhatsApp original e Voltar contextual, preservando regras e marcadores ilustrados. [Matriz](matriz.md#ticket-08--pedidos-confirmados-e-acompanhamento): 208 combinações em 16 larguras, 91 capturas; 26 focados iniciais e 34 finais aprovados. Suíte completa: 666 aprovados/39 ignorados/5 falhas; quatro de alinhamento corrigidas, timeout Stacker isolado 3/3 aprovado, sem declarar a ampla verde. [Revisão](revisao-08.md): Standards 0, Spec 0 incluindo correção final. Commits `1a2eeae`, `945cda2`.
+
 - [Ticket 07 concluído](issues/07-minha-conta.md): Minha conta com fontes/tokens/ícones originais, Código de confirmação compartilhado, Voltar contextual e persistência/toasts preservados. [Matriz](matriz.md#ticket-07--minha-conta): 231 combinações, 84 capturas; focados 52 aprovados/2 ignorados, suíte completa 671 aprovados/39 ignorados/zero falhas; ajuste final validado em 10 testes. [Revisão](revisao-07.md): Standards 0, Spec 0 pendentes.
 
 - [Ticket 06 concluído](issues/06-checkout-codigo-confirmacao.md): Checkout e Código de confirmação reutilizável, navegação preservada, fontes/tokens/ícones revisados e toasts acima da barra fixa. [Matriz/evidências](matriz.md#ticket-06--checkout-e-código-de-confirmação): 220 combinações, 100 capturas; focados 107 aprovados/7 ignorados. Suíte completa isolada `fc94916`: 670 aprovados/39 ignorados/1 falha na Entrada 3D; caso isolado 3/3 aprovado, sem concluir causa nem declarar a suíte verde. [Revisão](revisao-06.md): Standards 0, Spec 0 pendentes.
@@ -35,7 +37,7 @@
 
 - Apuração inicial de ícones, implementação e meios de validação concluída; inventário exaustivo ficará como entrega da revisão.
 - Não há decisão de escopo pendente nesta entrevista. A reprodução dos problemas e o inventário exaustivo são trabalho da futura execução, não impedimento à conclusão da spec.
-- Tickets 08–09 ainda não implementados; 06 está concluído; 03, 04 e 05 estão concluídos. Ticket 02 corrigiu os cards e registrou as falhas/repetições da sua suíte no Answer. A falha de inclinação da suíte ampla do ticket 01 continua registrada no Answer daquele ticket, sem conclusão sobre sua causa.
+- Ticket 09 ainda não implementado; 02–08 concluídos. Falhas e repetições das suítes estão preservadas nos Answers, sem conclusão de causa para timeouts/inclinação não reproduzidos isoladamente.
 
 ## Tickets publicados
 
