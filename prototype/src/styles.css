@@ -315,9 +315,9 @@ main[data-screen=pedido]{display:block;height:auto;min-height:0}
 @media(max-width:1023px){.account-page{padding:24px 16px 40px}.account-page h1{font-size:28px;margin-bottom:20px;text-align:left}.account-layout{grid-template-columns:minmax(0,1fr);gap:16px}
 .account-menu{position:relative;display:flex;align-items:center;gap:14px;width:100%;height:52px;padding:0 4px 0 16px;border:0;border-bottom:1px solid var(--border);background:none;color:var(--red);font-size:15px;text-align:left}.account-menu::before{content:'';position:absolute;left:0;top:14px;bottom:14px;width:3px;border-radius:2px;background:var(--red)}.account-menu span{flex:1}.account-menu .icon:last-child{color:var(--brown);transition:transform .2s}.account-nav.open .account-menu .icon:last-child{transform:rotate(180deg)}
 .account-links{display:none;padding-top:4px}.account-nav.open .account-links{display:block}.account-action{width:100%;min-width:0}.account-buttons{flex-direction:column;align-self:stretch}}
-/* Identifique-se (Figma Conta 01-06): the title with Fechar, the lead and the Identificação's card, 680px centred. */
+/* Identifique-se (Figma Conta 01-06): the title, the lead and the Identificação's card, 680px centred. */
 .signin-page{max-width:calc(680px + 32px);margin:0 auto;padding:48px 16px 64px;color:var(--title)}.signin-head{display:flex;align-items:center;justify-content:space-between;gap:16px}.signin-head h1{margin:0;font-family:'Flame',Georgia,serif;font-size:32px;line-height:1.1}
-.signin-head .secondary{height:48px;padding:0 22px;border-color:var(--border);background:var(--card);font-weight:normal;font-size:14px}.signin-lead{margin:20px 0 24px;font-size:15px}
+.signin-lead{margin:20px 0 24px;font-size:15px}
 @media(max-width:1023px){.signin-page{padding:24px 16px 40px}.signin-head h1{font-size:28px}}
 /* Dados pessoais and Alterar celular (Figma Conta 08-11): white fields, the buttons one below the other (260px). */
 .account-form .field{background:#fff}.account-form .field[readonly]{background:#fff;color:var(--brown)}.account-form .account-meta{margin:0}.account-form>.account-action{align-self:flex-start;margin-top:16px}

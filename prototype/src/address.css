@@ -14,7 +14,6 @@ body[data-screen="endereco"] { background: var(--surface-page); }
   color: var(--red);
 }
 #address-page > .secondary[hidden] { display: none; }
-#address-page > .secondary svg { display: none; }
 #address-page > .secondary::before {
   content: '';
   width: 24px;
