@@ -5,6 +5,9 @@
 // illustration; defaults to the id, so a repeated ingredient shares one), locked (Base),
 // text (its part of the description; a repeated text is said once, none says nothing),
 // turn (radians about the vertical axis, so a repeated model doesn't look identical).
+// Assembled burger only (opened, every Camada is square in the middle): offset, [x, z] off the
+// middle (the patty's radius is ~1); lean, { on, angle }: it rests on Camada `on`, which has an
+// offset, and tips over by `angle` (radians) toward the side with nothing under it.
 // SVG fallback only: y, closed top in the hero (px); thickness, how much it raises the
 // Camada above it when assembled (px).
 const recipe = ({ layers, ...product }) => ({
@@ -78,6 +81,24 @@ export const recipes = {
       { id: 'onionRings', name: 'Onion rings', text: 'onion rings crocantes', y: 102, thickness: 26 },
       { id: 'mayo', name: 'Maionese', text: 'maionese', y: 82, thickness: 6 },
       { id: 'top', name: 'Pão superior', y: 21, thickness: 56, locked: true },
+    ],
+  }),
+  rodeio: recipe({
+    id: 'rodeio',
+    name: 'Rodeio',
+    price: 2990, // provisional (spec)
+    // As seen in the official photo; Base: buns and the meat. Queijo and Maionese are the
+    // Whopper's, the barbecue the Rodeio Duplo's; the queijo is on the one meat, under the
+    // barbecue, and a single onion ring (singular in the interface) sits near the edge, the top
+    // bun resting on it and tipping over toward the other side.
+    layers: [
+      { id: 'bottom', name: 'Pão inferior', text: 'Pão com gergelim', y: 242, thickness: 0, locked: true },
+      { id: 'meat', name: 'Carne grelhada', text: 'carne grelhada', y: 205, thickness: 36, locked: true },
+      { id: 'cheese', name: 'Queijo', text: 'queijo derretido', y: 179, thickness: 9 },
+      { id: 'bbqSauce', name: 'Molho barbecue', text: 'molho barbecue', y: 162, thickness: 6 },
+      { id: 'onionRing', name: 'Onion ring', text: 'onion ring crocante', offset: [0.42, 0.2], y: 138, thickness: 22 },
+      { id: 'mayo', name: 'Maionese', text: 'maionese', y: 116, thickness: 10 },
+      { id: 'top', name: 'Pão superior', lean: { on: 'onionRing', angle: 0.16 }, y: 55, thickness: 56, locked: true },
     ],
   }),
 };

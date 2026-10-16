@@ -65,7 +65,7 @@ const registrar = (nome, valor) => {
 /** Median of an odd number of measurements. */
 const mediana = (m) => [...m].sort((a, b) => a - b)[(m.length - 1) / 2];
 
-// Ticket 05 of the Cheddar Duplo and 04 of the Stacker Duplo Bacon and of the Rodeio Duplo: every
+// Ticket 05 of the Cheddar Duplo, 04 of the Stacker Duplo Bacon and of the Rodeio Duplo, 03 of the Rodeio: every
 // measurement below runs for each 3D burger. `chave` names it in the recorded measurements;
 // `arrastar` is the Camada dragged in Ver ingredientes (its newest one); `cenas` counts the hero
 // scenes built before it is shown (the page opens on the Whopper, the others are chosen in the
@@ -74,7 +74,8 @@ const produtos = [
   { nome: 'Whopper®', chave: 'whopper', arrastar: 'Tomate', cenas: 1 },
   { nome: 'Cheddar Duplo', chave: 'cheddar', arrastar: 'Cebola crispy', cenas: 2 },
   { nome: 'Stacker Duplo Bacon', chave: 'stacker', arrastar: 'Bacon', cenas: 2 },
-  { nome: 'Rodeio Duplo', chave: 'rodeio', arrastar: 'Onion rings', cenas: 2 },
+  { nome: 'Rodeio Duplo', chave: 'rodeio-duplo', arrastar: 'Onion rings', cenas: 2 },
+  { nome: 'Rodeio', chave: 'rodeio', arrastar: 'Onion ring', cenas: 2 },
 ];
 const escolhidosNaGrade = produtos.filter((p) => p.cenas > 1);
 
@@ -132,9 +133,9 @@ async function trocarPara(page, nome) {
   return Math.round(quadro - fimDaSaida);
 }
 
-// The burgers other than the Whopper (ticket 05 of the Cheddar Duplo, ticket 04 of the Stacker Duplo
-// Bacon and of the Rodeio Duplo): the page opens on the Whopper, so their first frame is the one
-// after choosing them in the grid. Same limit as the Whopper's first frame.
+// The burgers other than the Whopper (ticket 05 of the Cheddar Duplo, 04 of the Stacker Duplo Bacon
+// and of the Rodeio Duplo, 03 of the Rodeio): the page opens on the Whopper, so their first frame
+// is the one after choosing them in the grid. Same limit as the Whopper's first frame.
 for (const { nome, chave } of escolhidosNaGrade) {
   test(`o primeiro quadro do ${nome}, ao escolhê-lo na grade, não passa do limite aceito na CPU de um celular intermediário`, async ({ page }, info) => {
     test.skip(softwareGl, 'WebGL por software não representa um celular');

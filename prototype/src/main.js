@@ -18,6 +18,7 @@ import bigKingPhoto from '../Assets/burgers/official/site_Big_King.png';
 import cheeseburgerDuploPhoto from '../Assets/burgers/official/site_Cheeseburger_Duplo.png';
 import cheeseburgerPhoto from '../Assets/burgers/official/site_Cheeseburger.png';
 import rodeioPhoto from '../Assets/burgers/official/site_Rodeio.png';
+import crownIcon from '../Assets/icons/crown-16.svg';
 // Prototype question: can layered ingredients support opening, removal, restoration and order customization?
 
 // Sessão: restored from sessionStorage (the tab's), and saved after every change; storage refused (private mode), memory only.
@@ -132,19 +133,19 @@ function mountScenes() {
 // Product grid, with the official photos. Hambúrgueres: only products with a Receita can be
 // chosen; the others look the same, but clicking them does nothing. Photo categories: all can.
 const burgers = [
-  { recipe: 'whopper', photo: whopperPhoto },
-  { recipe: 'cheddarDuplo', photo: cheddarDuploPhoto },
-  { recipe: 'stackerDuploBacon', photo: stackerDuploPhoto },
-  { recipe: 'rodeioDuplo', photo: rodeioDuploPhoto },
-  { name: 'Big King', photo: bigKingPhoto },
-  { name: 'Cheeseburger Duplo', photo: cheeseburgerDuploPhoto },
-  { name: 'Cheeseburger', photo: cheeseburgerPhoto },
-  { name: 'Rodeio', photo: rodeioPhoto },
+  { recipe: 'whopper', photo: whopperPhoto, box: [156, 295, 668, 619] },
+  { recipe: 'cheddarDuplo', photo: cheddarDuploPhoto, box: [188, 302, 610, 619] },
+  { recipe: 'stackerDuploBacon', photo: stackerDuploPhoto, box: [193, 313, 639, 618] },
+  { recipe: 'rodeioDuplo', photo: rodeioDuploPhoto, box: [210, 333, 625, 620] },
+  { name: 'Big King', photo: bigKingPhoto, box: [189, 240, 629, 619] },
+  { name: 'Cheeseburger Duplo', photo: cheeseburgerDuploPhoto, box: [171, 318, 610, 619] },
+  { name: 'Cheeseburger', photo: cheeseburgerPhoto, box: [165, 356, 612, 618] },
+  { recipe: 'rodeio', photo: rodeioPhoto, box: [205, 359, 617, 620] },
 ];
 /** The photo's box in the 800 × 800 file, for .photo-crop: only it is drawn (the transparent margins are cut off, as in the Figma). */
 const crop = ([x0, y0, x1, y1]) => `--x:${x0};--y:${y0};--w:${x1 - x0};--h:${y1 - y0}`;
 const badge =
-  '<span class="badge"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5z" fill="currentColor"/></svg>Selecionado</span>';
+  `<span class="badge"><img class="bk-icon" src="${crownIcon}" width="16" height="16" alt="" aria-hidden="true">Selecionado</span>`;
 let gridCategory = null;
 function buildGrid() {
   if (gridCategory === state.category) return;
@@ -163,7 +164,7 @@ function buildGrid() {
     : burgers
         .map(
           (p) =>
-            `<button class="card" aria-pressed="false" ${p.recipe ? `data-product="${p.recipe}"` : ''}>${badge}<img class="catalog-photo" src="${p.photo}" width="400" height="400" alt="" loading="lazy" decoding="async"><span class="card-name"><span>${marks(p.recipe ? recipes[p.recipe].name : p.name)}</span></span></button>`,
+            `<button class="card" aria-pressed="false" ${p.recipe ? `data-product="${p.recipe}"` : ''}>${badge}<span class="catalog-photo photo-crop" style="${crop(p.box)}"><img src="${p.photo}" alt="" loading="lazy" decoding="async"></span><span class="card-name"><span>${marks(p.recipe ? recipes[p.recipe].name : p.name)}</span></span></button>`,
         )
         .join('');
   $('grid')

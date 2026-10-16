@@ -1,0 +1,102 @@
+/* First consumers of the shared foundations; other flows retain their styles. */
+header {
+  gap: var(--space-24);
+  background: var(--surface-header);
+  font-family: var(--font-body);
+}
+header nav { gap: var(--space-32); }
+header nav a { padding: var(--space-8) 0; }
+header .account-button { padding: 0 var(--space-12); border-radius: var(--radius-pill); }
+header .account-button.identified { padding: 0 var(--space-24); }
+header .cart-count { padding: 0 var(--space-4); border-radius: var(--radius-pill); }
+.bk-icon { display: inline-block; flex: none; vertical-align: middle; }
+.hero .deliver-to { gap: var(--space-8); }
+.hero .deliver-change { padding: 0 var(--space-16); border-radius: var(--radius-pill); }
+.hero .purchase {
+  padding: var(--space-24) var(--space-32);
+  border-radius: var(--radius-panel);
+  background: var(--surface-purchase);
+  font-family: var(--font-body);
+}
+.purchase .check { gap: var(--space-8); }
+.purchase .check input {
+  appearance: none;
+  flex: none;
+  border: 1px solid var(--brown);
+  border-radius: var(--radius-control);
+  background: white;
+  cursor: pointer;
+}
+.purchase .check input:checked {
+  border-color: var(--red);
+  background: var(--red) url('../Assets/icons/check-24.svg') center no-repeat;
+}
+.purchase .field-label { margin: var(--space-16) 0 var(--space-12); }
+.purchase .field {
+  appearance: none;
+  padding: var(--space-16);
+  padding-right: var(--space-48);
+  border-radius: var(--radius-control);
+  background: white url('../Assets/icons/caret-down-16.svg') right 16px center no-repeat;
+}
+.purchase .field-error { margin-top: var(--space-8); }
+.purchase .field:disabled { background-color: var(--surface-disabled); }
+.purchase .qty-row { margin: var(--space-16) 0; gap: var(--space-12); }
+.purchase .qty { border-radius: var(--radius-control); }
+.purchase .qty button { display: flex; align-items: center; justify-content: center; padding: 0; }
+.purchase .qty span { font-family: var(--font-display); font-weight: 400; }
+.purchase .total { padding-top: var(--space-16); }
+.purchase .total strong { margin: var(--space-12) 0; font-family: var(--font-display); font-weight: 700; }
+.purchase #add {
+  width: calc(100% + 32px);
+  margin: 0 -16px;
+  gap: var(--space-16);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+}
+.hero .edit-btn { gap: var(--space-16); margin-top: var(--space-24); border-radius: var(--radius-pill); }
+/* Keep image and name in separate, growing rows. Columns follow available space. */
+.catalog .grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, max(216px, calc((100% - 48px) / 4))), 1fr)); gap: var(--space-16); }
+.catalog .card {
+  min-width: 0;
+  padding: var(--space-16);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-item);
+  font-family: var(--font-display);
+  overflow: visible;
+}
+.catalog .card[aria-pressed=true] { padding: var(--space-16); border-color: var(--red); }
+.catalog .catalog-photo,
+.catalog .grid:not([data-category=hamburgueres]) .catalog-photo {
+  flex: none;
+  height: 180px;
+  margin: 0;
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+}
+.catalog .card-name { width: 100%; min-height: 48px; height: auto; line-height: 1.25; overflow-wrap: anywhere; }
+.catalog .card .badge {
+  position: static;
+  align-self: flex-start;
+  flex: none;
+  gap: var(--space-4);
+  min-height: 32px;
+  height: auto;
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+}
+.catalog .card[aria-pressed=false] .badge { display: flex; visibility: hidden; }
+@media (max-width: 1023px) {
+  .hero h1 { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+  .catalog { padding: var(--space-24) var(--space-16); }
+  .catalog .grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, max(156px, calc((100% - 16px) / 2))), 1fr)); }
+  .catalog .catalog-photo,
+  .catalog .grid:not([data-category=hamburgueres]) .catalog-photo { height: 113px; }
+  header { padding: var(--space-24) var(--space-16) 0; gap: var(--space-12); }
+  header nav { margin-top: var(--space-8); padding: 0 var(--space-16); gap: var(--space-32); }
+  .hero .purchase { padding: var(--space-24) var(--space-16); }
+  .purchase #add { width: 100%; margin: 0; }
+  .hero .edit-btn { margin-top: var(--space-12); }
+}
