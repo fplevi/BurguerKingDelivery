@@ -45,3 +45,13 @@ Os símbolos antigos de `index.html`, `account.js`, `checkout.js` e `tracking.js
 `check-16.svg`: export original de Check `290:11156`, componente remoto `300:11418`, key `16c67e993965c3a46dc398337ef640e87446d926`, em `290:11151` (chips de Ver ingredientes), consultado em 15/10/2026. Plus `305:11371` usa o mesmo componente já exportado em `plus-16.svg`; Minus usa `minus-16.svg` para a ação de retirar no hover/foco. Os três SVGs são máscaras CSS de 16 × 16, com a cor herdada do chip em cada estado; os paths originais são preservados.
 
 Ticket 06: `address-back.svg` reutilizado como máscara de 24 × 24 em Voltar no Checkout e Identifique-se; corresponde ao ArrowLeft da referência ativa `218:6512` (`406:14013`), também usado em `218:7675`. `address-check.svg` mantém o Check de 16 × 16 nos indicadores de etapas; referências `246:11091`/`312:11195`. Origem da biblioteca Icons e geometria dos exports preservadas. Nenhum pacote novo.
+
+Ticket 07: navegação de Minha conta consultada em `318:11597` / `318:12920`, arquivo BK, Page 1, em 15/10/2026. House, User, MapPin, CreditCard, Receipt e SignOut usam caixas de 24 px, biblioteca Icons, Format=Outline / Weight=Bold. House/MapPin reutilizam os exports address-* existentes; novos exports de componentes inteiros preservam viewBox e geometria. CaretDown usa o mesmo componente `308:14818` na caixa de 24 px. Renderização centralizada em `address-icons.js`.
+
+| Export novo | Componente | Key |
+| --- | --- | --- |
+| address-user.svg | 296:17367 | f7372780f955e5c365972b99c05f9ba2b7b70e32 |
+| address-credit-card.svg | 335:12081 | 9061fdca1c767e61a39ea9846271a762d6d8087a |
+| address-receipt.svg | 335:12129 | 6163cd232ba141ad743ed5c0d148d6f9c6cd3f71 |
+| address-sign-out.svg | 335:12172 | 0bf4981f71054c55ad4d5dc71de189d50b8606f6 |
+| address-caret-down.svg | 308:14818 | 5eff189a6333a488f64ec551e1744d1fc63a1803 |

@@ -1,3 +1,4 @@
+import { addressIcon } from './address-icons.js';
 // Minha conta (Figma Conta 07-22): the navigation (a side list on desktop, a list that opens below 1024px) and the
 // content of each section. Rebuilt by main.js on every change; its links are plain hashes (#conta/<page>).
 import { maskPhone, esc, field, confirmationCode, maskCard, maskExpiry } from './checkout.js';
@@ -5,19 +6,15 @@ import { money } from './state.js';
 import { trackingView } from './tracking.js';
 import { currentOrder, ordersOf, situation, situationName, forecast, hour, day, units, summary, store, routeKm } from './orders.js';
 
-const icon = (path) => `<svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">${path}</svg>`;
-const line = 'fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
-/** Icons Outline Bold of the Figma: house, person, pin, card, receipt, exit. */
 const icons = {
-  inicio: icon(`<path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z" ${line}/>`),
-  dados: icon(`<circle cx="12" cy="8" r="4" ${line}/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" ${line}/>`),
-  enderecos: icon(`<path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z" ${line}/><circle cx="12" cy="10" r="2.3" ${line}/>`),
-  pagamentos: icon(`<rect x="3" y="6" width="18" height="13" rx="2" ${line}/><path d="M3 10.5h18M7 15h4" ${line}/>`),
-  pedidos: icon(`<rect x="4" y="4" width="16" height="16" rx="2" ${line}/><path d="M8 9h8M8 13h8M8 17h5" ${line}/>`),
-  sair: icon(`<path d="M10 4H5v16h5M14 8l4 4-4 4M18 12H9" ${line}/>`),
+  inicio: addressIcon('house'),
+  dados: addressIcon('user'),
+  enderecos: addressIcon('pin'),
+  pagamentos: addressIcon('creditCard'),
+  pedidos: addressIcon('receipt'),
+  sair: addressIcon('signOut'),
 };
-const chevron = icon(`<path d="m6 9 6 6 6-6" ${line}/>`);
-
+const chevron = addressIcon('caretDown');
 /** The sections of Minha conta, in the navigation's order; Sair is apart, below a divider. */
 export const accountPages = {
   inicio: { hash: 'conta', label: 'Minha conta', title: 'Minha conta' },
@@ -179,3 +176,4 @@ export function accountView(state, now, menuOpen) {
     }[page]?.() ?? '';
   return { title, html: `${accountNav(page === 'pedido' ? 'pedidos' : (accountPages[page].nav ?? page), menuOpen)}<div class="account-body">${body}</div>` };
 }
+
