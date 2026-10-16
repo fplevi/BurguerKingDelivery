@@ -80,7 +80,13 @@ try {
     await checkout(page).getByRole('button', { name: 'Gerar Pix', exact: true }).click();
     await page.clock.runFor(11_500);
     await expect(pedidoConfirmado(page)).toBeVisible();
+    const back = pedidoConfirmado(page).getByRole('button', { name: 'Voltar', exact: true });
+    await expect(back).toHaveCount(1);
     await capture('confirmado');
+    await back.click();
+    await expect(page).toHaveURL(/#hamburgueres$/);
+    await page.goBack();
+    await expect(pedidoConfirmado(page)).toBeVisible();
     await page.getByRole('button', { name: 'Acompanhar pedido', exact: true }).click();
     await expect(page.locator('#account-page')).toContainText('Apto. 21');
     await capture('acompanhamento');

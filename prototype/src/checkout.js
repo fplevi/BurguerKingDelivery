@@ -397,8 +397,8 @@ export const pixApprovedStep = (order) =>
 /**
  * Pedido confirmado (#pedido/<id>, Figma successCard): every step done, the id, the estimate, the address, how it was
  * paid (always masked) and the Resumo do pedido without Editar carrinho; "Acompanhar pedido" (data-order-track) and
- * "Voltar ao cardápio" (data-order-menu).
+ * "Voltar" (data-order-menu), returning to the last category.
  */
 export function orderPage(order) {
-  return `${progress(steps.length)}<div class="checkout-body"><div class="checkout-step order-confirmed"><h1 id="order-title" tabindex="-1">Pedido confirmado!</h1><p class="order-lead">Seu pedido já está com a gente.</p><p class="order-id">Pedido #${order.id}</p><p class="order-eta">Previsão de entrega: ${deliveryTime}</p>${deliveryLines(order.address)}<p class="order-paid">Pago com ${order.paidWith} · ${money(order.total)}</p><div class="order-actions"><button class="primary" type="button" data-order-track>Acompanhar pedido</button><button class="secondary" type="button" data-order-menu>Voltar ao cardápio</button></div></div>${orderSummary(order.items, true, { edit: false })}</div>`;
+  return `${progress(steps.length)}<div class="checkout-body"><div class="checkout-step order-confirmed"><h1 id="order-title" tabindex="-1">Pedido confirmado!</h1><p class="order-lead">Seu pedido já está com a gente.</p><p class="order-id">Pedido #${order.id}</p><p class="order-eta">Previsão de entrega: ${deliveryTime}</p>${deliveryLines(order.address)}<p class="order-paid">Pago com ${order.paidWith} · ${money(order.total)}</p><div class="order-actions"><button class="primary" type="button" data-order-track>Acompanhar pedido</button><button class="secondary" type="button" data-order-menu><span class="navigation-arrow" aria-hidden="true"></span>Voltar</button></div></div>${orderSummary(order.items, true, { edit: false })}</div>`;
 }

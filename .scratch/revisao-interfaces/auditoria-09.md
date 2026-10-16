@@ -18,6 +18,8 @@ Inventário geométrico e procedência por componente: [README dos exports](../.
 
 Removidos após busca de consumidores: `house.svg`, `arrow-left.svg`, `receipt.svg` (reservas substituídas pelos exports completos `address-*`); seta própria no HTML de Endereço, até então escondida pelo CSS; seletor que a ocultava; regra `.signin-head .secondary` do antigo Fechar. O HTML inicial agora também diz Voltar, sem depender de reescrever o rótulo antigo.
 
+Retorno residual na confirmação corrigido: seta vermelha de 24 px + Voltar em `data-order-menu`, mantendo a última categoria como destino. A ação principal “Voltar ao pagamento” do aviso de Pix travado permanece como recuperação do pagamento, sem liberar edição do Carrinho.
+
 Preservados: SVG do marcador ilustrado de endereço, mapa/rota/tiles do acompanhamento, QR Code Pix e arte das Camadas/fallback. São ilustrações ou dados, não substitutos de símbolos da biblioteca. Nenhum `data:image` de ícone declarado manualmente nem fonte remota encontrado no código de interface; o Vite pode incorporar os exports locais como URLs `data:image` no build, como registrado nas medidas.
 
 ## Tipografia
