@@ -28,14 +28,6 @@ test('escolher o Cheeseburger Duplo na grade troca nome, preço, descrição e o
   await expect(heroCamada(page, 'Queijo')).toHaveCount(0);
 });
 
-test('o card Cheeseburger continua sem Receita e não troca o hero do Cheeseburger Duplo', async ({ page }) => {
-  await escolher(page, CHEESEBURGER_DUPLO);
-  await card(page, 'Cheeseburger').click();
-  await expect(card(page, 'Cheeseburger')).toHaveAttribute('aria-pressed', 'false');
-  await expect(card(page, CHEESEBURGER_DUPLO)).toHaveAttribute('aria-pressed', 'true');
-  await expect(heroTitle(page)).toHaveAccessibleName(CHEESEBURGER_DUPLO);
-});
-
 const receita = ['Pão inferior', 'Carne grelhada', 'Queijo inferior', 'Carne grelhada', 'Queijo superior', 'Picles', 'Ketchup', 'Mostarda', 'Pão superior'];
 const removiveis = ['Queijo inferior', 'Queijo superior', 'Picles', 'Ketchup', 'Mostarda'];
 /** Every Camada of the opened burger, bottom to top in the Receita. */

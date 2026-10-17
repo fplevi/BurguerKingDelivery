@@ -144,6 +144,23 @@ export const recipes = {
       { id: 'top', name: 'Pão superior', squash: 0.82, y: 51, thickness: 52, locked: true },
     ],
   }),
+  cheeseburger: recipe({
+    id: 'cheeseburger',
+    name: 'Cheeseburger',
+    price: 1590, // provisional (spec)
+    // The Cheeseburger Duplo with one meat and one queijo, as seen in the official photo; Base:
+    // buns and the meat. The same thin patty, but a full, unflattened top bun: in the photo it
+    // stands taller over the filling than the Duplo's.
+    layers: [
+      { id: 'bottom', name: 'Pão inferior', text: 'Pão com gergelim', y: 242, thickness: 0, locked: true },
+      { id: 'meat', name: 'Carne grelhada', text: 'carne grelhada', squash: 0.78, y: 212, thickness: 30, locked: true },
+      { id: 'cheese', name: 'Queijo', text: 'queijo derretido', y: 192, thickness: 9 },
+      { id: 'pickles', name: 'Picles', text: 'picles', y: 174, thickness: 10 },
+      { id: 'ketchup', name: 'Ketchup', text: 'ketchup', y: 164, thickness: 4 },
+      { id: 'mustard', name: 'Mostarda', text: 'mostarda', y: 161, thickness: 3 },
+      { id: 'top', name: 'Pão superior', y: 91, thickness: 62, locked: true },
+    ],
+  }),
 };
 
 /** Camada `id` of a Receita. */
