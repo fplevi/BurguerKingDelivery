@@ -137,8 +137,9 @@ async function trocarPara(page, nome) {
 }
 
 // The burgers other than the Whopper (ticket 05 of the Cheddar Duplo, 04 of the Stacker Duplo Bacon,
-// of the Rodeio Duplo and of the Cheeseburger Duplo, 03 of the Rodeio and of the Big King): the page opens on the Whopper, so their first frame
-// is the one after choosing them in the grid. Same limit as the Whopper's first frame.
+// of the Rodeio Duplo and of the Cheeseburger Duplo, 03 of the Rodeio and of the Big King): the page
+// opens on the Whopper, so their first frame is the one after choosing them in the grid. Same limit
+// as the Whopper's first frame.
 for (const { nome, chave } of escolhidosNaGrade) {
   test(`o primeiro quadro do ${nome}, ao escolhê-lo na grade, não passa do limite aceito na CPU de um celular intermediário`, async ({ page }, info) => {
     test.skip(softwareGl, 'WebGL por software não representa um celular');
