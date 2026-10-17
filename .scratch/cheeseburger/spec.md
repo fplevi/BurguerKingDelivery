@@ -1,6 +1,6 @@
 # Cheeseburger em 3D
 
-Status: ready-for-agent
+Status: resolved
 
 Contexto: `GLOSSARY.md`, `docs/adr/0001-visuais-gerados-por-codigo.md`, `docs/agents/novo-hamburguer.md`, specs do Whopper (`.scratch/hamburguer-3d/spec.md`) e dos outros hambúrgueres, em especial o do Cheeseburger Duplo (`.scratch/cheeseburger-duplo/spec.md`), todas resolvidas.
 
