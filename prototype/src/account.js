@@ -109,7 +109,7 @@ function payments({ customer: c }) {
   const list = c.cards.length
     ? c.cards.map(card).join('')
     : `<section class="account-card" aria-labelledby="no-card"><h2 id="no-card">Nenhum cartão salvo</h2><p>Salve um cartão para pagar mais rápido nos próximos pedidos.</p></section>`;
-  return `<p class="account-lead">Gerencie os cartões salvos para usar nos próximos pedidos.</p>${list}<a class="primary account-action" href="#conta/cartao">Adicionar cartão</a><p class="account-meta">Pix também está disponível no checkout. Você não precisa cadastrar uma chave.</p>`;
+  return `<p class="account-lead">Gerencie os cartões salvos para usar nos próximos pedidos.</p>${list}<a class="primary account-action" href="#conta/cartao">Adicionar cartão</a>`;
 }
 /** Adicionar cartão (Figma 16): the Novo cartão's fields; the código de segurança is checked, not kept. */
 function addCard({ wallet: w }) {

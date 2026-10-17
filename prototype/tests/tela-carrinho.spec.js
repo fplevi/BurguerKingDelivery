@@ -10,7 +10,8 @@ const scrollY = (page) => page.evaluate(() => Math.round(scrollY));
 /** Whopper® em combo com Coca-Cola, Cheddar Duplo e Batata Frita: um Carrinho mais alto que a tela. */
 async function tresItens(page) {
   await page.getByRole('checkbox', { name: 'Transformar em combo' }).check();
-  await page.getByRole('combobox', { name: 'Bebida do combo' }).selectOption('Coca-Cola');
+  await page.getByRole('combobox', { name: 'Bebida do combo' }).click();
+  await page.getByRole('option', { name: 'Coca-Cola', exact: true }).click();
   await adicionar(page).click();
   await escolher(page, 'Cheddar Duplo');
   await adicionar(page).click();
@@ -75,7 +76,8 @@ test('remover e mudar a Quantidade são anunciados numa região viva que não é
 
 test('a lista de bebidas aberta não continua aberta depois de sair do Carrinho e voltar', async ({ page }) => {
   await page.getByRole('checkbox', { name: 'Transformar em combo' }).check();
-  await page.getByRole('combobox', { name: 'Bebida do combo' }).selectOption('Sprite');
+  await page.getByRole('combobox', { name: 'Bebida do combo' }).click();
+  await page.getByRole('option', { name: 'Sprite', exact: true }).click();
   await adicionar(page).click();
   await botaoCarrinho(page, 1).click();
   const bebida = itens(page).first().getByRole('combobox', { name: 'Bebida do combo' });

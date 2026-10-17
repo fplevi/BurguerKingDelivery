@@ -13,7 +13,8 @@ async function tresItens(page) {
   await adicionar(page).click();
   await escolher(page, 'Cheddar Duplo');
   await page.getByRole('checkbox', { name: 'Transformar em combo' }).check();
-  await page.getByRole('combobox', { name: 'Bebida do combo' }).selectOption('Sprite');
+  await page.getByRole('combobox', { name: 'Bebida do combo' }).click();
+  await page.getByRole('option', { name: 'Sprite', exact: true }).click();
   await adicionar(page).click();
   await categoria(page, 'Acompanhamentos');
   await escolher(page, 'Batata Frita');

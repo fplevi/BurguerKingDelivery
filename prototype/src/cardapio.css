@@ -19,18 +19,6 @@ header .cart-count { padding: 0 var(--space-4); border-radius: var(--radius-pill
   font-family: var(--font-body);
 }
 .purchase .check { gap: var(--space-8); }
-.purchase .check input {
-  appearance: none;
-  flex: none;
-  border: 1px solid var(--brown);
-  border-radius: var(--radius-control);
-  background: white;
-  cursor: pointer;
-}
-.purchase .check input:checked {
-  border-color: var(--red);
-  background: var(--red) url('../Assets/icons/check-24.svg') center no-repeat;
-}
 .purchase .field-label { margin: var(--space-16) 0 var(--space-12); }
 .purchase .field {
   appearance: none;
@@ -40,6 +28,7 @@ header .cart-count { padding: 0 var(--space-4); border-radius: var(--radius-pill
   background: white url('../Assets/icons/caret-down-16.svg') right 16px center no-repeat;
 }
 .purchase .field-error { margin-top: var(--space-8); }
+.purchase .picker-button { background-image: none; padding-right: var(--space-16); }
 .purchase .field:disabled { background-color: var(--surface-disabled); }
 .purchase .qty-row { margin: var(--space-16) 0; gap: var(--space-12); }
 .purchase .qty { border-radius: var(--radius-control); }

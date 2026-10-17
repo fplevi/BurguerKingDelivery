@@ -110,7 +110,8 @@ test('Recolocar todos, aplicar e cancelar funcionam no Rodeio', async ({ page })
 test('Rodeio personalizado chega ao carrinho, com combo e "Sem onion ring e maionese"', async ({ page }) => {
   await escolher(page, RODEIO);
   await page.getByRole('checkbox', { name: 'Transformar em combo' }).check();
-  await page.getByRole('combobox', { name: 'Bebida do combo' }).selectOption('Sprite');
+  await page.getByRole('combobox', { name: 'Bebida do combo' }).click();
+  await page.getByRole('option', { name: 'Sprite', exact: true }).click();
   await expect(page.getByText('Total do item').locator('strong')).toHaveText('R$ 41,90');
   await openVerIngredientes(page);
   await chip(page, 'Retirar', 'Maionese').click();

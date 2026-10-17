@@ -34,7 +34,8 @@ test('carrinho vazio: "Seu carrinho está vazio", sem subtítulo nem Resumo, com
 
 test('cada Item mostra foto, nome e Total do item; o subtítulo conta itens ou unidades, como o contador do cabeçalho', async ({ page }) => {
   await page.getByRole('checkbox', { name: 'Transformar em combo' }).check();
-  await page.getByRole('combobox', { name: 'Bebida do combo' }).selectOption('Coca-Cola');
+  await page.getByRole('combobox', { name: 'Bebida do combo' }).click();
+  await page.getByRole('option', { name: 'Coca-Cola', exact: true }).click();
   await page.getByRole('group', { name: 'Quantidade' }).getByRole('button', { name: 'Aumentar quantidade' }).click();
   await adicionar(page).click();
   await categorias(page).getByRole('link', { name: 'Acompanhamentos' }).click();
@@ -58,7 +59,8 @@ test('o Resumo do carrinho soma os Totais do item, avisa da entrega e tem Contin
   await adicionar(page).click();
   await adicionar(page).click();
   await page.getByRole('checkbox', { name: 'Transformar em combo' }).check();
-  await page.getByRole('combobox', { name: 'Bebida do combo' }).selectOption('Sprite');
+  await page.getByRole('combobox', { name: 'Bebida do combo' }).click();
+  await page.getByRole('option', { name: 'Sprite', exact: true }).click();
   await adicionar(page).click();
   await page.getByRole('button', { name: 'Carrinho · 3' }).click();
   // Item idêntico soma ao adicionar: Whopper® × 2 (R$ 63,80) and the combo (R$ 43,90).

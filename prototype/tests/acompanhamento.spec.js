@@ -78,6 +78,19 @@ test('a caminho: a moto no mapa, a distância restante, o entregador com WhatsAp
   const lista = etapas(page);
   await expect(lista).toHaveText([/^Pedido realizado\d+h\d\d · Concluído$/, /^Pagamento confirmado/, /^Pedido em preparação/, /^Aguardando retirada/, /^Pedido retirado\d+h\d\d · Concluído$/, /^Pedido a caminho\d+h\d\d · Em andamento$/, 'Pedido chegouPróxima etapa', 'Pedido entreguePróxima etapa']);
   await expect(lista.nth(5)).toHaveAttribute('aria-current', 'step');
+  const voltar = conta(page).getByRole('link', { name: 'Voltar', exact: true });
+  await expect(conta(page).getByRole('complementary', { name: 'Resumo do pedido' }).getByRole('link', { name: 'Voltar', exact: true })).toHaveCount(0);
+  const [botao, titulo] = await Promise.all([voltar.boundingBox(), page.locator('#account-title').boundingBox()]);
+  expect(titulo.y - (botao.y + botao.height)).toBeGreaterThanOrEqual(24);
+  expect(botao.height).toBeGreaterThanOrEqual(48);
+  await expect(voltar.locator('.navigation-arrow')).toBeVisible();
+  const seta = await voltar.locator('.navigation-arrow').boundingBox();
+  expect(seta.width).toBe(24);
+  expect(seta.height).toBe(24);
+  expect(botao.x).toBe(titulo.x);
+  await voltar.click();
+  await expect(page).toHaveURL(/#conta\/pedidos$/);
+  await expect(page.locator('#account-back')).toBeHidden();
 });
 
 test('a situação avança sozinha: o entregador aparece na retirada e a moto anda até o endereço', async ({ page }) => {

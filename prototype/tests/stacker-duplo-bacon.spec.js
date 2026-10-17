@@ -111,7 +111,8 @@ test('Recolocar todos, aplicar e cancelar funcionam no Stacker Duplo Bacon', asy
 test('Stacker Duplo Bacon personalizado chega ao carrinho, com combo e "Sem bacon e molho stacker"', async ({ page }) => {
   await escolher(page, STACKER);
   await page.getByRole('checkbox', { name: 'Transformar em combo' }).check();
-  await page.getByRole('combobox', { name: 'Bebida do combo' }).selectOption('Sprite');
+  await page.getByRole('combobox', { name: 'Bebida do combo' }).click();
+  await page.getByRole('option', { name: 'Sprite', exact: true }).click();
   await expect(page.getByText('Total do item').locator('strong')).toHaveText('R$ 49,90');
   await openVerIngredientes(page);
   await chip(page, 'Retirar', 'Molho Stacker').click();

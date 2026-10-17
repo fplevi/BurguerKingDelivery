@@ -6,6 +6,7 @@
 #account-page .account-list { gap: var(--space-16); }
 #account-page .orders-empty .account-back { width: max-content; min-width: 112px; }
 #account-page .track { width: 100%; gap: var(--space-16); grid-template-columns: minmax(0, 1.32fr) minmax(260px, 1fr); }
+#account-page .track.track-delivered { grid-template-columns: minmax(0, 1fr); }
 #account-page .track-main { gap: var(--space-16); }
 #account-page .track .account-card { padding: var(--space-16); }
 #account-page .track .account-card h2 { font-size: 18px; font-weight: 700; line-height: 1.45; margin-bottom: var(--space-12); }

@@ -38,7 +38,6 @@ test('lista os Cartões salvos: bandeira e final, nome, validade e Cartão padr�
   await expect(visa).toContainText('Mariana Silva · Validade 08/29');
   await expect(visa).toContainText('Cartão padrão');
   await expect(visa).not.toContainText('4242 4242');
-  await expect(conta(page).getByText('Pix também está disponível no checkout. Você não precisa cadastrar uma chave.')).toBeVisible();
 });
 
 test('Adicionar cartão: com as validações do Novo cartão; salvo, volta à lista sem guardar o código', async ({ page }) => {
