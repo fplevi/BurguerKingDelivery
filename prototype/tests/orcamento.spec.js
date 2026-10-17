@@ -66,7 +66,7 @@ const registrar = (nome, valor) => {
 const mediana = (m) => [...m].sort((a, b) => a - b)[(m.length - 1) / 2];
 
 // Ticket 05 of the Cheddar Duplo, 04 of the Stacker Duplo Bacon, of the Rodeio Duplo and of the Cheeseburger Duplo,
-// 03 of the Rodeio and of the Big King:
+// 03 of the Rodeio, of the Big King and of the Cheeseburger:
 // every measurement below runs for each 3D burger. `chave` names it in the recorded measurements;
 // `arrastar` is the Camada dragged in Ver ingredientes (its newest one); `cenas` counts the hero
 // scenes built before it is shown (the page opens on the Whopper, the others are chosen in the
@@ -79,6 +79,7 @@ const produtos = [
   { nome: 'Rodeio', chave: 'rodeio', arrastar: 'Onion ring', cenas: 2 },
   { nome: 'Big King', chave: 'big-king', arrastar: 'Molho Big King inferior', cenas: 2 },
   { nome: 'Cheeseburger Duplo', chave: 'cheeseburger-duplo', arrastar: 'Mostarda', cenas: 2 },
+  { nome: 'Cheeseburger', chave: 'cheeseburger', arrastar: 'Mostarda', cenas: 2 },
 ];
 const escolhidosNaGrade = produtos.filter((p) => p.cenas > 1);
 
@@ -137,9 +138,9 @@ async function trocarPara(page, nome) {
 }
 
 // The burgers other than the Whopper (ticket 05 of the Cheddar Duplo, 04 of the Stacker Duplo Bacon,
-// of the Rodeio Duplo and of the Cheeseburger Duplo, 03 of the Rodeio and of the Big King): the page
-// opens on the Whopper, so their first frame is the one after choosing them in the grid. Same limit
-// as the Whopper's first frame.
+// of the Rodeio Duplo and of the Cheeseburger Duplo, 03 of the Rodeio, of the Big King and of the
+// Cheeseburger): the page opens on the Whopper, so their first frame is the one after choosing them
+// in the grid. Same limit as the Whopper's first frame.
 for (const { nome, chave } of escolhidosNaGrade) {
   test(`o primeiro quadro do ${nome}, ao escolhê-lo na grade, não passa do limite aceito na CPU de um celular intermediário`, async ({ page }, info) => {
     test.skip(softwareGl, 'WebGL por software não representa um celular');

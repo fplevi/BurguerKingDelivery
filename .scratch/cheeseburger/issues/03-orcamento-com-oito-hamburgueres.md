@@ -4,7 +4,7 @@
 
 **Blocked by:** 02.
 
-**Status:** ready-for-agent
+**Status:** claimed
 
 - [ ] Medições registradas em `## Comments` (gzip 3D, primeiro quadro, fps), com o Cheeseburger na escolha pela grade
 - [ ] Tudo dentro dos limites aceitos, ou otimizado até ficar
