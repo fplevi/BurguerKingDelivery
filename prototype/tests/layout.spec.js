@@ -23,11 +23,11 @@ test('cabeçalho do Figma: logo, as quatro categorias com Hambúrgueres ativo, o
   await expect(cabecalho(page).getByRole('button', { name: 'Identifique-se' })).toBeVisible();
 });
 
-test('os 2 hambúrgueres sem Receita parecem iguais aos outros, sem "Em breve", e clicar neles não faz nada', async ({ page }) => {
+test('o hambúrguer sem Receita parece igual aos outros, sem "Em breve", e clicar nele não faz nada', async ({ page }) => {
   await expect(page.getByText(/Em breve/)).toHaveCount(0);
   await expect(page.getByText(/estão disponíveis nesta validação/)).toHaveCount(0);
   await expect(card(page, 'Whopper®')).toContainText('Selecionado');
-  for (const nome of ['Cheeseburger Duplo', 'Cheeseburger']) {
+  for (const nome of ['Cheeseburger']) {
     await card(page, nome).click();
     await expect(card(page, nome)).toHaveAttribute('aria-pressed', 'false');
     await expect(card(page, nome).getByText('Selecionado')).toBeHidden();
