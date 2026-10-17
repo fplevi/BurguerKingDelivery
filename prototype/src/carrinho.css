@@ -1,6 +1,6 @@
 /* Carrinho: shared foundations, including the existing removal/undo lifecycle. */
 body[data-screen="carrinho"] { background: var(--surface-page); }
-.cart-page { padding: var(--space-48); }
+.cart-page { padding: var(--space-48) var(--page-gutter); }
 .cart-page > .secondary {
   display: flex;
   align-items: center;

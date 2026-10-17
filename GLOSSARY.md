@@ -126,6 +126,10 @@ _Avoid_: Sacola, modal do carrinho, cesta
 O bloco do Carrinho com o Total dos itens e as ações para continuar ou voltar ao cardápio.
 _Avoid_: Totalizador
 
+**Barra do carrinho**:
+O resumo disponível no cardápio com a quantidade de unidades no carrinho, o Total dos itens e a ação para abrir o Carrinho.
+_Avoid_: Barra de checkout, Checkout (para a barra), Resumo do carrinho (para a barra)
+
 **Checkout**:
 A tela própria "Finalizar pedido", aberta pelo Continuar do Carrinho, em que o cliente passa pelas etapas Identificação, Endereço e Pagamento.
 _Avoid_: Finalização, pagamento (para a tela inteira)
