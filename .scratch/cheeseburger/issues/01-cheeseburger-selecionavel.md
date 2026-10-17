@@ -4,12 +4,18 @@
 
 **Blocked by:** None (can start immediately).
 
-**Status:** ready-for-agent
+**Status:** resolved
 
-- [ ] Selecionar o card troca nome, preço, descrição e o hambúrguer 3D do hero
-- [ ] Ver ingredientes lista as 7 Camadas na ordem da Receita
-- [ ] Queijo, Picles, Ketchup e Mostarda são retiráveis um por vez e juntos; pães e carne não
-- [ ] Recolocar todos, aplicar (atualiza a descrição) e cancelar (preserva) funcionam
-- [ ] Item no Carrinho com Combo e "Sem …"; voltar aos outros sete sem resto do Cheeseburger
-- [ ] Sem WebGL, as 7 Camadas em SVG e o fluxo de retirada funcionando
-- [ ] Nenhum card de hambúrguer sem Receita, nem código ou teste para esse caso
+- [x] Selecionar o card troca nome, preço, descrição e o hambúrguer 3D do hero
+- [x] Ver ingredientes lista as 7 Camadas na ordem da Receita
+- [x] Queijo, Picles, Ketchup e Mostarda são retiráveis um por vez e juntos; pães e carne não
+- [x] Recolocar todos, aplicar (atualiza a descrição) e cancelar (preserva) funcionam
+- [x] Item no Carrinho com Combo e "Sem …"; voltar aos outros sete sem resto do Cheeseburger
+- [x] Sem WebGL, as 7 Camadas em SVG e o fluxo de retirada funcionando
+- [x] Nenhum card de hambúrguer sem Receita, nem código ou teste para esse caso
+
+## Answer
+
+Receita `cheeseburger` em `prototype/src/ingredients.js`, com as 7 Camadas, a carne com `squash: 0.78` e o pão superior sem achatar. No card da grade, `main.js` passou a usar a Receita, e saíram o ramo de card sem Receita e o filtro `[data-product]`. Novo `tests/cheeseburger.spec.js`, no molde do Cheeseburger Duplo. Saíram os testes do card sem Receita (`layout.spec.js` e `cheeseburger-duplo.spec.js`). `cheeseburger`, `layout` e `cheeseburger-duplo` passam no dev (95 passaram, 5 pulados).
+
+Capturas de conferência em `capturas/01/`. Para a revisão (02): no hambúrguer montado, o picles e o ketchup aparecem pouco e a mostarda não aparece; na foto, as duas rodelas de picles aparecem bem sob o pão.

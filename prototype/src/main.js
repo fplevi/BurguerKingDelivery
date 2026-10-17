@@ -131,8 +131,7 @@ function mountScenes() {
   document.body.classList.add('burger-3d');
   entering = true;
 }
-// Product grid, with the official photos. Hambúrgueres: only products with a Receita can be
-// chosen; the others look the same, but clicking them does nothing. Photo categories: all can.
+// Product grid, with the official photos; every product can be chosen (a burger, by its Receita).
 const burgers = [
   { recipe: 'whopper', photo: whopperPhoto, box: [156, 295, 668, 619] },
   { recipe: 'cheddarDuplo', photo: cheddarDuploPhoto, box: [188, 302, 610, 619] },
@@ -140,7 +139,7 @@ const burgers = [
   { recipe: 'rodeioDuplo', photo: rodeioDuploPhoto, box: [210, 333, 625, 620] },
   { recipe: 'bigKing', photo: bigKingPhoto, box: [189, 240, 629, 619] },
   { recipe: 'cheeseburgerDuplo', photo: cheeseburgerDuploPhoto, box: [171, 318, 610, 619] },
-  { name: 'Cheeseburger', photo: cheeseburgerPhoto, box: [165, 356, 612, 618] },
+  { recipe: 'cheeseburger', photo: cheeseburgerPhoto, box: [165, 356, 612, 618] },
   { recipe: 'rodeio', photo: rodeioPhoto, box: [205, 359, 617, 620] },
 ];
 /** The photo's box in the 800 × 800 file, for .photo-crop: only it is drawn (the transparent margins are cut off, as in the Figma). */
@@ -165,11 +164,11 @@ function buildGrid() {
     : burgers
         .map(
           (p) =>
-            `<button class="card" aria-pressed="false" ${p.recipe ? `data-product="${p.recipe}"` : ''}>${badge}<span class="catalog-photo photo-crop" style="${crop(p.box)}"><img src="${p.photo}" alt="" loading="lazy" decoding="async"></span><span class="card-name"><span>${marks(p.recipe ? recipes[p.recipe].name : p.name)}</span></span></button>`,
+            `<button class="card" aria-pressed="false" data-product="${p.recipe}">${badge}<span class="catalog-photo photo-crop" style="${crop(p.box)}"><img src="${p.photo}" alt="" loading="lazy" decoding="async"></span><span class="card-name"><span>${marks(recipes[p.recipe].name)}</span></span></button>`,
         )
         .join('');
   $('grid')
-    .querySelectorAll('button.card[data-product]')
+    .querySelectorAll('button.card')
     .forEach(
       (b) =>
         (b.onclick = () => {

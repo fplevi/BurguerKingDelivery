@@ -23,20 +23,6 @@ test('cabeçalho do Figma: logo, as quatro categorias com Hambúrgueres ativo, o
   await expect(cabecalho(page).getByRole('button', { name: 'Identifique-se' })).toBeVisible();
 });
 
-test('o hambúrguer sem Receita parece igual aos outros, sem "Em breve", e clicar nele não faz nada', async ({ page }) => {
-  await expect(page.getByText(/Em breve/)).toHaveCount(0);
-  await expect(page.getByText(/estão disponíveis nesta validação/)).toHaveCount(0);
-  await expect(card(page, 'Whopper®')).toContainText('Selecionado');
-  for (const nome of ['Cheeseburger']) {
-    await card(page, nome).click();
-    await expect(card(page, nome)).toHaveAttribute('aria-pressed', 'false');
-    await expect(card(page, nome).getByText('Selecionado')).toBeHidden();
-  }
-  await expect(card(page, 'Whopper®')).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.getByRole('heading', { level: 1 })).toHaveAccessibleName('Whopper®');
-  await expect(page.getByRole('status')).toBeHidden();
-});
-
 test('o preço do hambúrguer aparece só no Total do item, como no Figma', async ({ page }) => {
   await expect(page.getByRole('main').getByText('R$ 31,90', { exact: true })).toHaveCount(1);
   await expect(page.getByText('Total do item').locator('strong')).toHaveText('R$ 31,90');
