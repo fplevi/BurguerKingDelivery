@@ -4,18 +4,19 @@
 
 **Blocked by:** 03.
 
-**Status:** claimed
+**Status:** resolved
 
 - [x] Medições registradas em `## Comments` (gzip 3D, primeiro quadro, fps), com o Cheeseburger Duplo na primeira escolha e nas seguintes
 - [x] Tudo dentro dos limites aceitos, ou otimizado até ficar
 - [x] `npm run test:build` inteiro verde; se falhar "ao acaso", comparar com a `main` antes de chamar de instabilidade
-- [ ] PR aberto para a `main` com as capturas da revisão
+- [x] PR aberto para a `main` com as capturas da revisão
 
 ## Answer
 
 - Tudo dentro dos limites aceitos; nenhuma otimização. Peso 159,5 KB gzip (+3,9 KB sobre a `main`). Cheeseburger Duplo na primeira escolha: 0,25 s com CPU 4x; nas seguintes, 0,19 s.
 - `tests/orcamento.spec.js` mede o Cheeseburger Duplo nos testes que já existiam; nenhum teste novo.
 - `npm run test:build` verde de primeira (719 aprovados, 39 pulados) num worktree isolado no commit `abdf1bf`.
+- PR para a `main`: https://github.com/fplevi/BurguerKingNewSite/pull/20, com a folha de revisão e os quadros da Entrada e da Saída do ticket 03.
 
 ## Comments
 
