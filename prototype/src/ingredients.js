@@ -129,8 +129,9 @@ export const recipes = {
     name: 'Cheeseburger Duplo',
     price: 2490, // provisional (spec)
     // As seen in the official photo; Base: buns and both meats. Queijo, Picles and Ketchup are
-    // the Whopper's; a queijo on each meat, the upper one turned with its patty, whose outline it
-    // follows. Thin patties and a short stack: the picles sit right under the top bun.
+    // the Whopper's, the Mostarda a thin thread over the ketchup; a queijo on each meat, the upper
+    // one turned with its patty, whose outline it follows. Thin patties and a short stack: the
+    // picles sit right under the top bun.
     layers: [
       { id: 'bottom', name: 'Pão inferior', text: 'Pão com gergelim', y: 242, thickness: 0, locked: true },
       { id: 'meat', name: 'Carne grelhada', text: 'duas carnes grelhadas', squash: 0.78, y: 212, thickness: 30, locked: true },
@@ -139,7 +140,8 @@ export const recipes = {
       { id: 'cheese2', name: 'Queijo superior', text: 'queijo derretido', model: 'cheese', turn: 1.9, y: 142, thickness: 9 },
       { id: 'pickles', name: 'Picles', text: 'picles', y: 124, thickness: 10 },
       { id: 'ketchup', name: 'Ketchup', text: 'ketchup', y: 114, thickness: 4 },
-      { id: 'top', name: 'Pão superior', squash: 0.82, y: 54, thickness: 52, locked: true },
+      { id: 'mustard', name: 'Mostarda', text: 'mostarda', y: 111, thickness: 3 },
+      { id: 'top', name: 'Pão superior', squash: 0.82, y: 51, thickness: 52, locked: true },
     ],
   }),
 };

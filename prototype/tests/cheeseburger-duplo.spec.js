@@ -5,7 +5,7 @@ const heroTitle = (page) => page.getByRole('heading', { level: 1 });
 /** Camada of the assembled hero burger (a disabled button labelled "Retirar X"). */
 const heroCamada = (page, name) => page.getByRole('main').getByRole('button', { name: `Retirar ${name}`, exact: true });
 const CHEESEBURGER_DUPLO = 'Cheeseburger Duplo';
-const DESCRICAO = 'Pão com gergelim, duas carnes grelhadas, queijo derretido, picles e ketchup.';
+const DESCRICAO = 'Pão com gergelim, duas carnes grelhadas, queijo derretido, picles, ketchup e mostarda.';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/');
@@ -36,17 +36,17 @@ test('o card Cheeseburger continua sem Receita e não troca o hero do Cheeseburg
   await expect(heroTitle(page)).toHaveAccessibleName(CHEESEBURGER_DUPLO);
 });
 
-const receita = ['Pão inferior', 'Carne grelhada', 'Queijo inferior', 'Carne grelhada', 'Queijo superior', 'Picles', 'Ketchup', 'Pão superior'];
-const removiveis = ['Queijo inferior', 'Queijo superior', 'Picles', 'Ketchup'];
+const receita = ['Pão inferior', 'Carne grelhada', 'Queijo inferior', 'Carne grelhada', 'Queijo superior', 'Picles', 'Ketchup', 'Mostarda', 'Pão superior'];
+const removiveis = ['Queijo inferior', 'Queijo superior', 'Picles', 'Ketchup', 'Mostarda'];
 /** Every Camada of the opened burger, bottom to top in the Receita. */
 const camadas = (page) => verIngredientes(page).locator('.stage').getByRole('button', { name: /^Retirar / });
 const aplicar = (page) => verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' });
 const cancelar = (page) => verIngredientes(page).getByRole('button', { name: 'Cancelar', exact: true });
 
-test('Ver ingredientes abre as 8 camadas do Cheeseburger Duplo, de baixo para cima', async ({ page }) => {
+test('Ver ingredientes abre as 9 camadas do Cheeseburger Duplo, de baixo para cima', async ({ page }) => {
   await escolher(page, CHEESEBURGER_DUPLO);
   await openVerIngredientes(page);
-  await expect(camadas(page)).toHaveCount(8);
+  await expect(camadas(page)).toHaveCount(9);
   await expect
     .poll(async () => {
       const centres = [];
@@ -79,12 +79,12 @@ for (const nome of removiveis) {
   });
 }
 
-test('retirar os dois queijos, picles e ketchup juntos põe os quatro na bandeja', async ({ page }) => {
+test('retirar os dois queijos, picles, ketchup e mostarda juntos põe os cinco na bandeja', async ({ page }) => {
   await escolher(page, CHEESEBURGER_DUPLO);
   await openVerIngredientes(page);
   for (const nome of removiveis) await chip(page, 'Retirar', nome).click();
   for (const nome of removiveis) await expect(retirado(page, nome)).toBeVisible();
-  await expect(verIngredientes(page).getByText(`${CHEESEBURGER_DUPLO} · Sem queijo inferior, queijo superior, picles e ketchup`)).toBeVisible();
+  await expect(verIngredientes(page).getByText(`${CHEESEBURGER_DUPLO} · Sem queijo inferior, queijo superior, picles, ketchup e mostarda`)).toBeVisible();
 });
 
 test('as carnes e os pães do Cheeseburger Duplo não podem ser retirados', async ({ page }) => {
@@ -110,7 +110,7 @@ test('Recolocar todos, aplicar e cancelar funcionam no Cheeseburger Duplo', asyn
   await chip(page, 'Retirar', 'Ketchup').click();
   await aplicar(page).click();
   await expect(verIngredientes(page)).toBeHidden();
-  const semKetchup = 'Pão com gergelim, duas carnes grelhadas, queijo derretido e picles.';
+  const semKetchup = 'Pão com gergelim, duas carnes grelhadas, queijo derretido, picles e mostarda.';
   await expect(descricao(page)).toHaveText(semKetchup);
 
   await openVerIngredientes(page);
@@ -129,16 +129,17 @@ test('retirar só um dos queijos mantém o queijo na descrição; retirar os doi
   await openVerIngredientes(page);
   await chip(page, 'Retirar', 'Queijo superior').click();
   await aplicar(page).click();
-  await expect(descricao(page)).toHaveText('Pão com gergelim, duas carnes grelhadas, picles e ketchup.');
+  await expect(descricao(page)).toHaveText('Pão com gergelim, duas carnes grelhadas, picles, ketchup e mostarda.');
 });
 
-test('Cheeseburger Duplo personalizado chega ao carrinho, com combo e "Sem queijo superior e picles"', async ({ page }) => {
+test('Cheeseburger Duplo personalizado chega ao carrinho, com combo e "Sem queijo superior, picles e mostarda"', async ({ page }) => {
   await escolher(page, CHEESEBURGER_DUPLO);
   await page.getByRole('checkbox', { name: 'Transformar em combo' }).check();
   await page.getByRole('combobox', { name: 'Bebida do combo' }).click();
   await page.getByRole('option', { name: 'Sprite', exact: true }).click();
   await expect(page.getByText('Total do item').locator('strong')).toHaveText('R$ 36,90');
   await openVerIngredientes(page);
+  await chip(page, 'Retirar', 'Mostarda').click();
   await chip(page, 'Retirar', 'Picles').click();
   await chip(page, 'Retirar', 'Queijo superior').click();
   await aplicar(page).click();
@@ -152,7 +153,7 @@ test('Cheeseburger Duplo personalizado chega ao carrinho, com combo e "Sem queij
   await expect(item.getByRole('heading')).toHaveText(CHEESEBURGER_DUPLO);
   await expect(item.getByText('Pão com gergelim, duas carnes grelhadas, queijo derretido e ketchup.', { exact: true })).toBeVisible();
   // Bottom to top, as in the Receita, whatever the order they were removed in.
-  await expect(item.getByText('Sem queijo superior e picles', { exact: true })).toBeVisible();
+  await expect(item.getByText('Sem queijo superior, picles e mostarda', { exact: true })).toBeVisible();
   await expect(totalDoItem(item)).toHaveText('R$ 36,90');
 });
 
@@ -242,19 +243,19 @@ test.describe('sem WebGL', () => {
     await page.goto('/');
   });
 
-  test('o Cheeseburger Duplo usa as ilustrações SVG das 8 camadas e o fluxo de retirada continua funcionando', async ({ page }) => {
+  test('o Cheeseburger Duplo usa as ilustrações SVG das 9 camadas e o fluxo de retirada continua funcionando', async ({ page }) => {
     await escolher(page, CHEESEBURGER_DUPLO);
     await expect(page.locator('main #hero-stage canvas')).toHaveCount(0);
     for (const nome of removiveis) await expect(heroCamada(page, nome).locator('svg')).toBeVisible();
 
     await openVerIngredientes(page);
-    await expect(camadas(page)).toHaveCount(8);
+    await expect(camadas(page)).toHaveCount(9);
     for (let i = 0; i < receita.length; i++) await expect(camadas(page).nth(i).locator('svg')).toBeVisible();
     await camada(page, 'Picles').click();
     await dragTo(page, camada(page, 'Queijo inferior'), bandeja(page));
     await expect(retirado(page, 'Queijo inferior').locator('svg')).toBeVisible();
     await aplicar(page).click();
     await expect(verIngredientes(page)).toBeHidden();
-    await expect(descricao(page)).toHaveText('Pão com gergelim, duas carnes grelhadas, queijo derretido e ketchup.');
+    await expect(descricao(page)).toHaveText('Pão com gergelim, duas carnes grelhadas, queijo derretido, ketchup e mostarda.');
   });
 });
