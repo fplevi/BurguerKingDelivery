@@ -4,19 +4,19 @@
 
 **Blocked by:** 02.
 
-**Status:** claimed
+**Status:** resolved
 
 - [x] Medições registradas em `## Comments` (gzip 3D, primeiro quadro, fps), com o Big King na primeira escolha e nas seguintes
 - [x] Tudo dentro dos limites aceitos, ou otimizado até ficar
 - [x] `npm run test:build` inteiro verde; se falhar "ao acaso", comparar com a `main` antes de chamar de instabilidade
-- [ ] PR aberto para a `main` com as capturas da revisão, depois do merge do Rodeio
+- [x] PR aberto para a `main` com as capturas da revisão, depois do merge do Rodeio
 
 ## Answer
 
 - Tudo dentro dos limites aceitos; nenhuma otimização. Peso 155,6 KB gzip (+0,7 KB). Big King na primeira escolha: 0,34–0,42 s com CPU 4x; nas seguintes, 0,24–0,36 s.
 - `tests/orcamento.spec.js` mede o Big King nos testes que já existiam; nenhum teste novo.
 - `npm run test:build` verde (671 aprovados, 39 pulados) num worktree isolado no HEAD `97163cd`; a rodada na pasta de sempre caiu porque outra sessão rodava testes ali ao mesmo tempo (ver Comments).
-- **Pendente: o PR para a `main`.** O ticket pede abri-lo só depois que o PR do Rodeio (`feat/rodeio`) entrar, e esse PR ainda não foi aberto (2026-10-15). Por isso o ticket fica `claimed`, não `resolved`.
+- PR integrado à `main`: https://github.com/fplevi/BurguerKingNewSite/pull/18 (e integração final em https://github.com/fplevi/BurguerKingNewSite/pull/19).
 
 ## Comments
 

@@ -4,7 +4,7 @@
 
 **Blocked by:** 13.
 
-**Status:** needs-info
+**Status:** resolved
 
 ## Decisões (sessão de grilling, 2026-10-12)
 
@@ -22,7 +22,7 @@
 - [x] Cheddar gosmento conforme as decisões, com os escorridos dentro da altura da carne
 - [x] Capturas dos dois produtos (desktop e 390 × 844, montado e aberto) ao lado das fotos
 - [x] `npm run test:build` verde e `npm run test:orcamento` medido
-- [ ] Revisão do responsável pelo produto
+- [x] Revisão do responsável pelo produto
 
 ## Answer
 

@@ -4,7 +4,7 @@
 
 **Blocked by:** 07.
 
-**Status:** needs-info
+**Status:** resolved
 
 ## Decisões (sessão de grilling, 2026-10-12)
 
@@ -25,7 +25,7 @@
 - [x] Fallback SVG ajustado
 - [x] As quatro capturas padrão (desktop e 390 × 844, montado e aberto) ao lado da foto de referência
 - [x] `npm run test:build` verde e `npm run test:orcamento` medido
-- [ ] Revisão do responsável pelo produto
+- [x] Revisão do responsável pelo produto
 
 ## Answer
 

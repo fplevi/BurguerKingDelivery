@@ -4,4 +4,8 @@
 
 **Blocked by:** 02, 04.
 
-**Status:** ready-for-human
+**Status:** resolved
+
+## Answer
+
+Capturas dos três layouts registradas em `.scratch/revisao-figma/capturas/03/` e `.scratch/revisao-figma/capturas/04/`, complementadas e consolidadas pela auditoria e matriz de revisão integrada das interfaces em `.scratch/revisao-interfaces/`.

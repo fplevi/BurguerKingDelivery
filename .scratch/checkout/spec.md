@@ -1,6 +1,6 @@
 # Checkout pelas telas do Figma, com situações fixas
 
-Status: ready-for-agent
+Status: resolved
 
 Contexto: `GLOSSARY.md` (Checkout, Resumo do pedido, Taxa de entrega, Total do pedido, Pedido, Pedido confirmado, Código de confirmação, Cliente cadastrado, Novo cliente, Endereço salvo, Endereço de pedido anterior, além dos termos do Carrinho), `docs/adr/0001-visuais-gerados-por-codigo.md`, spec `.scratch/carrinho/spec.md`. Histórias de usuário do design (US01–US16) em `.scratch/checkout/historias-figma.md`. Decisões tiradas da sessão de grilling de 2026-10-10.
 

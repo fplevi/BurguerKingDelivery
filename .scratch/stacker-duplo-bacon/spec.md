@@ -1,6 +1,6 @@
 # Stacker Duplo Bacon em 3D
 
-Status: ready-for-agent
+Status: resolved
 
 Contexto: `GLOSSARY.md`, `docs/adr/0001-visuais-gerados-por-codigo.md`, `docs/agents/novo-hamburguer.md`, specs do Whopper (`.scratch/hamburguer-3d/spec.md`) e do Cheddar Duplo (`.scratch/cheddar-duplo/spec.md`), ambas resolvidas.
 

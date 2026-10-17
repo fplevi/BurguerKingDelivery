@@ -1,6 +1,6 @@
 # Big King em 3D
 
-Status: ready-for-agent
+Status: resolved
 
 Contexto: `GLOSSARY.md`, `docs/adr/0001-visuais-gerados-por-codigo.md`, `docs/agents/novo-hamburguer.md`, specs do Whopper (`.scratch/hamburguer-3d/spec.md`), do Cheddar Duplo, do Stacker Duplo Bacon, do Rodeio Duplo e do Rodeio (`.scratch/rodeio/spec.md`).
 
