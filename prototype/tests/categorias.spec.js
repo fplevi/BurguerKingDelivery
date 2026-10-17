@@ -38,7 +38,8 @@ test('ir e voltar entre as categorias mantém a seleção de cada uma e o hambú
   await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
   await expect(verIngredientes(page)).toBeHidden();
   await page.getByRole('checkbox', { name: 'Transformar em combo' }).check();
-  await page.getByRole('combobox', { name: 'Bebida do combo' }).selectOption('Sprite');
+  await page.getByRole('combobox', { name: 'Bebida do combo' }).click();
+  await page.getByRole('option', { name: 'Sprite', exact: true }).click();
   await aumentar(page).click();
 
   await categorias(page).getByRole('link', { name: 'Sobremesas' }).click();
@@ -62,7 +63,7 @@ test('ir e voltar entre as categorias mantém a seleção de cada uma e o hambú
   await expect(page.getByRole('heading', { name: 'Escolha seu hambúrguer' })).toBeVisible();
   await expect(card(page, 'Cheddar Duplo')).toHaveAttribute('aria-pressed', 'true');
   await expect(descricao(page)).toHaveText('Pão com gergelim, duas carnes grelhadas e cheddar cremoso.');
-  await expect(page.getByRole('combobox', { name: 'Bebida do combo' }).locator('option:checked')).toHaveText('Sprite');
+  await expect(page.getByRole('combobox', { name: 'Bebida do combo' })).toHaveText('Sprite');
   await expect(total(page)).toHaveText('R$ 93,80');
   await expect(page.locator('#hero-stage canvas')).toBeVisible();
   await openVerIngredientes(page);

@@ -19,7 +19,8 @@ const caixa = async (locator) => {
 async function carrinhoDoFigma(page) {
   await page.goto('/');
   await page.getByRole('checkbox', { name: 'Transformar em combo' }).check();
-  await page.getByRole('combobox', { name: 'Bebida do combo' }).selectOption('Coca-Cola Zero');
+  await page.getByRole('combobox', { name: 'Bebida do combo' }).click();
+  await page.getByRole('option', { name: 'Coca-Cola Zero', exact: true }).click();
   await adicionar(page).click();
   await page.locator('#catalog').getByRole('button', { name: 'Cheddar Duplo' }).click();
   await adicionar(page).click();
@@ -84,7 +85,7 @@ test.describe('celular (< 1024px)', () => {
     await semRolagemHorizontal(page);
   });
 
-  test('390: uma coluna; ingredientes em parágrafo com quebra; Bebida do combo na largura do card; Quantidade e Total do item lado a lado', async ({ page }) => {
+  test('390: uma coluna; ingredientes em parágrafo com quebra; Bebida do combo compacta; Quantidade e Total do item lado a lado', async ({ page }) => {
     await carrinhoDoFigma(page);
     const whopper = itens(page).first();
     const ingredientes = whopper.getByText(/^Pão com gergelim/);
@@ -92,7 +93,7 @@ test.describe('celular (< 1024px)', () => {
     const fonte = await ingredientes.evaluate((p) => parseFloat(getComputedStyle(p).fontSize));
     expect((await caixa(ingredientes)).height).toBeGreaterThan(fonte * 2);
     const [card, seletor, qtd, total] = [await caixa(whopper), await caixa(bebida(whopper)), await caixa(quantidade(whopper)), await caixa(totalDoItem(whopper))];
-    expect(seletor.width).toBeGreaterThan(card.width - 60);
+    expect(seletor.width).toBeLessThan(card.width - 60);
     expect(qtd.y).toBeGreaterThanOrEqual(seletor.y + seletor.height);
     expect(total.x).toBeGreaterThanOrEqual(qtd.x + qtd.width);
     expect(total.y).toBeLessThan(qtd.y + qtd.height);

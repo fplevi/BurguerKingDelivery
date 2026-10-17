@@ -2,6 +2,8 @@
 body[data-screen=conta] { background: var(--surface-page); }
 #account-page { padding: var(--space-32) max(48px, calc((100% - 1184px) / 2)) 64px; }
 #account-page h1 { margin-bottom: var(--space-32); font-size: 32px; }
+#account-page > .account-back { display: flex; align-items: center; width: max-content; min-width: 0; min-height: 48px; height: auto; gap: var(--space-8); margin: 0 0 var(--space-32); padding: var(--space-12) var(--space-16); border-color: var(--border); border-radius: var(--radius-pill); font-weight: 400; white-space: nowrap; }
+#account-page > .account-back[hidden] { display: none; }
 #account-page .account-layout { gap: var(--space-32); }
 #account-page .account-body { gap: var(--space-24); }
 #account-page .account-nav { gap: 0; }
@@ -15,6 +17,7 @@ body[data-screen=conta] { background: var(--surface-page); }
 #account-page .account-action { min-height: 48px; height: auto; margin-top: var(--space-8); padding: var(--space-12) var(--space-24); border-radius: var(--radius-pill); max-width: 100%; }
 #account-page .account-buttons { gap: var(--space-12); }
 #account-page .account-back { gap: var(--space-8); }
+#account-page [data-card-remove] { display: block; width: max-content; min-width: 0; height: auto; min-height: 0; padding: 0; text-align: left; }
 #account-page .secondary { background: var(--surface-header); }
 #account-page .field { padding: var(--space-16); border-radius: var(--radius-control); min-width: 0; }
 #account-page .field-label { margin: var(--space-24) 0 var(--space-8); }

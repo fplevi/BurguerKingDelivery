@@ -4,7 +4,8 @@
 // Camada: id (unique within the Receita), name, model (3D model in layerModels and SVG
 // illustration; defaults to the id, so a repeated ingredient shares one), locked (Base),
 // text (its part of the description; a repeated text is said once, none says nothing),
-// turn (radians about the vertical axis, so a repeated model doesn't look identical).
+// turn (radians about the vertical axis, so a repeated model doesn't look identical),
+// spread (widens the model), squash (flattens it, and it stacks lower: thin patties).
 // Assembled burger only (opened, every Camada is square in the middle): offset, [x, z] off the
 // middle (the patty's radius is ~1); lean, { on, angle }: it rests on Camada `on`, which has an
 // offset, and tips over by `angle` (radians) toward the side with nothing under it.
@@ -121,6 +122,26 @@ export const recipes = {
       { id: 'lettuce', name: 'Alface', text: 'alface', spread: 1.14, y: 74, thickness: 14 },
       { id: 'sauce2', name: 'Molho Big King superior', text: 'molho Big King', model: 'bigKingSauceTop', y: 58, thickness: 4 },
       { id: 'top', name: 'Pão superior', y: 18, thickness: 52, locked: true },
+    ],
+  }),
+  cheeseburgerDuplo: recipe({
+    id: 'cheeseburgerDuplo',
+    name: 'Cheeseburger Duplo',
+    price: 2490, // provisional (spec)
+    // As seen in the official photo; Base: buns and both meats. Queijo, Picles and Ketchup are
+    // the Whopper's, the Mostarda a thin thread over the ketchup; a queijo on each meat, the upper
+    // one turned with its patty, whose outline it follows. Thin patties and a short stack: the
+    // picles sit right under the top bun.
+    layers: [
+      { id: 'bottom', name: 'Pão inferior', text: 'Pão com gergelim', y: 242, thickness: 0, locked: true },
+      { id: 'meat', name: 'Carne grelhada', text: 'duas carnes grelhadas', squash: 0.78, y: 212, thickness: 30, locked: true },
+      { id: 'cheese1', name: 'Queijo inferior', text: 'queijo derretido', model: 'cheese', y: 192, thickness: 9 },
+      { id: 'meat2', name: 'Carne grelhada', model: 'meat', turn: 1.9, squash: 0.78, y: 162, thickness: 32, locked: true },
+      { id: 'cheese2', name: 'Queijo superior', text: 'queijo derretido', model: 'cheese', turn: 1.9, y: 142, thickness: 9 },
+      { id: 'pickles', name: 'Picles', text: 'picles', y: 124, thickness: 10 },
+      { id: 'ketchup', name: 'Ketchup', text: 'ketchup', y: 114, thickness: 4 },
+      { id: 'mustard', name: 'Mostarda', text: 'mostarda', y: 111, thickness: 3 },
+      { id: 'top', name: 'Pão superior', squash: 0.82, y: 51, thickness: 52, locked: true },
     ],
   }),
 };

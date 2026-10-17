@@ -114,7 +114,8 @@ test('Combo no carrinho: marcar soma R$ 12,00 já sem bebida; sem Combo a Bebida
 
 test('a lista de bebidas abre por cima, sem empurrar o resto, com as 7 bebidas, e responde ao teclado', async ({ page }) => {
   await page.getByRole('checkbox', { name: 'Transformar em combo' }).check();
-  await page.getByRole('combobox', { name: 'Bebida do combo' }).selectOption('Coca-Cola');
+  await page.getByRole('combobox', { name: 'Bebida do combo' }).click();
+  await page.getByRole('option', { name: 'Coca-Cola', exact: true }).click();
   await adicionar(page).click();
   await escolher(page, 'Cheddar Duplo');
   await adicionar(page).click();
@@ -165,7 +166,8 @@ test('a lista de bebidas abre por cima, sem empurrar o resto, com as 7 bebidas, 
 
 test('Itens editados até ficarem iguais continuam separados', async ({ page }) => {
   await page.getByRole('checkbox', { name: 'Transformar em combo' }).check();
-  await page.getByRole('combobox', { name: 'Bebida do combo' }).selectOption('Sprite');
+  await page.getByRole('combobox', { name: 'Bebida do combo' }).click();
+  await page.getByRole('option', { name: 'Sprite', exact: true }).click();
   await adicionar(page).click();
   await adicionar(page).click();
   await abrirCarrinho(page);

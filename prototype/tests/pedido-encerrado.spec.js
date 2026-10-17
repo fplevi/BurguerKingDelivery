@@ -18,16 +18,24 @@ async function entrar(page) {
   await id.getByRole('button', { name: 'Confirmar e continuar' }).click();
   await expect(page).toHaveURL(/#conta\/pedidos$/);
 }
-/** Sem mapa, sem entregador, sem rastreamento: only the loja's WhatsApp. */
-async function semRastreamento(page) {
+/** Closed orders have no map or rider; only cancelled orders keep the store contact. */
+async function semRastreamento(page, cancelled = false) {
   await expect(regiao(page, 'Acompanhe sua entrega')).toHaveCount(0);
   await expect(conta(page).getByRole('img', { name: /^Mapa/ })).toHaveCount(0);
   await expect(conta(page).getByText('seu entregador')).toHaveCount(0);
   await expect(conta(page).getByRole('link', { name: 'WhatsApp do entregador' })).toHaveCount(0);
-  await expect(regiao(page, 'Loja').getByRole('link', { name: 'WhatsApp da loja' })).toHaveAttribute('href', whatsapp);
+  const contato = regiao(page, 'Loja').getByRole('link', { name: 'WhatsApp da loja' });
+  if (cancelled) await expect(contato).toHaveAttribute('href', whatsapp);
+  else {
+    await expect(contato).toHaveCount(0);
+    await expect(regiao(page, 'Loja')).toHaveCount(0);
+    const [situacao, topo] = await Promise.all([regiao(page, 'Situação do pedido').boundingBox(), regiao(page, 'Pedido entregue').boundingBox()]);
+    expect(situacao.x).toBe(topo.x);
+    expect(situacao.width).toBe(topo.width);
+  }
 }
 
-test('Pedido entregue: quando foi entregue, a linha do tempo concluída, a loja e os Itens', async ({ page }) => {
+test('Pedido entregue: quando foi entregue, a linha do tempo concluída e os Itens, sem card da loja', async ({ page }) => {
   await entrar(page);
   await conta(page).getByRole('link', { name: 'Ver detalhes do pedido #BK-10397' }).click();
   await expect(page.getByRole('heading', { level: 1, name: 'Pedido #BK-10397' })).toBeVisible();
@@ -52,7 +60,7 @@ test('Pedido cancelado: quando, a devolução sem prazo, e só as etapas que aco
   await expect(topo).toContainText('Cancelado em 3 de outubro, às 20h20');
   await expect(topo).toContainText('O valor será devolvido na mesma forma de pagamento.');
   await expect(topo).not.toContainText(/dias|prazo|estorno/);
-  await semRastreamento(page);
+  await semRastreamento(page, true);
   await expect(etapas(page)).toHaveText(['Pedido realizado20h06 · Concluído', 'Pagamento confirmado20h07 · Concluído', 'Pedido em preparação20h12 · Concluído', 'Cancelado20h20 · Cancelado']);
   await expect(conta(page).getByText('Pago com cartão Visa •••• 4242')).toBeVisible();
 });

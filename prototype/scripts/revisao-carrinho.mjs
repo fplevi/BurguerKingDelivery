@@ -78,7 +78,8 @@ try {
     // Two distinct Items leave the fixed mobile bar visible during removal.
     await cart.getByRole('button',{name:'Voltar',exact:true}).click();
     await page.getByRole('checkbox',{name:'Transformar em combo'}).check();
-    await page.getByRole('combobox').selectOption('Coca-Cola');
+    await page.getByRole('combobox').click();
+    await page.getByRole('option', { name: 'Coca-Cola', exact: true }).click();
     await page.getByRole('button',{name:'Adicionar ao carrinho',exact:true}).click();
     await page.getByRole('button',{name:/^Carrinho · /}).click();
     await item.getByRole('button',{name:'Remover',exact:true}).click();

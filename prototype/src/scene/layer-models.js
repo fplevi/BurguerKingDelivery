@@ -23,6 +23,8 @@ import {
   SphereGeometry,
   IcosahedronGeometry,
   TorusGeometry,
+  TubeGeometry,
+  CatmullRomCurve3,
   LatheGeometry,
   BufferAttribute,
   BufferGeometry,
@@ -1293,14 +1295,17 @@ function puddle({ seed, reach, lobes, bead, wobble = 0.28 }) {
     lift: (r, a, f) => bead * Math.sqrt(Math.max(1 - f * f, 0)) * (0.9 + 0.2 * fbm(Math.cos(a) * r * 5 + seed, Math.sin(a) * r * 5, 0, { octaves: 2, seed: seed + 1 })),
   });
 }
+/** The glossy material of the sauces, untextured: only colour and sheen tell them apart. */
+const sauceMaterial = ({ colour, roughness, emissive = '#000000' }) =>
+  new MeshStandardMaterial({ color: colour, roughness, emissive, side: DoubleSide });
 /**
  * Puddles ([x, z, reach, bead scale?, stretch?, turn?]) of one sauce, sharing a glossy material:
  * a puddle `stretch`ed is that much longer than wide, along the angle `turn`. `wobble` deepens
  * the lobes of the outline. With `drip`, the sauce sags that far down past the patty's edge,
  * hanging over the Camada below.
  */
-function sauce(key, { colour, roughness, seed, lobes, bead, puddles, wobble, drip = 0, emissive = '#000000' }) {
-  const mat = new MeshStandardMaterial({ color: colour, roughness, emissive, side: DoubleSide });
+function sauce(key, { colour, roughness, seed, lobes, bead, puddles, wobble, drip = 0, emissive }) {
+  const mat = sauceMaterial({ colour, roughness, emissive });
   return mesh(shared(key, () => {
     const group = new Group();
     puddles.forEach(([x, z, reach, scale = 1, stretch = 1, turn = 0], i) => {
@@ -1389,6 +1394,47 @@ function bigKingSauceBody(seed) {
 }
 const BIG_KING_SAUCE = { colour: '#f4a648', roughness: 0.2, emissive: '#2a1000', lobes: 2.4, wobble: 0.3 };
 
+// Mostarda (Cheeseburger Duplo): a thin, uneven thread squeezed in a zigzag over the ketchup,
+// glossy and untextured like the ketchup, in mustard yellow. A flattened tube along a curve
+// through the zigzag's corners, swelling and thinning along its length, its ends rounded. Every
+// corner stays short of the ketchup's reach: nothing hangs over the edge.
+const MUSTARD_RADIUS = 0.026; // half the thread's width: a fraction of the ketchup's dollops (0.09-0.18 across)
+const MUSTARD_FLAT = 0.6; // the thread's height over its width
+const MUSTARD_STACK = 0.01; // the thread sinks into the gaps of the top bun's underside, like the sauces' dollops
+const MUSTARD_CORNERS = [[-0.74, -0.5], [-0.5, 0.76], [-0.24, -0.86], [0.03, 0.9], [0.28, -0.85], [0.5, 0.75], [0.72, -0.52]]; // ~0.9 from the middle
+const MUSTARD = { colour: '#f0b512', roughness: 0.22, emissive: '#2a1800' };
+function mustardThread(seed) {
+  const curve = new CatmullRomCurve3(MUSTARD_CORNERS.map(([x, z]) => new Vector3(x, 0, z)), false, 'catmullrom', 0.3);
+  const steps = 240, sides = 10;
+  const thickness = (t) => 0.7 + 0.6 * fbm(t * 12 + seed, 0.5, 0, { octaves: 2, seed });
+  // Each ring of the tube scaled about its point on the curve, flattened, resting on y = 0.
+  const place = (v, c, k) => [c.x + (v.x - c.x) * k, (v.y * k + MUSTARD_RADIUS * k) * MUSTARD_FLAT, c.z + (v.z - c.z) * k];
+  const tube = new TubeGeometry(curve, steps, MUSTARD_RADIUS, sides, false);
+  const position = tube.attributes.position, v = new Vector3();
+  for (let i = 0; i <= steps; i++) {
+    const c = curve.getPointAt(i / steps), k = thickness(i / steps);
+    for (let j = 0; j <= sides; j++) {
+      const index = i * (sides + 1) + j;
+      position.setXYZ(index, ...place(v.fromBufferAttribute(position, index), c, k));
+    }
+  }
+  const caps = [0, 1].map((t) => {
+    const c = curve.getPointAt(t), k = thickness(t);
+    const cap = new SphereGeometry(MUSTARD_RADIUS, sides, 6);
+    const p = cap.attributes.position;
+    for (let i = 0; i < p.count; i++) p.setXYZ(i, ...place(v.fromBufferAttribute(p, i).add(c), c, k));
+    return cap;
+  });
+  // No texture: drop the UVs so the tube's seam welds and shades smooth.
+  const pieces = [tube, ...caps].map((g) => {
+    g.deleteAttribute('uv');
+    const welded = mergeVertices(g);
+    welded.computeVertexNormals();
+    return welded;
+  });
+  return mergeGeometries(pieces);
+}
+
 export const layerModels = {
   bottom: {
     height: BOTTOM_HEIGHT,
@@ -1417,6 +1463,10 @@ export const layerModels = {
           [0.02, -0.03, 0.18], dollop(60, 0.12, 0.6), dollop(130, 0.1, 0.58), dollop(200, 0.13, 0.6), dollop(280, 0.09, 0.56),
         ],
       }),
+  },
+  mustard: {
+    height: MUSTARD_STACK,
+    build: () => mesh(shared('mustard', () => mustardThread(71)), sauceMaterial(MUSTARD)),
   },
   onion: { height: ONION_HEIGHT, build: onion },
   crispyOnion: { height: CRISPY_ONION_HEIGHT, build: crispyOnion },
@@ -1463,7 +1513,7 @@ export const layerModels = {
     height: BIG_KING_SAUCE_HEIGHT - 0.02, // the dome rests a little into the patty above
     build: () => {
       const { colour, roughness, emissive } = BIG_KING_SAUCE;
-      const mat = new MeshStandardMaterial({ color: colour, roughness, emissive, side: DoubleSide });
+      const mat = sauceMaterial({ colour, roughness, emissive });
       return mesh(shared('bigKingSauce', () => bigKingSauceBody(61)), mat);
     },
   },

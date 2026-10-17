@@ -19,6 +19,7 @@ import cheeseburgerDuploPhoto from '../Assets/burgers/official/site_Cheeseburger
 import cheeseburgerPhoto from '../Assets/burgers/official/site_Cheeseburger.png';
 import rodeioPhoto from '../Assets/burgers/official/site_Rodeio.png';
 import crownIcon from '../Assets/icons/crown-16.svg';
+import { createDrinkPicker, drinkPickerSizing } from './drink-picker.js';
 // Prototype question: can layered ingredients support opening, removal, restoration and order customization?
 
 // Sessão: restored from sessionStorage (the tab's), and saved after every change; storage refused (private mode), memory only.
@@ -138,7 +139,7 @@ const burgers = [
   { recipe: 'stackerDuploBacon', photo: stackerDuploPhoto, box: [193, 313, 639, 618] },
   { recipe: 'rodeioDuplo', photo: rodeioDuploPhoto, box: [210, 333, 625, 620] },
   { recipe: 'bigKing', photo: bigKingPhoto, box: [189, 240, 629, 619] },
-  { name: 'Cheeseburger Duplo', photo: cheeseburgerDuploPhoto, box: [171, 318, 610, 619] },
+  { recipe: 'cheeseburgerDuplo', photo: cheeseburgerDuploPhoto, box: [171, 318, 610, 619] },
   { name: 'Cheeseburger', photo: cheeseburgerPhoto, box: [165, 356, 612, 618] },
   { recipe: 'rodeio', photo: rodeioPhoto, box: [205, 359, 617, 620] },
 ];
@@ -321,8 +322,7 @@ function render() {
     .querySelectorAll('#hero-burger .layer')
     .forEach((b) => b.classList.toggle('removed', state.removed.includes(b.dataset.id)));
   $('combo').checked = state.combo;
-  $('drink').disabled = !state.combo;
-  $('drink').value = state.drink;
+  menuDrinkPicker.update({ drink: state.drink, combo: state.combo, visible: inMenu && !photo && !state.editing });
   $('drink').setAttribute('aria-invalid', String(!!state.drinkError));
   $('drink-error').textContent = state.drinkError ? 'Escolha a bebida do combo' : '';
   const qty = pick(state)?.qty ?? state.qty;
@@ -375,6 +375,7 @@ function render() {
   if (inAddress) renderAddress();
   else $('address-content').replaceChildren();
   // Minha conta: the title of the section and the navigation with its content.
+  $('account-back').hidden = !inAccount || state.accountPage !== 'pedido';
   if (inAccount && state.customer) {
     const view = accountView(state, Date.now(), accountMenu);
     $('account-title').textContent = view.title;
@@ -688,7 +689,7 @@ function drinkPicker(item, i) {
     .join('');
   // Continuar with the combo but no drink: red border and "Escolha a bebida do combo", as on the burger card.
   const error = item.drinkError ? ` aria-invalid="true" aria-describedby="item-${i}-drink-error"` : '';
-  return `<div class="cart-drink"><span class="item-label" id="item-${i}-drink">Bebida do combo</span><div class="picker"><button class="field picker-button" role="combobox" data-key="${i}:drink" aria-labelledby="item-${i}-drink" aria-haspopup="listbox" aria-controls="item-${i}-drinks" aria-expanded="${open}"${open ? ` aria-activedescendant="item-${i}-drink-${openDrink.active}"` : ''}${error}${item.combo ? '' : ' disabled'}>${item.drink || 'Selecione uma bebida'}</button><ul class="picker-list" role="listbox" id="item-${i}-drinks" aria-labelledby="item-${i}-drink"${open ? '' : ' hidden'}>${options}</ul></div>${item.drinkError ? `<p class="field-error" id="item-${i}-drink-error">Escolha a bebida do combo</p>` : ''}</div>`;
+  return `<div class="cart-drink"><span class="item-label" id="item-${i}-drink">Bebida do combo</span><div class="picker">${drinkPickerSizing(drinks)}<button class="field picker-button" role="combobox" data-key="${i}:drink" aria-labelledby="item-${i}-drink" aria-haspopup="listbox" aria-controls="item-${i}-drinks" aria-expanded="${open}"${open ? ` aria-activedescendant="item-${i}-drink-${openDrink.active}"` : ''}${error}${item.combo ? '' : ' disabled'}>${item.drink || 'Selecione uma bebida'}</button><ul class="picker-list" role="listbox" id="item-${i}-drinks" aria-labelledby="item-${i}-drink"${open ? '' : ' hidden'}>${options}</ul></div>${item.drinkError ? `<p class="field-error" id="item-${i}-drink-error">Escolha a bebida do combo</p>` : ''}</div>`;
 }
 /** Card of Item `i`: photo, name and Remover; a burger also has Ingredientes, combo and Bebida do combo; then Quantidade and Total do item. */
 function itemCard(item, i) {
@@ -904,11 +905,10 @@ $('cancel').onclick = () => closeEditor('cancel');
 $('apply').onclick = () => closeEditor('apply');
 $('reset').onclick = () => dispatch({ type: 'reset' });
 $('combo').onchange = (e) => dispatch({ type: 'combo', value: e.target.checked });
-$('drink').insertAdjacentHTML('beforeend', drinks.map((d) => `<option>${d}</option>`).join(''));
+const menuDrinkPicker = createDrinkPicker($('drink'), $('drinks'), drinks, (value) => dispatch({ type: 'drink', value }));
 const qty = () => pick(state)?.qty ?? state.qty;
 $('qty-minus').onclick = () => dispatch({ type: 'qty', value: qty() - 1 });
 $('qty-plus').onclick = () => dispatch({ type: 'qty', value: qty() + 1 });
-$('drink').onchange = (e) => dispatch({ type: 'drink', value: e.target.value });
 $('add').onclick = () => {
   // Carrinho travado (Pix pendente, card processing): nothing is added.
   if (cartLocked(state))

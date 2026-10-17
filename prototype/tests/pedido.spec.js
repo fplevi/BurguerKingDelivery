@@ -19,7 +19,8 @@ test('Whopper personalizado chega ao carrinho com combo, bebida, quantidade e in
   await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
   await expect(verIngredientes(page)).toBeHidden();
   await combo(page).check();
-  await bebida(page).selectOption('Coca-Cola');
+  await bebida(page).click();
+  await page.getByRole('option', { name: 'Coca-Cola', exact: true }).click();
   await quantidade(page).getByRole('button', { name: 'Aumentar quantidade' }).click();
 
   await adicionar(page).click();
@@ -42,7 +43,8 @@ test('depois de adicionar, o card e o hambúrguer voltam ao padrão com o mesmo 
   await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
   await expect(verIngredientes(page)).toBeHidden();
   await combo(page).check();
-  await bebida(page).selectOption('Sprite');
+  await bebida(page).click();
+  await page.getByRole('option', { name: 'Sprite', exact: true }).click();
   await quantidade(page).getByRole('button', { name: 'Aumentar quantidade' }).click();
   await adicionar(page).click();
 
@@ -50,7 +52,7 @@ test('depois de adicionar, o card e o hambúrguer voltam ao padrão com o mesmo 
   await expect(card(page, 'Cheddar Duplo')).toHaveAttribute('aria-pressed', 'true');
   await expect(combo(page)).not.toBeChecked();
   await expect(bebida(page)).toBeDisabled();
-  await expect(bebida(page).locator('option:checked')).toHaveText('Selecione uma bebida');
+  await expect(bebida(page)).toHaveText('Selecione uma bebida');
   await expect(quantidade(page)).toHaveText(/^\D*1\D*$/);
   await expect(total(page)).toHaveText('R$ 34,90');
   await openVerIngredientes(page);
@@ -61,7 +63,8 @@ test('Item idêntico soma na quantidade do que já está no carrinho', async ({ 
   await adicionar(page).click();
   await adicionar(page).click();
   await combo(page).check();
-  await bebida(page).selectOption('Sprite');
+  await bebida(page).click();
+  await page.getByRole('option', { name: 'Sprite', exact: true }).click();
   await adicionar(page).click();
   await page.getByRole('button', { name: 'Carrinho · 3' }).click();
   await expect(carrinho(page).getByText('3 unidades em 2 itens', { exact: true })).toBeVisible();
@@ -73,11 +76,12 @@ test('Item idêntico soma na quantidade do que já está no carrinho', async ({ 
 
 test('trocar de hambúrguer volta o card ao padrão', async ({ page }) => {
   await combo(page).check();
-  await bebida(page).selectOption('Sprite');
+  await bebida(page).click();
+  await page.getByRole('option', { name: 'Sprite', exact: true }).click();
   await quantidade(page).getByRole('button', { name: 'Aumentar quantidade' }).click();
   await escolher(page, 'Cheddar Duplo');
   await expect(combo(page)).not.toBeChecked();
-  await expect(bebida(page).locator('option:checked')).toHaveText('Selecione uma bebida');
+  await expect(bebida(page)).toHaveText('Selecione uma bebida');
   await expect(quantidade(page)).toHaveText(/^\D*1\D*$/);
   await expect(total(page)).toHaveText('R$ 34,90');
 });
@@ -94,16 +98,54 @@ test('o Combo começa desmarcado e soma R$ 12,00, sem tamanhos', async ({ page }
 
 test('a Bebida do combo só se escolhe com o Combo marcado e nunca vem preenchida', async ({ page }) => {
   await expect(bebida(page)).toBeDisabled();
-  await expect(bebida(page).locator('option:checked')).toHaveText('Selecione uma bebida');
+  await expect(bebida(page)).toHaveText('Selecione uma bebida');
   await combo(page).check();
   await expect(bebida(page)).toBeEnabled();
-  await expect(bebida(page).locator('option:checked')).toHaveText('Selecione uma bebida');
-  await expect(bebida(page).locator('option:not([disabled])')).toHaveText(bebidas);
-  await bebida(page).selectOption('Sprite');
+  await expect(bebida(page)).toHaveText('Selecione uma bebida');
+  await bebida(page).click();
+  await expect(page.getByRole('listbox').getByRole('option')).toHaveText(bebidas);
+  await page.getByRole('option', { name: 'Sprite', exact: true }).click();
   await expect(total(page)).toHaveText('R$ 43,90');
   await combo(page).uncheck();
   await expect(bebida(page)).toBeDisabled();
-  await expect(bebida(page).locator('option:checked')).toHaveText('Selecione uma bebida');
+  await expect(bebida(page)).toHaveText('Selecione uma bebida');
+});
+
+test('a lista do cardápio sobrepõe o card, permite teclado e fecha ao sair ou desmarcar o Combo', async ({ page }) => {
+  await combo(page).check();
+  const lista = page.getByRole('listbox', { name: 'Bebida do combo' });
+  const altura = await page.locator('.purchase').evaluate(el => el.offsetHeight);
+  await bebida(page).focus();
+  await page.keyboard.press('ArrowDown');
+  await expect(lista).toBeVisible();
+  await expect(lista).toHaveCSS('position', 'absolute');
+  expect(await page.locator('.purchase').evaluate(el => el.offsetHeight)).toBe(altura);
+  await page.keyboard.press('ArrowDown');
+  await page.keyboard.press('ArrowDown');
+  await page.keyboard.press('Enter');
+  await expect(bebida(page)).toHaveText('Sprite');
+  await expect(bebida(page)).toBeFocused();
+  await expect(lista).toBeHidden();
+
+  await page.keyboard.press('Space');
+  await page.keyboard.press('End');
+  await expect(page.locator(`#${await bebida(page).getAttribute('aria-activedescendant')}`)).toHaveText('Água de Copo');
+  await page.keyboard.press('Home');
+  await expect(page.locator(`#${await bebida(page).getAttribute('aria-activedescendant')}`)).toHaveText('Coca-Cola');
+  await page.keyboard.press('Escape');
+  await expect(lista).toBeHidden();
+  await expect(bebida(page)).toHaveText('Sprite');
+  await bebida(page).click();
+  await page.keyboard.press('Tab');
+  await expect(lista).toBeHidden();
+  await bebida(page).click();
+  await page.getByRole('heading', { level: 1 }).click();
+  await expect(lista).toBeHidden();
+  await bebida(page).click();
+  await combo(page).uncheck();
+  await expect(lista).toBeHidden();
+  await expect(bebida(page)).toBeDisabled();
+  await expect(bebida(page)).toHaveText('Selecione uma bebida');
 });
 
 test('adicionar um combo sem bebida pede a Bebida do combo e não adiciona', async ({ page }) => {
@@ -117,7 +159,8 @@ test('adicionar um combo sem bebida pede a Bebida do combo e não adiciona', asy
   await expect(bebida(page)).toHaveAttribute('aria-invalid', 'true');
   await expect(bebida(page)).toHaveCSS('border-color', 'rgb(217, 0, 0)');
   await expect(page.getByRole('button', { name: 'Carrinho · 0' })).toBeVisible();
-  await bebida(page).selectOption('Coca-Cola');
+  await bebida(page).click();
+  await page.getByRole('option', { name: 'Coca-Cola', exact: true }).click();
   await expect(page.getByText('Escolha a bebida do combo')).toHaveCount(0);
   await expect(bebida(page)).not.toHaveAttribute('aria-invalid', 'true');
 });

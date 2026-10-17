@@ -55,7 +55,8 @@ try {
     await capture('personalizacao');
     await verIngredientes(page).getByRole('button', { name: 'Aplicar alterações' }).click();
     await page.locator('#combo').check();
-    await page.locator('#drink').selectOption('Coca-Cola');
+    await page.locator('#drink').click();
+    await page.getByRole('option', { name: 'Coca-Cola', exact: true }).click();
     await page.locator('#qty-plus').click();
     await page.getByRole('button', { name: 'Adicionar ao carrinho' }).click();
     await page.getByRole('button', { name: /^Carrinho · / }).click();

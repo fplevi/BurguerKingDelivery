@@ -37,18 +37,12 @@ body[data-screen="carrinho"] { background: var(--surface-page); }
 .cart-page .field { padding: var(--space-12) var(--space-16); border-radius: var(--radius-control); }
 .cart-page .field-error { margin-top: var(--space-8); }
 .cart-page .check { gap: var(--space-8); }
-.cart-page .check input { appearance: none; flex: none; width: 24px; height: 24px; margin: 0; border: 1px solid var(--border); border-radius: var(--radius-control); background: var(--cream); }
-.cart-page .check input:checked { border: 0; background: var(--red) url('../Assets/icons/check-24.svg') center / 16px no-repeat; border-radius: 50%; }
 .cart-page .qty { border-radius: var(--radius-control); }
 .cart-page .qty button { display: flex; align-items: center; justify-content: center; padding: 0; }
 .cart-page .qty span { font-family: var(--font-body); font-weight: 400; }
 .cart-page .qty .bk-icon { min-width: 16px; width: 16px; height: 16px; background: currentColor; }
 .cart-minus { mask: url('../Assets/icons/minus-16.svg') center / contain no-repeat; }
 .cart-plus { mask: url('../Assets/icons/plus-16.svg') center / contain no-repeat; }
-.cart-page .picker-button::after { flex: none; width: 16px; height: 16px; margin: 0 0 0 var(--space-12); border: 0; background: currentColor; mask: url('../Assets/icons/caret-down-16.svg') center / contain no-repeat; transform: none; }
-.cart-page .picker-button[aria-expanded=true]::after { transform: rotate(180deg); }
-.cart-page .picker-list { padding: var(--space-8) 0; }
-.cart-page .picker-list li { padding: var(--space-12) var(--space-16); }
 .cart-removal-toast {
   position: fixed;
   z-index: 200;

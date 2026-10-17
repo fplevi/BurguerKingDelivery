@@ -14,7 +14,8 @@ async function irAoCheckout(page) {
   await chip(page, 'Retirar', 'Cebola').click();
   await page.getByRole('button', { name: 'Aplicar alterações' }).click();
   await page.getByRole('checkbox', { name: 'Transformar em combo' }).check();
-  await page.getByRole('combobox', { name: 'Bebida do combo' }).selectOption('Sprite');
+  await page.getByRole('combobox', { name: 'Bebida do combo' }).click();
+  await page.getByRole('option', { name: 'Sprite', exact: true }).click();
   await adicionar(page).click();
   await categorias(page).getByRole('link', { name: 'Acompanhamentos' }).click();
   await escolher(page, 'Batata Frita');

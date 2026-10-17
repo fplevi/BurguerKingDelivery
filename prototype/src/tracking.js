@@ -79,8 +79,8 @@ function timeline(order, now) {
 
 const waIcon = '<span class="track-whatsapp-icon" aria-hidden="true"></span>';
 const waLink = (label, kind) => `<a class="${kind} account-action track-whatsapp" href="${whatsapp}" target="_blank" rel="noopener">${waIcon}<span>${label}</span></a>`;
-/** The loja: always, with its WhatsApp. */
-const storeCard = () => `<div class="track-store"><p class="track-store-name">${store.name}</p><p class="account-meta">Loja responsável pelo seu pedido</p>${waLink('WhatsApp da loja', 'secondary')}</div>`;
+/** The loja keeps its WhatsApp while contact is available. */
+const storeCard = (contact = true) => `<div class="track-store"><p class="track-store-name">${store.name}</p><p class="account-meta">Loja responsável pelo seu pedido</p>${contact ? waLink('WhatsApp da loja', 'secondary') : ''}</div>`;
 
 /** "hoje, às 13h02", "ontem, às 13h02" or "em 8 de outubro, às 13h02". */
 const when = (ms, now) => {
@@ -92,7 +92,7 @@ const where = (a) => [a.street, a.complement].filter(Boolean).map(esc).join(' ·
 
 /**
  * The whole acompanhamento of `order` at `now`. A Pedido entregue or cancelado (Figma 20, without the map nor the
- * entregador) keeps only when it ended, the loja with its WhatsApp, the linha do tempo of what happened and the Items.
+ * entregador) keeps when it ended, the loja, the linha do tempo and the Items. Delivered orders have no contact action.
  */
 export function trackingView(order, now) {
   const s = situation(order, now),
@@ -102,8 +102,8 @@ export function trackingView(order, now) {
   const head = s.done
     ? `<section class="account-card track-head" aria-labelledby="track-title"><h2 id="track-title">${s.cancelled ? 'Pedido cancelado' : 'Pedido entregue'}</h2><p>${s.cancelled ? 'Cancelado' : 'Entregue'} ${when(end, now)}</p>${s.cancelled ? '<p>O valor será devolvido na mesma forma de pagamento.</p>' : ''}<p class="account-meta">Pedido #${order.id} · ${day(order.confirmedAt, now)}, ${hour(order.confirmedAt)}</p></section>`
     : `<section class="account-card track-head" aria-labelledby="track-title"><h2 id="track-title">${situationName(order, now)}</h2><p class="track-eta">Chega entre ${hour(from)} e ${hour(to)}</p><p class="account-meta">Pedido #${order.id} · ${day(order.confirmedAt, now)}, ${hour(order.confirmedAt)}</p></section>`;
-  const items = `<div class="track-items">${orderSummary(order.items, true, { edit: false, action: `<p class="account-meta">Pago com ${esc(order.paidWith)}</p><a class="secondary account-action account-back" href="#conta/pedidos"><span class="navigation-arrow" aria-hidden="true"></span>Voltar</a>` })}</div>`;
-  if (s.done) return `<div class="track">${head}<div class="track-main"><section class="account-card" aria-label="Loja">${storeCard()}</section></div>${timeline(order, now)}${items}</div>`;
+  const items = `<div class="track-items">${orderSummary(order.items, true, { edit: false, action: `<p class="account-meta">Pago com ${esc(order.paidWith)}</p>` })}</div>`;
+  if (s.done) return `<div class="track${s.cancelled ? '' : ' track-delivered'}">${head}${s.cancelled ? `<div class="track-main"><section class="account-card" aria-label="Loja">${storeCard()}</section></div>` : ''}${timeline(order, now)}${items}</div>`;
   const at = riderAt(order, now);
   const status = at == null ? 'Acompanhe o motoboy após a retirada' : at >= 1 ? 'Chegou ao seu endereço' : `${at === 0 ? 'Saindo da loja' : 'A caminho'} · ${km(1 - at)} restantes`;
   const delivery = `<section class="account-card" aria-labelledby="map-title"><h2 id="map-title">Acompanhe sua entrega</h2><p class="account-meta">${at == null ? 'Rota entre a loja e seu endereço' : 'Localização atualizada agora'}</p>${trackMap(order, now)}<p>BK → ${esc(order.address.label)} · ${routeKm}</p><p class="account-meta" role="status">${status}</p><p class="account-meta">${where(order.address)}</p></section>`;

@@ -84,7 +84,8 @@ test('o erro some ao escolher a bebida ou ao desmarcar o combo', async ({ page }
 
 test('Continuar sem pendências abre o Checkout', async ({ page }) => {
   await page.getByRole('checkbox', { name: 'Transformar em combo' }).check();
-  await page.getByRole('combobox', { name: 'Bebida do combo' }).selectOption('Sprite');
+  await page.getByRole('combobox', { name: 'Bebida do combo' }).click();
+  await page.getByRole('option', { name: 'Sprite', exact: true }).click();
   await adicionar(page).click();
   await escolher(page, 'Cheddar Duplo');
   await adicionar(page).click();

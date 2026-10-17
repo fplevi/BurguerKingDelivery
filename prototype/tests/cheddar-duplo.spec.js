@@ -116,7 +116,8 @@ test('cheddar cremoso só sai da descrição com os dois cheddars retirados', as
 test('Cheddar Duplo personalizado chega ao carrinho, com combo e bebida', async ({ page }) => {
   await escolher(page, 'Cheddar Duplo');
   await page.getByRole('checkbox', { name: 'Transformar em combo' }).check();
-  await page.getByRole('combobox', { name: 'Bebida do combo' }).selectOption('Fanta Laranja');
+  await page.getByRole('combobox', { name: 'Bebida do combo' }).click();
+  await page.getByRole('option', { name: 'Fanta Laranja', exact: true }).click();
   await expect(page.getByText('Total do item').locator('strong')).toHaveText('R$ 46,90');
   await openVerIngredientes(page);
   await chip(page, 'Retirar', 'Cheddar inferior').click();
