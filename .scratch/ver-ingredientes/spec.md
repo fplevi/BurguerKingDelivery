@@ -1,6 +1,6 @@
 # Ver ingredientes pelo Figma
 
-Status: ready-for-agent
+Status: resolved
 
 Contexto: `GLOSSARY.md` (Ver ingredientes, Bandeja, Camada, Ingrediente retirado, Personalização), `docs/adr/0001-visuais-gerados-por-codigo.md`, `.scratch/revisao-figma/spec.md` (pontos de quebra). Decisões tiradas da sessão de grilling de 2026-10-11.
 

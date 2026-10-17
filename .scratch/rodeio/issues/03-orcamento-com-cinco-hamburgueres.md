@@ -4,18 +4,19 @@
 
 **Blocked by:** 02.
 
-**Status:** claimed
+**Status:** resolved
 
 - [x] Medições registradas em `## Comments` (gzip 3D, primeiro quadro, fps)
 - [x] Tudo dentro dos limites aceitos, ou otimizado até ficar
 - [x] `npm run test:build` inteiro verde; se falhar "ao acaso", comparar com a `main` antes de chamar de instabilidade
-- [ ] PR aberto para a `main` com as capturas da revisão
+- [x] PR aberto para a `main` com as capturas da revisão
 
 ## Answer
 
 - Tudo dentro dos limites aceitos; nenhuma otimização. Peso 154,9 KB gzip (+0,3 KB). Rodeio na primeira escolha: 0,31–0,35 s com CPU 4x, o mais leve dos quatro escolhidos na grade.
 - `tests/orcamento.spec.js` mede o Rodeio nos testes que já existiam; nenhum teste novo.
 - `npm run test:build` verde (627 aprovados, 39 pulados) na quarta rodada. As três primeiras tiveram uma falha cada, em testes sem 3D que passam isolados; a `main` passou inteira, mas a mesma falha de `categorias.spec.js:169` já aparecia com o código que hoje está na `main` (ver Comments).
+- PRs integrados à `main`: https://github.com/fplevi/BurguerKingNewSite/pull/17 e https://github.com/fplevi/BurguerKingNewSite/pull/19.
 
 ## Comments
 

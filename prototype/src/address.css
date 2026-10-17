@@ -1,6 +1,6 @@
 /* Endereço de entrega: shared foundations, scoped until the remaining flows migrate. */
 body[data-screen="endereco"] { background: var(--surface-page); }
-#address-page { padding: var(--space-32) var(--space-48) var(--space-48); }
+#address-page { padding: var(--space-32) var(--page-gutter) var(--space-48); }
 #address-page > .secondary {
   width: fit-content;
   display: flex;

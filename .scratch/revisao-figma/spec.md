@@ -1,6 +1,6 @@
 # Revisão da interface pelas telas do Figma
 
-Status: ready-for-agent
+Status: resolved
 
 Contexto: `GLOSSARY.md`, `docs/adr/0001-visuais-gerados-por-codigo.md`, spec do Cheddar Duplo em `.scratch/cheddar-duplo/spec.md` (resolvida). Decisões tiradas da sessão de grilling de 2026-10-10.
 

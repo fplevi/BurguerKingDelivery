@@ -1,6 +1,6 @@
 # Hambúrguer 3D procedural em Alterar ingredientes
 
-Status: ready-for-agent
+Status: resolved
 
 Contexto: `GLOSSARY.md`, `docs/adr/0001-visuais-gerados-por-codigo.md`, spec anterior em `.scratch/home-delivery/spec.md` e ticket validado `.scratch/home-delivery/issues/01-validar-playground.md`.
 

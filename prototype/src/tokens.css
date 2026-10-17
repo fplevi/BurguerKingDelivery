@@ -1,5 +1,7 @@
 /* Shared foundations. Color aliases in styles.css still serve the base layout. */
 :root {
+  --page-content-width: 1280px;
+  --page-gutter: max(40px, calc((100% - var(--page-content-width)) / 2));
   --space-0: 0;
   --space-4: 4px;
   --space-8: 8px;
@@ -19,4 +21,7 @@
   --surface-disabled: #ece6da;
   --font-body: 'Flame Sans', Arial, sans-serif;
   --font-display: 'Flame', Georgia, serif;
+}
+@media(max-width:1023px) {
+  :root { --page-gutter: 16px; }
 }

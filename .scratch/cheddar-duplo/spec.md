@@ -1,6 +1,6 @@
 # Cheddar Duplo em 3D, com Receita por produto
 
-Status: ready-for-agent
+Status: resolved
 
 Contexto: `GLOSSARY.md`, `docs/adr/0001-visuais-gerados-por-codigo.md`, `docs/agents/novo-hamburguer.md`, spec do Whopper em `.scratch/hamburguer-3d/spec.md` (resolvida, exceto o ticket 12, `wontfix`).
 

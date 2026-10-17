@@ -1,6 +1,7 @@
 /* Minha conta: shared foundations, including the new celular confirmation. */
 body[data-screen=conta] { background: var(--surface-page); }
-#account-page { padding: var(--space-32) max(48px, calc((100% - 1184px) / 2)) 64px; }
+main:is([data-screen=conta], [data-screen=identificar]) { display: block; height: auto; min-height: 0; }
+#account-page { padding: var(--space-32) var(--page-gutter) 64px; }
 #account-page h1 { margin-bottom: var(--space-32); font-size: 32px; }
 #account-page > .account-back { display: flex; align-items: center; width: max-content; min-width: 0; min-height: 48px; height: auto; gap: var(--space-8); margin: 0 0 var(--space-32); padding: var(--space-12) var(--space-16); border-color: var(--border); border-radius: var(--radius-pill); font-weight: 400; white-space: nowrap; }
 #account-page > .account-back[hidden] { display: none; }

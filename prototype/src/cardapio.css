@@ -1,5 +1,45 @@
 /* First consumers of the shared foundations; other flows retain their styles. */
+:root { --menu-cart-bar-height: 88px; }
+main[data-screen=cardapio] { padding-bottom: var(--menu-cart-bar-height); }
+.menu-cart-bar {
+  position: fixed;
+  z-index: 20;
+  inset: auto 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-24);
+  padding: var(--space-16) var(--space-48) calc(16px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--border);
+  background: var(--surface-purchase);
+  color: var(--brown);
+  font-family: var(--font-body);
+}
+.menu-cart-bar[hidden] { display: none; }
+.menu-cart-summary { display: flex; flex-direction: column; align-items: flex-end; min-width: 0; }
+.menu-cart-summary span { font-size: 14px; line-height: 20px; }
+.menu-cart-summary strong { font-family: var(--font-display); font-size: 28px; line-height: 32px; }
+.menu-cart-bar .primary { width: 280px; min-height: 48px; border-radius: var(--radius-pill); font: 16px var(--font-body); }
+.menu-cart-bar .primary:disabled { background: var(--surface-disabled); color: #998477; cursor: default; }
+body[data-screen=cardapio] > .toast { bottom: calc(var(--menu-cart-bar-height) + 16px); }
+@media (max-width: 1023px) {
+  :root { --menu-cart-bar-height: 132px; }
+  .menu-cart-bar { flex-direction: column; gap: var(--space-12); padding: var(--space-16) var(--space-24) calc(20px + env(safe-area-inset-bottom)); }
+  .menu-cart-summary { width: 100%; flex-direction: row; align-items: center; justify-content: space-between; gap: var(--space-12); }
+  .menu-cart-summary strong { font-size: 24px; }
+  .menu-cart-bar .primary { width: 100%; }
+}
+@media (min-width: 1920px) {
+  main[data-screen=cardapio] { height: calc(100dvh - 90px - var(--menu-cart-bar-height)); min-height: 0; padding-bottom: 0; }
+  main[data-screen=cardapio] .hero { min-height: 0; overflow-y: auto; }
+  main[data-screen=cardapio] .info { gap: clamp(8px, calc(100dvh - 780px), 32px); }
+  main[data-screen=cardapio] h1 { font-size: clamp(64px, calc(100dvh - 640px), 90px); }
+  main[data-screen=cardapio] .catalog { min-height: 0; }
+  main[data-screen=cardapio] .hero .stage { height: min(448px, max(180px, calc(100dvh - 300px - var(--menu-cart-bar-height)))); }
+  main[data-screen=cardapio] .product-photo { height: min(440px, max(180px, calc(100dvh - 212px - var(--menu-cart-bar-height)))); }
+}
 header {
+  padding-inline: var(--page-gutter);
   gap: var(--space-24);
   background: var(--surface-header);
   font-family: var(--font-body);

@@ -261,6 +261,7 @@ function render() {
     .forEach((a) => (inMenu && a.hash === '#' + state.category ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current')));
   document.querySelector('main').dataset.screen = document.body.dataset.screen = state.screen;
   for (const el of document.querySelectorAll('main > .hero, main > .catalog')) el.hidden = !inMenu;
+  $('menu-cart-bar').hidden = !inMenu;
   $('cart-page').hidden = !inCart;
   $('checkout-page').hidden = !inCheckout;
   $('address-page').hidden = !inAddress;
@@ -363,6 +364,11 @@ function render() {
   const units = cartUnits(state.cart);
   $('cart-count').textContent = units;
   $('cart-open').setAttribute('aria-label', `Carrinho · ${units}`);
+  $('menu-cart-units').textContent = `${units} ${units === 1 ? 'item' : 'itens'}`;
+  const menuTotal = money(cartTotal(state.cart));
+  $('menu-cart-total').textContent = menuTotal;
+  $('menu-cart-total').setAttribute('aria-label', `Total dos itens: ${menuTotal}`);
+  $('menu-cart-open').disabled = units === 0;
   // Built only while shown, so the menu never holds a hidden copy of the Itens.
   if (inCart) renderCart();
   else {
@@ -929,6 +935,13 @@ $('cart-open').onclick = () => {
   cartClick = location.hash !== '#carrinho';
   location.hash = 'carrinho';
 };
+$('menu-cart-open').onclick = $('cart-open').onclick;
+// Measure the real height, including wrapped text and the device's safe area.
+const menuBarObserver = new ResizeObserver(([entry]) => {
+  if (entry.target.hidden) return;
+  document.documentElement.style.setProperty('--menu-cart-bar-height', `${entry.target.getBoundingClientRect().height}px`);
+});
+menuBarObserver.observe($('menu-cart-bar'));
 // Voltar ao cardápio, Adicionar mais itens and Explorar cardápio: back to the last category seen, as it was.
 // Opened from the menu, that is the previous history entry (so Back doesn't return to the Carrinho);
 // opened by the address, there is none and the category's hash is pushed instead.

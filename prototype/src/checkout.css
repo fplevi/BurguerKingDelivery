@@ -1,6 +1,6 @@
 /* Checkout and shared Código de confirmação. Address remains owned by address.css. */
 body[data-screen="checkout"], body[data-screen="identificar"], body[data-screen="pedido"] { background: var(--surface-page); }
-#checkout-page { padding: var(--space-32) var(--space-48) var(--space-48); }
+#checkout-page { padding: var(--space-32) var(--page-gutter) var(--space-48); }
 #checkout-back, #signin-back {
   display: flex; align-items: center; gap: var(--space-8); width: fit-content;
   min-height: 48px; padding: var(--space-12) var(--space-16);
@@ -77,7 +77,7 @@ body[data-screen="checkout"], body[data-screen="identificar"], body[data-screen=
   #checkout-page .delivery-extra { gap: var(--space-12); }
 }
 
-#order-page { padding: var(--space-32) var(--space-48) var(--space-48); }
+#order-page { padding: var(--space-32) var(--page-gutter) var(--space-48); }
 #order-page .order-actions { justify-items: start; gap: var(--space-16); margin-top: var(--space-24); }
 #order-page .order-actions > button { width: max-content; max-width: 100%; height: auto; min-height: 48px; padding: var(--space-12) var(--space-24); border-radius: var(--radius-pill); }
 #order-page .order-actions > .primary { width: 260px; }
