@@ -4,8 +4,16 @@
 
 **Blocked by:** 01.
 
-**Status:** ready-for-agent
+**Status:** resolved
 
-- [ ] Quatro capturas e quadros da Entrada e da Saída entregues juntos, com a foto oficial ao lado
-- [ ] Ajustes pedidos aplicados e novas capturas anexadas
-- [ ] Aprovação do responsável registrada em `## Comments`
+- [x] Quatro capturas e quadros da Entrada e da Saída entregues juntos, com a foto oficial ao lado
+- [x] Ajustes pedidos aplicados e novas capturas anexadas (nenhum ajuste pedido)
+- [x] Aprovação do responsável registrada em `## Comments`
+
+## Answer
+
+Uma rodada, sem ajustes. Entregues juntos em `capturas/02/`: as quatro capturas padrão (`desktop-` e `390x844-`, `montado` e `aberto`), as do hero, `revisao-lado-a-lado.png` (foto oficial, montado, aberto) e `quadros/` (Entrada até ~800 ms e Saída).
+
+## Comments
+
+**Responsável pelo produto (2026-10-17):** aprovado assim. Foram oferecidos e recusados dois ajustes só na Receita: alargar o Picles (`spread`) para as rodelas passarem da borda do pão como na foto, e achatar um pouco o pão superior (`squash`). Ficam como estão: o picles aparece pouco no hambúrguer montado, a mostarda só aparece aberta e o pão superior fica sem achatar.
