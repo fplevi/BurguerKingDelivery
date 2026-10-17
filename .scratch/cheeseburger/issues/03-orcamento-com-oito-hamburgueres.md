@@ -16,7 +16,7 @@
 - Tudo dentro dos limites aceitos; nenhuma otimização. Peso 159,5 KB gzip, igual ao da `main`. Cheeseburger na primeira escolha: 0,26 s com CPU 4x; nas seguintes, 0,16–0,21 s.
 - `tests/orcamento.spec.js` mede o Cheeseburger nos testes que já existiam; nenhum teste novo.
 - `npm run test:build` verde na segunda rodada (763 aprovados, 39 pulados), no commit `4fbe56a`.
-- PR para a `main` com a folha de revisão e os quadros da Entrada e da Saída do ticket 02.
+- PR para a `main`: https://github.com/fplevi/BurguerKingNewSite/pull/22, com a folha de revisão e os quadros da Entrada e da Saída do ticket 02.
 
 ## Comments
 
